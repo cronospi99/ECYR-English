@@ -68,7 +68,7 @@ const AREAS = [
     icon: Shuffle,
     color: 'var(--orange)',
     title: 'Phrasal Verbs',
-    body: 'More than 1,100 phrasal verbs from A1 to C1 in mind maps, with translation, 4 examples each and quiz mode.',
+    body: 'More than 1,250 phrasal verbs from A1 to C1 in mind maps, with translation, 4 examples each and quiz mode.',
     skill: 'vocabulary' as const,
   },
   {

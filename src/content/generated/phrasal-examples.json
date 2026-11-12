@@ -5713,5 +5713,655 @@
     "My older sister always bossed us around.",
     "He's bossing everyone around in the new office.",
     "I don't like being bossed around."
+  ],
+  "act up|To work badly or behave badly": [
+    "The printer always acts up when I'm in a hurry.",
+    "The kids acted up during the long car trip.",
+    "My knee has been acting up since the match."
+  ],
+  "add up|To calculate a total; to make sense": [
+    "Add up the prices and tell me the total.",
+    "The numbers didn't add up, so we checked again.",
+    "Something about her excuse doesn't add up."
+  ],
+  "add up to|To reach a total; to result in": [
+    "Three coffees a day add up to a big bill.",
+    "All these changes added up to a better service.",
+    "His mistakes have added up to a serious problem."
+  ],
+  "bail out|To rescue someone from a difficult situation, especially with money": [
+    "My parents bailed me out when I couldn't pay the rent.",
+    "Don't expect me to bail you out again.",
+    "The company was bailed out with public money."
+  ],
+  "beat up|To hurt someone by hitting them many times": [
+    "He was beaten up on his way home.",
+    "The bullies threatened to beat him up.",
+    "Don't beat yourself up over one mistake."
+  ],
+  "black out|To lose consciousness for a short time": [
+    "I stood up too fast and nearly blacked out.",
+    "He blacked out and woke up in hospital.",
+    "Drink some water; you look like you might black out."
+  ],
+  "blurt out|To say something suddenly without thinking": [
+    "She blurted out the answer before I finished the question.",
+    "I blurted out that I was leaving the company.",
+    "Think first; don't just blurt things out."
+  ],
+  "bog down|To become so involved in details that you cannot make progress": [
+    "The talks got bogged down over money.",
+    "We were bogged down by paperwork all week.",
+    "The project has been bogged down for months."
+  ],
+  "boot up|To start a computer": [
+    "Boot up the computer and open the file.",
+    "The system booted up without any errors.",
+    "It won't boot up since the last update."
+  ],
+  "bounce back|To recover quickly after a difficulty": [
+    "The team bounced back with a 3–0 win.",
+    "Sales have bounced back this year.",
+    "Children usually bounce back from colds fast."
+  ],
+  "buckle up|To fasten your seat belt": [
+    "Please buckle up before the plane takes off.",
+    "He never drives until everyone has buckled up.",
+    "Buckle up, kids!"
+  ],
+  "bump into|To meet someone by chance": [
+    "Guess who I bumped into yesterday?",
+    "We keep bumping into each other at the gym.",
+    "She bumped into an ex-colleague on the train."
+  ],
+  "bundle up|To put on warm clothes": [
+    "She bundled the baby up in a blanket.",
+    "We bundled up and went for a walk in the snow.",
+    "You should bundle up if you have a cold."
+  ],
+  "butt in|To interrupt a conversation rudely": [
+    "He always butts in when I'm talking.",
+    "She butted in before I could explain.",
+    "Stop butting in and let her finish."
+  ],
+  "buzz off|To go away (rude, informal)": [
+    "Buzz off! I'm trying to work.",
+    "She told her little brother to buzz off.",
+    "I wish those mosquitoes would buzz off."
+  ],
+  "cheat on|To be unfaithful to a partner; to act dishonestly in a test": [
+    "She found out he was cheating on her.",
+    "I have never cheated on a test.",
+    "He lost everything after he cheated on his taxes."
+  ],
+  "chicken out|To decide not to do something because you are afraid": [
+    "He chickened out of asking her to dance.",
+    "Don't chicken out now; we're almost there.",
+    "She chickened out at the last minute."
+  ],
+  "chime in|To join a conversation to add a comment": [
+    "\"I agree,\" she chimed in.",
+    "He chimed in with a useful suggestion.",
+    "Everyone chimed in at the same time."
+  ],
+  "choke up|To be unable to speak because of strong emotion": [
+    "I always choke up at weddings.",
+    "She choked up when she saw the photos.",
+    "The coach choked up as he thanked the fans."
+  ],
+  "chow down|To eat a lot of food with enthusiasm (informal)": [
+    "The kids chowed down on burgers.",
+    "Let's chow down; I'm starving.",
+    "He was chowing down on a huge sandwich."
+  ],
+  "circle back|To return to a topic later": [
+    "I'll circle back once I have the numbers.",
+    "She circled back to the question at the end.",
+    "Can we circle back to the budget?"
+  ],
+  "clam up|To become silent, especially from nervousness": [
+    "She clammed up as soon as the teacher came in.",
+    "Don't clam up; tell me what happened.",
+    "The witness clammed up in court."
+  ],
+  "clock in|To record the time you arrive at work": [
+    "I clocked in five minutes late.",
+    "Staff must clock in with their card.",
+    "She had already clocked in when I arrived."
+  ],
+  "clock out|To record the time you leave work": [
+    "He forgot to clock out yesterday.",
+    "What time did you clock out?",
+    "She clocked out early for a doctor's appointment."
+  ],
+  "come clean|To tell the truth about something you have hidden": [
+    "You should come clean with your parents.",
+    "She came clean and apologised.",
+    "The company has come clean about the mistake."
+  ],
+  "cop out|To avoid doing something you should do": [
+    "He copped out of the presentation.",
+    "Saying \"I was busy\" is just copping out.",
+    "She never cops out of a challenge."
+  ],
+  "cough up|To give money unwillingly": [
+    "Come on, cough up; you lost the bet.",
+    "He finally coughed up the money he owed.",
+    "We had to cough up for a new tyre."
+  ],
+  "cozy up to|To try to become friendly with someone for advantage": [
+    "She cozied up to the teacher before the exam.",
+    "Don't cozy up to me just because you need money.",
+    "The cat cozied up to me on the sofa."
+  ],
+  "crop up|To appear or happen unexpectedly": [
+    "Her name keeps cropping up in conversation.",
+    "Something cropped up, so I can't come.",
+    "New questions cropped up during the meeting."
+  ],
+  "dine out|To eat dinner in a restaurant": [
+    "They dined out to celebrate.",
+    "Do you prefer to cook or dine out?",
+    "We haven't dined out since January."
+  ],
+  "dish out|To give or serve something to several people": [
+    "He loves to dish out advice.",
+    "The teacher dished out extra homework.",
+    "He can dish out criticism, but he can't take it."
+  ],
+  "doll up|To dress and make yourself look attractive": [
+    "They dolled themselves up for the wedding.",
+    "You don't need to doll up; it's a casual dinner.",
+    "He was dolled up in a new suit."
+  ],
+  "dote on|To love someone very much and give them lots of attention": [
+    "He dotes on his little sister.",
+    "They doted on their only son.",
+    "My aunt has always doted on her cats."
+  ],
+  "drag on|To continue for too long": [
+    "The film dragged on and I fell asleep.",
+    "Winter seems to drag on forever.",
+    "The strike has dragged on for weeks."
+  ],
+  "dream up|To invent a plan or idea, especially an unusual one": [
+    "She dreamed up a new game for the class.",
+    "He's always dreaming up ways to save time.",
+    "They dreamed up an excuse for being late."
+  ],
+  "drift apart|To slowly become less close to someone": [
+    "They drifted apart when he moved abroad.",
+    "Old friends often drift apart.",
+    "We've drifted apart over the years."
+  ],
+  "drill down|To look at something in more detail": [
+    "Click here to drill down by region.",
+    "We drilled down to find the cause.",
+    "The report drills down into each department."
+  ],
+  "drown out|To be so loud that another sound cannot be heard": [
+    "The crowd drowned out the speaker.",
+    "I turn up the TV to drown out the traffic.",
+    "Her words were drowned out by applause."
+  ],
+  "dry up|To have no more water; to come to an end": [
+    "Work dried up after Christmas.",
+    "The money dried up and the project stopped.",
+    "Their ideas have dried up."
+  ],
+  "dumb down|To make something too simple": [
+    "Critics say TV news has been dumbed down.",
+    "He dumbed down the explanation for the kids.",
+    "The exam was dumbed down this year."
+  ],
+  "egg on|To encourage someone to do something foolish": [
+    "Don't egg her on; she'll get in trouble.",
+    "The crowd egged the players on.",
+    "He only did it because they egged him on."
+  ],
+  "even out|To become level or equal": [
+    "The road evens out after the hill.",
+    "We split the tasks to even out the work.",
+    "The scores evened out in the second half."
+  ],
+  "fess up|To admit you did something wrong (informal)": [
+    "He fessed up to breaking the window.",
+    "She finally fessed up about the lie.",
+    "Nobody has fessed up yet."
+  ],
+  "fizzle out|To gradually end in a disappointing way": [
+    "Their plan fizzled out for lack of money.",
+    "The protest fizzled out when it rained.",
+    "Our conversation fizzled out."
+  ],
+  "flare up|To suddenly become worse or more violent": [
+    "Violence flared up again last night.",
+    "His back pain flared up after the trip.",
+    "Tempers flared up during the debate."
+  ],
+  "flip out|To become very angry or excited": [
+    "He flipped out over a small mistake.",
+    "Don't flip out, but I lost your keys.",
+    "She'll flip out when she hears the news."
+  ],
+  "fork out|To pay a lot of money unwillingly": [
+    "I'm not forking out for another ticket.",
+    "He had to fork out for a new phone.",
+    "Parents fork out a fortune on uniforms."
+  ],
+  "fork over|To give something, especially money, unwillingly": [
+    "He forked over his wallet to the thief.",
+    "We had to fork over a deposit.",
+    "She forked over twenty dollars for parking."
+  ],
+  "freshen up|To wash and make yourself look tidy": [
+    "She freshened up after the long flight.",
+    "Give me five minutes to freshen up.",
+    "We freshened up at the hotel and went out."
+  ],
+  "gang up on|To join together against one person": [
+    "Don't gang up on your sister.",
+    "I felt they were ganging up on me.",
+    "Three players ganged up on the referee."
+  ],
+  "gear up|To prepare for something": [
+    "We're gearing up for the exams.",
+    "The team geared up for the final.",
+    "Shops are gearing up for Christmas."
+  ],
+  "get by on|To manage to live with a small amount of something": [
+    "I can't get by on five hours of sleep.",
+    "They got by on one salary for years.",
+    "How do you get by on so little?"
+  ],
+  "goof around|To spend time doing silly things": [
+    "We goofed around at the beach all day.",
+    "The boys were goofing around in class.",
+    "He goofs around too much at work."
+  ],
+  "hack into|To get into a computer system without permission": [
+    "They hacked into the bank's servers.",
+    "He was arrested for hacking into a school network.",
+    "Change your password so nobody can hack into it."
+  ],
+  "hash out|To discuss something carefully to reach agreement": [
+    "They hashed out a deal overnight.",
+    "Let's hash it out over coffee.",
+    "The two sides hashed out their differences."
+  ],
+  "hold out for|To wait for something better and refuse less": [
+    "She's holding out for a higher salary.",
+    "He held out for the full price.",
+    "Don't hold out for a perfect job."
+  ],
+  "horse around|To play in a rough, noisy way": [
+    "The kids were horsing around in the kitchen.",
+    "He broke a lamp while horsing around.",
+    "No horsing around in the lab."
+  ],
+  "hype up|To make something seem more exciting than it is; to excite people": [
+    "The DJ hyped up the crowd.",
+    "Don't hype it up; it's just a small party.",
+    "They hyped up the new phone for months."
+  ],
+  "jazz up|To make something more interesting or attractive": [
+    "She jazzed up the room with plants.",
+    "He jazzed up the recipe with spices.",
+    "You can jazz up a plain shirt with a scarf."
+  ],
+  "keel over|To fall over suddenly": [
+    "I nearly keeled over when I saw the bill.",
+    "The tree keeled over in the storm.",
+    "She keeled over from exhaustion."
+  ],
+  "key in|To type information into a computer": [
+    "She keyed in the wrong number.",
+    "I keyed in all the data by hand.",
+    "Key in the code and press Enter."
+  ],
+  "lash out|To suddenly attack or criticise someone angrily": [
+    "She lashes out when she's stressed.",
+    "Don't lash out at me; I'm trying to help.",
+    "The player lashed out and got a red card."
+  ],
+  "lean on|To depend on someone for support": [
+    "She leaned on her friends after the breakup.",
+    "He leans on his parents for money.",
+    "We all need someone to lean on."
+  ],
+  "level up|To reach a higher level": [
+    "You need more points to level up.",
+    "She wants to level up her English.",
+    "The course helped me level up my skills."
+  ],
+  "lighten up|To become less serious": [
+    "He needs to lighten up a bit.",
+    "She lightened up after the exams.",
+    "Come on, lighten up and have some fun."
+  ],
+  "loosen up|To relax; to prepare your muscles": [
+    "He loosened up after a few minutes.",
+    "A little music will help everyone loosen up.",
+    "I stretch to loosen up my back."
+  ],
+  "luck out|To be very lucky (informal)": [
+    "I lucked out and got the last ticket.",
+    "She really lucked out with that job.",
+    "You lucked out; the teacher is absent today."
+  ],
+  "mouth off|To talk in a rude or loud way": [
+    "Don't mouth off to your mother.",
+    "She mouthed off about her boss online.",
+    "He's always mouthing off about politics."
+  ],
+  "muddle through|To manage to do something without a clear plan": [
+    "I muddled through the interview somehow.",
+    "She's muddling through her first year.",
+    "Don't worry; we'll muddle through."
+  ],
+  "mull over|To think carefully about something for a time": [
+    "She mulled over the job offer all weekend.",
+    "He's mulling over his options.",
+    "Mull it over and call me tomorrow."
+  ],
+  "nod off|To fall asleep, especially when you don't intend to": [
+    "Grandpa nods off in his chair.",
+    "She nodded off on the bus.",
+    "Half the class had nodded off."
+  ],
+  "nose around|To look around a place trying to find something private": [
+    "Stop nosing around in my room.",
+    "The reporter nosed around for a story.",
+    "I caught him nosing around in my bag."
+  ],
+  "opt out|To choose not to take part": [
+    "He opted out of the school trip.",
+    "Many workers opted out of the scheme.",
+    "Click here to opt out."
+  ],
+  "order in|To order food to be delivered to your home": [
+    "We ordered in pizza for the game.",
+    "I'm too tired to cook; shall we order in?",
+    "They order in every Friday."
+  ],
+  "own up|To admit that you did something wrong": [
+    "He owned up to his mistake.",
+    "You should own up and apologise.",
+    "She owned up before the teacher asked."
+  ],
+  "pan out|To develop or happen in a particular way": [
+    "The plan didn't pan out.",
+    "His business idea panned out well.",
+    "I hope the new job pans out."
+  ],
+  "patch up|To end a quarrel; to repair something quickly": [
+    "We patched things up after the argument.",
+    "The doctor patched him up.",
+    "He patched up the roof before the rain."
+  ],
+  "pencil in|To arrange something that may change later": [
+    "I've pencilled you in for 3 p.m.",
+    "The wedding is pencilled in for June.",
+    "Can I pencil you in for next week?"
+  ],
+  "phase in|To introduce something gradually": [
+    "They phased in the uniform over two terms.",
+    "The tax was phased in slowly.",
+    "We are phasing in the new system."
+  ],
+  "pig out|To eat a lot of food (informal)": [
+    "I always pig out at Christmas.",
+    "They pigged out at the buffet.",
+    "Don't pig out before dinner."
+  ],
+  "pipe down|To be quiet (informal)": [
+    "The teacher told the class to pipe down.",
+    "They piped down when the film started.",
+    "Will you two pipe down?"
+  ],
+  "pitch in|To join others to help with a task": [
+    "If we all pitch in, we'll finish soon.",
+    "The neighbours pitched in after the flood.",
+    "We pitched in ten dollars each for the gift."
+  ],
+  "plough through|To finish something long or difficult with effort": [
+    "She's ploughing through her emails.",
+    "We ploughed through the paperwork.",
+    "He ploughed through the whole report."
+  ],
+  "polish off|To finish something quickly, especially food": [
+    "We polished off the work before lunch.",
+    "She polished off two plates of pasta.",
+    "The kids polished off the biscuits."
+  ],
+  "psych up|To prepare yourself mentally for something": [
+    "I need to psych myself up for the interview.",
+    "She psyched up the team with a speech.",
+    "He was all psyched up for the race."
+  ],
+  "rack up|To gradually get a large amount of something": [
+    "The team racked up five wins in a row.",
+    "She racked up thousands of views.",
+    "We racked up a lot of debt."
+  ],
+  "ramp up|To increase the amount or speed of something": [
+    "We need to ramp up our efforts.",
+    "They ramped up security after the incident.",
+    "Sales ramped up before the holidays."
+  ],
+  "rat on|To tell someone in authority about a person's bad behaviour": [
+    "I would never rat on you.",
+    "Someone ratted on them to the teacher.",
+    "She was afraid her brother would rat on her."
+  ],
+  "rattle off|To say something quickly from memory": [
+    "He can rattle off the statistics without notes.",
+    "The waiter rattled off the specials.",
+    "I rattled off my phone number."
+  ],
+  "rip off|To cheat someone by charging too much": [
+    "Tourists often get ripped off here.",
+    "Ten dollars for a coffee? What a rip-off; they ripped you off.",
+    "Don't buy there; they rip people off."
+  ],
+  "root for|To support a team or person": [
+    "We're all rooting for you.",
+    "I always root for the underdog.",
+    "The whole town rooted for her."
+  ],
+  "rub off on|To pass a quality or habit to someone": [
+    "I hope his good habits rub off on you.",
+    "Their calm attitude rubbed off on me.",
+    "Don't let his bad mood rub off on you."
+  ],
+  "scale up|To increase the size or amount of something": [
+    "We scaled up production last year.",
+    "They are scaling up the programme to more schools.",
+    "It's hard to scale up without investment."
+  ],
+  "screw up|To make a serious mistake; to spoil something (informal)": [
+    "Don't screw this up.",
+    "He screwed up the order again.",
+    "Sorry, I screwed up."
+  ],
+  "scroll down|To move down a page on a screen": [
+    "I scrolled down but couldn't find the button.",
+    "Scroll down to the end of the page.",
+    "She scrolled down through the comments."
+  ],
+  "shell out|To pay a lot of money for something": [
+    "I'm not shelling out 100 dollars for shoes.",
+    "He shelled out for a new laptop.",
+    "Parents shell out a lot on school trips."
+  ],
+  "sign off on|To give official approval to something": [
+    "She signed off on the final design.",
+    "Nobody will sign off on that plan.",
+    "Has the director signed off on it yet?"
+  ],
+  "sink in|To be fully understood or realised": [
+    "It hasn't sunk in yet that I won.",
+    "Let that idea sink in.",
+    "Her words slowly sank in."
+  ],
+  "skim through|To read something quickly to get the main ideas": [
+    "Skim through the text and find the dates.",
+    "She skimmed through her notes on the bus.",
+    "He only skimmed through the contract."
+  ],
+  "slack off|To work less hard than usual": [
+    "Don't slack off just before the exam.",
+    "Sales slack off in January.",
+    "She slacked off in her final year."
+  ],
+  "smooth over|To make a problem seem less serious": [
+    "She smoothed over the disagreement.",
+    "A phone call might smooth it over.",
+    "They smoothed over their differences."
+  ],
+  "sober up|To become less drunk": [
+    "A coffee won't sober you up.",
+    "She sobered up quickly when she heard the news.",
+    "Wait until he sobers up."
+  ],
+  "space out|To stop paying attention": [
+    "He spaces out in maths class.",
+    "I spaced out during the meeting.",
+    "She was so tired that she spaced out."
+  ],
+  "spice up|To make something more exciting": [
+    "Games can spice up a lesson.",
+    "They spiced up the show with music.",
+    "Let's spice things up a little."
+  ],
+  "spin off|To create a new company or product from an existing one": [
+    "The series was spun off from a popular film.",
+    "They plan to spin off the brand next year.",
+    "Two new shows were spun off from the original."
+  ],
+  "splash out|To spend a lot of money on something special": [
+    "She splashed out on a new dress.",
+    "Let's splash out and get a taxi.",
+    "He splashed out for her birthday."
+  ],
+  "splurge on|To spend a lot of money on something you don't really need": [
+    "They splurged on a big wedding.",
+    "She rarely splurges on clothes.",
+    "We splurged on dessert."
+  ],
+  "spruce up|To make something look cleaner and nicer": [
+    "He spruced himself up for the interview.",
+    "A little paint will spruce up the room.",
+    "The city is sprucing up the park."
+  ],
+  "square up|To pay money you owe; to prepare to fight": [
+    "I'll square up with you tomorrow.",
+    "The two players squared up to each other.",
+    "We squared up the bill and left."
+  ],
+  "storm out|To leave a place angrily": [
+    "She stormed out and slammed the door.",
+    "Don't storm out; let's talk.",
+    "The player stormed out of the press conference."
+  ],
+  "stumble upon|To find something by chance": [
+    "I stumbled upon this article online.",
+    "She stumbled upon the answer by accident.",
+    "They stumbled upon an old map."
+  ],
+  "suck up to|To try to please someone in authority to get an advantage": [
+    "Stop sucking up to the teacher.",
+    "She sucked up to the director to get the role.",
+    "Nobody likes people who suck up to others."
+  ],
+  "swear by|To believe that something is very effective": [
+    "He swears by this app.",
+    "She swears by an early morning run.",
+    "Many cooks swear by cast-iron pans."
+  ],
+  "swipe up|To move your finger up a screen": [
+    "I swiped up to close the app.",
+    "Swipe up for more information.",
+    "She swiped up and the video played."
+  ],
+  "tag along|To go somewhere with someone, especially uninvited": [
+    "My little brother always tags along.",
+    "She tagged along to the concert.",
+    "Do you mind if a friend tags along?"
+  ],
+  "tail off|To become gradually smaller or quieter": [
+    "His voice tailed off.",
+    "Interest tailed off after a few weeks.",
+    "The rain tailed off in the afternoon."
+  ],
+  "tap into|To use a supply of something for your benefit": [
+    "Teachers can tap into students' interests.",
+    "We tapped into local knowledge.",
+    "The app taps into your phone's camera."
+  ],
+  "tip off|To warn someone secretly about something": [
+    "He was tipped off about the inspection.",
+    "A neighbour tipped them off.",
+    "Who tipped you off?"
+  ],
+  "tone down|To make something less strong or offensive": [
+    "She toned down the speech.",
+    "He toned down the colours in the design.",
+    "The article was toned down before printing."
+  ],
+  "touch base|To contact someone briefly to share news": [
+    "I just wanted to touch base about the project.",
+    "She touched base with the client.",
+    "We touch base every Monday."
+  ],
+  "toy with|To consider an idea without being serious; to play with": [
+    "He toyed with his food.",
+    "She toyed with the idea of a new career.",
+    "Don't toy with people's feelings."
+  ],
+  "trip up|To make a mistake or cause someone to make one": [
+    "He tripped up on the pronunciation.",
+    "Lawyers try to trip up witnesses.",
+    "Small details can trip you up."
+  ],
+  "veg out|To relax and do very little (informal)": [
+    "We vegged out all Sunday.",
+    "She vegged out on the sofa after work.",
+    "Let's veg out and watch a film."
+  ],
+  "vouch for|To say that you believe someone or something is good": [
+    "Can anyone vouch for you?",
+    "He vouched for the quality of the product.",
+    "My teacher vouched for me."
+  ],
+  "ward off|To keep something dangerous or unpleasant away": [
+    "She used a spray to ward off mosquitoes.",
+    "He raised his arm to ward off the blow.",
+    "Garlic is said to ward off illness."
+  ],
+  "weed out|To remove people or things that are not wanted": [
+    "We weeded out the old files.",
+    "The first round weeded out half the teams.",
+    "Editors weed out the mistakes."
+  ],
+  "wimp out|To not do something because you are afraid (informal)": [
+    "He wimped out of the roller coaster.",
+    "Don't wimp out now.",
+    "She wimped out at the last moment."
+  ],
+  "wise up|To start to understand the truth about a situation": [
+    "He finally wised up and left.",
+    "Customers are wising up to the trick.",
+    "Wise up; they're using you."
+  ],
+  "wolf down|To eat something very quickly": [
+    "Don't wolf down your food.",
+    "The kids wolfed down the sandwiches.",
+    "I wolfed down a burger between classes."
+  ],
+  "zero in on|To direct all your attention to one thing": [
+    "The police zeroed in on one suspect.",
+    "She zeroed in on the mistake immediately.",
+    "The report zeroes in on three causes."
   ]
 }

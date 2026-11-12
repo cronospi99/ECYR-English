@@ -3985,6 +3985,570 @@
       "emoji": "🔎",
       "type": "regular",
       "sound": "d"
+    },
+    {
+      "en": "absorb",
+      "past": "absorbed",
+      "part": "absorbed",
+      "es": "absorber",
+      "emoji": "🧽",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "assemble",
+      "past": "assembled",
+      "part": "assembled",
+      "es": "armar / reunir",
+      "emoji": "🔧",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "beset",
+      "past": "beset",
+      "part": "beset",
+      "es": "acosar / asediar",
+      "emoji": "🌪️",
+      "type": "irregular"
+    },
+    {
+      "en": "binge",
+      "past": "binged",
+      "part": "binged",
+      "es": "darse un atracón",
+      "emoji": "📺",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "blog",
+      "past": "blogged",
+      "part": "blogged",
+      "es": "escribir un blog",
+      "emoji": "✍️",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "bloom",
+      "past": "bloomed",
+      "part": "bloomed",
+      "es": "florecer",
+      "emoji": "🌸",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "bookmark",
+      "past": "bookmarked",
+      "part": "bookmarked",
+      "es": "guardar en favoritos",
+      "emoji": "🔖",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "brag",
+      "past": "bragged",
+      "part": "bragged",
+      "es": "presumir",
+      "emoji": "😏",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "bribe",
+      "past": "bribed",
+      "part": "bribed",
+      "es": "sobornar",
+      "emoji": "💰",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "conquer",
+      "past": "conquered",
+      "part": "conquered",
+      "es": "conquistar",
+      "emoji": "🏰",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "criticize",
+      "past": "criticized",
+      "part": "criticized",
+      "es": "criticar",
+      "emoji": "🗯️",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "despise",
+      "past": "despised",
+      "part": "despised",
+      "es": "despreciar",
+      "emoji": "😤",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "discourage",
+      "past": "discouraged",
+      "part": "discouraged",
+      "es": "desanimar",
+      "emoji": "😞",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "disguise",
+      "past": "disguised",
+      "part": "disguised",
+      "es": "disfrazar / ocultar",
+      "emoji": "🥸",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "drip",
+      "past": "dripped",
+      "part": "dripped",
+      "es": "gotear",
+      "emoji": "💧",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "dump",
+      "past": "dumped",
+      "part": "dumped",
+      "es": "tirar / botar",
+      "emoji": "🗑️",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "emigrate",
+      "past": "emigrated",
+      "part": "emigrated",
+      "es": "emigrar",
+      "emoji": "🧳",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "exhaust",
+      "past": "exhausted",
+      "part": "exhausted",
+      "es": "agotar",
+      "emoji": "🥵",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "flush",
+      "past": "flushed",
+      "part": "flushed",
+      "es": "vaciar (el inodoro)",
+      "emoji": "🚽",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "gaze",
+      "past": "gazed",
+      "part": "gazed",
+      "es": "mirar fijamente",
+      "emoji": "🌌",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "glow",
+      "past": "glowed",
+      "part": "glowed",
+      "es": "brillar",
+      "emoji": "✨",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "grin",
+      "past": "grinned",
+      "part": "grinned",
+      "es": "sonreír ampliamente",
+      "emoji": "😁",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "groan",
+      "past": "groaned",
+      "part": "groaned",
+      "es": "quejarse / gemir",
+      "emoji": "😩",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "hatch",
+      "past": "hatched",
+      "part": "hatched",
+      "es": "salir del cascarón / tramar",
+      "emoji": "🐣",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "imitate",
+      "past": "imitated",
+      "part": "imitated",
+      "es": "imitar",
+      "emoji": "🦜",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "juggle",
+      "past": "juggled",
+      "part": "juggled",
+      "es": "hacer malabares",
+      "emoji": "🤹",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "kidnap",
+      "past": "kidnapped",
+      "part": "kidnapped",
+      "es": "secuestrar",
+      "emoji": "🚐",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "livestream",
+      "past": "livestreamed",
+      "part": "livestreamed",
+      "es": "transmitir en vivo",
+      "emoji": "📡",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "lower",
+      "past": "lowered",
+      "part": "lowered",
+      "es": "bajar / reducir",
+      "emoji": "⬇️",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "mumble",
+      "past": "mumbled",
+      "part": "mumbled",
+      "es": "murmurar",
+      "emoji": "🫢",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "mute",
+      "past": "muted",
+      "part": "muted",
+      "es": "silenciar",
+      "emoji": "🔇",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "outlive",
+      "past": "outlived",
+      "part": "outlived",
+      "es": "sobrevivir a",
+      "emoji": "🕰️",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "outsmart",
+      "past": "outsmarted",
+      "part": "outsmarted",
+      "es": "ser más listo que",
+      "emoji": "🦊",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "overcook",
+      "past": "overcooked",
+      "part": "overcooked",
+      "es": "cocinar demasiado",
+      "emoji": "🍝",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "overreact",
+      "past": "overreacted",
+      "part": "overreacted",
+      "es": "reaccionar de forma exagerada",
+      "emoji": "😱",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "overthink",
+      "past": "overthought",
+      "part": "overthought",
+      "es": "pensar demasiado",
+      "emoji": "🤯",
+      "type": "irregular"
+    },
+    {
+      "en": "paddle",
+      "past": "paddled",
+      "part": "paddled",
+      "es": "remar",
+      "emoji": "🛶",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "pat",
+      "past": "patted",
+      "part": "patted",
+      "es": "dar palmaditas",
+      "emoji": "🫳",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "podcast",
+      "past": "podcasted",
+      "part": "podcasted",
+      "es": "hacer un pódcast",
+      "emoji": "🎙️",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "reheat",
+      "past": "reheated",
+      "part": "reheated",
+      "es": "recalentar",
+      "emoji": "♨️",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "roar",
+      "past": "roared",
+      "part": "roared",
+      "es": "rugir",
+      "emoji": "🦁",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "sack",
+      "past": "sacked",
+      "part": "sacked",
+      "es": "despedir",
+      "emoji": "📦",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "slink",
+      "past": "slunk",
+      "part": "slunk",
+      "es": "escabullirse",
+      "emoji": "🐈",
+      "type": "irregular"
+    },
+    {
+      "en": "sob",
+      "past": "sobbed",
+      "part": "sobbed",
+      "es": "sollozar",
+      "emoji": "😭",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "streamline",
+      "past": "streamlined",
+      "part": "streamlined",
+      "es": "simplificar / optimizar",
+      "emoji": "⚙️",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "stroke",
+      "past": "stroked",
+      "part": "stroked",
+      "es": "acariciar",
+      "emoji": "🐕",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "surrender",
+      "past": "surrendered",
+      "part": "surrendered",
+      "es": "rendirse",
+      "emoji": "🏳️",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "sync",
+      "past": "synced",
+      "part": "synced",
+      "es": "sincronizar",
+      "emoji": "🔄",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "tempt",
+      "past": "tempted",
+      "part": "tempted",
+      "es": "tentar",
+      "emoji": "🍰",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "tug",
+      "past": "tugged",
+      "part": "tugged",
+      "es": "tirar de / jalar",
+      "emoji": "🪢",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "tweet",
+      "past": "tweeted",
+      "part": "tweeted",
+      "es": "tuitear",
+      "emoji": "🐦",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "unfollow",
+      "past": "unfollowed",
+      "part": "unfollowed",
+      "es": "dejar de seguir",
+      "emoji": "🚫",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "untie",
+      "past": "untied",
+      "part": "untied",
+      "es": "desatar",
+      "emoji": "🪢",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "unwrap",
+      "past": "unwrapped",
+      "part": "unwrapped",
+      "es": "desenvolver",
+      "emoji": "🎁",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "vlog",
+      "past": "vlogged",
+      "part": "vlogged",
+      "es": "hacer un videoblog",
+      "emoji": "🎥",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "worship",
+      "past": "worshipped",
+      "part": "worshipped",
+      "es": "adorar",
+      "emoji": "🛐",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "ghost",
+      "past": "ghosted",
+      "part": "ghosted",
+      "es": "dejar de responder a alguien",
+      "emoji": "👻",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "screenshot",
+      "past": "screenshotted",
+      "part": "screenshotted",
+      "es": "hacer captura de pantalla",
+      "emoji": "📸",
+      "type": "regular",
+      "sound": "id"
+    },
+    {
+      "en": "declutter",
+      "past": "decluttered",
+      "part": "decluttered",
+      "es": "ordenar deshaciéndose de cosas",
+      "emoji": "🧹",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "multitask",
+      "past": "multitasked",
+      "part": "multitasked",
+      "es": "hacer varias cosas a la vez",
+      "emoji": "🤹",
+      "type": "regular",
+      "sound": "t"
+    },
+    {
+      "en": "brainstorm",
+      "past": "brainstormed",
+      "part": "brainstormed",
+      "es": "hacer lluvia de ideas",
+      "emoji": "💡",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "skim",
+      "past": "skimmed",
+      "part": "skimmed",
+      "es": "leer por encima",
+      "emoji": "📰",
+      "type": "regular",
+      "sound": "d"
+    },
+    {
+      "en": "double-check",
+      "past": "double-checked",
+      "part": "double-checked",
+      "es": "verificar dos veces",
+      "emoji": "✅",
+      "type": "regular",
+      "sound": "t"
     }
   ],
   "examples": {
@@ -6207,6 +6771,321 @@
       "base": "Zoom in to see the details.",
       "past": "The car zoomed past us.",
       "part": "The camera has zoomed in on the player."
+    },
+    "absorb": {
+      "base": "Plants absorb water through their roots.",
+      "past": "The sponge absorbed all the juice.",
+      "part": "The lesson was so long that I haven't absorbed everything."
+    },
+    "assemble": {
+      "base": "We assemble the furniture ourselves.",
+      "past": "He assembled the bike in an hour.",
+      "part": "The team has assembled in the main hall."
+    },
+    "beset": {
+      "base": "Money problems often beset new businesses.",
+      "past": "Doubts beset her the night before the exam.",
+      "part": "The project has been beset by delays."
+    },
+    "binge": {
+      "base": "We binge a whole series every weekend.",
+      "past": "I binged three seasons in two days.",
+      "part": "She has binged on chocolate all afternoon."
+    },
+    "blog": {
+      "base": "I blog about cheap travel in South America.",
+      "past": "He blogged every day during the trip.",
+      "part": "She has blogged about food for ten years."
+    },
+    "bloom": {
+      "base": "These flowers bloom in spring.",
+      "past": "The roses bloomed early last year.",
+      "part": "The orchids have bloomed again."
+    },
+    "bookmark": {
+      "base": "Bookmark this page so you can find it later.",
+      "past": "I bookmarked the recipe yesterday.",
+      "part": "She has bookmarked all the useful sites."
+    },
+    "brag": {
+      "base": "He likes to brag about his new car.",
+      "past": "She bragged about her grades all day.",
+      "part": "He has bragged about that goal for years."
+    },
+    "bribe": {
+      "base": "You can't bribe the referee.",
+      "past": "They bribed a guard to get in.",
+      "part": "The official has been bribed before."
+    },
+    "conquer": {
+      "base": "She wants to conquer her fear of flying.",
+      "past": "The Romans conquered most of Europe.",
+      "part": "He has conquered every mountain in the region."
+    },
+    "criticize": {
+      "base": "Don't criticize people behind their backs.",
+      "past": "The coach criticized the team after the match.",
+      "part": "The plan has been criticized by experts."
+    },
+    "despise": {
+      "base": "I despise people who lie.",
+      "past": "She despised her old job.",
+      "part": "He has always despised dishonesty."
+    },
+    "discourage": {
+      "base": "Don't let one bad mark discourage you.",
+      "past": "The rain discouraged us from going out.",
+      "part": "High prices have discouraged many buyers."
+    },
+    "disguise": {
+      "base": "He tried to disguise his voice on the phone.",
+      "past": "She disguised herself as a tourist.",
+      "part": "The camera was disguised as a pen."
+    },
+    "drip": {
+      "base": "The tap drips all night.",
+      "past": "Water dripped from the ceiling.",
+      "part": "Paint has dripped onto the floor."
+    },
+    "dump": {
+      "base": "Don't dump your rubbish in the river.",
+      "past": "He dumped his bag on the sofa.",
+      "part": "Someone has dumped an old fridge here."
+    },
+    "emigrate": {
+      "base": "Many young people emigrate to find work.",
+      "past": "My grandparents emigrated to Canada in 1970.",
+      "part": "Thousands of doctors have emigrated since then."
+    },
+    "exhaust": {
+      "base": "Long meetings exhaust me.",
+      "past": "The climb exhausted the whole group.",
+      "part": "We have exhausted all our options."
+    },
+    "flush": {
+      "base": "Remember to flush the toilet.",
+      "past": "He flushed the old medicine away.",
+      "part": "The pipes have been flushed with clean water."
+    },
+    "gaze": {
+      "base": "We like to gaze at the stars.",
+      "past": "She gazed out of the window for hours.",
+      "part": "He has gazed at that painting many times."
+    },
+    "glow": {
+      "base": "The coals glow in the dark.",
+      "past": "Her face glowed with pride.",
+      "part": "The screen has glowed all night."
+    },
+    "grin": {
+      "base": "Kids grin when they see the cake.",
+      "past": "He grinned at me across the room.",
+      "part": "She has grinned all morning."
+    },
+    "groan": {
+      "base": "Students groan when they hear the word \"exam\".",
+      "past": "He groaned and got out of bed.",
+      "part": "Everyone has groaned at that joke before."
+    },
+    "hatch": {
+      "base": "The eggs hatch after three weeks.",
+      "past": "Two chicks hatched this morning.",
+      "part": "They have hatched a plan to surprise her."
+    },
+    "imitate": {
+      "base": "Children imitate their parents.",
+      "past": "He imitated the teacher's voice perfectly.",
+      "part": "That style has been imitated by many singers."
+    },
+    "juggle": {
+      "base": "She can juggle five balls.",
+      "past": "He juggled work and study for years.",
+      "part": "I have juggled two jobs since March."
+    },
+    "kidnap": {
+      "base": "In the film, they kidnap a millionaire's son.",
+      "past": "Criminals kidnapped the businessman.",
+      "part": "Two tourists have been kidnapped."
+    },
+    "livestream": {
+      "base": "They livestream every concert.",
+      "past": "She livestreamed the match on her phone.",
+      "part": "The event has been livestreamed to millions."
+    },
+    "lower": {
+      "base": "Please lower your voice.",
+      "past": "The shop lowered its prices last week.",
+      "part": "The bank has lowered interest rates."
+    },
+    "mumble": {
+      "base": "Don't mumble; speak clearly.",
+      "past": "He mumbled an apology and left.",
+      "part": "She has mumbled the answer again."
+    },
+    "mute": {
+      "base": "Please mute your microphone.",
+      "past": "I muted the group chat last night.",
+      "part": "He has muted all notifications."
+    },
+    "outlive": {
+      "base": "Tortoises often outlive their owners.",
+      "past": "She outlived her husband by twenty years.",
+      "part": "This phone has outlived three chargers."
+    },
+    "outsmart": {
+      "base": "You can't outsmart the system.",
+      "past": "The fox outsmarted the hunters.",
+      "part": "She has outsmarted every rival so far."
+    },
+    "overcook": {
+      "base": "Don't overcook the pasta.",
+      "past": "I overcooked the rice again.",
+      "part": "The fish has been overcooked."
+    },
+    "overreact": {
+      "base": "Try not to overreact to small problems.",
+      "past": "He overreacted when I was five minutes late.",
+      "part": "I think you have overreacted a bit."
+    },
+    "overthink": {
+      "base": "I overthink every message I send.",
+      "past": "She overthought the question and got it wrong.",
+      "part": "You have overthought this decision."
+    },
+    "paddle": {
+      "base": "We paddle across the lake every summer.",
+      "past": "They paddled down the river for hours.",
+      "part": "He has paddled in the sea since he was a child."
+    },
+    "pat": {
+      "base": "Pat the dog gently.",
+      "past": "She patted him on the shoulder.",
+      "part": "The coach has patted every player on the back."
+    },
+    "podcast": {
+      "base": "They podcast about football twice a week.",
+      "past": "She podcasted from her bedroom at first.",
+      "part": "He has podcasted for five years."
+    },
+    "reheat": {
+      "base": "Just reheat the soup for two minutes.",
+      "past": "I reheated last night's pizza.",
+      "part": "This coffee has been reheated twice."
+    },
+    "roar": {
+      "base": "Lions roar to defend their territory.",
+      "past": "The crowd roared when she scored.",
+      "part": "The engines have roared into life."
+    },
+    "sack": {
+      "base": "They sack people who arrive late.",
+      "past": "The club sacked its manager on Monday.",
+      "part": "Three workers have been sacked."
+    },
+    "slink": {
+      "base": "Cats slink along the wall at night.",
+      "past": "He slunk out of the room, embarrassed.",
+      "part": "The fox has slunk back into the woods."
+    },
+    "sob": {
+      "base": "Small children sob when they are tired.",
+      "past": "She sobbed during the whole film.",
+      "part": "He has sobbed all night."
+    },
+    "streamline": {
+      "base": "We need to streamline the process.",
+      "past": "The company streamlined its website.",
+      "part": "The steps have been streamlined."
+    },
+    "stroke": {
+      "base": "The children love to stroke the rabbit.",
+      "past": "She stroked the cat until it fell asleep.",
+      "part": "He has stroked his beard all through the meeting."
+    },
+    "surrender": {
+      "base": "The soldiers refuse to surrender.",
+      "past": "The army surrendered after three days.",
+      "part": "The thief has surrendered to the police."
+    },
+    "sync": {
+      "base": "My phone and laptop sync automatically.",
+      "past": "I synced my photos last night.",
+      "part": "The files have synced to the cloud."
+    },
+    "tempt": {
+      "base": "Don't tempt me with dessert.",
+      "past": "The low price tempted him to buy it.",
+      "part": "I have been tempted to quit many times."
+    },
+    "tug": {
+      "base": "Kids tug at your sleeve when they want something.",
+      "past": "She tugged the door, but it was locked.",
+      "part": "The dog has tugged on the lead all morning."
+    },
+    "tweet": {
+      "base": "He tweets about politics every day.",
+      "past": "She tweeted a photo of the concert.",
+      "part": "The singer has tweeted an apology."
+    },
+    "unfollow": {
+      "base": "I unfollow accounts that post too much.",
+      "past": "She unfollowed him after the argument.",
+      "part": "Thousands of fans have unfollowed the brand."
+    },
+    "untie": {
+      "base": "Can you untie this knot?",
+      "past": "He untied his shoes and sat down.",
+      "part": "Someone has untied the boat."
+    },
+    "unwrap": {
+      "base": "Children love to unwrap presents.",
+      "past": "She unwrapped the gift slowly.",
+      "part": "He has already unwrapped all his presents."
+    },
+    "vlog": {
+      "base": "They vlog about life in Bogotá.",
+      "past": "She vlogged every day of her trip.",
+      "part": "He has vlogged since he was fifteen."
+    },
+    "worship": {
+      "base": "Many fans worship their favourite singers.",
+      "past": "Ancient people worshipped the sun.",
+      "part": "She has worshipped that band since school."
+    },
+    "ghost": {
+      "base": "Some people ghost you after one date.",
+      "past": "He ghosted me after two weeks of chatting.",
+      "part": "She has been ghosted by three companies this month."
+    },
+    "screenshot": {
+      "base": "Screenshot the map before you lose signal.",
+      "past": "I screenshotted the receipt.",
+      "part": "She has screenshotted the whole conversation."
+    },
+    "declutter": {
+      "base": "I declutter my room every January.",
+      "past": "We decluttered the garage last weekend.",
+      "part": "She has decluttered the whole flat."
+    },
+    "multitask": {
+      "base": "I can't multitask when I'm tired.",
+      "past": "He multitasked all morning and finished nothing.",
+      "part": "She has multitasked her way through the week."
+    },
+    "brainstorm": {
+      "base": "Let's brainstorm some names for the project.",
+      "past": "We brainstormed for an hour.",
+      "part": "The team has brainstormed ten solutions."
+    },
+    "skim": {
+      "base": "Skim the text before you read it carefully.",
+      "past": "I skimmed the report on the bus.",
+      "part": "She has skimmed all the chapters."
+    },
+    "double-check": {
+      "base": "Double-check the address before you pay.",
+      "past": "I double-checked the dates last night.",
+      "part": "We have double-checked every answer."
     }
   }
 }

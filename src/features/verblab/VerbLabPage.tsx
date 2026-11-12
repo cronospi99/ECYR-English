@@ -29,7 +29,7 @@ export default function VerbLabPage() {
       back={{ to: '/practice', label: 'Practice' }}
       eyebrow="Tools for teaching and learning verbs"
       title="Verb Lab"
-      subtitle="More than 1,400 verbs with their three forms, a C1 academic verbs section, the -ed sounds, phrasal verb families and the 10 English verb patterns."
+      subtitle="More than 1,500 verbs with their three forms, a C1 academic verbs section, the -ed sounds, phrasal verb families and the 10 English verb patterns."
       wide
     >
       <div className="no-scrollbar mb-5 overflow-x-auto">
