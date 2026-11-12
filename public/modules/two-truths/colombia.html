@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="../_bridge/ecyr-bridge.js" data-slug="two-truths-colombia"></script>
+<script src="../_bridge/ecyr-fx.js"></script>
 <script src="./support.js"></script>
 <script src="./pop-data.js?v=3"></script>
 <script src="../_arcade/loopmusic.js?v=3" data-tune="sunny"></script>
@@ -21,10 +22,79 @@ a { color: #2451A6; text-decoration-thickness: 2px; }
 a:hover { color: #B42A63; }
 button { font-family: inherit; }
 @keyframes ttRise { from { opacity: 0; transform: translateY(22px) scale(0.97); } to { opacity: 1; transform: none; } }
+
+/* ---- Front page: artwork stage (16:9) with the live sphere; a stacked layout on phones ---- */
+.tt-front { position:fixed; inset:0; z-index:5; overflow:hidden; background:#FBF1DE; }
+.tt-back { position:absolute; inset:-6%; background:url(./art/stage.webp) center/cover; filter:blur(26px) saturate(1.05); }
+.tt-stage { position:absolute; inset:0; margin:auto; width:min(100vw,177.78dvh); aspect-ratio:16/9; container-type:inline-size; overflow:hidden; --u:1cqw; color:#2A1A12; box-shadow:0 0 60px rgba(90,50,10,.25); }
+.tt-l { position:absolute; display:block; pointer-events:none; user-select:none; -webkit-user-drag:none; }
+.tt-stage i { display:block; pointer-events:none; }
+.tt-steam { position:absolute; top:79.5%; width:1.1%; height:8%; border-radius:50%; background:linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,.85),rgba(255,255,255,0)); filter:blur(.35cqw); animation:ttSteam 3.4s ease-in-out infinite; }
+.tt-conf { position:absolute; width:1.1cqw; height:.36cqw; border-radius:99px; animation:ttConf 5s ease-in-out infinite; }
+.tt-ball { position:absolute; left:58.2%; top:11.5%; width:36%; aspect-ratio:1; animation:ttFloat 6s ease-in-out infinite; }
+.tt-glow { position:absolute; inset:4%; border-radius:50%; background:radial-gradient(closest-side,rgba(255,236,170,.0) 70%,rgba(255,214,90,.55) 84%,rgba(255,214,90,0) 100%); animation:ttPulse 3.2s ease-in-out infinite; }
+.tt-orbit { position:absolute; left:-9%; top:28%; width:118%; height:46%; border-radius:50%; rotate:-14deg; background:conic-gradient(from 0deg,transparent 0 62%,rgba(255,196,40,0) 66%,rgba(255,196,40,.95) 86%,#fff 92%,transparent 95%); -webkit-mask:radial-gradient(closest-side,transparent 95.2%,#000 96.2%,#000 99%,transparent 100%); mask:radial-gradient(closest-side,transparent 95.2%,#000 96.2%,#000 99%,transparent 100%); animation:ttOrbit 7s linear infinite; }
+.tt-orbit2 { rotate:18deg; top:30%; animation-duration:10s; animation-direction:reverse; opacity:.75; }
+.tt-spark { position:absolute; width:2.2cqw; height:2.2cqw; background:radial-gradient(closest-side,#fff,rgba(255,220,120,.9) 30%,transparent 70%); clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:ttSpark 2.6s ease-in-out infinite; }
+.tt-ui { position:absolute; left:4.1%; top:9.2%; width:52.4%; height:83.4%; display:flex; flex-direction:column; justify-content:space-between; }
+.tt-ed { font:800 calc(var(--u)*1.1)/1.2 'Figtree',sans-serif; letter-spacing:.09em; text-transform:uppercase; color:#C2185B; }
+.tt-title { position:relative; display:inline-block; margin:calc(var(--u)*.5) 0 0; font:400 calc(var(--u)*5.05)/1 'Chango',sans-serif; letter-spacing:-.01em; color:#2A1A12; }
+.tt-title span { position:relative; color:#D11F1F; margin-left:calc(var(--u)*1.6); }
+.tt-doodle { position:absolute; width:calc(var(--u)*2.6); height:calc(var(--u)*2.6); background:linear-gradient(#F4C20D,#F4C20D) 8% 20%/62% 15% no-repeat, linear-gradient(#F4C20D,#F4C20D) 22% 52%/50% 15% no-repeat, linear-gradient(#F4C20D,#F4C20D) 34% 84%/36% 15% no-repeat; animation:ttDoodle 1.6s steps(2) infinite; }
+.tt-d1 { left:102%; top:8%; rotate:-18deg; }
+.tt-d2 { left:104%; top:20%; rotate:8deg; }
+.tt-d3 { left:100%; top:-34%; rotate:-34deg; scale:.8; }
+.tt-lead { margin:calc(var(--u)*.7) 0 0; max-width:calc(var(--u)*45); font:500 calc(var(--u)*1.52)/1.34 'Figtree',sans-serif; color:#2A1A12; text-wrap:pretty; }
+.tt-eds { display:flex; gap:calc(var(--u)*.9); margin-top:calc(var(--u)*1); }
+.tt-pill { cursor:pointer; appearance:none; font:800 calc(var(--u)*1.28)/1 'Figtree',sans-serif; padding:calc(var(--u)*.85) calc(var(--u)*1.5); border:calc(var(--u)*.2) solid #2A1A12; border-radius:99px; box-shadow:calc(var(--u)*.22) calc(var(--u)*.22) 0 #2A1A12; transition:transform .15s ease, box-shadow .15s ease; }
+.tt-pill:hover, .tt-lv:hover { transform:translate(-.1em,-.14em); }
+.tt-lab { font:800 calc(var(--u)*1.02)/1 'Figtree',sans-serif; letter-spacing:.16em; text-transform:uppercase; color:#2A1A12; margin-bottom:calc(var(--u)*.7); }
+.tt-cats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:calc(var(--u)*.85) calc(var(--u)*.7); width:100%; }
+.tt-cat { position:relative; cursor:pointer; appearance:none; display:flex; align-items:center; gap:calc(var(--u)*.5); min-height:calc(var(--u)*4.7); padding:calc(var(--u)*1) calc(var(--u)*.55) calc(var(--u)*.45); border:calc(var(--u)*.2) solid #2A1A12; border-radius:calc(var(--u)*1); text-align:left; overflow:hidden; transition:transform .16s ease, box-shadow .16s ease, background .16s ease; }
+.tt-cat:hover { filter:brightness(1.04); }
+.tt-flags { position:absolute; left:0; right:0; top:0; height:calc(var(--u)*.62); background:conic-gradient(from 135deg at 50% 0,var(--c) 90deg,transparent 0) 0 0/calc(var(--u)*1.24) calc(var(--u)*.62) repeat-x; }
+.tt-ico { flex:none; font-size:calc(var(--u)*1.55); line-height:1; }
+.tt-cn { min-width:0; display:flex; flex-direction:column; gap:.18em; }
+.tt-cn b { font:400 calc(var(--u)*.93)/1.06 'Chango',sans-serif; }
+.tt-cn small { font:600 calc(var(--u)*.86)/1 'Figtree',sans-serif; opacity:.8; }
+.tt-go { display:flex; align-items:center; gap:calc(var(--u)*.8); }
+.tt-lv { cursor:pointer; appearance:none; min-width:calc(var(--u)*5.4); height:calc(var(--u)*3.4); border:calc(var(--u)*.2) solid #2A1A12; border-radius:99px; font:400 calc(var(--u)*1.4)/1 'Chango',sans-serif; box-shadow:calc(var(--u)*.22) calc(var(--u)*.22) 0 #2A1A12; transition:transform .15s ease, background .15s ease; }
+.tt-play { position:relative; cursor:pointer; appearance:none; display:flex; align-items:center; justify-content:center; gap:calc(var(--u)*.9); margin-left:calc(var(--u)*1.4); height:calc(var(--u)*4.7); padding:0 calc(var(--u)*2.6); border:calc(var(--u)*.2) solid #2A1A12; border-radius:99px; background:#E0301E; color:#FFF7E8; font:400 calc(var(--u)*2)/1 'Chango',sans-serif; white-space:nowrap; box-shadow:calc(var(--u)*.4) calc(var(--u)*.4) 0 #2A1A12; animation:ttPlay 1.8s ease-in-out infinite; transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
+.tt-play i { width:0; height:0; border-left:calc(var(--u)*1.5) solid #FFF7E8; border-top:calc(var(--u)*1) solid transparent; border-bottom:calc(var(--u)*1) solid transparent; }
+.tt-play:hover { background:#F0412C; transform:translate(-.08em,-.12em); box-shadow:calc(var(--u)*.55) calc(var(--u)*.6) 0 #2A1A12; }
+.tt-play:active { transform:translate(.14em,.14em); box-shadow:calc(var(--u)*.12) calc(var(--u)*.12) 0 #2A1A12; }
+.tt-foot { display:flex; align-items:center; gap:calc(var(--u)*1.2); margin-top:calc(var(--u)*1.1); }
+.tt-roster { background:#FFFBF2; color:#2A1A12; font-size:calc(var(--u)*1.12); padding:calc(var(--u)*.7) calc(var(--u)*1.2); }
+.tt-line { font:600 calc(var(--u)*1.12)/1.2 'Figtree',sans-serif; color:#4A3628; border-left:calc(var(--u)*.14) solid #2A1A12; padding-left:calc(var(--u)*1.2); }
+.tt-front button:focus-visible { outline:calc(var(--u)*.3) solid #2451A6; outline-offset:calc(var(--u)*.2); }
+@keyframes ttSway { 0%,100% { rotate:0deg; } 50% { rotate:2.4deg; } }
+@keyframes ttFloat { 0%,100% { translate:0 0; } 50% { translate:0 -1.6%; } }
+@keyframes ttPulse { 0%,100% { opacity:.5; scale:1; } 50% { opacity:1; scale:1.03; } }
+@keyframes ttOrbit { to { transform:rotate(360deg); } }
+@keyframes ttSpark { 0%,100% { scale:0; opacity:0; } 50% { scale:1; opacity:1; } }
+@keyframes ttSteam { 0% { translate:0 20%; opacity:0; scale:.7 .6; } 40% { opacity:.9; } 100% { translate:.5cqw -90%; opacity:0; scale:1.5 1.2; } }
+@keyframes ttConf { 0%,100% { translate:0 0; opacity:.9; } 50% { translate:.5cqw -1.2cqw; opacity:.45; } }
+@keyframes ttDoodle { 0%,100% { transform:scale(1); } 50% { transform:scale(.86) rotate(4deg); } }
+@keyframes ttPlay { 0%,100% { scale:1; } 50% { scale:1.035; } }
+@media (max-aspect-ratio: 1/1) {
+  .tt-back, .tt-art { display:none !important; }
+  .tt-front { background:#FBF1DE; }
+  .tt-stage { width:100vw; height:100dvh; aspect-ratio:auto; overflow-y:auto; --u:3.1cqw; box-shadow:none; display:flex; flex-direction:column; align-items:center; padding:calc(var(--u)*5) calc(var(--u)*1.4) calc(var(--u)*2); background:conic-gradient(from 135deg at 50% 0,#E9A21B 90deg,transparent 0) 0 0/32px 16px repeat-x, linear-gradient(#C23B22 0 16px,#137C76 16px 24px,transparent 24px), #FBF1DE; }
+  .tt-ball { position:relative; left:auto; top:auto; width:54%; flex:none; order:0; }
+  .tt-ui { position:static; width:100%; height:auto; gap:calc(var(--u)*1.6); order:1; }
+  .tt-title { font-size:calc(var(--u)*4.4); }
+  .tt-cn b { font-size:calc(var(--u)*1.05); }
+  .tt-cats { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; }
+  .tt-go { flex-wrap:wrap; }
+  .tt-play { margin-left:0; flex:1 1 100%; }
+  .tt-foot { flex-wrap:wrap; }
+  .tt-d1, .tt-d2, .tt-d3 { display:none; }
+}
+@media (prefers-reduced-motion: reduce) { .tt-stage *, .tt-play { animation:none !important; } }
 </style>
 </helmet>
 
-<div style="height:100vh;overflow:hidden;display:flex;flex-direction:column;background:#FBF1DE;">
+<div style="height:100vh;overflow:hidden;display:flex;flex-direction:column;background:linear-gradient(rgba(251,241,222,.84),rgba(251,241,222,.9)), url(./art/stage.webp) center/cover #FBF1DE;">
 
   <div style="flex:none;">
     <div style="height:16px;background:conic-gradient(from 135deg at 50% 0, #E9A21B 90deg, transparent 0) 0 0 / 32px 16px repeat-x, #C23B22;"></div>
@@ -39,53 +109,62 @@ button { font-family: inherit; }
   </sc-if>
 
   <sc-if value="{{ isStart }}" hint-placeholder-val="{{ true }}">
-  <div style="flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(20px,2.4vw,56px);align-items:center;padding:clamp(16px,3.2vh,48px) clamp(24px,3.6vw,72px);">
+  <div class="tt-front">
+    <div class="tt-back"></div>
+    <div class="tt-stage">
+      <img class="tt-l tt-art" src="./art/stage.webp" alt="" draggable="false" style="inset:0;width:100%;height:100%;" />
+      <img class="tt-l tt-art" src="./art/palm.webp" alt="" draggable="false" style="left:47.5%;top:23.611%;width:9.688%;height:17.5%;transform-origin:55% 100%;animation:ttSway 5.5s ease-in-out infinite;" />
+      <img class="tt-l tt-art" src="./art/leafR.webp" alt="" draggable="false" style="left:94.583%;top:64.63%;width:5.417%;height:13.241%;transform-origin:100% 100%;animation:ttSway 4.4s ease-in-out -1s infinite;" />
+      <img class="tt-l tt-art" src="./art/plantBL.webp" alt="" draggable="false" style="left:0.0%;top:79.63%;width:10.677%;height:20.37%;transform-origin:0% 100%;animation:ttSway 6s ease-in-out -2s infinite;" />
+      <i class="tt-steam tt-art" style="left:79%;"></i><i class="tt-steam tt-art" style="left:80.6%;animation-delay:-1.3s;"></i><i class="tt-steam tt-art" style="left:82%;animation-delay:-2.2s;"></i>
+      <div class="tt-art"><i class="tt-conf" style="left:81.0%;top:56.5%;background:#B42A63;rotate:-57deg;animation-delay:-4.2s;animation-duration:5.8s;"></i><i class="tt-conf" style="left:67.2%;top:15.1%;background:#C23B22;rotate:-46deg;animation-delay:-1.9s;animation-duration:6.1s;"></i><i class="tt-conf" style="left:72.1%;top:18.1%;background:#C23B22;rotate:-59deg;animation-delay:-3.7s;animation-duration:4.7s;"></i><i class="tt-conf" style="left:64.7%;top:64.0%;background:#137C76;rotate:-40deg;animation-delay:-3.8s;animation-duration:3.7s;"></i><i class="tt-conf" style="left:80.9%;top:38.7%;background:#C23B22;rotate:-60deg;animation-delay:-4.9s;animation-duration:3.5s;"></i><i class="tt-conf" style="left:86.6%;top:69.6%;background:#C23B22;rotate:51deg;animation-delay:-0.8s;animation-duration:4.4s;"></i><i class="tt-conf" style="left:65.4%;top:64.6%;background:#C23B22;rotate:-37deg;animation-delay:-4.7s;animation-duration:5.6s;"></i><i class="tt-conf" style="left:93.8%;top:65.6%;background:#2451A6;rotate:-58deg;animation-delay:-1.8s;animation-duration:4.0s;"></i><i class="tt-conf" style="left:63.4%;top:15.9%;background:#2451A6;rotate:44deg;animation-delay:-3.0s;animation-duration:3.5s;"></i><i class="tt-conf" style="left:83.1%;top:32.3%;background:#2451A6;rotate:-15deg;animation-delay:-4.1s;animation-duration:4.9s;"></i><i class="tt-conf" style="left:69.7%;top:40.9%;background:#C23B22;rotate:-53deg;animation-delay:-1.3s;animation-duration:6.3s;"></i><i class="tt-conf" style="left:93.1%;top:33.5%;background:#137C76;rotate:-58deg;animation-delay:-2.7s;animation-duration:4.8s;"></i><i class="tt-conf" style="left:71.9%;top:62.5%;background:#137C76;rotate:-55deg;animation-delay:-3.5s;animation-duration:5.4s;"></i><i class="tt-conf" style="left:93.3%;top:19.1%;background:#C23B22;rotate:58deg;animation-delay:-4.1s;animation-duration:4.9s;"></i><i class="tt-conf" style="left:77.0%;top:65.6%;background:#2451A6;rotate:39deg;animation-delay:-2.3s;animation-duration:5.3s;"></i><i class="tt-conf" style="left:86.9%;top:34.0%;background:#2451A6;rotate:-56deg;animation-delay:-2.2s;animation-duration:6.4s;"></i></div>
 
-    <div style="display:flex;flex-direction:column;gap:clamp(6px,1.8vh,30px);min-width:0;">
-      <div>
-        <div style="font-weight:800;font-size:clamp(11px,min(1.05vw,1.9vh),19px);letter-spacing:0.22em;text-transform:uppercase;color:#B42A63;">{{ editionLabel }}</div>
-        <h1 style="font-family:'Chango',sans-serif;font-weight:400;font-size:clamp(24px,min(4.8vw,8vh),104px);line-height:0.98;letter-spacing:-0.01em;margin:clamp(6px,1vh,16px) 0 0;color:#2A1A12;">Two truths<br /><span style="color:#C23B22;">&amp; a lie</span></h1>
-        <p style="font-size:clamp(13px,min(1.35vw,2.4vh),26px);line-height:1.4;font-weight:500;max-width:720px;margin:clamp(8px,1.4vh,20px) 0 0;color:#5B4232;text-wrap:pretty;">Spin the sphere. Three sentences about {{ introAbout }} appear: two are true, one is a lie. Find the lie.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(8px,1.4vh,18px);">
-          <sc-for list="{{ editions }}" as="ed" hint-placeholder-count="2">
-            <button onClick="{{ ed.onClick }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:{{ ed.bg }};color:{{ ed.fg }};box-shadow:3px 3px 0 #2A1A12;padding:0 clamp(14px,1.4vw,24px);min-height:clamp(34px,5vh,52px);font-weight:800;font-size:clamp(12px,min(1vw,1.9vh),18px);">{{ ed.label }}</button>
-          </sc-for>
-        </div>
+      <div class="tt-ball">
+        <i class="tt-glow"></i>
+        <i class="tt-orbit"></i><i class="tt-orbit tt-orbit2"></i>
+        <canvas data-sphere="1" ref="{{ setCanvas }}" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+        <i class="tt-spark" style="left:6%;top:14%;"></i><i class="tt-spark" style="left:90%;top:22%;animation-delay:-.8s;"></i><i class="tt-spark" style="left:84%;top:84%;animation-delay:-1.6s;"></i><i class="tt-spark" style="left:10%;top:78%;animation-delay:-2.2s;"></i>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:clamp(4px,1vh,12px);">
-        <div style="font-weight:800;font-size:clamp(11px,min(0.95vw,1.7vh),17px);letter-spacing:0.2em;text-transform:uppercase;color:#7A5F4C;">Category</div>
-        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,0.8vw,14px);">
-          <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
-            <button onClick="{{ c.onClick }}" style="cursor:pointer;appearance:none;text-align:left;display:flex;flex-direction:column;overflow:hidden;padding:0;min-height:0;border:3px solid #2A1A12;border-radius:16px;background:{{ c.bg }};color:{{ c.fg }};box-shadow:{{ c.sh }};transform:{{ c.tf }};transition:transform 140ms ease,box-shadow 140ms ease;">
-              <span style="display:block;flex:none;height:clamp(8px,1.1vh,12px);width:100%;background:conic-gradient(from 135deg at 50% 0, {{ c.color }} 90deg, transparent 0) 0 0 / 24px 12px repeat-x, {{ c.band }};"></span>
-              <span style="display:flex;flex-direction:column;gap:2px;padding:clamp(5px,1vh,14px) clamp(8px,0.9vw,16px);">
-                <span style="font-family:'Chango',sans-serif;font-size:clamp(10px,min(1.15vw,2.1vh),22px);overflow-wrap:anywhere;line-height:1.05;">{{ c.name }}</span>
-                <span style="font-weight:700;font-size:clamp(10px,min(0.85vw,1.6vh),15px);letter-spacing:0.08em;opacity:0.85;">{{ c.note }}</span>
-              </span>
-            </button>
-          </sc-for>
+      <div class="tt-ui">
+        <div class="tt-head">
+          <div class="tt-ed">{{ editionLabel }}</div>
+          <h1 class="tt-title">Two truths<i class="tt-doodle tt-d1"></i><br /><span>&amp; a lie<i class="tt-doodle tt-d2"></i></span></h1>
+          <p class="tt-lead">Spin the sphere. Three sentences about {{ introAbout }} appear: two are true, one is a lie. Find the lie.</p>
+          <div class="tt-eds">
+            <sc-for list="{{ editions }}" as="ed" hint-placeholder-count="2">
+              <button type="button" class="tt-pill" onClick="{{ ed.onClick }}" style="background:{{ ed.bg }};color:{{ ed.fg }};">{{ ed.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div>
+          <div class="tt-lab">Category</div>
+          <div class="tt-cats">
+            <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+              <button type="button" class="tt-cat" onClick="{{ c.onClick }}" aria-pressed="{{ c.on }}" style="background:{{ c.bg }};color:{{ c.fg }};box-shadow:{{ c.sh }};transform:{{ c.tf }};--c:{{ c.color }};">
+                <span class="tt-flags"></span>
+                <span class="tt-ico">{{ c.icon }}</span>
+                <span class="tt-cn"><b>{{ c.name }}</b><small>{{ c.note }}</small></span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div>
+          <div class="tt-lab">Levels</div>
+          <div class="tt-go">
+            <sc-for list="{{ levelChips }}" as="lv" hint-placeholder-count="5">
+              <button type="button" class="tt-lv" onClick="{{ lv.onClick }}" aria-pressed="{{ lv.on }}" style="background:{{ lv.bg }};color:{{ lv.fg }};">{{ lv.code }}</button>
+            </sc-for>
+            <button type="button" class="tt-play" onClick="{{ start }}"><i></i>Let’s play<b class="tt-doodle tt-d3"></b></button>
+          </div>
+          <div class="tt-foot">
+            <button type="button" class="tt-pill tt-roster" onClick="{{ openRoster }}">👥 {{ rosterLabel }}</button>
+            <div class="tt-line">{{ setupLine }}</div>
+          </div>
         </div>
       </div>
-
-      <div style="display:flex;flex-direction:column;gap:clamp(4px,1vh,12px);">
-        <div style="font-weight:800;font-size:clamp(11px,min(0.95vw,1.7vh),17px);letter-spacing:0.2em;text-transform:uppercase;color:#7A5F4C;">Levels</div>
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(6px,0.7vw,12px);">
-          <sc-for list="{{ levelChips }}" as="lv" hint-placeholder-count="5">
-            <button onClick="{{ lv.onClick }}" style="cursor:pointer;appearance:none;min-width:clamp(48px,5.4vw,96px);min-height:clamp(36px,6vh,64px);padding:0 clamp(10px,1vw,20px);border:3px solid #2A1A12;border-radius:999px;background:{{ lv.bg }};color:{{ lv.fg }};font-family:'Chango',sans-serif;font-size:clamp(14px,min(1.4vw,2.6vh),26px);">{{ lv.code }}</button>
-          </sc-for>
-          <span style="flex:none;width:clamp(4px,1.2vw,24px);"></span>
-        <button onClick="{{ start }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#C23B22;color:#FFF7E8;box-shadow:5px 5px 0 #2A1A12;padding:0 clamp(20px,2.6vw,52px);min-height:clamp(36px,6vh,64px);font-family:'Chango',sans-serif;font-size:clamp(14px,min(1.7vw,3vh),32px);">Let’s play</button>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(8px,1vw,16px);">
-          <button onClick="{{ openRoster }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#FFFBF2;color:#2A1A12;box-shadow:3px 3px 0 #2A1A12;padding:0 clamp(12px,1.2vw,22px);min-height:clamp(30px,4.6vh,48px);font-weight:800;font-size:clamp(11px,min(1vw,1.8vh),18px);letter-spacing:0.06em;">{{ rosterLabel }}</button>
-          <div style="font-weight:700;font-size:clamp(11px,min(1vw,1.8vh),19px);letter-spacing:0.06em;color:#5B4232;line-height:1.5;">{{ setupLine }}</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="height:min(80vh,42vw);max-width:100%;justify-self:center;aspect-ratio:1 / 1.08;">
-      <canvas data-sphere="1" ref="{{ setCanvas }}" style="width:100%;height:100%;display:block;"></canvas>
     </div>
   </div>
   </sc-if>
@@ -494,6 +573,7 @@ const EXTRA = {
 Object.keys(EXTRA).forEach(function (k) { DATA_CO[k] = DATA_CO[k].concat(EXTRA[k]); });
 // Edition: ?set=pop swaps Colombia for pop culture, superheroes, music, movies and world travel (pop-data.js).
 const SET = (function () { try { return new URLSearchParams(location.search).get("set") === "pop" && window.TTL_POP ? "pop" : "colombia"; } catch (e) { return "colombia"; } })();
+const TT_ICONS = { all: "🎲", science: "🧪", culture: "🎭", geography: "⛰️", politics: "📘", nature: "🍃", traditions: "👒", pop: "🎬", heroes: "🦸", music: "🎵", movies: "🎬", travel: "✈️", world: "🌍", sports: "⚽", food: "🍔", tech: "💻", animals: "🐾", history: "🏛️", games: "🎮", tv: "📺" };
 const CATS = SET === "pop" ? window.TTL_POP.cats : CATS_CO;
 const DATA = SET === "pop" ? window.TTL_POP.data : DATA_CO;
 function goEdition(set) {
@@ -531,6 +611,7 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    window.ECYRFx && window.ECYRFx.nav({ pos: 'tl', theme: "--nav-bg:#FFFBF2;--nav-fg:#2A1A12;--nav-bd:#2A1A12;--nav-radius:999px;--nav-shadow:3px 3px 0 #2A1A12;--nav-hover:#F4C20D;--nav-font:Figtree,sans-serif;font-size:14px;font-weight:800" });
     try {
       const r = JSON.parse(localStorage.getItem(ROSTER_KEY) || "null");
       if (r && r.names) this.setState({ roster: Object.assign({}, this.state.roster, r) });
@@ -776,7 +857,12 @@ class Component extends DCLogic {
   }
 
   start = () => {
+    if (window.ECYRFx && !this._fading) { this._fading = true; window.ECYRFx.fade("white", () => { this._fading = false; this.startNow(); }, { in: 480, hold: 160, out: 750 }); return; }
+    this.startNow();
+  };
+  startNow = () => {
     const deck = this.buildDeck();
+    window.ECYRFx && (window.ECYRFx.compact(true), window.ECYRFx.pos('bl'));
     this.setState({ phase: "play", deck: deck, i: 0, stage: "ready", choice: -1, scores: [0, 0], turn: 0, caught: 0, timeLeft: this.seconds(), pIdx: [0, 0], pPts: {}, showRoster: false });
     this.reportStart(deck);
   };
@@ -810,7 +896,7 @@ class Component extends DCLogic {
   };
 
   again = () => this.start();
-  restart = () => this.setState({ phase: "start" });
+  restart = () => { window.ECYRFx && (window.ECYRFx.compact(false), window.ECYRFx.pos('tl')); this.setState({ phase: "start" }); };
 
   toggleLevel(l) {
     const picked = Object.assign({}, this.state.picked);
@@ -830,7 +916,7 @@ class Component extends DCLogic {
       const on = s.cat === c.id;
       const n = c.id === "all" ? TOTAL : DATA[c.id].length;
       return {
-        name: c.name, note: n + " rounds",
+        name: c.name, note: n + " rounds", on: on ? "true" : "false", icon: TT_ICONS[c.id] || "⭐",
         color: c.id === "all" ? "#E9A21B" : c.color,
         band: c.id === "all" ? "#B42A63" : (on ? INK : "#F3E4C8"),
         bg: on ? (c.id === "all" ? INK : c.color) : "#FFFBF2",
@@ -843,7 +929,7 @@ class Component extends DCLogic {
 
     const levelChips = LEVELS.map((l) => {
       const on = !!s.picked[l];
-      return { code: l, bg: on ? "#2451A6" : "#FFFBF2", fg: on ? CREAM : "#8A7158", onClick: () => this.toggleLevel(l) };
+      return { code: l, on: on ? "true" : "false", bg: on ? "#2451A6" : "#FFFBF2", fg: on ? CREAM : "#8A7158", onClick: () => this.toggleLevel(l) };
     });
 
     const catLabel = s.cat === "all" ? "All categories" : catById(s.cat).name;
