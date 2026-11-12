@@ -201,6 +201,22 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+G14. JUEGOS NATIVOS Y PORTADAS NUEVAS (7 JUEGOS)
+- Los juegos ya no muestran la barra ni la cuadrícula flotante de la plataforma:
+  cada uno trae su botón «Games» (vuelve al menú de juegos) y pantalla completa,
+  dibujados en su propio estilo. Libros y curso A1 conservan la barra.
+- Portadas hechas con el artwork nuevo, cortado en capas animadas, con
+  partículas y brillos: Would You Rather, Star Galactic Trivia, Phrasal Verb
+  Roulette (pantalla de título 8 bits con la rueda girando), Two Truths & a Lie
+  (la esfera viva sigue girando), Countries, English Defenders y Da World.
+- Al empezar hay fundido a blanco o a negro antes de entrar al juego.
+- Estilo interno retocado según el arte en los cinco primeros (English
+  Defenders y Da World solo cambian de portada).
+- English Defenders: el menú clásico (progreso, almanaque, escenario…) se abre
+  con el engranaje. Da World: la portada acciona el selector de modos original.
+- Carátulas de la pantalla Games actualizadas con el arte nuevo.
+- Archivos comunes: public/modules/_bridge/ecyr-fx.js (fundidos y botones).
+
 G13. ENGLISH RACERS: PORTADA NUEVA
 - La pantalla "Live with your class" usa el artwork: karts con vibración suave
   de motor, trofeo que brilla, luces del estadio, chispas y confeti.
