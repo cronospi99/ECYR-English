@@ -201,6 +201,11 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+G13. ENGLISH RACERS: PORTADA NUEVA
+- La pantalla "Live with your class" usa el artwork: karts con vibración suave
+  de motor, trofeo que brilla, luces del estadio, chispas y confeti.
+- Al crear o unirse suena un motor arrancando y la pantalla se funde a blanco.
+
 G12. BUSCADOR EN INICIO, MÁS VERBOS Y MÁS PHRASAL VERBS
 - Inicio: buscador de temas. Escribe un tema de gramática, una palabra, una
   unidad o una sección (en inglés o español) y te lleva a esa unidad y pestaña.

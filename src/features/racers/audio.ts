@@ -116,6 +116,38 @@ export function engineStop() { engine?.stop(); engine = null; }
 
 /* ------------------------------------------------------------- effects */
 const TIER_NOTES = [0, 880, 1175, 1568];
+/** A kart starting up: the starter cranks three times, the engine catches, revs and settles (about 1.5 s). */
+export function ignition() {
+  const c = ac(); if (!c || !sfxBus) return;
+  const t0 = c.currentTime + 0.02;
+  const out = c.createGain(); out.gain.value = 0.9;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.setValueAtTime(700, t0); lp.frequency.linearRampToValueAtTime(2600, t0 + 1.1); lp.frequency.linearRampToValueAtTime(1300, t0 + 1.6);
+  lp.connect(out).connect(sfxBus);
+  // starter motor: short rough bursts
+  for (let i = 0; i < 3; i++) {
+    const t = t0 + i * 0.15, o = c.createOscillator(), g = c.createGain();
+    o.type = 'sawtooth'; o.frequency.setValueAtTime(62 + i * 4, t); o.frequency.linearRampToValueAtTime(48, t + 0.11);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.22, t + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+    o.connect(g).connect(lp); o.start(t); o.stop(t + 0.14);
+  }
+  // the engine catches: two detuned saws revving up, with the putter of the cylinders on top
+  const t1 = t0 + 0.46, end = t1 + 1.25;
+  const g = c.createGain(); g.gain.setValueAtTime(0.0001, t1); g.gain.exponentialRampToValueAtTime(0.3, t1 + 0.08); g.gain.setValueAtTime(0.3, t1 + 0.7); g.gain.exponentialRampToValueAtTime(0.0001, end);
+  const trem = c.createGain(); trem.gain.value = 0.7;
+  const lfo = c.createOscillator(), lg = c.createGain(); lfo.type = 'square'; lfo.frequency.setValueAtTime(18, t1); lfo.frequency.linearRampToValueAtTime(46, t1 + 0.5); lfo.frequency.linearRampToValueAtTime(26, end); lg.gain.value = 0.3;
+  lfo.connect(lg).connect(trem.gain); lfo.start(t1); lfo.stop(end);
+  for (const d of [1, 1.505]) {
+    const o = c.createOscillator(); o.type = 'sawtooth';
+    o.frequency.setValueAtTime(58 * d, t1); o.frequency.exponentialRampToValueAtTime(190 * d, t1 + 0.5); o.frequency.exponentialRampToValueAtTime(96 * d, end);
+    o.connect(trem); o.start(t1); o.stop(end);
+  }
+  trem.connect(g).connect(lp);
+  const n = c.createBufferSource(), ng = c.createGain(), nf = c.createBiquadFilter();
+  n.buffer = noiseBuffer(c); nf.type = 'bandpass'; nf.frequency.value = 900; nf.Q.value = 0.6;
+  ng.gain.setValueAtTime(0.0001, t1); ng.gain.exponentialRampToValueAtTime(0.12, t1 + 0.4); ng.gain.exponentialRampToValueAtTime(0.0001, end);
+  n.connect(nf).connect(ng).connect(out); n.start(t1); n.stop(end);
+}
+
 export const sfx = {
   hop() { tone(320, 0.09, 'triangle', 0.08, 520); },
   tier(n: number) { tone(TIER_NOTES[n] || 880, 0.16, 'triangle', 0.09); tone((TIER_NOTES[n] || 880) * 1.5, 0.12, 'sine', 0.05, 0, 0.05); },

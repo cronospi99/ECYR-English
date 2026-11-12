@@ -4,10 +4,9 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, Shuffle, SkipForward, Square, Trophy, Users, Volume2, VolumeX, Wifi, WifiOff, X } from 'lucide-react';
+import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, GraduationCap, Home, QrCode, Music, Pause, Play, Shuffle, SkipForward, Square, Trophy, Users, Volume2, VolumeX, Wifi, WifiOff, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
-import { GameTitle } from '@/components/brand/GameTitle';
 import { GameLangToggle } from '@/components/GameLangToggle';
 import { JoinQr } from '@/components/ui/JoinQr';
 import { makeCode, makeId, relayConfigured } from '@/lib/relay';
@@ -18,7 +17,7 @@ import { TRACKS, trackInfo, type TrackId } from './tracks';
 import { GP_NEXT_S, RacersHost, RacersClient, cleanName, type LivePlayer, type LivePub } from './live';
 import { SCORE } from './racer';
 import { CSS, Btn, Dot, PLACE_COL, Seg, Stepper, Toggle, initialToon, useClient } from './ui';
-import { prefs, setPref, unlock } from './audio';
+import { ignition, prefs, setPref, unlock } from './audio';
 
 const toonOf = (id: string) => TOONS.find((x) => x.id === id) ?? TOONS[0];
 const tname = (o: { en: string; es: string }) => (t('en', 'es') === 'en' ? o.en : o.es);
@@ -53,41 +52,146 @@ function SoundToggles({ onChange }: { onChange: () => void }) {
 }
 
 /* ------------------------------------------------------------------ landing */
+const KARTS: [name: string, left: number, top: number, width: number, height: number, secs: number, delay: number][] = [
+  ['k14', 2.85, 45.471, 12.85, 24.156, 2.9, -0.4], ['k16', 77.6, 48.224, 15.6, 23.179, 3.3, -1.7], ['k09b', 10.1, 46.892, 13.1, 25.4, 3.1, -2.2], ['k15', 69.1, 49.467, 15.6, 23.712, 2.7, -0.9],
+  ['k10', 19.35, 49.112, 16.35, 27.531, 3.4, -1.2], ['k12', 56.35, 49.112, 18.35, 29.396, 3.0, -2.6], ['k11', 30.1, 49.556, 15.6, 30.639, 2.8, -1.9], ['k09', 40.6, 48.224, 24.6, 36.412, 3.2, 0],
+];
+/** Stadium lamps (x %, y %, size %) that twinkle on the artwork. */
+const LAMPS: [number, number, number][] = [[20.3, 24.2, 5], [27, 26.2, 4], [38.6, 20.5, 3.5], [76, 25.8, 5], [79.6, 42.2, 4], [66.5, 43.5, 3], [97, 12, 5]];
+const HOME_CSS = `
+.rch-stage{position:relative;width:min(100vw,calc(100dvh*2000/1126));aspect-ratio:2000/1126;container-type:inline-size;overflow:hidden}
+.rch-stage img{position:absolute;display:block;user-select:none;pointer-events:none}
+@keyframes rch-idle{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-.55%) rotate(.35deg)}50%{transform:translateY(.2%) rotate(0)}75%{transform:translateY(-.4%) rotate(-.3deg)}}
+@keyframes rch-shine{0%,100%{transform:translateY(0) rotate(0);filter:brightness(1)}50%{transform:translateY(-1.2%) rotate(1.2deg);filter:brightness(1.18)}}
+@keyframes rch-lamp{0%,100%{opacity:.25;transform:translate(-50%,-50%) scale(.8)}50%{opacity:.9;transform:translate(-50%,-50%) scale(1.15)}}
+@keyframes rch-spark{0%{transform:translate(0,0) scale(.4);opacity:0}12%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1);opacity:0}}
+@keyframes rch-conf{0%{transform:translate(0,-8cqw) rotate(0);opacity:0}10%{opacity:.95}100%{transform:translate(var(--dx),62cqw) rotate(var(--r));opacity:.9}}
+@keyframes rch-sweep{0%,55%{transform:translateX(-140%) skewX(-18deg)}85%,100%{transform:translateX(260%) skewX(-18deg)}}
+.rch-kart{transform-origin:50% 92%;animation:rch-idle ease-in-out infinite}
+.rch-trophy{transform-origin:50% 100%;animation:rch-shine 4.5s ease-in-out infinite}
+.rch-lamp{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,244,190,.95),rgba(255,214,90,.35) 40%,transparent 70%);mix-blend-mode:screen;animation:rch-lamp ease-in-out infinite;pointer-events:none}
+.rch-spark{position:absolute;width:.5cqw;height:.5cqw;border-radius:50%;background:#ffc04a;box-shadow:0 0 .8cqw .2cqw rgba(255,150,40,.7);animation:rch-spark linear infinite;pointer-events:none}
+.rch-conf{position:absolute;top:0;width:.7cqw;height:1.1cqw;border-radius:.15cqw;animation:rch-conf linear infinite;pointer-events:none}
+.rch-sweep{position:absolute;left:29%;top:2%;width:42%;height:22%;overflow:hidden;pointer-events:none;mix-blend-mode:screen}
+.rch-sweep:before{content:'';position:absolute;inset:0;width:22%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:rch-sweep 5.5s ease-in-out infinite}
+.rch-flash{position:fixed;inset:0;z-index:9999;background:#fff;opacity:0;transition:opacity .55s ease-in;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.rch-stage *{animation:none!important}}
+`;
+
+/** Engine start + the screen fading to white, then the next screen fades in from white. */
+function useIgnition() {
+  const nav = useNavigate();
+  const busy = useRef(false);
+  return (to: string) => {
+    if (busy.current) return;
+    busy.current = true;
+    unlock();
+    ignition();
+    const el = document.createElement('div');
+    el.className = 'rch-flash';
+    el.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#fff;opacity:0;transition:opacity .55s ease-in;pointer-events:auto';
+    document.body.appendChild(el);
+    requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; }));
+    window.setTimeout(() => {
+      nav(to);
+      el.style.transition = 'opacity .7s ease-out';
+      el.style.pointerEvents = 'none';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '0'; }));
+      window.setTimeout(() => el.remove(), 800);
+    }, 900);
+  };
+}
+
 export function LiveClassHome() {
   useGameLang();
   useEffect(() => { requestAnimationFrame(() => window.dispatchEvent(new Event('app:ready'))); }, []);
+  const go = useIgnition();
+  // sparks off the wheels and slow confetti: positions are fixed per visit
+  const fx = useRef({
+    sparks: Array.from({ length: 22 }, () => ({ x: 4 + Math.random() * 92, y: 62 + Math.random() * 22, dx: -(3 + Math.random() * 9), dy: -(1 + Math.random() * 5), d: 1.2 + Math.random() * 2.2, w: Math.random() * 3 })),
+    conf: Array.from({ length: 16 }, (_, i) => ({ x: Math.random() * 100, dx: (Math.random() - 0.5) * 16, r: 360 + Math.random() * 720, d: 7 + Math.random() * 8, w: Math.random() * 12, c: ['#ffd23f', '#ff3d6e', '#4aa3ff', '#7dff9a', '#ffffff'][i % 5]! })),
+  }).current;
+  const steps = [
+    { n: 1, icon: QrCode, edge: '#3b82f6', h: t('Scan and pick', 'Escanea y elige'), p: t('Name and teacher-driver on your phone, in seconds.', 'Nombre y profe-piloto en tu celular, en segundos.') },
+    { n: 2, icon: Flag, edge: '#8b5cf6', h: t('Race together', 'Corran juntos'), p: t('You see your classmates on the track. Items hit them too!', 'Ves a tus compañeros en la pista. ¡Los objetos también les pegan!') },
+    { n: 3, icon: Trophy, edge: '#f97316', h: t('Answer well', 'Responde bien'), p: t('Drive through the right answer. Mistakes cost points, coins add them.', 'Pasa por la respuesta correcta. Los errores restan, las monedas suman.') },
+  ];
+  const intro = t('The teacher opens a room on the projector, the students scan the QR and everybody races together: a Grand Prix on random tracks, points adding up race after race. Every gate is a question.', 'El profe abre una sala en el proyector, los estudiantes escanean el QR y todos corren juntos: un Gran Premio en pistas al azar, con puntos que se suman carrera tras carrera. Cada arco es una pregunta.');
+  const noRelay = !relayConfigured() && <p className="rounded-2xl bg-black/50 px-4 py-2 text-center text-[13px] font-bold">{t('The live game server is not set up in this deployment (VITE_RELAY_URL).', 'El servidor de juego en vivo no está configurado en este despliegue (VITE_RELAY_URL).')}</p>;
   return (
     <Shell>
-      <div className="rc-scroll h-full px-4 pt-[max(14px,env(safe-area-inset-top))] pb-10">
-        <div className="mx-auto flex max-w-[760px] flex-col items-center">
-          <div className="flex w-full items-center justify-between">
-            <Link to="/racers" className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/20" aria-label={t('Back', 'Volver')}><ArrowLeft /></Link>
-            <GameLangToggle />
+      <style>{HOME_CSS}</style>
+      {/* Wide screens: the whole artwork as a stage, with the real buttons and texts on top of it. */}
+      <div className="relative hidden h-full w-full place-items-center overflow-hidden bg-[#0d1438] landscape:grid">
+        <img src="/racers/home/stage.webp" alt="" aria-hidden className="absolute inset-0 h-full w-full scale-110 object-cover opacity-70 blur-2xl" />
+        <div className="rch-stage">
+          <img src="/racers/home/stage.webp" alt="English Racers — live with your class" className="inset-0 h-full w-full" />
+          {LAMPS.map(([x, y, s], i) => <span key={i} className="rch-lamp" style={{ left: `${x}%`, top: `${y}%`, width: `${s}%`, aspectRatio: '1', animationDuration: `${2.2 + (i % 4) * 0.7}s`, animationDelay: `${-i * 0.6}s` }} />)}
+          <img src="/racers/home/trophy.webp" alt="" className="rch-trophy" style={{ left: '85.95%', top: '14.121%', width: '11.65%', height: '19.805%' }} />
+          {fx.conf.map((c, i) => <span key={i} className="rch-conf" style={{ left: `${c.x}%`, background: c.c, animationDuration: `${c.d}s`, animationDelay: `${-c.w}s`, ['--dx' as string]: `${c.dx}cqw`, ['--r' as string]: `${c.r}deg` }} />)}
+          {KARTS.map(([n, l, tp, w, h, secs, delay]) => <img key={n} src={`/racers/home/${n}.webp`} alt="" className="rch-kart" style={{ left: `${l}%`, top: `${tp}%`, width: `${w}%`, height: `${h}%`, animationDuration: `${secs}s`, animationDelay: `${delay}s` }} />)}
+          {fx.sparks.map((s, i) => <span key={i} className="rch-spark" style={{ left: `${s.x}%`, top: `${s.y}%`, animationDuration: `${s.d}s`, animationDelay: `${-s.w}s`, ['--dx' as string]: `${s.dx}cqw`, ['--dy' as string]: `${s.dy}cqw` }} />)}
+          <div className="rch-sweep" />
+
+          <Link to="/racers" className="absolute grid place-items-center rounded-full bg-[#1b2260]/85 text-white shadow-[inset_0_0_0_.12cqw_rgba(255,255,255,.18)] hover:bg-[#2a3384]" style={{ left: '1.9%', top: '1.7%', width: '3.7cqw', height: '3.7cqw' }} aria-label={t('Back', 'Volver')}><ArrowLeft style={{ width: '1.9cqw', height: '1.9cqw' }} strokeWidth={3} /></Link>
+          <div className="absolute origin-top-right" style={{ right: '2.8%', top: '1.7%', transform: 'scale(calc(100cqw / 1500px))' }}><GameLangToggle /></div>
+
+          <div className="absolute flex flex-col items-center" style={{ left: '28%', width: '44%', top: '25%', gap: '1cqw' }}>
+            <p className="rounded-[1.4cqw] text-center font-bold text-white" style={{ fontSize: '1.17cqw', lineHeight: 1.26, padding: '.4cqw 1.2cqw', background: 'radial-gradient(ellipse at center,rgba(20,26,90,.82),rgba(20,26,90,.55) 70%,transparent)', textShadow: '0 .1cqw .3cqw rgba(0,0,10,.7)', width: '44cqw' }}>{intro}</p>
+            <div className="flex items-center rounded-full bg-[#141a55]/92 font-extrabold shadow-[inset_0_0_0_.12cqw_rgba(255,255,255,.14)]" style={{ gap: '1.3cqw', padding: '.75cqw 1.6cqw', fontSize: '1.1cqw' }}>
+              <span className="text-[#7dff9a]">✓ +{SCORE.right}</span>
+              <span className="text-[#ff8a8a]">✗ {SCORE.wrong}</span>
+              <span className="inline-flex items-center text-[#ffd23f]" style={{ gap: '.3cqw' }}><Coins style={{ width: '1.1cqw', height: '1.1cqw' }} /> +{SCORE.coin}</span>
+              <span className="text-white/90">{t('fewest mistakes + most coins wins', 'gana quien menos se equivoca + más monedas')}</span>
+            </div>
+            <div className="grid w-full grid-cols-2" style={{ gap: '1.5cqw', marginTop: '.2cqw' }}>
+              <button type="button" onClick={() => go('/racers/host')} className="rc-btn bg-[#ffd23f] text-[#2a1d00] hover:brightness-105" style={{ height: '4.1cqw', fontSize: '1.55cqw', borderRadius: '1.1cqw', boxShadow: '0 .3cqw 0 #c79a00, 0 .8cqw 1.6cqw rgba(0,0,0,.3)', gap: '.8cqw' }}><GraduationCap style={{ width: '2.1cqw', height: '2.1cqw' }} /> {t("I'm the teacher", 'Soy el profe')}</button>
+              <button type="button" onClick={() => go('/racers/join')} className="rc-btn bg-white text-[#1b2a7a] hover:brightness-105" style={{ height: '4.1cqw', fontSize: '1.55cqw', borderRadius: '1.1cqw', boxShadow: '0 .3cqw 0 #b9c6e6, 0 .8cqw 1.6cqw rgba(0,0,0,.3)', gap: '.8cqw' }}><Users style={{ width: '2cqw', height: '2cqw' }} /> {t('Join with a code', 'Unirme con código')}</button>
+            </div>
           </div>
-          <GameTitle word="RACERS" theme="racers" className="mt-2 h-auto w-[260px] sm:w-[380px]" />
-          <div className="mt-1 rounded-full bg-[#ffd23f] px-4 py-1 text-[15px] font-black text-[#2a1d00]">{t('LIVE WITH YOUR CLASS', 'EN VIVO CON TU CLASE')}</div>
-          <p className="mt-3 max-w-[560px] text-center text-[16px] font-bold text-white/85">
-            {t('The teacher opens a room on the projector, the students scan the QR and everybody races together: a Grand Prix on random tracks, points adding up race after race. Every gate is a question.', 'El profe abre una sala en el proyector, los estudiantes escanean el QR y todos corren juntos: un Gran Premio en pistas al azar, con puntos que se suman carrera tras carrera. Cada arco es una pregunta.')}
-          </p>
-          <div className="rc-panel mt-4 px-4 py-2.5"><Rule /></div>
-          <div className="mt-5 grid w-full max-w-[540px] gap-3 sm:grid-cols-2">
-            <Link to="/racers/host"><Btn tone="yellow" className="h-16 w-full text-[19px]">{t("I'm the teacher", 'Soy el profe')}</Btn></Link>
-            <Link to="/racers/join"><Btn tone="white" className="h-16 w-full text-[19px]">{t('Join with a code', 'Unirme con código')}</Btn></Link>
-          </div>
-          <div className="mt-6 grid w-full gap-3 sm:grid-cols-3">
-            {[
-              { n: 1, h: t('Scan and pick', 'Escanea y elige'), p: t('Name and teacher-driver on your phone, in seconds.', 'Nombre y profe-piloto en tu celular, en segundos.') },
-              { n: 2, h: t('Race together', 'Corran juntos'), p: t('You see your classmates on the track. Items hit them too!', 'Ves a tus compañeros en la pista. ¡Los objetos también les pegan!') },
-              { n: 3, h: t('Answer well', 'Responde bien'), p: t('Drive through the right answer. Mistakes cost points, coins add them.', 'Pasa por la respuesta correcta. Los errores restan, las monedas suman.') },
-            ].map((x) => (
-              <div key={x.n} className="rc-panel p-4">
-                <div className="grid h-9 w-9 place-items-center rounded-full bg-[#ff3d6e] text-[17px] font-black">{x.n}</div>
-                <div className="mt-2 text-[18px] font-black">{x.h}</div>
-                <div className="text-[14px] font-semibold text-white/75">{x.p}</div>
+
+          <div className="absolute grid grid-cols-3" style={{ left: '14.2%', width: '72.8%', top: '84.6%', height: '12.2%', gap: '1.4cqw' }}>
+            {steps.map((x) => (
+              <div key={x.n} className="flex items-center" style={{ gap: '1cqw', padding: '0 1.4cqw', borderRadius: '1.4cqw', background: `linear-gradient(160deg, ${x.edge}55, rgba(14,18,60,.94))`, boxShadow: `inset 0 0 0 .16cqw ${x.edge}, 0 0 1.6cqw ${x.edge}55` }}>
+                <x.icon className="shrink-0 text-[#ffd23f]" style={{ width: '3cqw', height: '3cqw' }} strokeWidth={2.2} />
+                <div className="min-w-0">
+                  <div className="flex items-center font-black" style={{ gap: '.6cqw', fontSize: '1.3cqw' }}><span className="grid shrink-0 place-items-center rounded-full bg-[#ff3d6e]" style={{ width: '1.9cqw', height: '1.9cqw', fontSize: '1.05cqw' }}>{x.n}</span>{x.h}</div>
+                  <div className="font-semibold text-white/85" style={{ fontSize: '.98cqw', lineHeight: 1.25, marginTop: '.2cqw' }}>{x.p}</div>
+                </div>
               </div>
             ))}
           </div>
-          {!relayConfigured() && <p className="mt-4 rounded-2xl bg-black/30 px-4 py-3 text-center text-[14px] font-bold">{t('The live game server is not set up in this deployment (VITE_RELAY_URL).', 'El servidor de juego en vivo no está configurado en este despliegue (VITE_RELAY_URL).')}</p>}
+          {noRelay && <div className="absolute inset-x-0 flex justify-center" style={{ top: '78%' }}>{noRelay}</div>}
+        </div>
+      </div>
+
+      {/* Phones held upright: the title and the karts from the artwork, then the same buttons in a column. */}
+      <div className="rc-scroll h-full px-4 pt-[max(14px,env(safe-area-inset-top))] pb-10 landscape:hidden" style={{ background: 'linear-gradient(180deg,#1b2a8a 0%,#3b1d7a 60%,#241258 100%)' }}>
+        <div className="mx-auto flex max-w-[560px] flex-col items-center">
+          <div className="flex w-full items-center justify-between">
+            <Link to="/racers" className="grid h-11 w-11 place-items-center rounded-full bg-white/12 hover:bg-white/20" aria-label={t('Back', 'Volver')}><ArrowLeft /></Link>
+            <GameLangToggle />
+          </div>
+          <img src="/racers/home/title.webp" alt="English Racers — live with your class" width={860} height={272} className="-mt-1 h-auto w-full max-w-[440px]" />
+          <div className="mt-1 w-[calc(100%+2rem)] bg-cover" style={{ aspectRatio: '2000/440', backgroundImage: 'url(/racers/home/stage.webp)', backgroundSize: '100% auto', backgroundPosition: '0 74%', WebkitMaskImage: 'linear-gradient(180deg,transparent,#000 14%,#000 86%,transparent)', maskImage: 'linear-gradient(180deg,transparent,#000 14%,#000 86%,transparent)' }} aria-hidden />
+          <p className="mt-3 text-center text-[15.5px] font-bold text-white/90">{intro}</p>
+          <div className="rc-panel mt-3 px-4 py-2.5"><Rule /></div>
+          <div className="mt-4 grid w-full gap-3">
+            <Btn tone="yellow" className="h-16 w-full text-[19px]" onClick={() => go('/racers/host')}><GraduationCap size={24} /> {t("I'm the teacher", 'Soy el profe')}</Btn>
+            <Btn tone="white" className="h-16 w-full text-[19px]" onClick={() => go('/racers/join')}><Users size={22} /> {t('Join with a code', 'Unirme con código')}</Btn>
+          </div>
+          <div className="mt-5 grid w-full gap-3">
+            {steps.map((x) => (
+              <div key={x.n} className="flex items-center gap-3 rounded-[20px] p-3.5" style={{ background: `linear-gradient(160deg, ${x.edge}44, rgba(14,18,60,.9))`, boxShadow: `inset 0 0 0 2px ${x.edge}` }}>
+                <x.icon size={30} className="shrink-0 text-[#ffd23f]" />
+                <div>
+                  <div className="flex items-center gap-2 text-[17px] font-black"><span className="grid h-7 w-7 place-items-center rounded-full bg-[#ff3d6e] text-[14px]">{x.n}</span>{x.h}</div>
+                  <div className="text-[14px] font-semibold text-white/80">{x.p}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {noRelay && <div className="mt-4">{noRelay}</div>}
         </div>
       </div>
     </Shell>
