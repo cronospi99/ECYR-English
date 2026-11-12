@@ -201,6 +201,29 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+G15. LANGUAGE DEFENDERS (ANTES ENGLISH DEFENDERS), DENTRO DE LA APP
+- El juego ya no es un iframe: vive en la app en /defenders (el enlace viejo
+  /play/english-defenders redirige). Conserva progreso, estrellas y XP.
+- Nombre nuevo, logo 3D nuevo y elenco propio modelado en 3D por código:
+  20 defensores (Profe Tiza, Lumi, Dicto, Big Tomo, Marker Max, Miss Shh, Hall
+  Monitor, Paper Pitcher, Doña Arepa, Coach Volley, Recess Bell, Pop Quiz,
+  Profe Química, Tack Mat, Twin Lumi, Ms. Highlight, The Megaphone,
+  Robo-Tutor, Projecto, Prof. Thesis) y 9 distracciones (The Scroller, The
+  Streamer, The Gamer, The Angry Dad, The Angry Mom, The Ñero, The Drone
+  Rider, The Drifter y el jefe El Duro). Caminan, lanzan y reaccionan.
+- El recurso ahora son «ideas» (💡). Nadie «muere»: la distracción se rinde.
+- Misma mecánica, preguntas, unidades, temas, dificultades, mezcla de niveles,
+  música, escenarios, casa y castillo 3D.
+- Botones, paneles, cartas, preguntas y menú rediseñados (azul noche, botones
+  arcade). El menú muestra al elenco en vivo sobre el tablero.
+- Almanaque y «How to play» reescritos para el elenco nuevo.
+- Dos minijuegos originales en lugar de Vase Breaker y Spud Bowling:
+  Book Blitz (cada acierto lanza un libro por el carril más lleno; racha de 3
+  barre los cinco) y Boss Exam (duelo de respuestas contra El Duro).
+- Se retiró el arte anterior de plantas y zombis (unos 8 MB menos).
+- Pendiente: replicar los escenarios que envíe el profesor y pasar el Class
+  Mode al sistema de salas con QR de You Draw (por ahora usa el anterior).
+
 G14. JUEGOS NATIVOS Y PORTADAS NUEVAS (7 JUEGOS)
 - Los juegos ya no muestran la barra ni la cuadrícula flotante de la plataforma:
   cada uno trae su botón «Games» (vuelve al menú de juegos) y pantalla completa,

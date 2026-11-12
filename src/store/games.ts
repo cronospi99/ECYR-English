@@ -165,7 +165,7 @@ export function sessionXp(s: Omit<GameSession, 'xp'>): number {
 interface GamesState {
   sessions: GameSession[];
   live: Record<string, LiveSession>;
-  /** English Defenders' own per-unit stars ('ed:progress'), mirrored for sync and teachers. */
+  /** Language Defenders' own per-unit stars ('ed:progress'), mirrored for sync and teachers. */
   defenders: { stars: Record<string, Record<string, number>>; asked: number; correct: number } | null;
   updatedAt: string;
   start: (id: string, s: LiveSession) => void;

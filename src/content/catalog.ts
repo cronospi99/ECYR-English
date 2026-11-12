@@ -41,13 +41,14 @@ export const MODULES: ModuleEntry[] = [
     emoji: '🏙️',
   },
   {
+    // The slug is kept from the first version (English Defenders): progress is stored under it.
     slug: 'english-defenders',
-    title: 'English Defenders',
+    title: 'Language Defenders',
     subtitle: 'Tower defense 3D · Learn, Defend, Win',
     description:
-      'Defend your garden from the zombies by answering grammar and vocabulary questions from your unit (A1–C1). 149 topics, 1,850+ questions with explanations in Spanish, minigames, difficulty levels and multiplayer Class Mode.',
+      'Keep the distractions out of class: every defender is earned with a grammar or vocabulary answer from your unit (A1–C1). 20 defenders in 3D, 149 topics, 1,850+ questions with explanations in Spanish, two quick-review games and Class Mode.',
     kind: 'game',
-    src: '/modules/english-defenders/index.html',
+    src: '/defenders',
     cover: '/covers/english-defenders.webp',
     levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
     skills: ['grammar', 'vocabulary'],
@@ -55,7 +56,7 @@ export const MODULES: ModuleEntry[] = [
     mode: 'both',
     minutes: 20,
     accent: 'var(--green)',
-    emoji: '🌻',
+    emoji: '🛡️',
   },
   {
     slug: 'jeopardy',
