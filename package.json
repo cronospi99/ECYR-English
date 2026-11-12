@@ -6,7 +6,8 @@
   "description": "ECYR English — CEFR A1–C1 learning platform with lessons, games, IELTS simulator and AI coach.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node scripts/build-search-index.mjs && tsc -b && vite build",
+    "search:index": "node scripts/build-search-index.mjs",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
     "content:extract": "node scripts/extract-content.mjs",

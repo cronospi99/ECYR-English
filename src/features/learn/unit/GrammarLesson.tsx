@@ -63,7 +63,8 @@ function loadLessonData(level?: CefrLevel): Promise<LessonData> {
 
 /** Grammar tab body: a topic chooser (like the books' side menu) + one lesson at a time. */
 export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoint[]; color: string; /** "A1-2": finds explainers, aids, drills, dialogues and infographics. */ unitKey?: string }) {
-  const [active, setActive] = useState(0);
+  // ?g=1 opens that grammar point directly (links from the home search).
+  const [active, setActive] = useState(() => { const g = Number(new URLSearchParams(window.location.search).get('g')); return Number.isInteger(g) && g > 0 && g < points.length ? g : 0; });
   const level = unitKey?.split('-')[0] as CefrLevel | undefined;
   const { data } = useAsync(() => loadLessonData(level), [level]);
   const plan = useMemo(() => (unitKey ? unitVisualPlan(unitKey, points.map((p) => p.name)) : null), [unitKey, points]);

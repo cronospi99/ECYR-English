@@ -359,7 +359,7 @@ function MaterialTab() {
         { to: '/practice/listening', title: 'Listening', sub: '121 audios A1–C2 + dialogues', icon: Headphones, color: 'var(--skill-listening)' },
         { to: '/practice/speaking', title: 'Speaking', sub: '3,600+ questions', icon: Mic, color: 'var(--skill-speaking)' },
         { to: '/practice/writing', title: 'Writing', sub: 'Tasks with feedback', icon: PenLine, color: 'var(--skill-writing)' },
-        { to: '/practice/phrasal-verbs', title: 'Phrasal Verbs', sub: '1,100+ with examples and quiz', icon: Dumbbell, color: 'var(--pink)' },
+        { to: '/practice/phrasal-verbs', title: 'Phrasal Verbs', sub: '1,250+ with examples and quiz', icon: Dumbbell, color: 'var(--pink)' },
         { to: '/practice/vocabulary', title: 'Vocabulary', sub: 'Connectors, adjectives, adverbs', icon: BookOpen, color: 'var(--purple)' },
       ],
     },

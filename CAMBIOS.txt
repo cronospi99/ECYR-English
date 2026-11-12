@@ -201,6 +201,13 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+G12. BUSCADOR EN INICIO, MÁS VERBOS Y MÁS PHRASAL VERBS
+- Inicio: buscador de temas. Escribe un tema de gramática, una palabra, una
+  unidad o una sección (en inglés o español) y te lleva a esa unidad y pestaña.
+- Verb Lab: 63 verbos nuevos con sus tres ejemplos (1.526 en total).
+- Phrasal verbs: 130 nuevos con traducción y 4 ejemplos (1.273 en total).
+- Los juegos de /modules se recargan tras cada despliegue (sin caché vieja).
+
 G11. PORTADAS ANIMADAS, MÁS IMPOSTORAS, MÚSICA DE IMPOSTOR Y DIAGRAMAS
 - Notas: el juego de modales ya no reacciona al teclado mientras escribes en
   una nota (ni con Verb Lab o el traductor abiertos).

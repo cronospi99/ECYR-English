@@ -17,6 +17,7 @@ import { dayKey, greeting } from '@/lib/date';
 import { readIelts } from '@/lib/ielts';
 import { WeekPlanCard } from '@/features/plan/WeekPlanCard';
 import { TasksWidget } from '@/features/tasks/TasksWidget';
+import { HomeSearch } from './HomeSearch';
 import { AssignButton } from '@/features/tasks/AssignButton';
 
 export default function HomePage() {
@@ -46,6 +47,7 @@ export default function HomePage() {
       wide
     >
       <div className="space-y-5">
+        <HomeSearch />
         {/* Hero: the mountain spans the full width, level and goal ride on top */}
         <Card className="relative overflow-hidden">
           <div className="relative" style={{ ...SKY_VARS, background: 'var(--sky-a)' }}>

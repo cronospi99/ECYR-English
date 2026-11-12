@@ -74,7 +74,7 @@ export const GRAMMAR_MODULES: GrammarModule[] = [
     to: '/practice/verbs',
     title: 'Verb Lab',
     subtitle: 'Formas verbales, -ed y patrones',
-    description: 'Más de 1.400 verbos con sus tres formas, 384 verbos académicos C1, pronunciación de -ed, phrasal verbs por familias y los 10 patrones verbales.',
+    description: 'Más de 1.500 verbos con sus tres formas, 384 verbos académicos C1, pronunciación de -ed, phrasal verbs por familias y los 10 patrones verbales.',
     cover: '',
     levels: ['A2', 'B1', 'B2', 'C1'],
     ref: 'verblab:',
