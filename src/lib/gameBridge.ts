@@ -29,7 +29,7 @@ function frameShowing(source: MessageEventSource | null, slug: string): boolean 
   return false;
 }
 
-/** English Defenders keeps its own per-unit stars in this origin's localStorage. */
+/** Language Defenders keeps its own per-unit stars in this origin's localStorage. */
 export function readDefendersStore() {
   try {
     const stars = JSON.parse(localStorage.getItem('ed:progress') || '{}') as unknown;
@@ -68,9 +68,8 @@ export function startGameBridge() {
   const d = readDefendersStore();
   if (d && Object.keys(d.stars).length) useGames.getState().setDefenders(d);
 
-  window.addEventListener('message', (e: MessageEvent) => {
-    if (e.origin !== location.origin) return;
-    const data = e.data as Record<string, unknown> | null;
+  const handle = (raw: unknown, source: MessageEventSource | null, native: boolean) => {
+    const data = raw as Record<string, unknown> | null;
     if (!data || data.source !== 'ecyr-game' || data.v !== 1) return;
     const slug = typeof data.slug === 'string' ? data.slug : '';
     const id = typeof data.sessionId === 'string' ? data.sessionId.slice(0, 40) : '';
@@ -78,7 +77,7 @@ export function startGameBridge() {
     const games = useGames.getState();
 
     if (data.type === 'start') {
-      if (!frameShowing(e.source, slug)) return;
+      if (!native && !frameShowing(source, slug)) return;
       games.start(id, {
         slug,
         startedAt: typeof data.startedAt === 'string' ? data.startedAt : new Date().toISOString(),
@@ -123,5 +122,19 @@ export function startGameBridge() {
         if (ed) useGames.getState().setDefenders(ed);
       }
     }
+  };
+  window.addEventListener('message', (e: MessageEvent) => {
+    if (e.origin !== location.origin) return;
+    handle(e.data, e.source, false);
   });
+  nativeHandle = (data) => handle(data, null, true);
 }
+
+let nativeHandle: ((data: Record<string, unknown>) => void) | null = null;
+
+/** Games that run inside the app itself (no iframe) report through here, with the same messages. */
+export function reportNativeGame(data: Record<string, unknown>) {
+  startGameBridge();
+  nativeHandle?.({ source: 'ecyr-game', v: 1, ...data });
+}
+

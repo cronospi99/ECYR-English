@@ -31,7 +31,7 @@ async function pull(userId: string) {
     // Avatar: same rule; the config is re-validated by the store.
     const av = remote.avatar;
     if (av && typeof av.updatedAt === 'string' && av.updatedAt > useAvatar.getState().updatedAt) useAvatar.getState().replace(av.config, av.updatedAt);
-    // Game sessions: union of both copies; English Defenders stars: best per unit.
+    // Game sessions: union of both copies; Language Defenders stars: best per unit.
     const remoteSessions = sanitizeSessions(remote.gameSessions);
     if (remoteSessions.length) {
       const g = useGames.getState();

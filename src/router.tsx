@@ -81,6 +81,8 @@ export const router = createBrowserRouter([
   { path: 'youdraw/*', element: page(() => import('./features/youdraw/YouDrawApp')), errorElement: <RouteError /> },
   { path: 'run', element: page(() => import('./features/run/RunApp')), errorElement: <RouteError /> },
   { path: 'racers/*', element: page(() => import('./features/racers/RacersApp')), errorElement: <RouteError /> },
+  { path: 'defenders/*', element: page(() => import('./features/defenders/DefendersApp')), errorElement: <RouteError /> },
+  { path: 'roulette/*', element: page(() => import('./features/roulette/RouletteApp')), errorElement: <RouteError /> },
   { path: 'toons3d', element: page(() => import('./features/toons3d/GalleryPage')), errorElement: <RouteError /> },
   { path: 'play/:slug', element: page(() => import('./features/games/PlayerPage')), errorElement: <RouteError /> },
 ]);

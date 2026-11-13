@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { ModuleFrame } from '@/components/learning/ModuleFrame';
 import { moduleBySlug } from '@/content/catalog';
 import { useProgress } from '@/store/progress';
@@ -27,6 +27,8 @@ export default function PlayerPage() {
   }, [m, playGame]);
 
   if (!m) return <NotFound />;
+  // Games that live inside the app have their own route instead of an iframe.
+  if (!m.src.includes('.')) return <Navigate to={m.src} replace />;
   const backTo = m.kind === 'book' ? `/learn/${m.levels[0]!.toLowerCase()}` : m.kind === 'course' ? '/learn/foundations' : '/games';
   // A learner playing a team game on their own device plays solo (and is graded);
   // a teacher runs it for the class on the projector.

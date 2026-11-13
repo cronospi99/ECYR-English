@@ -58,6 +58,23 @@ export const MODULES: ModuleEntry[] = [
     emoji: '🌻',
   },
   {
+    slug: 'language-defenders',
+    title: 'Language Defenders',
+    subtitle: 'Horror tower defense 3D · Learn, Defend, Win',
+    description:
+      'The phone zombies are coming for your class. Every defender is earned with a grammar or vocabulary answer from your unit (A1–C1). 20 defenders and 9 zombies sculpted in 3D, haunted scenarios, 149 topics, 1,850+ questions with explanations in Spanish and two quick-review games.',
+    kind: 'game',
+    src: '/defenders',
+    cover: '/covers/language-defenders.webp',
+    levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
+    skills: ['grammar', 'vocabulary'],
+    topics: ['Grammar by unit', 'Vocabulary', 'Review'],
+    mode: 'both',
+    minutes: 20,
+    accent: 'var(--purple)',
+    emoji: '🧟',
+  },
+  {
     slug: 'jeopardy',
     title: 'Star Medic Jeopardy',
     subtitle: 'Team quiz · 12 topics',
@@ -81,7 +98,7 @@ export const MODULES: ModuleEntry[] = [
     description:
       'Spin the wheel, get a phrasal verb and use it in context. Covers families (GET, TAKE, PUT…) from A1 to C1 with translation and examples.',
     kind: 'game',
-    src: '/modules/phrasal-roulette/phrasal-verb-roulette.html',
+    src: '/roulette',
     cover: '/covers/phrasal-roulette.webp',
     levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
     skills: ['vocabulary', 'speaking'],
