@@ -91,16 +91,16 @@ function drawLogo() {
   x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineJoin = 'round';
   const line = (txt, y, size, fill, stroke) => {
     x.font = `900 ${size}px "Luckiest Guy", "Nunito", "Arial Black", sans-serif`;
-    x.lineWidth = size * 0.26; x.strokeStyle = '#0d1b3d'; x.strokeText(txt, 512, y + size * 0.07);
+    x.lineWidth = size * 0.26; x.strokeStyle = '#1a0833'; x.strokeText(txt, 512, y + size * 0.07);
     x.lineWidth = size * 0.14; x.strokeStyle = stroke; x.strokeText(txt, 512, y);
     const g = x.createLinearGradient(0, y - size / 2, 0, y + size / 2); g.addColorStop(0, fill[0]); g.addColorStop(1, fill[1]);
     x.fillStyle = g; x.fillText(txt, 512, y);
     x.fillStyle = 'rgba(255,255,255,.35)'; x.save(); x.beginPath(); x.rect(0, y - size / 2, 1024, size * 0.36); x.clip(); x.fillText(txt, 512, y); x.restore();
   };
-  line('LANGUAGE', 150, 150, ['#fff6a8', '#ffb52e'], '#ffffff');
-  line('DEFENDERS', 310, 172, ['#7df0ff', '#2f7de8'], '#ffffff');
+  line('LANGUAGE', 150, 150, ['#fff36b', '#ff7a1e'], '#ff2d8a');
+  line('DEFENDERS', 310, 172, ['#9dffe0', '#19b8a6'], '#ff2d8a');
   x.font = '800 44px "Nunito", sans-serif';
-  x.lineWidth = 12; x.strokeStyle = '#0d1b3d'; x.strokeText('LEARN  ·  DEFEND  ·  WIN', 512, 440);
+  x.lineWidth = 12; x.strokeStyle = '#1a0833'; x.strokeText('LEARN  ·  DEFEND  ·  WIN', 512, 440);
   x.fillStyle = '#ffffff'; x.fillText('LEARN  ·  DEFEND  ·  WIN', 512, 440);
   return c;
 }

@@ -6,6 +6,7 @@ import { makeBoardTexture, makeDirtTexture, makeStoneTexture, makeSkyTexture, ma
 import { makeBillboard, makeGlowSprite, makeLabelSprite, setLabel, spriteTex } from './sprites';
 import { modelsReady, makeBuilding } from './models3d';
 import { SFX } from './audio';
+import { isPainted, paintBackdrop } from '../backdrops';
 
 export const ROWS = 5, COLS = 9;
 // Borde norte del suelo = línea de la cerca. El fondo pintado arranca aquí.
@@ -80,6 +81,13 @@ export const DEFAULT_DIFFICULTY = 'medium';
 // ===== Escenarios (los 12 fondos del arte de referencia) =====
 // Cada tema recolorea cielo, tablero, suelo, niebla e iluminación.
 export const THEMES = {
+  // ===== Painted in code: neon horror-comic scenarios (the game's own look) =====
+  dusk:    { name: 'Last Bell · Dusk',    emoji: '🌆', sky: [[0,'#3a0f4a'],[.5,'#e8386f'],[1,'#ffd27a']], board:{l1:'#8a44b0',l2:'#7c3aa4',d1:'#6a2f94',d2:'#5c2788',blade:'255,150,190'}, dirt:['#3a1858','#2a1046'], fog:0xe8386f, hemiSky:0xffe0ea, hemiGround:0x6a3a90, hemiI:1.25, sun:0xffe2c4, sunI:2.1, fence:0x4a2060, building:'house', tint:{ color:0x9a6ad0, emissive:0x3a0f4a, emissiveIntensity:0.35 } },
+  grave:   { name: 'Moonrise Graveyard',  emoji: '🪦', sky: [[0,'#120a2a'],[.6,'#2a1a52'],[1,'#4a3a7a']], board:{l1:'#3f7a8a',l2:'#376e80',d1:'#2f5f76',d2:'#28526a',blade:'140,240,240'}, dirt:['#1a1238','#120a2a'], fog:0x2a3a6a, hemiSky:0xd8fbff, hemiGround:0x3a3a70, hemiI:1.15, sun:0xc8f6ff, sunI:1.8, fence:0x241a4a, building:'castle', tint:{ color:0x6a8ac0, emissive:0x0a2a3a, emissiveIntensity:0.3 } },
+  neon:    { name: 'Neon Night',          emoji: '🌃', sky: [[0,'#04060f'],[.6,'#0a1226'],[1,'#101c3a']], board:{l1:'#24407a',l2:'#1f386e',d1:'#1a2f60',d2:'#162854',blade:'57,217,255'}, dirt:['#0a1024','#060a18'], fog:0x0a1a3a, hemiSky:0xbfeeff, hemiGround:0x3a2a6a, hemiI:1.1, sun:0xffc4e4, sunI:1.8, fence:0x0c1730, building:'house', tint:{ color:0x4a6ab0, emissive:0x06224a, emissiveIntensity:0.4 } },
+  toxic:   { name: 'Toxic Lab',           emoji: '☢️', sky: [[0,'#1a0733'],[.6,'#4a1280'],[1,'#9a4ae0']], board:{l1:'#4a2a8a',l2:'#412480',d1:'#361c70',d2:'#2e1764',blade:'182,255,61'}, dirt:['#1c0a3a','#14062e'], fog:0x5a2aa0, hemiSky:0xeaffd0, hemiGround:0x4a2a80, hemiI:1.15, sun:0xe6ffc0, sunI:1.8, fence:0x2a0f52, building:'house', tint:{ color:0x8a6ad0, emissive:0x1a3a00, emissiveIntensity:0.3 } },
+  ruins2:  { name: 'Sunset Ruins',        emoji: '🏚️', sky: [[0,'#ff6a1e'],[.6,'#ffc93d'],[1,'#ffe27a']], board:{l1:'#8a4aa8',l2:'#7c409c',d1:'#6a368c',d2:'#5c2e80',blade:'255,201,61'}, dirt:['#3a1a60','#2a1250'], fog:0xffa040, hemiSky:0xffd9a0, hemiGround:0x4a2080, hemiI:1.0, sun:0xffc070, sunI:2.0, fence:0x4a2080, building:'castle', tint:{ color:0xb07ad8, emissive:0x4a1a00, emissiveIntensity:0.25 } },
+  // ===== Painted art kept from the first version =====
   day:     { name: 'The School · Day',   emoji: '🏡', sky: [[0,'#78c4f0'],[.55,'#a8ddf5'],[.8,'#d8efc8'],[1,'#e8f5d8']], board:{l1:'#8fbf4d',l2:'#7cae3e',d1:'#77a83a',d2:'#699733',blade:'120,160,60'}, dirt:['#6e4f2a','#5a3f20'], fog:0xcfe8d8, hemiSky:0xeaf6ff, hemiGround:0x5a7a3a, hemiI:0.95, sun:0xfff2d8, sunI:2.0, backdrop:true },
   night:   { name: 'The School · Night', emoji: '🌙', sky: [[0,'#0b1836'],[.55,'#1c2c52'],[.85,'#26406a'],[1,'#33507a']], board:{l1:'#3d5a4a',l2:'#324c48',d1:'#2c4450',d2:'#25384a',blade:'80,120,90'}, dirt:['#2a3040','#20263a'], fog:0x223050, hemiSky:0x9fb6e8, hemiGround:0x24304a, hemiI:0.7, sun:0xbcccff, sunI:1.1, backdrop:true },
   ruins:   { name: 'Ancient Ruins',    emoji: '🏛️', sky: [[0,'#4a5a4a'],[.5,'#6a7358'],[1,'#8a8a66']], board:{l1:'#9aa080',l2:'#868c68',d1:'#7c8460',d2:'#6a7350',blade:'110,120,80'}, dirt:['#7a7458','#5f5a40'], fog:0x6a7358, hemiSky:0xcfe0c0, hemiGround:0x556040, hemiI:0.85, sun:0xffe6b0, sunI:1.5, backdrop:false },
@@ -102,8 +110,8 @@ export const HOUSE_TINT = {
   beach: { color: 0xffd2a0, emissive: 0x4a2a10, emissiveIntensity: 0.14 }, // madera cálida de resort
 };
 
-// The opposing side: distractions trying to get into class. Nobody gets hurt — a
-// "defeated" distraction gives up and leaves ("hp" is how much convincing it takes).
+// The opposing side: phone zombies and other distractions trying to get into class.
+// Cartoon horror, no gore: a "defeated" one gives up and leaves.
 export const ZOMBIE_TYPES = {
   basic:    { sprite: 'e_scroller', h: 1.35, hp: 100, speed: 0.22, dmg: 28 },
   flag:     { sprite: 'e_streamer', h: 1.4,  hp: 120, speed: 0.30, dmg: 28 },
@@ -143,7 +151,7 @@ export const PLANT_DESC = {
 
 // Name, portrait and description of every distraction, for the almanac.
 export const ZOMBIE_INFO = {
-  basic:    { name: 'The Scroller',   sprite: 'e_scroller', desc: 'Eyes on the screen, feet on autopilot. Harmless alone — they come in crowds.' },
+  basic:    { name: 'The Scroller',   sprite: 'e_scroller', desc: 'A phone zombie: eyes on the screen, feet on autopilot. Harmless alone — they come in crowds.' },
   flag:     { name: 'The Streamer',   sprite: 'e_streamer', desc: 'Films everything with a ring light and brings followers. A bigger wave is right behind.' },
   cone:     { name: 'The Gamer',      sprite: 'e_gamer',    desc: 'Headset on, hears nothing. Takes twice as much convincing as a Scroller.' },
   book:     { name: 'The Angry Dad',  sprite: 'e_dad',      desc: 'Calm while he reads the report card… and twice as fast once it sinks in.' },
@@ -433,7 +441,8 @@ export class Game {
     // cajas, barril, buzón, farolas, hidrante y la maleza suelta) se retiraron
     // para dejar el jardín limpio.
     // se extiende a lo ancho de todo el encuadre para que no asome el borde del suelo
-    for (let i = 0; i < 22; i++) prop('prop_fence', 0.85, -12.2 + i * 1.22, -(ROWS / 2) - 0.85);
+    this.fences = [];
+    for (let i = 0; i < 22; i++) this.fences.push(prop('prop_fence', 0.85, -12.2 + i * 1.22, -(ROWS / 2) - 0.85));
 
     this.clouds = [];
     const cloudMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, transparent: true, opacity: 0.92 });
@@ -487,7 +496,7 @@ export class Game {
     this.scene.add(this.decor3D);
 
     // aplica el escenario guardado (fondo/luces/tablero)
-    this.setTheme(localStorage.getItem('ed:theme') || 'day');
+    this.setTheme(localStorage.getItem('ld:theme') || 'dusk');
   }
 
   // Encuadra el tablero según la proporción de pantalla: en móviles verticales
@@ -509,7 +518,10 @@ export class Game {
     const t = THEMES[id] ? id : 'day';
     this.themeId = t;
     const th = THEMES[t];
-    localStorage.setItem('ed:theme', t);
+    localStorage.setItem('ld:theme', t);
+    // poster scenarios: ink-dark fence and no fluffy white clouds
+    for (const f of this.fences || []) f.userData.mat.color.set(th.fence || 0xffffff);
+    for (const c of this.clouds || []) c.visible = !isPainted(t);
 
     // el degradado del cielo queda de base; encima va el arte pintado del escenario
     this.scene.background = makeGradientSky(th.sky);
@@ -550,7 +562,8 @@ export class Game {
     // La casa suburbana sale también en Beach y Snow, repintada para el escenario:
     // blanca y fría en la nieve, tropical y cálida en la playa (el modelo trae un
     // único material, así que el tono se aplica multiplicando su color base).
-    const buildKind = (id === 'jungle' || id === 'ruins') ? 'castle'
+    const buildKind = THEMES[id].building ? THEMES[id].building
+      : (id === 'jungle' || id === 'ruins') ? 'castle'
       : (id === 'day' || id === 'night' || id === 'beach' || id === 'snow') ? 'house' : null;
     if (buildKind) {
       // El castillo tiene una huella MUCHO más grande que la casa: a igual altura se
@@ -558,7 +571,7 @@ export class Game {
       // empujamos al noroeste para que su borde frontal quede DETRÁS de la cerca norte
       // (z ≈ -2.5) y su lado este no tape la columna de cortacéspedes (x ≈ -5.2).
       const isCastle = buildKind === 'castle';
-      const b = makeBuilding(buildKind, isCastle ? 2.6 : 3.0, HOUSE_TINT[id]);
+      const b = makeBuilding(buildKind, isCastle ? 2.6 : 3.0, THEMES[id].tint || HOUSE_TINT[id]);
       if (b) {
         // Justo al oeste de la columna de "libros" cortacésped (x ≈ -5.2) y centrado
         // sobre ellos (z ≈ 0): pegado al costado del jardín, como indicó el usuario.
@@ -583,6 +596,13 @@ export class Game {
       this._fitBackdrop();
     };
     if (this._bgCache[id]) return apply(this._bgCache[id]);
+    if (isPainted(id)) {
+      const tex = new THREE.CanvasTexture(paintBackdrop(id));
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = Math.min(8, this.renderer.capabilities.getMaxAnisotropy());
+      this._bgCache[id] = tex;
+      return apply(tex);
+    }
     // Se prueban por orden: WebP grande (4K) → WebP ligero → JPG de respaldo.
     // Si el navegador no entiende WebP, la carga falla y se pasa al siguiente.
     const files = this._bgSources(id);
@@ -662,9 +682,10 @@ export class Game {
         // Arte más alto que el hueco: se recorta en vertical. Las panorámicas
         // nuevas se anclan abajo, para que su suelo empalme con la cerca; el arte
         // antiguo (4:3) se pensó para verse por arriba, así que se sube el encuadre.
+        // painted scenarios keep their sky and moon in view; their feet hide behind the fence
         const legacy = art < 2.5;
         tex.repeat.set(1, art / rect);
-        tex.offset.set(0, legacy ? (1 - art / rect) * 0.72 : 0);
+        tex.offset.set(0, isPainted(this.themeId) ? (1 - art / rect) * 0.95 : legacy ? (1 - art / rect) * 0.72 : 0);
       }
       tex.needsUpdate = true;
     }

@@ -400,7 +400,7 @@ export const MARKUP = `<canvas id="game-canvas"></canvas>
       <h2>📚 Almanac</h2>
       <div class="almanac-tabs">
         <button id="alm-tab-plants" class="wood-btn small almanac-tab selected">🛡️ Defenders</button>
-        <button id="alm-tab-zombies" class="wood-btn small almanac-tab">📱 Distractions</button>
+        <button id="alm-tab-zombies" class="wood-btn small almanac-tab">🧟 Phone zombies</button>
       </div>
       <div id="almanac-list" class="almanac-list"></div>
       <!-- Ficha técnica de la carta seleccionada (daño, vida, alcance, mejoras) -->

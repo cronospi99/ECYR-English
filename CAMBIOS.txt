@@ -201,6 +201,17 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+G16. LANGUAGE DEFENDERS: ESTILO CÓMIC NEÓN DE ZOMBIS
+- Cinco escenarios nuevos pintados por código (sin imágenes): Last Bell · Dusk
+  (por defecto), Moonrise Graveyard, Neon Night, Toxic Lab y Sunset Ruins.
+  Cielos magenta y naranja, luna enorme, siluetas, trama de puntos y grano.
+  Los 12 escenarios anteriores siguen en el selector.
+- Personajes con sombreado plano tipo cómic y contorno de tinta.
+- Los enemigos ahora son zombis: piel turquesa, cuencas oscuras, ojos que
+  brillan, dientes y costuras. Sin sangre.
+- Casa, castillo, cerca, tablero y luces se tiñen según el escenario.
+- Logo, botones y paneles pasan a morado, magenta, cian y verde tóxico.
+
 G15. LANGUAGE DEFENDERS (ANTES ENGLISH DEFENDERS), DENTRO DE LA APP
 - El juego ya no es un iframe: vive en la app en /defenders (el enlace viejo
   /play/english-defenders redirige). Conserva progreso, estrellas y XP.

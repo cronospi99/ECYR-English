@@ -19,6 +19,19 @@ const UNIT = {
 };
 export type Shape = keyof typeof UNIT;
 
+// Cel shading: light falls in three flat bands, like printed comic colour.
+const RAMP = new THREE.DataTexture(new Uint8Array([125, 125, 125, 255, 195, 195, 195, 255, 255, 255, 255, 255]), 3, 1, THREE.RGBAFormat);
+RAMP.minFilter = RAMP.magFilter = THREE.NearestFilter;
+RAMP.needsUpdate = true;
+
+// Ink outline: the same mesh drawn again, pushed out along its normals and seen from behind.
+const INK = new THREE.ShaderMaterial({
+  side: THREE.BackSide,
+  uniforms: { w: { value: 0.011 }, c: { value: new THREE.Color(0x1a0a2e) } },
+  vertexShader: 'uniform float w; void main(){ gl_Position = projectionMatrix * modelViewMatrix * vec4(position + normal * w, 1.0); }',
+  fragmentShader: 'uniform vec3 c; void main(){ gl_FragColor = vec4(c, 1.0); }',
+});
+
 const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _e = new THREE.Euler(), _c = new THREE.Color();
 const _p = new THREE.Vector3(), _s = new THREE.Vector3();
 
@@ -69,6 +82,9 @@ export class Seg {
     mesh.castShadow = shadow;
     mesh.receiveShadow = false;
     this.group.add(mesh);
+    const ink = new THREE.Mesh(geo, INK);
+    ink.userData.ink = true;
+    this.group.add(ink);
   }
 }
 
@@ -87,7 +103,7 @@ export class Builder {
   /** The engine rocks this pivot in the screen plane (walk sway, falling over). */
   readonly plane = new THREE.Group();
   readonly turn = new THREE.Group();
-  readonly mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.62, metalness: 0.04 });
+  readonly mat = new THREE.MeshToonMaterial({ vertexColors: true, gradientMap: RAMP });
   private segs: { seg: Seg; shadow: boolean }[] = [];
   readonly parts: Record<string, THREE.Group> = {};
   readonly glows: THREE.Mesh[] = [];
@@ -127,6 +143,8 @@ export class Builder {
     this.turn.rotation.y = yaw;
     const rig: Rig = { root: this.root, parts: this.parts, glows: this.glows, t: Math.random() * 6, data: {} };
     const mat = this.mat, glows = this.glows;
+    const inks: THREE.Object3D[] = [];
+    this.root.traverse((o) => { if (o.userData.ink) inks.push(o); });
     const u = this.root.userData;
     u.plane = this.plane;       // engine contract (same as the old billboards)
     u.mat = mat;
@@ -139,6 +157,7 @@ export class Builder {
       // self-lit pieces cannot fade with the body: hide them once it is mostly gone
       const vis = !mat.transparent || mat.opacity > 0.5;
       for (const g of glows) g.visible = vis;
+      for (const o of inks) o.visible = vis;
     };
     u.tick(0);
     return this.root;

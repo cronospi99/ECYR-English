@@ -10,6 +10,7 @@ import { preloadModels } from './models3d';
 import { SFX, setMuted, isMuted } from './audio';
 import { startMusic, stopMusic, isMusicPlaying, getTracks, getTrackSelection, selectTrack } from './music';
 import { bridge } from '../bridge';
+import { isPainted, backdropThumb } from '../backdrops';
 import { ClassHost, ClassClient, joinURL, makeQR, testIce, getTurn, setTurn } from './net';
 
 const musicWanted = () => localStorage.getItem('ed:music') !== 'off';
@@ -918,7 +919,7 @@ function zombieSheet(id) {
       <div class="alm-hero zcard"><img src="${spriteURL(s.sprite)}" alt="${s.name}"></div>
       <div class="alm-title">
         <h3>${s.name}</h3>
-        <div class="alm-chips"><span class="chip zchip">📱 Distraction</span>
+        <div class="alm-chips"><span class="chip zchip">🧟 Phone zombie</span>
           <span class="chip">❤️ ${fmt(s.hp)}</span></div>
         <p>${s.desc}</p>
       </div>
@@ -1480,13 +1481,13 @@ function openMini(mode) {
 function openScenario() {
   const grid = $('scenario-grid');
   grid.innerHTML = '';
-  const cur = (game && game.themeId) || localStorage.getItem('ed:theme') || 'day';
+  const cur = (game && game.themeId) || localStorage.getItem('ld:theme') || 'dusk';
   for (const [id, t] of Object.entries(THEMES)) {
     const b = document.createElement('button');
     b.className = 'scenario-btn' + (id === cur ? ' selected' : '');
     // miniatura del fondo pintado real para que se vea qué escenario eliges
     b.innerHTML =
-      `<img class="sc-thumb" src="/defenders/backgrounds/${id}.sd.webp" alt="" loading="lazy">` +
+      `<img class="sc-thumb" src="${isPainted(id) ? backdropThumb(id) : `/defenders/backgrounds/${id}.sd.webp`}" alt="" loading="lazy">` +
       `<span class="sc-label"><span class="sc-emoji">${t.emoji}</span> ${t.name}</span>`;
     b.addEventListener('click', () => {
       SFX.click();

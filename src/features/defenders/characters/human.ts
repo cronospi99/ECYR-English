@@ -17,6 +17,8 @@ export interface Human {
   /** Arms that keep their pose instead of swinging while walking. */
   hold?: 'L' | 'R' | 'both';
   lean?: number;
+  /** Undead: sunken sockets with eyes that glow in this colour, stitches and a toothy jaw. */
+  zombie?: number;
   /** Which arm throws when the defender fires. */
   thrower?: 'L' | 'R' | 'both' | 'none';
 }
@@ -79,11 +81,15 @@ export function human(b: Builder, o: Human): Limbs {
   head.add('sph', skin, [0, 0, 0], [R, R * 0.96, R * 0.97]);
   head.add('sph', skin, [-R, -0.01, 0], [0.03, 0.045, 0.035]);
   head.add('sph', skin, [R, -0.01, 0], [0.03, 0.045, 0.035]);
-  head.add('sph', shade(skin, 0.9), [0, -0.03, 0.19], 0.022);
+  if (o.zombie != null) { head.add('sph', 0x1a0a2e, [-0.011, -0.03, 0.184], [0.009, 0.02, 0.012]); head.add('sph', 0x1a0a2e, [0.011, -0.03, 0.184], [0.009, 0.02, 0.012]); }
+  else head.add('sph', shade(skin, 0.9), [0, -0.03, 0.19], 0.022);
   const f = o.face ?? 'happy';
   for (const side of [-1, 1]) {
     const x = side * 0.068;
-    if (o.shades == null) {
+    if (o.zombie != null) {
+      head.add('sph', 0x1a0a2e, [x, 0.018, 0.15], [0.058, 0.064, 0.036]);
+      if (o.shades == null) b.glow('head', 'sph', o.zombie, [x, 0.018, 0.176], [0.033, 0.037, 0.016]);
+    } else if (o.shades == null) {
       head.add('sph', WHITE, [x, 0.015, 0.16], [0.039, 0.047, 0.028]);
       head.add('sph', DARK, [x + (f === 'smirk' ? 0.008 : 0), f === 'bored' ? 0.002 : 0.014, 0.18], 0.02);
       head.add('sph', WHITE, [x + 0.008, 0.024, 0.196], 0.006);
@@ -94,13 +100,20 @@ export function human(b: Builder, o: Human): Limbs {
     else if (f === 'focus') head.add('box', brow, [x, 0.082, 0.184], [0.075, 0.018, 0.02], [0, 0, side * 0.2]);
     else if (f !== 'bored') head.add('box', brow, [x, 0.094, 0.178], [0.07, 0.015, 0.02], [0, 0, side * -0.14]);
   }
-  if (f === 'happy') { head.add('sph', 0x7a2a2a, [0, -0.088, 0.168], [0.05, 0.026, 0.02]); head.add('sph', 0xf08a8a, [0, -0.098, 0.172], [0.03, 0.012, 0.016]); }
+  if (o.zombie != null) {
+    // lipless grin: a dark jaw with a row of uneven teeth, a scar and stitches
+    head.add('box', 0x1a0a2e, [0, -0.092, 0.17], [0.12, 0.04, 0.03]);
+    for (let i = 0; i < 5; i++) head.add('box', 0xf2ecc8, [-0.044 + i * 0.022, -0.088 + (i % 2) * 0.006, 0.186], [0.016, 0.026 - (i % 2) * 0.006, 0.012]);
+    head.add('box', 0xb8234a, [0.085, 0.115, 0.15], [0.012, 0.06, 0.012], [0, 0, 0.5]);
+    for (let i = 0; i < 3; i++) head.add('box', 0x1a0a2e, [0.07 + i * 0.016, 0.1 + i * 0.016, 0.153], [0.03, 0.007, 0.01], [0, 0, -1.0]);
+    head.add('sph', shade(skin, 0.72), [-0.11, -0.04, 0.13], [0.03, 0.045, 0.016]);
+  } else if (f === 'happy') { head.add('sph', 0x7a2a2a, [0, -0.088, 0.168], [0.05, 0.026, 0.02]); head.add('sph', 0xf08a8a, [0, -0.098, 0.172], [0.03, 0.012, 0.016]); }
   else if (f === 'angry') { head.add('box', 0x5a1a1a, [0, -0.092, 0.172], [0.085, 0.03, 0.02]); head.add('box', WHITE, [0, -0.086, 0.178], [0.07, 0.012, 0.016]); }
   else if (f === 'shout') { head.add('sph', 0x5a1a1a, [0, -0.092, 0.166], [0.05, 0.05, 0.022]); head.add('box', WHITE, [0, -0.064, 0.176], [0.05, 0.012, 0.016]); }
   else if (f === 'bored') head.add('box', 0x6a3a34, [0, -0.09, 0.176], [0.045, 0.012, 0.016]);
   else if (f === 'smirk') head.add('box', 0x6a2a2a, [0.012, -0.088, 0.174], [0.06, 0.014, 0.016], [0, 0, 0.22]);
   else head.add('box', 0x6a3a34, [0, -0.09, 0.176], [0.035, 0.014, 0.016]);
-  if (f === 'happy' || f === 'smirk') for (const s of [-1, 1]) head.add('sph', 0xf29a9a, [s * 0.115, -0.045, 0.138], [0.03, 0.02, 0.016]);
+  if (o.zombie == null && (f === 'happy' || f === 'smirk')) for (const s of [-1, 1]) head.add('sph', 0xf29a9a, [s * 0.115, -0.045, 0.138], [0.03, 0.02, 0.016]);
 
   if (o.glasses != null) {
     for (const s of [-1, 1]) head.ring(o.glasses, 0.05, 0.009, [s * 0.068, 0.015, 0.19]);

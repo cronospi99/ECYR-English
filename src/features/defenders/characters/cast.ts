@@ -384,7 +384,7 @@ const profThesis: Make = (h) => {
 /** The Scroller — eyes on the screen, feet on autopilot. */
 const scroller: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: SKIN.fair, shirt: 0x5b6b8c, pants: 0x2f3545, hair: 0x2a1a14, style: 'hood', hat: 0x5b6b8c, face: 'bored', shoes: 0xf4f4f8, armL: [-1.45, 0, 0.45], armR: [-1.45, 0, -0.45], hold: 'both', lean: 0.16 });
+  const L = human(b, { skin: 0x5fe0d2, zombie: 0xfff2a0, shirt: 0x5b6b8c, pants: 0x2f3545, hair: 0x2a1a14, style: 'hood', hat: 0x5b6b8c, face: 'bored', shoes: 0xf4f4f8, armL: [-1.45, 0, 0.45], armR: [-1.45, 0, -0.45], hold: 'both', lean: 0.16 });
   L.torso.add('sph', 0xe5484d, [0, 0.14, -0.13], [0.12, 0.15, 0.08]);
   L.torso.add('box', 0xb8333a, [0, 0.1, -0.2], [0.14, 0.09, 0.03]);
   L.torso.add('box', 0x4a5873, [0, 0.07, 0.12], [0.17, 0.07, 0.03]);
@@ -395,7 +395,7 @@ const scroller: Make = (h) => {
 /** The Streamer — leads the wave, filming everything with a ring light. */
 const streamer: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: SKIN.tan, shirt: 0xff5fa2, pants: 0xf4f4f8, hair: 0xf2d16b, style: 'long', shades: 0x1c1a22, face: 'happy', shoes: 0xff5fa2, armR: [-2.2, 0, 0.5], hold: 'R', armL: [0, 0, -0.6] });
+  const L = human(b, { skin: 0x8fe89a, zombie: 0xff6ab8, shirt: 0xff5fa2, pants: 0xf4f4f8, hair: 0xf2d16b, style: 'long', shades: 0x1c1a22, face: 'happy', shoes: 0xff5fa2, armR: [-2.2, 0, 0.5], hold: 'R', armL: [0, 0, -0.6] });
   L.torso.add('box', 0xffd23f, [0, 0.19, 0.122], [0.1, 0.06, 0.01]);
   L.armR.cap(0x8892a6, [0, -0.28, 0], [0, -0.56, 0.05], 0.012);
   L.armR.ring(0xd8dde6, 0.12, 0.014, [0, -0.66, 0.07], [0.3, 0, 0]);
@@ -408,7 +408,7 @@ const streamer: Make = (h) => {
 /** The Gamer — headset on, hears nothing. Takes more convincing. */
 const gamer: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: SKIN.brown, shirt: 0x1f2230, pants: 0x3a3f55, hair: 0x15131a, style: 'short', face: 'focus', shoes: 0x7dff6a, armL: [-1.25, 0, 0.5], armR: [-1.25, 0, -0.5], hold: 'both', lean: 0.08 });
+  const L = human(b, { skin: 0x52c8dc, zombie: 0x7dff6a, shirt: 0x1f2230, pants: 0x3a3f55, hair: 0x15131a, style: 'short', face: 'focus', shoes: 0x7dff6a, armL: [-1.25, 0, 0.5], armR: [-1.25, 0, -0.5], hold: 'both', lean: 0.08 });
   L.head.ring(0x2b2b33, 0.205, 0.022, [0, 0.02, 0], [0, Math.PI / 2, 0], Math.PI);
   for (const s of [-1, 1]) { L.head.add('cyl', 0x2b2b33, [s * 0.2, 0, 0], [0.075, 0.05, 0.075], [0, 0, 1.57]); b.glow('head', 'cyl', 0x7dff6a, [s * 0.228, 0, 0], [0.04, 0.008, 0.04], [0, 0, 1.57]); }
   L.head.cap(0x2b2b33, [-0.2, -0.03, 0.02], [-0.12, -0.09, 0.17], 0.012);
@@ -424,7 +424,7 @@ const gamer: Make = (h) => {
 /** The Angry Dad — calm while he reads the report card… furious when it sinks in. */
 const angryDad: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: 0xe89a80, shirt: 0xdfe8f5, pants: 0x4a4038, hair: 0x4a3a2a, style: 'bald', mustache: 0x3a2a1e, face: 'angry', bulk: 1.18, armR: [-1.7, 0, 0.1], hold: 'R', armL: [0, 0, -0.5] });
+  const L = human(b, { skin: 0xa8c8dc, zombie: 0xfff2a0, shirt: 0xdfe8f5, pants: 0x4a4038, hair: 0x4a3a2a, style: 'bald', mustache: 0x3a2a1e, face: 'angry', bulk: 1.18, armR: [-1.7, 0, 0.1], hold: 'R', armL: [0, 0, -0.5] });
   L.head.add('sph', 0x4a3a2a, [0, 0.02, -0.06], [0.2, 0.12, 0.17]);
   L.torso.add('box', 0xb8333a, [0.01, 0.15, 0.15], [0.04, 0.2, 0.02], [0, 0, -0.12]);
   L.torso.add('box', 0x2b2b33, [0, 0.03, 0.14], [0.26, 0.03, 0.03]);
@@ -438,20 +438,20 @@ const angryDad: Make = (h) => {
 /** The Angry Mom — her handbag is a shield and she is not leaving without answers. */
 const angryMom: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: SKIN.tan, shirt: 0x8f5ad8, pants: 0x6a3fa8, hair: 0x5a2a1e, style: 'rollers', face: 'angry', skirt: 0x8f5ad8, bulk: 1.12, shoes: 0xff8fb8, armL: [-1.35, 0, 0.3], armR: [-2.5, 0, -0.3], hold: 'both' });
+  const L = human(b, { skin: 0x7de0a8, zombie: 0xfff2a0, shirt: 0x8f5ad8, pants: 0x6a3fa8, hair: 0x5a2a1e, style: 'rollers', face: 'angry', skirt: 0x8f5ad8, bulk: 1.12, shoes: 0xff8fb8, armL: [-1.35, 0, 0.3], armR: [-2.5, 0, -0.3], hold: 'both' });
   L.torso.ring(0xf7f4ec, 0.095, 0.014, [0, 0.29, 0.02], [1.35, 0, 0]);
   L.armL.add('box', 0xc9862a, [0.06, -0.42, 0.06], [0.34, 0.27, 0.12]);
   L.armL.add('box', 0xa86a1a, [0.06, -0.31, 0.06], [0.36, 0.06, 0.13]);
   L.armL.add('sph', GOLD, [0.06, -0.34, 0.13], 0.03);
   L.armL.ring(0xa86a1a, 0.09, 0.014, [0.06, -0.25, 0.06], [0, 0, 0], Math.PI);
-  L.armR.add('box', SKIN.tan, [0, -0.33, 0], [0.025, 0.09, 0.025]);
+  L.armR.add('box', 0x7de0a8, [0, -0.33, 0], [0.025, 0.09, 0.025]);
   return b.finish(h, YAW_E, humanTick);
 };
 
 /** The Ñero — fast, loud and always in a hurry to cut class. */
 const nero: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: SKIN.brown, shirt: 0xf4f4f8, pants: 0x2a3550, hair: 0x15131a, style: 'capSide', hat: 0xe5333a, face: 'smirk', shorts: true, shoes: 0xf4f4f8, bulk: 1.08, armL: [0.2, 0, -0.5], armR: [0.2, 0, 0.5], lean: 0.2 });
+  const L = human(b, { skin: 0x4fd6c4, zombie: 0xffb02e, shirt: 0xf4f4f8, pants: 0x2a3550, hair: 0x15131a, style: 'capSide', hat: 0xe5333a, face: 'smirk', shorts: true, shoes: 0xf4f4f8, bulk: 1.08, armL: [0.2, 0, -0.5], armR: [0.2, 0, 0.5], lean: 0.2 });
   L.torso.add('cyl', 0x1f8f4a, [0, 0.17, 0], [0.139, 0.05, 0.139]);
   L.torso.add('cyl', 0x1f8f4a, [0, 0.09, 0], [0.139, 0.03, 0.139]);
   L.torso.ring(GOLD, 0.085, 0.013, [0, 0.25, 0.05], [1.05, 0, 0]);
@@ -466,7 +466,7 @@ const nero: Make = (h) => {
 /** The Drone Rider — skips the corridor altogether by flying over it. */
 const droneRider: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: SKIN.fair, shirt: 0xffb02e, pants: 0x3a4660, hair: 0x6a3a1a, style: 'beanie', hat: 0x2bb673, face: 'happy', shoes: 0xe5333a, armL: [-3.0, 0, 0.25], armR: [-3.0, 0, -0.25], hold: 'both' });
+  const L = human(b, { skin: 0x9aee6a, zombie: 0xfff2a0, shirt: 0xffb02e, pants: 0x3a4660, hair: 0x6a3a1a, style: 'beanie', hat: 0x2bb673, face: 'happy', shoes: 0xe5333a, armL: [-3.0, 0, 0.25], armR: [-3.0, 0, -0.25], hold: 'both' });
   L.torso.add('box', 0x2b2b33, [0, 0.16, 0.12], [0.1, 0.1, 0.02]);
   const d = b.part('drone', 'turn', [0, 1.1, 0]);
   d.add('box', 0x2b2b33, [0, 0, 0], [0.2, 0.07, 0.16]);
@@ -497,7 +497,7 @@ const droneRider: Make = (h) => {
 /** The Drifter — wandered in off the street with all his things. Slow, and very hard to move. */
 const drifter: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: SKIN.tan, shirt: 0x7a6a4a, pants: 0x4a4a3a, hair: 0x6a5a4a, style: 'beanie', hat: 0x8a3a2a, beard: 0x6a5a4a, face: 'bored', coat: 0x6b7a4a, bulk: 1.15, shoes: 0x5a4030, armR: [-1.1, 0, 0.1], hold: 'R', armL: [0, 0, -0.4], lean: 0.12 });
+  const L = human(b, { skin: 0x9ab8d0, zombie: 0x9af0ff, shirt: 0x7a6a4a, pants: 0x4a4a3a, hair: 0x6a5a4a, style: 'beanie', hat: 0x8a3a2a, beard: 0x6a5a4a, face: 'bored', coat: 0x6b7a4a, bulk: 1.15, shoes: 0x5a4030, armR: [-1.1, 0, 0.1], hold: 'R', armL: [0, 0, -0.4], lean: 0.12 });
   L.torso.add('box', 0xc9a05a, [-0.09, 0.08, 0.125], [0.07, 0.07, 0.01], [0, 0, 0.2]);
   L.torso.add('box', 0x8a3a2a, [0.1, 0.19, 0.125], [0.06, 0.05, 0.01], [0, 0, -0.3]);
   L.torso.ring(0xb8333a, 0.1, 0.028, [0, 0.3, 0.02], [1.45, 0, 0]);
@@ -512,7 +512,7 @@ const drifter: Make = (h) => {
 /** El Duro — the boss of the block, with a speaker that fills two corridors. */
 const boss: Make = (h) => {
   const b = new Builder();
-  const L = human(b, { skin: SKIN.deep, shirt: 0x1c1a22, sleeve: SKIN.deep, pants: 0x3a4a7a, hair: 0x15131a, style: 'bald', hat: 0xe5333a, shades: 0x101014, beard: 0x15131a, face: 'smirk', bulk: 1.45, shoes: 0xf4f4f8, armR: [-2.6, 0, 0.35], hold: 'R', armL: [0.1, 0, -0.5], lean: 0.05 });
+  const L = human(b, { skin: 0x45c4b4, zombie: 0xff4d5e, shirt: 0x1c1a22, sleeve: 0x45c4b4, pants: 0x3a4a7a, hair: 0x15131a, style: 'bald', hat: 0xe5333a, shades: 0x101014, beard: 0x15131a, face: 'smirk', bulk: 1.45, shoes: 0xf4f4f8, armR: [-2.6, 0, 0.35], hold: 'R', armL: [0.1, 0, -0.5], lean: 0.05 });
   L.head.add('cyl', 0xe5333a, [0, 0.085, 0], [0.198, 0.06, 0.196]);
   L.head.add('box', 0xe5333a, [0.05, 0.08, -0.2], [0.04, 0.05, 0.12], [0.5, 0, 0.3]);
   L.head.add('box', 0xe5333a, [-0.05, 0.08, -0.2], [0.04, 0.05, 0.12], [0.5, 0, -0.3]);
