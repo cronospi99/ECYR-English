@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import {
   ArrowLeft,
@@ -21,6 +21,7 @@ import {
   Pencil,
   Plus,
   Printer,
+  QrCode,
   RotateCcw,
   Archive,
   Trash2,
@@ -29,6 +30,8 @@ import {
 } from 'lucide-react';
 import { Button, ButtonLink } from '@/components/ui/Button';
 import { Spinner } from '@/components/ui/Misc';
+import { JoinQr, QrOverlay } from '@/components/ui/JoinQr';
+import { useAuth } from '@/store/auth';
 import { Sheet } from '@/features/portfolio/Sheet';
 import { cn } from '@/lib/cn';
 import {
@@ -61,6 +64,12 @@ export default function BoardPage() {
   const { id = '' } = useParams();
   const api = useLiveBoard(id);
   const { bundle, fatal, loading } = api;
+  const [params] = useSearchParams();
+  const loc = useLocation();
+  const profile = useAuth((s) => s.profile);
+  // The board QR carries the class code (?c=) so a student who is not in the class yet can join it here.
+  const classCode = (params.get('c') ?? '').trim().toUpperCase() || null;
+  const next = loc.pathname + loc.search;
 
   useEffect(() => {
     requestAnimationFrame(() => window.dispatchEvent(new Event('app:ready')));
@@ -73,7 +82,10 @@ export default function BoardPage() {
     };
   }, [bundle?.board.title]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (fatal && !bundle) return <FatalState kind={fatal.kind} message={fatal.message} />;
+  if (fatal && !bundle) {
+    if (fatal.kind === 'not_found' && classCode && profile?.role === 'student' && !profile.teacher_id) return <JoinClassState code={classCode} />;
+    return <FatalState kind={fatal.kind} message={fatal.message} next={next} />;
+  }
   if (loading || !bundle)
     return (
       <div className="bg-bg text-label-2 relative flex h-dvh flex-col items-center justify-center gap-3">
@@ -95,6 +107,10 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
   const [openId, setOpenId] = useState<string | null>(null);
   const [dismissedSpot, setDismissedSpot] = useState<string | null>(null);
   const [accessOpen, setAccessOpen] = useState(false);
+  const [qrOpen, setQrOpen] = useState(false);
+  const [qrCorner, setQrCorner] = useState(true);
+  const myClass = useAuth((s) => s.profile?.class_code ?? null);
+  const joinUrl = boardJoinUrl(board.id, isTeacher ? myClass : null);
   const spotRef = useRef<((w?: number, h?: number) => { x: number; y: number }) | null>(null);
   const selectRef = useRef<((id: string) => void) | null>(null);
 
@@ -191,6 +207,7 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
         onLock={() => void api.setBoard({ locked: !board.locked })}
         onClose={(c) => void api.close(c)}
         onAccess={() => setAccessOpen(true)}
+        onQr={() => setQrOpen(true)}
         say={api.say}
         images={api.images}
       />
@@ -350,6 +367,30 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
         )}
       </AnimatePresence>
 
+      {isTeacher && presenting && !closed && (
+        <div className="bg-card shadow-float fixed bottom-4 left-4 z-[60] flex items-center gap-3 rounded-[22px] p-2.5 pr-4">
+          {qrCorner ? (
+            <>
+              <JoinQr url={joinUrl} code={myClass ?? undefined} title={board.title} size={128} label="Show the QR full screen" />
+              <div className="flex max-w-[150px] flex-col gap-1">
+                <span className="text-[17px] leading-tight font-black">Scan to join</span>
+                <span className="text-label-2 text-[13px] leading-snug">Escanea con la cámara del celular</span>
+                {myClass && <span className="font-mono text-[18px] font-black tracking-[0.12em]">{myClass}</span>}
+                <button type="button" onClick={() => setQrCorner(false)} className="text-label-2 hover:text-label mt-1 self-start text-[12px] font-semibold underline">
+                  Hide
+                </button>
+              </div>
+            </>
+          ) : (
+            <button type="button" onClick={() => setQrCorner(true)} className="flex items-center gap-1.5 text-[14px] font-bold" aria-label="Show the join QR">
+              <QrCode size={20} /> QR
+            </button>
+          )}
+        </div>
+      )}
+
+      {qrOpen && <QrOverlay url={joinUrl} caption={isTeacher ? (myClass ?? undefined) : undefined} title={board.title} onClose={() => setQrOpen(false)} />}
+
       {isTeacher && bundle.v2 && (
         <AccessSheet
           open={accessOpen}
@@ -419,6 +460,7 @@ function TopBar({
   onLock,
   onClose,
   onAccess,
+  onQr,
   say,
   images,
 }: {
@@ -433,6 +475,7 @@ function TopBar({
   onLock: () => void;
   onClose: (closed: boolean) => void;
   onAccess: () => void;
+  onQr: () => void;
   say: (m: string) => void;
   images: Record<string, { url: string }>;
 }) {
@@ -490,6 +533,9 @@ function TopBar({
         <div className="flex shrink-0 items-center gap-0.5 sm:gap-1">
           <IconBtn label={board.show_names ? 'Hide names' : 'Show names'} onClick={onNames} active={!board.show_names} tone="var(--indigo)" wideLabel={board.show_names ? 'Names' : 'Anonymous'}>
             {board.show_names ? <Eye size={20} /> : <EyeOff size={20} />}
+          </IconBtn>
+          <IconBtn label="Join QR" onClick={onQr} wideLabel="QR">
+            <QrCode size={20} />
           </IconBtn>
           {!presenting && (
             <>
@@ -810,7 +856,7 @@ function Spotlight({
 }
 
 // ----------------------------------------------------------- full states ----
-function FatalState({ kind, message }: { kind: string; message: string }) {
+function FatalState({ kind, message, next }: { kind: string; message: string; next?: string }) {
   const map: Record<string, { icon: ReactNode; title: string; tone: string }> = {
     offline: { icon: <WifiOff size={34} />, title: 'You need a connection', tone: 'var(--orange)' },
     network: { icon: <WifiOff size={34} />, title: 'Offline', tone: 'var(--orange)' },
@@ -838,7 +884,7 @@ function FatalState({ kind, message }: { kind: string; message: string }) {
         </p>
         <div className="mt-2 flex gap-2">
           {kind === 'denied' ? (
-            <ButtonLink to="/profile">Sign in</ButtonLink>
+            <ButtonLink to={next ? `/profile?next=${encodeURIComponent(next)}` : '/profile'}>Sign in</ButtonLink>
           ) : (
             <ButtonLink to="/boards" variant="gray">
               <ChevronLeft size={18} /> Boards
@@ -848,6 +894,51 @@ function FatalState({ kind, message }: { kind: string; message: string }) {
       </motion.div>
     </div>
   );
+}
+
+/** A student scanned the QR of a board from a class they have not joined yet. */
+function JoinClassState({ code }: { code: string }) {
+  const joinClass = useAuth((s) => s.joinClass);
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  return (
+    <div className="bg-bg text-label relative flex h-dvh items-center justify-center p-6">
+      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="bg-card shadow-card flex w-full max-w-[420px] flex-col items-center gap-3 rounded-[28px] p-8 text-center">
+        <span className="flex h-20 w-20 items-center justify-center rounded-[24px] text-[34px]" style={{ background: 'color-mix(in srgb, var(--green) 16%, transparent)' }}>
+          🏫
+        </span>
+        <h1 className="text-title-2">Join the class</h1>
+        <p className="text-label-2 text-[15px]">
+          Este muro es de la clase <span className="text-label font-mono font-bold tracking-widest">{code}</span>. Únete para entrar.
+        </p>
+        {err && <p className="text-ink-red text-[14px] font-semibold">{err}</p>}
+        <div className="mt-2 flex gap-2">
+          <ButtonLink to="/boards" variant="gray">
+            <ChevronLeft size={18} /> Boards
+          </ButtonLink>
+          <Button
+            disabled={busy}
+            onClick={async () => {
+              setBusy(true);
+              setErr(null);
+              const e = await joinClass(code);
+              if (e) {
+                setBusy(false);
+                setErr(e);
+              } else window.location.replace(window.location.pathname);
+            }}
+          >
+            {busy ? <Spinner className="h-5 w-5" /> : 'Join and enter'}
+          </Button>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+/** What the board QR opens: the board itself, plus the class code so newcomers can join the class. */
+function boardJoinUrl(id: string, classCode: string | null) {
+  return `${location.origin}/board/${id}${classCode ? `?c=${encodeURIComponent(classCode)}` : ''}`;
 }
 
 // ---------------------------------------------------------------- export ----
