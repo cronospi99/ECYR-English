@@ -7,6 +7,8 @@ import { makeBillboard, makeGlowSprite, makeLabelSprite, setLabel, spriteTex } f
 import { modelsReady, makeBuilding } from './models3d';
 import { SFX } from './audio';
 import { isPainted, paintBackdrop } from '../backdrops';
+import { Scenery } from '../scenery';
+import { post } from '../look';
 
 export const ROWS = 5, COLS = 9;
 // Borde norte del suelo = línea de la cerca. El fondo pintado arranca aquí.
@@ -402,12 +404,14 @@ export class Game {
     this.boardMesh = board;
 
     // cada pieza de piedra con su textura repetida según sus dimensiones (sin estiramientos)
+    this.stones = [];
     const stonePiece = (w, d, x, z, y = 0.01, h = 0.06) => {
       const mat = new THREE.MeshStandardMaterial({ map: makeStoneTexture([w / 1.15, d / 1.15]), roughness: 0.9 });
       const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
       b.position.set(x, y, z);
       b.receiveShadow = true;
       this.scene.add(b);
+      this.stones.push(b);
     };
     stonePiece(2.4, ROWS + 2.2, COLS / 2 + 1.1, 0);            // camino de los zombies
     stonePiece(COLS + 1.6, 0.8, 0, -(ROWS / 2) - 0.4, 0.005, 0.055); // marco norte
@@ -486,6 +490,7 @@ export class Game {
     this._onResize = () => {
       this._fitCamera();
       this.renderer.setSize(innerWidth, innerHeight);
+      this.post?.setSize(innerWidth, innerHeight);
     };
     addEventListener('resize', this._onResize);
     this.renderer.setSize(innerWidth, innerHeight);
@@ -494,6 +499,15 @@ export class Game {
     // reconstruye al cambiar de escenario
     this.decor3D = new THREE.Group();
     this.scene.add(this.decor3D);
+
+    // the haunted set (code-made ground, fence, graves, gate, mist) and the bloom pass
+    this.scenery = new Scenery(this.scene, this.renderer, COLS, ROWS, {
+      ground: this.groundMesh, board: this.boardMesh, stones: this.stones, fences: this.fences, clouds: this.clouds,
+      hemi: this.hemi, sun: this.sunLight, wall: this.bgWall,
+    });
+    try { this.post = post(this.renderer, this.scene, this.camera); } catch { this.post = null; }
+    if (localStorage.getItem('ld:gfx') === 'low' && this.post) this.post.enabled = false;
+    this._slow = 0;
 
     // aplica el escenario guardado (fondo/luces/tablero)
     this.setTheme(localStorage.getItem('ld:theme') || 'dusk');
@@ -542,6 +556,8 @@ export class Game {
     }
     if (this.hemi) { this.hemi.color.set(th.hemiSky); this.hemi.groundColor.set(th.hemiGround); this.hemi.intensity = th.hemiI; }
     if (this.sunLight) { this.sunLight.color.set(th.sun); this.sunLight.intensity = th.sunI; }
+    if (this.scene.fog) { this.scene.fog.near = 22; this.scene.fog.far = 45; }
+    this.scenery?.apply(t);
     // escenografía 3D acorde al escenario (casa/castillo + árboles y naturaleza)
     this._buildDecor3D(t);
   }
@@ -578,6 +594,7 @@ export class Game {
         b.position.set(isCastle ? -8.0 : -7.5, 0, -0.3);
         b.rotation.y = Math.PI / 2; // mira al este, hacia los zombies
         this.decor3D.add(b);
+        if (this.scenery?.active) this.scenery.haunt(b);
       }
     }
 
@@ -702,6 +719,8 @@ export class Game {
       const ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];
       for (const m of ms) m.dispose?.();
     });
+    this.scenery?.dispose();
+    this.post?.dispose();
     this.renderer.dispose();
     this.renderer.forceContextLoss?.();
   }
@@ -1508,7 +1527,17 @@ export class Game {
       this._updateParticles(rawDt);
       this._updateFlashes(rawDt);
     }
-    this.renderer.render(this.scene, this.camera);
+    this.scenery?.update(rawDt);
+    if (this.post) this.post.render(); else this.renderer.render(this.scene, this.camera);
+    // weak device: after a few slow seconds, drop the bloom pass for good
+    if (this.post?.enabled) {
+      this._slow = rawDt > 0.045 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);
+      if (this._slow > 4) { this.post.enabled = false; this._slow = 0; this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25)); this.renderer.setSize(innerWidth, innerHeight); }
+    } else if (this.post && !this._lowest && localStorage.getItem('ld:gfx') !== 'low') {
+      // still struggling without bloom: native resolution and no shadow maps
+      this._slow = rawDt > 0.05 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);
+      if (this._slow > 5) { this._lowest = true; this.renderer.setPixelRatio(1); this.renderer.setSize(innerWidth, innerHeight); this.renderer.shadowMap.enabled = false; this.scene.traverse((o) => { if (o.material) o.material.needsUpdate = true; }); }
+    }
   }
 
   _updateSpawning(dt) {

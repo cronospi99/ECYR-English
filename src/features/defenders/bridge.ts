@@ -2,7 +2,7 @@
    directly because this game runs inside the app. */
 import { reportNativeGame } from '@/lib/gameBridge';
 
-const SLUG = 'english-defenders'; // kept: progress and history are stored under this id
+const SLUG = 'language-defenders';
 
 interface Meta { mode?: string; level?: string; unit?: string | number; meta?: Record<string, unknown> }
 interface Result extends Meta { won?: boolean; asked?: number; correct?: number; stars?: number; score?: number }

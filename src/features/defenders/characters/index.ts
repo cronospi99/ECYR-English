@@ -2,15 +2,23 @@
    and the almanac. */
 import * as THREE from 'three';
 import { CAST } from './cast';
-import { blobShadow } from './builder';
+import { blobShadow, Builder, QUALITY } from './builder';
+import { environment } from '../look';
 
 export const isCharacter = (name: string) => name in CAST;
 
 /** Character standing on the ground, `height` world units tall, with a soft contact shadow. */
-export function makeCharacter(name: string, height: number, shadow = true): THREE.Group {
-  const g = CAST[name](height);
+export function makeCharacter(name: string, height: number, shadow = true, cell = 1.3): THREE.Group {
+  const g = build(name, height, cell);
   if (shadow) g.add(blobShadow(height * 0.85, height * 0.5));
   return g;
+}
+
+/** `cell` scales the sculpt's mesh density: 1 for close-ups, 1.3 for the board. */
+function build(name: string, height: number, cell: number): THREE.Group {
+  Builder.key = name;
+  QUALITY.cell = cell;
+  try { return CAST[name](height); } finally { Builder.key = ''; QUALITY.cell = 1; }
 }
 
 const portraits = new Map<string, string>();
@@ -28,13 +36,15 @@ export function renderPortraits(size = 256): void {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
   const scene = new THREE.Scene();
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x8a94b0, 1.25));
-  const key = new THREE.DirectionalLight(0xfff4dc, 2.2); key.position.set(2.5, 4, 5); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x9ad0ff, 1.1); rim.position.set(-4, 2, -3); scene.add(rim);
+  scene.environment = environment(renderer, { top: 0x6a5acd, horizon: 0xffc8e0, ground: 0x3a2a5a, key: 0xfff0dc, rim: 0xff5fc0, fill: 0x6fe6ff });
+  scene.environmentIntensity = 0.85;
+  const key = new THREE.DirectionalLight(0xfff4e6, 2.4); key.position.set(2.5, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xff6ad0, 1.6); rim.position.set(-4, 2.5, -3); scene.add(rim);
+  const fill = new THREE.DirectionalLight(0x6fe6ff, 0.7); fill.position.set(-3, 0.5, 4); scene.add(fill);
   const cam = new THREE.PerspectiveCamera(26, 1, 0.1, 50);
   const box = new THREE.Box3(), c = new THREE.Vector3(), s = new THREE.Vector3();
   for (const name of Object.keys(CAST)) {
-    const g = CAST[name](1);
+    const g = build(name, 1, 1);
     // portraits look at the viewer a little more than the board pose does
     const u = g.userData;
     (u.rig.parts.turn as THREE.Group).rotation.y = (u.baseYaw as number) * 0.55;
@@ -48,8 +58,8 @@ export function renderPortraits(size = 256): void {
     renderer.render(scene, cam);
     portraits.set(name, canvas.toDataURL('image/png'));
     scene.remove(g);
-    g.traverse((o) => { const m = o as THREE.Mesh; m.geometry?.dispose?.(); });
   }
+  scene.environment.dispose();
   renderer.dispose();
   renderer.forceContextLoss();
 }

@@ -67,10 +67,10 @@ export const MODE_INFO = {
 export const DEFAULT_MODE = 'grammar';
 export const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1'];
 export function questionMode() {
-  const m = localStorage.getItem('ed:qmode');
+  const m = localStorage.getItem('ld:qmode');
   return MODES.includes(m) ? m : DEFAULT_MODE;
 }
-export function setQuestionMode(m) { if (MODES.includes(m)) localStorage.setItem('ed:qmode', m); }
+export function setQuestionMode(m) { if (MODES.includes(m)) localStorage.setItem('ld:qmode', m); }
 
 // Reparte los pasajes entre las frases al ritmo pedido (ratio = proporción deseada de
 // pasajes). Si un formato se agota antes, el resto se añade al final: nunca se pierden
@@ -91,8 +91,8 @@ function blend(sent, pass, ratio) {
 }
 
 // Toggle: mostrar las explicaciones gramaticales en español
-export function tipsES() { return localStorage.getItem('ed:tips-es') !== 'off'; }
-export function setTipsES(on) { localStorage.setItem('ed:tips-es', on ? 'on' : 'off'); }
+export function tipsES() { return localStorage.getItem('ld:tips-es') !== 'off'; }
+export function setTipsES(on) { localStorage.setItem('ld:tips-es', on ? 'on' : 'off'); }
 
 function shuffle(arr) {
   const a = arr.slice();

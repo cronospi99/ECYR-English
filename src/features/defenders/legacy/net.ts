@@ -2,7 +2,7 @@
 import qrcode from 'qrcode-generator';
 // Class Mode — multijugador P2P con PeerJS (docente = host, estudiantes = clientes).
 // Usa window.Peer (vendor/peerjs.min.js) y la nube pública de señalización de PeerJS.
-const PREFIX = 'edef-english-defenders-';
+const PREFIX = 'ldef-language-defenders-';
 const MAX_PLAYERS = 7;
 
 // Servidores ICE: STUN para descubrir IPs y TURN para relevar el tráfico cuando
@@ -39,7 +39,7 @@ const LEGACY_TURN = {
    en el navegador del docente y de los alumnos (cada uno lo pone una vez), o se
    pasa por la URL, que es lo cómodo para repartirlo con el QR:
      ...?turn=turn:mi.servidor:3478&turnuser=USUARIO&turnpass=CLAVE            */
-const TURN_KEY = 'ed:turn';
+const TURN_KEY = 'ld:turn';
 export function getTurn() {
   const p = new URLSearchParams(location.search);
   const url = p.get('turn');

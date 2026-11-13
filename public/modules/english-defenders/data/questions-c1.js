@@ -1,0 +1,150 @@
+// Banco de preguntas Nivel C1 — English Defenders
+// Autor: Teacher Esteban Yepes
+
+export const QUESTIONS_C1 = {
+ "1-3": [
+  {q:'She promised to look ____ my cat while I\'m away.', o:['after','for','up','out'], a:0, why:'"Look after" = cuidar.'},
+  {q:'The meeting was called ____ at the last minute.', o:['off','out','over','down'], a:0, why:'"Call off" = cancelar.'},
+  {q:'I can\'t ____ up with this noise anymore!', o:['put','get','take','give'], a:0, why:'"Put up with" = tolerar, soportar.'},
+  {q:'He ____ up smoking two years ago.', o:['gave','got','took','put'], a:0, why:'"Give up" = dejar (un hábito).'},
+  {q:'We need to ____ out why the system failed.', o:['figure','put','look after','give'], a:0, why:'"Figure out" = descubrir, entender.'},
+ ],
+ "1-6": [
+  {q:'I distinctly remember ____ the door before leaving.', o:['locking','to lock','lock','locked'], a:0, why:'"Remember + gerundio" = recordar algo ya hecho.'},
+  {q:'Don\'t forget ____ the report tonight.', o:['to send','sending','send','sent'], a:0, why:'"Forget + infinitivo" = olvidar hacer algo pendiente.'},
+  {q:'She stopped ____ coffee for health reasons.', o:['drinking','to drink','drink','drank'], a:0, why:'"Stop + gerundio" = dejar de hacer algo.'},
+  {q:'We stopped ____ gas on the way home.', o:['to get','getting','get','got'], a:0, why:'"Stop + infinitivo" = detenerse para hacer algo.'},
+ ],
+ "2-9": [
+  {q:'The manager made us ____ overtime.', o:['work','to work','working','worked'], a:0, why:'"Make + objeto + verbo base" (sin to).'},
+  {q:'She was made ____ for her mistake.', o:['to apologize','apologize','apologizing','apologized'], a:0, why:'En pasiva, "make" recupera el "to": was made to apologize.'},
+  {q:'They let me ____ early on Fridays.', o:['leave','to leave','leaving','left'], a:0, why:'"Let + objeto + verbo base" (sin to).'},
+  {q:'I\'d rather you ____ smoke in here.', o:["didn't",'don\'t to','not','wouldn\'t to'], a:0, why:'"Would rather + sujeto + pasado simple": I\'d rather you didn\'t.'},
+ ],
+ "2-12": [
+  {q:'____ I need right now is a long vacation.', o:['What','That','Which','It'], a:0, why:'Oración hendida: "What I need is..." enfatiza el objeto.'},
+  {q:'What annoys me most ____ his constant excuses.', o:['is','are','be','were that'], a:0, why:'La cláusula con what es singular: "is".'},
+  {q:'____ she did was apologize and leave.', o:['What','That what','Which','It that'], a:0, why:'"What she did was + verbo" enfatiza la acción.'},
+  {q:'What matters ____ that you tried your best.', o:['is','are','was were','be'], a:0, why:'"What matters is that..." (cláusula singular).'},
+ ],
+ "3-15": [
+  {q:'She plays ____ violin beautifully.', o:['the','a','an','(no article)'], a:0, why:'Instrumentos musicales llevan "the": play the violin.'},
+  {q:'____ honesty is the best policy.', o:['(No article)','The','An','A'], a:0, why:'Sustantivos abstractos generales no llevan artículo.'},
+  {q:'He was arrested for stealing ____ car.', o:['a','the','an','(no article)'], a:0, why:'Primera mención, no específico: "a car".'},
+  {q:'____ rich should pay higher taxes, some argue.', o:['The','A','An','(No article)'], a:0, why:'"The + adjetivo" = grupo de personas (los ricos).'},
+ ],
+ "3-18": [
+  {q:'____ what to say, she remained silent.', o:['Not knowing','Not to know','Knowing not','No know'], a:0, why:'Cláusula -ing negativa: "Not knowing" = al no saber.'},
+  {q:'____ the door, he noticed a strange smell.', o:['Opening','Opened','To opening','Open'], a:0, why:'Cláusula -ing: "Opening the door" = al abrir.'},
+  {q:'____ raised in Italy, she speaks fluent Italian.', o:['Having been','Having','Being had','Been having'], a:0, why:'Pasiva anterior: "Having been raised" = habiendo sido criada.'},
+  {q:'He hurt his back ____ heavy boxes.', o:['lifting','lifted','to lifting','lift'], a:0, why:'Cláusula -ing simultánea: "while lifting" → "lifting".'},
+ ],
+ "4-21": [
+  {q:'The witness ____ that she had seen the suspect.', o:['claimed','told','said her','spoke'], a:0, why:'"Claim that + cláusula" = afirmar.'},
+  {q:'He ____ me that the meeting was postponed.', o:['informed','said','explained to that','claimed to'], a:0, why:'"Inform + persona + that..." lleva objeto.'},
+  {q:'She denied ____ anything about the plan.', o:['knowing','to know','know','that knowing'], a:0, why:'"Deny + gerundio": denied knowing = negó saber.'},
+  {q:'The CEO ____ that profits would rise.', o:['predicted','told','informed','said to'], a:0, why:'"Predict that..." = predecir que.'},
+ ],
+ "4-24": [
+  {q:'It ____ that the painting is a forgery.', o:['is believed','believes','is believing','believed'], a:0, why:'Pasiva impersonal: "It is believed that..."'},
+  {q:'The suspect ____ to have left the country.', o:['is thought','thinks','is thinking','thought'], a:0, why:'"Is thought to have + participio" = se cree que.'},
+  {q:'It ____ reported that the company will merge.', o:['has been','has','is being to','was to'], a:0, why:'"It has been reported that..." reporta en pasiva.'},
+  {q:'The results ____ said to be surprising.', o:['are','is','have','were being to'], a:0, why:'"Are said to be" = se dice que son.'},
+ ],
+ "5-27": [
+  {q:'____, the experiment was a complete success.', o:['Surprisingly','Surprised','Surprising','Surprise'], a:0, why:'Adverbio de oración: "Surprisingly" comenta toda la frase.'},
+  {q:'____, I don\'t agree with the decision.', o:['Frankly','Frank','Franked','In frank'], a:0, why:'"Frankly" = hablando con franqueza.'},
+  {q:'____, the meeting has been moved to Friday.', o:['Apparently','Apparent','Appearing','To appear'], a:0, why:'"Apparently" = según parece.'},
+  {q:'____, we arrived just in time for the show.', o:['Fortunately','Fortunate','Fortune','In fortune'], a:0, why:'"Fortunately" = por suerte (comenta la oración).'},
+ ],
+ "5-30": [
+  {q:'It was ____ good movie ____ I watched it twice.', o:['such a / that','so / that','such / than','so a / that'], a:0, why:'"Such + a + adjetivo + sustantivo + that".'},
+  {q:'The test was ____ difficult ____ nobody finished.', o:['so / that','such / that','so a / than','such a / that'], a:0, why:'"So + adjetivo + that".'},
+  {q:'There was ____ much noise that I couldn\'t sleep.', o:['so','such','such a','so a'], a:0, why:'"So much/many + sustantivo + that".'},
+  {q:'They\'re ____ nice people that everyone loves them.', o:['such','so','such a','so much'], a:0, why:'"Such + adjetivo + sustantivo plural + that".'},
+ ],
+ "6-33": [
+  {q:'The more you practice, ____ you get.', o:['the better','better','the best','more better'], a:0, why:'Doble comparativo: "The more..., the better..."'},
+  {q:'The earlier we leave, ____ traffic we\'ll find.', o:['the less','less','the least','the fewer more'], a:0, why:'"The earlier..., the less + incontable".'},
+  {q:'____ he talked, the more confused I became.', o:['The more','More','The most','Much more'], a:0, why:'Estructura paralela: "The more he talked, the more..."'},
+  {q:'The harder the problem, ____ the reward.', o:['the greater','greater','the greatest','more great'], a:0, why:'"The + comparativo, the + comparativo".'},
+ ],
+ "6-36": [
+  {q:'Every morning, he ____ sit by the window with his coffee.', o:['will','would to','is','does to'], a:0, why:'"Will" describe hábitos característicos presentes.'},
+  {q:'When we were kids, she ____ always share her lunch.', o:['would','will','is used','does'], a:0, why:'"Would" para hábitos pasados típicos.'},
+  {q:'Water ____ boil at 100°C at sea level.', o:['will','would','used to','is'], a:0, why:'"Will" también expresa verdades generales predecibles.'},
+  {q:'My grandpa ____ tell the same joke at every dinner.', o:['would','will','is going to','used'], a:0, why:'Hábito pasado repetido y entrañable: "would tell".'},
+ ],
+ "7-39": [
+  {q:'The candidate ____ we interviewed yesterday was excellent.', o:['(no pronoun needed)','who is','which','whose'], a:0, why:'Relativo objeto → se puede omitir: "the candidate (that) we interviewed".'},
+  {q:'The colleague ____ helped me got promoted.', o:['who','(omit the pronoun)','whom','whose'], a:0, why:'Relativo sujeto → NO se puede omitir: "who helped me".'},
+  {q:'Is this the report ____ you mentioned?', o:['that (optional)','who','whose','whom only'], a:0, why:'Objeto de cosa: "that" es opcional aquí.'},
+  {q:'People ____ work night shifts often have sleep issues.', o:['who','(omit the pronoun)','whom','which'], a:0, why:'Sujeto de la relativa: "who" es obligatorio.'},
+ ],
+ "7-42": [
+  {q:'He acts ____ he owned the place.', o:['as if','as','like to','the way to'], a:0, why:'"As if + pasado" = como si (irreal).'},
+  {q:'She sings ____ her mother did.', o:['the way','as if','as though to','like that'], a:0, why:'"The way" = de la manera en que.'},
+  {q:'It looks ____ it\'s going to storm.', o:['as though','as','the way','so that'], a:0, why:'"As though" = como si / parece que.'},
+  {q:'Do it ____ I showed you.', o:['as','as if','as though','like if'], a:0, why:'"As" = como/según (la manera mostrada).'},
+ ],
+ "8-45": [
+  {q:'She gave ____ yesterday.', o:['the documents to me','to me the documents','me to the documents','the documents me'], a:0, why:'Orden: objeto directo + to + objeto indirecto.'},
+  {q:'He bought ____ a beautiful gift.', o:['his wife','to his wife','for his wife it','his wife for'], a:0, why:'Indirecto sin preposición va antes del directo: "bought his wife a gift".'},
+  {q:'Can you send ____?', o:['it to them','them it to','to them it','it them'], a:0, why:'Con pronombres: directo + to + indirecto ("send it to them").'},
+  {q:'They offered ____ the position.', o:['her','to her','for her','her to'], a:0, why:'"Offered her the position": indirecto antes del directo.'},
+ ],
+ "8-48": [
+  {q:'The board insisted that he ____ immediately.', o:['resign','resigns','resigned to','will resign'], a:0, why:'Subjuntivo: verbo base tras "insist that".'},
+  {q:'It\'s essential that she ____ on time.', o:['be','is','was','will be'], a:0, why:'Subjuntivo con to be: "that she be on time".'},
+  {q:'They recommended that the policy ____ changed.', o:['be','is','was being','will be'], a:0, why:'Subjuntivo pasivo: "that it be changed".'},
+  {q:'I suggest that he ____ a lawyer.', o:['consult','consults','consulted','will consult'], a:0, why:'"Suggest that + sujeto + verbo base" (subjuntivo).'},
+ ],
+ "9-51": [
+  {q:'____ I hear that song, I think of my childhood.', o:['Whenever','When only','Wherever','Whatever'], a:0, why:'"Whenever" = cada vez que (todas las veces).'},
+  {q:'You can sit ____ you like.', o:['wherever','whenever','whoever','however that'], a:0, why:'"Wherever" = en cualquier lugar que.'},
+  {q:'I was living in Cali ____ the earthquake happened.', o:['when','whenever','wherever','whatever'], a:0, why:'Momento específico único → "when".'},
+  {q:'____ we met, it was always in that café.', o:['Whenever','When once','Wherever','Whichever'], a:0, why:'Encuentros repetidos → "whenever".'},
+ ],
+ "9-54": [
+  {q:'____ finishes first will get a prize.', o:['Whoever','Whatever','Who','Whom'], a:0, why:'"Whoever" = quienquiera que (sujeto de cláusula nominal).'},
+  {q:'You can order ____ you want from the menu.', o:['whatever','whoever','whom','whichever who'], a:0, why:'"Whatever" = lo que sea que.'},
+  {q:'Give the package to ____ answers the door.', o:['whoever','whomever only','whatever','who'], a:0, why:'Sujeto de la cláusula ("answers") → "whoever".'},
+  {q:'____ she decides, I\'ll support her.', o:['Whatever','Whoever','Whom','Whose'], a:0, why:'"Whatever she decides" = decida lo que decida.'},
+ ],
+ "10-57": [
+  {q:'The novel ____ into thirty languages so far.', o:['has been translated','has translated','is translating','translated'], a:0, why:'Pasiva de presente perfecto: has been + participio.'},
+  {q:'The issue ____ discussed when I joined the call.', o:['was being','was been','is being','has'], a:0, why:'Pasiva de pasado continuo: was being + participio.'},
+  {q:'The winners ____ announced tomorrow.', o:['will be','will being','are be','have been to'], a:0, why:'Pasiva futura: will be + participio.'},
+  {q:'This song ____ have been written by Dylan; it\'s his style.', o:['must','must to','has','was'], a:0, why:'Modal pasivo perfecto: must have been + participio.'},
+ ],
+ "10-60": [
+  {q:'Each of the students ____ a laptop.', o:['has','have','are having','were'], a:0, why:'"Each of + plural" concuerda en singular: has.'},
+  {q:'Neither of the answers ____ correct.', o:['is','are','be','have'], a:0, why:'"Neither of" es singular formal: "is correct".'},
+  {q:'A number of issues ____ still unresolved.', o:['are','is','was be','has'], a:0, why:'"A number of + plural" → verbo plural.'},
+  {q:'None of the money ____ recovered.', o:['was','were','have','are'], a:0, why:'"None of + incontable" → singular: was.'},
+ ],
+ "11-63": [
+  {q:'She\'s a ____ woman with two jobs.', o:['hard-working','working-hard','hardly-working','work-harding'], a:0, why:'Compuesto: adverbio/adjetivo + participio: "hard-working".'},
+  {q:'It\'s a ____ decision; think carefully.', o:['life-changing','changing-life','life-changed','lived-changing'], a:0, why:'Sustantivo + participio presente: "life-changing".'},
+  {q:'He\'s a ____ actor everyone recognizes.', o:['well-known','known-well','good-known','well-knowing'], a:0, why:'"Well" + participio pasado: "well-known".'},
+  {q:'They sell ____ vegetables from local farms.', o:['freshly-picked','picked-freshly','fresh-picking','freshly-pick'], a:0, why:'Adverbio + participio pasado: "freshly-picked".'},
+ ],
+ "11-66": [
+  {q:'That was the ____ movie I\'ve ever seen.', o:['most thought-provoking','thought-provokingest','more thought-provoking','thought-most-provoking'], a:0, why:'Superlativo de compuesto largo: "the most + compuesto".'},
+  {q:'She\'s the ____ person in the office.', o:['hardest-working','most hard-working est','working-hardest','hard-workingest'], a:0, why:'"Hard-working" → superlativo: "hardest-working".'},
+  {q:'It\'s one of the ____ cities in the world.', o:['fastest-growing','most fast-growing','fast-growingest','faster-growing most'], a:0, why:'"Fast-growing" → "fastest-growing".'},
+  {q:'This is the ____ smartphone on the market.', o:['best-selling','most good-selling','goodest-selling','better-selling most'], a:0, why:'"Best-selling" = el más vendido.'},
+ ],
+ "12-69": [
+  {q:'____ I known about the meeting, I would have attended.', o:['Had','If had','Have','Should'], a:0, why:'Inversión condicional: "Had I known" = If I had known.'},
+  {q:'____ you need assistance, don\'t hesitate to call.', o:['Should','Had','Were','If should'], a:0, why:'"Should you need" = si llegaras a necesitar.'},
+  {q:'____ I in your position, I would refuse.', o:['Were','Had','Should','Was'], a:0, why:'"Were I..." = If I were... (inversión formal).'},
+  {q:'____ the weather improved, the flight would have left.', o:['Had','Should','Were','If'], a:0, why:'"Had the weather improved" = si hubiera mejorado.'},
+ ],
+ "12-72": [
+  {q:'You can borrow the car ____ you return it by six.', o:['on condition that','even','whereas','in spite of'], a:0, why:'"On condition that" = con la condición de que.'},
+  {q:'____ he apologizes, I won\'t speak to him.', o:['Unless','Provided','As long','On condition'], a:0, why:'"Unless" = a menos que.'},
+  {q:'Take notes ____ you forget the details.', o:['in case','unless','provided that','so'], a:0, why:'"In case" = por si acaso.'},
+  {q:'____ that you finish early, you may leave.', o:['Provided','Unless','Whereas','However'], a:0, why:'"Provided that" = siempre que (condición).'},
+ ],
+};

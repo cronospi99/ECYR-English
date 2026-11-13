@@ -41,14 +41,13 @@ export const MODULES: ModuleEntry[] = [
     emoji: '🏙️',
   },
   {
-    // The slug is kept from the first version (English Defenders): progress is stored under it.
     slug: 'english-defenders',
-    title: 'Language Defenders',
+    title: 'English Defenders',
     subtitle: 'Tower defense 3D · Learn, Defend, Win',
     description:
-      'Keep the distractions out of class: every defender is earned with a grammar or vocabulary answer from your unit (A1–C1). 20 defenders in 3D, 149 topics, 1,850+ questions with explanations in Spanish, two quick-review games and Class Mode.',
+      'Defend your garden from the zombies by answering grammar and vocabulary questions from your unit (A1–C1). 149 topics, 1,850+ questions with explanations in Spanish, minigames, difficulty levels and multiplayer Class Mode.',
     kind: 'game',
-    src: '/defenders',
+    src: '/modules/english-defenders/index.html',
     cover: '/covers/english-defenders.webp',
     levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
     skills: ['grammar', 'vocabulary'],
@@ -56,7 +55,24 @@ export const MODULES: ModuleEntry[] = [
     mode: 'both',
     minutes: 20,
     accent: 'var(--green)',
-    emoji: '🛡️',
+    emoji: '🌻',
+  },
+  {
+    slug: 'language-defenders',
+    title: 'Language Defenders',
+    subtitle: 'Horror tower defense 3D · Learn, Defend, Win',
+    description:
+      'The phone zombies are coming for your class. Every defender is earned with a grammar or vocabulary answer from your unit (A1–C1). 20 defenders and 9 zombies sculpted in 3D, haunted scenarios, 149 topics, 1,850+ questions with explanations in Spanish and two quick-review games.',
+    kind: 'game',
+    src: '/defenders',
+    cover: '/covers/language-defenders.webp',
+    levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
+    skills: ['grammar', 'vocabulary'],
+    topics: ['Grammar by unit', 'Vocabulary', 'Review'],
+    mode: 'both',
+    minutes: 20,
+    accent: 'var(--purple)',
+    emoji: '🧟',
   },
   {
     slug: 'jeopardy',

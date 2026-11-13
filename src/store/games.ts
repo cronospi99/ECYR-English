@@ -60,6 +60,7 @@ export const TRACKED_GAMES: Record<
   }
 > = {
   'english-defenders': { skill: 'grammar', graded: true, minAnswers: 5, minSeconds: 45, maxPerMinute: 30 },
+  'language-defenders': { skill: 'grammar', graded: true, minAnswers: 5, minSeconds: 45, maxPerMinute: 30 },
   'two-truths-colombia': { skill: 'reading', graded: true, minAnswers: 3, minSeconds: 30, maxPerMinute: 20 },
   'too-good-to-be-true': { skill: 'vocabulary', graded: true, minAnswers: 3, minSeconds: 30, maxPerMinute: 20 },
   'would-you-rather': { skill: 'speaking', graded: false, minAnswers: 2, minSeconds: 60, maxPerMinute: 10 },

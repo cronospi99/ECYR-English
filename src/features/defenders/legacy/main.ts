@@ -13,7 +13,7 @@ import { bridge } from '../bridge';
 import { isPainted, backdropThumb } from '../backdrops';
 import { ClassHost, ClassClient, joinURL, makeQR, testIce, getTurn, setTurn } from './net';
 
-const musicWanted = () => localStorage.getItem('ed:music') !== 'off';
+const musicWanted = () => localStorage.getItem('ld:music') !== 'off';
 
 const $ = (id) => document.getElementById(id);
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
@@ -21,18 +21,18 @@ const LEVEL_NAMES = { A1: 'Beginner', A2: 'Elementary', B1: 'Intermediate', B2: 
 
 /* ================= Persistence ================= */
 const store = {
-  get progress() { try { return JSON.parse(localStorage.getItem('ed:progress')) || {}; } catch { return {}; } },
+  get progress() { try { return JSON.parse(localStorage.getItem('ld:progress')) || {}; } catch { return {}; } },
   setStars(level, unit, stars) {
     const p = store.progress;
     p[level] = p[level] || {};
     p[level][unit] = Math.max(p[level][unit] || 0, stars);
-    localStorage.setItem('ed:progress', JSON.stringify(p));
+    localStorage.setItem('ld:progress', JSON.stringify(p));
   },
-  get global() { try { return JSON.parse(localStorage.getItem('ed:global')) || { asked: 0, correct: 0 }; } catch { return { asked: 0, correct: 0 }; } },
+  get global() { try { return JSON.parse(localStorage.getItem('ld:global')) || { asked: 0, correct: 0 }; } catch { return { asked: 0, correct: 0 }; } },
   addGlobal(asked, correct) {
     const g = store.global;
     g.asked += asked; g.correct += correct;
-    localStorage.setItem('ed:global', JSON.stringify(g));
+    localStorage.setItem('ld:global', JSON.stringify(g));
   },
 };
 
@@ -664,7 +664,7 @@ function renderPlantSelect() {
 
 /* ================= Difficulty ================= */
 // La dificultad se elige ANTES de cada batalla y se recuerda entre partidas.
-const difficulty = () => (DIFFICULTIES[localStorage.getItem('ed:difficulty')] ? localStorage.getItem('ed:difficulty') : DEFAULT_DIFFICULTY);
+const difficulty = () => (DIFFICULTIES[localStorage.getItem('ld:difficulty')] ? localStorage.getItem('ld:difficulty') : DEFAULT_DIFFICULTY);
 
 function renderDifficulty(rowId, descId) {
   const row = $(rowId);
@@ -679,7 +679,7 @@ function renderDifficulty(rowId, descId) {
       `<span class="db-stars">${'★'.repeat(d.star)}${'☆'.repeat(4 - d.star)}</span>`;
     b.addEventListener('click', () => {
       SFX.click();
-      localStorage.setItem('ed:difficulty', id);
+      localStorage.setItem('ld:difficulty', id);
       renderDifficulty(rowId, descId);
     });
     row.appendChild(b);
@@ -702,7 +702,7 @@ function syncAudioButtons() {
 // Cuántas oleadas durará la batalla (1–10). Se elige antes de jugar y se recuerda.
 const WAVES_DEFAULT = 5;
 const waveChoice = () => {
-  const n = parseInt(localStorage.getItem('ed:waves'), 10);
+  const n = parseInt(localStorage.getItem('ld:waves'), 10);
   return Number.isFinite(n) ? Math.min(10, Math.max(1, n)) : WAVES_DEFAULT;
 };
 function renderWaves() {
@@ -1525,7 +1525,7 @@ function openSoundtrack() {
       b.classList.add('selected');
       note.textContent = `✅ ${title} — enjoy the music!`;
       // asegurarse de que la música esté sonando para escuchar la elección
-      localStorage.setItem('ed:music', 'on');
+      localStorage.setItem('ld:music', 'on');
       if (!isMusicPlaying()) startMusic();
       $('btn-music').textContent = '🎵';
       $('btn-music').style.opacity = '1';
@@ -1695,25 +1695,25 @@ function bindUI() {
     SFX.click();                       // suena antes de apagar, para dar feedback
     const on = isMuted();              // al estar muteado, este clic lo enciende
     setMuted(!on);
-    localStorage.setItem('ed:sound', on ? 'on' : 'off');
+    localStorage.setItem('ld:sound', on ? 'on' : 'off');
     syncAudioButtons();
   };
   $('btn-mute').addEventListener('click', toggleSound);
   $('btn-menu-sound').addEventListener('click', toggleSound);
   const toggleMusic = () => {
     const on = !musicWanted();
-    localStorage.setItem('ed:music', on ? 'on' : 'off');
+    localStorage.setItem('ld:music', on ? 'on' : 'off');
     if (on) startMusic(); else stopMusic();
     syncAudioButtons();
   };
   $('btn-music').addEventListener('click', () => { SFX.click(); toggleMusic(); });
   $('btn-menu-music').addEventListener('click', () => { SFX.click(); toggleMusic(); });
-  setMuted(localStorage.getItem('ed:sound') === 'off');   // el ajuste se recuerda
+  setMuted(localStorage.getItem('ld:sound') === 'off');   // el ajuste se recuerda
   syncAudioButtons();
 
   // deslizador de oleadas (1–10)
   $('wave-range').addEventListener('input', (e) => {
-    localStorage.setItem('ed:waves', e.target.value);
+    localStorage.setItem('ld:waves', e.target.value);
     renderWaves();
   });
   $('wave-range').addEventListener('change', () => SFX.click());

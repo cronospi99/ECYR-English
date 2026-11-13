@@ -1,12 +1,14 @@
 // @ts-nocheck
-// Soundtrack de Language Defenders.
-// Pistas principales: 3 temas originales en MP3 que rotan automáticamente.
-//   1) "Beyond the Garden Gate"
-//   2) "Boots on the Cobblestone"
-//   3) "Quest for the Summit"
-// Si los archivos no cargan (red/formato), se usa como respaldo la banda
-// sonora sintetizada en código (WebAudio), 100% libre de copyright.
+// Language Defenders soundtrack.
+// Three original tracks made for this game, synthesised from scratch by
+// scripts/defenders-soundtrack.mjs (melodic dubstep, glitch hop and the menu theme). They rotate
+// in "auto". The adventure tracks of the first version stay in the list for whoever prefers them.
+// If a file cannot be played, a small chiptune written with WebAudio takes over.
+const OWN = 3; // tracks that rotate automatically
 const TRACKS = [
+  { title: 'Dead Signal · dubstep', emoji: '🧟', src: '/defenders/music/dead_signal.mp3' },
+  { title: 'Corridor Groove · glitch hop', emoji: '📟', src: '/defenders/music/corridor_groove.mp3' },
+  { title: 'Moonrise', emoji: '🌕', src: '/defenders/music/moonrise.mp3' },
   { title: 'Boots on the Cobblestone', emoji: '🥾', src: '/defenders/music/boots_on_the_cobblestone.mp3' },
   { title: 'Quest for the Summit', emoji: '🏔️', src: '/defenders/music/quest_for_the_summit.mp3' },
   { title: 'Sunny Side Dash', emoji: '🌞', src: '/defenders/music/sunny_side_dash.mp3' },
@@ -22,7 +24,7 @@ let trackIdx = 0;         // pista MP3 en reproducción
 let usingFallback = false; // true si caímos a la música sintetizada
 let volume = 0.5;         // volumen 0..1 aplicado a MP3 y respaldo
 // 'auto' = rotar toda la playlist; un número = repetir esa pista concreta
-let selMode = localStorage.getItem('ed:track') || 'auto';
+let selMode = localStorage.getItem('ld:track') || 'auto';
 
 let ctx = null;
 let master = null;
@@ -199,7 +201,7 @@ function playTrack(idx) {
     // al terminar una pista en modo "auto", encadena con la siguiente
     // (en modo pista fija se usa audio.loop, así que 'ended' no dispara)
     audio.addEventListener('ended', () => {
-      if (playing && !usingFallback) playTrack(trackIdx + 1);
+      if (playing && !usingFallback) playTrack((trackIdx + 1) % OWN);
     });
     // si la pista no se puede cargar/decodificar, usa el respaldo sintetizado
     audio.addEventListener('error', () => {
@@ -261,7 +263,7 @@ export function getTrackSelection() { return selMode; }
 // Elige qué escuchar: 'auto' para rotar, o el índice de una pista concreta.
 export function selectTrack(mode) {
   selMode = (mode === 'auto') ? 'auto' : (Number(mode) % TRACKS.length + TRACKS.length) % TRACKS.length;
-  localStorage.setItem('ed:track', String(selMode));
+  localStorage.setItem('ld:track', String(selMode));
   if (selMode !== 'auto') {
     trackIdx = Number(selMode);
     songIdx = trackIdx % SONGS.length; // el respaldo sintetizado sigue la elección
