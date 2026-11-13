@@ -1,4 +1,5 @@
-import { useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   Cloud,
   CloudOff,
@@ -42,6 +43,14 @@ import { ink, tint } from '@/lib/color';
 
 export default function ProfilePage() {
   const session = useAuth((s) => s.session);
+  const [params] = useSearchParams();
+  const navigate = useNavigate();
+  // ?next=/board/… — where a QR sent the student before asking them to sign in.
+  const next = params.get('next') ?? '';
+  const safeNext = /^\/(?!\/)/.test(next) ? next : '';
+  useEffect(() => {
+    if (session && safeNext) navigate(safeNext, { replace: true });
+  }, [session, safeNext, navigate]);
   return (
     <Page title="Profile" subtitle="Your account, your class and your preferences.">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -50,7 +59,14 @@ export default function ProfilePage() {
             <Account />
           ) : (
             <>
-              <LocalHero />
+              {safeNext ? (
+                <Card className="p-5">
+                  <h3 className="text-headline">📌 Sign in to continue</h3>
+                  <p className="text-label-2 mt-1 text-[14px]">Inicia sesión o crea tu cuenta y te llevamos de vuelta al muro.</p>
+                </Card>
+              ) : (
+                <LocalHero />
+              )}
               <AuthCard />
             </>
           )}
