@@ -201,6 +201,40 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+G18. PHRASAL VERB ROULETTE, DENTRO DE LA APP Y DIBUJADA POR CÓDIGO
+- El juego ya no es un iframe: vive en /roulette (el enlace viejo
+  /play/phrasal-roulette redirige). El motor es el mismo, sin cambios: turnos,
+  ruleta, temporizador, monedas, apuestas, multiplicadores, ayudas, pasar turno,
+  equipos, podio, premio y todos los sonidos.
+- Portada nueva sin imágenes: escena 8 bits pintada en un lienzo (cielo, ciudad,
+  colinas, nubes, bloques, monedas), placa del logo, ruleta en su base y botones.
+- Corregido: la ruleta tenía dos flechas (una fija en el dibujo, vacía al girar).
+  Ahora hay un solo puntero, sujeto a la base.
+- El profesor es un sprite de píxeles guardado en código. Además de la portada,
+  acompaña la configuración y la partida y comenta lo que pasa (a quién le toca,
+  el verbo en juego, el resultado).
+- Se retiraron el módulo viejo y sus 19 imágenes.
+
+G17. LANGUAGE DEFENDERS: JUEGO APARTE, PERSONAJES PBR, ESCENARIO DE TERROR
+- English Defenders vuelve a estar como antes. Language Defenders es un juego
+  aparte en el catálogo, con su propio progreso.
+- Personajes esculpidos por código con superficies suaves (campos de distancia
+  + marching cubes) y material físico (PBR): rugosidad, metal, tipo de superficie
+  y oclusión por vértice; piel, tela, pelo, metal, papel y madera con detalle
+  procedural; reflejos del entorno y luz de contorno según el escenario.
+- Cara de zombi según las referencias: cuencas talladas con ojos que brillan,
+  cavidad nasal, pómulos hundidos, dientes al aire, cicatriz cosida, aretes.
+- Los enemigos corren o se arrastran de derecha a izquierda, con rodillas.
+- Escenario hecho por código: suelo, losas (con letras grabadas) y adoquines
+  PBR con charcos, reja de hierro, tumbas, árboles secos, ataúd de neón por donde
+  entra la horda, niebla, brasas, murciélagos, relámpagos y resplandor (bloom).
+- La casa se repinta desde código: tablas envejecidas, postigos quemados,
+  arbustos secos y ventanas encendidas que parpadean.
+- Banda sonora nueva sintetizada desde cero (scripts/defenders-soundtrack.mjs):
+  Dead Signal (dubstep melódico), Corridor Groove (glitch hop) y Moonrise (menú).
+  Las pistas anteriores siguen en la lista.
+- En equipos lentos el juego apaga solo el resplandor y baja la resolución.
+
 G16. LANGUAGE DEFENDERS: ESTILO CÓMIC NEÓN DE ZOMBIS
 - Cinco escenarios nuevos pintados por código (sin imágenes): Last Bell · Dusk
   (por defecto), Moonrise Graveyard, Neon Night, Toxic Lab y Sunset Ruins.

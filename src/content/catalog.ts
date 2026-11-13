@@ -98,7 +98,7 @@ export const MODULES: ModuleEntry[] = [
     description:
       'Spin the wheel, get a phrasal verb and use it in context. Covers families (GET, TAKE, PUT…) from A1 to C1 with translation and examples.',
     kind: 'game',
-    src: '/modules/phrasal-roulette/phrasal-verb-roulette.html',
+    src: '/roulette',
     cover: '/covers/phrasal-roulette.webp',
     levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
     skills: ['vocabulary', 'speaking'],
