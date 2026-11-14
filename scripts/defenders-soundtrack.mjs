@@ -329,9 +329,107 @@ function moonrise() {
   return [s, glitches];
 }
 
+/* ============================ 4. Neon Requiem — melodic dubstep, call and response ============================ */
+function neonRequiem() {
+  const s = new Song(145, 40), b8 = s.s16 * 2, hz = (n) => 1 / (s.s16 * n);
+  const roots = [36, 44, 39, 43], chords = [[48, 51, 55, 60], [56, 60, 63, 68], [51, 55, 58, 63], [50, 55, 59, 62]];
+  const hook = [[79, _, 75, 72, _, 75, 79, _], [80, _, _, 79, 75, _, 72, _], [82, _, 79, _, 75, 79, _, 82], [83, _, _, 79, _, 74, 79, 83]];
+  const playHook = (bar, vel, oct = 0, cut = 3600) => {
+    let prev = null;
+    hook[bar % 4].forEach((n, i) => { if (n == null) return; let len = 1; while (i + len < 8 && hook[bar % 4][i + len] == null) len++; s.lead(s.at(bar, i * 2), b8 * len * 0.9, n + oct, { vel, from: prev ?? n + oct, cut }); prev = n + oct; });
+  };
+  const P = [
+    [[0, 2, STAB, 0], [2, 2, YAH, 0], [6, 2, STAB, 12], [8, 4, WUB(hz(2 / 3)), 0], [12, 2, SCREECH(hz(1)), 12], [14, 2, YOI, 0]],
+    [[0, 6, WUB(hz(1)), 0], [6, 2, STAB, 7], [8, 3, YOI, 0], [11, 1, STAB, 12], [12, 4, WUB(hz(2)), 0]],
+    [[0, 3, YAH, 0], [3, 3, YAH, 3], [6, 2, STAB, 12], [8, 2, SCREECH(hz(0.5)), 12], [10, 2, STAB, 0], [12, 4, YOI, 0]],
+    [[0, 4, WUB(hz(4 / 3)), 0], [4, 4, WUB(hz(1)), 0], [8, 2, STAB, 12], [10, 2, STAB, 10], [12, 2, STAB, 7], [14, 2, SCREECH(hz(0.5)), 12]],
+  ];
+  const glitches = [];
+  for (let bar = 0; bar < 40; bar++) {
+    const c = bar % 4, root = roots[c], ch = chords[c];
+    const intro = bar < 8, brk = bar >= 24 && bar < 32, second = bar >= 16 && bar < 24, last = bar >= 32;
+    if (intro) {
+      // glass bells over a slow swell
+      for (let i = 0; i < 8; i++) if (bar >= 1 || i % 2 === 0) s.fm(s.at(bar, i * 2), [ch[[0, 2, 3, 1, 2, 3, 1, 2][i]] + 12], { bell: true, vel: 0.6 + bar * 0.04, pan: i % 2 ? 0.4 : -0.4 });
+      s.supersaw(s.at(bar, 0), s.bar * 0.98, ch, { vel: 0.6, c0: 260 + bar * 150, c1: 420 + bar * 300, rev: 0.4 });
+      if (bar >= 4) { playHook(bar, 0.5, -12, 2000); s.sub(s.at(bar, 0), s.bar * 0.95, root - 12, 0.7); for (let i = 0; i < 4; i++) s.kick(s.at(bar, i * 4), 0.55, 0.7); }
+      if (bar === 6) s.riser(s.at(bar, 0), s.bar * 2 - s.s16 * 4, 1.1);
+      if (bar === 7) { for (let i = 0; i < 16; i++) s.snare(s.at(bar, i * 0.75), 0.3 + i * 0.045); glitches.push(['stop', s.at(bar, 14), s.s16 * 2]); }
+    } else if (brk) {
+      s.supersaw(s.at(bar, 0), s.bar * 0.98, ch.map((n) => n + 12), { vel: 0.8, c0: 900, c1: 2600 + (bar - 24) * 350, rev: 0.4 });
+      s.sub(s.at(bar, 0), s.bar * 0.95, root - 12, 0.75);
+      playHook(bar, 0.9, bar >= 28 ? 0 : -12, 3200);
+      hook[c].forEach((n, i) => { if (n != null && bar >= 28) s.fm(s.at(bar, i * 2), [n + 12], { bell: true, vel: 0.55, pan: i % 2 ? 0.5 : -0.5 }); });
+      for (let i = 0; i < 16; i += 2) s.pluck(s.at(bar, i + 1), ch[(i / 2) % 4] + 12, 0.45, i % 4 ? -0.6 : 0.6);
+      if (bar >= 28) for (let i = 0; i < 16; i += bar === 31 ? 1 : 4) s.kick(s.at(bar, i), 0.5 + (bar === 31 ? i * 0.03 : 0.2), 0.7);
+      if (bar === 30) s.riser(s.at(bar, 0), s.bar * 2 - s.s16 * 2, 1.2);
+      if (bar === 31) glitches.push(['stutter', s.at(bar, 12), s.s16 * 4, 8]);
+    } else {
+      // halftime drums; the second drop doubles the hats, the last adds a marching kick
+      s.kick(s.at(bar, 0)); s.snare(s.at(bar, 8), 1, true);
+      if (c === 1 || c === 3) s.kick(s.at(bar, 11), 0.85); if (c === 2) s.kick(s.at(bar, 3), 0.7); if (last && c % 2 === 0) s.kick(s.at(bar, 14), 0.8);
+      const step = second ? 1 : 2;
+      for (let i = 0; i < 16; i += step) s.hat(s.at(bar, i), i % 4 === 2 ? 0.9 : second && i % 2 ? 0.3 : 0.55, i % 8 === 6, i % 4 ? 0.25 : -0.25);
+      if (c === 3) for (let i = 0; i < 3; i++) s.snare(s.at(bar, 13 + i), 0.35 + i * 0.15);
+      for (const [st, len, preset, off] of P[(c + (second ? 2 : last ? 1 : 0)) % 4]) s.growl(s.at(bar, st), s.s16 * len * 0.95, root + off, { ...preset, vel: 0.95 });
+      if (second || last) { s.supersaw(s.at(bar, 0), s.s16 * 2.5, ch, { vel: 0.75, c0: 3200, c1: 1400 }); s.supersaw(s.at(bar, 8), s.s16 * 1.5, ch, { vel: 0.55, c0: 2600, c1: 1400 }); }
+      if (last) playHook(bar, 0.75, 0, 4200); else if (second && c >= 2) playHook(bar, 0.6, -12, 3000); else if (!second && c % 2 === 1) playHook(bar, 0.5, -12, 2600);
+      if (bar === 8 || bar === 16 || bar === 32) s.riser(s.at(bar, 0), s.bar * 0.5, 1.1, true);
+      if (c === 3) glitches.push(bar % 8 === 7 ? ['stutter', s.at(bar, 12), s.s16 * 4, 6] : ['gate', s.at(bar, 12), s.s16 * 4, 8]);
+      if (bar === 21 || bar === 37) glitches.push(['crush', s.at(bar, 4), s.s16 * 4, 6]);
+    }
+  }
+  return [s, glitches];
+}
+
+/* ============================ 5. Static Hop — glitch hop with a swung bell hook ============================ */
+function staticHop() {
+  const s = new Song(112, 32, 0.3), b8 = s.s16 * 2, hz = (n) => 1 / (s.s16 * n);
+  const roots = [45, 45, 41, 41, 36, 36, 43, 43];
+  const chords = [[57, 60, 64, 67], [57, 60, 64, 67], [53, 57, 60, 64], [53, 57, 60, 64], [48, 52, 55, 59], [48, 52, 55, 59], [55, 59, 62, 65], [55, 59, 62, 65]];
+  const hook = [[76, _, _, 72, 74, _, 76, _], [72, _, 69, _, _, 67, 69, _], [77, _, _, 76, 72, _, 69, _], [72, _, 74, _, 76, _, _, _], [79, _, _, 76, 77, _, 79, _], [76, _, 72, _, _, 71, 72, _], [74, _, _, 71, 74, _, 79, _], [77, _, 76, _, 74, _, 71, _]];
+  const glitches = [];
+  for (let bar = 0; bar < 32; bar++) {
+    const c = bar % 8, root = roots[c], ch = chords[c], intro = bar < 4, B = bar >= 16 && bar < 24, turn = bar >= 30;
+    // broken-beat drums
+    if (!B || bar >= 20) { for (const k of intro ? [0, 6] : [0, 6, 10]) s.kick(s.at(bar, k), k === 6 ? 0.8 : 1, 0.8); s.snare(s.at(bar, 4), 0.95); s.snare(s.at(bar, 12), 1, c % 4 === 3); if (!intro) s.snare(s.at(bar, 9), 0.28); }
+    else { s.kick(s.at(bar, 0), 0.9, 0.8); s.kick(s.at(bar, 10), 0.6, 0.8); }
+    for (let i = 0; i < 16; i++) if (!intro || i % 2 === 0) s.hat(s.at(bar, i), [0.85, 0.3, 0.55, 0.4][i % 4] * (B ? 0.55 : 1), i === 14 && !intro, i % 2 ? 0.3 : -0.25);
+    // chords: plucked arpeggio, plus short piano stabs once the bass is in
+    for (let i = 0; i < 16; i += 2) s.pluck(s.at(bar, i + (i % 4 === 2 ? 1 : 0)), ch[[0, 2, 1, 3, 2, 0, 3, 1][i / 2]] + 12, intro ? 0.5 : 0.4, i % 4 ? 0.55 : -0.55, 0.45);
+    if (!intro) for (const st of [3, 7, 14]) s.fm(s.at(bar, st), ch.map((n) => n + 12), { vel: 0.6, pan: st === 7 ? 0.35 : -0.35 });
+    // bass: every bar answers itself
+    if (!intro) {
+      const heavy = (bar >= 8 && bar < 16) || bar >= 24;
+      if (B) { s.growl(s.at(bar, 0), s.s16 * 7, root, { ...WUB(hz(c % 2 ? 1 : 2)), vel: 0.75 }); s.growl(s.at(bar, 12), s.s16 * 3, root + 12, { ...YAH, vel: 0.65 }); }
+      else {
+        s.growl(s.at(bar, 0), s.s16 * 1.8, root, { ...STAB, vel: 0.9 });
+        s.growl(s.at(bar, 2), s.s16 * 1.8, root, { ...WUB(hz(1)), vel: 0.9 });
+        s.growl(s.at(bar, 5), s.s16 * 2.7, root + 12, { ...YAH, vel: 0.85 });
+        s.growl(s.at(bar, 8), s.s16 * 1.9, root, { ...YOI, vel: 0.95 });
+        s.growl(s.at(bar, 11), s.s16 * 0.9, root + 7, { ...STAB, vel: 0.8 });
+        s.growl(s.at(bar, 12), s.s16 * 3.7, root, { ...(heavy ? SCREECH(hz(1)) : WUB(hz(2))), vel: 0.85 });
+      }
+    } else s.sub(s.at(bar, 0), s.s16 * 6, root - 12, 0.7);
+    // the hook: bells first, then the lead takes it; both together at the end
+    if (bar >= 2) hook[c].forEach((n, i) => { if (n != null && (bar < 8 || B || bar >= 24)) s.fm(s.at(bar, i * 2), [n], { bell: true, vel: B ? 0.8 : 0.6, pan: i % 2 ? 0.35 : -0.35 }); });
+    if (bar >= 8 && !B && !turn) {
+      let prev = null;
+      hook[c].forEach((n, i) => { if (n == null) return; let len = 1; while (i + len < 8 && hook[c][i + len] == null) len++; s.lead(s.at(bar, i * 2), b8 * Math.min(len, 2) * 0.8, n, { vel: 0.85, from: prev ?? n, cut: 3200, send: 0.4 }); prev = n; });
+    }
+    if (B) s.supersaw(s.at(bar, 0), s.bar * 0.96, ch, { vel: 0.55, c0: 600, c1: 1500 + (bar - 16) * 220, rev: 0.4 });
+    if (turn) { s.supersaw(s.at(bar, 0), s.bar * 0.96, ch.map((n) => n + 12), { vel: 0.5 + (bar - 30) * 0.15, c0: 700, c1: 2800 }); if (bar === 30) s.riser(s.at(bar, 0), s.bar * 2 - s.s16 * 2, 0.9); }
+    if (c % 4 === 3 && !intro) glitches.push(['stutter', s.at(bar, 12), s.s16 * 4, c === 7 ? 8 : 4]);
+    if (c === 2 && bar > 4) glitches.push(['gate', s.at(bar, 8), s.s16 * 4, 4]);
+    if (bar === 15 || bar === 31) glitches.push(['stop', s.at(bar, 14), s.s16 * 2]);
+    if (bar === 11 || bar === 27) glitches.push(['crush', s.at(bar, 6), s.s16 * 2, 7]);
+  }
+  return [s, glitches];
+}
+
 const out = process.argv[2] || 'public/defenders/music';
 mkdirSync(out, { recursive: true });
-for (const [name, make] of [['dead_signal', deadSignal], ['corridor_groove', corridorGroove], ['moonrise', moonrise]]) {
+for (const [name, make] of [['dead_signal', deadSignal], ['corridor_groove', corridorGroove], ['moonrise', moonrise], ['neon_requiem', neonRequiem], ['static_hop', staticHop]]) {
   if (process.argv[3] && process.argv[3] !== name) continue;
   const [song, glitches] = make();
   save(song, glitches, `${out}/${name}`);

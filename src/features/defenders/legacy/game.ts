@@ -9,6 +9,7 @@ import { SFX } from './audio';
 import { isPainted, paintBackdrop } from '../backdrops';
 import { Scenery } from '../scenery';
 import { post } from '../look';
+import { Fx, SHOT_FX, LINES, COLD, pickLine } from '../fx';
 
 export const ROWS = 5, COLS = 9;
 // Borde norte del suelo = línea de la cerca. El fondo pintado arranca aquí.
@@ -505,6 +506,7 @@ export class Game {
       ground: this.groundMesh, board: this.boardMesh, stones: this.stones, fences: this.fences, clouds: this.clouds,
       hemi: this.hemi, sun: this.sunLight, wall: this.bgWall,
     });
+    this.fx = new Fx(this.scene);
     try { this.post = post(this.renderer, this.scene, this.camera); } catch { this.post = null; }
     if (localStorage.getItem('ld:gfx') === 'low' && this.post) this.post.enabled = false;
     this._slow = 0;
@@ -524,6 +526,7 @@ export class Game {
     this.camera.aspect = a;
     this.camera.lookAt(0.4, 0.25, -0.55);
     this.camera.updateProjectionMatrix();
+    this._camBase = this.camera.position.clone();
     this._fitBackdrop();
   }
 
@@ -719,6 +722,7 @@ export class Game {
       const ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];
       for (const m of ms) m.dispose?.();
     });
+    this.fx?.dispose();
     this.scenery?.dispose();
     this.post?.dispose();
     this.renderer.dispose();
@@ -975,6 +979,7 @@ export class Game {
     for (const p of this.particles) this.scene.remove(p.points);
     for (const f of this.flashes) this.scene.remove(f.mesh);
     for (const m of this.mowers) this.scene.remove(m.mesh);
+    this.fx?.clear();
   }
 
   quitToMenu() {
@@ -1313,10 +1318,7 @@ export class Game {
       [r - 1, c], [r - 2, c], [r + 1, c], [r + 2, c],
       [r, c - 1], [r, c - 2], [r, c + 1], [r, c + 2]]
       .filter(([tr, tc]) => tr >= 0 && tr < ROWS && tc >= 0 && tc < COLS);
-    for (const [tr, tc] of tiles) {
-      this._flash(new THREE.Vector3(colX(tc), 0.55, rowZ(tr)), 'fx_boom', 1.9);
-      this._burst(new THREE.Vector3(colX(tc), 0.5, rowZ(tr)), 0xff7a3a, 12);
-    }
+    tiles.forEach(([tr, tc], i) => this.fx.explosion(new THREE.Vector3(colX(tc), 0.5, rowZ(tr)), i ? 0.8 : 1.5, 0xffc23d, i === 0));
     for (const z of this.zombies) {
       if (z.dying || z.flying) continue;   // los voladores sólo caen con el cactus estirado
       const zc = Math.round(z.mesh.position.x + (COLS - 1) / 2);
@@ -1435,8 +1437,16 @@ export class Game {
     if (def.tint) mesh.userData.mat.color.set(def.tint);
     this.scene.add(mesh);
 
-    // destello al entrar un zombie por la derecha
-    if (x === null) this._flash(new THREE.Vector3(COLS / 2 + 1.9, 0.9, rowZ(r) * 0.35), 'part_purple', 1.15);
+    // On the haunted set they climb out of the neon coffin in a splash of liquid light.
+    let emerge = null;
+    const gate = x === null && this.scenery?.active ? this.scenery.gateMouth() : null;
+    if (gate) {
+      const to = mesh.position.clone();
+      emerge = { t: 0, dur: 0.95, from: gate.pos, to, color: gate.color, drip: 0 };
+      mesh.position.copy(gate.pos); mesh.scale.setScalar(0.05);
+      this.fx.ooze(gate.pos, to, gate.color);
+      this.scenery.pulseGate();
+    } else if (x === null) this._flash(new THREE.Vector3(COLS / 2 + 1.9, 0.9, rowZ(r) * 0.35), 'part_purple', 1.15);
     // Endurecimiento de oleadas centrales: pico (+40 %) en la oleada del medio.
     let midMul = 1;
     if (this.midWaveTough && this.totalWaves && isFinite(this.totalWaves) && this.totalWaves > 0) {
@@ -1448,7 +1458,7 @@ export class Game {
     const hp0 = Math.round(def.hp * (this.zHpMul || 1) * midMul * this.diff.hp);
     this.zombies.push({
       type, def, mesh, r, r2, hp: hp0, maxHp: hp0, flying: !!def.flying,
-      slowUntil: 0, dying: 0, phase: Math.random() * 6, flash: 0,
+      slowUntil: 0, dying: 0, phase: Math.random() * 6, flash: 0, emerge,
     });
     if (def.boss) this.hooks.onStreak('🔊 EL DURO — he blocks two lanes at once!');
     this.spawned++;
@@ -1528,11 +1538,19 @@ export class Game {
       this._updateFlashes(rawDt);
     }
     this.scenery?.update(rawDt);
+    if (this.fx) {
+      this.fx.update(rawDt * (this.state === 'playing' ? this.speed : 1));
+      // camera kick from blasts
+      if (this._camBase) {
+        const k = this.fx.shake;
+        this.camera.position.set(this._camBase.x + (Math.random() - 0.5) * k, this._camBase.y + (Math.random() - 0.5) * k, this._camBase.z);
+      }
+    }
     if (this.post) this.post.render(); else this.renderer.render(this.scene, this.camera);
     // weak device: after a few slow seconds, drop the bloom pass for good
     if (this.post?.enabled) {
       this._slow = rawDt > 0.045 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);
-      if (this._slow > 4) { this.post.enabled = false; this._slow = 0; this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25)); this.renderer.setSize(innerWidth, innerHeight); }
+      if (this._slow > 4) { this.fx.detail = 0.5; this.post.enabled = false; this._slow = 0; this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25)); this.renderer.setSize(innerWidth, innerHeight); }
     } else if (this.post && !this._lowest && localStorage.getItem('ld:gfx') !== 'low') {
       // still struggling without bloom: native resolution and no shadow maps
       this._slow = rawDt > 0.05 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);
@@ -1699,8 +1717,7 @@ export class Game {
           && Math.abs(z.mesh.position.x - p.mesh.position.x) < 0.5);
         if (touch) {
           SFX.boom();
-          this._flash(p.mesh.position.clone().add(new THREE.Vector3(0, 0.5, 0)), 'fx_boom', 2.2);
-          this._burst(p.mesh.position.clone().add(new THREE.Vector3(0, 0.4, 0)), 0xff9a40, 22);
+          this.fx.explosion(p.mesh.position.clone().setY(0.4), 1.1, 0xff9a40);
           for (const z of this.zombies) {
             if (z.dying || z.flying) continue;
             if (z.mesh.position.distanceTo(p.mesh.position) < 0.95) this._damageZombie(z, p.def.mineDmg);
@@ -1746,7 +1763,7 @@ export class Game {
       to.x -= 0.2;
       this.projectiles.push({
         mesh, kind: 'spore', dmg, aoe: (plant.def.aoe || 0.7) * (1 + (plant.level - 1) * EVOLVE.aoe),
-        slow: plant.def.slow, slowDur: plant.slowDur, row: plant.r, arc: { from, to, t: 0, dur: 0.8 },
+        slow: plant.def.slow, slowDur: plant.slowDur, row: plant.r, arc: { from, to, t: 0, dur: 0.8 }, shot: plant.def.lobSprite,
       });
       return;
     }
@@ -1765,7 +1782,7 @@ export class Game {
       this._face(mesh);
       this.scene.add(mesh);
       this.projectiles.push({
-        mesh, kind, dmg, slow: plant.def.slow, slowDur: plant.slowDur, row: plant.r, vx: 7, antiAir,
+        mesh, kind, dmg, shot: sprite, slow: plant.def.slow, slowDur: plant.slowDur, row: plant.r, vx: 7, antiAir,
         pierce: plant.def.pierce || 0, burn: plant.def.burn || 0, hitSet: plant.def.pierce ? new Set() : null,
         spin: !plant.def.pierce && kind !== 'frost',
       });
@@ -1787,8 +1804,8 @@ export class Game {
         pr.mesh.position.x += pr.vx * dt;
         pr.mesh.scale.setScalar(1 + Math.sin(this.time * 30) * 0.12);
         if ((pr.fxTimer = (pr.fxTimer || 0) - dt) <= 0) {
-          pr.fxTimer = 0.06;
-          this._burst(pr.mesh.position.clone().setY(0.7), 0xffe08a, 6);
+          pr.fxTimer = 0.11;
+          this.fx.explosion(pr.mesh.position.clone().setY(0.5), 0.75, 0xffe08a, false);
         }
         for (const z of this.zombies) {
           if (z.dying || z.flying || !this._zInRow(z, pr.row)) continue;
@@ -1810,10 +1827,10 @@ export class Game {
           if (pr.slow) z.slowUntil = this.time + (pr.slowDur || 3);
           if (pr.kind === 'kernel') z.mesh.position.x += 0.18;
           SFX.hit();
-          this._burst(pr.mesh.position, pr.kind === 'frost' ? 0x9adcff : pr.kind === 'kernel' ? 0xffd23d : pr.kind === 'flame' ? 0xff8c40 : 0x7ed348, 8);
+          this.fx.impact(pr.mesh.position, pr.shot);
+          if (!z.boss && z.hp > 0 && Math.random() < 0.035) this._say(z, 'hit');
           // Ember Torch: pequeña llamarada que quema a los vecinos
           if (pr.burn) {
-            this._flash(pr.mesh.position, 'part_orange', 1.0);
             for (const o of this.zombies) {
               if (o !== z && !o.dying && o.mesh.position.distanceTo(pr.mesh.position) < pr.burn) this._damageZombie(o, pr.dmg * 0.5);
             }
@@ -1835,8 +1852,7 @@ export class Game {
 
   _explode(pr) {
     SFX.boom();
-    this._flash(pr.mesh.position, 'fx_boom', 2.2);
-    this._burst(pr.mesh.position, 0xc07be8, 22);
+    this.fx.explosion(pr.mesh.position, Math.max(0.8, pr.aoe), pr.slow ? 0x8fe8ff : pr.shot === 'fx_arepa' ? 0xffb04a : pr.shot === 'fx_binder' ? 0xb48cff : 0xfff0c8, pr.aoe >= 1);
     for (const z of this.zombies) {
       if (z.dying || z.flying) continue;   // los voladores sólo caen con el cactus estirado
       if (z.mesh.position.distanceTo(pr.mesh.position) < pr.aoe) {
@@ -1857,6 +1873,7 @@ export class Game {
       SFX.zombieDie();
       this._burst(z.mesh.position.clone().add(new THREE.Vector3(0, 0.8, 0)), 0xfff2a0, 18);
       this._flash(z.mesh.position.clone().add(new THREE.Vector3(0, 0.7, 0.1)), 'part_purple', 1.2);
+      if (Math.random() < 0.45) this._say(z, 'bye', 1.5);
     }
   }
 
@@ -1892,8 +1909,24 @@ export class Game {
         if (z.dying > 0.8) { this.scene.remove(z.mesh); z.remove = true; }
         continue;
       }
+      if (z.emerge) {
+        // out of the liquid: a hop from the gate to its lane, growing, dripping neon
+        const e = z.emerge; e.t += dt;
+        const u = Math.min(1, e.t / e.dur), k = u * u * (3 - 2 * u);
+        z.mesh.position.lerpVectors(e.from, e.to, k);
+        z.mesh.position.y = Math.sin(u * Math.PI) * 0.55;
+        z.mesh.scale.setScalar(u < 0.7 ? 0.05 + (u / 0.7) * 1.1 : 1.15 - ((u - 0.7) / 0.3) * 0.15);
+        mat.color.set(e.color).lerp(new THREE.Color(z.def.tint || 0xffffff), k * k);
+        z.mesh.userData.tick?.(dt * 1.6, 'walk', 0, 0);
+        if ((e.drip -= dt) <= 0) { e.drip = 0.07; this.fx.drip(z.mesh.position.clone().setY(z.mesh.position.y + z.def.h * 0.6 * u), e.color); }
+        if (u >= 1) { z.emerge = null; z.dripUntil = this.time + 1.1; z.mesh.scale.setScalar(1); }
+        continue;
+      }
+      if (z.dripUntil > this.time && Math.random() < dt * 9) this.fx.drip(z.mesh.position.clone().setY(z.def.h * (0.3 + Math.random() * 0.5)), this.scenery?.gateMouth()?.color ?? 0x39e6ff);
       z.flash = Math.max(z.flash - dt, 0);
       const slowed = this.time < z.slowUntil;
+      if (slowed && !z.wasSlow && Math.random() < 0.25) this.fx.say(z.mesh, z.def.h, pickLine(COLD), 2);
+      z.wasSlow = slowed;
       mat.color.set(z.flash > 0 ? 0xff9a8a : slowed ? 0x9ac8ff : (z.def.tint || 0xffffff));
 
       let speed = z.def.speed * (slowed ? 0.45 : 1) * this.diff.speed;
@@ -1928,6 +1961,7 @@ export class Game {
         if (z.eatTimer <= 0) {
           z.eatTimer = 0.55;
           SFX.chomp();
+          if (Math.random() < 0.06) this._say(z, 'eat');
           this._burst(eating.mesh.position.clone().add(new THREE.Vector3(0, 0.5, 0)), 0xffffff, 5);
         }
         eating.hp -= z.def.dmg * dt;
@@ -1955,6 +1989,19 @@ export class Game {
       }
     }
     this.zombies = this.zombies.filter(z => !z.remove);
+    // every few seconds one of them says something
+    this.talkTimer = (this.talkTimer ?? 2.5) - dt;
+    if (this.talkTimer <= 0) {
+      this.talkTimer = 2.2 + Math.random() * 3.2;
+      const able = this.zombies.filter(z => !z.dying && !z.emerge && z.mesh.position.x < COLS / 2 + 1.4 && !this.fx.talking(z.mesh));
+      if (able.length) this._say(able[Math.floor(Math.random() * able.length)], 'walk');
+    }
+  }
+
+  // A speech bubble with one of the character's lines.
+  _say(z, kind, dur) {
+    const set = LINES[z.type] || LINES.basic, list = set[kind] || set.walk;
+    return this.fx.say(z.mesh, z.def.h, pickLine(list), dur || (kind === 'hit' ? 1.6 : 2.8));
   }
 
   _updateMowers(dt) {

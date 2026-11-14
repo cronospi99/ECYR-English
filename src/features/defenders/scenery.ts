@@ -333,6 +333,9 @@ export class Scenery {
   private fill = new THREE.DirectionalLight(0xffffff, 0);
   private gateLight = new THREE.PointLight(0xffffff, 0, 9, 1.6);
   private mood: Mood | null = null;
+  private veil: THREE.ShaderMaterial | null = null;
+  private gate: { pos: THREE.Vector3; color: number } | null = null;
+  private gatePulse = 0;
   private mist: THREE.Sprite[] = [];
   private bats: THREE.Sprite[] = [];
   private embers: THREE.Points | null = null;
@@ -474,7 +477,24 @@ export class Scenery {
       gate.add(clamp);
     });
     const shape = new THREE.Shape(pts.map((p) => new THREE.Vector2(p[0], p[1])));
-    const veil = new THREE.Mesh(new THREE.ShapeGeometry(shape), new THREE.MeshBasicMaterial({ color: 0x05020a, transparent: true, opacity: 0.86 }));
+    // the mouth of the coffin is a sheet of slow neon liquid; it boils over when someone climbs out
+    this.veil = new THREE.ShaderMaterial({
+      transparent: true, toneMapped: false, fog: false,
+      uniforms: { t: { value: 0 }, pulse: { value: 0 }, col: { value: new THREE.Color(m.neon) } },
+      vertexShader: 'varying vec2 p; void main(){ p = position.xy; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader: `varying vec2 p; uniform float t, pulse; uniform vec3 col;
+        float h(vec2 v){ return fract(sin(dot(v, vec2(127.1, 311.7))) * 43758.5453); }
+        float n(vec2 v){ vec2 i = floor(v), f = fract(v); f = f*f*(3.0-2.0*f); return mix(mix(h(i), h(i+vec2(1,0)), f.x), mix(h(i+vec2(0,1)), h(i+vec2(1,1)), f.x), f.y); }
+        void main(){
+          vec2 q = p * vec2(1.6, 1.1);
+          float w = n(q * 1.7 + vec2(0.0, -t * 0.5)) + 0.5 * n(q * 3.9 + vec2(t * 0.3, -t * 0.9));
+          float bands = smoothstep(0.62, 0.9, sin((q.y + w * 0.9) * 5.0 - t * 2.2) * 0.5 + 0.5);
+          float drips = smoothstep(0.8, 1.0, n(vec2(p.x * 9.0, p.y * 0.9 + t * 1.3))) * smoothstep(3.3, 1.2, p.y);
+          float lum = 0.10 + bands * 0.55 + drips * 0.9 + pulse * (0.9 + w * 0.8);
+          gl_FragColor = vec4(mix(vec3(0.02, 0.008, 0.04), col * 2.2, clamp(lum, 0.0, 1.6)), 0.92);
+        }`,
+    });
+    const veil = new THREE.Mesh(new THREE.ShapeGeometry(shape), this.veil);
     veil.position.z = -0.06;
     const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: m.neon, transparent: true, opacity: 0.28, blending: THREE.AdditiveBlending, depthWrite: false }));
     glow.position.set(0, 1.7, -0.1); glow.scale.set(5, 6, 1);
@@ -482,6 +502,7 @@ export class Scenery {
     frame.position.y = 0.02;
     gate.add(veil, glow, frame);
     gate.position.set(this.cols / 2 + 2.35, 0, -0.4);
+    this.gate = { pos: new THREE.Vector3(this.cols / 2 + 2.05, 0, -0.25), color: m.neon };
     gate.rotation.y = -Math.PI / 2 + 0.62;
     gate.scale.setScalar(0.86);
     g.add(gate);
@@ -562,6 +583,11 @@ export class Scenery {
     this.group.add(this.spill);
   }
 
+  /** Where the horde climbs out (null when the classic set is on). */
+  gateMouth(): { pos: THREE.Vector3; color: number } | null { return this.active && this.gate ? { pos: this.gate.pos.clone(), color: this.gate.color } : null; }
+  /** The liquid in the gate boils over for a moment. */
+  pulseGate(): void { this.gatePulse = 1; }
+
   update(dt: number): void {
     const m = this.mood;
     if (!m) return;
@@ -586,7 +612,9 @@ export class Scenery {
     }
     // neon hum and the odd flicker
     const hum = 0.9 + Math.sin(t * 31) * 0.04 + (Math.sin(t * 2.3) > 0.985 ? -0.5 : 0);
-    this.gateLight.intensity = 26 * hum;
+    this.gatePulse = Math.max(0, this.gatePulse - dt * 1.6);
+    this.gateLight.intensity = 26 * hum + this.gatePulse * 60;
+    if (this.veil) { this.veil.uniforms.t!.value += dt; this.veil.uniforms.pulse!.value = this.gatePulse; }
     for (const n of this.neon) n.color.set(m.neon).multiplyScalar(2.6 * hum);
     for (const hm of this.house) hm.emissiveIntensity = 2.2 + Math.sin(t * 7.3) * 0.15 + (Math.sin(t * 1.7 + 2) > 0.97 ? -1.2 : 0);
     if (m.lightning) {
