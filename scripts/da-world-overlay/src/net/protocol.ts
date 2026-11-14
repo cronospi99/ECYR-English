@@ -47,7 +47,7 @@ export type Role = "student" | "teacher";
  * letting them choose, so this travels with the join.
  */
 export interface PeerLook {
-  kind: "human" | "robot";
+  kind: "human" | "woman" | "robot";
   shirt: string;
   pants: string;
   skin: string;

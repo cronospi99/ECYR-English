@@ -18,12 +18,13 @@
  */
 import {
   CanvasTexture,
-  LinearFilter,
+  NearestFilter,
   MeshStandardMaterial,
   NoColorSpace,
   type Texture,
   type WebGLProgramParametersWithUniforms,
 } from 'three';
+import { injectSurface, SURFACE } from './surfaces';
 
 export type SurfaceKind = 'building' | 'car' | 'prop';
 
@@ -50,24 +51,34 @@ function surfaceAtlas(tex: Texture, kind: SurfaceKind): CanvasTexture | null {
     const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
     const sat = max ? (max - min) / max : 0;
     let rough = 0.82, metal = 0;
+    // ECYR rebuild: which real surface the texel is (surfaces.ts), +1; 0 is none.
+    let layer: number = kind === 'building' ? (sat < 0.14 && lum > 0.25 && lum < 0.7 ? SURFACE.concrete : SURFACE.plaster) : -1;
     if (b > r + 55 && b > g + 30) {
       // glass: smooth, and a little metallic so it takes the sky's colour
       rough = 0.035; metal = kind === 'car' ? 0.25 : 0.8;
+      layer = -1;
     } else if (g > r + 18 && g > b + 10) {
       rough = 0.95; // foliage, grass
+      layer = kind === 'prop' ? SURFACE.grass : SURFACE.leaf;
     } else if (sat < 0.14 && lum < 0.3) {
       rough = 0.42; metal = 0.55; // frames, rails, vents, dark trims
+      layer = kind === 'prop' ? SURFACE.asphalt : SURFACE.metal;
     } else if (sat < 0.12 && lum > 0.82) {
       rough = kind === 'car' ? 0.3 : 0.7; // white paint, trims
+      layer = kind === 'building' ? SURFACE.plaster : -1;
     } else if (r > g + 30 && r > b + 30 && lum < 0.6) {
       rough = 0.9; // brick, terracotta tiles
+      layer = kind === 'building' ? SURFACE.brick : -1;
+    } else if (kind === 'prop' && sat < 0.14) {
+      layer = lum < 0.45 ? SURFACE.asphalt : SURFACE.paving;
     }
+    if (kind === 'car') layer = -1;
     if (kind === 'car' && !(b > r + 55 && b > g + 30)) {
       // car paint: a lacquer; tyres and plastics stay matte
       rough = lum < 0.16 ? 0.85 : sat > 0.25 ? 0.24 : Math.min(rough, 0.4);
       metal = lum < 0.16 ? 0 : sat > 0.25 ? 0.35 : metal;
     }
-    d[i] = 255;
+    d[i] = layer + 1;
     d[i + 1] = Math.round(rough * 255);
     d[i + 2] = Math.round(metal * 255);
     d[i + 3] = 255;
@@ -77,8 +88,9 @@ function surfaceAtlas(tex: Texture, kind: SurfaceKind): CanvasTexture | null {
   out.colorSpace = NoColorSpace;
   out.flipY = false;
   out.generateMipmaps = false;
-  out.minFilter = LinearFilter;
-  out.magFilter = LinearFilter;
+  // Nearest: the red channel is a surface id, and blending two ids is a third.
+  out.minFilter = NearestFilter;
+  out.magFilter = NearestFilter;
   surfaceAtlases.set(key, out);
   return out;
 }
@@ -119,10 +131,10 @@ export function pbrKit(m: MeshStandardMaterial, atlas: Texture, kind: SurfaceKin
     m.metalness = 1;
   }
   m.envMapIntensity = kind === 'car' ? 1.25 : 1.1;
-  const bump = kind === 'building' ? 1.0 : kind === 'prop' ? 0.25 : 0.0;
+  const bump = kind === 'building' ? 1.0 : kind === 'prop' ? 0.25 : 0.0; // (kept for the cache key)
   const grime = kind === 'building' ? 0.14 : kind === 'prop' ? 0.05 : 0.0;
   const contact = kind === 'building' ? 0.28 : kind === 'prop' ? 0.12 : 0.0;
-  if (!bump && !grime) return;
+  if (kind === 'car') return;
 
   const before = m.onBeforeCompile;
   const beforeKey = m.customProgramCacheKey?.bind(m);
@@ -131,6 +143,29 @@ export function pbrKit(m: MeshStandardMaterial, atlas: Texture, kind: SurfaceKin
     shader.uniforms.uDwBump = { value: bump };
     shader.uniforms.uDwGrime = { value: grime };
     shader.uniforms.uDwContact = { value: contact };
+    // Real surfaces: the layer is in the atlas's red channel; flat tops become a
+    // roof membrane and pitched faces roof tile.
+    injectSurface(
+      shader,
+      `dwKitLayer()`,
+      (kind === 'prop' ? 0.9 : 1.0).toFixed(2),
+    );
+    shader.fragmentShader = shader.fragmentShader.replace(
+      'void main() {',
+      `float dwKitLayer() {
+         #ifdef USE_ROUGHNESSMAP
+           float l = floor(texture2D(roughnessMap, vRoughnessMapUv).r * 255.0 + 0.5) - 1.0;
+         #else
+           float l = -1.0;
+         #endif
+         float ny = normalize(vDwSN).y;
+         if (${kind === 'building' ? 'true' : 'false'} && (l == 3.0 || l == 4.0 || l == 5.0)) {
+           if (ny > 0.92) l = 5.0; else if (ny > 0.3) l = 6.0;
+         }
+         return l;
+       }
+       void main() {`,
+    );
     shader.vertexShader = shader.vertexShader
       .replace('void main() {', 'varying vec3 vDwWorld;\nvoid main() {')
       .replace(
@@ -147,18 +182,8 @@ export function pbrKit(m: MeshStandardMaterial, atlas: Texture, kind: SurfaceKin
       .replace(
         '#include <roughnessmap_fragment>',
         `#include <roughnessmap_fragment>
-         float dwFade = 1.0 - smoothstep(18.0, 46.0, length(vViewPosition));
          float dwBlot = dwNoise(vDwWorld * 0.55) * 0.65 + dwNoise(vDwWorld * 1.7) * 0.35;
          roughnessFactor = clamp(roughnessFactor * mix(0.86, 1.12, dwBlot), 0.04, 1.0);`,
-      )
-      .replace(
-        '#include <normal_fragment_maps>',
-        `#include <normal_fragment_maps>
-         if (dwFade > 0.0) {
-           float dwH = dwNoise(vDwWorld * 7.5) * 0.6 + dwNoise(vDwWorld * 19.0) * 0.4;
-           vec2 dwD = vec2(dFdx(dwH), dFdy(dwH)) * uDwBump * dwFade;
-           normal = dwPerturb(-vViewPosition, normal, dwD, faceDirection);
-         }`,
       )
       .replace(
         '#include <color_fragment>',

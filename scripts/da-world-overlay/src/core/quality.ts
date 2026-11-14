@@ -41,6 +41,8 @@ export interface QualityTier {
   /** ECYR rebuild: ambient occlusion (GTAO) and bloom passes. */
   ao: boolean;
   bloom: boolean;
+  /** ECYR rebuild: cube size of the live reflection probe; 0 keeps the painted sky. */
+  reflections: number;
 }
 
 export const QUALITY: Record<QualityName, QualityTier> = {
@@ -54,6 +56,7 @@ export const QUALITY: Record<QualityName, QualityTier> = {
     shadowRadius: 1,
     ao: false,
     bloom: false,
+    reflections: 0,
   },
   medium: {
     name: "medium",
@@ -65,6 +68,7 @@ export const QUALITY: Record<QualityName, QualityTier> = {
     shadowRadius: 2,
     ao: false,
     bloom: true,
+    reflections: 64,
   },
   high: {
     name: "high",
@@ -76,6 +80,7 @@ export const QUALITY: Record<QualityName, QualityTier> = {
     shadowRadius: 3,
     ao: false,
     bloom: true,
+    reflections: 128,
   },
   ultra: {
     name: "ultra",
@@ -87,6 +92,7 @@ export const QUALITY: Record<QualityName, QualityTier> = {
     shadowRadius: 4,
     ao: false,
     bloom: true,
+    reflections: 256,
   },
 };
 

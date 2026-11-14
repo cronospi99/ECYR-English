@@ -1703,3 +1703,21 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   resta $10); preguntas sin repetir hasta agotar las 58. Derrapes, turbo, tráfico, música rock retro
   propia que baja con los efectos, color estilo arcade de los 2000. Cooperativo con el mismo QR de
   Clase (multijugador): todos ven el mismo pasaje y suman al equipo.
+- Da World y Taxi Rush · gráficos realistas:
+  · Personas realistas: todos los ciudadanos, compañeros, pasajeros y el taxista son humanos con
+    esqueleto, texturas y animaciones de captura de movimiento (quieto, caminar, correr, asentir,
+    negar), en dos cuerpos (hombre y mujer) que se recolorean por persona: camisa, pantalón, piel,
+    pelo y zapatos, sin perder pliegues ni costuras. Accesorios: gafas, gorra, casco, sombrero,
+    mochila, delantal. En «Your character» se elige Man, Woman o Robot. El taxista va sentado.
+    En calidad Low siguen las personas sencillas.
+  · Texturas PBR reales en toda la ciudad: asfalto con grava y grietas, losas de acera, césped,
+    estuco, ladrillo, concreto, tejas, metal y hojas, con relieve (normales) y rugosidad,
+    proyectadas en el espacio del mundo (las hiladas de ladrillo y las losas siguen la cuadrícula).
+  · Reflejos en vivo: una sonda de reflexión fotografía la ciudad alrededor del jugador cada pocos
+    segundos; vidrios, pintura de autos y cromo reflejan las calles y el cielo reales, a la hora
+    del día que sea.
+  · Sol visible con disco y halo, destellos (bloom) en los reflejos del sol también de día,
+    destello de lente cuando el sol está en pantalla y no lo tapa un edificio, aberración
+    cromática suave en los bordes y grano de película.
+  · Taxi Rush: humo de llantas al derrapar, frenar fuerte o arrancar; chispas al chocar;
+    desenfoque radial de velocidad con el turbo.

@@ -197,12 +197,14 @@ export class TaxiModel {
     // the driver, seated on the left, visible through the glass
     this.driver = new Character(look.driver, 0.5);
     this.driver.group.position.set(0.24, 0.32, -0.02);
+    this.driver.setSeated(true);
     this.driver.update(0, 0);
     g.add(this.driver.group);
   }
 
   /** Per frame: wheels roll and steer, brake lights, the night glow. */
   animate(speed: number, steer: number, dt: number, braking: boolean, night: number): void {
+    this.driver.update(dt, 0);
     const roll = (speed * dt) / WHEEL_R;
     this.wheels.forEach((w, i) => {
       w.children[0].rotation.x += roll;

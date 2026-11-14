@@ -4,6 +4,8 @@ import "./styles.css";
 import { Engine } from "./core/engine";
 import { Input, isTyping } from "./core/input";
 import { detectQuality, rememberQuality, QUALITY } from "./core/quality";
+import { setRealHumans } from "./city/humans";
+import { loadSurfaces, setSurfaceAnisotropy } from "./city/surfaces";
 import { BUILDING_BY_ID, type Building } from "./city/buildings";
 import { City, TREE_SPOTS } from "./city/city";
 import { BODY_RADIUS } from "./city/ground";
@@ -111,10 +113,17 @@ async function boot(): Promise<void> {
   // shadow map — are baked into things the city makes at construction time.
   const quality = detectQuality();
   setTextureAnisotropy(QUALITY[quality].anisotropy);
+  // ECYR rebuild: realistic people, fetched in the background; until they land
+  // (and always on the lowest tier) everybody is the procedural person.
+  setRealHumans(quality !== "low");
+  // ECYR rebuild: real surface textures (asphalt, brick, paving…), streamed in.
+  setSurfaceAnisotropy(QUALITY[quality].anisotropy);
+  if (quality !== "low") loadSurfaces();
 
   const engine = new Engine(container!, quality);
   const environment = createEnvironment(engine.scene, engine.renderer);
   environment.setShadowQuality(QUALITY[quality].shadowMap, QUALITY[quality].shadowRadius);
+  environment.setReflections(QUALITY[quality].reflections);
 
   const state = createState();
   loadState(state);
@@ -1055,6 +1064,8 @@ async function boot(): Promise<void> {
     onQuality: (name) => {
       engine.setQuality(name);
       environment.setShadowQuality(QUALITY[name].shadowMap, QUALITY[name].shadowRadius);
+      environment.setReflections(QUALITY[name].reflections);
+      setSurfaceAnisotropy(QUALITY[name].anisotropy);
       setTextureAnisotropy(QUALITY[name].anisotropy);
       rememberQuality(name);
     },

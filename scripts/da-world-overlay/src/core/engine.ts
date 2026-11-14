@@ -104,6 +104,7 @@ export class Engine {
     const dt = Math.min(this.clock.getDelta(), 1 / 20);
     const elapsed = this.clock.getElapsedTime();
     for (const fn of this.updates) fn(dt, elapsed);
+    this.post.prepare(dt);
     this.post.composer.render(dt);
   };
 

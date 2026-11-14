@@ -17,6 +17,7 @@ import { CanvasTexture, CapsuleGeometry, Group, Mesh, MeshBasicMaterial, PlaneGe
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { mat } from './palette';
 import type { Outfit } from './npcData';
+import { Human, figureFor, humansReady, onHumansReady, type Figure } from './humans';
 
 export interface CharacterColors {
   shirt: string;
@@ -24,6 +25,8 @@ export interface CharacterColors {
   skin: string;
   hair: string;
   outfit?: Outfit;
+  /** The player's chosen body ("human" is the man, "woman" the woman); citizens leave it out. */
+  kind?: string;
 }
 
 /**
@@ -132,6 +135,12 @@ export class Character {
   private chest = new Group();
   private head = new Group();
   private phase = 0;
+  /** The procedural rig, kept until the realistic body has loaded (and on the lowest tier). */
+  private readonly procedural = new Group();
+  private human: Human | null = null;
+  private seated = false;
+  private unsubscribe: (() => void) | null = null;
+  private readonly colors: CharacterColors;
 
   constructor(colors: CharacterColors, scale = 1) {
     const shirt = mat(colors.shirt, { roughness: 0.86 });
@@ -208,6 +217,64 @@ export class Character {
       }
     });
     this.group.scale.setScalar(scale);
+
+    // ECYR rebuild: everything above is the procedural person; move it into its
+    // own group so the realistic body can take its place once it has loaded.
+    this.colors = { ...colors };
+    for (const child of [...this.group.children]) this.procedural.add(child);
+    this.group.add(this.procedural);
+    if (humansReady()) this.becomeHuman();
+    else this.unsubscribe = onHumansReady(() => this.becomeHuman());
+  }
+
+  /** Which body a person gets: the player's choice, or one fixed by their colours. */
+  private figure(): Figure {
+    const k = this.colors.kind;
+    if (k === 'woman') return 'woman';
+    if (k === 'human' || k === 'man') return 'man';
+    const c = this.colors;
+    return figureFor(c.shirt + c.pants + c.skin + c.hair + (c.outfit ?? ''));
+  }
+
+  private becomeHuman(): void {
+    this.unsubscribe = null;
+    if (this.human || !humansReady()) return;
+    const c = this.colors;
+    const figure = this.figure();
+    const seed = c.shirt + c.hair + c.skin;
+    let h = 7;
+    for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+    const HATS = ['#5b3b22', '#2a2622', '#6d6a62', '#8a6a3c'];
+    const SHOES = ['#2b2622', '#3b2a1e', '#e9e6df', '#1f2a3f', '#5a2d24'];
+    try {
+      this.human = new Human(
+        figure,
+        { shirt: c.shirt, pants: c.pants, skin: c.skin, hair: c.hair, hat: HATS[h % HATS.length], shoes: SHOES[(h >> 3) % SHOES.length] },
+        { hat: figure === 'man' && c.outfit === 'hat', outfit: c.outfit, hairStyle: (h >> 6) % 5 === 0 ? 0 : 1 },
+      );
+    } catch (e) {
+      console.warn('[Da World] person stays procedural:', e);
+      return;
+    }
+    this.human.setSeated(this.seated);
+    this.procedural.visible = false;
+    this.group.add(this.human.root);
+  }
+
+  /** A driver sits; everybody else stands. */
+  setSeated(on: boolean): void {
+    this.seated = on;
+    this.human?.setSeated(on);
+  }
+
+  /** A nod (yes) or a shake of the head (no) — realistic bodies only. */
+  gesture(move: 'agree' | 'headShake'): void {
+    this.human?.play(move);
+  }
+
+  dispose(): void {
+    this.unsubscribe?.();
+    this.human?.dispose();
   }
 
   /** The one accessory that says at a glance who this citizen is. */
@@ -265,6 +332,10 @@ export class Character {
 
   /** `speed01` is 0 when idle and 1 at full walking speed. */
   update(dt: number, speed01: number): void {
+    if (this.human) {
+      this.human.update(dt, speed01);
+      return;
+    }
     this.phase += dt * (4 + speed01 * 7);
     const swing = Math.sin(this.phase) * (0.15 + speed01 * 0.8);
     this.legL.rotation.x = swing;

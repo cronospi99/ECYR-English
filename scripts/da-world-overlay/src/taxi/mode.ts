@@ -21,6 +21,7 @@ import { extListeners, type Session } from '../net/session';
 import { TaxiWorld, DISTRICT_LABEL, MIN_X, MAX_X, MIN_Z, MAX_Z, VX, HZ, K_MIN, K_MAX, J_MIN, J_MAX, type QuizLight } from './world';
 import { CarBody, TaxiModel, loadLook, saveLook, PAINTS, DRIVER_SHIRTS, DRIVER_SKINS, DRIVER_HAIR, DRIVER_OUTFITS, type TaxiLook, type DriveInput } from './car';
 import { LIGHT_QUESTIONS, type LightQuestion } from './questions';
+import { Smoke } from './smoke';
 import { cluesFor } from './places';
 import { TaxiAudio } from './audio';
 import { TAXI_CSS } from './ui.css';
@@ -78,6 +79,7 @@ export class TaxiMode {
   private hud: HTMLElement | null = null;
   private audio = new TaxiAudio();
   private qDeck: LightQuestion[] = [];
+  private smoke = new Smoke();
   private look: TaxiLook = loadLook();
   private settings: Settings = { goal: 5, pace: 'normal' };
   private car = new CarBody();
@@ -279,6 +281,7 @@ export class TaxiMode {
     const loop = () => {
       t += 0.012;
       m.group.rotation.y = 0.6 + t;
+      m.animate(0, 0, 1 / 60, false, 0);
       renderer.render(scene, cam);
       p.raf = requestAnimationFrame(loop);
     };
@@ -343,6 +346,8 @@ export class TaxiMode {
 
   /** Back to the walking game. */
   exit(): void {
+    this.smoke.points.parent?.remove(this.smoke.points);
+    this.deps.engine.post.setSpeedBlur(0);
     if (this.active) this.finishReport(false);
     this.active = false;
     this.audio.stop();
@@ -927,6 +932,15 @@ export class TaxiMode {
       for (const p of this.deps.traffic.carPositions()) if (this.car.push(p.x, p.z, 1.9) && Math.hypot(this.car.vx, this.car.vz) > 6) this.audio.play('crash');
       for (const p of this.updateAmbient(dt)) this.car.push(p.x, p.z, 1.9);
       if (this.car.drifting) { this.driftTime += dt; if (Math.floor(this.driftTime * 2) !== Math.floor((this.driftTime - dt) * 2)) this.audio.play('drift'); }
+      // tyre smoke when drifting, spinning away from a stop or braking hard; sparks on a hit
+      {
+        const spd = Math.hypot(this.car.vx, this.car.vz);
+        const amt = this.car.drifting ? 0.9 : inp.throttle > 0 && spd < 5 ? 0.3 : inp.brake > 0 && this.car.speed > 9 ? 0.45 : 0;
+        if (!this.smoke.points.parent) { this.deps.engine.scene.add(this.smoke.points); this.smoke.setViewportHeight(window.innerHeight); }
+        if (amt > 0) this.smoke.puff(this.car.x, this.car.z, this.car.yaw, amt);
+        if (hit) this.smoke.sparks(this.car.x + Math.sin(this.car.yaw) * 1.5, this.car.z + Math.cos(this.car.yaw) * 1.5);
+        this.deps.engine.post.setSpeedBlur(inp.boost && this.car.boostFuel > 0.02 ? 0.9 : Math.max(0, (spd - 20) / 45));
+      }
       if (this.carrying) {
         this.fareTime -= dt;
         const dest = this.world.places[this.carrying.dest];
@@ -973,7 +987,7 @@ export class TaxiMode {
       this.destMarker.rotation.y += dt;
     } else this.destMarker.visible = false;
     // waiting passengers wave
-    for (const m of this.passengerMarks.values()) { m.person.update(dt, 0); m.person.group.rotation.y += dt * 0.8; }
+    for (const m of this.passengerMarks.values()) { m.person.update(dt, 0); m.person.group.rotation.y += dt * 0.8; if (Math.random() < dt * 0.15) m.person.gesture(Math.random() < 0.7 ? 'agree' : 'headShake'); }
 
     // other drivers glide to where they said they were
     for (const [id, r] of this.remotes) {
@@ -984,6 +998,7 @@ export class TaxiMode {
       r.yaw += dy * k;
       r.body.position.set(r.x, 0, r.z);
       r.body.rotation.y = r.yaw;
+      r.model?.animate(0, 0, dt, false, 0);
       this.car.push(r.x, r.z, 2);
     }
 
@@ -1004,6 +1019,7 @@ export class TaxiMode {
     environment.follow(elapsed, new THREE.Vector3(this.car.x, 0, this.car.z));
 
     if (this.say && (this.sayTimer -= dt) <= 0) { this.say.remove(); this.say = null; }
+    this.smoke.update(dt);
     this.updateHud();
   }
 
