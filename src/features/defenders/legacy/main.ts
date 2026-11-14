@@ -1483,6 +1483,7 @@ function openScenario() {
   grid.innerHTML = '';
   const cur = (game && game.themeId) || localStorage.getItem('ld:theme') || 'dusk';
   for (const [id, t] of Object.entries(THEMES)) {
+    if (!isPainted(id)) continue; // Language Defenders keeps only its own burnt-out city sets
     const b = document.createElement('button');
     b.className = 'scenario-btn' + (id === cur ? ' selected' : '');
     // miniatura del fondo pintado real para que se vea qué escenario eliges

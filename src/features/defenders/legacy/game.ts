@@ -532,7 +532,8 @@ export class Game {
 
   // Cambia el escenario: recolorea cielo, tablero, suelo, niebla y luces.
   setTheme(id) {
-    const t = THEMES[id] ? id : 'day';
+    if (!isPainted(id)) id = 'dusk'; // a set saved from the first version: use the game's own
+    const t = THEMES[id] ? id : 'dusk';
     this.themeId = t;
     const th = THEMES[t];
     localStorage.setItem('ld:theme', t);

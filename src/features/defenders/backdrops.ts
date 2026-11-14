@@ -137,6 +137,57 @@ function neonSign(x: Ctx, text: string, px: number, py: number, size: number, co
   x.restore();
 }
 
+/**
+ * What is left standing: half-collapsed towers with their floors open to the sky, girders,
+ * leaning poles trailing wires, a broken flyover, wrecked cars and heaps of rubble.
+ * Drawn as the nearest silhouette, with fires glowing inside it.
+ */
+function wreckage(x: Ctx, r: () => number, col: string, glow: string, accent: string) {
+  // broken towers
+  for (let px = 60 + r() * 120; px < W; px += 330 + r() * 420) {
+    const w = 120 + r() * 110, h = 250 + r() * 260, top = H - h;
+    x.fillStyle = col; x.beginPath(); x.moveTo(px, H);
+    x.lineTo(px, top + 60 + r() * 60);
+    let cx = px; while (cx < px + w) { const step = 14 + r() * 26; cx = Math.min(px + w, cx + step); x.lineTo(cx, top + r() * 110 + (cx - px) / w * 60); }
+    x.lineTo(px + w, H); x.closePath(); x.fill();
+    // open floors and bare girders sticking out of the top
+    x.strokeStyle = col; x.lineWidth = 4;
+    for (let i = 0; i < 5; i++) { const gx = px + 10 + r() * (w - 20); x.beginPath(); x.moveTo(gx, top + 90); x.lineTo(gx + (r() - 0.5) * 30, top - 20 - r() * 70); x.stroke(); }
+    x.fillStyle = accent;
+    for (let fy = top + 150; fy < H - 40; fy += 46) for (let fx = px + 14; fx < px + w - 24; fx += 30) if (r() < 0.08) x.fillRect(fx, fy, 12, 16);
+    // a fire inside one of the floors
+    if (r() < 0.7) { const fy = top + 170 + r() * 160, fx = px + w * (0.3 + r() * 0.4); const g = x.createRadialGradient(fx, fy, 0, fx, fy, 70); g.addColorStop(0, glow); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(fx - 70, fy - 70, 140, 140); }
+  }
+  // the flyover, snapped in two
+  x.fillStyle = col;
+  const by = H - 150;
+  x.beginPath(); x.moveTo(-10, by); x.lineTo(760, by + 6); x.lineTo(800, by + 58); x.lineTo(770, by + 40); x.lineTo(-10, by + 34); x.fill();
+  x.beginPath(); x.moveTo(980, by + 96); x.lineTo(1010, by + 40); x.lineTo(1700, by + 4); x.lineTo(1700, by + 40); x.lineTo(1020, by + 80); x.fill();
+  for (const px of [120, 430, 700, 1180, 1480, 1680]) x.fillRect(px, by + 20, 34, 160);
+  x.strokeStyle = col; x.lineWidth = 3;
+  for (let i = 0; i < 6; i++) { const sx = 790 + i * 7; x.beginPath(); x.moveTo(sx, by + 50); x.quadraticCurveTo(sx + 20, by + 110, sx + 6 + r() * 30, by + 130 + r() * 30); x.stroke(); }
+  // leaning poles and sagging wires
+  let prev: [number, number] | null = null;
+  for (let px = 40 + r() * 80; px < W; px += 260 + r() * 200) {
+    const lean = (r() - 0.5) * 0.5, hgt = 210 + r() * 80, tx = px + Math.sin(lean) * hgt, ty = H - Math.cos(lean) * hgt;
+    x.lineWidth = 9; x.beginPath(); x.moveTo(px, H); x.lineTo(tx, ty); x.stroke();
+    x.lineWidth = 6; x.beginPath(); x.moveTo(tx - 34, ty + 16); x.lineTo(tx + 34, ty + 8); x.stroke();
+    if (prev && r() < 0.8) { x.lineWidth = 2; x.beginPath(); x.moveTo(prev[0], prev[1]); x.quadraticCurveTo((prev[0] + tx) / 2, Math.max(prev[1], ty) + 70, tx, ty); x.stroke(); }
+    prev = [tx, ty];
+  }
+  // rubble, wrecked cars and their fires
+  x.fillStyle = col;
+  for (let px = -20; px < W; px += 50 + r() * 90) { const rw = 60 + r() * 120, rh = 20 + r() * 50; x.beginPath(); x.moveTo(px, H); x.lineTo(px + rw * 0.2, H - rh); x.lineTo(px + rw * 0.45, H - rh * 0.6); x.lineTo(px + rw * 0.7, H - rh * 1.1); x.lineTo(px + rw, H); x.fill(); }
+  for (let px = 180 + r() * 200; px < W; px += 420 + r() * 380) {
+    x.save(); x.translate(px, H - 30); x.rotate((r() - 0.5) * 0.3); x.fillStyle = col;
+    x.beginPath(); x.roundRect(-70, -34, 140, 34, 8); x.fill(); x.beginPath(); x.roundRect(-36, -62, 78, 34, 10); x.fill();
+    x.beginPath(); x.arc(-42, 2, 15, 0, 7); x.arc(44, 2, 15, 0, 7); x.fill();
+    x.restore();
+    const g = x.createRadialGradient(px, H - 80, 0, px, H - 80, 120); g.addColorStop(0, glow); g.addColorStop(1, 'rgba(0,0,0,0)');
+    x.fillStyle = g; x.fillRect(px - 120, H - 200, 240, 200);
+  }
+}
+
 /* ---------- the five scenarios ---------- */
 const PAINT: Record<string, (x: Ctx) => void> = {
   // Last Bell: the city at dusk, burning magenta and orange, searchlights sweeping the smoke.
@@ -154,6 +205,7 @@ const PAINT: Record<string, (x: Ctx) => void> = {
     towers(x, r, 800, 330, 640, '#5a1f6e', '#ffb35e', 110, 0.16);
     mist(x, 600, 200, 'rgba(232,56,111,.5)');
     towers(x, r, 800, 110, 300, '#2a1146', '#ff7a5e', 30, 0.12);
+    wreckage(x, r, '#1a0a30', 'rgba(255,150,70,.75)', '#ff7a5e');
     halftone(x, 'rgba(58,15,74,.22)', 0, 300);
     grain(x, r);
   },
@@ -170,6 +222,7 @@ const PAINT: Record<string, (x: Ctx) => void> = {
     tombs(x, r, 800, '#150c30');
     x.strokeStyle = '#0d0722';
     for (const [px, len, a] of [[-20, 330, -1.2], [2420, 340, -1.95]] as const) deadTree(x, r, px, 820, len, a, 44, 5);
+    wreckage(x, r, '#0a0620', 'rgba(90,230,230,.6)', '#4fb8c8');
     halftone(x, 'rgba(18,10,42,.3)', 560, 800, 12);
     grain(x, r);
   },
@@ -185,6 +238,7 @@ const PAINT: Record<string, (x: Ctx) => void> = {
     neonSign(x, 'CLASS IS ON', 1900, 360, 96, '#39d9ff', 0.03);
     neonSign(x, 'ABC', 1560, 560, 84, '#b6ff3d', -0.05);
     neonSign(x, 'OPEN LATE', 900, 590, 70, '#ff3d9a', 0.04);
+    wreckage(x, r, '#03050c', 'rgba(255,61,154,.6)', '#39d9ff');
     mist(x, 640, 160, 'rgba(57,217,255,.22)');
     grain(x, r, 16000);
   },
@@ -204,6 +258,7 @@ const PAINT: Record<string, (x: Ctx) => void> = {
     mist(x, 380, 420, 'rgba(182,255,61,.35)');
     towers(x, r, 800, 200, 460, '#2a0f52', '#b6ff3d', 60, 0.14);
     towers(x, r, 800, 90, 240, '#14062e', '#ff3d9a', 30, 0.1);
+    wreckage(x, r, '#0c0420', 'rgba(182,255,61,.65)', '#b6ff3d');
     grain(x, r);
   },
   // Sunset Ruins: what is left of downtown, in orange and violet print.
@@ -217,6 +272,7 @@ const PAINT: Record<string, (x: Ctx) => void> = {
     mist(x, 520, 280, 'rgba(255,154,42,.55)');
     towers(x, r, 800, 200, 470, '#5a2a9a', '#ffc93d', 50, 0.1);
     towers(x, r, 800, 80, 230, '#2a1560', '#ff6a1e', 20, 0.1);
+    wreckage(x, r, '#1e0c44', 'rgba(255,120,30,.8)', '#ff6a1e');
     birds(x, r, 10, '#5a2a9a');
     grain(x, r);
   },
