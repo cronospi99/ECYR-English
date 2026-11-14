@@ -182,17 +182,16 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   var SOLO = (function () { try { return new URLSearchParams(location.search).get('mode') === 'solo'; } catch (e) { return false; } })();
   var HIT = 100, MISS = 50;
   var FAKES = ['auto', 3, 4, 5, 6, 8], BOARDS = [1, 2, 3, 4, 5];
-  // The same two extras as the Phrasal Verb Roulette: a bet before you choose, and a random multiplier per turn.
+  // No bets and no multipliers here (those belong to the Phrasal Verb Roulette): +100 / −50, always.
   var BETS = [0, 50, 100, 200];
   var SCENE = '<img class="base" src="tgtbt/scene.webp" alt=""><img class="ly ly-purple" src="tgtbt/purple.webp" alt="" style="left:0.0%;top:51.541%;width:14.0%;height:37.238%"><img class="ly ly-green" src="tgtbt/green.webp" alt="" style="left:77.92%;top:57.707%;width:20.24%;height:21.578%"><div class="grp grp-blue"><img class="ly ly-blue" src="tgtbt/blue.webp" alt="" style="left:10.64%;top:30.703%;width:37.84%;height:57.83%"><img class="ly ly-mag" src="tgtbt/mag.webp" alt="" style="left:31.04%;top:45.869%;width:16.48%;height:38.964%"></div><img class="ly ly-red" src="tgtbt/red.webp" alt="" style="left:46.64%;top:41.06%;width:33.04%;height:47.472%"><img class="ly ly-card1" src="tgtbt/card1.webp" alt="" style="left:10.88%;top:3.699%;width:24.16%;height:27.25%"><img class="ly ly-card2" src="tgtbt/card2.webp" alt="" style="left:65.52%;top:3.946%;width:24.08%;height:27.99%"><img class="ly ly-card3" src="tgtbt/card3.webp" alt="" style="left:67.68%;top:30.333%;width:20.8%;height:18.866%"><img class="ly ly-sparkL" src="tgtbt/sparkL.webp" alt="" style="left:30.16%;top:27.127%;width:8.24%;height:13.687%"><img class="ly ly-sparkR" src="tgtbt/sparkR.webp" alt="" style="left:61.36%;top:22.935%;width:8.24%;height:14.673%"><img class="ly ly-qm" src="tgtbt/qm.webp" alt="" style="left:74.16%;top:44.513%;width:15.76%;height:19.605%"><img class="ly ly-emoji" src="tgtbt/emoji.webp" alt="" style="left:33.84%;top:0.0%;width:31.6%;height:48.212%">';
   var flash = document.getElementById('flash'), fade = document.getElementById('fade');
   var app = document.getElementById('app');
 
   var st = { phase: 'setup', level: 'B1', nTeams: SOLO ? 1 : 2, names: ['Team A', 'Team B', 'Team C', 'Team D'],
-    fakes: 'auto', boards: 3, wagerOn: true, multOn: true, mult: 1, wager: 0, teams: [], turn: 0, board: 0, cards: [], pending: null, used: {}, rep: null, found: 0, missed: 0 };
+    fakes: 'auto', boards: 3, wagerOn: false, multOn: false, mult: 1, wager: 0, teams: [], turn: 0, board: 0, cards: [], pending: null, used: {}, rep: null, found: 0, missed: 0 };
   try { var saved = JSON.parse(localStorage.getItem('tgtbt:setup') || 'null'); if (saved) { st.level = saved.level || st.level; st.nTeams = SOLO ? 1 : saved.nTeams || 2; st.names = saved.names || st.names;
     if (FAKES.indexOf(saved.fakes) >= 0) st.fakes = saved.fakes; if (BOARDS.indexOf(saved.boards) >= 0) st.boards = saved.boards;
-    if (typeof saved.wagerOn === 'boolean') st.wagerOn = saved.wagerOn; if (typeof saved.multOn === 'boolean') st.multOn = saved.multOn;
     if (!Array.isArray(st.names) || st.names.length < 4) st.names = ['Team A', 'Team B', 'Team C', 'Team D']; } } catch (e) {}
 
   function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
@@ -243,17 +242,17 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   function nextTurn() { st.turn = (st.turn + 1) % st.teams.length; rollMult(); }
 
   function start() {
-    try { localStorage.setItem('tgtbt:setup', JSON.stringify({ level: st.level, nTeams: st.nTeams, names: st.names, fakes: st.fakes, boards: st.boards, wagerOn: st.wagerOn, multOn: st.multOn })); } catch (e) {}
+    try { localStorage.setItem('tgtbt:setup', JSON.stringify({ level: st.level, nTeams: st.nTeams, names: st.names, fakes: st.fakes, boards: st.boards })); } catch (e) {}
     st.teams = []; for (var i = 0; i < st.nTeams; i++) st.teams.push({ name: (st.names[i] || '').trim() || 'Team ' + 'ABCD'[i], score: 0, hits: 0, misses: 0 });
     if (st.nTeams === 1) st.teams[0].name = SOLO ? 'You' : 'The class';
     st.turn = 0; st.board = 0; st.used = {}; st.found = 0; st.missed = 0;
     newBoard(); st.phase = 'play'; rollMult();
     st.rep = { t0: Date.now() };
-    window.ECYRBridge && window.ECYRBridge.start({ level: st.level, mode: SOLO ? 'solo' : 'class', meta: { teams: st.nTeams, boards: st.boards, fakes: st.fakes, wagers: st.wagerOn, multipliers: st.multOn, game: 'impostor-words' } });
+    window.ECYRBridge && window.ECYRBridge.start({ level: st.level, mode: SOLO ? 'solo' : 'class', meta: { teams: st.nTeams, boards: st.boards, fakes: st.fakes, game: 'impostor-words' } });
     render();
   }
 
-  // One rule: an impostor is +100, a real word is −50 (times the turn's multiplier, plus the bet).
+  // One rule: an impostor is +100, a real word is −50.
   function pick(id) {
     var c = st.cards[id]; if (!c || c.open || st.pending) return;
     var team = st.teams[st.turn], pts = c.fake ? gain() : loss(), mult = st.mult, bet = st.wager;
@@ -331,16 +330,12 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
       '<div class="label">Level</div><div class="row">' + lv + '</div>' + tn +
       '<div class="label">Impostors per board</div><div class="row">' + fk + '</div>' +
       '<div class="label">Boards in this game</div><div class="row">' + bd + '</div>' +
-      '<div class="label">Points</div><div class="row">' +
-      '<button class="chip tog' + (st.wagerOn ? ' on' : '') + '" data-tog="wagerOn">🎯 Wager points <i>' + (st.wagerOn ? 'ON' : 'OFF') + '</i></button>' +
-      '<button class="chip tog' + (st.multOn ? ' on' : '') + '" data-tog="multOn">✨ Random multipliers <i>' + (st.multOn ? 'ON' : 'OFF') + '</i></button></div>' +
       '<button class="btn play" data-act="start">Let’s play</button></div>' +
       '<div class="scene" id="scene" aria-hidden="true">' + SCENE + '</div></div>' +
       '<div class="wrap" style="padding-top:8px"><div class="how">' +
       '<div><b>1 · Spot an impostor</b>On your turn, tap the word you think is invented. Impostor: +' + HIT + ' points.</div>' +
       '<div><b>2 · A real word costs you</b>If the word is real you lose ' + MISS + ' points. Its Spanish meaning and its synonyms appear, at every level.</div>' +
-      '<div><b>3 · Bets and multipliers</b>Before you choose you can bet points: right, you win them too; wrong, you lose them. Some turns come with ×2 to ×5.</div>' +
-      '<div><b>4 · The podium</b>A board ends when all its impostors are found; each board hides more look-alikes. After the last one, the winner goes up on the podium.</div>' +
+      '<div><b>3 · The podium</b>A board ends when all its impostors are found; each board hides more look-alikes. After the last one, the winner goes up on the podium.</div>' +
       '</div></div>';
   }
 

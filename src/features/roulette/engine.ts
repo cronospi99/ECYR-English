@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Chiptune } from './music';
 /* Phrasal Verb Roulette — game engine. This is the original game logic, moved into the app as it
-   was: turns, wheel, timer, coins, aids, passing, teams, podium and every
+   was: turns, wheel, timer, coins, wagers, multipliers, aids, passing, teams, podium and every
    sound. `renderVals()` turns the state into the values the screens draw (View.tsx). */
 
 /** Minimal state holder with the same contract the engine was written against. */
@@ -142,7 +142,7 @@ export class Engine extends Logic {
     screen: 'menu', front: true, pool: [], nameInput: '', students: [],
     levels: ['A1', 'A2'], rounds: 10, sound: true, randomOrder: false,
     sfxVol: 80, audioOpen: false, music: true, musicVol: 55,
-    theme: 'overworld', wagerOn: false, multOn: false, aidsPer: 3, penalty: 5,
+    theme: 'overworld', wagerOn: true, multOn: true, aidsPer: 3, penalty: 5,
     teamsOn: false, teamCount: 2, subjOn: true, ctxOn: true, subject: null, context: null,
     round: 1, order: [], turn: 0, currentIdx: null, passedTo: null,
     segments: [], picks: [], rot: 0, spinning: false, card: null, tense: null,
@@ -327,8 +327,13 @@ export class Engine extends Logic {
     if (far(vals[i])) return 'trailing';
     return 'normal';
   }
-  // Wagers and random multipliers were taken out of the game: every question is worth the same.
-  rollMult() { return 1; }
+  rollMult(i) {
+    if (!this.state.multOn) return 1;
+    const st = this.standing(i), r = Math.random();
+    if (st === 'leader') return 1;
+    if (st === 'trailing') return r < 0.35 ? 1 : r < 0.55 ? 2 : r < 0.7 ? 3 : r < 0.87 ? 4 : 5;
+    return r < 0.6 ? 1 : r < 0.85 ? 2 : 3;
+  }
 
   // ---------- data ----------
   filtered() { const L = this.state.levels; return this.state.pool.filter(v => L.indexOf(v.level) >= 0); }
@@ -657,7 +662,7 @@ export class Engine extends Logic {
       isFront: s.front && s.screen === 'menu', frontStart: () => this.leaveFront(),
       frontPractice: () => this.leaveFront({ teamsOn: false, wagerOn: false, multOn: false, penalty: 0 }, 'PRACTICE'),
       frontLearn: () => this.leaveFront({ teamsOn: false, wagerOn: false, multOn: false, penalty: 0, aidsPer: 5 }, 'LEARN'),
-      frontCompete: () => this.leaveFront({ penalty: 10, aidsPer: 2 }, 'COMPETE'),
+      frontCompete: () => this.leaveFront({ wagerOn: true, multOn: true, penalty: 10, aidsPer: 2 }, 'COMPETE'),
       frontTeams: () => this.leaveFront({ teamsOn: true, teamCount: 2 }, 'TEAMS'),
       frontRewards: () => this.leaveFront({}, 'SET A PRIZE', true),
       toFront: () => this.fx('black', () => this.setState({ front: true })),
@@ -709,6 +714,8 @@ export class Engine extends Logic {
         onClick: () => { this.sfx('click'); this.setState({ aidsPer: n }); }
       })),
       toggles: [
+        { icon: '🎯', label: 'WAGER COINS', state: s.wagerOn ? 'ON' : 'OFF', stateColor: s.wagerOn ? t.accent : t.muted, bg: s.wagerOn ? t.hi : t.panel2, onClick: () => { this.sfx('click'); this.setState({ wagerOn: !s.wagerOn }); } },
+        { icon: '✨', label: 'RANDOM MULTIPLIERS', state: s.multOn ? 'ON' : 'OFF', stateColor: s.multOn ? t.accent : t.muted, bg: s.multOn ? t.hi : t.panel2, onClick: () => { this.sfx('click'); this.setState({ multOn: !s.multOn }); } },
         { icon: '🔊', label: 'SOUND EFFECTS', state: s.sound ? 'ON' : 'OFF', stateColor: s.sound ? t.accent : t.muted, bg: s.sound ? t.hi : t.panel2, onClick: () => this.setState({ sound: !s.sound }, () => this.saveAudio()) },
         { icon: '👤', label: 'RANDOM SUBJECT', state: s.subjOn ? 'ON' : 'OFF', stateColor: s.subjOn ? t.accent : t.muted, bg: s.subjOn ? t.hi : t.panel2, onClick: () => { this.sfx('click'); this.setState({ subjOn: !s.subjOn }); } },
         { icon: '🌍', label: 'RANDOM SITUATION', state: s.ctxOn ? 'ON' : 'OFF', stateColor: s.ctxOn ? t.accent : t.muted, bg: s.ctxOn ? t.hi : t.panel2, onClick: () => { this.sfx('click'); this.setState({ ctxOn: !s.ctxOn }); } },
@@ -816,7 +823,7 @@ export class Engine extends Logic {
       hasMult: s.mult > 1, multLabel: 'x' + s.mult, multBg: s.mult >= 3 ? '#FF3B3B' : t.accent,
       addTimeLabel: '+' + (s.card ? this.baseTime(s.card.level) / 2 : 15) + ' SEC',
 
-      wagerOn: false, wagerOpts,
+      wagerOn: s.wagerOn && !!s.card, wagerOpts,
       wagerNote: '+' + (wagerBase + s.wager) + '/-' + (s.penalty * s.mult + s.wager) + (isLeader ? ' · LEADER CAP' : ''),
 
       aidsOn: s.aidsPer > 0 && !!s.card,
@@ -845,7 +852,7 @@ export class Engine extends Logic {
       joinStudent: this.joinStudent,
       joinDisabled: !s.joinInput.trim() || s.students.length >= 24,
 
-      boardNote: '+' + pts + ' correct' + (s.penalty > 0 ? ' \u00b7 -' + s.penalty + ' wrong' : '') + '',
+      boardNote: '+' + pts + ' correct' + (s.penalty > 0 ? ' \u00b7 -' + s.penalty + ' wrong' : '') + (s.multOn ? ' \u00b7 multipliers on' : ''),
       board: ranked.map((r, k) => ({
         rank: k < 3 ? medals[k] : String(k + 1),
         rankColor: k < 3 ? '#fff' : t.muted,

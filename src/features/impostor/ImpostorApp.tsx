@@ -6,6 +6,8 @@ import { useGameFonts } from "@/features/cards/fonts";
 import { setGameLang, useGameLang } from "@/lib/gameLang";
 import { Home } from "./Home";
 import { ClassicGame } from "./classic/ClassicGame";
+import { ClassicPhone } from "./classic/ClassicPhone";
+import { isClassicCode } from "./classic/net";
 import { Host } from "./game/Host";
 import { Player } from "./game/Player";
 import { Demo } from "./game/Demo";
@@ -20,7 +22,7 @@ import "./impostor.css";
    /impostor/classic    classic projector mode       (teachers)
    /impostor/host       videogame mode, projector    (teachers; needs the relay)
    /impostor/join       enter a room code
-   /impostor/join/CODE  phone: design your character and play
+   /impostor/join/CODE  phone: design your character and play (5-letter code: classic room, the phone shows your card)
    /impostor/demo       videogame mode alone against bots (everyone, no network) */
 export default function ImpostorApp() {
   useGameFonts();
@@ -58,6 +60,8 @@ function JoinRoute({ go }: { go: (p: string) => void }) {
   const c = code.toUpperCase();
   if (!/^[A-Z0-9]{3,8}$/.test(c)) return <Navigate to="/impostor/join" replace />;
   if (!isDemoCode(c) && !relayConfigured()) return <RelayMissing go={go} />;
+  // classic rooms (5 letters): the phone only shows the student's own card
+  if (isClassicCode(c)) return <ClassicPhone key={c} code={c} onExit={() => go("/")} />;
   return <Player key={c} code={c} onExit={() => go("/")} />;
 }
 

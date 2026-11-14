@@ -1670,7 +1670,13 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   «reducir movimiento».
 - Animaciones siempre activas en toda la app: se quitó la regla global que las congelaba cuando el
   dispositivo pide «reducir movimiento» (index.css, index.html, MotionConfig y los juegos).
-- Phrasal Verb Roulette sin apuestas ni multiplicadores: cada pregunta vale lo mismo.
+- Apuestas y multiplicadores: se quedan en Phrasal Verb Roulette y salen de Too Good To Be True
+  (impostora +100, palabra real −50, siempre).
+- Impostor clásico con QR: el proyector muestra un QR (pantalla completa al tocarlo) y la lista de
+  móviles; con 3 o más, cada estudiante ve su carta solo en su móvil (mantener pulsado para verla,
+  «Ya la vi»), el proyector marca quién está listo y proyecta el orden para hablar con el turno
+  actual resaltado (botón Siguiente); el móvil dice «Te toca». En el registro de palabras cada palabra
+  va en su caja (Enter o coma para añadir, × para quitar). Salas clásicas: código de 5 letras.
 - Da World: el QR de clase abre /play/da-world#join=CÓDIGO dentro de la app (como los demás juegos en
   vivo) y se amplía a pantalla completa al tocarlo.
 - Language Defenders: personajes alineados con los carriles (defensores mirando al este, distracciones

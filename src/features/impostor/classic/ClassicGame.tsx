@@ -7,6 +7,9 @@ import { wordPool, type LevelOpt } from "../shared/pool";
 import { load, save } from "../shared/storage";
 import { Header } from "../shared/Header";
 import { Fit } from "../shared/Fit";
+import { Relay, makeId, relayConfigured } from "@/lib/relay";
+import { JoinQr } from "@/components/ui/JoinQr";
+import { classicCode, type FromClassicHost, type PhoneView, type ToClassicHost } from "./net";
 
 type Phase = "setup" | "deal" | "clue" | "discuss" | "vote" | "reveal" | "scores";
 type HistoryRow = { round: number; word: string; impostors: number[]; votes: number[]; accused: number | null; caught: boolean };
@@ -39,7 +42,27 @@ interface S {
   guessed: boolean;
   timeLeft: number;
   running: boolean;
+  /** phone id of each player this round ([] = projector-only round, cards dealt on screen) */
+  seats: string[];
+  /** phones that have looked at their card this round */
+  seen: string[];
+  /** who is speaking now, as a position in speakOrder */
+  speakAt: number;
 }
+
+type Phone = { id: string; name: string; connected: boolean };
+
+/* The classic room survives a refresh of the projector (same code, same phones). */
+function classicRoom(): { code: string; hostId: string } {
+  try {
+    const v = JSON.parse(sessionStorage.getItem("impostor.classic.room") || "null");
+    if (v && typeof v.code === "string" && v.code.length === 5) return v;
+  } catch { /* ignore */ }
+  const room = { code: classicCode(), hostId: "host-" + makeId() };
+  try { sessionStorage.setItem("impostor.classic.room", JSON.stringify(room)); } catch { /* ignore */ }
+  return room;
+}
+const splitWords = (v: string) => (v || "").split(/\s*[,;]\s*/).map((w) => w.trim()).filter((w) => w.length);
 
 const USED_KEY = "impostor.usedWords";
 const loadUsed = () => load<string[]>(USED_KEY, []);
@@ -72,8 +95,22 @@ const initial = (lang: Lang): S => ({
   votingClosed: false,
   guessed: false,
   timeLeft: 0,
-  running: false
+  running: false,
+  seats: [],
+  seen: [],
+  speakAt: 0
 });
+
+function accusedFull(st: S) {
+  let best = -1, bestN = 0, tie = false;
+  st.names.forEach((_, i) => {
+    const v = st.votes[i] || 0;
+    if (v > bestN) { bestN = v; best = i; tie = false; }
+    else if (v === bestN && v > 0 && i !== best) tie = true;
+  });
+  return { index: tie || bestN === 0 ? null : best, votes: bestN, tie };
+}
+const accusedOf = (st: S) => accusedFull(st).index;
 
 const ordinal = (n: number, lang: Lang) => {
   if (lang === "es") return n + ".º";
@@ -121,6 +158,83 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
     });
   }, []);
 
+  /* ---- phones: the room, the relay and what each phone sees ---- */
+  const live = relayConfigured();
+  const room = useRef(classicRoom()).current;
+  const relay = useRef<Relay | null>(null);
+  const [phones, setPhones] = useState<Phone[]>(() => {
+    try { return (JSON.parse(sessionStorage.getItem("impostor.classic.phones") || "[]") as Phone[]).map((p) => ({ ...p, connected: false })); } catch { return []; }
+  });
+  const phonesRef = useRef(phones);
+  phonesRef.current = phones;
+  useEffect(() => { try { sessionStorage.setItem("impostor.classic.phones", JSON.stringify(phones)); } catch { /* ignore */ } }, [phones]);
+
+  const viewFor = useCallback((st: S, id: string): PhoneView => {
+    const seat = st.seats.indexOf(id);
+    const me = phonesRef.current.find((p) => p.id === id);
+    const base: PhoneView = { k: "st", lang: st.lang, round: st.round, stage: "wait", name: me?.name };
+    if (seat < 0 || !st.entry || st.phase === "setup") return base;
+    const en = st.entry, n = st.names.length;
+    const isImp = st.impostors.indexOf(seat) !== -1;
+    if (st.phase === "reveal" || st.phase === "scores") {
+      const a = accusedOf(st);
+      return { ...base, stage: "reveal", reveal: { word: en[0], decoy: en[1], imps: st.impostors.map((i) => st.names[i] || ""), caught: a !== null && st.impostors.indexOf(a) !== -1, wasImp: isImp } };
+    }
+    const order = st.speakOrder.length === n ? st.speakOrder : range(n);
+    const pos = order.indexOf(seat);
+    const decoy = st.sees === "decoy" || st.sees === "both", hint = st.sees === "hint" || st.sees === "both";
+    return {
+      ...base, stage: "card", phase: st.phase, imp: isImp,
+      word: isImp ? (decoy ? en[1] : "") : en[0], hint: isImp && hint ? en[2] : "",
+      pos, total: n,
+      speaking: st.phase === "clue" ? st.names[order[st.speakAt]] : undefined,
+      myTurn: st.phase === "clue" && pos === st.speakAt
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!live) return;
+    const r = new Relay(room.code, room.hostId, "host");
+    relay.current = r;
+    const send = (m: FromClassicHost, to: string) => r.send(m, to);
+    const off = r.on((env) => {
+      if (env.f === "_sys") {
+        if (env.d?.type === "peer-leave") setPhones((ps) => ps.map((p) => (p.id === env.d.id ? { ...p, connected: false } : p)));
+        return;
+      }
+      const m = env.d as ToClassicHost, id = env.f;
+      if (!m || typeof m !== "object") return;
+      if (m.k === "hello") {
+        const name = String(m.name || "").trim().slice(0, 16) || "Player";
+        const ps = phonesRef.current, i = ps.findIndex((p) => p.id === id);
+        // a phone already playing keeps its name until the round is over
+        const next = i >= 0 ? ps.map((p, k) => (k === i ? { ...p, connected: true, name: ref.current.seats.includes(id) ? p.name : name } : p)) : ps.concat({ id, name, connected: true });
+        phonesRef.current = next;
+        setPhones(next);
+        send(viewFor(ref.current, id), id);
+      } else if (m.k === "seen") {
+        if (m.round === ref.current.round) setS((p) => (p.seen.includes(id) ? p : { ...p, seen: p.seen.concat(id) }));
+      } else if (m.k === "bye") {
+        if (!ref.current.seats.includes(id)) setPhones((ps) => ps.filter((p) => p.id !== id));
+      }
+    });
+    return () => { off(); r.close(); relay.current = null; };
+  }, [live, room.code, room.hostId, viewFor]);
+
+  /* tell every phone what it should show whenever that changes */
+  const netKey = JSON.stringify([s.round, s.phase, s.speakAt, s.speakOrder, s.seats, s.lang, s.sees, s.impostors, s.votes, s.votingClosed, phones.map((p) => p.id + p.name)]);
+  useEffect(() => {
+    const r = relay.current;
+    if (!r) return;
+    phonesRef.current.forEach((p) => r.send(viewFor(ref.current, p.id) satisfies FromClassicHost, p.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [netKey, viewFor]);
+
+  const kickPhone = (id: string) => {
+    relay.current?.send({ k: "kick" } satisfies FromClassicHost, id);
+    setPhones((ps) => ps.filter((p) => p.id !== id));
+  };
+
   const startRound = () => {
     const st = ref.current;
     const pool = wordPool(st.lang, st.level, st.topic);
@@ -129,11 +243,18 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
     if (!left.length) { left = pool; used = []; }
     const entry = left[randInt(left.length)];
     const nextUsed = used.concat([entry[0]]);
-    const n = st.names.length;
+    // Phones in the room (3 or more): they are the players and each one gets its card on the phone.
+    const ph = live ? phonesRef.current : [];
+    const usePhones = ph.length >= 3;
+    const names = usePhones ? ph.map((p) => p.name) : st.names;
+    const seats = usePhones ? ph.map((p) => p.id) : [];
+    const sameCrew = names.length === st.names.length;
+    const n = names.length;
     const count = Math.min(st.impostorCount, Math.max(1, n - 2));
     if (push({
-      phase: "deal", entry, used: nextUsed,
-      impostors: pickImpostors(range(n), count, st.impostors).sort((a, b) => a - b),
+      phase: "deal", entry, used: nextUsed, names, seats, seen: [], speakAt: 0,
+      scores: sameCrew ? st.scores : names.map((_, i) => st.scores[i] || 0),
+      impostors: pickImpostors(range(n), count, sameCrew ? st.impostors : []).sort((a, b) => a - b),
       prevImpostors: st.impostors,
       dealIndex: 0, cardShown: false,
       words: range(n).map(() => ""),
@@ -151,19 +272,12 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
     if (next >= st.names.length) push({ phase: "clue", cardShown: false, timeLeft: st.clueSecs, running: true });
     else push({ dealIndex: next, cardShown: false });
   };
+  const dealtToPhones = () => push({ phase: "clue", cardShown: false, timeLeft: ref.current.clueSecs, running: true, speakAt: 0 });
   const toDiscuss = () => push({ phase: "discuss", timeLeft: ref.current.discussSecs, running: true });
   const toVote = () => push({ phase: "vote", running: false });
   const closeVoting = () => push({ votingClosed: true });
 
-  const accused = (st: S) => {
-    let best = -1, bestN = 0, tie = false;
-    st.names.forEach((_, i) => {
-      const v = st.votes[i] || 0;
-      if (v > bestN) { bestN = v; best = i; tie = false; }
-      else if (v === bestN && v > 0 && i !== best) tie = true;
-    });
-    return { index: tie || bestN === 0 ? null : best, votes: bestN, tie };
-  };
+  const accused = accusedFull;
 
   const toReveal = () => {
     const st = ref.current;
@@ -182,7 +296,7 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
   const advance = () => {
     const st = ref.current;
     if (st.phase === "setup") return startRound();
-    if (st.phase === "deal") return st.cardShown ? nextCard() : flipCard();
+    if (st.phase === "deal") return st.seats.length ? dealtToPhones() : st.cardShown ? nextCard() : flipCard();
     if (st.phase === "clue") return toDiscuss();
     if (st.phase === "discuss") return toVote();
     if (st.phase === "vote") return st.votingClosed ? toReveal() : closeVoting();
@@ -230,6 +344,7 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
   const speak = ord(s.speakOrder);
   const vord = ord(s.voteOrder);
   const topicLabel = s.topic === "All" ? T.allTopics : (T.topics as Record<string, string>)[s.topic];
+  const phonesPlay = live && phones.length >= 3;
   const timerColor = s.timeLeft === 0 ? "#f07a1a" : "#f5c518";
   const timerBtn = s.running ? T.pause : T.startTimer;
   const toggleTimer = () => set((p) => ({ running: !p.running, timeLeft: p.timeLeft > 0 ? p.timeLeft : p.phase === "clue" ? p.clueSecs : p.discussSecs }));
@@ -294,6 +409,30 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {live && (
+              <div className="plate" style={{ display: "flex", gap: 20, alignItems: "flex-start", flexWrap: "wrap" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                  <JoinQr path="/impostor/join" code={room.code} title="Impostor" size={150} label={s.lang === "es" ? "Mostrar el QR en pantalla completa" : "Show the QR full screen"} />
+                  <span style={black("30px", { letterSpacing: "0.14em", color: "#f5c518" })}>{room.code}</span>
+                </div>
+                <div style={{ flex: 1, minWidth: 220 }}>
+                  <div className="lbl lbl-y" style={{ marginBottom: 6 }}>📱 {s.lang === "es" ? "Móviles" : "Phones"} — {phones.length}</div>
+                  <div style={{ fontSize: 14, color: "rgba(242,239,230,0.7)", marginBottom: 12, lineHeight: 1.5 }}>
+                    {s.lang === "es" ? "Escanead el QR: cada estudiante verá su palabra en su móvil, no en el proyector. Con 3 o más móviles, ellos son los jugadores." : "Scan the QR: every student sees their word on their own phone, not on the projector. With 3 or more phones, the phones are the players."}
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {phones.map((p) => (
+                      <span key={p.id} className="imp-chip" style={{ opacity: p.connected ? 1 : 0.45 }}>
+                        {p.name}
+                        <button type="button" onClick={() => kickPhone(p.id)} aria-label={(s.lang === "es" ? "Quitar " : "Remove ") + p.name}>×</button>
+                      </span>
+                    ))}
+                    {!phones.length && <span style={{ fontSize: 14, color: "rgba(242,239,230,0.45)", animation: "imp-blink 2s infinite" }}>{s.lang === "es" ? "Esperando el primer móvil…" : "Waiting for the first phone…"}</span>}
+                  </div>
+                  {phones.length > 0 && phones.length < 3 && <div style={{ marginTop: 10, fontSize: 13, color: "#f07a1a" }}>{s.lang === "es" ? "Faltan móviles: con menos de 3, el proyector reparte las cartas." : "Need 3 phones: with fewer, the projector deals the cards."}</div>}
+                </div>
+              </div>
+            )}
             <div>
               <div className="lbl" style={{ marginBottom: 10 }}>{T.language}</div>
               <Opts list={[{ id: "en" as Lang, label: "English" }, { id: "es" as Lang, label: "Español" }]} cur={s.lang} onPick={setLang} />
@@ -316,14 +455,14 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
               <Opts list={["All", ...topics].map((id) => ({ id: id as string, label: id === "All" ? T.all : (T.topics as Record<string, string>)[id] }))} cur={s.topic} onPick={(id) => set({ topic: id })} style={{ padding: "10px 15px", font: "700 13px Archivo,sans-serif", letterSpacing: "0.04em" }} />
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 24 }}>
-              <div>
+              {!phonesPlay && <div>
                 <div className="lbl" style={{ marginBottom: 10 }}>{T.workers}</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <button type="button" className="sq btn-s" onClick={() => setNames(Math.max(3, s.names.length - 1))}>−</button>
                   <div className="well" style={black("24px", { minWidth: 52, textAlign: "center", padding: "7px 0", color: "#f5c518" })}>{s.names.length}</div>
                   <button type="button" className="sq btn-s" onClick={() => setNames(Math.min(20, s.names.length + 1))}>+</button>
                 </div>
-              </div>
+              </div>}
               <div>
                 <div className="lbl" style={{ marginBottom: 10 }}>{T.impostors}</div>
                 <Opts list={[{ id: 1, label: "1" }, { id: 2, label: "2" }]} cur={s.impostorCount} onPick={(id) => set({ impostorCount: id })} style={{ padding: "11px 20px" }} />
@@ -343,7 +482,7 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
                 <Opts list={[{ id: 90, label: "1:30" }, { id: 120, label: "2 min" }, { id: 180, label: "3 min" }]} cur={s.discussSecs} onPick={(id) => set({ discussSecs: id })} style={mono(13, { padding: "11px 15px", textTransform: "none", letterSpacing: 0 })} />
               </div>
             </div>
-            <div>
+            {!phonesPlay && <div>
               <div className="lbl" style={{ marginBottom: 10 }}>{T.crew}</div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(160px,1fr))", gap: 8 }}>
                 {s.names.map((n, i) => (
@@ -353,7 +492,7 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
                   </div>
                 ))}
               </div>
-            </div>
+            </div>}
             <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 14, paddingTop: 2 }}>
               <button type="button" className="btn btn-y btn-big" onClick={startRound}>{T.issue}</button>
               <span style={mono(11, { letterSpacing: "0.1em", color: "rgba(242,239,230,0.45)" })}>{T.keys}</span>
@@ -362,7 +501,25 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
         </div>
       )}
 
-      {s.phase === "deal" && (
+      {s.phase === "deal" && s.seats.length > 0 && (
+        <div className="pad-sm" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 26, padding: "36px 30px 50px", textAlign: "center" }}>
+          <div className="kicker" style={{ padding: "6px 14px" }}>📱 {s.lang === "es" ? "Las cartas están en los móviles" : "The cards are on the phones"}</div>
+          <h1 className="h1" style={{ margin: 0 }}>{s.lang === "es" ? "Mirad vuestro móvil" : "Check your phone"}</h1>
+          <p className="lead" style={{ margin: 0, textAlign: "center" }}>{s.lang === "es" ? "Mantén pulsada la carta para ver tu palabra y pulsa «Ya la vi». ¡Que nadie más la vea!" : "Hold the card to see your word, then tap “Got it”. Don't let anyone else see it!"}</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", maxWidth: 1100 }}>
+            {s.names.map((n, i) => {
+              const ok = s.seen.includes(s.seats[i]);
+              return <div key={i} className="well" style={{ padding: "10px 16px", display: "flex", alignItems: "center", gap: 10, background: ok ? "#2f4a2a" : "#1b2023" }}>
+                <span style={{ fontSize: 20 }}>{ok ? "✅" : "⏳"}</span><span style={{ fontSize: 18, fontWeight: 700 }}>{n}</span>
+              </div>;
+            })}
+          </div>
+          <div style={mono(13, { letterSpacing: "0.14em", textTransform: "uppercase", color: "#f5c518" })}>{s.seen.length} / {s.names.length} {s.lang === "es" ? "listos" : "ready"}</div>
+          <button type="button" className="btn btn-y btn-big" onClick={dealtToPhones}>{T.sealStart}</button>
+        </div>
+      )}
+
+      {s.phase === "deal" && !s.seats.length && (
         <div className="pad-sm" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 28, padding: "36px 30px 50px", textAlign: "center" }}>
           <div className="kicker" style={{ padding: "6px 14px" }}>{T.card} {s.dealIndex + 1} {T.of} {s.names.length} — {T.lookAway}</div>
           <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
@@ -392,7 +549,35 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
       )}
 
       {s.phase === "clue" && (
-        <div className="stack-sm pad-sm" style={{ flex: 1, display: "grid", gridTemplateColumns: "minmax(min(300px,100%),0.85fr) minmax(min(400px,100%),1.1fr)", gap: 40, padding: "34px 30px", alignItems: "start" }}>
+        <div className="pad-sm" style={{ padding: "26px 30px 0" }}>
+          <div className="plate" style={{ padding: "14px 18px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap", marginBottom: 12 }}>
+              <span className="lbl lbl-y">🎤 {s.lang === "es" ? "Orden para hablar" : "Speaking order"}</span>
+              <div className="row" style={{ gap: 8 }}>
+                <button type="button" className="btn btn-s btn-sm" disabled={s.speakAt <= 0} onClick={() => set((p) => ({ speakAt: Math.max(0, p.speakAt - 1) }))}>◀</button>
+                <button type="button" className="btn btn-y btn-sm" disabled={s.speakAt >= speak.length - 1} onClick={() => set((p) => ({ speakAt: Math.min(p.names.length - 1, p.speakAt + 1) }))}>{s.lang === "es" ? "Siguiente ▶" : "Next ▶"}</button>
+              </div>
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+              {speak.map((i, pos) => {
+                const now = pos === s.speakAt, done = pos < s.speakAt;
+                return (
+                  <button type="button" key={i} onClick={() => set({ speakAt: pos })} className="well"
+                    style={{ display: "flex", alignItems: "center", gap: 10, padding: now ? "12px 18px" : "8px 14px", cursor: "pointer", color: "#f2efe6",
+                      background: now ? "#f5c518" : done ? "#20262a" : "#2b3236", opacity: done ? 0.55 : 1, boxShadow: now ? "0 0 0 4px rgba(245,197,24,.35), 0 5px 0 #0e1113" : "0 3px 0 #0e1113",
+                      animation: now ? "imp-popIn .3s" : undefined }}>
+                    <span style={black(now ? "26px" : "18px", { color: now ? "#0e1113" : "#f5c518" })}>{pos + 1}</span>
+                    <span style={{ fontSize: now ? 24 : 17, fontWeight: 800, color: now ? "#0e1113" : undefined }}>{s.names[i]}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {s.phase === "clue" && (
+        <div className="stack-sm pad-sm" style={{ flex: 1, display: "grid", gridTemplateColumns: "minmax(min(300px,100%),0.85fr) minmax(min(400px,100%),1.1fr)", gap: 40, padding: "24px 30px 34px", alignItems: "start" }}>
           <div>
             <h2 className="h2">{T.clueH}</h2>
             <p style={{ fontSize: 18, lineHeight: 1.6, color: "rgba(242,239,230,0.72)", maxWidth: "34ch", margin: "0 0 26px", textWrap: "pretty" } as CSSProperties}>{T.clueP}</p>
@@ -409,18 +594,17 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
               <div className="lbl lbl-y">{T.logTitle}</div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <div className="tag" style={{ color: "rgba(242,239,230,0.7)", letterSpacing: 0, textTransform: "none" }}>{totalWords} {T.logged}</div>
-                <button type="button" className="btn btn-o btn-sm" onClick={() => set((p) => ({ speakOrder: shuffle(range(p.names.length)) }))}>{T.drawOrder}</button>
+                <button type="button" className="btn btn-o btn-sm" onClick={() => set((p) => ({ speakOrder: shuffle(range(p.names.length)), speakAt: 0 }))}>{T.drawOrder}</button>
               </div>
             </div>
             <div style={{ fontSize: 13, color: "rgba(242,239,230,0.5)", marginBottom: 14 }}>{T.firstUp} <em style={{ fontStyle: "normal", fontWeight: 700, color: "#f5c518" }}>{s.names[speak[0]]}</em>{T.typeEach}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
               {speak.map((i, pos) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "0 10px", border: "3px solid #0e1113", borderRadius: 4, background: pos === 0 ? "#2f373c" : "#20262a" }}>
-                  <span style={mono(11, { padding: "2px 6px", borderRadius: 2, minWidth: 32, textAlign: "center", color: pos === 0 ? "#0e1113" : "#f5c518", background: pos === 0 ? "#f5c518" : "transparent" })}>{ordinal(pos + 1, s.lang)}</span>
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "0 10px", border: "3px solid #0e1113", borderRadius: 4, background: pos === s.speakAt ? "#2f373c" : "#20262a" }}>
+                  <span style={mono(11, { padding: "2px 6px", borderRadius: 2, minWidth: 32, textAlign: "center", color: pos === s.speakAt ? "#0e1113" : "#f5c518", background: pos === s.speakAt ? "#f5c518" : "transparent" })}>{ordinal(pos + 1, s.lang)}</span>
                   <span style={{ minWidth: 96, fontSize: 16, fontWeight: 700 }}>{s.names[i]}</span>
-                  <input type="text" value={s.words[i] || ""} placeholder={T.wordsPh}
-                    onChange={(ev) => { const v = ev.target.value; set((p) => ({ words: p.names.map((_, k) => (k === i ? v : p.words[k] || "")) })); }}
-                    style={{ flex: 1, minWidth: 0, padding: "11px 0", border: 0, background: "transparent", color: "#f2efe6", fontSize: 16 }} />
+                  <WordBoxes value={s.words[i] || ""} placeholder={T.wordsPh}
+                    onChange={(v) => set((p) => ({ words: p.names.map((_, k) => (k === i ? v : p.words[k] || "")) }))} />
                   <span style={mono(13, { minWidth: 26, textAlign: "right", color: counts[i] ? "#f5c518" : "rgba(242,239,230,0.3)" })}>{counts[i]}</span>
                 </div>
               ))}
@@ -482,8 +666,9 @@ export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l
               {vord.map((i) => (
                 <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 10, padding: "6px 0", borderBottom: "2px solid rgba(14,17,19,0.45)" }}>
                   <span style={{ minWidth: 96, fontSize: 15, fontWeight: 700, color: "rgba(242,239,230,0.85)" }}>{s.names[i]}</span>
-                  <span style={{ flex: 1, font: "400 15px 'Space Mono',monospace", color: counts[i] ? "#f2efe6" : "rgba(242,239,230,0.32)" }}>
-                    {(s.words[i] || "").split(/\s*[,;]\s*/).filter((w) => w.length).join(" · ") || "—"}
+                  <span style={{ flex: 1, display: "flex", flexWrap: "wrap", gap: 6, color: "rgba(242,239,230,0.32)" }}>
+                    {splitWords(s.words[i]).map((w, k) => <span key={k} className="imp-chip">{w}</span>)}
+                    {!counts[i] && "—"}
                   </span>
                 </div>
               ))}
@@ -640,6 +825,36 @@ export function Hatch({ caught, verdict, line, children }: { caught: boolean; ve
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: "50%", borderBottom: "4px solid #0e1113", backgroundImage: "repeating-linear-gradient(45deg,#f5c518 0 18px,#0e1113 18px 36px)", animation: "imp-shutterUp 0.85s cubic-bezier(.7,0,.3,1) 0.35s both" }} />
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "50%", borderTop: "4px solid #0e1113", backgroundImage: "repeating-linear-gradient(45deg,#f5c518 0 18px,#0e1113 18px 36px)", animation: "imp-shutterDown 0.85s cubic-bezier(.7,0,.3,1) 0.35s both" }} />
+    </div>
+  );
+}
+
+/* One player's clue words as separate boxes: type a word and press Enter (or a comma) to add it;
+   × or Backspace on an empty field removes one. Stored comma-joined, as the rest of the game reads it. */
+function WordBoxes({ value, onChange, placeholder }: { value: string; onChange: (v: string) => void; placeholder: string }) {
+  const [draft, setDraft] = useState("");
+  const words = splitWords(value);
+  const add = (raw: string) => {
+    const w = raw.replace(/[,;]+/g, " ").trim();
+    if (w) onChange(words.concat(w).join(", "));
+    setDraft("");
+  };
+  return (
+    <div style={{ flex: 1, minWidth: 0, display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6, padding: "7px 0" }}>
+      {words.map((w, k) => (
+        <span key={k} className="imp-chip">
+          {w}
+          <button type="button" onClick={() => onChange(words.filter((_, j) => j !== k).join(", "))} aria-label={"Remove " + w}>×</button>
+        </span>
+      ))}
+      <input type="text" value={draft} placeholder={words.length ? "" : placeholder}
+        onChange={(ev) => { const v = ev.target.value; if (/[,;]$/.test(v)) add(v); else setDraft(v); }}
+        onKeyDown={(ev) => {
+          if (ev.key === "Enter") { ev.preventDefault(); add(draft); }
+          else if (ev.key === "Backspace" && !draft && words.length) onChange(words.slice(0, -1).join(", "));
+        }}
+        onBlur={() => draft.trim() && add(draft)}
+        style={{ flex: 1, minWidth: 90, padding: "6px 0", border: 0, background: "transparent", color: "#f2efe6", fontSize: 16 }} />
     </div>
   );
 }
