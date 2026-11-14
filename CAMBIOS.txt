@@ -1690,3 +1690,16 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   al oeste) y la tumba neón de frente a la arena.
 - Exámenes finales Pre-A1 a C2: 25 preguntas en listening, reading, grammar y vocabulary
   (tres textos y tres audios por examen).
+- Da World reconstruido en parte (scripts/da-world-overlay, aplicado por scripts/import-da-world.mjs):
+  materiales PBR en todos los modelos (rugosidad y metal por color del atlas, detalle a escala del
+  mundo), reflejos del cielo, sombras más definidas, viñeta y resplandor solo de noche. Vocabulary
+  pasa de 14 a 20 misiones; la portada muestra el número real de misiones y el progreso.
+- Da World · TAXI RUSH (modo nuevo, cartel «NEW!» en la portada): una ciudad unas 7 veces más grande
+  alrededor de la original, con 8 barrios y 155 lugares (internacionales y colombianos: Bogotá Books,
+  Tolima Fruits…). Antes de empezar se elige cuántos pasajeros llevar (3 a 20), el ritmo del
+  taxímetro, y se personaliza el taxi (pintura, decoración, rines, letrero) y el conductor, con vista
+  3D. El pasajero describe a dónde va y hay que entenderlo; flecha guía y minimapa; 56 semáforos ❓:
+  si paras en rojo respondes «arregla la frase» o ABCD (verde y dinero si aciertas; pasarlo en rojo
+  resta $10); preguntas sin repetir hasta agotar las 58. Derrapes, turbo, tráfico, música rock retro
+  propia que baja con los efectos, color estilo arcade de los 2000. Cooperativo con el mismo QR de
+  Clase (multijugador): todos ven el mismo pasaje y suman al equipo.

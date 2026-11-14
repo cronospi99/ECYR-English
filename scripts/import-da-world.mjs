@@ -818,6 +818,27 @@ patch('src/net/peer.ts', 'join link names index.html under the base',
 // ---------------------------------------------------- page title / lang
 patch('index.html', 'page title', '<title>Da World — walk the city</title>', '<title>Da World</title>');
 
+// ======================================== 4b. ECYR rebuild overlay (whole files)
+// The partial rebuild (PBR materials, rounder people, night bloom, six more
+// vocabulary missions, the class QR opening the app, and the Taxi Rush mode)
+// is kept as whole files in scripts/da-world-overlay/, written on top of the
+// patched source. They already contain the patches above, so this runs last.
+// If upstream moves one of these files, diff it against the overlay copy.
+const overlay = join(platform, 'scripts/da-world-overlay');
+if (existsSync(overlay)) {
+  const list = [];
+  (function walk(d) {
+    for (const f of readdirSync(d)) {
+      const p = join(d, f);
+      if (statSync(p).isDirectory()) walk(p);
+      else list.push(relative(overlay, p));
+    }
+  })(overlay);
+  cpSync(overlay, work, { recursive: true });
+  for (const f of list) applied.push(`${f}: ECYR rebuild (overlay)`);
+  console.log(`  ✓ overlay: ${list.length} files from scripts/da-world-overlay`);
+}
+
 // ======================================================= 5. install + build
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
@@ -892,9 +913,25 @@ for (const needle of [`${BASE}models/`, 'ecyr-card', 'ECYRBridge', 'da-world:sav
 }
 
 // --------------------------------------------------------------- publish
+// The illustrated front page (public/modules/da-world/front/) is ECYR's own,
+// not part of the build: keep it across imports and load it after the bundle.
+const front = join(out, 'front');
+const frontKeep = existsSync(front) ? mkdtempSync(join(process.env.ECYR_TMP || tmpdir(), 'ecyr-da-world-front-')) : null;
+if (frontKeep) cpSync(front, frontKeep, { recursive: true });
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 cpSync(dist, out, { recursive: true });
+if (frontKeep) {
+  cpSync(frontKeep, front, { recursive: true });
+  rmSync(frontKeep, { recursive: true, force: true });
+  const page = join(out, 'index.html');
+  const withFront = readFileSync(page, 'utf8').replace(
+    '</head>',
+    `    <link rel="stylesheet" href="${BASE}front/front.css">\n    <script src="/modules/_bridge/ecyr-fx.js" defer></script>\n    <script src="${BASE}front/front.js" defer></script>\n  </head>`,
+  );
+  writeFileSync(page, withFront);
+  console.log('  ✓ front page kept and loaded after the bundle');
+}
 
 let commit = 'unknown';
 try {
