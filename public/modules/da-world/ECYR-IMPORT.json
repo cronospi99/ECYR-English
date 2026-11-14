@@ -45,6 +45,8 @@
     "src/ui/cityHud.ts: info card actions",
     "src/ui/cityHud.ts: info card: what 🏠 does",
     "src/net/peer.ts: join link names index.html under the base",
-    "index.html: page title"
+    "index.html: page title",
+    "assets/index-*.js: inside the app the join QR opens /play/da-world#join=CODE (signed-in app route, like the other live games)",
+    "assets/index-*.js: the host QR opens full screen on click (projector), with the code and link under it"
   ]
 }

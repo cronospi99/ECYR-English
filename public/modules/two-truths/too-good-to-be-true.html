@@ -144,7 +144,6 @@ input.team { background: var(--card); border: 2px solid var(--line); color: var(
 #fade.out { transition: opacity 1s ease-out; }
 @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding: 60px 16px 0; min-height: 0; } .hero .logo { margin-left: -12px; width: min(100%, 420px); }
   .scene { -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent); mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent); margin-top: 8px; } }
-@media (prefers-reduced-motion: reduce) { .scene *, .hero { animation: none !important; } }
 
 /* ---- the end: winner on a podium ---- */
 .end { text-align: center; }
@@ -296,7 +295,7 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   }
   function launch() {
     if (busy) return; busy = true;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reduce = false;
     var scene = document.getElementById('scene'), hero = document.querySelector('.hero');
     if (!scene || reduce) { start(); busy = false; return; }
     for (var i = 0; i < 22; i++) {

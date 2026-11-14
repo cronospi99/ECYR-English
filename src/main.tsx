@@ -22,7 +22,7 @@ void useAuth.getState().init().then(startSync);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="never">
       <RouterProvider router={router} />
     </MotionConfig>
   </StrictMode>,

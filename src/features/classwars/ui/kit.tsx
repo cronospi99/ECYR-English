@@ -28,7 +28,6 @@ export const CW_CSS = `
 .cw-range::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid #ffb800;box-shadow:0 3px 0 #b87400,0 0 0 4px rgba(255,210,63,.25)}
 .cw-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid #ffb800;box-shadow:0 3px 0 #b87400}
 .cw-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 6px rgba(255,210,63,.5)}
-@media (prefers-reduced-motion:reduce){.cw-logo,.cw-spark,.cw-bob,.cw-float{animation:none}}
 .cw-title{font-weight:900;letter-spacing:-0.02em;text-shadow:0 3px 0 rgba(0,0,0,.35)}
 @keyframes cw-bob{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-4%) scale(1.02,.98)}}
 .cw-bob{animation:cw-bob 1.6s ease-in-out infinite;transform-origin:50% 100%}

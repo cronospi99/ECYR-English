@@ -509,7 +509,7 @@ export class Scenery {
     gate.add(veil, glow, frame);
     gate.position.set(this.cols / 2 + 2.35, 0, -0.4);
     this.gate = { pos: new THREE.Vector3(this.cols / 2 + 2.05, 0, -0.25), color: m.neon };
-    gate.rotation.y = -Math.PI / 2 + 0.62;
+    gate.rotation.y = -Math.PI / 2; // square on to the arena: its mouth looks straight down the lanes
     gate.scale.setScalar(0.86);
     g.add(gate);
     this.gateLight.color.set(m.neon); this.gateLight.intensity = 26; this.gateLight.position.set(this.cols / 2 + 1.6, 1.5, 0);

@@ -372,8 +372,6 @@
     '  border:2px solid rgba(0,0,0,.12);border-top-color:rgba(0,0,0,.45);' +
     '  animation:om-slot-spin .7s linear infinite}' +
     '@keyframes om-slot-spin{to{transform:rotate(360deg)}}' +
-    // Reduced motion: the static two-tone ring still reads as "working".
-    '@media (prefers-reduced-motion:reduce){.loading::after{animation:none}}' +
     '.credit{position:absolute;left:6px;bottom:6px;max-width:calc(100% - 12px);display:none;' +
     '  padding:3px 7px;border-radius:5px;background:rgba(0,0,0,.55);color:#fff;' +
     '  font:10px/1.2 system-ui,-apple-system,sans-serif;text-decoration:none;' +

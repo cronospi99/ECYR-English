@@ -27,4 +27,3 @@
 @keyframes dwfMote { 0% { translate:0 0; opacity:0; } 20% { opacity:.9; } 100% { translate:var(--dx) -10cqw; opacity:0; } }
 @keyframes dwfLeaf { 0% { translate:0 0; rotate:0deg; opacity:0; } 10% { opacity:.9; } 100% { translate:var(--dx) 62cqw; rotate:500deg; opacity:0; } }
 @media (max-aspect-ratio: 1/1) { .dwf { display:none; } .menu-screen.ecyr-chooser > .menu-panel { visibility:visible; } }
-@media (prefers-reduced-motion: reduce) { .dwf-stage * { animation:none !important; } }

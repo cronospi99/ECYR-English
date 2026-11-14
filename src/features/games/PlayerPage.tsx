@@ -33,6 +33,8 @@ export default function PlayerPage() {
   // A learner playing a team game on their own device plays solo (and is graded);
   // a teacher runs it for the class on the projector.
   // v=<build> makes the browser fetch the module again after every deploy (they are plain HTML files with a fixed address).
-  const src = `${m.src}?v=${__BUILD_ID__}${SOLO_CAPABLE.has(m.slug) && role !== 'teacher' ? '&mode=solo' : ''}`;
+  // A join QR (e.g. Da World's class room) lands here as /play/<slug>#join=CODE: the code goes on to the game.
+  const join = /^#join=[A-Za-z0-9]{4,8}$/.test(location.hash) ? location.hash : '';
+  const src = `${m.src}?v=${__BUILD_ID__}${SOLO_CAPABLE.has(m.slug) && role !== 'teacher' ? '&mode=solo' : ''}${join}`;
   return <ModuleFrame src={src} title={m.title} backTo={backTo} accent={m.accent} immersive={m.kind === 'game'} />;
 }

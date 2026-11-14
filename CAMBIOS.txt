@@ -1668,5 +1668,12 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   de marquesina, y las nubes y pájaros se mueven. En partida: luces alrededor de la ruleta, rayos,
   puntero que vibra al girar y botón SPIN que late. Ya no se paran las animaciones con
   «reducir movimiento».
+- Animaciones siempre activas en toda la app: se quitó la regla global que las congelaba cuando el
+  dispositivo pide «reducir movimiento» (index.css, index.html, MotionConfig y los juegos).
+- Phrasal Verb Roulette sin apuestas ni multiplicadores: cada pregunta vale lo mismo.
+- Da World: el QR de clase abre /play/da-world#join=CÓDIGO dentro de la app (como los demás juegos en
+  vivo) y se amplía a pantalla completa al tocarlo.
+- Language Defenders: personajes alineados con los carriles (defensores mirando al este, distracciones
+  al oeste) y la tumba neón de frente a la arena.
 - Exámenes finales Pre-A1 a C2: 25 preguntas en listening, reading, grammar y vocabulary
   (tres textos y tres audios por examen).

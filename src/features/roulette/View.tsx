@@ -171,7 +171,7 @@ export function View({ v }: { v: any }) {
                   </Fragment>))}
                 </div>
                 <p style={{ margin: "9px 0 0", fontSize: "13px", color: v.t.muted }}>
-                  {"Coins lost on a wrong answer. Boosted questions (x2 / x3) scale the penalty too, on top of any wager."}
+                  {"Coins lost on a wrong answer."}
                 </p>
                 <h2 style={{ margin: "26px 0 12px", fontFamily: "'Press Start 2P',monospace", fontSize: "17px", color: v.t.accent }}>
                   {"6 · GAME RULES"}

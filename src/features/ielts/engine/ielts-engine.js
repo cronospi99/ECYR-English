@@ -3465,7 +3465,6 @@ document.addEventListener("click", e=>{
 document.addEventListener("pointerdown", e=>{
   const btn = e.target.closest(".btn");
   if(!btn || btn.disabled) return;
-  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const r = btn.getBoundingClientRect();
   const ripple = document.createElement("span");
   ripple.className = "glass-ripple";
@@ -9931,7 +9930,7 @@ function createChart3D(host, chartData, mode){
   series.forEach(s => s.data.forEach(v => { if(v > maxVal) maxVal = v; }));
   maxVal = Math.max(1, maxVal);
 
-  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = false; // animations always run
 
   // ---- layout constants (world units) ----
   const cellX = 1.5, cellZ = 1.9, maxH = 6;
