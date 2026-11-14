@@ -891,6 +891,17 @@ html = html.replace(moduleTag[0], `<script src="/modules/_bridge/ecyr-bridge.js"
 writeFileSync(htmlPath, html);
 console.log('  ✓ dist/index.html: ECYR bridge loads before the bundle');
 
+// ECYR rebuild: Taxi Rush — the second page of the same build, its own game in the library.
+const taxiPath = join(dist, 'taxi.html');
+if (existsSync(taxiPath)) {
+  let taxiHtml = readFileSync(taxiPath, 'utf8');
+  const taxiTag = taxiHtml.match(/<script type="module" crossorigin src="([^"]+)"><\/script>/);
+  if (!taxiTag) throw new Error(`${TAG} built taxi.html has no module script`);
+  taxiHtml = taxiHtml.replace(taxiTag[0], `<script src="/modules/_bridge/ecyr-bridge.js" data-slug="taxi-rush"></script>\n    ${taxiTag[0]}`);
+  writeFileSync(taxiPath, taxiHtml);
+  console.log('  ✓ dist/taxi.html: Taxi Rush page with its own bridge slug');
+}
+
 // Nothing in the output may point at the site root outside the base.
 const files = [];
 (function walk(d) {
@@ -901,6 +912,7 @@ const files = [];
   }
 })(dist);
 const maps = files.filter((f) => f.endsWith('.map'));
+// (taxi.html loads Google Fonts by absolute https URL; only site-root paths are checked below)
 if (maps.length) throw new Error(`${TAG} source maps in the output: ${maps.join(', ')}`);
 for (const f of files.filter((p) => /\.(js|css|html)$/.test(p))) {
   const s = readFileSync(f, 'utf8');

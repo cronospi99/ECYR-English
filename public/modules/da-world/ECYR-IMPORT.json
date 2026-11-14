@@ -1,11 +1,11 @@
 {
   "upstream": "github.com/cronospi99/Da-World",
   "commit": "c9bd445",
-  "importedAt": "2026-11-14T22:58:23.286Z",
+  "importedAt": "2026-11-14T23:45:29.204Z",
   "base": "/modules/da-world/",
   "build": "vite build --base=/modules/da-world/ (no source maps)",
-  "files": 104,
-  "bytes": 14676270,
+  "files": 107,
+  "bytes": 16718911,
   "modelsDropped": 154,
   "patches": [
     "src/game/state.ts: save key per mode (slot)",
@@ -46,6 +46,8 @@
     "src/ui/cityHud.ts: info card: what 🏠 does",
     "src/net/peer.ts: join link names index.html under the base",
     "index.html: page title",
+    "public/cars/README.md: ECYR rebuild (overlay)",
+    "public/cars/taxi.glb: ECYR rebuild (overlay)",
     "public/humans/README.md: ECYR rebuild (overlay)",
     "public/humans/man.glb: ECYR rebuild (overlay)",
     "public/humans/moves.glb: ECYR rebuild (overlay)",
@@ -81,11 +83,14 @@
     "src/taxi/places.ts: ECYR rebuild (overlay)",
     "src/taxi/questions.ts: ECYR rebuild (overlay)",
     "src/taxi/smoke.ts: ECYR rebuild (overlay)",
+    "src/taxi/sportcar.ts: ECYR rebuild (overlay)",
     "src/taxi/ui.css.ts: ECYR rebuild (overlay)",
     "src/taxi/world.ts: ECYR rebuild (overlay)",
     "src/ui/character.ts: ECYR rebuild (overlay)",
     "src/ui/lobby.ts: ECYR rebuild (overlay)",
     "src/ui/menu.ts: ECYR rebuild (overlay)",
-    "src/world/environment.ts: ECYR rebuild (overlay)"
+    "src/world/environment.ts: ECYR rebuild (overlay)",
+    "taxi.html: ECYR rebuild (overlay)",
+    "vite.config.ts: ECYR rebuild (overlay)"
   ]
 }

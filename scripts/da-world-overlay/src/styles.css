@@ -2785,3 +2785,16 @@ canvas.webgl {
 .ecyr-taxi-name { display: block; font-weight: 900; font-size: 24px; font-style: italic; letter-spacing: .02em; }
 .ecyr-taxi .ecyr-card-line { color: #2b2b2b; }
 .ecyr-taxi-go { margin-left: auto; padding: 8px 14px; border-radius: 12px; background: #e8384f; color: #fff; font-weight: 900; font-style: italic; box-shadow: 0 4px 0 #10131a; }
+
+/* ECYR rebuild: Taxi Rush's class lobby — taxi yellow on night black */
+.ecyr-taxi-lobby .card-face { background: #15161a !important; border-color: #ffd21a !important; }
+.ecyr-taxi-lobby .card-shadow { background: #ffd21a !important; }
+.ecyr-taxi-lobby .card-body, .ecyr-taxi-lobby .info-title, .ecyr-taxi-lobby .info-lead, .ecyr-taxi-lobby .info-note, .ecyr-taxi-lobby .lobby-label, .ecyr-taxi-lobby .lobby-status { color: #f4f4f4 !important; }
+.ecyr-taxi-lobby .info-title { font-family: 'Russo One', 'Arial Black', sans-serif; letter-spacing: .02em; transform: skewX(-8deg); }
+.ecyr-taxi-lobby .lobby-big:not(.ghost), .ecyr-taxi-lobby .pill-button:not(.ghost) { background: linear-gradient(#ffe24a, #ffc400) !important; color: #0b0b0c !important; border-color: #0b0b0c !important; }
+.ecyr-taxi-lobby .lobby-big:not(.ghost) .lobby-big-sub { color: #3a2f00 !important; }
+.ecyr-taxi-lobby .ghost { background: #22242b !important; color: #f4f4f4 !important; border-color: #3a3d47 !important; }
+.ecyr-taxi-lobby .ghost .lobby-big-sub { color: #b9bcc7 !important; }
+.ecyr-taxi-lobby input { background: #22242b !important; color: #fff !important; border-color: #3a3d47 !important; }
+.ecyr-taxi-lobby .lobby-link, .ecyr-taxi-lobby a { color: #ffd21a !important; }
+.ecyr-taxi-lobby .lobby-code { color: #ffd21a !important; font-family: 'Russo One', monospace; }

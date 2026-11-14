@@ -41,6 +41,23 @@ export const MODULES: ModuleEntry[] = [
     emoji: '🏙️',
   },
   {
+    slug: 'taxi-rush',
+    title: 'Taxi Rush',
+    subtitle: 'Racing taxi · Listen, drive, deliver',
+    description:
+      'Race a sports taxi through a huge 3D city with international and Colombian places. Every passenger tells you in English where they want to go — work it out and get there before the fare clock runs out. Stop at the ❓ traffic lights and fix the sentence or answer the question to turn them green. Customise your cab and driver; play solo or with your class by QR code.',
+    kind: 'game',
+    src: '/modules/da-world/taxi.html',
+    cover: '/covers/taxi-rush.webp',
+    levels: ['A1', 'A2', 'B1'],
+    skills: ['listening', 'vocabulary', 'grammar'],
+    topics: ['Places in the city', 'Directions', 'Describing places', 'Sentence correction'],
+    mode: 'both',
+    minutes: 15,
+    accent: 'var(--yellow)',
+    emoji: '🚕',
+  },
+  {
     slug: 'english-defenders',
     title: 'English Defenders',
     subtitle: 'Tower defense 3D · Learn, Defend, Win',

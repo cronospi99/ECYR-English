@@ -22,6 +22,7 @@ import { TaxiWorld, DISTRICT_LABEL, MIN_X, MAX_X, MIN_Z, MAX_Z, VX, HZ, K_MIN, K
 import { CarBody, TaxiModel, loadLook, saveLook, PAINTS, DRIVER_SHIRTS, DRIVER_SKINS, DRIVER_HAIR, DRIVER_OUTFITS, type TaxiLook, type DriveInput } from './car';
 import { LIGHT_QUESTIONS, type LightQuestion } from './questions';
 import { Smoke } from './smoke';
+import { loadSportCar } from './sportcar';
 import { cluesFor } from './places';
 import { TaxiAudio } from './audio';
 import { TAXI_CSS } from './ui.css';
@@ -38,7 +39,21 @@ export interface TaxiDeps {
   session(): Session;
   myName(): string;
   onExit(): void;
+  /** ECYR rebuild: running as its own game (taxi.html) rather than inside Da World. */
+  standalone?: boolean;
+  /** Standalone: open the class lobby (QR code). */
+  onClass?(): void;
+  /** Standalone: back to the platform's game library. */
+  onHome?(): void;
 }
+
+/** The racing-taxi wordmark, shared by the loading screen (taxi.html) and the garage. */
+export const LOGO_HTML = `<div class="tr-logo" aria-label="Taxi Rush">
+  <div class="tr-flag"></div>
+  <div class="tr-word"><span class="tr-taxi">TAXI</span><span class="tr-rush">RUSH</span></div>
+  <div class="tr-flag tr-flag-b"></div>
+  <div class="tr-tag">★ CITY FARE RACING ★</div>
+</div>`;
 
 interface Settings { goal: number; pace: 'relaxed' | 'normal' | 'crazy' }
 
@@ -169,6 +184,7 @@ export class TaxiMode {
    * ================================================================ */
 
   openSetup(): void {
+    void loadSportCar();
     this.deps.setWalking(false);
     this.root.style.display = '';
     this.root.innerHTML = '';
@@ -178,14 +194,14 @@ export class TaxiMode {
     const host = inRoom && sess.myId === 'host';
     s.innerHTML = `
       <div class="tx-wrap">
-        <div class="tx-logo"><h1>TAXI RUSH</h1><p>Pick up passengers, work out where they want to go, and race to the door before the clock runs out. Stop at the ❓ traffic lights and answer to turn them green!</p></div>
+        <div class="tx-logo">${LOGO_HTML}<p>Pick up passengers, work out where they want to go, and race to the door before the clock runs out. Stop at the ❓ traffic lights and answer to turn them green!</p></div>
         <div>
           <div class="tx-card">
             <h2>1 · The shift</h2>
             <div class="tx-row"><span class="tx-lbl">Passengers to deliver</span>${[3, 5, 8, 10, 15, 20].map((n) => `<button class="tx-chip${n === this.settings.goal ? ' on' : ''}" data-goal="${n}">${n}</button>`).join('')}</div>
             <div class="tx-row"><span class="tx-lbl">Fare clock</span>${(['relaxed', 'normal', 'crazy'] as const).map((p) => `<button class="tx-chip${p === this.settings.pace ? ' on' : ''}" data-pace="${p}">${p === 'relaxed' ? '🐢 Relaxed' : p === 'normal' ? '🚕 Normal' : '🔥 Crazy'}</button>`).join('')}</div>
             <div class="tx-note">Drive: <b>W A S D</b> or arrows · <b>Space</b> drift · <b>Shift</b> turbo · <b>H</b> horn. On a phone, use the buttons on screen.</div>
-            ${inRoom ? `<div class="tx-room">👥 Class room: ${host ? 'you are hosting — <b>START</b> sends every student into the same shift.' : 'your teacher starts the shift for everybody. You can get your cab ready meanwhile.'}</div>` : '<div class="tx-room">👥 To drive together, open <b>Class (multiplayer)</b> first and share the QR code; then come back to Taxi Rush.</div>'}
+            ${inRoom ? `<div class="tx-room">👥 Class room: ${host ? 'you are hosting — <b>START</b> sends every student into the same shift.' : 'your teacher starts the shift for everybody. You can get your cab ready meanwhile.'}${host ? ' <button class="tx-chip" data-class="1">📱 Show the QR</button>' : ''}</div>` : this.deps.standalone ? '<div class="tx-room">👥 Drive together: <button class="tx-chip on" data-class="1">📱 Play with your class (QR)</button></div>' : '<div class="tx-room">👥 To drive together, open <b>Class (multiplayer)</b> first and share the QR code; then come back to Taxi Rush.</div>'}
           </div>
           <div class="tx-card" style="margin-top:16px">
             <h2>2 · Your taxi</h2>
@@ -205,7 +221,7 @@ export class TaxiMode {
         <div style="position:sticky;top:16px">
           <div class="tx-card"><div class="tx-preview" id="txPreview"></div></div>
           ${inRoom && !host ? '<div class="tx-room" style="margin-top:12px;text-align:center">⏳ Waiting for your teacher to start…</div>' : '<button class="tx-go" data-go="1">▶ START SHIFT</button>'}
-          <div style="margin-top:14px;display:flex;gap:10px"><button class="tx-back" data-back="1">← Da World</button></div>
+          <div style="margin-top:14px;display:flex;gap:10px"><button class="tx-back" data-back="1">${this.deps.standalone ? '← Games' : '← Da World'}</button></div>
         </div>
       </div>`;
     this.root.appendChild(s);
@@ -224,7 +240,8 @@ export class TaxiMode {
       else if (d.shirt) this.look.driver.shirt = d.shirt;
       else if (d.outfit !== undefined && 'outfit' in d) this.look.driver.outfit = (d.outfit || undefined) as TaxiLook['driver']['outfit'];
       else if (d.go) { saveLook(this.look); this.closePreview(); if (host) sess.ext({ k: 'start', goal: this.settings.goal, pace: this.settings.pace }); this.start(); return; }
-      else if (d.back) { this.closePreview(); this.exit(); return; }
+      else if (d.back) { this.closePreview(); if (this.deps.standalone) { this.deps.onHome?.(); return; } this.exit(); return; }
+      else if (d.class) { this.closePreview(); this.root.style.display = 'none'; this.deps.onClass?.(); return; }
       else return;
       saveLook(this.look);
       const keep = this.preview;
@@ -275,7 +292,7 @@ export class TaxiMode {
     const m = new TaxiModel(this.look);
     scene.add(m.group);
     const cam = new THREE.PerspectiveCamera(32, w / h, 0.1, 50);
-    cam.position.set(3.6, 2.1, 4.6); cam.lookAt(0, 0.55, 0);
+    cam.position.set(2.9, 1.35, 3.6); cam.lookAt(0, 0.38, 0);
     const p = { renderer, scene, cam, model: m, raf: 0 };
     let t = 0;
     const loop = () => {
@@ -757,7 +774,7 @@ export class TaxiMode {
     const r = el('div', 'tx-res');
     r.innerHTML = `<div class="box"><div style="font-weight:900;letter-spacing:.2em;color:#9fb3d9">${won ? 'SHIFT COMPLETE' : 'SHIFT OVER'}</div><div class="rank">${rank}</div>
       <div class="stats"><div><b>$${this.money}</b>earned</div><div><b>${this.delivered}</b>passengers</div><div><b>${acc}%</b>English right</div><div><b>${fmt(this.time)}</b>time</div><div><b>${this.correct}/${this.asked}</b>answers</div><div><b>${this.missed}</b>missed fares</div></div>
-      <div class="row"><button class="tx-go" style="width:auto;padding:14px 22px;font-size:20px" data-a="again">▶ AGAIN</button><button class="tx-back" data-a="setup">🎨 Change taxi</button><button class="tx-back" data-a="exit">← Da World</button></div></div>`;
+      <div class="row"><button class="tx-go" style="width:auto;padding:14px 22px;font-size:20px" data-a="again">▶ AGAIN</button><button class="tx-back" data-a="setup">🎨 Change taxi</button><button class="tx-back" data-a="exit">${this.deps.standalone ? '🏁 Garage' : '← Da World'}</button></div></div>`;
     this.root.appendChild(r);
     r.addEventListener('click', (e) => {
       const b = (e.target as HTMLElement).closest('button') as HTMLButtonElement | null;

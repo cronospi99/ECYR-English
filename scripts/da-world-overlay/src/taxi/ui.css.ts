@@ -1,6 +1,6 @@
 /** Taxi Rush — the retro arcade look of every screen (injected once). */
 export const TAXI_CSS = /* css */ `
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Rubik:wght@500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Racing+Sans+One&family=Russo+One&family=Rubik:wght@500;700;900&display=swap');
 .tx { position: fixed; inset: 0; z-index: 60; pointer-events: none; font-family: 'Rubik', system-ui, sans-serif; color: #fff; user-select: none; -webkit-user-select: none; }
 .tx * { box-sizing: border-box; }
 .tx button { pointer-events: auto; font-family: inherit; cursor: pointer; }
@@ -9,12 +9,17 @@ export const TAXI_CSS = /* css */ `
 
 /* ---------- setup ---------- */
 .tx-setup { position: absolute; inset: 0; pointer-events: auto; overflow: auto; background:
-  radial-gradient(120% 90% at 50% 0%, rgba(255,214,0,.22), transparent 60%),
-  repeating-linear-gradient(135deg, #10a5e8 0 26px, #0e98d8 26px 52px); }
+  radial-gradient(90% 70% at 70% 10%, rgba(255,210,26,.28), transparent 60%),
+  radial-gradient(60% 60% at 10% 90%, rgba(232,56,79,.18), transparent 70%),
+  repeating-linear-gradient(115deg, rgba(255,255,255,.025) 0 2px, transparent 2px 9px),
+  linear-gradient(180deg, #17181c, #0b0b0d); }
+/* ECYR rebuild: taxi-yellow hazard rails top and bottom of the garage */
+.tx-setup > .tx-wrap::before { content: ''; position: fixed; left: 0; right: 0; top: 0; height: 10px; background: repeating-linear-gradient(135deg, #ffd21a 0 18px, #0b0b0c 18px 36px); z-index: 2; }
 .tx-setup::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(5,10,30,.55)); pointer-events: none; }
 .tx-wrap { position: relative; max-width: 1180px; margin: 0 auto; padding: 22px clamp(12px, 3vw, 28px) 40px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; align-items: start; }
 @media (max-width: 860px) { .tx-wrap { grid-template-columns: 1fr; } }
 .tx-logo { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.tx-logo .tr-logo { margin: 6px 0 4px 34px; }
 .tx-logo h1 { margin: 0; font: 400 clamp(40px, 7vw, 86px)/0.9 'Bungee Shade', 'Bungee', sans-serif; color: #ffd21f; transform: skewX(-8deg); text-shadow: 6px 6px 0 #e8384f, 12px 12px 0 #10131a; }
 .tx-logo p { margin: 0; max-width: 46ch; font-weight: 700; font-size: 17px; line-height: 1.35; text-shadow: 0 2px 0 rgba(0,0,0,.35); }
 .tx-card { background: #10131a; border: 4px solid #ffd21f; border-radius: 18px; padding: 16px 18px; box-shadow: 8px 8px 0 #e8384f; }
@@ -95,4 +100,14 @@ export const TAXI_CSS = /* css */ `
 .tx-res .stats b { display: block; font: 400 26px 'Bungee', sans-serif; color: #fff; }
 .tx-res .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .tx-loading { position: absolute; inset: 0; display: grid; place-items: center; background: #0e98d8; pointer-events: auto; font: 400 28px 'Bungee', sans-serif; }
+
+/* ---------- the racing-taxi wordmark (also in taxi.html's loading screen) ---------- */
+.tr-logo { position: relative; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 7px; transform: skewX(-11deg); filter: drop-shadow(0 12px 0 rgba(0,0,0,.35)); }
+.tr-word { display: flex; align-items: center; }
+.tr-taxi { position: relative; font: 400 clamp(64px, 10vw, 132px)/.84 'Racing Sans One', 'Russo One', 'Arial Black', sans-serif; color: #ffd21a; -webkit-text-stroke: 3px #0b0b0c; paint-order: stroke fill; text-shadow: 5px 5px 0 #0b0b0c, 10px 10px 0 #e8384f; padding-right: .1em; letter-spacing: .01em; }
+.tr-taxi::before { content: ''; position: absolute; right: 100%; top: 20%; width: .9em; height: 60%; margin-right: .08em; background: repeating-linear-gradient(180deg, #ffd21a 0 7px, transparent 7px 15px); -webkit-mask: linear-gradient(90deg, transparent, #000); mask: linear-gradient(90deg, transparent, #000); }
+.tr-rush { font: 400 clamp(32px, 4.8vw, 66px)/1 'Russo One', 'Arial Black', sans-serif; color: #0b0b0c; background: linear-gradient(#ffe24a, #ffc400); padding: .12em .38em .1em; border: 4px solid #0b0b0c; border-radius: 10px; box-shadow: 6px 6px 0 #0b0b0c; letter-spacing: .08em; margin-left: .18em; }
+.tr-flag { width: 100%; height: 14px; border: 2px solid #0b0b0c; background: repeating-conic-gradient(#0b0b0c 0 25%, #f4f4f4 0 50%) 0 0 / 14px 14px; }
+.tr-flag-b { width: 72%; }
+.tr-tag { font: 400 clamp(11px, 1.3vw, 15px) 'Russo One', sans-serif; letter-spacing: .34em; color: #ffd21a; background: #0b0b0c; padding: 5px 12px; border-radius: 4px; }
 `;

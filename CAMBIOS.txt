@@ -1721,3 +1721,16 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
     cromática suave en los bordes y grano de película.
   · Taxi Rush: humo de llantas al derrapar, frenar fuerte o arrancar; chispas al chocar;
     desenfoque radial de velocidad con el turbo.
+- TAXI RUSH ES UN JUEGO INDEPENDIENTE en la biblioteca (portada propia, /play/taxi-rush): sale del
+  menú de Da World pero comparte su motor, la ciudad, las personas realistas y las texturas.
+  · Pantalla de carga propia y título nuevo estilo carreras con colores de taxi (amarillo, negro y
+    bandera a cuadros); garaje rediseñado en el mismo estilo.
+  · Clase con QR propia: «Play with your class (QR)» en el garaje; el QR abre /play/taxi-rush.
+  · El taxi es ahora un auto deportivo de alta calidad (modelo «Car Concept» de Khronos, CC-BY 4.0,
+    créditos en public/modules/da-world/cars/README.md): pintura con barniz en el color elegido,
+    paneles negros, vinilos de cuadros, «TAXI», número y teléfono en las puertas, franja de
+    cuadros en el capó, letrero TAXI iluminado en el techo, placa propia, rines cromo/negro/oro,
+    luces que funcionan, ruedas que giran y doblan, y el conductor sentado al volante.
+- Ciudad renovada: cada ventana de cada edificio deja ver una habitación en 3D (piso de madera,
+  techo con lámpara, paredes de colores, persianas, muebles), mezclada con el reflejo de la calle
+  según el ángulo; de noche se encienden unas habitaciones sí y otras no.

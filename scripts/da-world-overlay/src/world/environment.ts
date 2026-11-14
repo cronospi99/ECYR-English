@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { sunState } from "../core/post";
+import { interiorUniforms } from "../city/pbr";
 import { PALETTE } from "../city/palette";
 import type { SkySample } from "../city/daynight";
 
@@ -387,6 +388,7 @@ export function createEnvironment(
       sunDirection.set(s.dirX, s.dirY, s.dirZ).normalize();
       skyMaterial.uniforms.uSunDir.value.copy(sunDirection);
       (skyMaterial.uniforms.uSunColor.value as THREE.Color).copy(s.sun).multiplyScalar(Math.max(0, 1 - s.night * 1.4) * Math.min(1, s.sunIntensity / 1.5));
+      interiorUniforms.uDwNight.value = s.night;
       sunState.dir.copy(sunDirection);
       sunState.strength = Math.max(0, 1 - s.night * 1.6) * THREE.MathUtils.smoothstep(sunDirection.y, -0.02, 0.12);
 

@@ -107,6 +107,9 @@ const setProgress = (fraction: number): void => {
   if (loaderBar) loaderBar.style.width = `${Math.round(fraction * 100)}%`;
 };
 
+/** ECYR rebuild: Taxi Rush runs from the same build as its own game (taxi.html). */
+const APP_TAXI = document.documentElement.dataset.app === "taxi";
+
 async function boot(): Promise<void> {
   // The graphics settings are chosen before anything is built, because two of
   // them — the anisotropy on the ground textures and the size of the sun's
@@ -883,6 +886,7 @@ async function boot(): Promise<void> {
       }
     },
     onMode: (modeId) => {
+      if (APP_TAXI) return;
       const chosen = MODES[modeId as keyof typeof MODES];
       if (chosen && chosen.id !== mode.id) startMode(chosen);
     },
@@ -974,12 +978,22 @@ async function boot(): Promise<void> {
       // borrowed: the room only exists while this tab does.
       teacher.unlock();
       hud.setTeacher(true);
-      startMode(MODES.multiplayer);
-      created.setMode(MODES.multiplayer.id);
+      if (!APP_TAXI) {
+        startMode(MODES.multiplayer);
+        created.setMode(MODES.multiplayer.id);
+      }
     });
   }
 
-  const lobby = new Lobby(ui, {
+  // In Taxi Rush the city's interface is hidden behind the garage, so the class
+  // lobby gets a layer of its own, above everything.
+  const lobbyLayer = APP_TAXI ? document.createElement("div") : ui;
+  if (APP_TAXI) {
+    lobbyLayer.className = "ui-layer ecyr-taxi-lobby";
+    lobbyLayer.style.zIndex = "90";
+    container!.appendChild(lobbyLayer);
+  }
+  const lobby = new Lobby(lobbyLayer, {
     onCharacter: () => {
       character.toggle(true);
       syncInput();
@@ -1013,15 +1027,43 @@ async function boot(): Promise<void> {
       });
     },
     onEnter: () => {
+      if (APP_TAXI) {
+        lobby.toggle(false);
+        taxi?.openSetup();
+        return;
+      }
       if (net !== NO_SESSION && playing) ecyrBegin("multiplayer", true);
       syncInput();
     },
     onCloseRoom: () => leaveRoom(),
     onCancel: () => {
+      if (APP_TAXI) {
+        taxi?.openSetup();
+        return;
+      }
       ecyrFinish("menu");
       menu.show();
     },
   });
+
+  // ECYR rebuild: in Taxi Rush the lobby talks about taxis, not walking.
+  if (APP_TAXI) {
+    const words: [string, string][] = [
+      ["Host this world", "Host the taxi shift"],
+      ["walk the same city", "drive the same city"],
+      ["▶ Enter the city", "▶ Back to the garage"],
+      ["Close the world", "Close the room"],
+      ["Join the world", "Join the shift"],
+      ["Opening the world…", "Opening the room…"],
+      ["dropped back into their own city", "dropped back into their own garage"],
+    ];
+    const walker = document.createTreeWalker(lobbyLayer, NodeFilter.SHOW_TEXT);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      let t = n.nodeValue ?? "";
+      for (const [a, b] of words) t = t.split(a).join(b);
+      if (t !== n.nodeValue) n.nodeValue = t;
+    }
+  }
 
   // Drawn only where there are thumbs. On a phone held upright the desktop
   // scheme — invisible stick, tap to jump — is undiscoverable, so the controls
@@ -1090,7 +1132,20 @@ async function boot(): Promise<void> {
     speak: (text) => speech.speak(text),
     session: () => net,
     myName: () => myName,
+    standalone: APP_TAXI,
+    onClass: () => {
+      lobby.open();
+    },
+    onHome: () => {
+      const bridge = (window as unknown as { ECYRBridge?: { exit?: () => void } }).ECYRBridge;
+      if (window.parent !== window && bridge?.exit) bridge.exit();
+      else location.href = "/";
+    },
     onExit: () => {
+      if (APP_TAXI) {
+        taxi?.openSetup();
+        return;
+      }
       playing = false;
       menu.show();
       syncInput();
@@ -1183,6 +1238,10 @@ async function boot(): Promise<void> {
   // then wiped from the address bar, so a reload does not silently rejoin a
   // lesson that finished an hour ago.
   const scanned = codeInUrl();
+  if (APP_TAXI) {
+    menu.hide();
+    taxi.openSetup();
+  }
   if (scanned) {
     menu.hide();
     lobby.openWithCode(scanned);

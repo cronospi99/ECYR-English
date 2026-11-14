@@ -23,12 +23,15 @@ import {
 } from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { Character, type CharacterColors } from '../city/character';
+import { buildSportCar, onSportCar, type SportCar } from './sportcar';
 
 export type Stripe = 'checker' | 'stripe' | 'flames' | 'none';
 export type Rims = 'chrome' | 'black' | 'gold';
 export type RoofSign = 'classic' | 'neon' | 'none';
 
 export interface TaxiLook {
+  /** The cab number on the doors and the plate. */
+  number?: string;
   color: string;
   stripe: Stripe;
   rims: Rims;
@@ -134,6 +137,10 @@ export class TaxiModel {
   private brakeMat: MeshStandardMaterial;
   private headMat: MeshStandardMaterial;
   private driver: Character;
+  /** ECYR rebuild: the real car, once it has loaded; until then the simple cab below. */
+  private sport: SportCar | null = null;
+  private readonly simple = new Group();
+  private unsubscribe: (() => void) | null = null;
 
   constructor(readonly look: TaxiLook) {
     const g = this.group;
@@ -200,11 +207,29 @@ export class TaxiModel {
     this.driver.setSeated(true);
     this.driver.update(0, 0);
     g.add(this.driver.group);
+
+    for (const child of [...g.children]) if (child !== this.driver.group) this.simple.add(child);
+    g.add(this.simple);
+    this.unsubscribe = onSportCar(() => this.useSportCar());
+  }
+
+  private useSportCar(): void {
+    if (this.sport) return;
+    const look = this.look;
+    this.sport = buildSportCar({ color: look.color, stripe: look.stripe, rims: look.rims, roof: look.roof, number: look.number ?? '07' });
+    if (!this.sport) return;
+    this.simple.visible = false;
+    this.group.add(this.sport.root);
+    // the driver sits in the central seat, hands on the wheel
+    const k = 0.66;
+    this.driver.group.scale.setScalar(k);
+    this.driver.group.position.set(this.sport.seat.x, this.sport.seat.y - 0.84 * k, this.sport.seat.z);
   }
 
   /** Per frame: wheels roll and steer, brake lights, the night glow. */
   animate(speed: number, steer: number, dt: number, braking: boolean, night: number): void {
     this.driver.update(dt, 0);
+    if (this.sport) { this.sport.animate(speed, steer, dt, braking, night); return; }
     const roll = (speed * dt) / WHEEL_R;
     this.wheels.forEach((w, i) => {
       w.children[0].rotation.x += roll;
@@ -217,7 +242,10 @@ export class TaxiModel {
   }
 
   dispose(): void {
-    this.group.traverse((o) => {
+    this.unsubscribe?.();
+    this.sport?.dispose();
+    // only the simple cab owns its geometry; the real car and the driver share theirs
+    this.simple.traverse((o) => {
       if (o instanceof Mesh) {
         const m = o.material as MeshStandardMaterial;
         if (m !== undefined && !(Object.values(geo) as unknown[]).includes(o.geometry)) o.geometry.dispose();

@@ -125,7 +125,8 @@ export class Menu {
           }),
         ]),
         el("div", { class: "ecyr-cards" }, cards),
-        taxiButton,
+        // ECYR rebuild: Taxi Rush is its own game in the library now (taxi.html).
+        ...(document.documentElement.dataset.app === "taxi" ? [taxiButton] : []),
         classButton,
         el("div", { class: "ecyr-links" }, [character, this.qualityButton]),
       ]),

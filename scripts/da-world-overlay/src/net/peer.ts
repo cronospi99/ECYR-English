@@ -121,7 +121,8 @@ export function joinUrl(code: string): string {
   // every other live game there; the player page passes the code on to the game.
   try {
     if (window.parent !== window && window.parent.location.origin === location.origin) {
-      return `${location.origin}/play/da-world${location.search ? location.search : ""}#join=${code}`;
+      const slug = document.documentElement.dataset.app === "taxi" ? "taxi-rush" : "da-world";
+      return `${location.origin}/play/${slug}${location.search ? location.search : ""}#join=${code}`;
     }
   } catch {
     /* a cross-origin parent: fall through to the game's own page */
