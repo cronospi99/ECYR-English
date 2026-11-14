@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { mergeSaved } from './safe';
 import type { PlanPrefs, PlanSummary, WeekPlan } from '@/lib/planner';
 
 export interface PlanData {
@@ -57,9 +58,35 @@ export const usePlan = create<PlanData & PlanActions>()(
         set((s) => ({ current: null, manual: {}, history: pushHistory(s.history, summary), updatedAt: now() })),
       replace: (d) => set(d),
     }),
-    { name: 'ecyr:plan', version: 1 },
+    {
+      name: 'ecyr:plan',
+      version: 1,
+      merge: (saved, current) => {
+        const m = mergeSaved(saved, current);
+        return { ...m, current: cleanWeek(m.current), lastPrefs: cleanPrefs(m.lastPrefs), history: m.history.filter((h) => h && typeof h.id === 'string') };
+      },
+    },
   ),
 );
+
+const list = <T,>(v: unknown): T[] => (Array.isArray(v) ? (v.filter((x) => x !== null && x !== undefined) as T[]) : []);
+
+/** Preferences with every list in place; null when they are not preferences at all. */
+function cleanPrefs(v: unknown): PlanPrefs | null {
+  if (!v || typeof v !== 'object') return null;
+  const o = v as PlanPrefs;
+  if (typeof o.goal !== 'string' || typeof o.level !== 'string') return null;
+  return { ...o, focus: list(o.focus), reviewUnits: list(o.reviewUnits), days: list(o.days), minutes: Number(o.minutes) || 30 };
+}
+
+/** A week plan that every screen can draw; null (no plan) when it is too damaged to show. */
+function cleanWeek(v: unknown): WeekPlan | null {
+  if (!v || typeof v !== 'object') return null;
+  const c = v as WeekPlan;
+  const prefs = cleanPrefs(c.prefs);
+  if (!prefs || !Array.isArray(c.tasks) || typeof c.start !== 'string' || typeof c.end !== 'string') return null;
+  return { ...c, prefs, focus: list(c.focus), tasks: c.tasks.filter((t) => t && typeof t.id === 'string' && typeof t.to === 'string') };
+}
 
 export function planSnapshot(): PlanData {
   const { current, manual, history, lastPrefs, updatedAt } = usePlan.getState();
@@ -84,13 +111,13 @@ export function sanitizePlan(v: unknown): PlanData | null {
     });
   if (!tasksOk) return null;
   return {
-    current: (c as unknown as WeekPlan) ?? null,
+    current: cleanWeek(c),
     manual: Object.fromEntries(Object.entries(o.manual as Record<string, unknown>).filter(([, t]) => typeof t === 'string')) as Record<
       string,
       string
     >,
     history: (o.history as PlanSummary[]).filter((h) => h && typeof h.id === 'string').slice(0, HISTORY_MAX),
-    lastPrefs: (o.lastPrefs as PlanPrefs) ?? null,
+    lastPrefs: cleanPrefs(o.lastPrefs),
     updatedAt: o.updatedAt,
   };
 }

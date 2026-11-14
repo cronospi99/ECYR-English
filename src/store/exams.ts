@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { mergeSaved } from './safe';
 import type { ExamSection } from '@/content/exams';
 
 /**
@@ -34,6 +35,6 @@ export const useExamResults = create<ExamStore>()(
           };
         }),
     }),
-    { name: 'ecyr:exams', version: 1 },
+    { name: 'ecyr:exams', version: 1, merge: mergeSaved },
   ),
 );
