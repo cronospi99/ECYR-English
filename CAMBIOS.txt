@@ -1672,6 +1672,13 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   dispositivo pide «reducir movimiento» (index.css, index.html, MotionConfig y los juegos).
 - Apuestas y multiplicadores: se quedan en Phrasal Verb Roulette y salen de Too Good To Be True
   (impostora +100, palabra real −50, siempre).
+- Too Good To Be True: nombre y miembros de cada equipo a la izquierda y a la derecha del tablero;
+  el equipo en turno se ilumina con su color, una flecha y «Turno de Ana», y el banner dice quién
+  juega (los miembros rotan solos). Botón del profesor «New cards: 2 · 4 · 6 · 8 · All hidden» que
+  cambia cartas ocultas al azar por nuevas. Banco ampliado (impostor-words-3.js): unas 385 impostoras
+  por nivel de A1 a C2, sobre todo trampas de una sola letra que cometen los hispanohablantes
+  (necesary, seperate, responsability, goed, childs, informacion), comprobadas contra un diccionario
+  de 275.000 palabras (scripts/tgtbt-impostors.mjs).
 - Impostor clásico con QR: el proyector muestra un QR (pantalla completa al tocarlo) y la lista de
   móviles; con 3 o más, cada estudiante ve su carta solo en su móvil (mantener pulsado para verla,
   «Ya la vi»), el proyector marca quién está listo y proyecta el orden para hablar con el turno

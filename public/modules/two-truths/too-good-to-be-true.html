@@ -8,6 +8,7 @@
 <script src="../_bridge/ecyr-fx.js" data-nav="tl" data-theme="--nav-bg:#2a1458;--nav-fg:#fff;--nav-bd:#ffd84a;--nav-radius:14px;--nav-shadow:0 4px 0 #12062e;--nav-hover:#4a2a9a"></script>
 <script src="./impostor-words.js?v=3"></script>
 <script src="./impostor-words-2.js?v=1"></script>
+<script src="./impostor-words-3.js?v=1"></script>
 <script src="../_arcade/loopmusic.js?v=3" data-tune="groove"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -169,6 +170,47 @@ input.team { background: var(--card); border: 2px solid var(--line); color: var(
 .confetti i { position: absolute; top: 0; width: 10px; height: 16px; border-radius: 3px; animation: confetti linear both; }
 details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { cursor: pointer; font-weight: 800; color: var(--dim); letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
 .end .row { justify-content: center; }
+/* ---- teams on both sides of the board, the team on turn lit up ---- */
+.arena { display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr) minmax(150px, 220px); gap: clamp(10px, 1.6vw, 22px); align-items: start; }
+.arena.solo { grid-template-columns: minmax(0, 1fr); }
+.side { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 64px; }
+.tm { --tc: var(--blue); position: relative; border: 3px solid var(--line); border-radius: 20px; padding: 14px 14px 12px; background: var(--card); transition: transform .25s, opacity .25s, box-shadow .25s; opacity: .5; filter: saturate(.55); }
+.tm.c0 { --tc: #3D8BFF; } .tm.c1 { --tc: #FF4D5E; } .tm.c2 { --tc: #2BD67B; } .tm.c3 { --tc: #FFC83D; }
+.tm .tn { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: clamp(17px, 1.7vw, 24px); line-height: 1.05; color: var(--tc); overflow-wrap: anywhere; }
+.tm .ts { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: clamp(30px, 3.2vw, 46px); line-height: 1; margin: 6px 0 8px; }
+.tm .ts small { font-size: 13px; color: var(--dim); font-family: 'Instrument Sans'; font-weight: 700; margin-left: 4px; }
+.tm ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.tm li { font-weight: 700; font-size: 15px; padding: 5px 9px; border-radius: 10px; color: #D9D1F2; overflow-wrap: anywhere; }
+.tm li.me { background: var(--tc); color: #12062e; }
+.tm.on { opacity: 1; filter: none; border-color: var(--tc); transform: scale(1.04); box-shadow: 0 0 0 5px color-mix(in srgb, var(--tc) 30%, transparent), 0 0 46px color-mix(in srgb, var(--tc) 55%, transparent); animation: tmGlow 1.6s ease-in-out infinite; }
+.tm .flag { display: none; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: var(--tc); color: #12062e; font-weight: 800; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; box-shadow: 0 4px 0 rgba(0,0,0,.35); }
+.tm.on .flag { display: block; animation: flagBob 1s ease-in-out infinite; }
+.side.l .tm.on::after, .side.r .tm.on::after { content: ''; position: absolute; top: 50%; margin-top: -16px; border: 16px solid transparent; animation: arrowNudge .8s ease-in-out infinite; }
+.side.l .tm.on::after { right: -34px; border-left-color: var(--tc); }
+.side.r .tm.on::after { left: -34px; border-right-color: var(--tc); }
+@keyframes tmGlow { 50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--tc) 22%, transparent), 0 0 70px color-mix(in srgb, var(--tc) 70%, transparent); } }
+@keyframes flagBob { 50% { transform: translate(-50%, -4px); } }
+@keyframes arrowNudge { 50% { translate: var(--nx, 6px) 0; } }
+.side.r .tm.on::after { --nx: -6px; }
+.banner { --tc: var(--gold); display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 0 0 12px; padding: 12px 18px; border-radius: 18px; background: color-mix(in srgb, var(--tc) 18%, var(--card)); border: 3px solid var(--tc); text-align: center; animation: bannerIn .35s cubic-bezier(.2, .9, .3, 1.3) both; }
+.banner.c0 { --tc: #3D8BFF; } .banner.c1 { --tc: #FF4D5E; } .banner.c2 { --tc: #2BD67B; } .banner.c3 { --tc: #FFC83D; }
+.banner .who { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: clamp(20px, 2.6vw, 34px); color: var(--tc); line-height: 1.05; }
+.banner .q { font-weight: 700; font-size: clamp(15px, 1.5vw, 19px); color: #E6E0F7; }
+@keyframes bannerIn { from { transform: scale(.9); opacity: 0; } }
+/* teacher tools: swap a few cards for new ones */
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 14px; border: 2px dashed var(--line); border-radius: 16px; color: var(--dim); font-weight: 700; font-size: 14px; }
+.tools .lbl { font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; margin-right: 4px; }
+.tools button { border: 2px solid var(--line); background: var(--card); color: var(--ink); border-radius: 999px; padding: 7px 14px; font-weight: 800; font-size: 14px; }
+.tools button:hover { border-color: var(--gold); }
+.tools button:disabled { opacity: .35; cursor: default; }
+@keyframes swapIn { 0% { transform: rotateY(90deg) scale(.8); opacity: 0; } 60% { transform: rotateY(-12deg) scale(1.05); opacity: 1; } 100% { transform: none; } }
+.card.swapin { animation: swapIn .55s cubic-bezier(.2, .9, .3, 1.2) both; }
+@keyframes swapOut { to { transform: rotateY(90deg) scale(.8); opacity: 0; } }
+.card.swapout { animation: swapOut .3s ease-in both; }
+input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px; }
+.teamset { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; max-width: 900px; }
+.teamset > div { background: var(--card); border: 2px solid var(--line); border-radius: 16px; padding: 10px; }
+@media (max-width: 900px) { .arena { grid-template-columns: 1fr; } .side { position: static; flex-direction: row; flex-wrap: wrap; } .side .tm { flex: 1 1 160px; } .side.l .tm.on::after, .side.r .tm.on::after { display: none; } }
 @media (max-width: 640px) { .card .t { font-size: 10px; line-height: 1.15; } .card .t em { display: none; } .wrap { padding-top: 60px; } .stake .now { margin-left: 0; width: 100%; } }
 </style>
 </head>
@@ -189,10 +231,12 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   var app = document.getElementById('app');
 
   var st = { phase: 'setup', level: 'B1', nTeams: SOLO ? 1 : 2, names: ['Team A', 'Team B', 'Team C', 'Team D'],
-    fakes: 'auto', boards: 3, wagerOn: false, multOn: false, mult: 1, wager: 0, teams: [], turn: 0, board: 0, cards: [], pending: null, used: {}, rep: null, found: 0, missed: 0 };
+    members: ['', '', '', ''], fakes: 'auto', boards: 3, wagerOn: false, multOn: false, mult: 1, wager: 0, teams: [], turn: 0, board: 0, cards: [], pending: null, used: {}, rep: null, found: 0, missed: 0 };
   try { var saved = JSON.parse(localStorage.getItem('tgtbt:setup') || 'null'); if (saved) { st.level = saved.level || st.level; st.nTeams = SOLO ? 1 : saved.nTeams || 2; st.names = saved.names || st.names;
     if (FAKES.indexOf(saved.fakes) >= 0) st.fakes = saved.fakes; if (BOARDS.indexOf(saved.boards) >= 0) st.boards = saved.boards;
-    if (!Array.isArray(st.names) || st.names.length < 4) st.names = ['Team A', 'Team B', 'Team C', 'Team D']; } } catch (e) {}
+    if (!Array.isArray(st.names) || st.names.length < 4) st.names = ['Team A', 'Team B', 'Team C', 'Team D'];
+    if (Array.isArray(saved.members) && saved.members.length === 4) st.members = saved.members.map(function (m) { return String(m || ''); }); } } catch (e) {}
+  function parseMembers(s) { return String(s || '').split(/[,;\n]+/).map(function (x) { return x.trim(); }).filter(function (x) { return x; }).slice(0, 12); }
 
   function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -212,7 +256,7 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   function impFor(k) { return st.fakes === 'auto' ? Math.round(3 + 4 * progress(k)) : st.fakes; }
   function lastBoard() { return st.board + 1 >= st.boards; }
   function newBoard() {
-    var b = BANK[st.level], nImp = impFor(st.board), nAlike = Math.round(nImp * (0.3 + 0.6 * progress(st.board)));
+    var b = BANK[st.level], nImp = impFor(st.board), nAlike = Math.round(nImp * (0.5 + 0.45 * progress(st.board)));
     var alike = take(b.alike, nAlike, st.level + 'a').map(function (s) { var p = s.split('|'); return { word: p[0], fake: true, alikeOf: p[1] }; });
     var fakes = take(b.fake, nImp - alike.length, st.level + 'f').map(function (w) { return { word: w, fake: true }; });
     var real = take(b.real, 16 - nImp, st.level + 'r').map(function (s) { var r = parseReal(s); r.fake = false; return r; });
@@ -242,8 +286,8 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   function nextTurn() { st.turn = (st.turn + 1) % st.teams.length; rollMult(); }
 
   function start() {
-    try { localStorage.setItem('tgtbt:setup', JSON.stringify({ level: st.level, nTeams: st.nTeams, names: st.names, fakes: st.fakes, boards: st.boards })); } catch (e) {}
-    st.teams = []; for (var i = 0; i < st.nTeams; i++) st.teams.push({ name: (st.names[i] || '').trim() || 'Team ' + 'ABCD'[i], score: 0, hits: 0, misses: 0 });
+    try { localStorage.setItem('tgtbt:setup', JSON.stringify({ level: st.level, nTeams: st.nTeams, names: st.names, members: st.members, fakes: st.fakes, boards: st.boards })); } catch (e) {}
+    st.teams = []; for (var i = 0; i < st.nTeams; i++) st.teams.push({ name: (st.names[i] || '').trim() || 'Team ' + 'ABCD'[i], members: st.nTeams > 1 ? parseMembers(st.members[i]) : [], mi: 0, score: 0, hits: 0, misses: 0 });
     if (st.nTeams === 1) st.teams[0].name = SOLO ? 'You' : 'The class';
     st.turn = 0; st.board = 0; st.used = {}; st.found = 0; st.missed = 0;
     newBoard(); st.phase = 'play'; rollMult();
@@ -260,9 +304,33 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
     if (c.fake) { team.score += pts; team.hits++; st.found++; }
     else { team.score -= pts; team.misses++; st.missed++; }
     window.ECYRBridge && window.ECYRBridge.answer(c.fake, { topic: 'impostor', level: st.level });
-    st.pending = { kind: c.fake ? 'hit' : 'real', card: c, team: st.turn, pts: pts, mult: mult, bet: bet };
+    st.pending = { kind: c.fake ? 'hit' : 'real', card: c, team: st.turn, who: curMember(team), pts: pts, mult: mult, bet: bet };
+    if (team.members.length) team.mi = (team.mi + 1) % team.members.length;
     nextTurn();
     render();
+  }
+  function curMember(t) { return t && t.members.length ? t.members[t.mi % t.members.length] : ''; }
+  // Teacher tool: n unopened cards (real or impostor, at random) leave the board and new ones take
+  // their place. Each new card is of the same kind as the one it replaces, so the board keeps its balance.
+  function swapCards(n) {
+    if (st.pending) return;
+    var closed = st.cards.filter(function (c) { return !c.open; });
+    var out = n === 'all' ? closed : shuffle(closed).slice(0, Math.min(n, closed.length));
+    if (!out.length) return;
+    var b = BANK[st.level];
+    var onBoard = {}; st.cards.forEach(function (c) { onBoard[c.word.toLowerCase()] = 1; });
+    var fresh = function (list, key, mk) { for (var k = 0; k < 6; k++) { var c = mk(take(list, 1, key)[0]); if (!onBoard[c.word.toLowerCase()]) { onBoard[c.word.toLowerCase()] = 1; return c; } } return mk(take(list, 1, key)[0]); };
+    out.forEach(function (c) { var el = app.querySelector('[data-card="' + c.id + '"]'); if (el) el.classList.add('swapout'); });
+    setTimeout(function () {
+      out.forEach(function (old) {
+        var nc = !old.fake ? fresh(b.real, st.level + 'r', function (s) { var r = parseReal(s); r.fake = false; return r; })
+          : old.alikeOf ? fresh(b.alike, st.level + 'a', function (s) { var p = s.split('|'); return { word: p[0], fake: true, alikeOf: p[1] }; })
+          : fresh(b.fake, st.level + 'f', function (w) { return { word: w, fake: true }; });
+        nc.id = old.id; nc.open = false; nc.swapin = true;
+        st.cards[st.cards.indexOf(old)] = nc;
+      });
+      render();
+    }, 300);
   }
   function closePanel() { st.pending = null; if (!impLeft()) st.phase = 'board-done'; render(); }
   function nextBoard() { st.board++; newBoard(); st.phase = 'play'; rollMult(); render(); }
@@ -319,8 +387,9 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
     var lv = LEVELS.map(function (l) { return '<button class="chip' + (st.level === l ? ' on' : '') + '" data-lv="' + l + '">' + l + '</button>'; }).join('');
     var tn = SOLO ? '' : '<div class="label">Teams</div><div class="row">' + [1, 2, 3, 4].map(function (n) {
       return '<button class="chip' + (st.nTeams === n ? ' on' : '') + '" data-nt="' + n + '">' + (n === 1 ? 'Whole class' : n + ' teams') + '</button>';
-    }).join('') + '</div>' + (st.nTeams > 1 ? '<div class="row" style="margin-top:10px">' + st.names.slice(0, st.nTeams).map(function (n, i) {
-      return '<input class="team" data-tn="' + i + '" value="' + esc(n) + '" aria-label="Team ' + (i + 1) + ' name" maxlength="18">';
+    }).join('') + '</div>' + (st.nTeams > 1 ? '<div class="teamset">' + st.names.slice(0, st.nTeams).map(function (n, i) {
+      return '<div><input class="team" data-tn="' + i + '" value="' + esc(n) + '" aria-label="Team ' + (i + 1) + ' name" maxlength="18">' +
+        '<input class="team mem" data-tm="' + i + '" value="' + esc(st.members[i]) + '" placeholder="Members: Ana, Luis, Sofi…" aria-label="Team ' + (i + 1) + ' members"></div>';
     }).join('') + '</div>' : '');
     var fk = FAKES.map(function (n) { return '<button class="chip wide' + (st.fakes === n ? ' on' : '') + '" data-fk="' + n + '">' + (n === 'auto' ? 'Rising 3 → 7' : n) + '</button>'; }).join('');
     var bd = BOARDS.map(function (n) { return '<button class="chip' + (st.boards === n ? ' on' : '') + '" data-bd="' + n + '">' + n + '</button>'; }).join('');
@@ -339,12 +408,16 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
       '</div></div>';
   }
 
+  function teamPanel(t, i) {
+    var on = i === st.turn && !st.pending, me = curMember(t);
+    var mem = t.members.length ? '<ul>' + t.members.map(function (m, k) { return '<li' + (on && k === t.mi % t.members.length ? ' class="me"' : '') + '>' + (on && k === t.mi % t.members.length ? '▶ ' : '') + esc(m) + '</li>'; }).join('') + '</ul>' : '';
+    return '<div class="tm c' + i + (on ? ' on' : '') + '"><span class="flag">' + (me ? esc(me) + '’s turn' : 'Your turn') + '</span><div class="tn">' + esc(t.name) + '</div>' +
+      '<div class="ts">' + t.score + '<small>pts</small></div>' + mem + '</div>';
+  }
   function boardView() {
-    var teams = st.teams.map(function (t, i) {
-      return '<div class="team-box' + (i === st.turn && st.teams.length > 1 ? ' turn' : '') + '"><div class="n">' + esc(t.name) + '</div><div class="s">' + t.score + '</div></div>';
-    }).join('');
+    var many = st.teams.length > 1;
     var cards = st.cards.map(function (c) {
-      var cls = 'card' + (c.open ? (c.fake ? ' fake' : ' real') : '') + (c.flip ? ' flip' : '') + (st.pending && st.pending.card === c ? ' sel' : '');
+      var cls = 'card' + (c.open ? (c.fake ? ' fake' : ' real') : '') + (c.flip ? ' flip' : '') + (c.swapin ? ' swapin' : '') + (st.pending && st.pending.card === c ? ' sel' : '');
       var sub = '';
       if (c.open && c.fake) sub = c.alikeOf ? 'fake · looks like “' + esc(c.alikeOf) + '”' : 'invented';
       else if (c.open) sub = '<b>' + esc(c.es) + '</b>' + (c.syn ? '<em>≈ ' + esc(c.syn) + '</em>' : '');
@@ -352,14 +425,24 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
         (c.open ? '<span class="tag">' + (c.fake ? '🚨' : '✓') + '</span>' : '') +
         '<span class="w">' + esc(c.word) + '</span>' + (sub ? '<span class="t">' + sub + '</span>' : '') + '</button>';
     }).join('');
-    st.cards.forEach(function (c) { c.flip = false; });
-    var t = st.teams[st.turn];
-    var turn = st.teams.length > 1 ? '<b>' + esc(t.name) + '</b>, your turn: which word is an impostor?' : 'Which word is an impostor?';
+    st.cards.forEach(function (c) { c.flip = false; c.swapin = false; });
+    var t = st.teams[st.turn], me = curMember(t);
+    var banner = many
+      ? '<div class="banner c' + st.turn + '"><span class="who">' + (me ? esc(me) + ' · ' : '') + esc(t.name) + '</span><span class="q">your turn: which word is an impostor?</span></div>'
+      : '<div class="turnline">Which word is an impostor?</div>';
+    var closed = st.cards.filter(function (c) { return !c.open; }).length;
+    var tools = '<div class="tools"><span class="lbl">🔀 Teacher · new cards</span>' + [2, 4, 6, 8].map(function (n) {
+      return '<button data-swap="' + n + '"' + (st.pending || closed < 1 ? ' disabled' : '') + ' title="Swap ' + n + ' random hidden cards for new ones">' + n + '</button>';
+    }).join('') + '<button data-swap="all"' + (st.pending || closed < 1 ? ' disabled' : '') + '>All hidden</button></div>';
+    var left = '', right = '';
+    st.teams.forEach(function (tm, i) { if (i % 2 === 0) left += teamPanel(tm, i); else right += teamPanel(tm, i); });
+    var center = (st.pending ? '' : banner) + stakeView() + '<div class="board">' + cards + '</div>' + panelView() + tools;
     return '<div class="top"><div class="meta"><span class="pill">Level ' + st.level + '</span><span class="pill">Board ' + (st.board + 1) + ' of ' + st.boards + '</span>' +
       '<span class="pill imp">' + impLeft() + ' of ' + nImp() + ' impostors left</span></div>' +
-      '<div class="row"><div class="teams">' + teams + '</div><button class="btn ghost" data-act="end">End game</button></div></div>' +
-      '<div class="turnline">' + (st.mult > 1 && !st.pending ? '<span class="mult' + (st.mult >= 3 ? ' hot' : '') + '">×' + st.mult + '</span> ' : '') + turn + '</div>' + stakeView() +
-      '<div class="board">' + cards + '</div>' + panelView();
+      '<div class="row">' + (many ? '' : '<div class="teams">' + st.teams.map(function (tm) { return '<div class="team-box"><div class="n">' + esc(tm.name) + '</div><div class="s">' + tm.score + '</div></div>'; }).join('') + '</div>') +
+      '<button class="btn ghost" data-act="end">End game</button></div></div>' +
+      (many ? '<div class="arena"><div class="side l">' + left + '</div><div>' + center + '</div><div class="side r">' + right + '</div></div>'
+        : '<div class="arena solo"><div>' + center + '</div></div>');
   }
 
   // The bet bar: optional, never more than the team has; a runaway leader can only bet the basic +100.
@@ -378,7 +461,7 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
 
   function panelView() {
     var p = st.pending; if (!p) return '';
-    var c = p.card, who = esc(st.teams[p.team].name), many = st.teams.length > 1;
+    var c = p.card, who = (p.who ? esc(p.who) + ' (' + esc(st.teams[p.team].name) + ')' : esc(st.teams[p.team].name)), many = st.teams.length > 1;
     var how = (p.mult > 1 ? ' ×' + p.mult : '') + (p.bet ? ' + bet ' + p.bet : '');
     var next = '<button class="btn small" data-act="ok">' + (impLeft() ? 'Continue' : 'See the board') + '</button>';
     if (p.kind === 'hit') return '<div class="panel good"><h2>🚨 Impostor caught! +' + p.pts + '</h2><p>“' + esc(c.word) + '” is ' +
@@ -434,7 +517,7 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   }
 
   function render() {
-    app.innerHTML = st.phase === 'setup' ? setupView() : st.phase === 'play' ? '<div class="wrap">' + boardView() + '</div>' : st.phase === 'board-done' ? doneView() : endView();
+    app.innerHTML = st.phase === 'setup' ? setupView() : st.phase === 'play' ? '<div class="wrap" style="max-width:1560px">' + boardView() + '</div>' : st.phase === 'board-done' ? doneView() : endView();
   }
 
   app.addEventListener('click', function (e) {
@@ -446,6 +529,7 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
     else if (el.dataset.tog) { st[el.dataset.tog] = !st[el.dataset.tog]; render(); }
     else if (el.dataset.bet) { var v = el.dataset.bet === 'all' ? st.teams[st.turn].score : Number(el.dataset.bet); if (betOk(v)) { st.wager = st.wager === v && v ? 0 : v; render(); } }
     else if (el.dataset.card) pick(Number(el.dataset.card));
+    else if (el.dataset.swap) swapCards(el.dataset.swap === 'all' ? 'all' : Number(el.dataset.swap));
     else switch (el.dataset.act) {
       case 'start': launch(); break;
       case 'again': start(); break;
@@ -456,7 +540,11 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
       case 'end': endGame(st.phase === 'play'); break;
     }
   });
-  app.addEventListener('input', function (e) { var i = e.target.dataset && e.target.dataset.tn; if (i != null) st.names[Number(i)] = e.target.value; });
+  app.addEventListener('input', function (e) {
+    var d = e.target.dataset || {};
+    if (d.tn != null) st.names[Number(d.tn)] = e.target.value;
+    if (d.tm != null) st.members[Number(d.tm)] = e.target.value;
+  });
   window.addEventListener('pagehide', function () { if (st.phase === 'play' && st.found + st.missed > 0) endGame(false, true); });
   render();
 })();
