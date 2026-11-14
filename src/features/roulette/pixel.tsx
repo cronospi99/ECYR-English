@@ -11,29 +11,45 @@ function drawMap(ctx: CanvasRenderingContext2D, rows: string[], pal: Record<stri
   rows.forEach((row, j) => { for (let i = 0; i < row.length; i++) { const c = pal[row[i]]; if (c) { ctx.fillStyle = c; ctx.fillRect(x + i * s, y + j * s, s, s); } } });
 }
 
-let teacherCanvas: HTMLCanvasElement | null = null;
-function teacherSource(): HTMLCanvasElement {
+let teacherCanvas: [HTMLCanvasElement, HTMLCanvasElement] | null = null;
+/* The pointer stick (sprite pixels above the hand, x ≥ 95 and y ≤ 56) goes on its own layer so it
+   can swing around the grip at STICK_PIVOT. */
+const STICK_X = 95, STICK_Y = 56, STICK_PIVOT = [99, 58];
+function teacherSource(): [HTMLCanvasElement, HTMLCanvasElement] {
   if (teacherCanvas) return teacherCanvas;
-  const c = document.createElement('canvas');
-  c.width = TEACHER_W; c.height = TEACHER_H;
-  const ctx = c.getContext('2d')!;
+  const mk = () => { const c = document.createElement('canvas'); c.width = TEACHER_W; c.height = TEACHER_H; return c; };
+  const body = mk(), stick = mk(), bc = body.getContext('2d')!, sc = stick.getContext('2d')!;
   TEACHER_ROWS.forEach((row, y) => {
     let x = 0;
     for (let i = 0; i < row.length; i++) {
       let n = 1, ch = row[i];
       if (ch === '~') { n = B36.indexOf(row[i + 1]); ch = row[i + 2]; i += 2; }
-      if (ch !== '.') { ctx.fillStyle = TEACHER_PALETTE[B36.indexOf(ch) - 1]; ctx.fillRect(x, y, n, 1); }
+      if (ch !== '.') {
+        const col = TEACHER_PALETTE[B36.indexOf(ch) - 1];
+        for (let k = 0; k < n; k++) { const ctx = y <= STICK_Y && x + k >= STICK_X ? sc : bc; ctx.fillStyle = col; ctx.fillRect(x + k, y, 1, 1); }
+      }
       x += n;
     }
   });
-  return (teacherCanvas = c);
+  return (teacherCanvas = [body, stick]);
 }
 
-/** The teacher who hosts the game. `scale` is the size of one sprite pixel in stage pixels. */
-export function Teacher({ scale = 4, className = '', style }: { scale?: number; className?: string; style?: React.CSSProperties }) {
+function Layer({ src, scale, className }: { src: 0 | 1; scale: number; className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
-  useEffect(() => { const c = ref.current!; c.getContext('2d')!.drawImage(teacherSource(), 0, 0); }, []);
-  return <canvas ref={ref} width={TEACHER_W} height={TEACHER_H} className={`pv-px ${className}`} style={{ width: TEACHER_W * scale, height: TEACHER_H * scale, ...style }} aria-hidden="true" />;
+  useEffect(() => { const c = ref.current!; c.getContext('2d')!.drawImage(teacherSource()[src], 0, 0); }, [src]);
+  return <canvas ref={ref} width={TEACHER_W} height={TEACHER_H} className={`pv-px ${className || ''}`} style={{ width: TEACHER_W * scale, height: TEACHER_H * scale }} />;
+}
+
+/** The teacher who hosts the game, waving his pointer stick. `scale` is the size of one sprite
+    pixel in stage pixels. */
+export function Teacher({ scale = 4, className = '', style }: { scale?: number; className?: string; style?: React.CSSProperties }) {
+  const origin = `${(STICK_PIVOT[0] / TEACHER_W) * 100}% ${(STICK_PIVOT[1] / TEACHER_H) * 100}%`;
+  return (
+    <div className={`pv-teach ${className}`} style={{ width: TEACHER_W * scale, height: TEACHER_H * scale, ...style }} aria-hidden="true">
+      <div className="pv-stick" style={{ transformOrigin: origin }}><Layer src={1} scale={scale} /></div>
+      <Layer src={0} scale={scale} className="pv-body" />
+    </div>
+  );
 }
 
 const ICON_PAL: Record<string, string> = { r: '#e52521', w: '#ffffff', k: '#1b1035', b: '#2a6fe0', y: '#ffd21f', o: '#e8780c', s: '#ffc79a', p: '#a56bff', g: '#43b047' };
@@ -110,7 +126,18 @@ function paint(c: CanvasRenderingContext2D, f: number) {
   const r = rnd(9);
   for (let x = 0; x < W;) { const w = 10 + Math.floor(r() * 16), h = 18 + Math.floor(r() * 46); c.fillStyle = '#3d8df0'; c.fillRect(x, 232 - h, w, h); c.fillStyle = '#6fb0ff'; for (let j = 232 - h + 4; j < 226; j += 7) for (let i = x + 2; i < x + w - 2; i += 5) if (r() < 0.45) c.fillRect(i, j, 2, 3); x += w + 2; }
   for (const [hx, hw, hh] of [[40, 120, 40], [210, 150, 30], [400, 130, 46]]) for (let j = 0; j < hh; j += 2) { const k = Math.sqrt(1 - (1 - j / hh) ** 2); c.fillStyle = j % 8 < 4 ? '#2f9e4f' : '#35ab57'; c.fillRect(Math.round(hx - (hw / 2) * k), 232 - hh + j, Math.round(hw * k), 2); }
-  cloud(c, ((f * 0.35 + 30) % (W + 60)) - 40, 28, 2); cloud(c, ((f * 0.2 + 300) % (W + 60)) - 40, 58, 1); cloud(c, ((f * 0.27 + 420) % (W + 60)) - 40, 20, 1); cloud(c, ((f * 0.15 + 170) % (W + 60)) - 40, 96, 1);
+  // clouds drift at different speeds (nearer = faster); birds flap across now and then
+  const drift = (sp: number, x0: number, k: number) => ((f * sp + x0) % (W + 30 + 26 * k)) - 26 * k;
+  cloud(c, drift(1.1, 30, 2), 28, 2); cloud(c, drift(0.55, 300, 1), 58, 1); cloud(c, drift(0.8, 420, 1), 20, 1); cloud(c, drift(0.4, 170, 1), 96, 1);
+  cloud(c, drift(0.9, 250, 2), 120, 2); cloud(c, drift(0.65, 90, 1), 150, 1);
+  for (const [sp, x0, y0, ph] of [[2.2, 0, 70, 0], [2.2, 14, 76, 1], [2.2, 26, 66, 2], [1.7, 300, 44, 1]]) {
+    const bx = Math.round(((f * sp + x0) % (W * 2)) - 30), by = Math.round(y0 + Math.sin((f + ph * 3) / 6) * 3), up = (f + ph) % 4 < 2;
+    if (bx < -10 || bx > W) continue;
+    c.fillStyle = '#1b1035';
+    c.fillRect(bx + 2, by, 1, 1);
+    if (up) { c.fillRect(bx, by - 2, 1, 1); c.fillRect(bx + 1, by - 1, 1, 1); c.fillRect(bx + 3, by - 1, 1, 1); c.fillRect(bx + 4, by - 2, 1, 1); }
+    else { c.fillRect(bx, by + 1, 1, 1); c.fillRect(bx + 1, by, 1, 1); c.fillRect(bx + 3, by, 1, 1); c.fillRect(bx + 4, by + 1, 1, 1); }
+  }
   // twinkles
   for (const [sx, sy, p] of [[160, 14, 0], [308, 30, 5], [28, 112, 9], [455, 122, 3], [236, 108, 7]]) if ((f + p) % 12 < 6) { c.fillStyle = '#fff'; c.fillRect(sx, sy - 2, 1, 5); c.fillRect(sx - 2, sy, 5, 1); }
   // terrain: two raised platforms and a lower lane, like a first level
@@ -130,8 +157,7 @@ export function Scene() {
     const ctx = ref.current!.getContext('2d')!;
     let f = 0;
     paint(ctx, 0);
-    const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    const id = still ? 0 : window.setInterval(() => paint(ctx, ++f), 100);
+    const id = window.setInterval(() => paint(ctx, ++f), 100);
     return () => window.clearInterval(id);
   }, []);
   return <canvas ref={ref} width={W} height={H} className="pv-px" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} aria-hidden="true" />;

@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { Chiptune } from './music';
 /* Phrasal Verb Roulette — game engine. This is the original game logic, moved into the app as it
    was: turns, wheel, timer, coins, wagers, multipliers, aids, passing, teams, podium and every
    sound. `renderVals()` turns the state into the values the screens draw (View.tsx). */
@@ -140,7 +141,7 @@ export class Engine extends Logic {
   state = {
     screen: 'menu', front: true, pool: [], nameInput: '', students: [],
     levels: ['A1', 'A2'], rounds: 10, sound: true, randomOrder: false,
-    sfxVol: 80, audioOpen: false,
+    sfxVol: 80, audioOpen: false, music: true, musicVol: 55,
     theme: 'overworld', wagerOn: true, multOn: true, aidsPer: 3, penalty: 5,
     teamsOn: false, teamCount: 2, subjOn: true, ctxOn: true, subject: null, context: null,
     round: 1, order: [], turn: 0, currentIdx: null, passedTo: null,
@@ -172,13 +173,14 @@ export class Engine extends Logic {
   componentDidMount() {
     try {
       const a = JSON.parse(localStorage.getItem('pvr-audio') || 'null');
-      if (a) this.setState({ sfxVol: a.sfxVol != null ? a.sfxVol : 80, sound: a.sound !== false });
+      if (a) this.setState({ sfxVol: a.sfxVol != null ? a.sfxVol : 80, sound: a.sound !== false, musicVol: a.musicVol != null ? a.musicVol : 55, music: a.music !== false });
     } catch (e) {}
     import('./data').then(m => {
       this._ctxGroups = m.CONTEXT_GROUPS || {}; this._ctxGeneral = m.GENERAL_CONTEXTS || [];
       this.setState({ pool: m.VERBS }, () => this.buildSegments());
     });
     this._fit();
+    document.addEventListener('visibilitychange', this._onVis);
     window.addEventListener('resize', this._fit);
     if (window.ResizeObserver) {
       this._ro = new ResizeObserver(this._fit);
@@ -192,11 +194,25 @@ export class Engine extends Logic {
   }
   saveAudio() {
     const s = this.state;
-    try { localStorage.setItem('pvr-audio', JSON.stringify({ sfxVol: s.sfxVol, sound: s.sound })); } catch (e) {}
+    try { localStorage.setItem('pvr-audio', JSON.stringify({ sfxVol: s.sfxVol, sound: s.sound, musicVol: s.musicVol, music: s.music })); } catch (e) {}
     this.applyVolumes();
   }
   toggleSfx = () => this.setState(s => ({ sound: !s.sound }), () => { this.saveAudio(); this.sfx('click'); });
+  toggleMusic = () => this.setState(s => ({ music: !s.music }), () => { this.saveAudio(); this.startMusic(); this.sfx('click'); });
+  // The soundtrack can only start after a tap or a key (browser rule), so the first one starts it.
+  startMusic = () => {
+    if (!this.state.music) { if (this._music) this._music.stop(); return; }
+    const ac = this.ctx(); if (!ac) return;
+    if (!this._music) { this._music = new Chiptune(ac, ac.destination); this.applyVolumes(); }
+    this._music.start();
+  };
+  _onVis = () => {
+    if (!this._ac) return;
+    if (document.hidden) this._ac.suspend(); else this._ac.resume();
+  };
   componentWillUnmount() {
+    if (this._music) { this._music.stop(); this._music = null; }
+    document.removeEventListener('visibilitychange', this._onVis);
     if (this._ac) this._ac.close();
     clearInterval(this._t); clearTimeout(this._sp); clearTimeout(this._pop); clearInterval(this._fitPoll); clearTimeout(this._end1); clearTimeout(this._end2);
     window.removeEventListener('resize', this._fit);
@@ -219,6 +235,7 @@ export class Engine extends Logic {
     if (!this._ac) return;
     const s = this.state, now = this._ac.currentTime;
     this._sfxBus.gain.setTargetAtTime(Math.pow(s.sfxVol / 100, 1.6) * 1.4, now, 0.03);
+    if (this._music) this._music.setVolume(s.music ? s.musicVol / 100 : 0);
   }
   beep(freq, dur, type, vol, delay) {
     const ac = this.ac(); if (!ac) return;
@@ -230,6 +247,11 @@ export class Engine extends Logic {
     o.connect(g); g.connect(this._sfxBus); o.start(t); o.stop(t + dur + 0.02);
   }
   sfx(kind) {
+    // the music steps back while an effect plays, then comes back up
+    if (this._music && this.state.sound && this.state.sfxVol > 0) {
+      const hold = { coin: 0.55, wrong: 0.55, pass: 0.35, click: 0.1, aid: 0.35, time: 0.3, jackpot: 0.5, stop: 0.55, over: 1.05, spin: 4.6 }[kind];
+      if (hold) this._music.duck(hold, kind === 'click' ? 0.5 : 0.18);
+    }
     if (kind === 'coin') { this.beep(988, 0.08, 'square', 0.18, 0); this.beep(1319, 0.42, 'square', 0.18, 0.08); }
     else if (kind === 'wrong') { this.beep(196, 0.18, 'sawtooth', 0.16, 0); this.beep(147, 0.34, 'sawtooth', 0.16, 0.16); }
     else if (kind === 'pass') { [523, 659, 784].forEach((f, i) => this.beep(f, 0.1, 'triangle', 0.14, i * 0.07)); }
@@ -784,11 +806,15 @@ export class Engine extends Logic {
 
       audioOpen: s.audioOpen,
       toggleAudioPanel: () => { this.sfx('click'); this.setState(st => ({ audioOpen: !st.audioOpen })); },
-      audioIcon: s.sound ? '🔊' : '🔇', audioBtnLabel: s.audioOpen ? 'CLOSE' : 'SOUND',
+      audioIcon: s.sound || s.music ? '🔊' : '🔇', audioBtnLabel: s.audioOpen ? 'CLOSE' : 'SOUND',
       toggleSfx: this.toggleSfx,
       sfxBtnLabel: s.sound ? 'SFX ON' : 'SFX OFF', sfxBtnBg: s.sound ? t.accent : '#555', sfxBtnInk: s.sound ? t.accentInk : '#fff',
       sfxVol: s.sfxVol,
       onSfxVol: e => this.setState({ sfxVol: +e.target.value }, () => this.saveAudio()),
+      toggleMusic: this.toggleMusic, startMusic: this.startMusic,
+      musicBtnLabel: s.music ? 'MUSIC ON' : 'MUSIC OFF', musicBtnBg: s.music ? t.accent : '#555', musicBtnInk: s.music ? t.accentInk : '#fff',
+      musicVol: s.musicVol, spinning: s.spinning,
+      onMusicVol: e => this.setState({ musicVol: +e.target.value }, () => this.saveAudio()),
 
       hasTense: !!s.tense, tenseName: s.tense ? s.tense.n : '', tenseHint: s.tense ? s.tense.h : '',
       hasExtra: !!(s.card && (s.subject || s.context)),
