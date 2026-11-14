@@ -5,6 +5,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 
 export interface EnvPalette { top: number; horizon: number; ground: number; key: number; rim: number; fill: number }
 
@@ -46,10 +47,28 @@ export function post(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: 
   const bloom = new UnrealBloomPass(new THREE.Vector2(size.x / 2, size.y / 2), strength, 0.5, 1.0);
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
+  // the final grade: a soft vignette, a hint of colour fringing at the edges and fine film grain
+  const grade = new ShaderPass({
+    uniforms: { tDiffuse: { value: null }, t: { value: 0 } },
+    vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+    fragmentShader: `uniform sampler2D tDiffuse; uniform float t; varying vec2 vUv;
+      float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898, 78.233)) + t) * 43758.5453); }
+      void main(){
+        vec2 d = vUv - 0.5; float r = dot(d, d);
+        vec2 o = d * r * 0.012;
+        vec3 c = vec3(texture2D(tDiffuse, vUv + o).r, texture2D(tDiffuse, vUv).g, texture2D(tDiffuse, vUv - o).b);
+        c = mix(vec3(dot(c, vec3(0.299, 0.587, 0.114))), c, 1.12);       // a little more colour
+        c = (c - 0.5) * 1.05 + 0.5;                                      // a little more contrast
+        c *= 1.0 - smoothstep(0.18, 0.62, r) * 0.42;                     // vignette
+        c += (h(vUv * 900.0) - 0.5) * 0.028;                             // grain
+        gl_FragColor = vec4(c, 1.0);
+      }`,
+  });
+  composer.addPass(grade);
   const api: Post = {
     enabled: true,
     bloom,
-    render() { if (api.enabled) composer.render(); else renderer.render(scene, camera); },
+    render() { if (api.enabled) { grade.uniforms.t!.value = (performance.now() % 1000) / 1000; composer.render(); } else renderer.render(scene, camera); },
     setSize(w, h) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(w, h); },
     dispose() { composer.dispose(); target.dispose(); },
   };

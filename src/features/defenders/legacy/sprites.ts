@@ -31,6 +31,12 @@ const DRAW = {
   fx_marker(x) { stick(x, '#e5484d', '#7a1a1e', 26, '#1c1a22'); },
   fx_hl(x) { stick(x, '#f6ff4a', '#8a9000', 28, '#1c1a22'); },
   fx_bolt(x) { glowBar(x, '#5cf2ff', 14); },
+  fx_tack(x) { glowBar(x, '#ffd86a', 10); },
+  fx_plane(x) {
+    x.fillStyle = '#ffffff'; x.strokeStyle = '#7a86a0'; x.lineWidth = 5; x.lineJoin = 'round';
+    x.beginPath(); x.moveTo(118, 64); x.lineTo(12, 26); x.lineTo(40, 64); x.lineTo(12, 102); x.closePath(); x.fill(); x.stroke();
+    x.beginPath(); x.moveTo(118, 64); x.lineTo(40, 64); x.stroke();
+  },
   fx_beam(x) { glowBar(x, '#fff3b0', 22); },
   fx_paper(x) {
     x.fillStyle = '#ffffff'; x.strokeStyle = '#9aa4b8'; x.lineWidth = 5; x.lineJoin = 'round';

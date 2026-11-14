@@ -538,7 +538,108 @@ const boss: Make = (h) => {
   return b.finish(h, YAW_E, tick);
 };
 
+/** Sentry Sharp — a pencil-sharpener turret on a tripod: twin barrels that sweep three lanes. */
+const turret: Make = (h) => {
+  const b = new Builder();
+  const base = b.part('torso', 'turn', [0, 0, 0]).m('metal');
+  for (const a of [0, 2.094, 4.188]) base.cap(0x55627f, [0, 0.3, 0], [Math.sin(a) * 0.24, 0.02, Math.cos(a) * 0.24], 0.022);
+  for (const a of [0, 2.094, 4.188]) base.m('rubber').add('sph', 0x2b2b33, [Math.sin(a) * 0.24, 0.02, Math.cos(a) * 0.24], 0.035);
+  base.m('metal').add('cyl', 0x8892a6, [0, 0.33, 0], [0.07, 0.07, 0.07]);
+  base.add('cyl', 0x3a4256, [0, 0.39, 0], [0.11, 0.03, 0.11]);
+  const head = b.part('head', 'torso', [0, 0.52, 0]).m('metal');
+  head.add('box', 0xe5484d, [0, 0, -0.02], [0.3, 0.2, 0.3]);
+  head.add('box', 0xb8323a, [0, 0.11, -0.02], [0.24, 0.04, 0.24]);
+  head.m('gloss').add('box', 0x10141f, [0, 0.02, 0.135], [0.2, 0.09, 0.02]);
+  for (const s of [-1, 1]) {
+    head.m('metal').add('cyl', 0x8892a6, [s * 0.085, -0.03, 0.26], [0.035, 0.22, 0.035], [1.5708, 0, 0]);
+    head.add('cyl', 0x2b2b33, [s * 0.085, -0.03, 0.375], [0.042, 0.03, 0.042], [1.5708, 0, 0]);
+    head.add('box', 0xf2b632, [s * 0.165, 0, -0.02], [0.03, 0.12, 0.2]);
+  }
+  head.add('cyl', 0x55627f, [0, 0.16, -0.08], [0.012, 0.1, 0.012]);
+  b.glow('head', 'sph', 0x5cf2ff, [0, 0.02, 0.148], [0.05, 0.03, 0.01]);
+  b.glow('head', 'sph', 0xff4d5e, [0, 0.22, -0.08], 0.022);
+  for (const s of [-1, 1]) b.glow('head', 'sph', 0xffd86a, [s * 0.085, -0.03, 0.395], 0.02);
+  const tick: TickFn = (rig, t, _m, recoil) => {
+    rig.parts.head.rotation.y = Math.sin(t * 1.1) * 0.5;
+    rig.parts.head.position.z = -recoil * 0.05;
+    rig.glows[1].visible = Math.sin(t * 5) > 0;
+    rig.glows[2].scale.setScalar(0.02 + recoil * 0.06); rig.glows[3].scale.setScalar(0.02 + recoil * 0.06);
+  };
+  return b.finish(h, YAW_D, tick);
+};
+
+/** Nurse Curita — the school nurse: every few seconds she patches up the defenders around her. */
+const nurse: Make = (h) => {
+  const b = new Builder();
+  const L = human(b, { skin: SKIN.tan, shirt: 0xf4f6fb, pants: 0x9fd8e8, hair: 0x4a2a1a, style: 'short', hat: 0xf4f6fb, face: 'happy', shoes: 0xf4f4f8, armR: [-0.9, 0, 0.2], armL: [0, 0, -0.25] });
+  L.torso.add('box', 0xe5333a, [0, 0.17, 0.125], [0.1, 0.03, 0.012]); L.torso.add('box', 0xe5333a, [0, 0.17, 0.125], [0.03, 0.1, 0.012]);
+  L.armR.add('box', 0xf4f6fb, [0, -0.36, 0.04], [0.16, 0.12, 0.07]);
+  L.armR.add('box', 0xe5333a, [0, -0.36, 0.078], [0.07, 0.022, 0.008]); L.armR.add('box', 0xe5333a, [0, -0.36, 0.078], [0.022, 0.07, 0.008]);
+  b.glow('torso', 'sph', 0x7dffb0, [0, 0.17, 0.14], 0.02);
+  return b.finish(h, YAW_D, humanTick);
+};
+
+/** Photo Day — the school photographer: one flash and the whole lane stands still, blinking. */
+const photographer: Make = (h) => {
+  const b = new Builder();
+  const L = human(b, { skin: SKIN.deep, shirt: 0x2a2f45, pants: 0x1c1a22, hair: 0x15131a, style: 'cap', hat: 0xe5484d, face: 'focus', armR: [-1.35, 0, 0.35], armL: [-1.35, 0, -0.35] });
+  L.torso.m('metal').add('box', 0x2b2b33, [0, 0.2, 0.2], [0.2, 0.13, 0.1]);
+  L.torso.add('cyl', 0x55627f, [0, 0.2, 0.27], [0.055, 0.07, 0.055], [1.5708, 0, 0]);
+  L.torso.add('box', 0xc0c6d0, [0.06, 0.29, 0.2], [0.07, 0.05, 0.06]);
+  b.glow('torso', 'sph', 0x9fe8ff, [0, 0.2, 0.31], [0.04, 0.04, 0.01]);
+  b.glow('torso', 'sph', 0xffffff, [0.06, 0.29, 0.235], 0.03);
+  const tick: TickFn = (rig, t, mode, recoil, act, dt) => {
+    humanTick(rig, t, mode, recoil, act, dt);
+    rig.glows[rig.glows.length - 1].scale.setScalar(0.03 + act * 0.35);
+  };
+  return b.finish(h, YAW_D, tick);
+};
+
+/** Band Drummer — one hit on the bass drum sends a wave down the lane that pushes everyone back. */
+const drummer: Make = (h) => {
+  const b = new Builder();
+  const L = human(b, { skin: SKIN.brown, shirt: 0xb8323a, pants: 0xf4f4f8, hair: 0x15131a, style: 'cap', hat: 0xb8323a, face: 'happy', armR: [-0.9, 0, 0.45], armL: [-0.9, 0, -0.45] });
+  L.torso.m('gold').add('box', GOLD, [0, 0.2, 0.123], [0.16, 0.012, 0.01]); L.torso.add('box', GOLD, [0, 0.14, 0.123], [0.16, 0.012, 0.01]);
+  L.torso.m('gloss').add('cyl', 0x3d7bd8, [0, 0.08, 0.27], [0.2, 0.14, 0.2], [1.5708, 0, 0]);
+  L.torso.m('paper').add('cyl', 0xfdfdfd, [0, 0.08, 0.345], [0.185, 0.012, 0.185], [1.5708, 0, 0]);
+  L.torso.m('gold').ring(GOLD, 0.2, 0.012, [0, 0.08, 0.34], [0, 0, 0]);
+  for (const arm of [L.armL, L.armR]) { arm.m('wood').add('cyl', 0xd8b07a, [0, -0.34, 0.08], [0.012, 0.16, 0.012], [1.2, 0, 0]); arm.add('sph', 0xf4f4f8, [0, -0.37, 0.16], 0.03); }
+  return b.finish(h, YAW_D, humanTick);
+};
+
+/** Science Coil — a science-fair coil: its lightning jumps from one distraction to the next. */
+const coil: Make = (h) => {
+  const b = new Builder();
+  const body = b.part('torso', 'turn', [0, 0, 0]).m('wood');
+  body.add('box', 0x8a5a2b, [0, 0.05, 0], [0.42, 0.1, 0.34]);
+  body.m('metal').add('cyl', 0x55627f, [0, 0.14, 0], [0.13, 0.08, 0.13]);
+  body.add('cyl', 0xc87533, [0, 0.42, 0], [0.085, 0.5, 0.085]);
+  for (let i = 0; i < 9; i++) body.ring(0xf2a04a, 0.09, 0.008, [0, 0.2 + i * 0.05, 0], [1.5708, 0, 0]);
+  body.add('cyl', 0x8892a6, [0, 0.7, 0], [0.03, 0.08, 0.03]);
+  body.m('gold').ring(0xd0d8e8, 0.13, 0.045, [0, 0.76, 0], [1.5708, 0, 0]);
+  body.m('gloss').add('box', 0x2bb673, [0.13, 0.115, 0.14], [0.06, 0.03, 0.03]);
+  b.glow('torso', 'sph', 0xb48cff, [0, 0.76, 0], 0.07);
+  b.glow('torso', 'sph', 0xe8dcff, [0, 0.76, 0], 0.035);
+  b.halo('torso', 0xb48cff, [0, 0.76, 0], 0.9, 0.5);
+  const tick: TickFn = (rig, t, _m, recoil) => {
+    const k = 1 + Math.sin(t * 17) * 0.12 + recoil * 1.6;
+    rig.glows[0].scale.setScalar(0.07 * k); rig.glows[1].scale.setScalar(0.035 * (1 + recoil * 2.5));
+  };
+  return b.finish(h, YAW_D, tick);
+};
+
+/** Paper Ace — folds planes faster than anyone: they hit what walks and what flies. */
+const paperAce: Make = (h) => {
+  const b = new Builder();
+  const L = human(b, { skin: SKIN.fair, shirt: 0xf2b632, pants: 0x3d4a6a, hair: 0xc8642a, style: 'short', face: 'smirk', thrower: 'R', armR: [-1.0, 0, 0.3], armL: [-0.3, 0, -0.3] });
+  L.torso.add('box', 0x3d7bd8, [0, 0.16, 0.122], [0.16, 0.05, 0.012]);
+  L.armR.m('paper').add('cone', WHITE, [0, -0.36, 0.1], [0.07, 0.2, 0.012], [1.5708, 0, 0]);
+  L.armL.m('paper').add('box', WHITE, [0, -0.33, 0.05], [0.12, 0.012, 0.16]);
+  return b.finish(h, YAW_D, humanTick);
+};
+
 export const CAST: Record<string, Make> = {
+  d_turret: turret, d_nurse: nurse, d_photo: photographer, d_drum: drummer, d_coil: coil, d_ace: paperAce,
   d_lamp: lamp(false), d_twinlamp: lamp(true), d_chalk: chalkTeacher, d_marker: markerMax, d_highlight: msHighlight,
   d_dicto: bookWall(false), d_tomo: bookWall(true), d_shh: librarian, d_monitor: hallMonitor, d_paper: paperPitcher,
   d_arepa: lunchLady, d_coach: coach, d_bell: bell, d_quiz: popQuiz, d_chem: chemist, d_tacks: tackMat,

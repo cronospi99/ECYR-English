@@ -37,7 +37,13 @@ export const PLANTS = {
   repeater:    { name: 'Marker Max',     tier: 'silver',   sprite: 'd_marker',    h: 1.0,  cost: 175, hp: 350,  cooldown: 8,  kind: 'pea',   shot: 'fx_marker', fireRate: 1.6, dmg: 18, multi: 2 },
   icepea:      { name: 'Miss Shh',       tier: 'silver',   sprite: 'd_shh',       h: 1.0,  cost: 150, hp: 300,  cooldown: 8,  kind: 'frost', shot: 'fx_shh', fireRate: 1.9, dmg: 20, slow: true },
   garlic:      { name: 'Hall Monitor',   tier: 'silver',   sprite: 'd_monitor',   h: 0.95, cost: 50,  hp: 800,  cooldown: 9, divert: true, divertDmg: 45 },
+  // Sentry Sharp: the turret. Twin barrels, very fast, and it covers its lane and the two next to it
+  turret:      { name: 'Sentry Sharp',   tier: 'silver',   sprite: 'd_turret',    h: 0.95, cost: 175, hp: 380,  cooldown: 10, kind: 'pea',   shot: 'fx_tack', fireRate: 0.5, dmg: 8, lanes3: true },
+  // Paper Ace: planes reach walkers and flyers alike
+  ace:         { name: 'Paper Ace',      tier: 'silver',   sprite: 'd_ace',       h: 0.95, cost: 125, hp: 260,  cooldown: 8,  kind: 'spike', shot: 'fx_plane', fireRate: 1.7, dmg: 18, anyHeight: true },
   // ===== GOLDEN (B1) =====
+  nurse:       { name: 'Nurse Curita',   tier: 'golden',   sprite: 'd_nurse',     h: 1.0,  cost: 125, hp: 300,  cooldown: 12, special: 'heal', every: 4, heal: 70 },
+  photo:       { name: 'Photo Day',      tier: 'golden',   sprite: 'd_photo',     h: 1.0,  cost: 150, hp: 280,  cooldown: 14, special: 'stun', every: 9, stun: 2.2, reach: 4.5 },
   cabbage:     { name: 'Paper Pitcher',  tier: 'golden',   sprite: 'd_paper',     h: 0.95, cost: 125, hp: 130,  cooldown: 8,  kind: 'lob', lobSprite: 'fx_paper', fireRate: 2.4, dmg: 40 },
   corn:        { name: 'Doña Arepa',     tier: 'golden',   sprite: 'd_arepa',     h: 1.0,  cost: 150, hp: 140,  cooldown: 9,  kind: 'lob', lobSprite: 'fx_arepa', fireRate: 2.2, dmg: 45, aoe: 1.0 },
   // Coach Volley: on the ground he serves along the lane; jumping, he is the ONLY one who reaches flyers
@@ -50,7 +56,9 @@ export const PLANTS = {
   triplepea:   { name: 'Ms. Highlight',  tier: 'golden',   sprite: 'd_highlight', h: 1.0,  cost: 250, hp: 400,  cooldown: 12, kind: 'pea', shot: 'fx_hl', fireRate: 2.0, dmg: 17, multi: 3 },
   // ===== PLATINUM (B2) =====
   chili:       { name: 'The Megaphone',  tier: 'platinum', sprite: 'd_megaphone', h: 0.9,  cost: 175, hp: 100,  cooldown: 30, bomb: 'lane', bombDmg: 1800 },
+  drum:        { name: 'Band Drummer',   tier: 'platinum', sprite: 'd_drum',      h: 1.0,  cost: 175, hp: 340,  cooldown: 14, special: 'knock', every: 6.5, push: 1.15, reach: 3.2, dmg: 30 },
   // ===== DIAMOND (C1) =====
+  coil:        { name: 'Science Coil',   tier: 'diamond',  sprite: 'd_coil',      h: 1.05, cost: 250, hp: 260,  cooldown: 14, special: 'chain', every: 2.1, dmg: 46, jumps: 3 },
   electricpea: { name: 'Robo-Tutor',     tier: 'diamond',  sprite: 'd_robot',     h: 1.0,  cost: 225, hp: 320,  cooldown: 10, kind: 'spike', shot: 'fx_bolt', fireRate: 1.3, dmg: 22, pierce: 3 },
   laserbean:   { name: 'Projecto',       tier: 'diamond',  sprite: 'd_projector', h: 0.95, cost: 200, hp: 140,  cooldown: 12, kind: 'spike', shot: 'fx_beam', fireRate: 1.1, dmg: 35, pierce: 5 },
   wintermelon: { name: 'Prof. Thesis',   tier: 'diamond',  sprite: 'd_thesis',    h: 1.05, cost: 175, hp: 150,  cooldown: 14, kind: 'lob', lobSprite: 'fx_binder', fireRate: 2.8, dmg: 50, aoe: 1.4, slow: true },
@@ -130,6 +138,12 @@ export const ZOMBIE_TYPES = {
 
 // Short description of each defender, for the loadout picker and the almanac.
 export const PLANT_DESC = {
+  turret:      'A pencil-sharpener turret on a tripod. Small shots, very fast — and it also covers the lanes above and below it.',
+  ace:         'Folds paper planes faster than anyone. They hit what walks and what flies.',
+  nurse:       'The school nurse. Every few seconds she patches up every defender standing next to her.',
+  photo:       '"Say cheese!" One flash and everyone ahead in the lane stands still, blinking.',
+  drum:        'One hit on the bass drum and a wave runs down the lane, pushing everyone a step back.',
+  coil:        'A science-fair coil. Its lightning jumps from one distraction to the next, even across lanes.',
   shooter:     'The classic teacher: throws chalk straight down her lane. Cheap, reliable, never misses.',
   sunny:       'A desk lamp that turns electricity into bright ideas. Place a few first — everything else costs ideas.',
   wallnut:     'A pocket dictionary that plants itself in the corridor. For 50 ideas it holds the line while others work.',
@@ -185,6 +199,11 @@ export function evolveCostFor(def, level) { return Math.round(def.cost * (level 
 // Alcance de cada planta, en palabras: el motor no usa radios, cada planta ataca
 // (o no) de una forma concreta dentro de su carril.
 function plantRange(def) {
+  if (def.lanes3) return 'Its lane and the lanes above and below';
+  if (def.special === 'heal') return 'The eight tiles around her';
+  if (def.special === 'stun') return `Its lane, ${def.reach} tiles ahead`;
+  if (def.special === 'knock') return `Its lane, ${def.reach} tiles ahead`;
+  if (def.special === 'chain') return 'Its lane, then jumps to whoever is near';
   if (def.kind === 'lob') return 'Whole lane, in an arc over walls';
   if (def.kind) return 'Whole lane, straight ahead';
   if (def.bomb === 'plus') return 'Its tile plus 2 tiles up, down, left and right';
@@ -235,6 +254,12 @@ export function plantStats(id, level = 1) {
   if (def.pierce) s.pierce = def.pierce;
 
   const t = s.traits;
+  if (def.lanes3) t.push('Covers three lanes from one tile');
+  if (def.anyHeight) t.push('Hits flying distractions as well as walking ones');
+  if (def.special === 'heal') t.push(`Heals ${def.heal} health to each neighbour every ${def.every} s`);
+  if (def.special === 'stun') t.push(`Freezes the lane for ${def.stun} s every ${def.every} s`);
+  if (def.special === 'knock') t.push(`Pushes everyone back ${def.push} tiles every ${def.every} s`);
+  if (def.special === 'chain') t.push(`Lightning that jumps to ${def.jumps} more distractions`);
   if (def.slow) t.push(`Slows what it hits for ${s.slowDur.toFixed(1)} s`);
   if (def.burn) t.push('Keeps fizzing after it lands — splashes onto neighbours');
   if (def.pierce) t.push(`Goes through ${def.pierce} distractions per shot`);
@@ -245,7 +270,7 @@ export function plantStats(id, level = 1) {
   if (def.bomb) t.push('One-time use — it is spent after going off');
   if (def.ground) t.push('Flat on the floor: nobody can push it away');
   if (def.sun) t.push('Place these first — everything else costs ideas');
-  if (!def.kind && !def.bomb && !def.mine && !def.ground && !def.divert && !def.sun) t.push('Pure wall: it holds the line so your throwers can work');
+  if (!def.kind && !def.bomb && !def.mine && !def.ground && !def.divert && !def.sun && !def.special) t.push('Pure wall: it holds the line so your throwers can work');
   return s;
 }
 
@@ -1727,6 +1752,7 @@ export class Game {
         }
         continue;
       }
+      if (p.def.special) { this._special(p, dt); continue; }
       if (!p.def.fireRate) continue;
       // Cactus: se estira cuando hay un volador en su carril (única forma de bajarlo)
       // y vuelve a su forma normal cuando ya no queda ninguno.
@@ -1736,7 +1762,9 @@ export class Game {
         this._setCactusForm(p, air);
       }
       const wantFlying = !!(p.def.antiAir && p.tallForm);
-      const targets = this.zombies.filter(z => this._zInRow(z, p.r) && !z.dying && !!z.flying === wantFlying
+      const targets = this.zombies.filter(z => !z.dying && !z.emerge
+        && (p.def.lanes3 ? [p.r - 1, p.r, p.r + 1].some(rr => this._zInRow(z, rr)) : this._zInRow(z, p.r))
+        && (p.def.anyHeight || !!z.flying === wantFlying)
         && z.mesh.position.x > p.mesh.position.x - 0.2 && z.mesh.position.x < COLS / 2 + 2.2);
       if (!targets.length) continue;
       p.fireTimer -= dt;
@@ -1744,6 +1772,46 @@ export class Game {
         p.fireTimer = p.def.fireRate * p.rateMul; // evolución dispara más rápido
         this._fire(p, targets);
       }
+    }
+  }
+
+  // Defenders that do something other than throw: heal, flash, drum, lightning.
+  _special(p, dt) {
+    const d = p.def, x0 = p.mesh.position.x, at = p.mesh.position.clone().setY(d.h * 0.7);
+    p.fireTimer -= dt;
+    if (p.fireTimer > 0) return;
+    const ahead = (reach) => this.zombies.filter(z => !z.dying && !z.emerge && !z.flying && this._zInRow(z, p.r) && z.mesh.position.x > x0 - 0.2 && z.mesh.position.x < x0 + reach);
+    if (d.special === 'heal') {
+      const hurt = this.plants.filter(o => o !== p && Math.abs(o.r - p.r) <= 1 && Math.abs(o.c - p.c) <= 1 && o.hp < o.maxHp);
+      if (!hurt.length) { p.fireTimer = 0.5; return; }
+      for (const o of hurt) { o.hp = Math.min(o.maxHp, o.hp + d.heal * p.dmgMul); this.fx.sparkle(o.mesh.position, 0x7dffb0); }
+      p.fireTimer = d.every * p.rateMul; p.act = 1; SFX.sun();
+    } else if (d.special === 'stun') {
+      const hit = ahead(d.reach);
+      if (!hit.length) { p.fireTimer = 0.4; return; }
+      for (const z of hit) { z.stunUntil = this.time + d.stun + (p.level - 1) * 0.6; z.flash = 0.25; }
+      this.fx.explosion(at.clone().add(new THREE.Vector3(0.6, 0, 0)), 0.7, 0xffffff, false);
+      p.fireTimer = d.every * p.rateMul; p.act = 1; p.recoil = 1; SFX.hit();
+    } else if (d.special === 'knock') {
+      const hit = ahead(d.reach);
+      if (!hit.length) { p.fireTimer = 0.4; return; }
+      for (const z of hit) { z.mesh.position.x += z.def.boss ? 0.3 : d.push; this._damageZombie(z, d.dmg * p.dmgMul); }
+      this.fx.wave(at, 0xffd86a, d.reach); this.fx.shake = Math.min(0.2, this.fx.shake + 0.08);
+      p.fireTimer = d.every * p.rateMul; p.act = 1; p.recoil = 1; SFX.boom();
+    } else if (d.special === 'chain') {
+      const lane = this.zombies.filter(z => !z.dying && !z.emerge && !z.flying && this._zInRow(z, p.r) && z.mesh.position.x > x0 - 0.2 && z.mesh.position.x < COLS / 2 + 2.2);
+      if (!lane.length) { p.fireTimer = 0.3; return; }
+      let cur = lane.reduce((a, b) => (a.mesh.position.x < b.mesh.position.x ? a : b));
+      const pts = [p.mesh.position.clone().setY(d.h * 0.78)], done = new Set();
+      let dmg = d.dmg * p.dmgMul;
+      for (let i = 0; i <= d.jumps + (p.level - 1) && cur; i++) {
+        done.add(cur); pts.push(cur.mesh.position.clone().setY(cur.def.h * 0.6));
+        this._damageZombie(cur, dmg); dmg *= 0.75;
+        const from = cur.mesh.position;
+        cur = this.zombies.filter(z => !z.dying && !z.emerge && !done.has(z) && z.mesh.position.distanceTo(from) < 2.3).sort((a, b) => a.mesh.position.distanceTo(from) - b.mesh.position.distanceTo(from))[0];
+      }
+      this.fx.chain(pts, 0xb48cff);
+      p.fireTimer = d.every * p.rateMul; p.recoil = 1; SFX.shoot();
     }
   }
 
@@ -1772,9 +1840,15 @@ export class Game {
     // Sprites propios por tipo de disparo (guisante, hielo, fuego, pincho, maíz).
     const sprite = plant.def.shot || 'fx_chalk';
     // proporción del proyectil respecto a la casilla: antes se veían enormes
-    const h = { fx_ball: 0.3, fx_shh: 0.42, fx_flask: 0.3, fx_beam: 0.34, fx_bolt: 0.26 }[sprite] || 0.24;
+    const h = { fx_ball: 0.3, fx_shh: 0.42, fx_flask: 0.3, fx_beam: 0.34, fx_bolt: 0.26, fx_tack: 0.16, fx_plane: 0.3 }[sprite] || 0.24;
     // el cactus estirado es el único disparo que alcanza a los voladores
     const antiAir = !!(plant.def.antiAir && plant.tallForm);
+    // the turret turns to the nearest target in its three lanes; the shot slides into that lane
+    let row = plant.r;
+    if (plant.def.lanes3) {
+      const t = targets.reduce((a, b) => (a.mesh.position.x < b.mesh.position.x ? a : b));
+      row = [plant.r, plant.r - 1, plant.r + 1].find(rr => this._zInRow(t, rr)) ?? plant.r;
+    }
     for (let i = 0; i < plant.multi; i++) {
       const mesh = makeBillboard(sprite, h, { shadow: false });
       mesh.position.copy(from);
@@ -1783,7 +1857,7 @@ export class Game {
       this._face(mesh);
       this.scene.add(mesh);
       this.projectiles.push({
-        mesh, kind, dmg, shot: sprite, slow: plant.def.slow, slowDur: plant.slowDur, row: plant.r, vx: 7, antiAir,
+        mesh, kind, dmg, shot: sprite, slow: plant.def.slow, slowDur: plant.slowDur, row, vx: plant.def.lanes3 ? 10 : 7, antiAir, any: !!plant.def.anyHeight, toZ: row !== plant.r ? rowZ(row) : null,
         pierce: plant.def.pierce || 0, burn: plant.def.burn || 0, hitSet: plant.def.pierce ? new Set() : null,
         spin: !plant.def.pierce && kind !== 'frost',
       });
@@ -1816,12 +1890,13 @@ export class Game {
         continue;
       }
       pr.mesh.position.x += pr.vx * dt;
+      if (pr.toZ !== null && pr.toZ !== undefined) { const dz = pr.toZ - pr.mesh.position.z; pr.mesh.position.z += Math.sign(dz) * Math.min(Math.abs(dz), dt * 9); }
       if (pr.spin) pr.mesh.userData.plane.rotation.z -= dt * 7;
       if (pr.mesh.position.x > COLS / 2 + 2.5) { pr.dead = true; this.scene.remove(pr.mesh); continue; }
       for (const z of this.zombies) {
-        if (z.dying || !this._zInRow(z, pr.row)) continue;
+        if (z.dying || z.emerge || !this._zInRow(z, pr.row)) continue;
         // Sólo el cactus estirado alcanza a los voladores; el resto los atraviesa
-        if (z.flying !== !!pr.antiAir) continue;
+        if (!pr.any && z.flying !== !!pr.antiAir) continue;
         if (pr.hitSet && pr.hitSet.has(z)) continue;
         if (Math.abs(z.mesh.position.x - pr.mesh.position.x) < 0.28) {
           this._damageZombie(z, pr.dmg);
@@ -1930,7 +2005,9 @@ export class Game {
       z.wasSlow = slowed;
       mat.color.set(z.flash > 0 ? 0xff9a8a : slowed ? 0x9ac8ff : (z.def.tint || 0xffffff));
 
-      let speed = z.def.speed * (slowed ? 0.45 : 1) * this.diff.speed;
+      const stunned = z.stunUntil > this.time;
+      if (stunned) mat.color.set(0xfff6c0);
+      let speed = stunned ? 0 : z.def.speed * (slowed ? 0.45 : 1) * this.diff.speed;
       // las 2 primeras oleadas avanzan más lento, para que arrancar sea tranquilo
       if (this.mode === 'classic' && this.waveNum <= 2) speed *= 0.72;
       if (z.type === 'book' && z.hp < z.maxHp * 0.45) speed *= 2;
@@ -1957,6 +2034,7 @@ export class Game {
           }
         }
       }
+      if (stunned) { eating = null; z.mesh.userData.tick?.(dt * 0.2, 'idle', 0, 0); continue; }
       if (eating) {
         z.eatTimer = (z.eatTimer || 0) - dt;
         if (z.eatTimer <= 0) {
