@@ -1661,5 +1661,12 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   líquida de neón por la tumba, ciudad en ruinas viva detrás del tablero, 6 defensores nuevos
   (26 en total), corrección de color final, solo escenarios propios y solo música propia (5 pistas).
 - Phrasal Verb Roulette: estilo arcade de la portada en todas las pantallas (roulette.css).
+- Phrasal Verb Roulette con vida: banda sonora propia 8 bits drum and bass / dubstep a 174 BPM,
+  tocada en vivo con Web Audio (music.ts, bucle de 40 compases), que baja sola mientras suena un
+  efecto y vuelve después; botón y volumen de música en SOUND. Portada sin las cinco fichas de modo:
+  el profesor agita el puntero, la ruleta gira, frena y marca un verbo, el título brilla con luces
+  de marquesina, y las nubes y pájaros se mueven. En partida: luces alrededor de la ruleta, rayos,
+  puntero que vibra al girar y botón SPIN que late. Ya no se paran las animaciones con
+  «reducir movimiento».
 - Exámenes finales Pre-A1 a C2: 25 preguntas en listening, reading, grammar y vocabulary
   (tres textos y tres audios por examen).

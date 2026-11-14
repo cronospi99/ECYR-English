@@ -30,6 +30,18 @@ export function View({ v }: { v: any }) {
                   {v.sfxVol}
                 </span>
               </div>
+              <div style={{ fontFamily: "'Press Start 2P',monospace", fontSize: "13px", color: v.t.accent }}>
+                {"🎵 MUSIC"}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <button className="pv-press" onClick={v.toggleMusic} style={{ flex: "0 0 150px", fontFamily: "'Press Start 2P',monospace", fontSize: "10px", padding: "12px 8px", border: "4px solid #000", boxShadow: "0 4px 0 #000", background: v.musicBtnBg, color: v.musicBtnInk }}>
+                  {v.musicBtnLabel}
+                </button>
+                <input type="range" min="0" max="100" value={v.musicVol} onChange={v.onMusicVol} style={{ flex: "1", accentColor: v.t.accent, height: "28px" }} />
+                <span style={{ flex: "0 0 46px", textAlign: "right", fontFamily: "'Press Start 2P',monospace", fontSize: "10px", color: v.t.text }}>
+                  {v.musicVol}
+                </span>
+              </div>
             </div>
           </>) : null}
           <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
@@ -61,7 +73,7 @@ export function View({ v }: { v: any }) {
           <div style={{ position: "relative", height: "100%", padding: "26px 40px 100px", display: "flex", flexDirection: "column" }}>
             <div style={{ textAlign: "center", marginBottom: "22px" }}>
               <div style={{ display: "inline-block", position: "relative", overflow: "hidden", background: "#171a52", border: "6px solid #E5258C", outline: "5px solid #000", padding: "16px 40px", boxShadow: "10px 10px 0 rgba(0,0,0,.45)", animation: "pv-floaty 5s ease-in-out infinite" }}>
-                <h1 style={{ margin: "0", fontFamily: "'Press Start 2P',monospace", fontSize: "38px", lineHeight: "1.35", letterSpacing: "1px", color: v.t.accent, textShadow: `5px 5px 0 ${v.t.titleShadow}` }}>
+                <h1 className="pvr-glow" style={{ margin: "0", fontFamily: "'Press Start 2P',monospace", fontSize: "38px", lineHeight: "1.35", letterSpacing: "1px", color: v.t.accent, textShadow: `5px 5px 0 ${v.t.titleShadow}` }}>
                   {"PHRASAL VERB ROULETTE"}
                 </h1>
                 <div style={{ position: "absolute", top: "0", bottom: "0", left: "0", width: "70px", background: "linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent)", animation: "pv-sheen 4.5s ease-in-out infinite" }}>
@@ -288,8 +300,10 @@ export function View({ v }: { v: any }) {
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "480px 1fr", gap: "24px", alignItems: "start" }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <div style={{ position: "relative", width: "480px", height: "480px", animation: v.wheelAnim }}>
-                    <div style={{ position: "absolute", left: "50%", top: "-6px", transform: "translateX(-50%)", zIndex: "5", width: "0", height: "0", borderLeft: "24px solid transparent", borderRight: "24px solid transparent", borderTop: `48px solid ${v.t.bad}`, filter: "drop-shadow(0 4px 0 #000)" }}>
+                  <div className={`pvr-wheel${v.spinning ? ' spinning' : ''}${v.spinDisabled ? '' : ' ready'}`} style={{ position: "relative", width: "480px", height: "480px", animation: v.wheelAnim }}>
+                    <div className="pvr-halo" />
+                    {Array.from({ length: 24 }, (_, i) => <i key={i} className="pvr-bulb" style={{ left: `${50 + 52.5 * Math.sin((i * Math.PI) / 12)}%`, top: `${50 - 52.5 * Math.cos((i * Math.PI) / 12)}%`, animationDelay: `${-(i % 3) * 0.2}s` }} />)}
+                    <div className="pvr-ptr" style={{ position: "absolute", left: "50%", top: "-6px", transform: "translateX(-50%)", zIndex: "5", width: "0", height: "0", borderLeft: "24px solid transparent", borderRight: "24px solid transparent", borderTop: `48px solid ${v.t.bad}`, filter: "drop-shadow(0 4px 0 #000)" }}>
                     </div>
                     <div style={{ position: "absolute", inset: "0", borderRadius: "50%", background: "#000", boxShadow: "0 12px 0 rgba(0,0,0,.4)" }}>
                     </div>
@@ -318,7 +332,7 @@ export function View({ v }: { v: any }) {
                       </span>
                     </div>
                   </div>
-                  <button className="pv-press" onClick={v.spin} disabled={v.spinDisabled} style={{ marginTop: "18px", fontSize: "24px", padding: "22px 56px", border: "6px solid #000", boxShadow: "0 10px 0 #000", letterSpacing: "2px", background: v.spinBg, color: v.t.accentInk }}>
+                  <button className={`pv-press${v.spinDisabled ? '' : ' pvr-go'}`} onClick={v.spin} disabled={v.spinDisabled} style={{ marginTop: "18px", fontSize: "24px", padding: "22px 56px", border: "6px solid #000", boxShadow: "0 10px 0 #000", letterSpacing: "2px", background: v.spinBg, color: v.t.accentInk }}>
                     {v.spinLabel}
                   </button>
                   <div style={{ marginTop: "18px", width: "480px", border: "6px solid #000", boxShadow: "0 8px 0 rgba(0,0,0,.4)", background: v.t.panel, padding: "16px" }}>
@@ -558,10 +572,10 @@ export function View({ v }: { v: any }) {
                   </>) : null}
                   {v.noCard ? (<>
                     <div style={{ flex: "1", minHeight: "0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", border: "5px dashed #fff", padding: "40px 28px", textAlign: "center", background: "rgba(0,0,0,.35)" }}>
-                      <div style={{ fontSize: "150px", marginBottom: "34px", animation: "pv-floaty 2.4s ease-in-out infinite" }}>
+                      <div style={{ fontSize: "150px", marginBottom: "34px", animation: v.spinning ? "pv-shake .35s steps(4) infinite" : "pv-floaty 2.4s ease-in-out infinite" }}>
                         {"🎰"}
                       </div>
-                      <div style={{ fontFamily: "'Press Start 2P',monospace", fontSize: "30px", lineHeight: "1.8", color: "#fff", whiteSpace: "pre-line", textShadow: "4px 4px 0 rgba(0,0,0,.35)" }}>
+                      <div className="pvr-idle-msg" style={{ fontFamily: "'Press Start 2P',monospace", fontSize: "30px", lineHeight: "1.8", color: "#fff", whiteSpace: "pre-line", textShadow: "4px 4px 0 rgba(0,0,0,.35)" }}>
                         {v.idleMessage}
                       </div>
                     </div>

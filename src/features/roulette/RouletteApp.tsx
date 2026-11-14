@@ -38,5 +38,6 @@ export default function RouletteApp() {
     };
   }, [engine]);
 
-  return <div className="pvr"><View v={engine.renderVals()} /></div>;
+  // the first tap or key press starts the soundtrack (browsers block audio before that)
+  return <div className="pvr" onPointerDown={engine.startMusic} onKeyDown={engine.startMusic}><View v={engine.renderVals()} /></div>;
 }
