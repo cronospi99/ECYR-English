@@ -2025,7 +2025,7 @@
     ],
     "title": "Parcial final · Nivel A2",
     "intro_es": "Examen integrador de las 16 unidades del nivel A2: tiempos pasados, presentes y futuros, condicionales, voz pasiva, modales, cláusulas relativas y estilo indirecto, con el vocabulario de todo el nivel. Evalúa gramática, vocabulario, lectura, escucha, escritura y expresión oral.",
-    "minutes": 85,
+    "minutes": 125,
     "grammar": [
       {
         "type": "mc",
@@ -2188,6 +2188,112 @@
           "She told me that she would call the next day"
         ],
         "explain_es": "Estilo indirecto: “tell” lleva objeto personal (“me”) y “will” retrocede a “would”."
+      },
+      {
+        "type": "mc",
+        "q": "I ___ my keys. I can’t find them anywhere.",
+        "options": [
+          "lost",
+          "have lost",
+          "was losing"
+        ],
+        "answer": 1,
+        "explain_es": "Resultado en el presente: present perfect."
+      },
+      {
+        "type": "mc",
+        "q": "When I was a child, I ___ play football in the street every day.",
+        "options": [
+          "used to",
+          "use to",
+          "was used"
+        ],
+        "answer": 0,
+        "explain_es": "Hábito pasado: «used to»."
+      },
+      {
+        "type": "mc",
+        "q": "She has lived here ___ 2019.",
+        "options": [
+          "for",
+          "since",
+          "from"
+        ],
+        "answer": 1,
+        "explain_es": "«Since» + punto de inicio."
+      },
+      {
+        "type": "mc",
+        "q": "If it rains tomorrow, we ___ at home.",
+        "options": [
+          "stay",
+          "will stay",
+          "stayed"
+        ],
+        "answer": 1,
+        "explain_es": "Primer condicional: if + presente, will + verbo."
+      },
+      {
+        "type": "mc",
+        "q": "You ___ wear a helmet. It’s the law.",
+        "options": [
+          "must",
+          "might",
+          "would"
+        ],
+        "answer": 0,
+        "explain_es": "Obligación: «must»."
+      },
+      {
+        "type": "mc",
+        "q": "This is the restaurant ___ we had our first date.",
+        "options": [
+          "which",
+          "where",
+          "who"
+        ],
+        "answer": 1,
+        "explain_es": "Lugar: «where»."
+      },
+      {
+        "type": "mc",
+        "q": "The bridge ___ in 1950.",
+        "options": [
+          "built",
+          "was built",
+          "is building"
+        ],
+        "answer": 1,
+        "explain_es": "Pasiva en pasado: «was built»."
+      },
+      {
+        "type": "mc",
+        "q": "He asked me where I ___.",
+        "options": [
+          "live",
+          "lived",
+          "do live"
+        ],
+        "answer": 1,
+        "explain_es": "Estilo indirecto: el verbo retrocede."
+      },
+      {
+        "type": "gap",
+        "q": "I was cooking when the phone ___ (ring).",
+        "answer": "rang",
+        "explain_es": "Acción corta que interrumpe: pasado simple."
+      },
+      {
+        "type": "gap",
+        "q": "There isn’t ___ milk in the fridge. (some / any)",
+        "answer": "any",
+        "explain_es": "En negativas se usa «any»."
+      },
+      {
+        "type": "transform",
+        "q": "“I’ll call you.” → He said he ___ call me.",
+        "answer": "would",
+        "explain_es": "«Will» pasa a «would»."
       }
     ],
     "vocabulary": [
@@ -2334,17 +2440,144 @@
         ],
         "answer": 2,
         "explain_es": "“To admit” es reconocer que algo malo es verdad."
+      },
+      {
+        "type": "mc",
+        "q": "Could you ___ me a favour?",
+        "options": [
+          "make",
+          "do",
+          "give"
+        ],
+        "answer": 1,
+        "explain_es": "Se dice «do a favour»."
+      },
+      {
+        "type": "mc",
+        "q": "I’m looking ___ to the holidays.",
+        "options": [
+          "forward",
+          "for",
+          "after"
+        ],
+        "answer": 0,
+        "explain_es": "«Look forward to» = esperar con ilusión."
+      },
+      {
+        "type": "mc",
+        "q": "The plane ___ off at 6:15.",
+        "options": [
+          "took",
+          "got",
+          "went"
+        ],
+        "answer": 0,
+        "explain_es": "«Take off» = despegar."
+      },
+      {
+        "type": "mc",
+        "q": "He was ___ when he heard the good news.",
+        "options": [
+          "delighted",
+          "disappointed",
+          "exhausted"
+        ],
+        "answer": 0,
+        "explain_es": "«Delighted» = encantado."
+      },
+      {
+        "type": "mc",
+        "q": "I need to ___ money for my trip, so I’m not eating out.",
+        "options": [
+          "spend",
+          "save",
+          "waste"
+        ],
+        "answer": 1,
+        "explain_es": "«Save money» = ahorrar."
+      },
+      {
+        "type": "mc",
+        "q": "The meeting was ___ because the manager was ill.",
+        "options": [
+          "cancelled",
+          "arrived",
+          "repaired"
+        ],
+        "answer": 0,
+        "explain_es": "«Cancelled» = cancelada."
+      },
+      {
+        "type": "mc",
+        "q": "A person who fixes cars is a ___.",
+        "options": [
+          "mechanic",
+          "plumber",
+          "lawyer"
+        ],
+        "answer": 0,
+        "explain_es": "«Mechanic» = mecánico."
+      },
+      {
+        "type": "gap",
+        "q": "Please fill ___ this form with your details.",
+        "answer": "in",
+        "explain_es": "«Fill in / fill out a form».",
+        "accept": [
+          "out"
+        ]
+      },
+      {
+        "type": "gap",
+        "q": "The opposite of «polite» is ___.",
+        "answer": "rude",
+        "explain_es": "«Rude / impolite» = grosero.",
+        "accept": [
+          "impolite"
+        ]
+      },
+      {
+        "type": "mc",
+        "q": "I’ve got a terrible ___. I need to see the dentist.",
+        "options": [
+          "toothache",
+          "headache",
+          "backache"
+        ],
+        "answer": 0,
+        "explain_es": "Dentista → «toothache»."
+      },
+      {
+        "type": "mc",
+        "q": "We ran ___ of petrol on the motorway.",
+        "options": [
+          "out",
+          "off",
+          "away"
+        ],
+        "answer": 0,
+        "explain_es": "«Run out of» = quedarse sin."
       }
     ],
     "reading": {
       "title": "The Café That Almost Didn’t Open",
       "genre": "article",
       "paragraphs": [
+        "## Part 1 · The Café That Almost Didn’t Open",
         "Five years ago, Lina Vargas was working in a bank in Bogotá. She used to start at seven in the morning and finish at eight in the evening. “Back then, I was always exhausted,” she remembers. “I didn’t have enough time for my family, and I was fed up with the traffic.”",
         "One day, while she was waiting for a bus in the rain, she decided to change her life. She quit her job and moved to Villa de Leyva, a small town where her grandparents used to live. “My friends told me I was crazy,” she says. “They said I would lose all my money.”",
         "Lina’s café, El Patio, was opened in 2021 in an old house that was built in 1890. Everything is made by hand: the bread is baked every morning, and the coffee is bought from local farmers. Dogs are allowed inside, but customers aren’t allowed to smoke in the garden.",
         "The first year was hard. “I should have asked for more advice,” Lina admits. “At the time, I didn’t know how much flour I needed, and I often ran out of milk.” But she has been learning a lot since then, and the café has become very popular with tourists who visit at weekends.",
-        "What’s next? “I’m going to open a second café next year if I find a good place,” she says. “If I were rich, I’d open ten! But I’m happy here. I can’t imagine going back to the bank.”"
+        "What’s next? “I’m going to open a second café next year if I find a good place,” she says. “If I were rich, I’d open ten! But I’m happy here. I can’t imagine going back to the bank.”",
+        "## Part 2 · The Phone That Travelled Alone",
+        "Last March, Felipe Duarte was travelling from Bucaramanga to Santa Marta by bus when he fell asleep. When he woke up, the bus had already stopped and most passengers had got off. He picked up his bag quickly and left.",
+        "An hour later, in his hotel, he realised that his phone was missing. He called his own number from the reception desk. A woman answered. “I found your phone under the seat,” she said. “But I’m still on the bus — I’m going to Riohacha.”",
+        "The woman, a teacher called Marlen, promised to send it back. Felipe wasn’t sure he would see it again. But three days later a small box arrived at the hotel. Inside were the phone, a bag of local sweets and a note: “Be more careful next time!”",
+        "Felipe has kept the note. “I used to think people were only interested in themselves,” he says. “Now I think that if you lose something, you might also find a friend.”",
+        "## Part 3 · Notice: Community Garden Rules",
+        "Welcome to the Los Pinos community garden. The garden was opened in 2021 and is looked after by volunteers. Anyone who lives in the neighbourhood can join.",
+        "Members must work in the garden at least two hours a week. Tools are kept in the green shed; please clean them after you use them. You don’t have to bring your own seeds — they are provided free.",
+        "Vegetables are shared equally among members on the last Saturday of each month. You mustn’t sell them. If you can’t come for more than a month, tell the coordinator, or your place will be given to someone on the waiting list."
       ],
       "glossary": [
         [
@@ -2370,6 +2603,30 @@
         [
           "popular with",
           "popular entre"
+        ],
+        [
+          "realised",
+          "se dio cuenta"
+        ],
+        [
+          "missing",
+          "desaparecido"
+        ],
+        [
+          "note",
+          "nota"
+        ],
+        [
+          "shed",
+          "cobertizo"
+        ],
+        [
+          "seeds",
+          "semillas"
+        ],
+        [
+          "waiting list",
+          "lista de espera"
         ]
       ],
       "questions": [
@@ -2444,6 +2701,169 @@
           ],
           "answer": 2,
           "explain_es": "Lina dice: “I’m going to open a second café next year if I find a good place”. Abrir diez cafés es solo una situación imaginaria (“If I were rich”)."
+        },
+        {
+          "type": "mc",
+          "q": "Where was Felipe going?",
+          "options": [
+            "to Bucaramanga",
+            "to Santa Marta",
+            "to Riohacha"
+          ],
+          "answer": 1,
+          "explain_es": "«from Bucaramanga to Santa Marta»."
+        },
+        {
+          "type": "tf",
+          "q": "Felipe was awake during the whole trip.",
+          "answer": "F",
+          "explain_es": "«he fell asleep»."
+        },
+        {
+          "type": "mc",
+          "q": "When did he notice the phone was missing?",
+          "options": [
+            "on the bus",
+            "an hour later, at the hotel",
+            "three days later"
+          ],
+          "answer": 1,
+          "explain_es": "«An hour later, in his hotel»."
+        },
+        {
+          "type": "mc",
+          "q": "Where was the phone?",
+          "options": [
+            "in his bag",
+            "under the seat",
+            "at reception"
+          ],
+          "answer": 1,
+          "explain_es": "«I found your phone under the seat»."
+        },
+        {
+          "type": "mc",
+          "q": "What is Marlen’s job?",
+          "options": [
+            "a bus driver",
+            "a receptionist",
+            "a teacher"
+          ],
+          "answer": 2,
+          "explain_es": "«a teacher called Marlen»."
+        },
+        {
+          "type": "tf",
+          "q": "Felipe was sure he would get his phone back.",
+          "answer": "F",
+          "explain_es": "«Felipe wasn’t sure he would see it again»."
+        },
+        {
+          "type": "gap",
+          "q": "The box arrived ___ days later.",
+          "answer": "three",
+          "explain_es": "«three days later».",
+          "accept": [
+            "3"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "What was in the box besides the phone?",
+          "options": [
+            "money and a note",
+            "sweets and a note",
+            "a photo"
+          ],
+          "answer": 1,
+          "explain_es": "«a bag of local sweets and a note»."
+        },
+        {
+          "type": "mc",
+          "q": "How has Felipe’s opinion of people changed?",
+          "options": [
+            "It is more positive.",
+            "It is more negative.",
+            "It hasn’t changed."
+          ],
+          "answer": 0,
+          "explain_es": "Antes pensaba que la gente solo se interesaba por sí misma."
+        },
+        {
+          "type": "mc",
+          "q": "Who looks after the garden?",
+          "options": [
+            "the city council",
+            "volunteers",
+            "a company"
+          ],
+          "answer": 1,
+          "explain_es": "«is looked after by volunteers»."
+        },
+        {
+          "type": "mc",
+          "q": "Who can join?",
+          "options": [
+            "anyone in the city",
+            "only families",
+            "people who live in the neighbourhood"
+          ],
+          "answer": 2,
+          "explain_es": "«Anyone who lives in the neighbourhood»."
+        },
+        {
+          "type": "gap",
+          "q": "Members must work at least ___ hours a week.",
+          "answer": "two",
+          "explain_es": "«at least two hours a week».",
+          "accept": [
+            "2"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "Where are the tools kept?",
+          "options": [
+            "in the green shed",
+            "in members’ homes",
+            "in the office"
+          ],
+          "answer": 0,
+          "explain_es": "«Tools are kept in the green shed»."
+        },
+        {
+          "type": "tf",
+          "q": "Members have to bring their own seeds.",
+          "answer": "F",
+          "explain_es": "«You don’t have to bring your own seeds»."
+        },
+        {
+          "type": "mc",
+          "q": "When are the vegetables shared?",
+          "options": [
+            "every Saturday",
+            "the last Saturday of the month",
+            "the first Sunday"
+          ],
+          "answer": 1,
+          "explain_es": "«on the last Saturday of each month»."
+        },
+        {
+          "type": "tf",
+          "q": "Members are allowed to sell the vegetables.",
+          "answer": "F",
+          "explain_es": "«You mustn’t sell them»."
+        },
+        {
+          "type": "mc",
+          "q": "What happens if you are away for over a month without telling anyone?",
+          "options": [
+            "You pay a fine.",
+            "You lose your place.",
+            "Nothing."
+          ],
+          "answer": 1,
+          "explain_es": "«your place will be given to someone on the waiting list»."
         }
       ]
     },
@@ -2460,6 +2880,26 @@
           "name": "Julián",
           "voice": "male",
           "accent": "us"
+        },
+        {
+          "name": "Receptionist",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Mr. Peña",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Dani",
+          "voice": "male",
+          "accent": "us"
+        },
+        {
+          "name": "Paola",
+          "voice": "female",
+          "accent": "au"
         }
       ],
       "lines": [
@@ -2526,6 +2966,98 @@
         {
           "s": 1,
           "text": "I’m going to write a guidebook. My wife told me to do it years ago, and she was right!"
+        },
+        {
+          "s": 2,
+          "text": "Good morning, City Dental Clinic. How can I help you?"
+        },
+        {
+          "s": 3,
+          "text": "Hello. I’d like to make an appointment, please. I’ve had a toothache since Sunday."
+        },
+        {
+          "s": 2,
+          "text": "I’m sorry to hear that. Have you been here before?"
+        },
+        {
+          "s": 3,
+          "text": "Yes, I came two years ago. My name is Ramiro Peña."
+        },
+        {
+          "s": 2,
+          "text": "Thank you, Mr. Peña. Dr. Suárez is free tomorrow at half past ten or on Thursday at four."
+        },
+        {
+          "s": 3,
+          "text": "Tomorrow is better. I have to work on Thursday afternoon."
+        },
+        {
+          "s": 2,
+          "text": "Tomorrow at ten thirty, then. You should arrive ten minutes early to fill in a form."
+        },
+        {
+          "s": 3,
+          "text": "No problem. How much will it cost?"
+        },
+        {
+          "s": 2,
+          "text": "The check-up is sixty thousand pesos. If you need treatment, the doctor will tell you the price."
+        },
+        {
+          "s": 3,
+          "text": "Can I pay by card?"
+        },
+        {
+          "s": 2,
+          "text": "Yes, of course. If you can’t come, please call us before nine."
+        },
+        {
+          "s": 3,
+          "text": "I will. Thank you very much."
+        },
+        {
+          "s": 4,
+          "text": "Paola, have you ever been abroad?"
+        },
+        {
+          "s": 5,
+          "text": "Yes, I’ve been to Peru twice and I went to Mexico last year."
+        },
+        {
+          "s": 4,
+          "text": "Which did you like more?"
+        },
+        {
+          "s": 5,
+          "text": "Mexico was more exciting, but Peru was cheaper and the food was the best I’ve ever had."
+        },
+        {
+          "s": 4,
+          "text": "I’ve never left Colombia. I’m saving to go to Argentina."
+        },
+        {
+          "s": 5,
+          "text": "Really? When are you going?"
+        },
+        {
+          "s": 4,
+          "text": "If I save enough, I’ll go in December. Flights are too expensive in July."
+        },
+        {
+          "s": 5,
+          "text": "You should book early. I booked late for Mexico and paid twice as much."
+        },
+        {
+          "s": 4,
+          "text": "Good advice. Did you travel alone?"
+        },
+        {
+          "s": 5,
+          "text": "To Peru, yes. To Mexico I went with my sister, who was studying there."
+        },
+        {
+          "s": 4,
+          "text": "I might go with my cousin, but he hasn’t decided yet."
         }
       ],
       "questions": [
@@ -2606,6 +3138,166 @@
           ],
           "answer": 3,
           "explain_es": "Julián dice: “My wife told me to do it years ago”."
+        },
+        {
+          "type": "mc",
+          "q": "Why is Mr. Peña calling?",
+          "options": [
+            "to cancel an appointment",
+            "to make an appointment",
+            "to ask for directions"
+          ],
+          "answer": 1,
+          "explain_es": "«I’d like to make an appointment»."
+        },
+        {
+          "type": "mc",
+          "q": "How long has he had a toothache?",
+          "options": [
+            "since Sunday",
+            "for two years",
+            "since yesterday"
+          ],
+          "answer": 0,
+          "explain_es": "«since Sunday»."
+        },
+        {
+          "type": "tf",
+          "q": "This is his first visit to the clinic.",
+          "answer": "F",
+          "explain_es": "«I came two years ago»."
+        },
+        {
+          "type": "mc",
+          "q": "When is his appointment?",
+          "options": [
+            "tomorrow at 10:30",
+            "Thursday at 4:00",
+            "tomorrow at 9:00"
+          ],
+          "answer": 0,
+          "explain_es": "«Tomorrow at ten thirty»."
+        },
+        {
+          "type": "mc",
+          "q": "Why can’t he come on Thursday?",
+          "options": [
+            "He is travelling.",
+            "He has to work.",
+            "He is ill."
+          ],
+          "answer": 1,
+          "explain_es": "«I have to work on Thursday afternoon»."
+        },
+        {
+          "type": "gap",
+          "q": "He should arrive ___ minutes early.",
+          "answer": "ten",
+          "explain_es": "«ten minutes early».",
+          "accept": [
+            "10"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "How much is the check-up?",
+          "options": [
+            "16,000 pesos",
+            "60,000 pesos",
+            "6,000 pesos"
+          ],
+          "answer": 1,
+          "explain_es": "«sixty thousand pesos»."
+        },
+        {
+          "type": "tf",
+          "q": "He can pay by card.",
+          "answer": "T",
+          "explain_es": "«Yes, of course»."
+        },
+        {
+          "type": "mc",
+          "q": "If he can’t come, he should call before ___.",
+          "options": [
+            "eight",
+            "nine",
+            "ten"
+          ],
+          "answer": 1,
+          "explain_es": "«please call us before nine»."
+        },
+        {
+          "type": "mc",
+          "q": "How many times has Paola been to Peru?",
+          "options": [
+            "once",
+            "twice",
+            "three times"
+          ],
+          "answer": 1,
+          "explain_es": "«I’ve been to Peru twice»."
+        },
+        {
+          "type": "mc",
+          "q": "When did she go to Mexico?",
+          "options": [
+            "last year",
+            "two years ago",
+            "in December"
+          ],
+          "answer": 0,
+          "explain_es": "«I went to Mexico last year»."
+        },
+        {
+          "type": "mc",
+          "q": "What does she say about Peru?",
+          "options": [
+            "It was more exciting.",
+            "It was cheaper.",
+            "It was too far."
+          ],
+          "answer": 1,
+          "explain_es": "«Peru was cheaper»."
+        },
+        {
+          "type": "tf",
+          "q": "Dani has travelled to Argentina.",
+          "answer": "F",
+          "explain_es": "«I’ve never left Colombia»."
+        },
+        {
+          "type": "mc",
+          "q": "When will Dani probably travel?",
+          "options": [
+            "in July",
+            "in December",
+            "next week"
+          ],
+          "answer": 1,
+          "explain_es": "«I’ll go in December»."
+        },
+        {
+          "type": "gap",
+          "q": "Paola booked late and paid ___ as much.",
+          "answer": "twice",
+          "explain_es": "«paid twice as much»."
+        },
+        {
+          "type": "mc",
+          "q": "Who did Paola go to Mexico with?",
+          "options": [
+            "her sister",
+            "her cousin",
+            "nobody"
+          ],
+          "answer": 0,
+          "explain_es": "«I went with my sister»."
+        },
+        {
+          "type": "tf",
+          "q": "Dani’s cousin has already decided to go.",
+          "answer": "F",
+          "explain_es": "«he hasn’t decided yet»."
         }
       ]
     },

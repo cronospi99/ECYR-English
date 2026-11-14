@@ -469,7 +469,7 @@
     ],
     "title": "Parcial final · Nivel Pre-A1",
     "intro_es": "Evalúa todo el nivel Pre-A1: alfabeto, saludos, to be, posesivos, números, puntuación, demostrativos, preguntas WH, la ropa, el posesivo 's y whose. Incluye escucha, lectura, escritura y expresión oral.",
-    "minutes": 75,
+    "minutes": 110,
     "grammar": [
       {
         "type": "mc",
@@ -618,6 +618,110 @@
         "q": "these / whose / are / shoes / ?",
         "answer": "Whose shoes are these?",
         "explain_es": "Whose + cosa + are + these?"
+      },
+      {
+        "type": "mc",
+        "q": "I ___ a student.",
+        "options": [
+          "am",
+          "is",
+          "are"
+        ],
+        "answer": 0,
+        "explain_es": "Con «I» se usa «am»."
+      },
+      {
+        "type": "mc",
+        "q": "She ___ my sister.",
+        "options": [
+          "am",
+          "is",
+          "are"
+        ],
+        "answer": 1,
+        "explain_es": "Con he/she/it se usa «is»."
+      },
+      {
+        "type": "mc",
+        "q": "___ is my friend Carlos. (he is here, next to me)",
+        "options": [
+          "This",
+          "These",
+          "Those"
+        ],
+        "answer": 0,
+        "explain_es": "«This» para una persona o cosa cercana."
+      },
+      {
+        "type": "mc",
+        "q": "We are from Colombia. ___ country is beautiful.",
+        "options": [
+          "Our",
+          "Their",
+          "Your"
+        ],
+        "answer": 0,
+        "explain_es": "«Our» es el posesivo de «we»."
+      },
+      {
+        "type": "mc",
+        "q": "___ old are you? — I am twelve.",
+        "options": [
+          "What",
+          "How",
+          "Who"
+        ],
+        "answer": 1,
+        "explain_es": "La edad se pregunta con «How old»."
+      },
+      {
+        "type": "mc",
+        "q": "Is he a doctor? — No, he ___.",
+        "options": [
+          "isn't",
+          "aren't",
+          "am not"
+        ],
+        "answer": 0,
+        "explain_es": "Respuesta corta negativa con «he»: «he isn't»."
+      },
+      {
+        "type": "mc",
+        "q": "___ shoes are black. (the shoes of Ana)",
+        "options": [
+          "Ana",
+          "Anas",
+          "Ana's"
+        ],
+        "answer": 2,
+        "explain_es": "El posesivo se forma con 's: «Ana's shoes»."
+      },
+      {
+        "type": "gap",
+        "q": "They ___ happy today. (to be)",
+        "answer": "are",
+        "explain_es": "Con «they» se usa «are»."
+      },
+      {
+        "type": "gap",
+        "q": "Make it negative (short form): It is cold. → It ___ cold.",
+        "answer": "isn't",
+        "explain_es": "Negativo de «is»: «isn't».",
+        "accept": [
+          "is not"
+        ]
+      },
+      {
+        "type": "gap",
+        "q": "What is ___ name? — Her name is Laura.",
+        "answer": "her",
+        "explain_es": "«Her» es el posesivo de «she»."
+      },
+      {
+        "type": "order",
+        "q": "from / where / you / are / ?",
+        "answer": "Where are you from?",
+        "explain_es": "Pregunta: Where + are + you + from?"
       }
     ],
     "vocabulary": [
@@ -760,15 +864,134 @@
         ],
         "answer": 2,
         "explain_es": "Hello tiene dos L seguidas (double L); la E se dice «i»."
+      },
+      {
+        "type": "mc",
+        "q": "The number 15 is ___.",
+        "options": [
+          "fifty",
+          "fifteen",
+          "five"
+        ],
+        "answer": 1,
+        "explain_es": "15 = fifteen; 50 = fifty."
+      },
+      {
+        "type": "mc",
+        "q": "The day after Monday is ___.",
+        "options": [
+          "Sunday",
+          "Wednesday",
+          "Tuesday"
+        ],
+        "answer": 2,
+        "explain_es": "Monday, Tuesday, Wednesday…"
+      },
+      {
+        "type": "mc",
+        "q": "You wear a ___ on your head.",
+        "options": [
+          "hat",
+          "sock",
+          "belt"
+        ],
+        "answer": 0,
+        "explain_es": "«Hat» = sombrero."
+      },
+      {
+        "type": "mc",
+        "q": "In the morning you say: «Good ___!»",
+        "options": [
+          "night",
+          "morning",
+          "evening"
+        ],
+        "answer": 1,
+        "explain_es": "Por la mañana: «Good morning»."
+      },
+      {
+        "type": "mc",
+        "q": "The colour of the sky on a sunny day is ___.",
+        "options": [
+          "blue",
+          "brown",
+          "pink"
+        ],
+        "answer": 0,
+        "explain_es": "El cielo es azul: «blue»."
+      },
+      {
+        "type": "mc",
+        "q": "The first month of the year is ___.",
+        "options": [
+          "June",
+          "January",
+          "July"
+        ],
+        "answer": 1,
+        "explain_es": "January = enero."
+      },
+      {
+        "type": "mc",
+        "q": "40 + 30 = ___",
+        "options": [
+          "seventeen",
+          "seventy",
+          "sixty"
+        ],
+        "answer": 1,
+        "explain_es": "40 + 30 = 70, «seventy»."
+      },
+      {
+        "type": "gap",
+        "q": "one shoe → two ___",
+        "answer": "shoes",
+        "explain_es": "Plural regular: se añade -s."
+      },
+      {
+        "type": "gap",
+        "q": "The letter after B is ___.",
+        "answer": "C",
+        "explain_es": "A, B, C…",
+        "accept": [
+          "c"
+        ]
+      },
+      {
+        "type": "gap",
+        "q": "It is 7:00 p.m. You say: «Good ___.»",
+        "answer": "evening",
+        "explain_es": "Por la tarde-noche: «Good evening»."
+      },
+      {
+        "type": "mc",
+        "q": "A: «Thank you!» B: «___»",
+        "options": [
+          "You're welcome.",
+          "Fine, thanks.",
+          "Nice to meet you."
+        ],
+        "answer": 0,
+        "explain_es": "A «Thank you» se responde «You're welcome»."
       }
     ],
     "reading": {
       "title": "The Lost and Found Box",
       "genre": "story",
       "paragraphs": [
+        "## Part 1 · The Lost and Found Box",
         "It is Monday, the third of October, and it is cold in Bogotá. Our teacher, Ms. Peña, is at her desk with a big box. «Whose things are these?» she asks.",
         "Four things are in the box: a green scarf, two black gloves, a red cap and a white sweater. The scarf is Martín's. The gloves are the twins', Lina and Laura. The red cap is mine!",
-        "«Whose sweater is this?» Ms. Peña asks. The name on it is J. Ruiz. Julián Ruiz is not here today. He is at home. Is he sick? Maybe."
+        "«Whose sweater is this?» Ms. Peña asks. The name on it is J. Ruiz. Julián Ruiz is not here today. He is at home. Is he sick? Maybe.",
+        "## Part 2 · My Family Photo",
+        "This is a photo of my family. My name is Daniel and I am ten years old. We are from Medellín.",
+        "This is my mother. Her name is Gloria. She is a nurse. That is my father, Ernesto. He is forty-two and he is a bus driver.",
+        "These are my sisters, Sara and Valentina. They are twins! Their dresses are yellow. My dog is in the photo too. Its name is Coco and it is brown.",
+        "Today is Sunday, the ninth of May. It is our mother’s birthday. We are very happy.",
+        "## Part 3 · A Note on the Classroom Door",
+        "Hello, students! Welcome to Room 12. I am your new English teacher. My name is Mr. Rojas.",
+        "Your books are on the table. The blue books are for Class A and the red books are for Class B. Your pencils are in the box.",
+        "The class is on Tuesday and Thursday at eight o’clock. The price of the book is fifteen dollars. See you tomorrow!"
       ],
       "glossary": [
         [
@@ -794,6 +1017,26 @@
         [
           "Maybe",
           "tal vez"
+        ],
+        [
+          "nurse",
+          "enfermera"
+        ],
+        [
+          "twins",
+          "gemelas"
+        ],
+        [
+          "birthday",
+          "cumpleaños"
+        ],
+        [
+          "welcome",
+          "bienvenidos"
+        ],
+        [
+          "price",
+          "precio"
         ]
       ],
       "questions": [
@@ -864,6 +1107,167 @@
           "q": "Julián is in the classroom today.",
           "answer": "F",
           "explain_es": "Falso. El texto dice: «Julián Ruiz is not here today. He is at home»."
+        },
+        {
+          "type": "mc",
+          "q": "How old is Daniel?",
+          "options": [
+            "nine",
+            "ten",
+            "twelve"
+          ],
+          "answer": 1,
+          "explain_es": "«I am ten years old»."
+        },
+        {
+          "type": "mc",
+          "q": "Where is the family from?",
+          "options": [
+            "Medellín",
+            "Bogotá",
+            "Cali"
+          ],
+          "answer": 0,
+          "explain_es": "«We are from Medellín»."
+        },
+        {
+          "type": "tf",
+          "q": "Daniel’s mother is a teacher.",
+          "answer": "F",
+          "explain_es": "Falso: «She is a nurse»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the father’s job?",
+          "options": [
+            "a nurse",
+            "a bus driver",
+            "a doctor"
+          ],
+          "answer": 1,
+          "explain_es": "«He is a bus driver»."
+        },
+        {
+          "type": "tf",
+          "q": "Sara and Valentina are twins.",
+          "answer": "T",
+          "explain_es": "«They are twins!»"
+        },
+        {
+          "type": "gap",
+          "q": "The sisters’ dresses are ___.",
+          "answer": "yellow",
+          "explain_es": "«Their dresses are yellow»."
+        },
+        {
+          "type": "mc",
+          "q": "What colour is the dog?",
+          "options": [
+            "black",
+            "white",
+            "brown"
+          ],
+          "answer": 2,
+          "explain_es": "«It is brown»."
+        },
+        {
+          "type": "gap",
+          "q": "The dog’s name is ___.",
+          "answer": "Coco",
+          "explain_es": "«Its name is Coco».",
+          "accept": [
+            "coco"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "Whose birthday is it today?",
+          "options": [
+            "Daniel’s",
+            "the father’s",
+            "the mother’s"
+          ],
+          "answer": 2,
+          "explain_es": "«It is our mother’s birthday»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the teacher’s name?",
+          "options": [
+            "Mr. Rojas",
+            "Mr. Reyes",
+            "Ms. Rojas"
+          ],
+          "answer": 0,
+          "explain_es": "«My name is Mr. Rojas»."
+        },
+        {
+          "type": "gap",
+          "q": "The classroom is Room ___.",
+          "answer": "12",
+          "explain_es": "«Welcome to Room 12».",
+          "accept": [
+            "twelve"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "Where are the books?",
+          "options": [
+            "in the box",
+            "on the table",
+            "on the door"
+          ],
+          "answer": 1,
+          "explain_es": "«Your books are on the table»."
+        },
+        {
+          "type": "mc",
+          "q": "The red books are for ___.",
+          "options": [
+            "Class A",
+            "Class B",
+            "the teacher"
+          ],
+          "answer": 1,
+          "explain_es": "«the red books are for Class B»."
+        },
+        {
+          "type": "tf",
+          "q": "The pencils are on the table.",
+          "answer": "F",
+          "explain_es": "Falso: «Your pencils are in the box»."
+        },
+        {
+          "type": "mc",
+          "q": "When is the class?",
+          "options": [
+            "Monday and Wednesday",
+            "Tuesday and Thursday",
+            "Tuesday and Friday"
+          ],
+          "answer": 1,
+          "explain_es": "«on Tuesday and Thursday»."
+        },
+        {
+          "type": "gap",
+          "q": "The class is at ___ o’clock.",
+          "answer": "eight",
+          "explain_es": "«at eight o’clock».",
+          "accept": [
+            "8"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "How much is the book?",
+          "options": [
+            "$5",
+            "$50",
+            "$15"
+          ],
+          "answer": 2,
+          "explain_es": "«fifteen dollars» = 15."
         }
       ]
     },
@@ -878,6 +1282,26 @@
         },
         {
           "name": "Customer",
+          "voice": "male",
+          "accent": "us"
+        },
+        {
+          "name": "Teacher",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Mateo",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Mom",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Nico",
           "voice": "male",
           "accent": "us"
         }
@@ -918,6 +1342,102 @@
         {
           "s": 0,
           "text": "Thank you. Have a nice day!"
+        },
+        {
+          "s": 2,
+          "text": "Good morning! What is your name?"
+        },
+        {
+          "s": 3,
+          "text": "Good morning, teacher. My name is Mateo."
+        },
+        {
+          "s": 2,
+          "text": "How do you spell that?"
+        },
+        {
+          "s": 3,
+          "text": "M, A, T, E, O."
+        },
+        {
+          "s": 2,
+          "text": "Thank you. How old are you, Mateo?"
+        },
+        {
+          "s": 3,
+          "text": "I am eleven."
+        },
+        {
+          "s": 2,
+          "text": "Where are you from?"
+        },
+        {
+          "s": 3,
+          "text": "I am from Pasto."
+        },
+        {
+          "s": 2,
+          "text": "Is this your backpack?"
+        },
+        {
+          "s": 3,
+          "text": "No, it isn’t. My backpack is green. That black backpack is Lucía’s."
+        },
+        {
+          "s": 2,
+          "text": "OK. What is your phone number?"
+        },
+        {
+          "s": 3,
+          "text": "It is three, one, five, four, zero, zero, two."
+        },
+        {
+          "s": 2,
+          "text": "Great. Welcome to the class!"
+        },
+        {
+          "s": 4,
+          "text": "Nico, it is very cold today. Where is your jacket?"
+        },
+        {
+          "s": 5,
+          "text": "It is in my bedroom, Mom."
+        },
+        {
+          "s": 4,
+          "text": "And your shoes?"
+        },
+        {
+          "s": 5,
+          "text": "My shoes are under the bed."
+        },
+        {
+          "s": 4,
+          "text": "These socks are dirty. Whose socks are these?"
+        },
+        {
+          "s": 5,
+          "text": "They are Dad’s socks!"
+        },
+        {
+          "s": 4,
+          "text": "Oh! What day is it today?"
+        },
+        {
+          "s": 5,
+          "text": "It is Friday, the twentieth of June."
+        },
+        {
+          "s": 4,
+          "text": "Friday! Your English class is at four o’clock."
+        },
+        {
+          "s": 5,
+          "text": "Yes. My teacher is Miss Clark. She is very nice."
+        },
+        {
+          "s": 4,
+          "text": "Good. Put on your jacket, please."
         }
       ],
       "questions": [
@@ -988,6 +1508,170 @@
           "q": "The shirt is for the man.",
           "answer": "T",
           "explain_es": "Verdadero. El cliente dice: «The shirt is for me»."
+        },
+        {
+          "type": "mc",
+          "q": "What time of day is it?",
+          "options": [
+            "morning",
+            "afternoon",
+            "night"
+          ],
+          "answer": 0,
+          "explain_es": "Dicen «Good morning»."
+        },
+        {
+          "type": "gap",
+          "q": "Spell the boy’s name: ___",
+          "answer": "Mateo",
+          "explain_es": "M-A-T-E-O.",
+          "accept": [
+            "MATEO",
+            "mateo"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "How old is Mateo?",
+          "options": [
+            "seven",
+            "eleven",
+            "twelve"
+          ],
+          "answer": 1,
+          "explain_es": "«I am eleven»."
+        },
+        {
+          "type": "mc",
+          "q": "Where is Mateo from?",
+          "options": [
+            "Pasto",
+            "Popayán",
+            "Pereira"
+          ],
+          "answer": 0,
+          "explain_es": "«I am from Pasto»."
+        },
+        {
+          "type": "mc",
+          "q": "What colour is Mateo’s backpack?",
+          "options": [
+            "black",
+            "green",
+            "blue"
+          ],
+          "answer": 1,
+          "explain_es": "«My backpack is green»."
+        },
+        {
+          "type": "tf",
+          "q": "The black backpack is Lucía’s.",
+          "answer": "T",
+          "explain_es": "«That black backpack is Lucía’s»."
+        },
+        {
+          "type": "mc",
+          "q": "What is Mateo’s phone number?",
+          "options": [
+            "315 4002",
+            "351 4002",
+            "315 4020"
+          ],
+          "answer": 0,
+          "explain_es": "Three, one, five, four, zero, zero, two."
+        },
+        {
+          "type": "tf",
+          "q": "Mateo is the teacher.",
+          "answer": "F",
+          "explain_es": "Mateo es el estudiante."
+        },
+        {
+          "type": "mc",
+          "q": "At the end the teacher says: «___ to the class!»",
+          "options": [
+            "Goodbye",
+            "Welcome",
+            "Sorry"
+          ],
+          "answer": 1,
+          "explain_es": "«Welcome to the class!»"
+        },
+        {
+          "type": "mc",
+          "q": "How is the weather?",
+          "options": [
+            "hot",
+            "cold",
+            "sunny"
+          ],
+          "answer": 1,
+          "explain_es": "«It is very cold today»."
+        },
+        {
+          "type": "mc",
+          "q": "Where is Nico’s jacket?",
+          "options": [
+            "in his bedroom",
+            "in the kitchen",
+            "in the car"
+          ],
+          "answer": 0,
+          "explain_es": "«It is in my bedroom»."
+        },
+        {
+          "type": "gap",
+          "q": "Nico’s shoes are ___ the bed.",
+          "answer": "under",
+          "explain_es": "«My shoes are under the bed»."
+        },
+        {
+          "type": "mc",
+          "q": "Whose socks are dirty?",
+          "options": [
+            "Nico’s",
+            "Mom’s",
+            "Dad’s"
+          ],
+          "answer": 2,
+          "explain_es": "«They are Dad’s socks!»"
+        },
+        {
+          "type": "mc",
+          "q": "What day is it?",
+          "options": [
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "answer": 1,
+          "explain_es": "«It is Friday»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the date?",
+          "options": [
+            "the twelfth of June",
+            "the twentieth of June",
+            "the twentieth of July"
+          ],
+          "answer": 1,
+          "explain_es": "«the twentieth of June»."
+        },
+        {
+          "type": "gap",
+          "q": "The English class is at ___ o’clock.",
+          "answer": "four",
+          "explain_es": "«at four o’clock».",
+          "accept": [
+            "4"
+          ]
+        },
+        {
+          "type": "tf",
+          "q": "Nico’s English teacher is Miss Clark.",
+          "answer": "T",
+          "explain_es": "«My teacher is Miss Clark»."
         }
       ]
     },
