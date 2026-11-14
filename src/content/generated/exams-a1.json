@@ -1930,7 +1930,7 @@
     ],
     "title": "Parcial final · Nivel A1",
     "intro_es": "Evalúa todo el nivel A1, de la unidad 1 a la 16: to be y el presente simple, el presente continuo, el pasado, el presente perfecto, comparativos y superlativos, recomendaciones y sugerencias y los planes para el futuro. Incluye escucha, lectura, escritura y expresión oral.",
-    "minutes": 80,
+    "minutes": 115,
     "grammar": [
       {
         "type": "mc",
@@ -2077,6 +2077,115 @@
         "q": "we / why / take / don't / a / taxi / ?",
         "answer": "Why don't we take a taxi?",
         "explain_es": "Why don't we + verbo base para sugerir algo."
+      },
+      {
+        "type": "mc",
+        "q": "She ___ to work by bus every day.",
+        "options": [
+          "go",
+          "goes",
+          "going"
+        ],
+        "answer": 1,
+        "explain_es": "Presente simple, tercera persona: «goes»."
+      },
+      {
+        "type": "mc",
+        "q": "___ your brother live in Cali?",
+        "options": [
+          "Do",
+          "Does",
+          "Is"
+        ],
+        "answer": 1,
+        "explain_es": "Pregunta con he/she: «Does»."
+      },
+      {
+        "type": "mc",
+        "q": "We ___ dinner right now. Call later.",
+        "options": [
+          "have",
+          "are having",
+          "has"
+        ],
+        "answer": 1,
+        "explain_es": "Acción en curso: presente continuo."
+      },
+      {
+        "type": "mc",
+        "q": "There ___ two parks near my house.",
+        "options": [
+          "is",
+          "are",
+          "be"
+        ],
+        "answer": 1,
+        "explain_es": "Plural: «There are»."
+      },
+      {
+        "type": "mc",
+        "q": "I ___ to the cinema last Saturday.",
+        "options": [
+          "go",
+          "went",
+          "gone"
+        ],
+        "answer": 1,
+        "explain_es": "Pasado simple de «go»: «went»."
+      },
+      {
+        "type": "mc",
+        "q": "How ___ water do you drink every day?",
+        "options": [
+          "many",
+          "much",
+          "any"
+        ],
+        "answer": 1,
+        "explain_es": "«Water» es incontable: «How much»."
+      },
+      {
+        "type": "mc",
+        "q": "My house is ___ than yours.",
+        "options": [
+          "big",
+          "bigger",
+          "biggest"
+        ],
+        "answer": 1,
+        "explain_es": "Comparativo: «bigger than»."
+      },
+      {
+        "type": "mc",
+        "q": "They ___ visit their grandparents next weekend.",
+        "options": [
+          "are going to",
+          "going to",
+          "go to"
+        ],
+        "answer": 0,
+        "explain_es": "Plan futuro: be going to."
+      },
+      {
+        "type": "gap",
+        "q": "He ___ (not / like) coffee.",
+        "answer": "doesn't like",
+        "explain_es": "Negativo con he: «doesn't like».",
+        "accept": [
+          "does not like"
+        ]
+      },
+      {
+        "type": "gap",
+        "q": "Did you ___ (see) the match yesterday?",
+        "answer": "see",
+        "explain_es": "Tras «did» el verbo va en forma base."
+      },
+      {
+        "type": "order",
+        "q": "usually / at / I / get up / six / .",
+        "answer": "I usually get up at six.",
+        "explain_es": "El adverbio de frecuencia va antes del verbo."
       }
     ],
     "vocabulary": [
@@ -2214,17 +2323,144 @@
         "q": "My ___ for this year is to read twelve books.",
         "answer": "goal",
         "explain_es": "Goal = meta, algo que quieres lograr."
+      },
+      {
+        "type": "mc",
+        "q": "My mother’s brother is my ___.",
+        "options": [
+          "uncle",
+          "cousin",
+          "nephew"
+        ],
+        "answer": 0,
+        "explain_es": "El hermano de tu madre es tu «uncle»."
+      },
+      {
+        "type": "mc",
+        "q": "You can buy bread at the ___.",
+        "options": [
+          "bakery",
+          "pharmacy",
+          "library"
+        ],
+        "answer": 0,
+        "explain_es": "Pan → «bakery»."
+      },
+      {
+        "type": "mc",
+        "q": "The opposite of «cheap» is ___.",
+        "options": [
+          "expensive",
+          "small",
+          "easy"
+        ],
+        "answer": 0,
+        "explain_es": "Barato ≠ caro: «expensive»."
+      },
+      {
+        "type": "mc",
+        "q": "I ___ a shower every morning.",
+        "options": [
+          "do",
+          "make",
+          "take"
+        ],
+        "answer": 2,
+        "explain_es": "Se dice «take a shower»."
+      },
+      {
+        "type": "mc",
+        "q": "In December the weather is hot and ___ in Barranquilla.",
+        "options": [
+          "snowy",
+          "sunny",
+          "foggy"
+        ],
+        "answer": 1,
+        "explain_es": "«Sunny» = soleado."
+      },
+      {
+        "type": "mc",
+        "q": "A person who cooks in a restaurant is a ___.",
+        "options": [
+          "waiter",
+          "chef",
+          "pilot"
+        ],
+        "answer": 1,
+        "explain_es": "El que cocina es el «chef»."
+      },
+      {
+        "type": "mc",
+        "q": "We sleep in the ___.",
+        "options": [
+          "bedroom",
+          "kitchen",
+          "garage"
+        ],
+        "answer": 0,
+        "explain_es": "Dormimos en el «bedroom»."
+      },
+      {
+        "type": "gap",
+        "q": "The month after March is ___.",
+        "answer": "April",
+        "explain_es": "March, April, May.",
+        "accept": [
+          "april"
+        ]
+      },
+      {
+        "type": "gap",
+        "q": "I ___ up at seven o’clock on weekdays.",
+        "answer": "get",
+        "explain_es": "«Get up» = levantarse.",
+        "accept": [
+          "wake"
+        ]
+      },
+      {
+        "type": "mc",
+        "q": "«How often do you exercise?» — «___ a week.»",
+        "options": [
+          "Twice",
+          "Two",
+          "Second"
+        ],
+        "answer": 0,
+        "explain_es": "«Twice a week» = dos veces por semana."
+      },
+      {
+        "type": "mc",
+        "q": "Turn ___ at the corner and the bank is on your right.",
+        "options": [
+          "left",
+          "straight",
+          "under"
+        ],
+        "answer": 0,
+        "explain_es": "«Turn left/right»."
       }
     ],
     "reading": {
       "title": "From the Mountains to the Amazon",
       "genre": "article",
       "paragraphs": [
+        "## Part 1 · From the Mountains to the Amazon",
         "Two years ago, Juliana Mejía was a busy teacher in Bogotá. She used to get up at five, take two buses to work and get home at eight. «I was always tired,» she says.",
         "Then she saw a job at a small school in Leticia, in the Amazon rainforest, and she decided to apply. «My friends thought I was crazy,» she laughs.",
         "Life in Leticia is very different. The town is much smaller and hotter than Bogotá, and it's extremely humid. There aren't many cars, but there are a lot of boats on the river. Juliana usually walks to school, and she has lunch at home every day.",
         "She has already learned some Portuguese, because Brazil is very close, and she has made a lot of new friends. «Nowadays I'm happier and healthier,» she says.",
-        "Right now she is planning a trip down the river with her students. Next year she hopes to write a book about the children of the Amazon."
+        "Right now she is planning a trip down the river with her students. Next year she hopes to write a book about the children of the Amazon.",
+        "## Part 2 · A Day with Camila",
+        "Camila Torres is a vet in Manizales. She gets up at half past five every day because she starts work at seven. She usually has eggs and coffee for breakfast, but she never eats bread.",
+        "In the morning she works at the clinic. There are always a lot of dogs and cats, and sometimes there is a horse! In the afternoon she visits farms outside the city.",
+        "Yesterday was different. A farmer called at six in the morning because his cow was ill. Camila drove for an hour, helped the cow and came back at noon. She was tired but happy.",
+        "This weekend Camila is going to rest. She is going to watch films and cook with her sister.",
+        "## Part 3 · Email from Cartagena",
+        "Hi Paula! I am writing to you from Cartagena. We arrived on Monday and the weather is fantastic — it is hotter than Bogotá!",
+        "Our hotel is small but it is the cheapest in the old city, and there is a swimming pool on the roof. Yesterday we walked around the walls and I bought a hat. Dad didn’t buy anything; he only took photos.",
+        "Right now I am sitting in a café and Mum is reading a book. Tomorrow we are going to take a boat to the islands. Have you ever been there? See you on Sunday! Love, Andrés"
       ],
       "glossary": [
         [
@@ -2250,6 +2486,26 @@
         [
           "down the river",
           "río abajo"
+        ],
+        [
+          "vet",
+          "veterinaria"
+        ],
+        [
+          "farm",
+          "finca"
+        ],
+        [
+          "ill",
+          "enferma"
+        ],
+        [
+          "walls",
+          "murallas"
+        ],
+        [
+          "roof",
+          "techo, azotea"
         ]
       ],
       "questions": [
@@ -2320,6 +2576,168 @@
           ],
           "answer": 1,
           "explain_es": "El texto dice: «Next year she hopes to write a book about the children of the Amazon»."
+        },
+        {
+          "type": "mc",
+          "q": "What is Camila’s job?",
+          "options": [
+            "a farmer",
+            "a vet",
+            "a doctor"
+          ],
+          "answer": 1,
+          "explain_es": "«Camila Torres is a vet»."
+        },
+        {
+          "type": "mc",
+          "q": "What time does she get up?",
+          "options": [
+            "5:30",
+            "6:30",
+            "7:00"
+          ],
+          "answer": 0,
+          "explain_es": "«at half past five»."
+        },
+        {
+          "type": "tf",
+          "q": "She eats bread for breakfast every day.",
+          "answer": "F",
+          "explain_es": "«she never eats bread»."
+        },
+        {
+          "type": "mc",
+          "q": "Where does she work in the afternoon?",
+          "options": [
+            "at the clinic",
+            "on farms",
+            "at home"
+          ],
+          "answer": 1,
+          "explain_es": "«In the afternoon she visits farms»."
+        },
+        {
+          "type": "mc",
+          "q": "Why did the farmer call?",
+          "options": [
+            "His horse was lost.",
+            "His cow was ill.",
+            "His dog was hungry."
+          ],
+          "answer": 1,
+          "explain_es": "«because his cow was ill»."
+        },
+        {
+          "type": "gap",
+          "q": "Camila drove for an ___.",
+          "answer": "hour",
+          "explain_es": "«Camila drove for an hour»."
+        },
+        {
+          "type": "tf",
+          "q": "Camila came back in the evening.",
+          "answer": "F",
+          "explain_es": "Volvió «at noon» (mediodía)."
+        },
+        {
+          "type": "mc",
+          "q": "How did she feel?",
+          "options": [
+            "tired but happy",
+            "angry",
+            "sad and tired"
+          ],
+          "answer": 0,
+          "explain_es": "«She was tired but happy»."
+        },
+        {
+          "type": "mc",
+          "q": "What is she going to do this weekend?",
+          "options": [
+            "work on a farm",
+            "travel to Bogotá",
+            "rest and cook"
+          ],
+          "answer": 2,
+          "explain_es": "«watch films and cook with her sister»."
+        },
+        {
+          "type": "mc",
+          "q": "Where is Andrés?",
+          "options": [
+            "in Bogotá",
+            "in Cartagena",
+            "on an island"
+          ],
+          "answer": 1,
+          "explain_es": "«I am writing to you from Cartagena»."
+        },
+        {
+          "type": "mc",
+          "q": "When did they arrive?",
+          "options": [
+            "on Sunday",
+            "on Monday",
+            "yesterday"
+          ],
+          "answer": 1,
+          "explain_es": "«We arrived on Monday»."
+        },
+        {
+          "type": "tf",
+          "q": "Cartagena is colder than Bogotá.",
+          "answer": "F",
+          "explain_es": "«it is hotter than Bogotá»."
+        },
+        {
+          "type": "mc",
+          "q": "What is special about the hotel?",
+          "options": [
+            "It is the biggest.",
+            "It has a pool on the roof.",
+            "It is near the airport."
+          ],
+          "answer": 1,
+          "explain_es": "«there is a swimming pool on the roof»."
+        },
+        {
+          "type": "gap",
+          "q": "Andrés bought a ___.",
+          "answer": "hat",
+          "explain_es": "«I bought a hat»."
+        },
+        {
+          "type": "mc",
+          "q": "What did Dad do?",
+          "options": [
+            "He bought a hat.",
+            "He took photos.",
+            "He read a book."
+          ],
+          "answer": 1,
+          "explain_es": "«he only took photos»."
+        },
+        {
+          "type": "mc",
+          "q": "What is Mum doing now?",
+          "options": [
+            "reading",
+            "swimming",
+            "walking"
+          ],
+          "answer": 0,
+          "explain_es": "«Mum is reading a book»."
+        },
+        {
+          "type": "mc",
+          "q": "What are they going to do tomorrow?",
+          "options": [
+            "go home",
+            "take a boat to the islands",
+            "visit a museum"
+          ],
+          "answer": 1,
+          "explain_es": "«we are going to take a boat to the islands»."
         }
       ]
     },
@@ -2336,6 +2754,26 @@
           "name": "Tomás",
           "voice": "male",
           "accent": "us"
+        },
+        {
+          "name": "Waiter",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Laura",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Sam",
+          "voice": "male",
+          "accent": "us"
+        },
+        {
+          "name": "Vale",
+          "voice": "female",
+          "accent": "uk"
         }
       ],
       "lines": [
@@ -2394,6 +2832,102 @@
         {
           "s": 1,
           "text": "Thank you, Rachel. Bye!"
+        },
+        {
+          "s": 2,
+          "text": "Good afternoon. Are you ready to order?"
+        },
+        {
+          "s": 3,
+          "text": "Yes, please. I’d like the chicken soup to start."
+        },
+        {
+          "s": 2,
+          "text": "And for the main course?"
+        },
+        {
+          "s": 3,
+          "text": "Is there any fish today?"
+        },
+        {
+          "s": 2,
+          "text": "I’m sorry, there isn’t any fish. But the grilled chicken with rice is very good."
+        },
+        {
+          "s": 3,
+          "text": "OK, I’ll have that. Does it come with salad?"
+        },
+        {
+          "s": 2,
+          "text": "Yes, it does. And to drink?"
+        },
+        {
+          "s": 3,
+          "text": "A lemonade without sugar, please."
+        },
+        {
+          "s": 2,
+          "text": "Would you like a dessert?"
+        },
+        {
+          "s": 3,
+          "text": "No, thanks. How much is it?"
+        },
+        {
+          "s": 2,
+          "text": "It’s eighteen thousand pesos."
+        },
+        {
+          "s": 3,
+          "text": "Here you are. Can I pay by card?"
+        },
+        {
+          "s": 2,
+          "text": "Of course."
+        },
+        {
+          "s": 4,
+          "text": "Hi Vale! What did you do last weekend?"
+        },
+        {
+          "s": 5,
+          "text": "I went to Villa de Leyva with my cousins. We stayed for two days."
+        },
+        {
+          "s": 4,
+          "text": "Nice! How did you get there?"
+        },
+        {
+          "s": 5,
+          "text": "By bus. It took four hours."
+        },
+        {
+          "s": 4,
+          "text": "Was the weather good?"
+        },
+        {
+          "s": 5,
+          "text": "On Saturday it was sunny, but on Sunday it rained all day."
+        },
+        {
+          "s": 4,
+          "text": "And what are you doing now?"
+        },
+        {
+          "s": 5,
+          "text": "I’m studying for the English exam. It’s tomorrow!"
+        },
+        {
+          "s": 4,
+          "text": "Me too. Are you going to study tonight?"
+        },
+        {
+          "s": 5,
+          "text": "Yes, but first I’m going to have dinner. Do you want to study together at seven?"
+        },
+        {
+          "s": 4,
+          "text": "Great idea. See you at the library."
         }
       ],
       "questions": [
@@ -2470,6 +3004,171 @@
           ],
           "answer": 1,
           "explain_es": "Tomás dice: «I'm going to race in France in July»."
+        },
+        {
+          "type": "mc",
+          "q": "Where are they?",
+          "options": [
+            "in a restaurant",
+            "in a supermarket",
+            "at home"
+          ],
+          "answer": 0,
+          "explain_es": "El mesero toma un pedido."
+        },
+        {
+          "type": "mc",
+          "q": "What does Laura have to start?",
+          "options": [
+            "salad",
+            "chicken soup",
+            "fish"
+          ],
+          "answer": 1,
+          "explain_es": "«the chicken soup to start»."
+        },
+        {
+          "type": "tf",
+          "q": "There is fish today.",
+          "answer": "F",
+          "explain_es": "«there isn’t any fish»."
+        },
+        {
+          "type": "mc",
+          "q": "What is her main course?",
+          "options": [
+            "grilled chicken with rice",
+            "fish with salad",
+            "soup"
+          ],
+          "answer": 0,
+          "explain_es": "«the grilled chicken with rice»."
+        },
+        {
+          "type": "tf",
+          "q": "The main course comes with salad.",
+          "answer": "T",
+          "explain_es": "«Yes, it does»."
+        },
+        {
+          "type": "gap",
+          "q": "She wants a lemonade without ___.",
+          "answer": "sugar",
+          "explain_es": "«A lemonade without sugar»."
+        },
+        {
+          "type": "mc",
+          "q": "Does she want a dessert?",
+          "options": [
+            "Yes, ice cream.",
+            "No, she doesn’t.",
+            "Yes, cake."
+          ],
+          "answer": 1,
+          "explain_es": "«No, thanks»."
+        },
+        {
+          "type": "mc",
+          "q": "How much is the meal?",
+          "options": [
+            "8,000 pesos",
+            "18,000 pesos",
+            "80,000 pesos"
+          ],
+          "answer": 1,
+          "explain_es": "«eighteen thousand pesos»."
+        },
+        {
+          "type": "mc",
+          "q": "How does she pay?",
+          "options": [
+            "in cash",
+            "by card",
+            "by phone"
+          ],
+          "answer": 1,
+          "explain_es": "«Can I pay by card?» — «Of course»."
+        },
+        {
+          "type": "mc",
+          "q": "Where did Vale go?",
+          "options": [
+            "Villa de Leyva",
+            "Cartagena",
+            "Medellín"
+          ],
+          "answer": 0,
+          "explain_es": "«I went to Villa de Leyva»."
+        },
+        {
+          "type": "mc",
+          "q": "Who did she go with?",
+          "options": [
+            "her parents",
+            "her cousins",
+            "her friends"
+          ],
+          "answer": 1,
+          "explain_es": "«with my cousins»."
+        },
+        {
+          "type": "gap",
+          "q": "They stayed for ___ days.",
+          "answer": "two",
+          "explain_es": "«We stayed for two days».",
+          "accept": [
+            "2"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "How long was the bus trip?",
+          "options": [
+            "two hours",
+            "three hours",
+            "four hours"
+          ],
+          "answer": 2,
+          "explain_es": "«It took four hours»."
+        },
+        {
+          "type": "tf",
+          "q": "It rained on Saturday.",
+          "answer": "F",
+          "explain_es": "El sábado hizo sol; llovió el domingo."
+        },
+        {
+          "type": "mc",
+          "q": "What is Vale doing now?",
+          "options": [
+            "having dinner",
+            "studying",
+            "travelling"
+          ],
+          "answer": 1,
+          "explain_es": "«I’m studying for the English exam»."
+        },
+        {
+          "type": "mc",
+          "q": "When is the exam?",
+          "options": [
+            "today",
+            "tomorrow",
+            "next week"
+          ],
+          "answer": 1,
+          "explain_es": "«It’s tomorrow!»"
+        },
+        {
+          "type": "mc",
+          "q": "Where are they going to meet?",
+          "options": [
+            "at the library",
+            "at Vale’s house",
+            "at school"
+          ],
+          "answer": 0,
+          "explain_es": "«See you at the library»."
         }
       ]
     },

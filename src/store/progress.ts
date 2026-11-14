@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { mergeSaved, safeMerge } from './safe';
 import type { CefrLevel, Skill } from '@/content/types';
 import { CEFR_LEVELS } from '@/content/types';
 import { LEVELS, TOTAL_UNITS } from '@/content/levels';
@@ -77,6 +78,15 @@ export const initialProgress = (): ProgressData => ({
   updatedAt: new Date(0).toISOString(),
 });
 
+/** A progress record with every list and record in place, whatever came in (cloud, file, old version). */
+export function cleanProgress(d: unknown): ProgressData {
+  const p = safeMerge(d, initialProgress());
+  p.activity = p.activity.filter((a) => a && typeof a === 'object' && typeof a.id === 'string' && typeof a.at === 'string');
+  p.streak = safeMerge(p.streak, initialProgress().streak);
+  p.skillXp = { ...emptySkills(), ...p.skillXp };
+  return p;
+}
+
 const uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
 
 function bumpStreak(s: ProgressData['streak']): ProgressData['streak'] {
@@ -149,10 +159,10 @@ export const useProgress = create<ProgressData & ProgressActions>()(
 
       setTargetLevel: (targetLevel) => set({ targetLevel, updatedAt: new Date().toISOString() }),
       setDailyGoal: (dailyGoal) => set({ dailyGoal, updatedAt: new Date().toISOString() }),
-      replace: (d) => set({ ...initialProgress(), ...d }),
+      replace: (d) => set(cleanProgress(d)),
       reset: () => set(initialProgress()),
     }),
-    { name: 'ecyr:progress', version: 1 },
+    { name: 'ecyr:progress', version: 1, merge: mergeSaved },
   ),
 );
 
@@ -176,7 +186,8 @@ export function snapshot(): ProgressData {
 }
 
 /** Merges two progress records (e.g. this device vs the cloud) without losing work. */
-export function mergeProgress(a: ProgressData, b: ProgressData): ProgressData {
+export function mergeProgress(a0: ProgressData, b0: ProgressData): ProgressData {
+  const a = cleanProgress(a0), b = cleanProgress(b0);
   const pickBest = (x: Record<string, Completion>, y: Record<string, Completion>) => {
     const out: Record<string, Completion> = { ...x };
     for (const [k, v] of Object.entries(y)) if (!out[k] || v.score > out[k].score) out[k] = v;

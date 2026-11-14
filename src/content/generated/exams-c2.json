@@ -1585,7 +1585,7 @@
     ],
     "title": "Parcial final · Nivel C2",
     "intro_es": "Examen integrador de las 10 unidades del nivel C2: aspecto y verbos de estado, distanciamiento con tiempos pasados, oraciones hendidas e inversión, modales de deducción, nominalización y patrones verbales, pasiva de reporte y causativos, lenguaje de matización, condicionales mixtos e invertidos, elipsis e intensificadores, subjuntivo, pasado irreal y concesión, futuro en el pasado, marcadores discursivos, formas de futuro avanzadas, comparativos con matices y expresiones fijas, con el vocabulario de todo el nivel. Formato CPE. Evalúa gramática, vocabulario, lectura, escucha, escritura y expresión oral.",
-    "minutes": 95,
+    "minutes": 140,
     "grammar": [
       {
         "type": "mc",
@@ -1734,6 +1734,118 @@
           "Little did he know he was to become president twenty years later."
         ],
         "explain_es": "Futuro en el pasado: desde un punto del pasado se usa “would” (o “was to”), no “will”."
+      },
+      {
+        "type": "mc",
+        "q": "Try ___ she might, she could not recall his name.",
+        "options": [
+          "as",
+          "though",
+          "however"
+        ],
+        "answer": 0,
+        "explain_es": "Concesiva invertida: «Try as she might»."
+      },
+      {
+        "type": "mc",
+        "q": "Were the proposal ___, the consequences would be far-reaching.",
+        "options": [
+          "to adopt",
+          "to be adopted",
+          "adopted to be"
+        ],
+        "answer": 1,
+        "explain_es": "Condicional formal: Were + sujeto + to be + participio."
+      },
+      {
+        "type": "mc",
+        "q": "Scarcely had the minister finished speaking ___ the protests began.",
+        "options": [
+          "than",
+          "when",
+          "that"
+        ],
+        "answer": 1,
+        "explain_es": "«Scarcely… when»."
+      },
+      {
+        "type": "mc",
+        "q": "It is imperative that every member ___ present at the vote.",
+        "options": [
+          "is",
+          "be",
+          "were"
+        ],
+        "answer": 1,
+        "explain_es": "Subjuntivo tras «It is imperative that»."
+      },
+      {
+        "type": "mc",
+        "q": "She ___ have known about the leak; she was abroad at the time.",
+        "options": [
+          "can't",
+          "mustn't",
+          "needn't"
+        ],
+        "answer": 0,
+        "explain_es": "Deducción negativa sobre el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Much ___ I admire his work, I cannot endorse his methods.",
+        "options": [
+          "as",
+          "though",
+          "like"
+        ],
+        "answer": 0,
+        "explain_es": "«Much as» = aunque mucho."
+      },
+      {
+        "type": "mc",
+        "q": "On no account ___ to be left unattended.",
+        "options": [
+          "the device is",
+          "is the device",
+          "the device be"
+        ],
+        "answer": 1,
+        "explain_es": "Inversión tras «On no account»."
+      },
+      {
+        "type": "mc",
+        "q": "He would sooner resign ___ compromise his principles.",
+        "options": [
+          "than",
+          "that",
+          "rather"
+        ],
+        "answer": 0,
+        "explain_es": "«Would sooner… than»."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — ONE word: ___ for your timely warning, we would have lost everything.",
+        "answer": "But",
+        "explain_es": "«But for» = de no ser por.",
+        "accept": [
+          "but"
+        ]
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — ONE word: Such ___ the force of the blast that windows shattered a mile away.",
+        "answer": "was",
+        "explain_es": "Such + be + sujeto (inversión)."
+      },
+      {
+        "type": "transform",
+        "q": "Key word (LIKELIHOOD): It is very unlikely that he will accept. → There is very little ___ accepting.",
+        "answer": "likelihood of him",
+        "explain_es": "«There is little likelihood of + pronombre + -ing».",
+        "accept": [
+          "likelihood of his"
+        ]
       }
     ],
     "vocabulary": [
@@ -1868,12 +1980,124 @@
         "q": "Word formation — use the word in capitals: Campaigners have condemned the ___ of press freedom under the new security law. (CURTAIL)",
         "answer": "curtailment",
         "explain_es": "Sufijo -ment: “curtailment” es la restricción o reducción de un derecho o una libertad."
+      },
+      {
+        "type": "mc",
+        "q": "His apology was dismissed as mere ___, with no real remorse behind it.",
+        "options": [
+          "lip service",
+          "small talk",
+          "hearsay"
+        ],
+        "answer": 0,
+        "explain_es": "«Lip service» = palabras sin compromiso."
+      },
+      {
+        "type": "mc",
+        "q": "The committee’s findings were ___; no firm conclusion could be drawn.",
+        "options": [
+          "inconclusive",
+          "incisive",
+          "inclusive"
+        ],
+        "answer": 0,
+        "explain_es": "«Inconclusive» = no concluyentes."
+      },
+      {
+        "type": "mc",
+        "q": "She has a ___ wit that spares no one.",
+        "options": [
+          "caustic",
+          "cautious",
+          "casual"
+        ],
+        "answer": 0,
+        "explain_es": "«Caustic wit» = ingenio mordaz."
+      },
+      {
+        "type": "mc",
+        "q": "The scandal dealt a severe ___ to the party’s credibility.",
+        "options": [
+          "blow",
+          "hit",
+          "strike"
+        ],
+        "answer": 0,
+        "explain_es": "«Deal a blow to» = asestar un golpe."
+      },
+      {
+        "type": "mc",
+        "q": "He is prone to ___, turning every setback into a catastrophe.",
+        "options": [
+          "hyperbole",
+          "hypothesis",
+          "hypocrisy"
+        ],
+        "answer": 0,
+        "explain_es": "«Hyperbole» = exageración."
+      },
+      {
+        "type": "mc",
+        "q": "The treaty was ___ after months of fruitless negotiation.",
+        "options": [
+          "shelved",
+          "shelled",
+          "sheltered"
+        ],
+        "answer": 0,
+        "explain_es": "«Shelve» = archivar, dejar de lado."
+      },
+      {
+        "type": "mc",
+        "q": "Her prose is admirably ___: not a word is wasted.",
+        "options": [
+          "succinct",
+          "succulent",
+          "successive"
+        ],
+        "answer": 0,
+        "explain_es": "«Succinct» = conciso."
+      },
+      {
+        "type": "gap",
+        "q": "Noun of «acquiesce»: ___",
+        "answer": "acquiescence",
+        "explain_es": "Acquiesce → acquiescence."
+      },
+      {
+        "type": "gap",
+        "q": "ONE word: The rumours were quickly laid to ___ by an official statement.",
+        "answer": "rest",
+        "explain_es": "«Lay to rest» = acallar."
+      },
+      {
+        "type": "mc",
+        "q": "The reforms met with ___ resistance from within the ministry itself.",
+        "options": [
+          "entrenched",
+          "entranced",
+          "entrusted"
+        ],
+        "answer": 0,
+        "explain_es": "«Entrenched» = arraigada."
+      },
+      {
+        "type": "mc",
+        "q": "Far from being a ___ observer, he had a stake in the outcome.",
+        "options": [
+          "disinterested",
+          "uninterested",
+          "disinteresting"
+        ],
+        "answer": 0,
+        "explain_es": "«Disinterested» = imparcial."
       }
     ],
     "reading": {
       "title": "The Afterlife of Data",
       "genre": "article",
       "paragraphs": [
+        "## Part 1 · The Afterlife of Data",
         "When Marta Lindqvist's father died, he left behind a house full of furniture, a modest pension and roughly forty thousand digital photographs, eleven years of emails and a social media account that continued, with unnerving cheerfulness, to remind his friends of his birthday. 'The furniture was easy,' she says. 'We knew what to do with a wardrobe. Nobody had ever told us what to do with a man's inbox.'",
         "Marta's predicament is fast becoming one of the defining dilemmas of our time. It has been estimated that within a few decades the dead will outnumber the living on some of the largest social platforms. [1] ______ Unlike letters in a drawer, however, these traces are held not by families but by companies, whose terms of service — accepted with a careless click years earlier — may determine whether relatives can access them at all.",
         "For historians, the situation is both a gift and a threat. Never before has ordinary life been documented in such detail; a researcher in the twenty-second century could, in principle, reconstruct the daily concerns of millions of anonymous people who would once have vanished without trace. Yet digital records are far more ephemeral than they appear. Formats become obsolete, companies go bankrupt, servers are quietly switched off. Paradoxically, a parish register from 1650 stands a better chance of reaching posterity than a blog written in 2010.",
@@ -1881,7 +2105,16 @@
         "Further complicating matters is the arrival of so-called 'griefbots': chatbots trained on a dead person's messages, emails and voice recordings, which allow the bereaved to hold simulated conversations with them. Several start-ups now offer such services, and their marketing is careful to present them as a source of comfort rather than a replacement for the person who has gone. [2] ______ Others report that the experience was oddly flat: the bot had the person's phrases but not their timing, their vocabulary but not their silences.",
         "Psychologists are divided. Some argue that maintaining a bond with the dead is a normal and healthy part of mourning, and that a griefbot is merely a more sophisticated version of rereading old letters. Others worry that a simulation which never tires and is always available could make it harder for people to accept a loss, leaving them suspended in a conversation that can never really move forward. There is also the uncomfortable matter of consent. The person being simulated never agreed to it, and words they once wrote to one friend may be recombined into things they would never have said to anyone.",
         "Marta, for her part, decided against a griefbot. [3] ______ She downloaded her father's photographs, printed the hundred she liked best and asked the platform to turn his account into a memorial page, where friends still occasionally leave messages on the anniversary of his death. His emails she has kept but not read. 'Perhaps one day,' she says. 'In the fullness of time. For now, it's enough to know they're there.'",
-        "What her story suggests is that the question of digital legacy is not, at heart, a technological one. Every generation has had to decide what to keep and what to let go, which stories to perpetuate and which to allow to fade. What has changed is the sheer quantity of what we leave behind, and the fact that, for the first time, much of it is owned by someone else. Unless we decide what should happen to our digital selves, others will decide for us."
+        "What her story suggests is that the question of digital legacy is not, at heart, a technological one. Every generation has had to decide what to keep and what to let go, which stories to perpetuate and which to allow to fade. What has changed is the sheer quantity of what we leave behind, and the fact that, for the first time, much of it is owned by someone else. Unless we decide what should happen to our digital selves, others will decide for us.",
+        "## Part 2 · In Praise of Forgetting",
+        "We are accustomed to treating memory as an unqualified good and forgetting as its failure. The assumption is so deeply ingrained that it rarely occurs to us to question it; yet a mind that retained everything would be, as the rare clinical cases suggest, less a library than a landfill.",
+        "Consider what recollection actually requires. To recognise a friend after ten years is not to retrieve a stored photograph but to discard the incidental — the haircut, the coat, the light on that particular afternoon — in favour of what endures. Abstraction, in other words, is forgetting put to work. Those unfortunate few who cannot forget report being overwhelmed by particulars, unable to see that two dogs glimpsed from different angles belong to a single category.",
+        "The same holds, with due caution, for societies. Archives that preserve indiscriminately do not thereby serve history; they merely defer the labour of selection to those who come after. It may be objected that the powerful have always been eager to decide what is forgotten, and the objection is well founded. But the remedy for selective amnesia is not total recall. It is argument about what deserves to be kept.",
+        "None of this licenses complacency about the erasures now being carried out, silently and at scale, by systems whose criteria nobody has voted on. If forgetting is a craft, it matters a great deal who is practising it.",
+        "## Part 3 · The Tyranny of the Readable",
+        "There is a kind of prose, much praised by editors, whose chief virtue is that it gives no trouble. Its sentences are short, its vocabulary unexceptionable, its paragraphs arrive at their point with the punctuality of commuter trains. One finishes a page of it having understood everything and retained nothing.",
+        "I do not mean to defend obscurity, which is as often a sign of muddle as of depth. But difficulty and obscurity are not the same thing. A sentence may ask something of its reader — a held breath, a second pass — precisely because the thought it carries will not survive being broken into smaller pieces.",
+        "What is lost when everything is made effortless is not elegance, which is merely decorative, but the reader’s own participation. We remember what we have had to work for. A style that anticipates every objection and smooths every transition leaves us, in the end, with nothing to do — and therefore nothing to keep."
       ],
       "glossary": [
         [
@@ -1907,6 +2140,30 @@
         [
           "outliving us",
           "sobreviviéndonos"
+        ],
+        [
+          "ingrained",
+          "arraigada"
+        ],
+        [
+          "landfill",
+          "vertedero"
+        ],
+        [
+          "defer",
+          "aplazar"
+        ],
+        [
+          "unexceptionable",
+          "irreprochable"
+        ],
+        [
+          "muddle",
+          "confusión"
+        ],
+        [
+          "smooths",
+          "suaviza"
         ]
       ],
       "questions": [
@@ -1999,6 +2256,173 @@
           "q": "Marta has read all of her father's emails.",
           "answer": "F",
           "explain_es": "Falso: “His emails she has kept but not read.”"
+        },
+        {
+          "type": "mc",
+          "q": "What common assumption does the writer challenge?",
+          "options": [
+            "that memory is always good and forgetting a failure",
+            "that libraries are useful",
+            "that archives are expensive"
+          ],
+          "answer": 0,
+          "explain_es": "Primer párrafo: memoria como bien absoluto."
+        },
+        {
+          "type": "mc",
+          "q": "“Less a library than a landfill” suggests that total memory would be…",
+          "options": [
+            "well organised",
+            "indiscriminate and unusable",
+            "very valuable"
+          ],
+          "answer": 1,
+          "explain_es": "Un vertedero: todo acumulado sin orden."
+        },
+        {
+          "type": "mc",
+          "q": "According to the text, recognising a friend involves…",
+          "options": [
+            "retrieving an exact image",
+            "discarding incidental details",
+            "guessing"
+          ],
+          "answer": 1,
+          "explain_es": "«to discard the incidental… in favour of what endures»."
+        },
+        {
+          "type": "tf",
+          "q": "The writer regards abstraction as a form of useful forgetting.",
+          "answer": "T",
+          "explain_es": "«Abstraction… is forgetting put to work»."
+        },
+        {
+          "type": "mc",
+          "q": "What difficulty do people who cannot forget report?",
+          "options": [
+            "being overwhelmed by particulars",
+            "losing language",
+            "sleeping too much"
+          ],
+          "answer": 0,
+          "explain_es": "«overwhelmed by particulars»."
+        },
+        {
+          "type": "mc",
+          "q": "What is said of archives that preserve everything?",
+          "options": [
+            "They serve history best.",
+            "They postpone the work of selection.",
+            "They are illegal."
+          ],
+          "answer": 1,
+          "explain_es": "«defer the labour of selection»."
+        },
+        {
+          "type": "tf",
+          "q": "The writer rejects the objection about the powerful as unfounded.",
+          "answer": "F",
+          "explain_es": "«the objection is well founded»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the proposed remedy for selective amnesia?",
+          "options": [
+            "total recall",
+            "argument about what deserves to be kept",
+            "destroying archives"
+          ],
+          "answer": 1,
+          "explain_es": "«It is argument about what deserves to be kept»."
+        },
+        {
+          "type": "mc",
+          "q": "What worries the writer in the final paragraph?",
+          "options": [
+            "erasures by systems with unaccountable criteria",
+            "the cost of storage",
+            "the decline of libraries"
+          ],
+          "answer": 0,
+          "explain_es": "«systems whose criteria nobody has voted on»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the “chief virtue” of the prose the writer describes?",
+          "options": [
+            "It gives the reader no trouble.",
+            "It is poetic.",
+            "It is full of facts."
+          ],
+          "answer": 0,
+          "explain_es": "«its chief virtue is that it gives no trouble»."
+        },
+        {
+          "type": "mc",
+          "q": "The comparison with commuter trains emphasises…",
+          "options": [
+            "predictability",
+            "speed",
+            "discomfort"
+          ],
+          "answer": 0,
+          "explain_es": "Puntualidad rutinaria = previsibilidad."
+        },
+        {
+          "type": "tf",
+          "q": "The writer defends obscure writing.",
+          "answer": "F",
+          "explain_es": "«I do not mean to defend obscurity»."
+        },
+        {
+          "type": "mc",
+          "q": "Obscurity, according to the writer, is often a sign of…",
+          "options": [
+            "depth only",
+            "muddle as much as depth",
+            "laziness in readers"
+          ],
+          "answer": 1,
+          "explain_es": "«as often a sign of muddle as of depth»."
+        },
+        {
+          "type": "mc",
+          "q": "Why might a sentence legitimately be difficult?",
+          "options": [
+            "Its thought cannot be broken into smaller pieces.",
+            "The author wants to impress.",
+            "Editors demand it."
+          ],
+          "answer": 0,
+          "explain_es": "«will not survive being broken into smaller pieces»."
+        },
+        {
+          "type": "mc",
+          "q": "What is lost when everything is effortless?",
+          "options": [
+            "elegance",
+            "the reader’s participation",
+            "accuracy"
+          ],
+          "answer": 1,
+          "explain_es": "«the reader’s own participation»."
+        },
+        {
+          "type": "tf",
+          "q": "The writer considers elegance essential.",
+          "answer": "F",
+          "explain_es": "«elegance, which is merely decorative»."
+        },
+        {
+          "type": "mc",
+          "q": "“We remember what we have had to work for” supports the idea that…",
+          "options": [
+            "effort aids retention",
+            "reading should be quick",
+            "short sentences are best"
+          ],
+          "answer": 0,
+          "explain_es": "El esfuerzo fija el recuerdo."
         }
       ]
     },
@@ -2020,6 +2444,26 @@
           "name": "Hannah",
           "voice": "female",
           "accent": "au"
+        },
+        {
+          "name": "Chair",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Dr. Okafor",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Helen",
+          "voice": "female",
+          "accent": "au"
+        },
+        {
+          "name": "Piers",
+          "voice": "male",
+          "accent": "uk"
         }
       ],
       "lines": [
@@ -2082,6 +2526,94 @@
         {
           "s": 0,
           "text": "Hannah Okoye, Rafael Ortega, thank you both. And thank you all for listening."
+        },
+        {
+          "s": 3,
+          "text": "Dr. Okafor, you’ve been rather scathing about what you call the cult of resilience. Would you care to elaborate?"
+        },
+        {
+          "s": 4,
+          "text": "Gladly. My quarrel isn’t with resilience as such, which is plainly a virtue, but with the way it’s been co-opted. When an institution tells its staff to be more resilient, what it’s often saying is that it has no intention of changing the conditions that are wearing them down."
+        },
+        {
+          "s": 3,
+          "text": "That’s a serious charge."
+        },
+        {
+          "s": 4,
+          "text": "It is, and I don’t make it lightly. But look at where the training budgets go. Workshops on coping have multiplied; reviews of workload have not."
+        },
+        {
+          "s": 3,
+          "text": "Might the two not be complementary?"
+        },
+        {
+          "s": 4,
+          "text": "In principle, of course. In practice, the first tends to crowd out the second, because it’s cheaper and it shifts responsibility onto the individual."
+        },
+        {
+          "s": 3,
+          "text": "Some would say you’re encouraging a culture of complaint."
+        },
+        {
+          "s": 4,
+          "text": "I’d say I’m encouraging accuracy about causes. Nobody tells a miner to breathe more resiliently."
+        },
+        {
+          "s": 3,
+          "text": "What would count as evidence that you’re wrong?"
+        },
+        {
+          "s": 4,
+          "text": "If organisations that invest in coping skills also showed falling turnover, I’d reconsider. So far, they don’t."
+        },
+        {
+          "s": 5,
+          "text": "Piers, I gather the restoration has run into trouble."
+        },
+        {
+          "s": 6,
+          "text": "That’s putting it mildly. We stripped back the plaster in the north wing and found the timbers riddled with rot."
+        },
+        {
+          "s": 5,
+          "text": "Is it salvageable?"
+        },
+        {
+          "s": 6,
+          "text": "Just about, though it’ll set us back by a good four months and I shudder to think what it’ll do to the budget."
+        },
+        {
+          "s": 5,
+          "text": "Couldn’t you replace the beams with steel? It would be quicker."
+        },
+        {
+          "s": 6,
+          "text": "It would, and the conservation officer would have my head. Like-for-like oak, or nothing."
+        },
+        {
+          "s": 5,
+          "text": "So where will the money come from?"
+        },
+        {
+          "s": 6,
+          "text": "The trustees have agreed, grudgingly, to release the contingency fund. Beyond that, we’re pinning our hopes on a heritage grant."
+        },
+        {
+          "s": 5,
+          "text": "And if it falls through?"
+        },
+        {
+          "s": 6,
+          "text": "Then the north wing stays shut and we open the rest in spring regardless. Better a partial opening than none."
+        },
+        {
+          "s": 5,
+          "text": "You sound remarkably sanguine."
+        },
+        {
+          "s": 6,
+          "text": "Resigned, more like. With old buildings, the surprises are never pleasant ones."
         }
       ],
       "questions": [
@@ -2162,6 +2694,171 @@
           ],
           "answer": 1,
           "explain_es": "Hannah concluye: “The more powerful the technology, the more we seem to value the things it can't do.”"
+        },
+        {
+          "type": "mc",
+          "q": "What is Dr. Okafor’s attitude to resilience itself?",
+          "options": [
+            "She considers it a virtue.",
+            "She rejects it entirely.",
+            "She has no view."
+          ],
+          "answer": 0,
+          "explain_es": "«which is plainly a virtue»."
+        },
+        {
+          "type": "mc",
+          "q": "What does she object to?",
+          "options": [
+            "the way the idea has been co-opted by institutions",
+            "psychology as a science",
+            "training in general"
+          ],
+          "answer": 0,
+          "explain_es": "«the way it’s been co-opted»."
+        },
+        {
+          "type": "mc",
+          "q": "According to her, telling staff to be resilient often means…",
+          "options": [
+            "conditions will not be changed",
+            "salaries will rise",
+            "jobs will be cut"
+          ],
+          "answer": 0,
+          "explain_es": "«no intention of changing the conditions»."
+        },
+        {
+          "type": "tf",
+          "q": "She says reviews of workload have multiplied.",
+          "answer": "F",
+          "explain_es": "«reviews of workload have not»."
+        },
+        {
+          "type": "mc",
+          "q": "Why does coping training “crowd out” workload reviews?",
+          "options": [
+            "It is cheaper and shifts responsibility to individuals.",
+            "It is required by law.",
+            "Staff prefer it."
+          ],
+          "answer": 0,
+          "explain_es": "«it’s cheaper and it shifts responsibility onto the individual»."
+        },
+        {
+          "type": "mc",
+          "q": "The remark about the miner is meant to show that…",
+          "options": [
+            "some problems lie in conditions, not in attitude",
+            "miners are resilient",
+            "mining is dangerous"
+          ],
+          "answer": 0,
+          "explain_es": "La causa está en el entorno."
+        },
+        {
+          "type": "tf",
+          "q": "She says she is encouraging a culture of complaint.",
+          "answer": "F",
+          "explain_es": "«I’m encouraging accuracy about causes»."
+        },
+        {
+          "type": "mc",
+          "q": "What evidence would make her reconsider?",
+          "options": [
+            "falling staff turnover where coping skills are taught",
+            "higher profits",
+            "more workshops"
+          ],
+          "answer": 0,
+          "explain_es": "«also showed falling turnover»."
+        },
+        {
+          "type": "gap",
+          "q": "ONE word: The chair calls her comments rather ___.",
+          "answer": "scathing",
+          "explain_es": "«rather scathing»."
+        },
+        {
+          "type": "mc",
+          "q": "What problem was discovered?",
+          "options": [
+            "rot in the timbers",
+            "cracks in the stone",
+            "flooding"
+          ],
+          "answer": 0,
+          "explain_es": "«the timbers riddled with rot»."
+        },
+        {
+          "type": "mc",
+          "q": "Where was it found?",
+          "options": [
+            "in the north wing",
+            "in the roof of the chapel",
+            "in the cellar"
+          ],
+          "answer": 0,
+          "explain_es": "«in the north wing»."
+        },
+        {
+          "type": "gap",
+          "q": "The delay will be about ___ months.",
+          "answer": "four",
+          "explain_es": "«a good four months».",
+          "accept": [
+            "4"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "Why can’t the beams be replaced with steel?",
+          "options": [
+            "The conservation officer requires like-for-like oak.",
+            "Steel is too expensive.",
+            "Steel would be too heavy."
+          ],
+          "answer": 0,
+          "explain_es": "«Like-for-like oak, or nothing»."
+        },
+        {
+          "type": "mc",
+          "q": "How did the trustees agree to release the contingency fund?",
+          "options": [
+            "reluctantly",
+            "eagerly",
+            "secretly"
+          ],
+          "answer": 0,
+          "explain_es": "«grudgingly» = a regañadientes."
+        },
+        {
+          "type": "mc",
+          "q": "What are they hoping for beyond that fund?",
+          "options": [
+            "a heritage grant",
+            "a bank loan",
+            "ticket sales"
+          ],
+          "answer": 0,
+          "explain_es": "«pinning our hopes on a heritage grant»."
+        },
+        {
+          "type": "tf",
+          "q": "If the grant is refused, the whole building will stay closed.",
+          "answer": "F",
+          "explain_es": "Abrirán el resto en primavera."
+        },
+        {
+          "type": "mc",
+          "q": "How does Piers describe his own mood?",
+          "options": [
+            "resigned",
+            "sanguine",
+            "furious"
+          ],
+          "answer": 0,
+          "explain_es": "«Resigned, more like»."
         }
       ]
     },

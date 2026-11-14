@@ -1648,3 +1648,18 @@ ANTES, EN ESTA MISMA RAMA
   con tareas en PDF, biblioteca de lecturas y audios con créditos, juegos
   nuevos, Verb Lab ampliado con 250+ verbos académicos C1, más phrasal verbs
   con ejemplos, y subida de audios en Speaking y en el simulador IELTS.
+
+G19 — Estabilidad, juegos y exámenes (noviembre)
+- Datos guardados: lo que viene del dispositivo, de la nube o de una versión anterior solo se acepta
+  si cada lista es lista y cada registro es registro (src/store/safe.ts). La pantalla de error tiene
+  «Try again» y un detalle técnico para fotografiar; los contenidos reintentan con mala red y la
+  página se recarga sola tras un despliegue nuevo.
+- Too Good To Be True: impostora +100, palabra real −50 (sin paso de sinónimo); traducción y
+  sinónimos siempre visibles; apuestas y multiplicadores como en la ruleta; banco ×2,5
+  (impostor-words-2.js).
+- Language Defenders: efectos de impacto y explosión (fx.ts), globos de diálogo en inglés, salida
+  líquida de neón por la tumba, ciudad en ruinas viva detrás del tablero, 6 defensores nuevos
+  (26 en total), corrección de color final, solo escenarios propios y solo música propia (5 pistas).
+- Phrasal Verb Roulette: estilo arcade de la portada en todas las pantallas (roulette.css).
+- Exámenes finales Pre-A1 a C2: 25 preguntas en listening, reading, grammar y vocabulary
+  (tres textos y tres audios por examen).

@@ -1547,7 +1547,7 @@
     ],
     "title": "Parcial final · Nivel C1",
     "intro_es": "Examen integrador de las 12 unidades del nivel C1: patrones verbales, oraciones hendidas, artículos, estilo indirecto y pasiva de reporte, adverbios de oración, relativos, subjuntivo, cláusulas con -ever, voz pasiva y concordancia, adjetivos compuestos e inversión condicional, con el vocabulario de todo el nivel. Evalúa gramática, vocabulario, lectura, escucha, escritura y expresión oral.",
-    "minutes": 90,
+    "minutes": 130,
     "grammar": [
       {
         "type": "mc",
@@ -1694,6 +1694,112 @@
         "q": "as though / He / behaved / nothing / had / happened",
         "answer": "He behaved as though nothing had happened.",
         "explain_es": "“As though” introduce una situación imaginada o irreal; por eso va seguido del pasado perfecto (had happened)."
+      },
+      {
+        "type": "mc",
+        "q": "Not until the results were published ___ the scale of the problem.",
+        "options": [
+          "we realised",
+          "did we realise",
+          "we did realise"
+        ],
+        "answer": 1,
+        "explain_es": "Inversión tras «Not until»."
+      },
+      {
+        "type": "mc",
+        "q": "___ it not been for her advice, I would have accepted the offer.",
+        "options": [
+          "Had",
+          "Would",
+          "Should"
+        ],
+        "answer": 0,
+        "explain_es": "Condicional invertido: Had it not been for."
+      },
+      {
+        "type": "mc",
+        "q": "What I find most irritating ___ the constant interruptions.",
+        "options": [
+          "are",
+          "is",
+          "being"
+        ],
+        "answer": 1,
+        "explain_es": "Oración hendida con «What…»: verbo en singular."
+      },
+      {
+        "type": "mc",
+        "q": "The suspect is thought ___ the country last night.",
+        "options": [
+          "to leave",
+          "to have left",
+          "leaving"
+        ],
+        "answer": 1,
+        "explain_es": "Pasiva de reporte sobre el pasado: to have + participio."
+      },
+      {
+        "type": "mc",
+        "q": "She talks as though she ___ the company.",
+        "options": [
+          "owns",
+          "owned",
+          "had owned"
+        ],
+        "answer": 1,
+        "explain_es": "«As though» + pasado irreal."
+      },
+      {
+        "type": "mc",
+        "q": "So ___ was the damage that the building had to be demolished.",
+        "options": [
+          "extensive",
+          "extensively",
+          "extent"
+        ],
+        "answer": 0,
+        "explain_es": "So + adjetivo + inversión."
+      },
+      {
+        "type": "mc",
+        "q": "The board recommended that he ___ immediately.",
+        "options": [
+          "resigns",
+          "resign",
+          "resigned"
+        ],
+        "answer": 1,
+        "explain_es": "Subjuntivo tras «recommend that»."
+      },
+      {
+        "type": "mc",
+        "q": "I’d sooner you ___ mention this to anyone.",
+        "options": [
+          "didn't",
+          "don't",
+          "wouldn't"
+        ],
+        "answer": 0,
+        "explain_es": "«Would sooner» + sujeto + pasado."
+      },
+      {
+        "type": "gap",
+        "q": "Little ___ she know that her life was about to change.",
+        "answer": "did",
+        "explain_es": "Inversión tras «Little»."
+      },
+      {
+        "type": "transform",
+        "q": "People believe the painting is a fake. → The painting is believed ___ a fake.",
+        "answer": "to be",
+        "explain_es": "Pasiva impersonal: is believed to be."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: No sooner he had sat down than the doorbell rang.",
+        "answer": "No sooner had he sat down than the doorbell rang.",
+        "explain_es": "«No sooner» exige inversión."
       }
     ],
     "vocabulary": [
@@ -1843,12 +1949,127 @@
         "q": "Please don't take everything he says at face ___; he loves to exaggerate.",
         "answer": "value",
         "explain_es": "“To take something at face value” es aceptar algo tal como parece, sin cuestionarlo."
+      },
+      {
+        "type": "mc",
+        "q": "The minister’s remarks ___ a storm of protest.",
+        "options": [
+          "sparked",
+          "sparkled",
+          "spared"
+        ],
+        "answer": 0,
+        "explain_es": "«Spark a protest» = desatar."
+      },
+      {
+        "type": "mc",
+        "q": "Her argument was so ___ that nobody could refute it.",
+        "options": [
+          "compelling",
+          "compulsive",
+          "compulsory"
+        ],
+        "answer": 0,
+        "explain_es": "«Compelling» = convincente."
+      },
+      {
+        "type": "mc",
+        "q": "The report ___ light on the causes of the crisis.",
+        "options": [
+          "sheds",
+          "throws out",
+          "drops"
+        ],
+        "answer": 0,
+        "explain_es": "«Shed light on» = arrojar luz sobre."
+      },
+      {
+        "type": "mc",
+        "q": "He has a ___ memory for faces but forgets every name.",
+        "options": [
+          "remarkable",
+          "remarking",
+          "remarked"
+        ],
+        "answer": 0,
+        "explain_es": "«Remarkable» = extraordinaria."
+      },
+      {
+        "type": "mc",
+        "q": "The two findings are ___ at odds with each other.",
+        "options": [
+          "clearly",
+          "clear",
+          "clearance"
+        ],
+        "answer": 0,
+        "explain_es": "«Be at odds with» = contradecirse."
+      },
+      {
+        "type": "mc",
+        "q": "We must not ___ sight of our original goal.",
+        "options": [
+          "lose",
+          "miss",
+          "drop"
+        ],
+        "answer": 0,
+        "explain_es": "«Lose sight of» = perder de vista."
+      },
+      {
+        "type": "mc",
+        "q": "The decision was taken ___ the grounds of safety.",
+        "options": [
+          "on",
+          "in",
+          "by"
+        ],
+        "answer": 0,
+        "explain_es": "«On the grounds of» = por motivos de."
+      },
+      {
+        "type": "gap",
+        "q": "Noun of «persist»: ___",
+        "answer": "persistence",
+        "explain_es": "Persist → persistence."
+      },
+      {
+        "type": "gap",
+        "q": "The plan fell ___ when the funding was withdrawn.",
+        "answer": "through",
+        "explain_es": "«Fall through» = fracasar.",
+        "accept": [
+          "apart"
+        ]
+      },
+      {
+        "type": "mc",
+        "q": "She is widely ___ as the leading expert in the field.",
+        "options": [
+          "regarded",
+          "regarding",
+          "regardless"
+        ],
+        "answer": 0,
+        "explain_es": "«Be regarded as» = ser considerada."
+      },
+      {
+        "type": "mc",
+        "q": "It’s a ___ area: the law says nothing clear about it.",
+        "options": [
+          "grey",
+          "blank",
+          "dark"
+        ],
+        "answer": 0,
+        "explain_es": "«A grey area» = zona gris."
       }
     ],
     "reading": {
       "title": "Threads of Change",
       "genre": "article",
       "paragraphs": [
+        "## Part 1 · Threads of Change",
         "When Julián Arboleda and Camila Reyes met at a university debate in Barranquilla in 2015, they could hardly have disagreed more. He argued that fashion was a harmless pleasure; she insisted that it was one of the most polluting industries on earth. 'I remember thinking she was arrogant,' Julián admits. 'She probably thought I was shallow.' Yet the conversation continued long after the debate had ended, and within a year the two had founded Hilo, a company that turns plastic waste collected from Caribbean beaches into fabric.",
         "What makes Hilo unusual is not the technology itself, which had already been developed elsewhere, but the way the company has adapted it. Rather than shipping the plastic to factories abroad, Hilo processes it in a converted warehouse near the port, employing more than eighty people from neighbourhoods where unemployment is high. Each of the workers is offered free English and design classes, and a number of former beach collectors now work as supervisors.",
         "The company's commitment goes beyond the factory floor. For every kilo of plastic it buys, Hilo pays collectors a fair price, and it funds the conservation of a stretch of mangroves near Ciénaga, a habitat on which many local fishing families depend. 'Whatever we take from the sea, we try to give something back,' says Camila. The mangroves, which had been on the brink of disappearing, are now slowly recovering.",
@@ -1856,7 +2077,16 @@
         "The strategy worked, though not immediately. Hilo's understated shirts and trousers began to attract a loyal following among young professionals who wanted to dress well without feeding the consumerism they criticised. The real breakthrough came in 2021, when a documentary about ocean plastic, which went on to become one of the most-watched films on a major streaming platform, featured the warehouse in its final scene. Almost overnight, orders multiplied by ten. 'The more people understood the process, the more they wanted to be part of it,' Camila explains.",
         "Not everyone is sold on the idea. Some environmental researchers argue that recycled polyester still releases tiny fibres when it is washed, and that the only truly sustainable garment is the one you already own. Critics have also pointed out that Hilo's prices are well above what most Colombians can afford, which, they say, turns sustainability into a luxury for people with disposable income. Julián does not dismiss these concerns. 'It is essential that we be honest about our limitations,' he says. 'Whoever tells you a product is perfectly green is selling you something.'",
         "Superstition, surprisingly, plays a part in the company's culture. Every new collection is launched on the same date, 14 March, the anniversary of the original debate, and the founders refuse to change it, even when it falls on a weekend. 'It's not that we believe it brings luck,' Camila laughs. 'Well, not entirely.'",
-        "Today Hilo is in the black and expanding into Peru and Mexico. Asked what advice he would give to young entrepreneurs, Julián pauses for a long time. 'Find someone who disagrees with you,' he says eventually. 'Agreeing is comfortable. Disagreeing well is how anything new gets made.'"
+        "Today Hilo is in the black and expanding into Peru and Mexico. Asked what advice he would give to young entrepreneurs, Julián pauses for a long time. 'Find someone who disagrees with you,' he says eventually. 'Agreeing is comfortable. Disagreeing well is how anything new gets made.'",
+        "## Part 2 · The Myth of Multitasking",
+        "Few abilities are as widely admired in the modern workplace as multitasking, and few rest on shakier foundations. What we take to be doing several things at once is, according to cognitive scientists, nothing more than switching rapidly between them — and every switch carries a cost.",
+        "That cost has been measured. In one frequently cited experiment, participants who were interrupted by messages while solving problems took up to forty per cent longer and made considerably more errors. More troubling still, those who considered themselves skilled multitaskers performed worst of all, apparently because confidence had blunted their awareness of their own lapses.",
+        "Why, then, does the habit persist? Part of the answer lies in how it feels. Each new notification delivers a small reward, so that being busy is easily mistaken for being productive. Organisations compound the problem by praising constant availability, as though replying within seconds were evidence of commitment rather than distraction.",
+        "None of this means that attention cannot be trained. Protecting even ninety minutes a day from interruption has been shown to restore much of what is lost. The obstacle is seldom technological; it is the fear of appearing unresponsive in a culture that equates speed with competence.",
+        "## Part 3 · Whose Words? On Translating Poetry",
+        "It is often said that poetry is what gets lost in translation. The remark, usually attributed to Robert Frost, has been repeated so often that its pessimism passes for wisdom. Yet anyone who has been moved by a poem written in a language they cannot read has reason to doubt it.",
+        "The translator of verse is confronted with choices that the translator of a contract is spared. To preserve the rhyme is, more often than not, to distort the sense; to preserve the sense is to flatten the music. What emerges is inevitably a new poem, answerable to the original but not identical with it.",
+        "Rather than lament this, we might regard it as the condition of all reading. No two readers of the same language hear a line in quite the same way. Translation merely makes visible a gap that was there all along — and, at its best, builds something worth having on the far side of it."
       ],
       "glossary": [
         [
@@ -1882,6 +2112,30 @@
         [
           "in the black",
           "con ganancias"
+        ],
+        [
+          "shakier",
+          "más endebles"
+        ],
+        [
+          "blunted",
+          "embotado"
+        ],
+        [
+          "compound",
+          "agravan"
+        ],
+        [
+          "verse",
+          "verso"
+        ],
+        [
+          "flatten",
+          "aplanar"
+        ],
+        [
+          "lament",
+          "lamentar"
         ]
       ],
       "questions": [
@@ -1950,6 +2204,171 @@
           "q": "Julián's advice to young entrepreneurs is to find someone who ___ with them.",
           "answer": "disagrees",
           "explain_es": "Julián dice: “Find someone who disagrees with you.”"
+        },
+        {
+          "type": "mc",
+          "q": "According to cognitive scientists, multitasking is really…",
+          "options": [
+            "doing several things simultaneously",
+            "switching rapidly between tasks",
+            "a rare natural talent"
+          ],
+          "answer": 1,
+          "explain_es": "«nothing more than switching rapidly between them»."
+        },
+        {
+          "type": "gap",
+          "q": "Interrupted participants took up to ___ per cent longer.",
+          "answer": "forty",
+          "explain_es": "«up to forty per cent longer».",
+          "accept": [
+            "40"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "Who performed worst in the experiment?",
+          "options": [
+            "those who never multitask",
+            "those who saw themselves as skilled multitaskers",
+            "older participants"
+          ],
+          "answer": 1,
+          "explain_es": "«those who considered themselves skilled multitaskers performed worst»."
+        },
+        {
+          "type": "mc",
+          "q": "Why did they perform so badly, according to the text?",
+          "options": [
+            "They were tired.",
+            "Confidence made them less aware of their mistakes.",
+            "They ignored the instructions."
+          ],
+          "answer": 1,
+          "explain_es": "«confidence had blunted their awareness of their own lapses»."
+        },
+        {
+          "type": "tf",
+          "q": "The writer suggests that feeling busy is the same as being productive.",
+          "answer": "F",
+          "explain_es": "«being busy is easily mistaken for being productive»."
+        },
+        {
+          "type": "mc",
+          "q": "How do organisations make things worse?",
+          "options": [
+            "by banning phones",
+            "by praising constant availability",
+            "by reducing salaries"
+          ],
+          "answer": 1,
+          "explain_es": "«praising constant availability»."
+        },
+        {
+          "type": "mc",
+          "q": "What amount of protected time is said to help?",
+          "options": [
+            "ninety minutes a day",
+            "four hours a week",
+            "one day a month"
+          ],
+          "answer": 0,
+          "explain_es": "«ninety minutes a day»."
+        },
+        {
+          "type": "tf",
+          "q": "The main obstacle to focused work is technological.",
+          "answer": "F",
+          "explain_es": "«The obstacle is seldom technological»."
+        },
+        {
+          "type": "mc",
+          "q": "What does the culture described equate with competence?",
+          "options": [
+            "speed",
+            "accuracy",
+            "creativity"
+          ],
+          "answer": 0,
+          "explain_es": "«equates speed with competence»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the writer’s attitude to Frost’s remark?",
+          "options": [
+            "full agreement",
+            "scepticism",
+            "indifference"
+          ],
+          "answer": 1,
+          "explain_es": "«has reason to doubt it»."
+        },
+        {
+          "type": "mc",
+          "q": "“Its pessimism passes for wisdom” means that the remark…",
+          "options": [
+            "is wrongly taken to be wise",
+            "is truly wise",
+            "is forgotten"
+          ],
+          "answer": 0,
+          "explain_es": "«Pass for» = ser tomado por."
+        },
+        {
+          "type": "mc",
+          "q": "What is the translator of a contract “spared”?",
+          "options": [
+            "difficult choices about rhyme and music",
+            "legal responsibility",
+            "long hours"
+          ],
+          "answer": 0,
+          "explain_es": "Las decisiones que sí enfrenta quien traduce verso."
+        },
+        {
+          "type": "tf",
+          "q": "Preserving the rhyme usually keeps the meaning intact.",
+          "answer": "F",
+          "explain_es": "«To preserve the rhyme is… to distort the sense»."
+        },
+        {
+          "type": "mc",
+          "q": "A translated poem is described as…",
+          "options": [
+            "identical to the original",
+            "a new poem answerable to the original",
+            "a failure"
+          ],
+          "answer": 1,
+          "explain_es": "«a new poem, answerable to the original»."
+        },
+        {
+          "type": "mc",
+          "q": "According to the writer, two readers of the same language…",
+          "options": [
+            "understand a line identically",
+            "never hear a line in quite the same way",
+            "cannot discuss poems"
+          ],
+          "answer": 1,
+          "explain_es": "«No two readers… hear a line in quite the same way»."
+        },
+        {
+          "type": "mc",
+          "q": "What does translation “make visible”?",
+          "options": [
+            "a gap that always existed",
+            "the translator’s mistakes",
+            "the poet’s biography"
+          ],
+          "answer": 0,
+          "explain_es": "«a gap that was there all along»."
+        },
+        {
+          "type": "tf",
+          "q": "The writer ends on a hopeful note about translation.",
+          "answer": "T",
+          "explain_es": "«builds something worth having on the far side of it»."
         }
       ]
     },
@@ -1971,6 +2390,26 @@
           "name": "Zoe",
           "voice": "female",
           "accent": "au"
+        },
+        {
+          "name": "Presenter",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Prof. Lang",
+          "voice": "male",
+          "accent": "us"
+        },
+        {
+          "name": "Irene",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Tom",
+          "voice": "male",
+          "accent": "uk"
         }
       ],
       "lines": [
@@ -2049,6 +2488,90 @@
         {
           "s": 2,
           "text": "Thanks for having us."
+        },
+        {
+          "s": 3,
+          "text": "Professor Lang, your new book argues that cities should be designed around boredom. That sounds rather perverse."
+        },
+        {
+          "s": 4,
+          "text": "It’s meant to provoke, I admit. What I’m really arguing is that we’ve engineered every idle moment out of urban life, and that we’re the poorer for it."
+        },
+        {
+          "s": 3,
+          "text": "In what sense?"
+        },
+        {
+          "s": 4,
+          "text": "Take the bench. Benches have been quietly disappearing from public spaces, largely because they’re seen as encouraging loitering. Yet a place where nobody lingers is a place where nobody talks to strangers."
+        },
+        {
+          "s": 3,
+          "text": "Isn’t that simply nostalgia?"
+        },
+        {
+          "s": 4,
+          "text": "I’d resist that. The data are fairly robust: neighbourhoods with more places to sit report markedly higher levels of trust."
+        },
+        {
+          "s": 3,
+          "text": "Cause or correlation?"
+        },
+        {
+          "s": 4,
+          "text": "A fair challenge, and I wouldn’t claim certainty. But where benches have been reinstated, the effect has followed within about two years."
+        },
+        {
+          "s": 3,
+          "text": "What would you have planners do tomorrow?"
+        },
+        {
+          "s": 4,
+          "text": "Start small. Widen pavements, slow traffic, and stop treating every square metre as something that must earn its keep."
+        },
+        {
+          "s": 5,
+          "text": "Tom, did you get round to reading the proposal?"
+        },
+        {
+          "s": 6,
+          "text": "I did, and I have to say I’m in two minds. The numbers add up, but the timeline strikes me as wildly optimistic."
+        },
+        {
+          "s": 5,
+          "text": "I thought you might say that. The eight-month schedule was the client’s condition, not our choice."
+        },
+        {
+          "s": 6,
+          "text": "Then we ought to be upfront about the risk. Were we to miss the deadline, the penalty clause would wipe out our margin."
+        },
+        {
+          "s": 5,
+          "text": "What if we brought in the Lisbon team?"
+        },
+        {
+          "s": 6,
+          "text": "That would help, though it’s hardly a cure-all. They’d need at least six weeks to get up to speed."
+        },
+        {
+          "s": 5,
+          "text": "So you’d turn it down?"
+        },
+        {
+          "s": 6,
+          "text": "Not necessarily. I’d sign provided the penalty were capped at ten per cent."
+        },
+        {
+          "s": 5,
+          "text": "They may not budge on that."
+        },
+        {
+          "s": 6,
+          "text": "Then, reluctantly, I’d walk away. I’d rather lose a contract than our reputation."
+        },
+        {
+          "s": 5,
+          "text": "Fair enough. I’ll put that to them on Monday."
         }
       ],
       "questions": [
@@ -2128,6 +2651,174 @@
           ],
           "answer": 1,
           "explain_es": "Walsh responde: “Listen more than you lecture.”"
+        },
+        {
+          "type": "mc",
+          "q": "How does the presenter first react to the book’s argument?",
+          "options": [
+            "She finds it strange.",
+            "She fully agrees.",
+            "She hasn’t read it."
+          ],
+          "answer": 0,
+          "explain_es": "«That sounds rather perverse»."
+        },
+        {
+          "type": "tf",
+          "q": "Professor Lang admits the title is deliberately provocative.",
+          "answer": "T",
+          "explain_es": "«It’s meant to provoke, I admit»."
+        },
+        {
+          "type": "mc",
+          "q": "What has been removed from urban life, according to him?",
+          "options": [
+            "idle moments",
+            "public transport",
+            "green areas"
+          ],
+          "answer": 0,
+          "explain_es": "«engineered every idle moment out of urban life»."
+        },
+        {
+          "type": "mc",
+          "q": "Why have benches been disappearing?",
+          "options": [
+            "They are expensive.",
+            "They are thought to encourage loitering.",
+            "Nobody uses them."
+          ],
+          "answer": 1,
+          "explain_es": "«seen as encouraging loitering»."
+        },
+        {
+          "type": "mc",
+          "q": "What do neighbourhoods with more places to sit report?",
+          "options": [
+            "higher levels of trust",
+            "more crime",
+            "higher rents"
+          ],
+          "answer": 0,
+          "explain_es": "«markedly higher levels of trust»."
+        },
+        {
+          "type": "tf",
+          "q": "He claims to be certain that benches cause the increase in trust.",
+          "answer": "F",
+          "explain_es": "«I wouldn’t claim certainty»."
+        },
+        {
+          "type": "gap",
+          "q": "Where benches were reinstated, the effect followed within about ___ years.",
+          "answer": "two",
+          "explain_es": "«within about two years».",
+          "accept": [
+            "2"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "Which of these does he NOT recommend?",
+          "options": [
+            "widening pavements",
+            "slowing traffic",
+            "building more car parks"
+          ],
+          "answer": 2,
+          "explain_es": "Recomienda aceras más anchas y tráfico lento."
+        },
+        {
+          "type": "mc",
+          "q": "“Earn its keep” here means that every space must…",
+          "options": [
+            "be profitable",
+            "be clean",
+            "be guarded"
+          ],
+          "answer": 0,
+          "explain_es": "«Earn its keep» = justificarse económicamente."
+        },
+        {
+          "type": "mc",
+          "q": "How does Tom feel about the proposal?",
+          "options": [
+            "undecided",
+            "enthusiastic",
+            "hostile"
+          ],
+          "answer": 0,
+          "explain_es": "«I’m in two minds»."
+        },
+        {
+          "type": "mc",
+          "q": "What worries him most?",
+          "options": [
+            "the budget",
+            "the timeline",
+            "the client’s reputation"
+          ],
+          "answer": 1,
+          "explain_es": "«the timeline strikes me as wildly optimistic»."
+        },
+        {
+          "type": "gap",
+          "q": "The schedule is ___ months.",
+          "answer": "eight",
+          "explain_es": "«The eight-month schedule».",
+          "accept": [
+            "8"
+          ]
+        },
+        {
+          "type": "tf",
+          "q": "The schedule was chosen by Irene and Tom’s company.",
+          "answer": "F",
+          "explain_es": "«the client’s condition, not our choice»."
+        },
+        {
+          "type": "mc",
+          "q": "What would happen if they missed the deadline?",
+          "options": [
+            "The penalty would wipe out their margin.",
+            "Nothing serious.",
+            "They would get an extension."
+          ],
+          "answer": 0,
+          "explain_es": "«the penalty clause would wipe out our margin»."
+        },
+        {
+          "type": "mc",
+          "q": "How long would the Lisbon team need to get up to speed?",
+          "options": [
+            "two weeks",
+            "at least six weeks",
+            "eight months"
+          ],
+          "answer": 1,
+          "explain_es": "«at least six weeks»."
+        },
+        {
+          "type": "mc",
+          "q": "Under what condition would Tom sign?",
+          "options": [
+            "if the penalty were capped at ten per cent",
+            "if the price were doubled",
+            "if Lisbon led the project"
+          ],
+          "answer": 0,
+          "explain_es": "«provided the penalty were capped at ten per cent»."
+        },
+        {
+          "type": "mc",
+          "q": "What does Tom value above the contract?",
+          "options": [
+            "their reputation",
+            "the client’s friendship",
+            "a quick profit"
+          ],
+          "answer": 0,
+          "explain_es": "«I’d rather lose a contract than our reputation»."
         }
       ]
     },

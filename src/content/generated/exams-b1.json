@@ -2043,7 +2043,7 @@
     ],
     "title": "Parcial final · Nivel B1",
     "intro_es": "Evalúa todo el nivel B1 (unidades 1 a 16): cláusulas relativas, narración en pasado, peticiones, la pasiva, causativa, futuro, condicionales, modales en pasado, tag questions, logros y metas. Incluye las cuatro habilidades, vocabulario y gramática.",
-    "minutes": 85,
+    "minutes": 125,
     "grammar": [
       {
         "type": "mc",
@@ -2200,6 +2200,115 @@
           "'s been working"
         ],
         "explain_es": "Con \"since\" y un periodo que sigue abierto se usa el present perfect: \"has worked\" (o \"has been working\")."
+      },
+      {
+        "type": "mc",
+        "q": "By the time we arrived, the film ___.",
+        "options": [
+          "already started",
+          "had already started",
+          "has already started"
+        ],
+        "answer": 1,
+        "explain_es": "Acción anterior a otra pasada: past perfect."
+      },
+      {
+        "type": "mc",
+        "q": "If I ___ more time, I would learn to play the guitar.",
+        "options": [
+          "have",
+          "had",
+          "would have"
+        ],
+        "answer": 1,
+        "explain_es": "Segundo condicional: if + pasado."
+      },
+      {
+        "type": "mc",
+        "q": "The man ___ car was stolen is my neighbour.",
+        "options": [
+          "who",
+          "whose",
+          "which"
+        ],
+        "answer": 1,
+        "explain_es": "Posesión en relativas: «whose»."
+      },
+      {
+        "type": "mc",
+        "q": "I’m not used to ___ so early.",
+        "options": [
+          "get up",
+          "getting up",
+          "got up"
+        ],
+        "answer": 1,
+        "explain_es": "«Be used to» + -ing."
+      },
+      {
+        "type": "mc",
+        "q": "She suggested ___ a taxi.",
+        "options": [
+          "to take",
+          "taking",
+          "take"
+        ],
+        "answer": 1,
+        "explain_es": "«Suggest» + -ing."
+      },
+      {
+        "type": "mc",
+        "q": "You ___ have told me! I would have helped.",
+        "options": [
+          "should",
+          "must",
+          "can"
+        ],
+        "answer": 0,
+        "explain_es": "Crítica sobre el pasado: «should have»."
+      },
+      {
+        "type": "mc",
+        "q": "The report ___ by Friday.",
+        "options": [
+          "must finish",
+          "must be finished",
+          "must be finishing"
+        ],
+        "answer": 1,
+        "explain_es": "Pasiva con modal: must be + participio."
+      },
+      {
+        "type": "mc",
+        "q": "He’s been working here ___ three years.",
+        "options": [
+          "since",
+          "for",
+          "during"
+        ],
+        "answer": 1,
+        "explain_es": "«For» + duración."
+      },
+      {
+        "type": "gap",
+        "q": "I wish I ___ (can) speak French.",
+        "answer": "could",
+        "explain_es": "«Wish» + pasado para deseos presentes."
+      },
+      {
+        "type": "transform",
+        "q": "“Don’t be late,” she told us. → She told us ___ late.",
+        "answer": "not to be",
+        "explain_es": "Orden negativa indirecta: not + to + verbo."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: I look forward to see you soon.",
+        "answer": "I look forward to seeing you soon.",
+        "explain_es": "«Look forward to» + -ing.",
+        "accept": [
+          "seeing"
+        ]
       }
     ],
     "vocabulary": [
@@ -2355,18 +2464,139 @@
         "q": "I'd like to bring ___ an important point at the next meeting.",
         "answer": "up",
         "explain_es": "\"To bring up\" es plantear un tema para discutirlo."
+      },
+      {
+        "type": "mc",
+        "q": "I can’t ___ up with this noise any longer!",
+        "options": [
+          "put",
+          "get",
+          "keep"
+        ],
+        "answer": 0,
+        "explain_es": "«Put up with» = aguantar."
+      },
+      {
+        "type": "mc",
+        "q": "She ___ her job to travel around the world.",
+        "options": [
+          "quit",
+          "fired",
+          "retired"
+        ],
+        "answer": 0,
+        "explain_es": "«Quit a job» = renunciar."
+      },
+      {
+        "type": "mc",
+        "q": "The company is going to ___ fifty new employees.",
+        "options": [
+          "hire",
+          "fire",
+          "rent"
+        ],
+        "answer": 0,
+        "explain_es": "«Hire» = contratar."
+      },
+      {
+        "type": "mc",
+        "q": "It was a ___ decision; we needed more time to think.",
+        "options": [
+          "hasty",
+          "wise",
+          "patient"
+        ],
+        "answer": 0,
+        "explain_es": "«Hasty» = apresurada."
+      },
+      {
+        "type": "mc",
+        "q": "He’s very ___; he never gets angry with the children.",
+        "options": [
+          "patient",
+          "stubborn",
+          "moody"
+        ],
+        "answer": 0,
+        "explain_es": "«Patient» = paciente."
+      },
+      {
+        "type": "mc",
+        "q": "We need to ___ a solution before Monday.",
+        "options": [
+          "come up with",
+          "come across",
+          "come down"
+        ],
+        "answer": 0,
+        "explain_es": "«Come up with» = idear."
+      },
+      {
+        "type": "mc",
+        "q": "Prices have ___ sharply this year.",
+        "options": [
+          "risen",
+          "raised",
+          "grown up"
+        ],
+        "answer": 0,
+        "explain_es": "«Rise – rose – risen» (sin objeto)."
+      },
+      {
+        "type": "gap",
+        "q": "She takes ___ her mother: they both have the same smile.",
+        "answer": "after",
+        "explain_es": "«Take after» = parecerse a."
+      },
+      {
+        "type": "gap",
+        "q": "The opposite of «success» is ___.",
+        "answer": "failure",
+        "explain_es": "«Failure» = fracaso."
+      },
+      {
+        "type": "mc",
+        "q": "I’m ___ of spiders. I can’t even look at them.",
+        "options": [
+          "terrified",
+          "fond",
+          "keen"
+        ],
+        "answer": 0,
+        "explain_es": "«Terrified of» = aterrorizado."
+      },
+      {
+        "type": "mc",
+        "q": "Could you ___ the meeting to next week?",
+        "options": [
+          "postpone",
+          "attend",
+          "cancel out"
+        ],
+        "answer": 0,
+        "explain_es": "«Postpone» = aplazar."
       }
     ],
     "reading": {
       "title": "From Broken Bikes to a Business",
       "genre": "interview",
       "paragraphs": [
+        "## Part 1 · From Broken Bikes to a Business",
         "Luisa Castaño, 34, runs ReCiclo, a workshop in Pereira that repairs old bicycles and gives them to students who live far from their schools. We asked her how it all started.",
         "How did the idea come to you? \"I was working as an accountant in 2017 when my bike was stolen. By the time the police called me, I had already bought a second-hand one, but it kept breaking down. The chain was loose and both tyres needed replacing. I decided to learn how to fix it myself by watching videos online. Repairing that bike was much more satisfying than doing spreadsheets!\"",
         "What happened next? \"Neighbours started asking me, 'Would you mind looking at my bike?' Soon I was spending every weekend in my garage. In 2019 I left my job, which was a scary decision. In hindsight, I should have saved more money first. If I had planned better, the first year wouldn't have been so hard.\"",
         "How does the process work? \"First, old bikes are donated by families or collected from the city's recycling centre. Then each one is inspected, cleaned and repaired. Parts that can't be repaired are sold as scrap metal, so that nothing is wasted. Finally, the bikes are given to students whose schools are more than three kilometres from home.\"",
         "What have you achieved so far? \"We have repaired more than 1,500 bikes since we opened, and last year we trained twelve young mechanics. Thanks to a grant from the local government, we're having a new workshop built near the bus terminal. It will be twice as big as the one we use now.\"",
-        "What are your plans? \"By 2028, we'll have opened a second workshop in Manizales, and I'd like to have taught a thousand people to repair their own bikes. It's frustrating when people throw away things that could be fixed, isn't it? Personally, I'd rather repair something than buy a new one any day.\""
+        "What are your plans? \"By 2028, we'll have opened a second workshop in Manizales, and I'd like to have taught a thousand people to repair their own bikes. It's frustrating when people throw away things that could be fixed, isn't it? Personally, I'd rather repair something than buy a new one any day.\"",
+        "## Part 2 · The Town That Banned Cars",
+        "Ten years ago, the centre of Salento was full of traffic. Tourists who had come for the coffee farms spent hours looking for parking, and residents complained that the air smelled of petrol. Something had to be done.",
+        "In 2016 the mayor proposed closing the main square to cars at weekends. Shop owners were furious: they were afraid that customers would stop coming. A few even threatened to close their businesses. Despite the protests, a six-month trial was approved.",
+        "The results surprised everyone. Because people could walk freely, they stayed longer and spent more. Sales in the square rose by almost a third, and noise levels fell. Musicians and artists, who had never had space before, began to perform there.",
+        "Today the ban applies every day, and other towns have copied the idea. “If we had listened to our fears, nothing would have changed,” says Clara Ossa, who runs a café on the square and used to be one of the loudest opponents.",
+        "## Part 3 · Letter to the Editor: Homework",
+        "I am writing in response to last week’s article, which claimed that homework should be abolished. As a teacher who has been working in secondary schools for fifteen years, I would like to offer a different view.",
+        "I agree that some homework is pointless. Copying pages from a textbook teaches nothing. However, practising at home what has been studied in class helps students remember it. Research has shown that short, regular tasks are far more effective than long ones.",
+        "The real problem is not homework itself but the way it is set. If teachers coordinated with each other, students would not receive five assignments on the same day. I would rather see less homework of better quality than none at all."
       ],
       "glossary": [
         [
@@ -2392,6 +2622,30 @@
         [
           "grant",
           "subsidio"
+        ],
+        [
+          "mayor",
+          "alcalde"
+        ],
+        [
+          "trial",
+          "prueba piloto"
+        ],
+        [
+          "ban",
+          "prohibición"
+        ],
+        [
+          "abolished",
+          "eliminada"
+        ],
+        [
+          "pointless",
+          "inútil"
+        ],
+        [
+          "assignments",
+          "tareas"
         ]
       ],
       "questions": [
@@ -2460,6 +2714,169 @@
           "q": "By 2028, Luisa hopes ReCiclo will have opened a second workshop in ___.",
           "answer": "Manizales",
           "explain_es": "Luisa dice: \"By 2028, we'll have opened a second workshop in Manizales\"."
+        },
+        {
+          "type": "mc",
+          "q": "What was the main problem ten years ago?",
+          "options": [
+            "too few tourists",
+            "too much traffic",
+            "expensive coffee"
+          ],
+          "answer": 1,
+          "explain_es": "«the centre of Salento was full of traffic»."
+        },
+        {
+          "type": "mc",
+          "q": "What did the mayor propose?",
+          "options": [
+            "building a car park",
+            "closing the square to cars at weekends",
+            "charging tourists"
+          ],
+          "answer": 1,
+          "explain_es": "«closing the main square to cars at weekends»."
+        },
+        {
+          "type": "tf",
+          "q": "Shop owners supported the idea from the start.",
+          "answer": "F",
+          "explain_es": "«Shop owners were furious»."
+        },
+        {
+          "type": "gap",
+          "q": "A ___-month trial was approved.",
+          "answer": "six",
+          "explain_es": "«a six-month trial».",
+          "accept": [
+            "6"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "What happened to sales in the square?",
+          "options": [
+            "They fell.",
+            "They stayed the same.",
+            "They rose by almost a third."
+          ],
+          "answer": 2,
+          "explain_es": "«Sales in the square rose by almost a third»."
+        },
+        {
+          "type": "mc",
+          "q": "Why did people spend more?",
+          "options": [
+            "Prices were lower.",
+            "They stayed longer.",
+            "There were more shops."
+          ],
+          "answer": 1,
+          "explain_es": "«they stayed longer and spent more»."
+        },
+        {
+          "type": "tf",
+          "q": "Artists had always performed in the square.",
+          "answer": "F",
+          "explain_es": "«who had never had space before»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the situation today?",
+          "options": [
+            "The ban applies every day.",
+            "The ban was cancelled.",
+            "Cars are allowed at weekends."
+          ],
+          "answer": 0,
+          "explain_es": "«Today the ban applies every day»."
+        },
+        {
+          "type": "mc",
+          "q": "What do we learn about Clara Ossa?",
+          "options": [
+            "She was always in favour.",
+            "She used to be against the ban.",
+            "She is the mayor."
+          ],
+          "answer": 1,
+          "explain_es": "«used to be one of the loudest opponents»."
+        },
+        {
+          "type": "mc",
+          "q": "Why is the writer writing?",
+          "options": [
+            "to complain about a student",
+            "to respond to an article",
+            "to apply for a job"
+          ],
+          "answer": 1,
+          "explain_es": "«in response to last week’s article»."
+        },
+        {
+          "type": "gap",
+          "q": "The writer has been teaching for ___ years.",
+          "answer": "fifteen",
+          "explain_es": "«for fifteen years».",
+          "accept": [
+            "15"
+          ]
+        },
+        {
+          "type": "tf",
+          "q": "The writer thinks all homework is useful.",
+          "answer": "F",
+          "explain_es": "«I agree that some homework is pointless»."
+        },
+        {
+          "type": "mc",
+          "q": "Which kind of homework does the writer criticise?",
+          "options": [
+            "copying pages from a textbook",
+            "short regular tasks",
+            "practising class content"
+          ],
+          "answer": 0,
+          "explain_es": "«Copying pages from a textbook teaches nothing»."
+        },
+        {
+          "type": "mc",
+          "q": "According to research, which tasks work best?",
+          "options": [
+            "long ones",
+            "short, regular ones",
+            "group projects"
+          ],
+          "answer": 1,
+          "explain_es": "«short, regular tasks are far more effective»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the real problem, in the writer’s opinion?",
+          "options": [
+            "homework itself",
+            "the way homework is set",
+            "lazy students"
+          ],
+          "answer": 1,
+          "explain_es": "«the way it is set»."
+        },
+        {
+          "type": "tf",
+          "q": "Teachers currently coordinate their assignments well.",
+          "answer": "F",
+          "explain_es": "«If teachers coordinated…» indica que no lo hacen."
+        },
+        {
+          "type": "mc",
+          "q": "What does the writer prefer?",
+          "options": [
+            "no homework",
+            "more homework",
+            "less homework of better quality"
+          ],
+          "answer": 2,
+          "explain_es": "«less homework of better quality than none at all»."
         }
       ]
     },
@@ -2476,6 +2893,26 @@
           "name": "Liam",
           "voice": "male",
           "accent": "uk"
+        },
+        {
+          "name": "Interviewer",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Camilo",
+          "voice": "male",
+          "accent": "us"
+        },
+        {
+          "name": "Marta",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Ben",
+          "voice": "male",
+          "accent": "au"
         }
       ],
       "lines": [
@@ -2550,6 +2987,98 @@
         {
           "s": 1,
           "text": "Believe me, I will."
+        },
+        {
+          "s": 2,
+          "text": "Camilo, thanks for coming in. Could you tell me why you applied for this position?"
+        },
+        {
+          "s": 3,
+          "text": "Of course. I’ve been working as a sales assistant for four years, and I feel ready for more responsibility."
+        },
+        {
+          "s": 2,
+          "text": "I see. What would you say is your greatest strength?"
+        },
+        {
+          "s": 3,
+          "text": "I’m good at solving problems. Last year a supplier let us down, and I managed to find a new one within two days."
+        },
+        {
+          "s": 2,
+          "text": "Impressive. And a weakness?"
+        },
+        {
+          "s": 3,
+          "text": "I used to find it hard to delegate. I’ve been working on that by training two new colleagues."
+        },
+        {
+          "s": 2,
+          "text": "This job involves travelling, sometimes at short notice. Would that be a problem?"
+        },
+        {
+          "s": 3,
+          "text": "Not at all. I’d actually enjoy it, as long as I know the schedule a few days in advance."
+        },
+        {
+          "s": 2,
+          "text": "If you were offered the job, when could you start?"
+        },
+        {
+          "s": 3,
+          "text": "I’d have to give one month’s notice, so at the beginning of March."
+        },
+        {
+          "s": 2,
+          "text": "Fine. We’ll let you know by Friday."
+        },
+        {
+          "s": 3,
+          "text": "Thank you. I look forward to hearing from you."
+        },
+        {
+          "s": 4,
+          "text": "Ben, you look exhausted. What happened?"
+        },
+        {
+          "s": 5,
+          "text": "My flight was cancelled last night, so I had to sleep at the airport."
+        },
+        {
+          "s": 4,
+          "text": "Oh no! Why was it cancelled?"
+        },
+        {
+          "s": 5,
+          "text": "Because of the fog. If I’d taken the earlier flight, I would have arrived on time."
+        },
+        {
+          "s": 4,
+          "text": "Did the airline give you anything?"
+        },
+        {
+          "s": 5,
+          "text": "Just a sandwich voucher. I asked whether they could put me in a hotel, but they said it wasn’t their responsibility."
+        },
+        {
+          "s": 4,
+          "text": "That’s outrageous. You should have complained."
+        },
+        {
+          "s": 5,
+          "text": "I did. I’ve already filled in a claim form. Apparently I’ll get a refund within thirty days."
+        },
+        {
+          "s": 4,
+          "text": "Well, at least you made it to the wedding."
+        },
+        {
+          "s": 5,
+          "text": "Only just! I got to the church five minutes before it started. I hadn’t even had time to change."
+        },
+        {
+          "s": 4,
+          "text": "Next time, take the train!"
         }
       ],
       "questions": [
@@ -2627,6 +3156,174 @@
           ],
           "answer": 3,
           "explain_es": "Sofía dice: \"It's the custom to take something small, like flowers or a cake.\""
+        },
+        {
+          "type": "mc",
+          "q": "What is this conversation?",
+          "options": [
+            "a job interview",
+            "a sales call",
+            "a complaint"
+          ],
+          "answer": 0,
+          "explain_es": "Hablan del puesto y de sus fortalezas."
+        },
+        {
+          "type": "gap",
+          "q": "Camilo has been a sales assistant for ___ years.",
+          "answer": "four",
+          "explain_es": "«for four years».",
+          "accept": [
+            "4"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "What is his greatest strength?",
+          "options": [
+            "solving problems",
+            "speaking languages",
+            "working alone"
+          ],
+          "answer": 0,
+          "explain_es": "«I’m good at solving problems»."
+        },
+        {
+          "type": "mc",
+          "q": "What did he do when a supplier let them down?",
+          "options": [
+            "He complained.",
+            "He found a new one in two days.",
+            "He cancelled the order."
+          ],
+          "answer": 1,
+          "explain_es": "«find a new one within two days»."
+        },
+        {
+          "type": "mc",
+          "q": "What weakness does he mention?",
+          "options": [
+            "arriving late",
+            "delegating",
+            "using computers"
+          ],
+          "answer": 1,
+          "explain_es": "«I used to find it hard to delegate»."
+        },
+        {
+          "type": "tf",
+          "q": "Camilo would refuse to travel for work.",
+          "answer": "F",
+          "explain_es": "«Not at all. I’d actually enjoy it»."
+        },
+        {
+          "type": "mc",
+          "q": "What condition does he mention about travelling?",
+          "options": [
+            "knowing the schedule in advance",
+            "travelling with a colleague",
+            "a higher salary"
+          ],
+          "answer": 0,
+          "explain_es": "«as long as I know the schedule a few days in advance»."
+        },
+        {
+          "type": "mc",
+          "q": "When could he start?",
+          "options": [
+            "immediately",
+            "at the beginning of March",
+            "in a week"
+          ],
+          "answer": 1,
+          "explain_es": "«at the beginning of March»."
+        },
+        {
+          "type": "mc",
+          "q": "When will he get an answer?",
+          "options": [
+            "by Friday",
+            "in a month",
+            "tomorrow"
+          ],
+          "answer": 0,
+          "explain_es": "«We’ll let you know by Friday»."
+        },
+        {
+          "type": "mc",
+          "q": "Why is Ben tired?",
+          "options": [
+            "He worked all night.",
+            "He slept at the airport.",
+            "He drove for hours."
+          ],
+          "answer": 1,
+          "explain_es": "«I had to sleep at the airport»."
+        },
+        {
+          "type": "mc",
+          "q": "Why was the flight cancelled?",
+          "options": [
+            "a strike",
+            "fog",
+            "a technical problem"
+          ],
+          "answer": 1,
+          "explain_es": "«Because of the fog»."
+        },
+        {
+          "type": "tf",
+          "q": "Ben took the earlier flight.",
+          "answer": "F",
+          "explain_es": "«If I’d taken the earlier flight…» — no lo tomó."
+        },
+        {
+          "type": "mc",
+          "q": "What did the airline give him?",
+          "options": [
+            "a hotel room",
+            "a sandwich voucher",
+            "nothing"
+          ],
+          "answer": 1,
+          "explain_es": "«Just a sandwich voucher»."
+        },
+        {
+          "type": "mc",
+          "q": "What has Ben already done?",
+          "options": [
+            "filled in a claim form",
+            "received a refund",
+            "written a review"
+          ],
+          "answer": 0,
+          "explain_es": "«I’ve already filled in a claim form»."
+        },
+        {
+          "type": "gap",
+          "q": "He will get a refund within ___ days.",
+          "answer": "thirty",
+          "explain_es": "«within thirty days».",
+          "accept": [
+            "30"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "Where was Ben going?",
+          "options": [
+            "to a meeting",
+            "to a wedding",
+            "on holiday"
+          ],
+          "answer": 1,
+          "explain_es": "«you made it to the wedding»."
+        },
+        {
+          "type": "tf",
+          "q": "Ben had time to change his clothes before the ceremony.",
+          "answer": "F",
+          "explain_es": "«I hadn’t even had time to change»."
         }
       ]
     },

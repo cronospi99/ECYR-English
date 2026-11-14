@@ -7,7 +7,7 @@ import { Engine } from './engine';
 import { View } from './View';
 import './roulette.css';
 
-const FONTS = 'https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka:wght@400;500;600;700&display=swap';
+const FONTS = 'https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka:wght@400;500;600;700&family=Pixelify+Sans:wght@400;500;600;700&display=swap';
 
 export default function RouletteApp() {
   const navigate = useNavigate();

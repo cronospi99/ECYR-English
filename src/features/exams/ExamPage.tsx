@@ -444,11 +444,17 @@ function ReadingText({ exam }: { exam: Exam }) {
       <div className="text-label-2 text-[12px] font-bold tracking-wide uppercase">{R.genre}</div>
       <h3 className="mt-1 text-[22px] leading-tight font-extrabold">{R.title}</h3>
       <div className="mt-3 space-y-3">
-        {R.paragraphs.map((p, i) => (
-          <p key={i} className="text-[16.5px] leading-[1.7]">
-            {p}
-          </p>
-        ))}
+        {R.paragraphs.map((p, i) =>
+          p.startsWith('## ') ? (
+            <h4 key={i} className="border-separator mt-6 border-t pt-4 text-[18px] leading-tight font-extrabold">
+              {p.slice(3)}
+            </h4>
+          ) : (
+            <p key={i} className="text-[16.5px] leading-[1.7]">
+              {p}
+            </p>
+          ),
+        )}
       </div>
       {R.glossary.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-1.5">

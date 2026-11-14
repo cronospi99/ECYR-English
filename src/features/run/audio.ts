@@ -83,7 +83,7 @@ export function say(text: string) {
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'en-US'; u.rate = 1.0; u.volume = 0.9;
-    const v = speechSynthesis.getVoices().find((x) => x.lang.startsWith('en'));
+    const v = (speechSynthesis.getVoices() ?? []).find((x) => x.lang.startsWith('en'));
     if (v) u.voice = v;
     speechSynthesis.speak(u);
   } catch { /* ignore */ }

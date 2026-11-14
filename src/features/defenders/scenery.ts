@@ -333,6 +333,15 @@ export class Scenery {
   private fill = new THREE.DirectionalLight(0xffffff, 0);
   private gateLight = new THREE.PointLight(0xffffff, 0, 9, 1.6);
   private mood: Mood | null = null;
+  private veil: THREE.ShaderMaterial | null = null;
+  private gate: { pos: THREE.Vector3; color: number } | null = null;
+  private gatePulse = 0;
+  private fires: THREE.Sprite[] = [];
+  private smoke: THREE.Sprite[] = [];
+  private beams: THREE.Mesh[] = [];
+  private flashes: THREE.Sprite[] = [];
+  private ash: THREE.Points | null = null;
+  private fireLight = new THREE.PointLight(0xffa24a, 0, 6, 1.6);
   private mist: THREE.Sprite[] = [];
   private bats: THREE.Sprite[] = [];
   private embers: THREE.Points | null = null;
@@ -474,7 +483,24 @@ export class Scenery {
       gate.add(clamp);
     });
     const shape = new THREE.Shape(pts.map((p) => new THREE.Vector2(p[0], p[1])));
-    const veil = new THREE.Mesh(new THREE.ShapeGeometry(shape), new THREE.MeshBasicMaterial({ color: 0x05020a, transparent: true, opacity: 0.86 }));
+    // the mouth of the coffin is a sheet of slow neon liquid; it boils over when someone climbs out
+    this.veil = new THREE.ShaderMaterial({
+      transparent: true, toneMapped: false, fog: false,
+      uniforms: { t: { value: 0 }, pulse: { value: 0 }, col: { value: new THREE.Color(m.neon) } },
+      vertexShader: 'varying vec2 p; void main(){ p = position.xy; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader: `varying vec2 p; uniform float t, pulse; uniform vec3 col;
+        float h(vec2 v){ return fract(sin(dot(v, vec2(127.1, 311.7))) * 43758.5453); }
+        float n(vec2 v){ vec2 i = floor(v), f = fract(v); f = f*f*(3.0-2.0*f); return mix(mix(h(i), h(i+vec2(1,0)), f.x), mix(h(i+vec2(0,1)), h(i+vec2(1,1)), f.x), f.y); }
+        void main(){
+          vec2 q = p * vec2(1.6, 1.1);
+          float w = n(q * 1.7 + vec2(0.0, -t * 0.5)) + 0.5 * n(q * 3.9 + vec2(t * 0.3, -t * 0.9));
+          float bands = smoothstep(0.62, 0.9, sin((q.y + w * 0.9) * 5.0 - t * 2.2) * 0.5 + 0.5);
+          float drips = smoothstep(0.8, 1.0, n(vec2(p.x * 9.0, p.y * 0.9 + t * 1.3))) * smoothstep(3.3, 1.2, p.y);
+          float lum = 0.10 + bands * 0.55 + drips * 0.9 + pulse * (0.9 + w * 0.8);
+          gl_FragColor = vec4(mix(vec3(0.02, 0.008, 0.04), col * 2.2, clamp(lum, 0.0, 1.6)), 0.92);
+        }`,
+    });
+    const veil = new THREE.Mesh(new THREE.ShapeGeometry(shape), this.veil);
     veil.position.z = -0.06;
     const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: m.neon, transparent: true, opacity: 0.28, blending: THREE.AdditiveBlending, depthWrite: false }));
     glow.position.set(0, 1.7, -0.1); glow.scale.set(5, 6, 1);
@@ -482,11 +508,55 @@ export class Scenery {
     frame.position.y = 0.02;
     gate.add(veil, glow, frame);
     gate.position.set(this.cols / 2 + 2.35, 0, -0.4);
+    this.gate = { pos: new THREE.Vector3(this.cols / 2 + 2.05, 0, -0.25), color: m.neon };
     gate.rotation.y = -Math.PI / 2 + 0.62;
     gate.scale.setScalar(0.86);
     g.add(gate);
     this.gateLight.color.set(m.neon); this.gateLight.intensity = 26; this.gateLight.position.set(this.cols / 2 + 1.6, 1.5, 0);
     g.add(this.gateLight);
+
+    /* a city that is still burning: fires and smoke behind the fence, searchlights, falling ash, far-off flashes */
+    this.fires = []; this.smoke = []; this.beams = []; this.flashes = [];
+    const fireCol = new THREE.Color(m.embers);
+    for (const [fx, fz, k] of [[-8.6, north - 1.25, 1], [-1.7, north - 1.5, 0.8], [4.1, north - 1.2, 1.15], [9.6, north - 1.45, 0.9]] as const) {
+      // an oil drum / wreck silhouette with the fire on top
+      const drum = new THREE.Mesh(new THREE.CylinderGeometry(0.2 * k, 0.17 * k, 0.5 * k, 10), new THREE.MeshStandardMaterial({ color: 0x1a1218, roughness: 0.9, metalness: 0.4 }));
+      drum.position.set(fx, 0.25 * k, fz); g.add(drum);
+      for (let i = 0; i < 3; i++) {
+        const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: i === 2 ? 0xffffff : fireCol.clone().multiplyScalar(2.2 - i * 0.5), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false, fog: false }));
+        f.position.set(fx, 0.55 * k + i * 0.02, fz + 0.02 * i); f.userData = { k, ph: r() * 9, i, y: 0.55 * k };
+        g.add(f); this.fires.push(f);
+      }
+      for (let i = 0; i < 5; i++) {
+        const sm = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: new THREE.Color(m.fog[0]).multiplyScalar(0.35), transparent: true, opacity: 0, depthWrite: false, fog: false }));
+        sm.userData = { x: fx, z: fz - 0.05, k, u: i / 5, sway: r() * 6 };
+        g.add(sm); this.smoke.push(sm);
+      }
+    }
+    this.fireLight.color.copy(fireCol); this.fireLight.position.set(4.1, 1.1, north - 0.9); g.add(this.fireLight);
+    // searchlights sweeping the smoke, pivoting on the skyline
+    const beamGeo = new THREE.BufferGeometry();
+    beamGeo.setAttribute('position', new THREE.Float32BufferAttribute([0, 0, 0, -0.9, 9, 0, 0.9, 9, 0], 3));
+    beamGeo.setAttribute('uv', new THREE.Float32BufferAttribute([0.5, 0.5, 0.5, 1, 0.5, 1], 2));
+    for (const [bx, ph] of [[-6.5, 0], [7.2, 2.1]] as const) {
+      const b = new THREE.Mesh(beamGeo, new THREE.MeshBasicMaterial({ color: new THREE.Color(m.window), transparent: true, opacity: 0.16, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, fog: false, toneMapped: false }));
+      b.position.set(bx, 1.2, -5.05); b.userData.ph = ph; b.renderOrder = -5;
+      g.add(b); this.beams.push(b);
+    }
+    // something exploding far away, now and then
+    for (let i = 0; i < 2; i++) {
+      const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: fireCol.clone().multiplyScalar(2), transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, fog: false, toneMapped: false }));
+      f.position.set(0, 2.6, -5.1); f.scale.set(7, 4.5, 1); f.userData = { next: 3 + r() * 6, t: 9 }; f.renderOrder = -6;
+      g.add(f); this.flashes.push(f);
+    }
+    // ash coming down over everything
+    {
+      const n = 150, pos = new Float32Array(n * 3);
+      for (let i = 0; i < n; i++) { pos[i * 3] = -13 + r() * 26; pos[i * 3 + 1] = r() * 7; pos[i * 3 + 2] = -5 + r() * 9; }
+      const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      this.ash = new THREE.Points(geo, new THREE.PointsMaterial({ color: 0xd8d0d8, size: 0.045, transparent: true, opacity: 0.55, depthWrite: false, fog: false }));
+      g.add(this.ash);
+    }
 
     /* mist, embers, bats */
     for (let i = 0; i < 14; i++) {
@@ -562,6 +632,11 @@ export class Scenery {
     this.group.add(this.spill);
   }
 
+  /** Where the horde climbs out (null when the classic set is on). */
+  gateMouth(): { pos: THREE.Vector3; color: number } | null { return this.active && this.gate ? { pos: this.gate.pos.clone(), color: this.gate.color } : null; }
+  /** The liquid in the gate boils over for a moment. */
+  pulseGate(): void { this.gatePulse = 1; }
+
   update(dt: number): void {
     const m = this.mood;
     if (!m) return;
@@ -586,7 +661,38 @@ export class Scenery {
     }
     // neon hum and the odd flicker
     const hum = 0.9 + Math.sin(t * 31) * 0.04 + (Math.sin(t * 2.3) > 0.985 ? -0.5 : 0);
-    this.gateLight.intensity = 26 * hum;
+    for (const f of this.fires) {
+      const d = f.userData, fl = 0.75 + 0.25 * Math.sin(t * (11 + d.i * 3) + d.ph) * Math.sin(t * 7.3 + d.ph * 2);
+      const w = (0.55 - d.i * 0.14) * d.k * fl, hgt = (1.15 - d.i * 0.3) * d.k * (0.8 + fl * 0.4);
+      f.scale.set(w, hgt, 1); f.position.y = d.y + hgt * 0.32; f.position.x += Math.sin(t * 9 + d.ph) * 0.0015;
+    }
+    for (const sm of this.smoke) {
+      const d = sm.userData; d.u += dt * 0.11; if (d.u > 1) d.u -= 1;
+      const u = d.u;
+      sm.position.set(d.x + Math.sin(u * 5 + d.sway) * 0.35 * u + u * 1.4, 0.8 * d.k + u * 5.2, d.z);
+      const sc = (0.5 + u * 2.6) * d.k; sm.scale.set(sc, sc, 1);
+      (sm.material as THREE.SpriteMaterial).opacity = 0.55 * Math.sin(Math.min(1, u * 5) * Math.PI / 2) * (1 - u);
+    }
+    this.fireLight.intensity = 7 + Math.sin(t * 13) * 1.6 + Math.sin(t * 7.1) * 1.2;
+    for (const b of this.beams) { b.rotation.z = Math.sin(t * 0.23 + b.userData.ph) * 0.75; (b.material as THREE.MeshBasicMaterial).opacity = 0.13 + 0.04 * Math.sin(t * 1.7 + b.userData.ph); }
+    for (const f of this.flashes) {
+      const d = f.userData; d.t += dt;
+      if (d.t > d.next) { d.t = 0; d.next = 4 + Math.random() * 9; f.position.x = -10 + Math.random() * 20; f.position.y = 1.8 + Math.random() * 1.6; }
+      (f.material as THREE.SpriteMaterial).opacity = d.t < 0.9 ? 0.75 * Math.exp(-d.t * 5) * (0.6 + 0.4 * Math.sin(d.t * 40)) : 0;
+    }
+    if (this.ash) {
+      const p = this.ash.geometry.attributes.position as THREE.BufferAttribute;
+      for (let i = 0; i < p.count; i++) {
+        let y = p.getY(i) - dt * (0.28 + (i % 4) * 0.07), x = p.getX(i) + dt * (0.18 + Math.sin(t * 0.7 + i) * 0.12);
+        if (y < 0) { y = 7; x = -13 + Math.random() * 26; }
+        if (x > 13) x = -13;
+        p.setXY(i, x, y);
+      }
+      p.needsUpdate = true;
+    }
+    this.gatePulse = Math.max(0, this.gatePulse - dt * 1.6);
+    this.gateLight.intensity = 26 * hum + this.gatePulse * 60;
+    if (this.veil) { this.veil.uniforms.t!.value += dt; this.veil.uniforms.pulse!.value = this.gatePulse; }
     for (const n of this.neon) n.color.set(m.neon).multiplyScalar(2.6 * hum);
     for (const hm of this.house) hm.emissiveIntensity = 2.2 + Math.sin(t * 7.3) * 0.15 + (Math.sin(t * 1.7 + 2) > 0.97 ? -1.2 : 0);
     if (m.lightning) {

@@ -12,13 +12,14 @@ export const hasWebSpeech = () => typeof window !== 'undefined' && 'speechSynthe
 
 function voices(): SpeechSynthesisVoice[] {
   if (!hasWebSpeech()) return [];
-  if (!cachedVoices.length) cachedVoices = window.speechSynthesis.getVoices();
+  // Some Android browsers return null here instead of an empty list.
+  if (!cachedVoices.length) cachedVoices = window.speechSynthesis.getVoices() ?? [];
   return cachedVoices;
 }
 
 if (hasWebSpeech()) {
   window.speechSynthesis.onvoiceschanged = () => {
-    cachedVoices = window.speechSynthesis.getVoices();
+    cachedVoices = window.speechSynthesis.getVoices() ?? [];
   };
 }
 

@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { mergeSaved } from './safe';
 import type { CefrLevel, Skill } from '@/content/types';
 import { CEFR_LEVELS } from '@/content/types';
 
@@ -215,6 +216,10 @@ export const useGames = create<GamesState>()(
     {
       name: 'ecyr:games',
       version: 1,
+      merge: (saved, current) => {
+        const m = mergeSaved(saved, current);
+        return { ...m, sessions: sanitizeSessions(m.sessions) };
+      },
       partialize: (s) => ({ sessions: s.sessions, live: s.live, defenders: s.defenders, updatedAt: s.updatedAt }),
     },
   ),

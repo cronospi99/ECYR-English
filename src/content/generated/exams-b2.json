@@ -1535,7 +1535,7 @@
     ],
     "title": "Parcial final · Nivel B2",
     "intro_es": "Examen integrador de las 12 unidades del nivel B2: gerundios e infinitivos, modales pasados, cláusulas relativas y nominales, tiempos perfectos, voz pasiva, preguntas indirectas, condicionales irreales y mixtos, deseos y futuro perfecto, con el vocabulario de todo el nivel. Evalúa gramática, vocabulario, lectura, escucha, escritura y expresión oral.",
-    "minutes": 85,
+    "minutes": 125,
     "grammar": [
       {
         "type": "mc",
@@ -1685,6 +1685,115 @@
           "We will have landed by the time you wake up."
         ],
         "explain_es": "El futuro perfecto (will have + participio) indica una acción terminada antes de un momento futuro: “By the time you wake up…”."
+      },
+      {
+        "type": "mc",
+        "q": "I regret ___ you that your application has been unsuccessful.",
+        "options": [
+          "informing",
+          "to inform",
+          "inform"
+        ],
+        "answer": 1,
+        "explain_es": "«Regret to inform» = lamento comunicar (algo que voy a decir)."
+      },
+      {
+        "type": "mc",
+        "q": "She ___ have left already; her coat is still here.",
+        "options": [
+          "can't",
+          "mustn't",
+          "shouldn't"
+        ],
+        "answer": 0,
+        "explain_es": "Deducción negativa: «can't have»."
+      },
+      {
+        "type": "mc",
+        "q": "If I had studied medicine, I ___ a doctor now.",
+        "options": [
+          "would be",
+          "would have been",
+          "will be"
+        ],
+        "answer": 0,
+        "explain_es": "Condicional mixto: pasado irreal → presente."
+      },
+      {
+        "type": "mc",
+        "q": "Hardly ___ the door when the phone rang.",
+        "options": [
+          "I had closed",
+          "had I closed",
+          "I closed"
+        ],
+        "answer": 1,
+        "explain_es": "Inversión tras «Hardly»."
+      },
+      {
+        "type": "mc",
+        "q": "He is said ___ over a million dollars last year.",
+        "options": [
+          "to earn",
+          "to have earned",
+          "earning"
+        ],
+        "answer": 1,
+        "explain_es": "Pasiva impersonal sobre el pasado: to have + participio."
+      },
+      {
+        "type": "mc",
+        "q": "I’d rather you ___ smoke in here.",
+        "options": [
+          "didn't",
+          "don't",
+          "won't"
+        ],
+        "answer": 0,
+        "explain_es": "«Would rather» + sujeto + pasado."
+      },
+      {
+        "type": "mc",
+        "q": "By next June, they ___ married for twenty years.",
+        "options": [
+          "will be",
+          "will have been",
+          "have been"
+        ],
+        "answer": 1,
+        "explain_es": "Futuro perfecto con «by»."
+      },
+      {
+        "type": "mc",
+        "q": "The novel, ___ was published in 1967, changed Latin American literature.",
+        "options": [
+          "that",
+          "which",
+          "what"
+        ],
+        "answer": 1,
+        "explain_es": "Relativa explicativa: «which», no «that»."
+      },
+      {
+        "type": "gap",
+        "q": "It’s high time we ___ (leave).",
+        "answer": "left",
+        "explain_es": "«It’s high time» + pasado."
+      },
+      {
+        "type": "transform",
+        "q": "They are repairing my car. → I am having my car ___.",
+        "answer": "repaired",
+        "explain_es": "Causativo: have + objeto + participio."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: Despite of the rain, the match went ahead.",
+        "answer": "Despite the rain, the match went ahead.",
+        "explain_es": "«Despite» no lleva «of».",
+        "accept": [
+          "In spite of the rain, the match went ahead."
+        ]
       }
     ],
     "vocabulary": [
@@ -1831,19 +1940,140 @@
         "q": "Living abroad for a year really helped me broaden my ___.",
         "answer": "horizons",
         "explain_es": "“To broaden one’s horizons” es ampliar los conocimientos y las experiencias."
+      },
+      {
+        "type": "mc",
+        "q": "The new policy has come ___ a lot of criticism.",
+        "options": [
+          "in for",
+          "up with",
+          "down to"
+        ],
+        "answer": 0,
+        "explain_es": "«Come in for criticism» = recibir críticas."
+      },
+      {
+        "type": "mc",
+        "q": "She’s a ___ worker; she checks every detail twice.",
+        "options": [
+          "conscientious",
+          "careless",
+          "reckless"
+        ],
+        "answer": 0,
+        "explain_es": "«Conscientious» = concienzuda."
+      },
+      {
+        "type": "mc",
+        "q": "The evidence was ___; the jury had no doubts.",
+        "options": [
+          "overwhelming",
+          "underwhelming",
+          "misleading"
+        ],
+        "answer": 0,
+        "explain_es": "«Overwhelming» = abrumadora."
+      },
+      {
+        "type": "mc",
+        "q": "We need to ___ the pros and cons before deciding.",
+        "options": [
+          "weigh up",
+          "wear out",
+          "wind down"
+        ],
+        "answer": 0,
+        "explain_es": "«Weigh up» = sopesar."
+      },
+      {
+        "type": "mc",
+        "q": "His excuse was so ___ that nobody believed it.",
+        "options": [
+          "far-fetched",
+          "down-to-earth",
+          "well-off"
+        ],
+        "answer": 0,
+        "explain_es": "«Far-fetched» = inverosímil."
+      },
+      {
+        "type": "mc",
+        "q": "The company had to ___ 200 workers during the crisis.",
+        "options": [
+          "lay off",
+          "lay out",
+          "lay down"
+        ],
+        "answer": 0,
+        "explain_es": "«Lay off» = despedir."
+      },
+      {
+        "type": "mc",
+        "q": "It was a ___ of the moment decision.",
+        "options": [
+          "spur",
+          "peak",
+          "edge"
+        ],
+        "answer": 0,
+        "explain_es": "«On the spur of the moment» = por impulso."
+      },
+      {
+        "type": "gap",
+        "q": "I’m on the ___ of my seat: what happens next?",
+        "answer": "edge",
+        "explain_es": "«On the edge of your seat» = en vilo."
+      },
+      {
+        "type": "gap",
+        "q": "Noun of «reluctant»: ___",
+        "answer": "reluctance",
+        "explain_es": "Reluctant → reluctance."
+      },
+      {
+        "type": "mc",
+        "q": "The film didn’t live ___ to my expectations.",
+        "options": [
+          "up",
+          "on",
+          "out"
+        ],
+        "answer": 0,
+        "explain_es": "«Live up to» = estar a la altura."
+      },
+      {
+        "type": "mc",
+        "q": "She has a real ___ for languages.",
+        "options": [
+          "flair",
+          "flaw",
+          "flare"
+        ],
+        "answer": 0,
+        "explain_es": "«A flair for» = talento natural para."
       }
     ],
     "reading": {
       "title": "What a Year in Edinburgh Taught Me",
       "genre": "blog",
       "paragraphs": [
+        "## Part 1 · What a Year in Edinburgh Taught Me",
         "When I left Cali for a one-year master's degree in Edinburgh, my mother cried at the airport and my younger sister, who rarely sees eye to eye with me, said she would actually miss our arguments. I promised to write about my experience, so here it is: twelve months, a few lessons and one unsolved mystery.",
         "The first lesson was about routines. In Cali, I used to stay up until two in the morning, and I would never get up before ten at weekends. Edinburgh changed all that. In winter the sun sets before four, so I had no choice but to become a morning person. After waking up at seven, I would walk to the library through the old town, which is steeped in history and incredibly quiet at that hour. Surprisingly, I have never been so productive.",
         "The second lesson was about communication. Unlike most Colombians I know, many Scottish people I met were quite reserved at first, and I worried that I came across as too loud. My flatmate Callum, an easygoing engineer from Glasgow, explained that it's normal to keep a little distance with strangers. 'Give it time,' he said. He was right. By the spring we had bonded over football, terrible weather and his mother's soup, and I had discovered that being direct isn't rude if you're also kind.",
         "The third lesson was about believing everything I read. In February, a rumour went round our building that the landlord was going to double the rent. People were furious, and some started looking for new flats. I decided to get to the bottom of it and simply asked him. The story had been blown completely out of proportion: he was only planning to replace the old windows, which would actually make the flats warmer and cheaper to heat. Since then, I've taken most online gossip with a pinch of salt.",
         "There was a smaller lesson, too: how to complain. When my laptop broke a week before my final exams, I wanted to shout at the shop assistant. Instead, Callum suggested that I write a calm email asking whether the repair could be done in time. To my surprise, the shop not only fixed it in two days but also gave me a discount as a goodwill gesture. Being tactful, I realised, works far better than being angry.",
         "And the mystery? Every Thursday night, someone left a bag of oranges outside our door. We never found out who. It can't have been Callum, because he was always at football training on Thursdays. It might have been the elderly woman downstairs, who always smiled when she saw us, but she denied it every time. I wish I had asked her one more time before I left.",
-        "Now that I'm back home, people often ask me whether I'd like to return. If I hadn't had such a wonderful year, I wouldn't be considering it, but the truth is that I am. By next June, I'll have saved enough money to visit again, and this time I'll stay up late on a Thursday to solve the mystery of the oranges."
+        "Now that I'm back home, people often ask me whether I'd like to return. If I hadn't had such a wonderful year, I wouldn't be considering it, but the truth is that I am. By next June, I'll have saved enough money to visit again, and this time I'll stay up late on a Thursday to solve the mystery of the oranges.",
+        "## Part 2 · The Four-Day Week: Does It Work?",
+        "When a software firm in Medellín announced that its staff would work four days a week for the same pay, many assumed it was a publicity stunt. Two years on, the company not only still exists but has seen its profits rise.",
+        "The idea is hardly new. Trials in Iceland and the United Kingdom had already suggested that productivity need not fall when hours are cut, provided that meetings are shortened and distractions reduced. What made the Medellín case unusual was its size: with barely forty employees, it could not simply hire extra people to cover the gaps.",
+        "Not everything went smoothly. During the first months, several teams found themselves squeezing five days of work into four, which left them more stressed than before. It was only when managers stopped measuring hours and began measuring results that the pressure eased.",
+        "Critics point out that such schemes suit office work but would be far harder to apply in hospitals or factories. Supporters reply that the same was once said about the weekend. Whether the model spreads will depend less on evidence, perhaps, than on how willing employers are to trust their staff.",
+        "## Part 3 · Review: “The Salt Road”",
+        "Having enjoyed the director’s first documentary, I went to see “The Salt Road” with high hopes, and for the most part they were met. The film follows three generations of a family who extract salt by hand on the Guajira coast, a way of life that is rapidly disappearing.",
+        "Visually, it is stunning. The opening sequence, in which the white salt flats gradually turn pink at dawn, is worth the ticket price alone. Where the film is less convincing is in its narration, which tends to tell us what to feel rather than letting the images speak.",
+        "Still, it would be unfair to dwell on that. By the time the youngest daughter announces that she is leaving for the city, I doubt there was a dry eye in the cinema. It is not a perfect film, but it is one that deserves to be seen on the biggest screen you can find."
       ],
       "glossary": [
         [
@@ -1869,6 +2099,30 @@
         [
           "with a pinch of salt",
           "con escepticismo"
+        ],
+        [
+          "publicity stunt",
+          "truco publicitario"
+        ],
+        [
+          "squeezing",
+          "comprimiendo"
+        ],
+        [
+          "eased",
+          "se alivió"
+        ],
+        [
+          "salt flats",
+          "salinas"
+        ],
+        [
+          "dwell on",
+          "insistir en"
+        ],
+        [
+          "dawn",
+          "amanecer"
         ]
       ],
       "questions": [
@@ -1946,6 +2200,173 @@
             "visit Edinburgh"
           ],
           "explain_es": "El último párrafo dice: “By next June, I’ll have saved enough money to visit again”."
+        },
+        {
+          "type": "mc",
+          "q": "How did many people first react to the announcement?",
+          "options": [
+            "They thought it was only for publicity.",
+            "They applied for jobs there.",
+            "They protested."
+          ],
+          "answer": 0,
+          "explain_es": "«many assumed it was a publicity stunt»."
+        },
+        {
+          "type": "tf",
+          "q": "The company’s profits have fallen since the change.",
+          "answer": "F",
+          "explain_es": "«has seen its profits rise»."
+        },
+        {
+          "type": "mc",
+          "q": "According to earlier trials, productivity need not fall if…",
+          "options": [
+            "salaries are raised",
+            "meetings are shortened and distractions reduced",
+            "more staff are hired"
+          ],
+          "answer": 1,
+          "explain_es": "«provided that meetings are shortened and distractions reduced»."
+        },
+        {
+          "type": "mc",
+          "q": "What made the Medellín case unusual?",
+          "options": [
+            "its small size",
+            "its location",
+            "its high salaries"
+          ],
+          "answer": 0,
+          "explain_es": "«What made the Medellín case unusual was its size»."
+        },
+        {
+          "type": "tf",
+          "q": "The firm hired extra people to cover the missing day.",
+          "answer": "F",
+          "explain_es": "«it could not simply hire extra people»."
+        },
+        {
+          "type": "mc",
+          "q": "What problem appeared in the first months?",
+          "options": [
+            "Staff left the company.",
+            "Teams were more stressed.",
+            "Clients complained."
+          ],
+          "answer": 1,
+          "explain_es": "«which left them more stressed than before»."
+        },
+        {
+          "type": "mc",
+          "q": "What solved the problem?",
+          "options": [
+            "measuring results instead of hours",
+            "going back to five days",
+            "paying overtime"
+          ],
+          "answer": 0,
+          "explain_es": "«stopped measuring hours and began measuring results»."
+        },
+        {
+          "type": "mc",
+          "q": "What do critics argue?",
+          "options": [
+            "It is too expensive.",
+            "It would be hard to apply in hospitals or factories.",
+            "Workers dislike it."
+          ],
+          "answer": 1,
+          "explain_es": "«far harder to apply in hospitals or factories»."
+        },
+        {
+          "type": "mc",
+          "q": "According to the writer, the spread of the model depends mainly on…",
+          "options": [
+            "more evidence",
+            "employers’ trust in staff",
+            "government laws"
+          ],
+          "answer": 1,
+          "explain_es": "«how willing employers are to trust their staff»."
+        },
+        {
+          "type": "mc",
+          "q": "What kind of film is “The Salt Road”?",
+          "options": [
+            "a documentary",
+            "a thriller",
+            "a comedy"
+          ],
+          "answer": 0,
+          "explain_es": "Sigue a una familia real: es un documental."
+        },
+        {
+          "type": "tf",
+          "q": "The reviewer had seen the director’s earlier work.",
+          "answer": "T",
+          "explain_es": "«Having enjoyed the director’s first documentary»."
+        },
+        {
+          "type": "mc",
+          "q": "What does the family do?",
+          "options": [
+            "fish on the coast",
+            "extract salt by hand",
+            "run a hotel"
+          ],
+          "answer": 1,
+          "explain_es": "«who extract salt by hand»."
+        },
+        {
+          "type": "mc",
+          "q": "What does the reviewer praise most?",
+          "options": [
+            "the music",
+            "the images",
+            "the narration"
+          ],
+          "answer": 1,
+          "explain_es": "«Visually, it is stunning»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the reviewer’s criticism?",
+          "options": [
+            "It is too long.",
+            "The narration tells us what to feel.",
+            "The family is not interesting."
+          ],
+          "answer": 1,
+          "explain_es": "«tends to tell us what to feel»."
+        },
+        {
+          "type": "gap",
+          "q": "At dawn the white salt flats turn ___.",
+          "answer": "pink",
+          "explain_es": "«gradually turn pink at dawn»."
+        },
+        {
+          "type": "mc",
+          "q": "“I doubt there was a dry eye in the cinema” means that…",
+          "options": [
+            "the audience was bored",
+            "almost everyone cried",
+            "people left early"
+          ],
+          "answer": 1,
+          "explain_es": "«Not a dry eye» = todos lloraron."
+        },
+        {
+          "type": "mc",
+          "q": "What is the overall verdict?",
+          "options": [
+            "Not perfect, but well worth seeing.",
+            "A complete failure.",
+            "A masterpiece without faults."
+          ],
+          "answer": 0,
+          "explain_es": "«It is not a perfect film, but… deserves to be seen»."
         }
       ]
     },
@@ -1967,6 +2388,26 @@
           "name": "Hannah",
           "voice": "female",
           "accent": "au"
+        },
+        {
+          "name": "Host",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Dr. Vega",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Olivia",
+          "voice": "female",
+          "accent": "au"
+        },
+        {
+          "name": "Marc",
+          "voice": "male",
+          "accent": "us"
         }
       ],
       "lines": [
@@ -2045,6 +2486,94 @@
         {
           "s": 2,
           "text": "And I'll have been living here for over ten years. I think I've already put down roots."
+        },
+        {
+          "s": 3,
+          "text": "Today we’re looking at sleep. Dr. Vega, is it true that we’re sleeping less than our grandparents did?"
+        },
+        {
+          "s": 4,
+          "text": "On average, yes — roughly an hour less per night. But what worries me more is the quality. Screens are largely to blame."
+        },
+        {
+          "s": 3,
+          "text": "Because of the blue light?"
+        },
+        {
+          "s": 4,
+          "text": "Partly, though that has been somewhat exaggerated. The bigger issue is that phones keep the mind alert. You can’t fall asleep if you’ve just read an upsetting message."
+        },
+        {
+          "s": 3,
+          "text": "So what would you recommend?"
+        },
+        {
+          "s": 4,
+          "text": "Leave the phone outside the bedroom. If people did only that, half of my patients wouldn’t need to see me."
+        },
+        {
+          "s": 3,
+          "text": "What about catching up on sleep at the weekend?"
+        },
+        {
+          "s": 4,
+          "text": "It helps a little, but it can’t make up for a whole week. Regular hours matter far more than long lie-ins."
+        },
+        {
+          "s": 3,
+          "text": "And naps?"
+        },
+        {
+          "s": 4,
+          "text": "Twenty minutes is ideal. Any longer and you’ll wake up feeling worse."
+        },
+        {
+          "s": 3,
+          "text": "One last question: coffee."
+        },
+        {
+          "s": 4,
+          "text": "Fine before noon. After two in the afternoon, I’d avoid it altogether."
+        },
+        {
+          "s": 5,
+          "text": "Marc, have you heard? They’re planning to turn the old market into a shopping centre."
+        },
+        {
+          "s": 6,
+          "text": "I have, and frankly I think it’s about time. The building has been falling apart for years."
+        },
+        {
+          "s": 5,
+          "text": "But it’s part of the city’s history! My grandmother had a stall there."
+        },
+        {
+          "s": 6,
+          "text": "I understand that, but nostalgia won’t repair the roof. Had the council invested earlier, we wouldn’t be in this situation."
+        },
+        {
+          "s": 5,
+          "text": "Couldn’t they restore it instead?"
+        },
+        {
+          "s": 6,
+          "text": "Apparently that would cost three times as much. And the stallholders have been offered places in the new building."
+        },
+        {
+          "s": 5,
+          "text": "At much higher rents, I bet."
+        },
+        {
+          "s": 6,
+          "text": "For the first five years the rent is supposed to stay the same. After that, who knows."
+        },
+        {
+          "s": 5,
+          "text": "Exactly. I’m going to the public meeting on Tuesday. You should come."
+        },
+        {
+          "s": 6,
+          "text": "I might. I’d rather hear both sides before making up my mind."
         }
       ],
       "questions": [
@@ -2122,6 +2651,174 @@
           "q": "Hannah is planning to return to Australia within five years.",
           "answer": "F",
           "explain_es": "Falso: Hannah dice que dentro de cinco años “I’ll have been living here for over ten years. I think I’ve already put down roots.”"
+        },
+        {
+          "type": "mc",
+          "q": "How much less do we sleep than our grandparents?",
+          "options": [
+            "about an hour",
+            "about two hours",
+            "half an hour"
+          ],
+          "answer": 0,
+          "explain_es": "«roughly an hour less per night»."
+        },
+        {
+          "type": "mc",
+          "q": "What worries Dr. Vega most?",
+          "options": [
+            "the quantity of sleep",
+            "the quality of sleep",
+            "the cost of treatment"
+          ],
+          "answer": 1,
+          "explain_es": "«what worries me more is the quality»."
+        },
+        {
+          "type": "tf",
+          "q": "Dr. Vega thinks the effect of blue light has been exaggerated.",
+          "answer": "T",
+          "explain_es": "«that has been somewhat exaggerated»."
+        },
+        {
+          "type": "mc",
+          "q": "Why are phones a problem, according to her?",
+          "options": [
+            "They keep the mind alert.",
+            "They are too bright.",
+            "They are noisy."
+          ],
+          "answer": 0,
+          "explain_es": "«phones keep the mind alert»."
+        },
+        {
+          "type": "mc",
+          "q": "What is her main recommendation?",
+          "options": [
+            "Take sleeping pills.",
+            "Leave the phone outside the bedroom.",
+            "Go to bed earlier."
+          ],
+          "answer": 1,
+          "explain_es": "«Leave the phone outside the bedroom»."
+        },
+        {
+          "type": "tf",
+          "q": "Sleeping late at the weekend fully compensates for a bad week.",
+          "answer": "F",
+          "explain_es": "«it can’t make up for a whole week»."
+        },
+        {
+          "type": "gap",
+          "q": "The ideal nap lasts ___ minutes.",
+          "answer": "twenty",
+          "explain_es": "«Twenty minutes is ideal».",
+          "accept": [
+            "20"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "When should we avoid coffee?",
+          "options": [
+            "before noon",
+            "after two in the afternoon",
+            "always"
+          ],
+          "answer": 1,
+          "explain_es": "«After two in the afternoon, I’d avoid it»."
+        },
+        {
+          "type": "mc",
+          "q": "What matters more than long lie-ins?",
+          "options": [
+            "regular hours",
+            "a good mattress",
+            "exercise"
+          ],
+          "answer": 0,
+          "explain_es": "«Regular hours matter far more»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the plan for the old market?",
+          "options": [
+            "to restore it",
+            "to turn it into a shopping centre",
+            "to close it for good"
+          ],
+          "answer": 1,
+          "explain_es": "«turn the old market into a shopping centre»."
+        },
+        {
+          "type": "mc",
+          "q": "What is Marc’s initial opinion?",
+          "options": [
+            "He is in favour.",
+            "He is against.",
+            "He doesn’t care."
+          ],
+          "answer": 0,
+          "explain_es": "«I think it’s about time»."
+        },
+        {
+          "type": "mc",
+          "q": "Why does Olivia care about the market?",
+          "options": [
+            "She works there.",
+            "Her grandmother had a stall there.",
+            "She owns the building."
+          ],
+          "answer": 1,
+          "explain_es": "«My grandmother had a stall there»."
+        },
+        {
+          "type": "tf",
+          "q": "According to Marc, the council invested in the building in time.",
+          "answer": "F",
+          "explain_es": "«Had the council invested earlier…» — no lo hizo."
+        },
+        {
+          "type": "gap",
+          "q": "Restoring the market would cost ___ times as much.",
+          "answer": "three",
+          "explain_es": "«three times as much».",
+          "accept": [
+            "3"
+          ]
+        },
+        {
+          "type": "mc",
+          "q": "What have stallholders been offered?",
+          "options": [
+            "money",
+            "places in the new building",
+            "nothing"
+          ],
+          "answer": 1,
+          "explain_es": "«offered places in the new building»."
+        },
+        {
+          "type": "mc",
+          "q": "How long will the rent stay the same?",
+          "options": [
+            "one year",
+            "five years",
+            "ten years"
+          ],
+          "answer": 1,
+          "explain_es": "«For the first five years»."
+        },
+        {
+          "type": "mc",
+          "q": "What will Marc probably do?",
+          "options": [
+            "Go to the meeting to hear both sides.",
+            "Sign a petition.",
+            "Ignore the issue."
+          ],
+          "answer": 0,
+          "explain_es": "«I’d rather hear both sides»."
         }
       ]
     },

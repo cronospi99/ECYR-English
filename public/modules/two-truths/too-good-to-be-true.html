@@ -7,6 +7,7 @@
 <script src="../_bridge/ecyr-bridge.js" data-slug="too-good-to-be-true"></script>
 <script src="../_bridge/ecyr-fx.js" data-nav="tl" data-theme="--nav-bg:#2a1458;--nav-fg:#fff;--nav-bd:#ffd84a;--nav-radius:14px;--nav-shadow:0 4px 0 #12062e;--nav-hover:#4a2a9a"></script>
 <script src="./impostor-words.js?v=3"></script>
+<script src="./impostor-words-2.js?v=1"></script>
 <script src="../_arcade/loopmusic.js?v=3" data-tune="groove"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +49,24 @@ input.team { background: var(--card); border: 2px solid var(--line); color: var(
 .team-box .s { font-family: 'Bricolage Grotesque'; font-size: 26px; font-weight: 800; line-height: 1; }
 .turnline { font-size: clamp(16px, 1.8vw, 22px); font-weight: 700; margin: 4px 0 12px; color: #C8D1E0; }
 .turnline b { color: var(--gold); }
+.chip.tog { display: inline-flex; align-items: center; gap: 8px; }
+.chip.tog i { font-style: normal; font-size: 12px; letter-spacing: .12em; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.14); }
+.chip.tog.on { background: #2A1A66; border-color: var(--gold); }
+.chip.tog.on i { background: var(--gold); color: #2a1d00; }
+.stake { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 12px; }
+.stake .lbl { font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-right: 2px; }
+.stake .bet { border: 2px solid var(--line); background: var(--card); color: var(--ink); border-radius: 999px; padding: 7px 14px; font-weight: 800; font-size: 14px; }
+.stake .bet.on { background: var(--gold); border-color: var(--gold); color: #2a1d00; }
+.stake .bet.all.on { background: var(--red); border-color: var(--red); color: #fff; }
+.stake .bet:disabled { opacity: .35; cursor: default; }
+.stake .now { margin-left: auto; font-weight: 800; font-size: 15px; color: #C8D1E0; }
+.stake .now b { color: var(--green); } .stake .now s { color: var(--red); text-decoration: none; font-weight: 800; }
+@keyframes multpop { 0% { transform: scale(.4) rotate(-14deg); opacity: 0; } 60% { transform: scale(1.25) rotate(6deg); opacity: 1; } 100% { transform: scale(1) rotate(-4deg); } }
+.mult { display: inline-block; font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 20px; line-height: 1; padding: 6px 12px; border-radius: 12px; background: var(--gold); color: #2a1d00;
+  box-shadow: 0 4px 0 #a36a00; transform: rotate(-4deg); animation: multpop .5s cubic-bezier(.2, .9, .3, 1.3) both; }
+.mult.hot { background: var(--red); color: #fff; box-shadow: 0 4px 0 #8E1E2A; }
+.card .t b { color: var(--gold); font-weight: 700; }
+.card .t em { display: block; font-style: normal; opacity: .85; }
 
 .board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1.2vw, 14px); }
 .card { position: relative; min-height: clamp(76px, 13vh, 120px); border-radius: 18px; border: 2px solid var(--line); background: linear-gradient(160deg, #2C1A5E, #1A0E3C);
@@ -151,7 +170,7 @@ input.team { background: var(--card); border: 2px solid var(--line); color: var(
 .confetti i { position: absolute; top: 0; width: 10px; height: 16px; border-radius: 3px; animation: confetti linear both; }
 details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { cursor: pointer; font-weight: 800; color: var(--dim); letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
 .end .row { justify-content: center; }
-@media (max-width: 640px) { .card .t { display: none; } .wrap { padding-top: 60px; } }
+@media (max-width: 640px) { .card .t { font-size: 10px; line-height: 1.15; } .card .t em { display: none; } .wrap { padding-top: 60px; } .stake .now { margin-left: 0; width: 100%; } }
 </style>
 </head>
 <body>
@@ -164,14 +183,18 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   var SOLO = (function () { try { return new URLSearchParams(location.search).get('mode') === 'solo'; } catch (e) { return false; } })();
   var HIT = 100, MISS = 50;
   var FAKES = ['auto', 3, 4, 5, 6, 8], BOARDS = [1, 2, 3, 4, 5];
+  // The same two extras as the Phrasal Verb Roulette: a bet before you choose, and a random multiplier per turn.
+  var BETS = [0, 50, 100, 200];
   var SCENE = '<img class="base" src="tgtbt/scene.webp" alt=""><img class="ly ly-purple" src="tgtbt/purple.webp" alt="" style="left:0.0%;top:51.541%;width:14.0%;height:37.238%"><img class="ly ly-green" src="tgtbt/green.webp" alt="" style="left:77.92%;top:57.707%;width:20.24%;height:21.578%"><div class="grp grp-blue"><img class="ly ly-blue" src="tgtbt/blue.webp" alt="" style="left:10.64%;top:30.703%;width:37.84%;height:57.83%"><img class="ly ly-mag" src="tgtbt/mag.webp" alt="" style="left:31.04%;top:45.869%;width:16.48%;height:38.964%"></div><img class="ly ly-red" src="tgtbt/red.webp" alt="" style="left:46.64%;top:41.06%;width:33.04%;height:47.472%"><img class="ly ly-card1" src="tgtbt/card1.webp" alt="" style="left:10.88%;top:3.699%;width:24.16%;height:27.25%"><img class="ly ly-card2" src="tgtbt/card2.webp" alt="" style="left:65.52%;top:3.946%;width:24.08%;height:27.99%"><img class="ly ly-card3" src="tgtbt/card3.webp" alt="" style="left:67.68%;top:30.333%;width:20.8%;height:18.866%"><img class="ly ly-sparkL" src="tgtbt/sparkL.webp" alt="" style="left:30.16%;top:27.127%;width:8.24%;height:13.687%"><img class="ly ly-sparkR" src="tgtbt/sparkR.webp" alt="" style="left:61.36%;top:22.935%;width:8.24%;height:14.673%"><img class="ly ly-qm" src="tgtbt/qm.webp" alt="" style="left:74.16%;top:44.513%;width:15.76%;height:19.605%"><img class="ly ly-emoji" src="tgtbt/emoji.webp" alt="" style="left:33.84%;top:0.0%;width:31.6%;height:48.212%">';
   var flash = document.getElementById('flash'), fade = document.getElementById('fade');
   var app = document.getElementById('app');
 
   var st = { phase: 'setup', level: 'B1', nTeams: SOLO ? 1 : 2, names: ['Team A', 'Team B', 'Team C', 'Team D'],
-    fakes: 'auto', boards: 3, teams: [], turn: 0, board: 0, cards: [], pending: null, used: {}, rep: null, found: 0, missed: 0 };
+    fakes: 'auto', boards: 3, wagerOn: true, multOn: true, mult: 1, wager: 0, teams: [], turn: 0, board: 0, cards: [], pending: null, used: {}, rep: null, found: 0, missed: 0 };
   try { var saved = JSON.parse(localStorage.getItem('tgtbt:setup') || 'null'); if (saved) { st.level = saved.level || st.level; st.nTeams = SOLO ? 1 : saved.nTeams || 2; st.names = saved.names || st.names;
-    if (FAKES.indexOf(saved.fakes) >= 0) st.fakes = saved.fakes; if (BOARDS.indexOf(saved.boards) >= 0) st.boards = saved.boards; } } catch (e) {}
+    if (FAKES.indexOf(saved.fakes) >= 0) st.fakes = saved.fakes; if (BOARDS.indexOf(saved.boards) >= 0) st.boards = saved.boards;
+    if (typeof saved.wagerOn === 'boolean') st.wagerOn = saved.wagerOn; if (typeof saved.multOn === 'boolean') st.multOn = saved.multOn;
+    if (!Array.isArray(st.names) || st.names.length < 4) st.names = ['Team A', 'Team B', 'Team C', 'Team D']; } } catch (e) {}
 
   function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -200,45 +223,51 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   }
   function impLeft() { return st.cards.filter(function (c) { return c.fake && !c.open; }).length; }
   function nImp() { return st.cards.filter(function (c) { return c.fake; }).length; }
-  function nextTurn() { st.turn = (st.turn + 1) % st.teams.length; }
-  function showEs() { return st.level === 'C1' || st.level === 'C2'; }
+  // Catch-up balance, as in the roulette: a team far behind rolls bigger multipliers, a runaway leader none.
+  function standing(i) {
+    var vals = st.teams.map(function (t) { return t.score; });
+    var top = Math.max.apply(null, vals), low = Math.min.apply(null, vals);
+    if (st.teams.length < 2 || top <= 0) return 'normal';
+    var far = function (v) { return top - v > top * 0.75; };
+    if (vals[i] === top && far(low)) return 'leader';
+    return far(vals[i]) ? 'trailing' : 'normal';
+  }
+  function rollMult() {
+    st.wager = 0;
+    if (!st.multOn) { st.mult = 1; return; }
+    var s = standing(st.turn), r = Math.random();
+    st.mult = s === 'leader' ? 1 : s === 'trailing' ? (r < 0.35 ? 1 : r < 0.55 ? 2 : r < 0.7 ? 3 : r < 0.87 ? 4 : 5) : (r < 0.6 ? 1 : r < 0.85 ? 2 : 3);
+  }
+  function betOk(v) { var t = st.teams[st.turn]; return v === 0 || (v <= t.score && !(standing(st.turn) === 'leader' && v > HIT)); }
+  function gain() { return HIT * st.mult + st.wager; }
+  function loss() { return MISS * st.mult + st.wager; }
+  function nextTurn() { st.turn = (st.turn + 1) % st.teams.length; rollMult(); }
 
   function start() {
-    try { localStorage.setItem('tgtbt:setup', JSON.stringify({ level: st.level, nTeams: st.nTeams, names: st.names, fakes: st.fakes, boards: st.boards })); } catch (e) {}
-    st.teams = []; for (var i = 0; i < st.nTeams; i++) st.teams.push({ name: (st.names[i] || '').trim() || 'Team ' + 'ABCD'[i], score: 0, hits: 0, misses: 0, saves: 0 });
+    try { localStorage.setItem('tgtbt:setup', JSON.stringify({ level: st.level, nTeams: st.nTeams, names: st.names, fakes: st.fakes, boards: st.boards, wagerOn: st.wagerOn, multOn: st.multOn })); } catch (e) {}
+    st.teams = []; for (var i = 0; i < st.nTeams; i++) st.teams.push({ name: (st.names[i] || '').trim() || 'Team ' + 'ABCD'[i], score: 0, hits: 0, misses: 0 });
     if (st.nTeams === 1) st.teams[0].name = SOLO ? 'You' : 'The class';
     st.turn = 0; st.board = 0; st.used = {}; st.found = 0; st.missed = 0;
-    newBoard(); st.phase = 'play';
+    newBoard(); st.phase = 'play'; rollMult();
     st.rep = { t0: Date.now() };
-    window.ECYRBridge && window.ECYRBridge.start({ level: st.level, mode: SOLO ? 'solo' : 'class', meta: { teams: st.nTeams, boards: st.boards, fakes: st.fakes, game: 'impostor-words' } });
+    window.ECYRBridge && window.ECYRBridge.start({ level: st.level, mode: SOLO ? 'solo' : 'class', meta: { teams: st.nTeams, boards: st.boards, fakes: st.fakes, wagers: st.wagerOn, multipliers: st.multOn, game: 'impostor-words' } });
     render();
   }
 
+  // One rule: an impostor is +100, a real word is −50 (times the turn's multiplier, plus the bet).
   function pick(id) {
     var c = st.cards[id]; if (!c || c.open || st.pending) return;
-    var team = st.teams[st.turn];
+    var team = st.teams[st.turn], pts = c.fake ? gain() : loss(), mult = st.mult, bet = st.wager;
     c.open = true; c.flip = true;
-    if (c.fake) {
-      team.score += HIT; team.hits++; st.found++;
-      window.ECYRBridge && window.ECYRBridge.answer(true, { topic: 'impostor', level: st.level });
-      st.pending = { kind: 'hit', card: c, team: st.turn };
-      nextTurn();
-    } else {
-      st.pending = { kind: 'real', card: c, team: st.turn, showKey: false };
-    }
+    if (c.fake) { team.score += pts; team.hits++; st.found++; }
+    else { team.score -= pts; team.misses++; st.missed++; }
+    window.ECYRBridge && window.ECYRBridge.answer(c.fake, { topic: 'impostor', level: st.level });
+    st.pending = { kind: c.fake ? 'hit' : 'real', card: c, team: st.turn, pts: pts, mult: mult, bet: bet };
+    nextTurn();
     render();
   }
-  function judge(ok) {
-    var p = st.pending; if (!p || p.kind !== 'real') return;
-    var team = st.teams[p.team];
-    if (ok) team.saves++; else { team.score -= MISS; team.misses++; }
-    st.missed++;
-    window.ECYRBridge && window.ECYRBridge.answer(false, { topic: 'impostor', level: st.level });
-    st.pending = { kind: ok ? 'saved' : 'lost', card: p.card, team: p.team };
-    nextTurn(); render();
-  }
   function closePanel() { st.pending = null; if (!impLeft()) st.phase = 'board-done'; render(); }
-  function nextBoard() { st.board++; newBoard(); st.phase = 'play'; render(); }
+  function nextBoard() { st.board++; newBoard(); st.phase = 'play'; rollMult(); render(); }
   function endGame(ask, instant) {
     if (ask && !confirm('End the game now and see the results?')) return;
     if (!instant) { curtain(function () { endGame(false, true); }); return; }
@@ -303,13 +332,16 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
       '<div class="label">Level</div><div class="row">' + lv + '</div>' + tn +
       '<div class="label">Impostors per board</div><div class="row">' + fk + '</div>' +
       '<div class="label">Boards in this game</div><div class="row">' + bd + '</div>' +
+      '<div class="label">Points</div><div class="row">' +
+      '<button class="chip tog' + (st.wagerOn ? ' on' : '') + '" data-tog="wagerOn">🎯 Wager points <i>' + (st.wagerOn ? 'ON' : 'OFF') + '</i></button>' +
+      '<button class="chip tog' + (st.multOn ? ' on' : '') + '" data-tog="multOn">✨ Random multipliers <i>' + (st.multOn ? 'ON' : 'OFF') + '</i></button></div>' +
       '<button class="btn play" data-act="start">Let’s play</button></div>' +
       '<div class="scene" id="scene" aria-hidden="true">' + SCENE + '</div></div>' +
       '<div class="wrap" style="padding-top:8px"><div class="how">' +
-      '<div><b>1 · Spot an impostor</b>On your turn, tap the word you think is invented. Right? +' + HIT + ' points.</div>' +
-      '<div><b>2 · Wrong? Save yourself</b>If the word is real, say a synonym. Good synonym: no points lost. No synonym: −' + MISS + '.</div>' +
-      '<div><b>3 · Every board gets trickier</b>A board ends when all its impostors are found. Later boards hide more fakes that look like real words.</div>' +
-      '<div><b>4 · The podium</b>After the last board the winner goes up on the podium. C1 · C2 use academic words with their Spanish translation.</div>' +
+      '<div><b>1 · Spot an impostor</b>On your turn, tap the word you think is invented. Impostor: +' + HIT + ' points.</div>' +
+      '<div><b>2 · A real word costs you</b>If the word is real you lose ' + MISS + ' points. Its Spanish meaning and its synonyms appear, at every level.</div>' +
+      '<div><b>3 · Bets and multipliers</b>Before you choose you can bet points: right, you win them too; wrong, you lose them. Some turns come with ×2 to ×5.</div>' +
+      '<div><b>4 · The podium</b>A board ends when all its impostors are found; each board hides more look-alikes. After the last one, the winner goes up on the podium.</div>' +
       '</div></div>';
   }
 
@@ -321,8 +353,7 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
       var cls = 'card' + (c.open ? (c.fake ? ' fake' : ' real') : '') + (c.flip ? ' flip' : '') + (st.pending && st.pending.card === c ? ' sel' : '');
       var sub = '';
       if (c.open && c.fake) sub = c.alikeOf ? 'fake · looks like “' + esc(c.alikeOf) + '”' : 'invented';
-      else if (c.open && showEs()) sub = esc(c.es);
-      else if (c.open) sub = 'real word';
+      else if (c.open) sub = '<b>' + esc(c.es) + '</b>' + (c.syn ? '<em>≈ ' + esc(c.syn) + '</em>' : '');
       return '<button class="' + cls + '" data-card="' + c.id + '"' + (c.open || st.pending ? ' disabled' : '') + '>' +
         (c.open ? '<span class="tag">' + (c.fake ? '🚨' : '✓') + '</span>' : '') +
         '<span class="w">' + esc(c.word) + '</span>' + (sub ? '<span class="t">' + sub + '</span>' : '') + '</button>';
@@ -333,22 +364,35 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
     return '<div class="top"><div class="meta"><span class="pill">Level ' + st.level + '</span><span class="pill">Board ' + (st.board + 1) + ' of ' + st.boards + '</span>' +
       '<span class="pill imp">' + impLeft() + ' of ' + nImp() + ' impostors left</span></div>' +
       '<div class="row"><div class="teams">' + teams + '</div><button class="btn ghost" data-act="end">End game</button></div></div>' +
-      '<div class="turnline">' + turn + '</div>' +
+      '<div class="turnline">' + (st.mult > 1 && !st.pending ? '<span class="mult' + (st.mult >= 3 ? ' hot' : '') + '">×' + st.mult + '</span> ' : '') + turn + '</div>' + stakeView() +
       '<div class="board">' + cards + '</div>' + panelView();
+  }
+
+  // The bet bar: optional, never more than the team has; a runaway leader can only bet the basic +100.
+  function stakeView() {
+    if (st.pending || (!st.wagerOn && st.mult === 1)) return '';
+    var t = st.teams[st.turn], out = '<div class="stake">';
+    if (st.wagerOn) {
+      out += '<span class="lbl">Bet</span>' + BETS.map(function (v) {
+        return '<button class="bet' + (st.wager === v ? ' on' : '') + '" data-bet="' + v + '"' + (betOk(v) ? '' : ' disabled') + '>' + (v ? '+' + v : 'No bet') + '</button>';
+      }).join('');
+      var all = t.score > 0 && betOk(t.score);
+      out += '<button class="bet all' + (st.wager === t.score && t.score > 0 && BETS.indexOf(t.score) < 0 ? ' on' : '') + '" data-bet="all"' + (all ? '' : ' disabled') + '>All in</button>';
+    }
+    return out + '<span class="now">Impostor <b>+' + gain() + '</b> · Real word <s>−' + loss() + '</s></span></div>';
   }
 
   function panelView() {
     var p = st.pending; if (!p) return '';
-    var c = p.card, who = esc(st.teams[p.team].name), es = showEs() && !c.fake ? ' <span class="key">(' + esc(c.es) + ')</span>' : '';
-    if (p.kind === 'hit') return '<div class="panel good"><h2>🚨 Impostor caught! +' + HIT + '</h2><p>“' + esc(c.word) + '” is ' +
-      (c.alikeOf ? 'not a real word: it imitates “<b>' + esc(c.alikeOf) + '</b>”.' : 'an invented word.') + (st.teams.length > 1 ? ' Well done, ' + who + '!' : '') + '</p>' +
-      '<button class="btn small" data-act="ok">' + (impLeft() ? 'Continue' : 'See the board') + '</button></div>';
-    if (p.kind === 'real') return '<div class="panel bad"><h2>“' + esc(c.word) + '” is a real word!' + es + '</h2>' +
-      '<p>' + (st.teams.length > 1 ? who + ', say' : 'Say') + ' a synonym (a word that means the same) to keep your points.</p>' +
-      '<p>' + (p.showKey ? 'Possible synonyms: <span class="key">' + esc(c.syn) + '</span>' : '<button class="btn ghost" data-act="key">Show possible synonyms (teacher)</button>') + '</p>' +
-      '<div class="row"><button class="btn green small" data-act="saved">✓ Good synonym · no points lost</button><button class="btn small" data-act="lost">✗ No synonym · −' + MISS + '</button></div></div>';
-    return '<div class="panel"><h2>' + (p.kind === 'saved' ? '😮‍💨 Saved!' : '−' + MISS + ' points') + '</h2><p>“' + esc(c.word) + '”' + es + ' — synonyms: <span class="key">' + esc(c.syn) + '</span></p>' +
-      '<button class="btn small" data-act="ok">Continue</button></div>';
+    var c = p.card, who = esc(st.teams[p.team].name), many = st.teams.length > 1;
+    var how = (p.mult > 1 ? ' ×' + p.mult : '') + (p.bet ? ' + bet ' + p.bet : '');
+    var next = '<button class="btn small" data-act="ok">' + (impLeft() ? 'Continue' : 'See the board') + '</button>';
+    if (p.kind === 'hit') return '<div class="panel good"><h2>🚨 Impostor caught! +' + p.pts + '</h2><p>“' + esc(c.word) + '” is ' +
+      (c.alikeOf ? 'not a real word: it imitates “<b>' + esc(c.alikeOf) + '</b>”.' : 'an invented word.') + (many ? ' Well done, ' + who + '!' : '') +
+      (how ? ' <span class="key">(' + HIT + how + ')</span>' : '') + '</p>' + next + '</div>';
+    return '<div class="panel bad"><h2>“' + esc(c.word) + '” is a real word! −' + p.pts + '</h2>' +
+      '<p>' + (many ? who + ' loses ' : 'You lose ') + p.pts + ' points' + (how ? ' <span class="key">(' + MISS + how + ')</span>' : '') + '.</p>' +
+      '<p>In Spanish: <span class="key">' + esc(c.es) + '</span>' + (c.syn ? ' · Synonyms: <span class="key">' + esc(c.syn) + '</span>' : '') + '</p>' + next + '</div>';
   }
 
   function reviewList() {
@@ -361,7 +405,7 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
   function ranking() {
     return '<div class="podium" style="display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 18px">' + sorted().map(function (t, i) {
       return '<div style="background:var(--card);border:2px solid ' + (i ? 'var(--line)' : 'var(--gold)') + ';border-radius:18px;padding:12px 18px;min-width:150px"><div class="kicker" style="color:' + (i ? '#B3A6D9' : '#FFC83D') + '">' + (i ? '#' + (i + 1) : '🏆 #1') + '</div><div class="big" style="font-size:22px;font-weight:800">' + esc(t.name) +
-        '</div><div>' + t.score + ' pts · ' + t.hits + ' impostors · ' + t.saves + ' saves</div></div>';
+        '</div><div>' + t.score + ' pts · ' + t.hits + ' impostors · ' + t.misses + ' real words</div></div>';
     }).join('') + '</div>';
   }
   function doneView() {
@@ -377,7 +421,7 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
     return '<div class="pod">' + order.map(function (k) {
       var t = w[k];
       return '<div class="p r' + (k + 1) + '"><div class="info"><div class="medal">' + medals[k] + '</div><div class="nm">' + esc(t.name) + '</div><div class="sc">' + t.score + ' pts</div>' +
-        '<div class="st">' + t.hits + ' impostors · ' + t.saves + ' saves</div></div><div class="blk">' + (k + 1) + '</div></div>';
+        '<div class="st">' + t.hits + ' impostors · ' + t.misses + ' real words</div></div><div class="blk">' + (k + 1) + '</div></div>';
     }).join('') + '</div><div class="podfloor"></div>';
   }
   function confetti() {
@@ -405,6 +449,8 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
     else if (el.dataset.nt) { st.nTeams = Number(el.dataset.nt); render(); }
     else if (el.dataset.fk) { st.fakes = el.dataset.fk === 'auto' ? 'auto' : Number(el.dataset.fk); render(); }
     else if (el.dataset.bd) { st.boards = Number(el.dataset.bd); render(); }
+    else if (el.dataset.tog) { st[el.dataset.tog] = !st[el.dataset.tog]; render(); }
+    else if (el.dataset.bet) { var v = el.dataset.bet === 'all' ? st.teams[st.turn].score : Number(el.dataset.bet); if (betOk(v)) { st.wager = st.wager === v && v ? 0 : v; render(); } }
     else if (el.dataset.card) pick(Number(el.dataset.card));
     else switch (el.dataset.act) {
       case 'start': launch(); break;
@@ -412,9 +458,6 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
       case 'finish': endGame(false); break;
       case 'setup': st.phase = 'setup'; render(); break;
       case 'ok': closePanel(); break;
-      case 'key': st.pending.showKey = true; render(); break;
-      case 'saved': judge(true); break;
-      case 'lost': judge(false); break;
       case 'next': nextBoard(); break;
       case 'end': endGame(st.phase === 'play'); break;
     }
