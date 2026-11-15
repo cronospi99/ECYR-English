@@ -246,7 +246,7 @@ export class Fx {
         s.scale.setScalar(size * k * (0.35 + Math.sqrt(u) * 0.95));
         s.material.rotation = rot + sp * u;
         const c = u < 0.35 ? hot.clone().lerp(mid, u / 0.35) : mid.clone().lerp(cold, (u - 0.35) / 0.65);
-        s.material.color.copy(c).multiplyScalar(u < 0.5 ? 2.2 : 1.2);
+        s.material.color.copy(c).multiplyScalar(u < 0.5 ? 1.5 : 0.8);
         s.material.opacity = u < 0.1 ? u / 0.1 : (1 - u) * (1 - u);
       }, 'fire');
     }
@@ -346,21 +346,21 @@ export class Fx {
    */
   bellBlast(pos: THREE.Vector3, targets: THREE.Vector3[], color = 0xffc23d) {
     const p = pos.clone(); p.y = Math.max(p.y, 0.5);
-    this.flash(p, 0xffffff, 6, 0.4, 3);
-    this.flash(p, color, 9, 0.8, 2.4);
-    this.pillar(p, color, 1.6, 9, 0.9);
-    this.fireball(p, color, 2.4, 0.8);
+    this.flash(p, 0xffffff, 2.6, 0.25, 2);
+    this.flash(p, color, 4.2, 0.6, 1.6);
+    this.pillar(p, color, 0.9, 7, 0.8);
+    this.fireball(p, color, 1.8, 0.8);
     this.debris(p, 0xb07a2a, 14, 4.5, 0.09);
     this.streaks(p, color, 30, 6, 0.9, TEX!.spark, 6, 0.36);
-    this.light(p, color, 70, 0.9);
-    this.shake = 0.42;
+    this.light(p, color, 34, 0.8);
+    this.shake = 0.36;
     this.word(p, 'RIIIING!', color);
     // three sound rings racing across the floor, and three in the air
-    for (let i = 0; i < 3; i++) this.later(i * 0.14, () => { this.floorRing(p, i ? color : 0xffffff, 26, 1.0); this.ring(p, color, 5 + i * 2.5, 0.6); });
+    for (let i = 0; i < 3; i++) this.later(i * 0.14, () => { this.floorRing(p, color, 26, 1.0); if (!i) this.ring(p, color, 4, 0.5); });
     // each distraction goes off as the ring reaches it
     for (const t of targets) {
       const d = Math.hypot(t.x - p.x, t.z - p.z);
-      this.later(0.06 + d / 14, () => { this.explosion(t, 1.05, color, false); this.pillar(t, color, 0.7, 4, 0.45); });
+      this.later(0.06 + d / 14, () => { this.explosion(t, 0.95, color, false); this.pillar(t, color, 0.45, 3.5, 0.4); });
     }
   }
 
