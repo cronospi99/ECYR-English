@@ -123,7 +123,7 @@ const GradeShader = {
         if ( seen > 0.0 ) {
           vec2 d = ( vUv - uSunUv ) * vec2( uAspect, 1.0 );
           float r = length( d );
-          vec3 flare = vec3( 1.0, 0.9, 0.75 ) * ( exp( -r * 7.0 ) * 0.22 + exp( -r * 30.0 ) * 0.35 );
+          vec3 flare = vec3( 1.0, 0.9, 0.75 ) * ( exp( -r * 9.0 ) * 0.1 + exp( -r * 34.0 ) * 0.3 );
           flare += vec3( 1.0, 0.95, 0.85 ) * exp( -abs( d.y ) * 140.0 ) * exp( -abs( d.x ) * 2.6 ) * 0.16;
           vec2 axis = vec2( 0.5 ) - uSunUv;
           for ( int i = 0; i < 4; i++ ) {

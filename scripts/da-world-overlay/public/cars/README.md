@@ -12,3 +12,14 @@ src/taxi/sportcar.ts): material variants removed, meshes simplified
 meshopt-compressed; at runtime the paint is recoloured, taxi stickers, a roof
 sign and a plate are added, and the Khronos emblem on the steering wheel is
 hidden. Khronos logos are trademarks of the Khronos Group and are not used.
+
+## Everyday traffic
+
+`traffic.glb` is the **"Generic passenger car pack"** by **Comrade1280**
+(https://sketchfab.com/3d-models/generic-passenger-car-pack-20f9af9b8a404d5cb022ac6fe87f21f5),
+licensed **CC-BY 4.0** — ten generic, unbranded cars (compact, coupe,
+hatchback, minivan, off-roader, pickup, sedan, sport, SUV, wagon). The file is
+the meshopt/WebP-optimised copy published in the Idle Car Empire project
+(github.com/zazochannel-art/Idle-Car-Empire, public/models/car-pack.glb). At
+runtime (src/city/carpack.ts) each car is taken out of the pack, levelled,
+scaled and its paint turned grey so it can be painted per car.

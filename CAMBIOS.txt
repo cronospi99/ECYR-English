@@ -1734,3 +1734,25 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
 - Ciudad renovada: cada ventana de cada edificio deja ver una habitación en 3D (piso de madera,
   techo con lámpara, paredes de colores, persianas, muebles), mezclada con el reflejo de la calle
   según el ángulo; de noche se encienden unas habitaciones sí y otras no.
+- Taxi Rush · tráfico, caos y autopista:
+  · Autos realistas nuevos en lugar de los antiguos (10 modelos genéricos sin marca: compacto,
+    hatchback, sedán, familiar, coupé, deportivo, SUV, todoterreno, minivan y pickup; «Generic
+    passenger car pack» de Comrade1280, CC-BY 4.0), de muchos colores, también en Da World.
+  · Caos estilo arcade: si chocas un auto a velocidad sale volando, girando y rebotando, y el taxi
+    sigue; pasar rozando a un auto a alta velocidad es «CRAZY THROUGH» y derrapar con pasajero es
+    «CRAZY DRIFT»: propinas que crecen con el combo (contador abajo a la derecha); un choque corta
+    el combo.
+  · Zonas de mucho tráfico: avenidas del centro más cargadas y una AUTOPISTA DE 6 CARRILES (3 por
+    sentido) al sur de la ciudad, con barrera central, guardarrieles, postes de luz y pórticos con
+    letreros verdes en inglés («◀ DOWNTOWN · Next exit», «HARBOUR ▶»…). Las avenidas la cruzan a
+    nivel para entrar y salir.
+  · Semáforos ❓: al llegar a uno en rojo el taxi frena en seco y aparece la pregunta, siempre.
+    Acertar: verde, +$10 (+4 s con pasajero); fallar: −$5 y se puede seguir. Modelo nuevo y
+    detallado: base de concreto, poste galvanizado, brazo con tirante, dos cabezales de doble
+    cara con placa de borde amarillo, lentes con visera y botonera peatonal.
+  · Banda sonora nueva y original de 2 minutos, estilo electro-house francés / disco psicodélico
+    (bajo saturado con filtro, cuerdas disco, melodía con phaser y eco, «pump» de sidechain), con
+    intro, verso, coro, puente y final; baja sola bajo los efectos.
+  · Rendimiento: solo se dibujan los autos cercanos y la cantidad depende de la calidad gráfica.
+- Da World: las placas de las calles ya no se cruzan (la de la calle arriba y la de la avenida
+  abajo, cada una hacia su lado, con marco); el halo del sol ya no se ve como un disco gigante.

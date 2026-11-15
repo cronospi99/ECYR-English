@@ -1,15 +1,9 @@
 /**
- * Taxi Rush — sound. A retro arcade rock loop played live (power chords on a
- * crunchy pulse, a driving bass, noise drums), an engine that follows the
- * speed, and the effects. The music steps back under every effect.
+ * Taxi Rush — sound. An original French-electro soundtrack played live
+ * (music.ts), an engine that follows the speed, and the effects. The music
+ * steps back under every effect.
  */
-const BPM = 152;
-const STEP = 60 / BPM / 4;
-// E5 · C5 · D5 · A5 power chords, two bars each (semitones from E2)
-const ROOTS = [0, -4, -2, 5];
-const RIFF = [0, 0, 12, 0, 10, 0, 7, 0, 0, 0, 12, 0, 15, 12, 10, 7];
-const LEAD = [[0, 24, 2], [3, 27, 2], [6, 29, 3], [10, 31, 2], [12, 29, 2], [14, 27, 2], [16, 24, 4], [22, 22, 2], [24, 24, 2], [26, 27, 2], [28, 24, 4]];
-const hz = (s: number) => 82.41 * Math.pow(2, s / 12);
+import { Soundtrack, STEP } from './music';
 
 export class TaxiAudio {
   private ac: AudioContext | null = null;
@@ -25,6 +19,7 @@ export class TaxiAudio {
   private timer = 0;
   private step = 0;
   private next = 0;
+  private track: Soundtrack | null = null;
   musicOn = true;
 
   private ctx(): AudioContext | null {
@@ -33,8 +28,9 @@ export class TaxiAudio {
     if (!C) return null;
     const ac = (this.ac = new C());
     this.out = ac.createGain(); this.out.gain.value = 0.8; this.out.connect(ac.destination);
-    this.music = ac.createGain(); this.music.gain.value = 0.32;
+    this.music = ac.createGain(); this.music.gain.value = 0.6;
     this.duckG = ac.createGain(); this.music.connect(this.duckG); this.duckG.connect(this.out);
+    this.track = new Soundtrack(ac, this.music);
     this.sfx = ac.createGain(); this.sfx.gain.value = 0.9; this.sfx.connect(this.out);
     const len = ac.sampleRate;
     this.noise = ac.createBuffer(1, len, ac.sampleRate);
@@ -67,13 +63,15 @@ export class TaxiAudio {
     this.stop();
     try { this.engineOsc?.stop(); this.engineOsc2?.stop(); } catch { /* ignore */ }
     this.engineOsc = this.engineOsc2 = null;
+    this.track?.dispose();
+    this.track = null;
     void this.ac?.close();
     this.ac = null;
   }
 
   setMusic(on: boolean): void {
     this.musicOn = on;
-    if (this.ac) this.music.gain.setTargetAtTime(on ? 0.32 : 0, this.ac.currentTime, 0.1);
+    if (this.ac) this.music.gain.setTargetAtTime(on ? 0.6 : 0, this.ac.currentTime, 0.1);
   }
 
   engine(speed: number, throttle: number): void {
@@ -133,30 +131,6 @@ export class TaxiAudio {
 
   private beat(n: number, t: number): void {
     if (!this.musicOn) return;
-    const ac = this.ac!, s = n % 16, bar = Math.floor(n / 16) % 8, root = ROOTS[Math.floor(bar / 2)];
-    // drums: rock beat
-    if (s === 0 || s === 8 || s === 10) { const o = ac.createOscillator(), g = ac.createGain(); o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(45, t + 0.12); g.gain.setValueAtTime(0.7, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22); o.connect(g); g.connect(this.music); o.start(t); o.stop(t + 0.25); }
-    if (s === 4 || s === 12) this.hit(t, 0.4, 0.16, 'bandpass', 1800, this.music);
-    if (s % 2 === 0) this.hit(t, 0.08, 0.04, 'highpass', 7000, this.music);
-    // bass + power-chord riff on a crunchy pulse
-    const note = root + RIFF[s];
-    const b = ac.createOscillator(), bg = ac.createGain(); b.type = 'square'; b.frequency.value = hz(note - 12);
-    bg.gain.setValueAtTime(0.18, t); bg.gain.exponentialRampToValueAtTime(0.0001, t + STEP * 0.95);
-    b.connect(bg); bg.connect(this.music); b.start(t); b.stop(t + STEP);
-    if (s % 4 === 0) for (const iv of [0, 7, 12]) {
-      const o = ac.createOscillator(), g = ac.createGain(), f = ac.createBiquadFilter();
-      o.type = 'sawtooth'; o.frequency.value = hz(root + iv + 12); f.type = 'lowpass'; f.frequency.value = 1800;
-      g.gain.setValueAtTime(0.05, t); g.gain.exponentialRampToValueAtTime(0.0001, t + STEP * 3.6);
-      o.connect(f); f.connect(g); g.connect(this.music); o.start(t); o.stop(t + STEP * 4);
-    }
-    // lead on the second half of the loop
-    if (bar >= 4) {
-      const ps = (bar % 2) * 16 + s;
-      for (const [st, semi, len] of LEAD) if (st === ps) {
-        const o = ac.createOscillator(), g = ac.createGain(); o.type = 'square'; o.frequency.value = hz(semi + 12);
-        g.gain.setValueAtTime(0.07, t); g.gain.setValueAtTime(0.06, t + STEP * len * 0.7); g.gain.linearRampToValueAtTime(0.0001, t + STEP * len);
-        o.connect(g); g.connect(this.music); o.start(t); o.stop(t + STEP * len + 0.02);
-      }
-    }
+    this.track?.step(n, t);
   }
 }

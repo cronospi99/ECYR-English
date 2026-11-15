@@ -647,18 +647,25 @@ function buildStreetBlades(parent: Group): void {
 
     const hName = HROADS[it.hi].name;
     const vName = VROADS[it.vi].name;
-    for (const [name, avenue, rot] of [
-      [hName, false, 0],
-      [vName, true, Math.PI / 2],
+    // ECYR rebuild: the two plates used to share one height and one centre, so
+    // they crossed through each other and cut each other's names in half. Now
+    // each one is hung from the post out over its own road, the street plate
+    // above the avenue plate, in a thin metal frame, its two faces back to back.
+    for (const [name, avenue, rot, y] of [
+      [hName, false, 0, 3.32],
+      [vName, true, Math.PI / 2, 2.84],
     ] as const) {
       bladeMat(name, avenue);
       let list = plates.get(name);
       if (!list) plates.set(name, (list = []));
-      // Front and back, so the plate is readable from either approach.
-      for (const face of [rot, rot + Math.PI]) {
-        const geo = new PlaneGeometry(2.5, 0.52);
+      const W = 2.5, H = 0.52, out = W / 2 + 0.1;
+      // the plate runs along its road: +x for the street, +z for the avenue
+      const cx = px + (avenue ? 0 : out), cz = pz + (avenue ? out : 0);
+      box(bags, PALETTE.darkMetal, avenue ? 0.05 : W + 0.06, H + 0.06, avenue ? W + 0.06 : 0.05, cx, CURB + y, cz, trim);
+      for (const [face, side] of [[rot, 1], [rot + Math.PI, -1]] as const) {
+        const geo = new PlaneGeometry(W, H);
         geo.rotateY(face);
-        geo.translate(px, CURB + 3.16, pz);
+        geo.translate(cx + (avenue ? side * 0.032 : 0), CURB + y, cz + (avenue ? 0 : side * 0.032));
         list.push(geo);
       }
     }

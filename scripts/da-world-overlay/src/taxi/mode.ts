@@ -23,10 +23,12 @@ import { CarBody, TaxiModel, loadLook, saveLook, PAINTS, DRIVER_SHIRTS, DRIVER_S
 import { LIGHT_QUESTIONS, type LightQuestion } from './questions';
 import { Smoke } from './smoke';
 import { loadSportCar } from './sportcar';
+import { TaxiTraffic } from './traffic';
+import { loadCarPack } from '../city/carpack';
+import type { StreetCar } from '../city/traffic';
 import { cluesFor } from './places';
 import { TaxiAudio } from './audio';
 import { TAXI_CSS } from './ui.css';
-import { kitMaterial, localGeometry, model } from '../city/kits';
 
 export interface TaxiDeps {
   engine: Engine;
@@ -34,7 +36,7 @@ export interface TaxiDeps {
   dayNight: DayNight;
   /** Hide or show the walking game's own things (player, citizens, HUD). */
   setWalking(visible: boolean): void;
-  traffic: { carPositions(): { x: number; z: number }[]; group: THREE.Group };
+  traffic: { carPositions(): { x: number; z: number }[]; group: THREE.Group; cars?(): StreetCar[]; knock?(c: StreetCar, vx: number, vz: number): void };
   speak(text: string): void;
   session(): Session;
   myName(): string;
@@ -95,6 +97,12 @@ export class TaxiMode {
   private audio = new TaxiAudio();
   private qDeck: LightQuestion[] = [];
   private smoke = new Smoke();
+  private street: TaxiTraffic | null = null;
+  /** Crazy-style combo: near misses and drifts in a row. */
+  private combo = 0;
+  private comboTime = 0;
+  private comboLabel = '';
+  private driftTick = 0;
   private look: TaxiLook = loadLook();
   private settings: Settings = { goal: 5, pace: 'normal' };
   private car = new CarBody();
@@ -102,7 +110,6 @@ export class TaxiMode {
   private arrow: THREE.Group;
   private destMarker: THREE.Group;
   private passengerMarks = new Map<number, { g: THREE.Group; person: Character }>();
-  private ambient: { mesh: THREE.InstancedMesh; cars: { axis: 'h' | 'v'; line: number; pos: number; dir: number; speed: number }[] }[] = [];
   private keys = new Set<string>();
   private touch = { l: false, r: false, gas: false, brake: false, drift: false, boost: false };
   private paused = false;
@@ -185,6 +192,7 @@ export class TaxiMode {
 
   openSetup(): void {
     void loadSportCar();
+    void loadCarPack();
     this.deps.setWalking(false);
     this.root.style.display = '';
     this.root.innerHTML = '';
@@ -331,10 +339,17 @@ export class TaxiMode {
     if (!this.world) {
       this.world = new TaxiWorld();
       scene.add(this.world.group);
-      this.buildAmbientTraffic();
+      void loadCarPack().then(() => {
+        if (this.street) return;
+        const tier = this.deps.engine.quality.name;
+        this.street = new TaxiTraffic(tier === 'low' ? 0.45 : tier === 'medium' ? 0.7 : 1);
+        this.street.drawRadius = tier === 'low' ? 70 : tier === 'medium' ? 95 : 120;
+        this.deps.engine.scene.add(this.street.group);
+        this.street.setVisible(this.active);
+      });
     }
     this.world.setVisible(true);
-    for (const a of this.ambient) a.mesh.visible = true;
+    this.street?.setVisible(true);
     setWoodland(false);
     scene.add(this.arrow, this.destMarker);
     if (this.model) { scene.remove(this.model.group); }
@@ -344,7 +359,7 @@ export class TaxiMode {
     this.car = new CarBody();
     this.car.x = 30; this.car.z = 16.5; this.car.yaw = Math.PI / 2;
     this.money = 0; this.delivered = 0; this.teamDelivered = 0; this.missed = 0; this.asked = 0; this.correct = 0; this.time = 0;
-    this.carrying = null; this.passengers = []; this.ranRed.clear(); this.lastQuiz.clear();
+    this.carrying = null; this.passengers = []; this.ranRed.clear(); this.lastQuiz.clear(); this.combo = 0; this.comboTime = 0;
     for (const m of this.passengerMarks.values()) scene.remove(m.g);
     this.passengerMarks.clear();
     this.active = true;
@@ -370,7 +385,7 @@ export class TaxiMode {
     this.audio.stop();
     const scene = this.deps.engine.scene;
     if (this.world) this.world.setVisible(false);
-    for (const a of this.ambient) a.mesh.visible = false;
+    this.street?.setVisible(false);
     setWoodland(true);
     scene.remove(this.arrow, this.destMarker);
     if (this.model) scene.remove(this.model.group);
@@ -409,6 +424,7 @@ export class TaxiMode {
       <div class="tx-map"><canvas id="txMap" width="380" height="380"></canvas></div>
       <div class="tx-mates" id="txMates"></div>
       <div class="tx-dest" id="txDest"></div>
+      <div class="tx-combo" id="txCombo"></div>
       <div class="tx-speed"><div class="n big outline" id="txSpeed">0</div><div class="u">KM/H</div><div class="tx-boost"><i id="txBoost"></i></div></div>
       <button class="tx-home" data-home="1">🏠 Exit</button>
       <div class="tx-touch" id="txTouch"></div>`;
@@ -483,6 +499,12 @@ export class TaxiMode {
       dest.innerHTML = `<span class="e">${p.emoji}</span><span><div class="t">${esc(DISTRICT_LABEL[p.district])}</div><div class="nm">${esc(p.name)}</div></span><span class="d">${Math.round(d)} m</span>`;
     } else dest.style.display = 'none';
     (h.querySelector('#txSpeed') as HTMLElement).textContent = String(Math.round(Math.abs(this.car.speed) * 5.4));
+    const combo = h.querySelector('#txCombo') as HTMLElement | null;
+    if (combo) {
+      const on = this.combo > 0;
+      combo.style.opacity = on ? '1' : '0';
+      if (on) combo.innerHTML = `<div class="t big outline">${this.comboLabel}!</div><div class="c"><b class="big outline">${this.combo}</b> COMBO · +$${Math.min(10, this.combo)}</div>`;
+    }
     (h.querySelector('#txBoost') as HTMLElement).style.width = Math.round(this.car.boostFuel * 100) + '%';
     const mates = h.querySelector('#txMates') as HTMLElement;
     mates.innerHTML = [...this.remotes.values()].map((r) => `<span>🚕 ${esc(r.name)} · $${r.money}</span>`).join('');
@@ -684,22 +706,19 @@ export class TaxiMode {
 
   private checkLights(): void {
     if (!this.world) return;
-    const sp = Math.abs(this.car.speed);
+    const sp = Math.hypot(this.car.vx, this.car.vz);
     for (const L of this.world.lights) {
-      const d = Math.hypot(L.x - this.car.x, L.z - this.car.z);
-      if (!L.red || L.cleared) { if (d > 12) this.ranRed.delete(L.id); continue; }
-      // ran it: through the middle at speed
-      if (d < 3.5 && sp > 6 && !this.ranRed.has(L.id)) {
-        this.ranRed.add(L.id);
-        this.money = Math.max(0, this.money - 10);
-        this.audio.play('red');
-        this.callout('RED LIGHT! −$10', '#ff4a3d');
-        continue;
-      }
-      // stopped at it: the question
+      if (!L.red || L.cleared) continue;
+      const dx = L.x - this.car.x, dz = L.z - this.car.z, d = Math.hypot(dx, dz);
+      // Reaching a red ❓ light: the cab stops dead and the question comes up.
+      const towards = (dx * this.car.vx + dz * this.car.vz) / (d * Math.max(sp, 1e-3));
       const last = this.lastQuiz.get(L.id) ?? -99;
-      if (d > 4 && d < 13 && sp < 2.2 && this.time - last > 4) {
+      if (d < 9 && (towards > 0.2 || sp < 1) && this.time - last > 2) {
         this.lastQuiz.set(L.id, this.time);
+        this.car.vx = 0; this.car.vz = 0;
+        this.audio.play('red');
+        this.smoke.puff(this.car.x, this.car.z, this.car.yaw, 1);
+        this.smoke.puff(this.car.x, this.car.z, this.car.yaw, 1);
         this.lightQuestion(L);
         return;
       }
@@ -725,9 +744,10 @@ export class TaxiMode {
           if (this.carrying) this.fareTime += 4;
           this.callout(this.carrying ? 'GREEN! +$10 +4s' : 'GREEN! +$10', '#7dff6a');
         } else {
-          L.hold = 3;
+          // a wrong answer costs money, and the light still lets the cab through
+          L.red = false; L.cleared = true; L.timer = 8; L.hold = 0;
           this.money = Math.max(0, this.money - 5);
-          this.callout('WAIT… −$5', '#ff4a3d');
+          this.callout('−$5 · GO!', '#ff4a3d');
         }
       },
     });
@@ -881,49 +901,60 @@ export class TaxiMode {
    * Ambient traffic in the new districts                              *
    * ================================================================ */
 
-  private buildAmbientTraffic(): void {
-    const names = ['sedan', 'suv', 'hatchback-sports', 'van', 'delivery', 'sedan-sports', 'police', 'truck'];
-    const dummy = new THREE.Object3D();
-    for (const name of names) {
-      const m = model('cars', name);
-      const mesh = new THREE.InstancedMesh(localGeometry(m), kitMaterial('cars'), 9);
-      mesh.castShadow = true;
-      const cars: TaxiMode['ambient'][number]['cars'] = [];
-      for (let i = 0; i < 9; i++) {
-        const horiz = Math.random() < 0.5;
-        // only on the new avenues/streets (the old city has its own traffic)
-        let line = 0;
-        if (horiz) { let j = 0; do { j = J_MIN + Math.floor(Math.random() * (J_MAX - J_MIN + 1)); } while (j >= 0 && j <= 4); line = j; }
-        else { let k = 0; do { k = K_MIN + Math.floor(Math.random() * (K_MAX - K_MIN + 1)); } while (k >= 0 && k <= 3); line = k; }
-        cars.push({ axis: horiz ? 'h' : 'v', line, pos: Math.random() * 300, dir: Math.random() < 0.5 ? 1 : -1, speed: 5 + Math.random() * 4 });
-        dummy.position.set(0, -50, 0); dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix);
-      }
-      this.deps.engine.scene.add(mesh);
-      this.ambient.push({ mesh, cars });
-    }
+  private updateAmbient(dt: number): void {
+    this.street?.update(dt, { x: this.car.x, z: this.car.z });
   }
 
-  private updateAmbient(dt: number): { x: number; z: number }[] {
-    const out: { x: number; z: number }[] = [];
-    const dummy = new THREE.Object3D();
-    const scale = 1.25;
-    for (const a of this.ambient) {
-      a.cars.forEach((c, i) => {
-        const span = c.axis === 'h' ? MAX_X - MIN_X : MAX_Z - MIN_Z;
-        c.pos = (c.pos + c.dir * c.speed * dt + span) % span;
-        let x: number, z: number, rot: number;
-        if (c.axis === 'h') { x = MIN_X + c.pos; z = HZ(c.line) + (c.dir > 0 ? 4.5 : 1.5); rot = c.dir > 0 ? Math.PI / 2 : -Math.PI / 2; }
-        else { z = MIN_Z + c.pos; x = VX(c.line) + (c.dir > 0 ? 1.5 : 4.5); rot = c.dir > 0 ? 0 : Math.PI; }
-        // stop for the taxi if it is right in front
-        const ahead = Math.hypot(this.car.x - (x + Math.sin(rot) * 3), this.car.z - (z + Math.cos(rot) * 3));
-        if (ahead < 3) c.pos -= c.dir * c.speed * dt;
-        dummy.position.set(x, 0, z); dummy.rotation.set(0, rot, 0); dummy.scale.setScalar(scale); dummy.updateMatrix();
-        a.mesh.setMatrixAt(i, dummy.matrix);
-        out.push({ x, z });
-      });
-      a.mesh.instanceMatrix.needsUpdate = true;
-    }
-    return out;
+  /**
+   * The chaos (Crazy-style): hit a car at speed and it goes flying while the cab
+   * ploughs on; slip past one at speed without touching it and that is a near
+   * miss, CRAZY THROUGH, worth a tip that grows with every one in a row.
+   * Drifting with a fare aboard counts too. A crash ends the combo.
+   */
+  private trafficChaos(dt: number): void {
+    const sp = Math.hypot(this.car.vx, this.car.vz);
+    const hit = (c: StreetCar, knock: (vx: number, vz: number) => void): void => {
+      if (c.flying) return;
+      const dx = this.car.x - c.x, dz = this.car.z - c.z;
+      if (Math.abs(dx) > 7 || Math.abs(dz) > 7) return;
+      const sn = Math.sin(c.yaw), co = Math.cos(c.yaw);
+      const lx = dx * co - dz * sn, lz = dx * sn + dz * co;
+      const hx = c.wid / 2 + 0.62, hz = c.len / 2 + 1.0;
+      if (Math.abs(lx) < hx && Math.abs(lz) < hz) {
+        if (sp > 7) {
+          knock(this.car.vx * 1.1, this.car.vz * 1.1);
+          this.car.vx *= 0.8; this.car.vz *= 0.8;
+          this.audio.play('crash');
+          this.smoke.sparks((this.car.x + c.x) / 2, (this.car.z + c.z) / 2, 18);
+          if (this.combo > 1) this.callout('CRASH! COMBO LOST', '#ff8a3d');
+          this.combo = 0; this.comboTime = 0;
+        } else if (this.car.push(c.x, c.z, Math.min(hx, hz) + 0.4) && sp > 4) this.audio.play('crash');
+      } else if (sp > 13 && Math.abs(lx) < hx + 1.5 && Math.abs(lz) < hz + 0.6 && this.time - c.grazed > 2) {
+        c.grazed = this.time;
+        this.bumpCombo('CRAZY THROUGH');
+      }
+    };
+    const street = this.street;
+    if (street) for (const c of street.cars) hit(c, (vx, vz) => street.knock(c, vx, vz));
+    const tr = this.deps.traffic;
+    const knockCity = tr.knock;
+    if (tr.cars && knockCity) for (const c of tr.cars()) hit(c, (vx, vz) => knockCity.call(tr, c, vx, vz));
+    // drifting with a passenger: a tip for every second of it
+    if (this.car.drifting && this.carrying && sp > 9) {
+      this.driftTick += dt;
+      if (this.driftTick > 1) { this.driftTick = 0; this.bumpCombo('CRAZY DRIFT'); }
+    } else this.driftTick = 0;
+    if (this.comboTime > 0) { this.comboTime -= dt; if (this.comboTime <= 0) this.combo = 0; }
+  }
+
+  private bumpCombo(label: string): void {
+    this.combo++;
+    this.comboTime = 3;
+    this.comboLabel = label;
+    this.money += Math.min(10, this.combo);
+    this.audio.play('tick');
+    const box = this.root.querySelector('#txCombo') as HTMLElement | null;
+    if (box) { box.classList.remove('pop'); void box.offsetWidth; box.classList.add('pop'); }
   }
 
   /* ================================================================ *
@@ -946,8 +977,9 @@ export class TaxiMode {
       this.time += dt;
       const { hit } = this.car.update(dt, inp, this.world);
       if (hit) { this.audio.play('crash'); }
-      for (const p of this.deps.traffic.carPositions()) if (this.car.push(p.x, p.z, 1.9) && Math.hypot(this.car.vx, this.car.vz) > 6) this.audio.play('crash');
-      for (const p of this.updateAmbient(dt)) this.car.push(p.x, p.z, 1.9);
+      if (!this.deps.traffic.cars) for (const p of this.deps.traffic.carPositions()) if (this.car.push(p.x, p.z, 1.9) && Math.hypot(this.car.vx, this.car.vz) > 6) this.audio.play('crash');
+      this.updateAmbient(dt);
+      this.trafficChaos(dt);
       if (this.car.drifting) { this.driftTime += dt; if (Math.floor(this.driftTime * 2) !== Math.floor((this.driftTime - dt) * 2)) this.audio.play('drift'); }
       // tyre smoke when drifting, spinning away from a stop or braking hard; sparks on a hit
       {

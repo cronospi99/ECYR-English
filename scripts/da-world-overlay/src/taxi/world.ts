@@ -54,8 +54,18 @@ export const HZ = (j: number): number => 13 + 19 * j;
 export const MIN_X = VX(K_MIN) - 15;
 export const MAX_X = VX(K_MAX) + ROAD_W + 15;
 export const MIN_Z = HZ(J_MIN) - 13;
-export const MAX_Z = HZ(J_MAX) + ROAD_W + 13;
+/** ECYR rebuild: a six-lane highway along the south edge of the city. */
+export const HWY_Z0 = HZ(J_MAX) + ROAD_W + 15;
+const HWY_SHOULDER = 1.5, HWY_LANE = 3.2, HWY_GAP = 0.6, HWY_MEDIAN = 0.8;
+export const HWY_W = HWY_SHOULDER * 2 + HWY_LANE * 6 + HWY_GAP * 2 + HWY_MEDIAN;
+export const HWY_MID = HWY_Z0 + HWY_SHOULDER + HWY_LANE * 3 + HWY_GAP + HWY_MEDIAN / 2;
+/** Lane centres: three westbound (north half), three eastbound (south half). */
+export const HWY_LANES = [0, 1, 2].map((i) => HWY_Z0 + HWY_SHOULDER + HWY_LANE * (i + 0.5))
+  .concat([0, 1, 2].map((i) => HWY_MID + HWY_MEDIAN / 2 + HWY_GAP + HWY_LANE * (i + 0.5)));
+export const MAX_Z = HWY_Z0 + HWY_W + 12;
 const SW = 3; // pavement width
+/** On an avenue's carriageway (the x-columns of the grid)? */
+const avenueColumn = (tx: number): boolean => ((((tx - 15) % 21) + 21) % 21) < ROAD_W;
 
 const inOriginal = (x: number, z: number): boolean => x >= 0 && x < GW && z >= 0 && z < GH;
 const mod = (a: number, n: number): number => ((a % n) + n) % n;
@@ -219,7 +229,14 @@ export class TaxiWorld {
     this.grid = new Uint8Array(this.gw * this.gh);
     for (let z = MIN_Z; z < MAX_Z; z++) {
       for (let x = MIN_X; x < MAX_X; x++) {
-        const ok = inOriginal(x, z) ? isRoad(x, z) || isSidewalk(x, z) : gridRoad(x, z) || gridSidewalk(x, z);
+        let ok: boolean;
+        if (z >= HWY_Z0) {
+          // the highway: everything but the median barrier, which avenues cut through
+          const onHwy = z < HWY_Z0 + HWY_W;
+          const median = Math.abs(z + 0.5 - HWY_MID) < HWY_MEDIAN / 2 + 0.3;
+          ok = onHwy && (!median || avenueColumn(x));
+        } else if (z >= HZ(J_MAX) + ROAD_W) ok = avenueColumn(x) || gridSidewalk(x, z) && z < HZ(J_MAX) + ROAD_W + SW;
+        else ok = inOriginal(x, z) ? isRoad(x, z) || isSidewalk(x, z) : gridRoad(x, z) || gridSidewalk(x, z);
         this.grid[(z - MIN_Z) * this.gw + (x - MIN_X)] = ok ? 1 : 0;
       }
     }
@@ -321,7 +338,7 @@ export class TaxiWorld {
       const x0 = VX(k), cx = x0 + ROAD_W / 2;
       for (let j = J_MIN - 1; j <= J_MAX; j++) {
         // the stretch between two streets (or the map edge)
-        const za = j < J_MIN ? MIN_Z : HZ(j) + ROAD_W, zb = j >= J_MAX ? MAX_Z : HZ(j + 1);
+        const za = j < J_MIN ? MIN_Z : HZ(j) + ROAD_W, zb = j >= J_MAX ? HWY_Z0 : HZ(j + 1);
         if (zb <= za) continue;
         const original = k >= 0 && k <= 3;
         let s0 = za, s1 = zb;
@@ -508,8 +525,117 @@ export class TaxiWorld {
     sea.receiveShadow = true;
     this.group.add(sea);
 
+    /* ---- the highway ---- */
+    this.buildHighway();
+
     /* ---- quiz traffic lights ---- */
     this.buildLights(rand);
+  }
+
+  /**
+   * Highway 1: six lanes, three each way, a concrete median barrier, steel
+   * guard rails, overhead gantries with green signs, and lamp posts on the
+   * median. The avenues meet it at grade, so a taxi can swing on and off.
+   */
+  private buildHighway(): void {
+    const bag: Bag = new Map();
+    const asphalt = mat(PALETTE.asphalt, { map: 'asphalt' });
+    const white = new MeshBasicMaterial({ color: PALETTE.laneMark });
+    const yellow = new MeshBasicMaterial({ color: '#f2c230' });
+    const concrete = mat('#b9b6ad', { roughness: 0.88 });
+    const steel = mat('#a7aeb5', { roughness: 0.35, metalness: 0.85 });
+    const dark = mat('#2c3036', { roughness: 0.5, metalness: 0.5 });
+    const x0 = MIN_X, x1 = MAX_X, w = x1 - x0, cx = (x0 + x1) / 2;
+    slab(bag, 'asphalt', asphalt, w, 0.18, HWY_W, cx, -0.09, HWY_Z0 + HWY_W / 2);
+    // links from the last street down to the highway are the avenues themselves (built above)
+    const north = HWY_Z0 + HWY_SHOULDER, south = HWY_Z0 + HWY_W - HWY_SHOULDER;
+    const medN = HWY_MID - HWY_MEDIAN / 2 - HWY_GAP, medS = HWY_MID + HWY_MEDIAN / 2 + HWY_GAP;
+    const onAvenue = (x: number) => avenueColumn(Math.floor(x));
+    // edge lines (solid white outside, solid yellow along the median)
+    for (const [z, m, key] of [[north, white, 'w'], [south, white, 'w'], [medN, yellow, 'y'], [medS, yellow, 'y']] as const) {
+      slab(bag, 'mark-' + key, m, w, 0.012, 0.16, cx, 0.012, z, false);
+    }
+    // dashed lane dividers
+    for (let i = 1; i < 3; i++) {
+      for (const z of [north + HWY_LANE * i, medS + HWY_LANE * i]) {
+        for (let x = x0 + 2; x < x1 - 2; x += 9) if (!onAvenue(x)) slab(bag, 'mark-w', white, 3.2, 0.012, 0.14, x, 0.012, z, false);
+      }
+    }
+    // the median barrier (New Jersey profile, approximated in two steps) with gaps at the avenues
+    let runStart: number | null = null;
+    const flushRun = (a: number, b: number) => {
+      if (b - a < 0.5) return;
+      slab(bag, 'concrete', concrete, b - a, 0.32, HWY_MEDIAN, (a + b) / 2, 0.16, HWY_MID);
+      slab(bag, 'concrete', concrete, b - a, 0.55, HWY_MEDIAN * 0.45, (a + b) / 2, 0.6, HWY_MID);
+    };
+    for (let x = x0; x <= x1; x += 1) {
+      const gap = onAvenue(x) || x === x1;
+      if (!gap && runStart === null) runStart = x;
+      if (gap && runStart !== null) { flushRun(runStart, x); runStart = null; }
+    }
+    // guard rails: continuous on the south edge, cut for the avenues on the north edge
+    const rail = (a: number, b: number, z: number) => {
+      if (b - a < 1) return;
+      slab(bag, 'steel', steel, b - a, 0.32, 0.08, (a + b) / 2, 0.62, z);
+      for (let x = a + 0.5; x < b; x += 3) slab(bag, 'dark', dark, 0.12, 0.7, 0.12, x, 0.35, z + (z > HWY_MID ? 0.12 : -0.12));
+    };
+    rail(x0, x1, HWY_Z0 + HWY_W - 0.35);
+    runStart = null;
+    for (let x = x0; x <= x1; x += 1) {
+      const gap = onAvenue(x) || x === x1;
+      if (!gap && runStart === null) runStart = x;
+      if (gap && runStart !== null) { rail(runStart, x, HWY_Z0 + 0.35); runStart = null; }
+    }
+    // median lamp posts
+    for (let x = x0 + 6; x < x1; x += 21) {
+      if (onAvenue(x)) continue;
+      slab(bag, 'steel', steel, 0.16, 7, 0.16, x, 3.5, HWY_MID);
+      slab(bag, 'steel', steel, 0.1, 0.1, 3.2, x, 6.95, HWY_MID);
+      slab(bag, 'lamp', mat('#fff6dc', { glow: 'lamp', roughness: 0.3 }), 0.5, 0.12, 0.3, x, 6.85, HWY_MID - 1.55);
+      slab(bag, 'lamp', mat('#fff6dc', { glow: 'lamp', roughness: 0.3 }), 0.5, 0.12, 0.3, x, 6.85, HWY_MID + 1.55);
+    }
+    flush(bag, this.group, true);
+
+    // overhead gantries with green signs, both directions
+    const signs: { text: string; sub: string; x: number; z: number; rot: number }[] = [];
+    const DEST_W = [['DOWNTOWN', 'Next exit · 1 km'], ['OLD TOWN', 'Exit 9 · keep left'], ['STADIUM', 'Exit 7 · 2 km'], ['AIRPORT', 'Exit 4 · 5 km']];
+    const DEST_E = [['HARBOUR', 'Next exit · 1 km'], ['BEACH', 'Exit 12 · 3 km'], ['UNIVERSITY', 'Exit 14 · 2 km'], ['TECH PARK', 'Exit 15 · 4 km']];
+    const gBag: Bag = new Map();
+    let gi = 0;
+    for (let k = K_MIN; k < K_MAX; k += 3) {
+      const x = VX(k) + ROAD_W + 9;
+      // two posts and a truss beam across all six lanes
+      for (const z of [HWY_Z0 + 0.3, HWY_Z0 + HWY_W - 0.3]) slab(gBag, 'steel', steel, 0.3, 7.2, 0.3, x, 3.6, z);
+      slab(gBag, 'steel', steel, 0.22, 0.22, HWY_W, x, 7.1, HWY_Z0 + HWY_W / 2);
+      slab(gBag, 'steel', steel, 0.22, 0.22, HWY_W, x, 6.3, HWY_Z0 + HWY_W / 2);
+      for (let z = HWY_Z0; z < HWY_Z0 + HWY_W; z += 1.2) slab(gBag, 'steel', steel, 0.08, 0.85, 0.08, x, 6.7, z);
+      const [wt, ws] = DEST_W[gi % DEST_W.length], [et, es] = DEST_E[gi % DEST_E.length];
+      signs.push({ text: '◀ ' + wt, sub: ws, x: x + 0.18, z: (HWY_Z0 + medN) / 2, rot: Math.PI / 2 });
+      signs.push({ text: et + ' ▶', sub: es, x: x - 0.18, z: (medS + HWY_Z0 + HWY_W) / 2, rot: -Math.PI / 2 });
+      gi++;
+    }
+    flush(gBag, this.group, true);
+    const backMat = new MeshStandardMaterial({ color: '#5d6b63', roughness: 0.6, metalness: 0.4 });
+    for (const sg of signs) {
+      const cv = document.createElement('canvas'); cv.width = 512; cv.height = 200;
+      const c = cv.getContext('2d')!;
+      c.fillStyle = '#0d6b3c'; c.fillRect(0, 0, 512, 200);
+      c.strokeStyle = '#ffffff'; c.lineWidth = 8; c.strokeRect(10, 10, 492, 180);
+      c.fillStyle = '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '700 26px "Arial Narrow",Arial,sans-serif'; c.fillText('HIGHWAY 1', 256, 42);
+      c.font = '900 64px "Arial Narrow",Arial,sans-serif'; c.fillText(sg.text, 256, 104, 470);
+      c.font = '700 28px Arial,sans-serif'; c.fillText(sg.sub, 256, 160, 470);
+      const t = new CanvasTexture(cv); t.colorSpace = SRGBColorSpace; t.anisotropy = 8;
+      const m = new MeshStandardMaterial({ map: t, emissiveMap: t, emissive: new Color('#ffffff'), emissiveIntensity: 0.35, roughness: 0.5 });
+      const sign = new Mesh(new PlaneGeometry(7.2, 2.8), m);
+      sign.position.set(sg.x, 6.7, sg.z);
+      sign.rotation.y = sg.rot;
+      // the back of the panel: plain green-grey, not the text mirrored
+      const back = new Mesh(new PlaneGeometry(7.2, 2.8), backMat);
+      back.position.copy(sign.position);
+      back.rotation.y = sg.rot + Math.PI;
+      this.group.add(sign, back);
+    }
   }
 
   private findKiosk(district: District, rand: () => number): { x: number; z: number } | null {
@@ -524,13 +650,29 @@ export class TaxiWorld {
     return null;
   }
 
+  /**
+   * The quiz lights, modelled properly: a concrete footing, a tapered
+   * galvanised pole with a braced mast arm over the road, two double-faced
+   * signal heads with yellow-bordered backplates, three lenses each under
+   * their visors, and a push-button box for pedestrians. Two poles per
+   * junction — one arm over the avenue, one over the street — so the light is
+   * in front of the taxi whichever way it comes. Static steel is merged across
+   * the whole city; only the lenses are per light, so they can change.
+   */
   private buildLights(rand: () => number): void {
-    const poleGeo = new CylinderGeometry(0.09, 0.11, 5.2, 10);
-    const armGeo = new BoxGeometry(0.12, 0.12, 3.2);
-    const headGeo = new BoxGeometry(0.5, 1.25, 0.42);
-    const lampGeo = new SphereGeometry(0.15, 14, 10);
-    const metal = mat('#2f343c', { roughness: 0.4, metalness: 0.6 });
-    const housing = mat('#1c1f24', { roughness: 0.5, metalness: 0.3 });
+    const galv = new MeshStandardMaterial({ color: '#8f969d', metalness: 0.85, roughness: 0.36 });
+    const black = new MeshStandardMaterial({ color: '#15171a', metalness: 0.25, roughness: 0.5 });
+    const concrete = mat('#a9a69e', { roughness: 0.9 });
+    const plateTex = (() => {
+      const cv = document.createElement('canvas'); cv.width = 128; cv.height = 256;
+      const c = cv.getContext('2d')!;
+      c.fillStyle = '#111214'; c.fillRect(0, 0, 128, 256);
+      c.strokeStyle = '#ffd21a'; c.lineWidth = 12; c.strokeRect(6, 6, 116, 244);
+      const t = new CanvasTexture(cv); t.colorSpace = SRGBColorSpace; return t;
+    })();
+    const plate = new MeshStandardMaterial({ map: plateTex, roughness: 0.55, emissiveMap: plateTex, emissive: new Color('#ffffff'), emissiveIntensity: 0.08 });
+    const statics = new Map<MeshStandardMaterial, BufferGeometry[]>();
+    const put = (m: MeshStandardMaterial, g: BufferGeometry) => { const l = statics.get(m) ?? []; l.push(g); statics.set(m, l); };
     const badgeTex = (() => {
       const cv = document.createElement('canvas'); cv.width = 128; cv.height = 128;
       const c = cv.getContext('2d')!;
@@ -539,28 +681,80 @@ export class TaxiWorld {
       c.fillStyle = '#1b1035'; c.font = '900 84px "Trebuchet MS",Arial'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('?', 64, 70);
       const t = new CanvasTexture(cv); t.colorSpace = SRGBColorSpace; return t;
     })();
+    const Y0 = CURB;
     let id = 0;
     for (const n of this.nodes) {
       // about one junction in four, never two side by side
       if (mod(n.k * 3 + n.j * 2, 4) !== 0) continue;
+      if (inOriginal(n.x, n.z)) continue;
       const g = new Group();
-      const px = n.x + ROAD_W / 2 + 0.6, pz = n.z - ROAD_W / 2 - 0.6;
-      const pole = new Mesh(poleGeo, metal); pole.position.set(px, 2.6, pz); pole.castShadow = true;
-      const arm = new Mesh(armGeo, metal); arm.position.set(px - 1.5, 5.1, pz); arm.rotation.y = Math.PI / 2;
-      const head = new Mesh(headGeo, housing); head.position.set(px - 2.9, 4.5, pz); head.castShadow = true;
-      const lampR = new MeshStandardMaterial({ color: '#4a0d0d', emissive: new Color('#ff2a1a'), emissiveIntensity: 0.05, roughness: 0.3 });
-      const lampG = new MeshStandardMaterial({ color: '#0d3a14', emissive: new Color('#2bff6a'), emissiveIntensity: 2.6, roughness: 0.3 });
-      for (const [m, dy] of [[lampR, 0.36], [lampG, -0.36]] as const) {
-        for (const s of [-1, 1]) {
-          const l = new Mesh(lampGeo, m); l.position.set(px - 2.9, 4.5 + dy, pz + s * 0.22); l.scale.set(1, 1, 0.5); g.add(l);
+      const lampR = new MeshStandardMaterial({ color: '#3a0a08', emissive: new Color('#ff2a1a'), emissiveIntensity: 0.05, roughness: 0.15 });
+      const lampY = new MeshStandardMaterial({ color: '#3a2a06', emissive: new Color('#ffb21a'), emissiveIntensity: 0.05, roughness: 0.15 });
+      const lampG = new MeshStandardMaterial({ color: '#06301a', emissive: new Color('#2bff8a'), emissiveIntensity: 2.6, roughness: 0.15 });
+      const lenses = new Map<MeshStandardMaterial, BufferGeometry[]>([[lampR, []], [lampY, []], [lampG, []]]);
+      // pole at a corner; the arm reaches along `d` over the road; lenses face ±`f`
+      const poles: { px: number; pz: number; dx: number; dz: number }[] = [
+        { px: n.x + ROAD_W / 2 + 0.8, pz: n.z - ROAD_W / 2 - 0.8, dx: -1, dz: 0 },
+        { px: n.x - ROAD_W / 2 - 0.8, pz: n.z + ROAD_W / 2 + 0.8, dx: 0, dz: -1 },
+      ];
+      for (const { px, pz, dx, dz } of poles) {
+        const yaw = Math.atan2(dx, dz); // the arm's direction
+        const at = (along: number, y: number, side = 0) => [px + dx * along + dz * side, Y0 + y, pz + dz * along - dx * side] as const;
+        put(concrete, new CylinderGeometry(0.28, 0.34, 0.3, 18).translate(px, Y0 + 0.15, pz));
+        put(galv, new CylinderGeometry(0.2, 0.22, 0.06, 18).translate(px, Y0 + 0.33, pz));
+        put(galv, new CylinderGeometry(0.1, 0.14, 5.5, 18).translate(px, Y0 + 3.05, pz));
+        put(galv, new SphereGeometry(0.115, 14, 8).translate(px, Y0 + 5.8, pz));
+        // the mast arm and its brace
+        const armL = 4.9;
+        const arm = new CylinderGeometry(0.055, 0.09, armL, 14).rotateX(Math.PI / 2).rotateY(yaw);
+        put(galv, arm.translate(...at(armL / 2, 5.45)));
+        const braceL = Math.hypot(1.7, 0.9);
+        const brace = new CylinderGeometry(0.035, 0.035, braceL, 10).rotateX(Math.PI / 2 - Math.atan2(0.9, 1.7)).rotateY(yaw);
+        put(galv, brace.translate(...at(0.85, 5.0)));
+        // pedestrian push-button box
+        put(black, new BoxGeometry(0.2, 0.3, 0.16).rotateY(yaw).translate(...at(-0.17, 1.35)));
+        // two signal heads on the arm, double-faced (one side for each direction)
+        for (const along of [2.5, 4.2]) {
+          const [hx, hy, hz] = at(along, 4.5);
+          put(galv, new CylinderGeometry(0.03, 0.03, 0.4, 8).translate(hx, hy + 0.75, hz));
+          put(black, new BoxGeometry(0.4, 1.12, 0.5).rotateY(yaw + Math.PI / 2).translate(hx, hy, hz));
+          put(plate, new BoxGeometry(0.66, 1.44, 0.03).rotateY(yaw + Math.PI / 2).translate(hx, hy, hz));
+          for (const side of [-1, 1]) {
+            for (const [m, dy] of [[lampR, 0.34], [lampY, 0], [lampG, -0.34]] as const) {
+              // lens: a shallow disc facing out of the head; visor: half a tube over it
+              const lens = new CylinderGeometry(0.125, 0.125, 0.03, 24).rotateX(Math.PI / 2).rotateY(yaw + Math.PI / 2);
+              const [lx, ly, lz] = at(along, 4.5 + dy, side * 0.26);
+              lenses.get(m)!.push(lens.translate(lx, ly, lz));
+              const visor = new CylinderGeometry(0.15, 0.15, 0.22, 18, 1, true, Math.PI / 2, Math.PI).rotateX(Math.PI / 2).rotateY(yaw + Math.PI / 2);
+              const [vx, vy, vz] = at(along, 4.5 + dy, side * 0.37);
+              put(black, visor.translate(vx, vy, vz));
+            }
+          }
         }
+      }
+      for (const [m, list] of lenses) {
+        const merged = mergeGeometries(list, false);
+        list.forEach((x) => x.dispose());
+        if (merged) g.add(new Mesh(merged, m));
       }
       const badge = new Sprite(new SpriteMaterial({ map: badgeTex, depthTest: true }));
       badge.scale.set(2.2, 2.2, 1);
-      badge.position.set(n.x, 6.6, n.z);
-      g.add(pole, arm, head, badge);
+      badge.position.set(n.x, 7.2, n.z);
+      g.add(badge);
       this.group.add(g);
       this.lights.push({ id: id++, x: n.x, z: n.z, red: rand() < 0.5, timer: 2 + rand() * 7, hold: 0, cleared: false, lampR, lampG, badge });
+    }
+    for (const [m, list] of statics) {
+      for (let i = 0; i < list.length; i += 300) {
+        const chunk = list.slice(i, i + 300).map((g) => (g.index ? g.toNonIndexed() : g));
+        const merged = mergeGeometries(chunk, false);
+        if (!merged) continue;
+        const mesh = new Mesh(merged, m);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        this.group.add(mesh);
+      }
+      list.forEach((g) => g.dispose());
     }
   }
 }

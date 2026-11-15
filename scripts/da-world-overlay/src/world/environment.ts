@@ -135,7 +135,7 @@ function createSky(): THREE.Mesh {
         float corona = pow( max( cosA, 0.0 ), 900.0 );
         float haze = pow( max( cosA, 0.0 ), 12.0 );
         float above = smoothstep( -0.05, 0.02, h );
-        color += uSunColor * above * ( disc * 9.0 * ( 1.0 - clouds * 0.7 ) + corona * 1.2 + haze * 0.06 );
+        color += uSunColor * above * ( disc * 9.0 * ( 1.0 - clouds * 0.7 ) + corona * 0.7 + haze * 0.018 );
 
         gl_FragColor = vec4( color, 1.0 );
       }

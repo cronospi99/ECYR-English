@@ -5,6 +5,7 @@ import { Engine } from "./core/engine";
 import { Input, isTyping } from "./core/input";
 import { detectQuality, rememberQuality, QUALITY } from "./core/quality";
 import { setRealHumans } from "./city/humans";
+import { loadCarPack } from "./city/carpack";
 import { loadSurfaces, setSurfaceAnisotropy } from "./city/surfaces";
 import { BUILDING_BY_ID, type Building } from "./city/buildings";
 import { City, TREE_SPOTS } from "./city/city";
@@ -132,7 +133,8 @@ async function boot(): Promise<void> {
   loadState(state);
   const dayNight = new DayNight(state.clock);
 
-  await loadKits(KIT_REQUESTS, setProgress);
+  // ECYR rebuild: the everyday cars come with the kits, so the traffic is built with them.
+  await Promise.all([loadKits(KIT_REQUESTS, setProgress), loadCarPack()]);
 
   const city = new City();
   engine.scene.add(city.group);

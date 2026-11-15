@@ -110,4 +110,12 @@ export const TAXI_CSS = /* css */ `
 .tr-flag { width: 100%; height: 14px; border: 2px solid #0b0b0c; background: repeating-conic-gradient(#0b0b0c 0 25%, #f4f4f4 0 50%) 0 0 / 14px 14px; }
 .tr-flag-b { width: 72%; }
 .tr-tag { font: 400 clamp(11px, 1.3vw, 15px) 'Russo One', sans-serif; letter-spacing: .34em; color: #ffd21a; background: #0b0b0c; padding: 5px 12px; border-radius: 4px; }
+
+/* ECYR rebuild: the combo counter (near misses, drifts) */
+.tx-combo { position: absolute; right: 22px; bottom: 150px; text-align: right; transition: opacity .3s; opacity: 0; pointer-events: none; transform: skewX(-8deg); }
+.tx-combo .t { font-size: clamp(22px, 3vw, 36px); color: #fff4b0; }
+.tx-combo .c { font: 900 16px 'Rubik', sans-serif; letter-spacing: .1em; color: #fff; text-shadow: 0 2px 0 #10131a; }
+.tx-combo .c b { font-size: clamp(34px, 5vw, 60px); color: #ffd21f; margin-right: 6px; }
+.tx-combo.pop { animation: txComboPop .35s cubic-bezier(.2,1.6,.4,1); }
+@keyframes txComboPop { from { transform: skewX(-8deg) scale(1.35); } to { transform: skewX(-8deg) scale(1); } }
 `;

@@ -35,6 +35,7 @@ import { PALETTE, mat } from './palette';
 import { kitMaterial, localGeometry, model } from './kits';
 import { mulberry32 } from '../core/rng';
 import { CURB } from './city';
+import { carObject, carPackReady, carPaint, carTemplates, CAR_COLOURS } from './carpack';
 
 export type LightColor = 'g' | 'y' | 'r';
 
@@ -72,6 +73,27 @@ interface Vehicle {
   /** Brake lights, on whenever the vehicle is held. */
   brakes: Mesh[];
   stopped: boolean;
+  /** ECYR rebuild: what Taxi Rush sees of this car, and the flight after a hit. */
+  view: StreetCar;
+  fly: { y: number; vx: number; vy: number; vz: number; rx: number; rz: number; wx: number; wy: number; wz: number; t: number } | null;
+}
+
+/** A car as the taxi sees it: where it is, how big, and whether it is airborne. */
+export interface StreetCar { x: number; z: number; yaw: number; len: number; wid: number; flying: boolean; grazed: number }
+
+/** ECYR rebuild: an everyday car from the car pack, painted, with a roof sign for taxis. */
+function buildPackCar(kind: VehicleKind, rand: () => number): VehicleBuild & { wid: number } {
+  const tpls = carTemplates();
+  const t = tpls[Math.floor(rand() * tpls.length)];
+  const colour = kind === 'taxi' ? '#ffcc1a' : CAR_COLOURS[Math.floor(rand() * CAR_COLOURS.length)];
+  const g = new Group();
+  g.add(carObject(t, carPaint(t, colour)));
+  if (kind === 'taxi') {
+    const sign = new Mesh(new BoxGeometry(0.5, 0.16, 0.22), mat('#ffe8ad', { glow: 'sign', roughness: 0.4 }));
+    sign.position.set(0, t.height + 0.06, -0.1);
+    g.add(sign);
+  }
+  return { group: g, beacons: [], indicators: [], brakes: [], len: t.length, wid: t.width };
 }
 
 /**
@@ -214,9 +236,13 @@ export class Traffic {
       span: number,
     ): void => {
       const pool = MODELS[kind];
-      const build = buildVehicleMesh(pool[Math.floor(rand() * pool.length)]);
+      const pack = (kind === 'car' || kind === 'taxi') && carPackReady();
+      const build = pack ? buildPackCar(kind, rand) : buildVehicleMesh(pool[Math.floor(rand() * pool.length)]);
       this.group.add(build.group);
+      const wid = 'wid' in build ? (build as { wid: number }).wid : 1;
       this.vehicles.push({
+        view: { x: 0, z: 0, yaw: 0, len: build.len, wid, flying: false, grazed: -99 },
+        fly: null,
         kind,
         axis,
         lane,
@@ -313,7 +339,21 @@ export class Traffic {
 
   /** ECYR rebuild: where every car is (Taxi Rush bumps into them). */
   carPositions(): { x: number; z: number }[] {
-    return this.vehicles.map((v) => ({ x: v.mesh.position.x, z: v.mesh.position.z }));
+    return this.vehicles.filter((v) => !v.fly).map((v) => ({ x: v.mesh.position.x, z: v.mesh.position.z }));
+  }
+
+  /** ECYR rebuild: every car, for collisions and near misses. */
+  cars(): StreetCar[] {
+    return this.vehicles.map((v) => v.view);
+  }
+
+  /** ECYR rebuild: a taxi hit this car at speed — send it flying. */
+  knock(view: StreetCar, vx: number, vz: number): void {
+    const v = this.vehicles.find((x) => x.view === view);
+    if (!v || v.fly) return;
+    const sp = Math.hypot(vx, vz);
+    v.fly = { y: 0, vx, vy: 3 + sp * 0.28, vz, rx: 0, rz: 0, wx: (Math.random() - 0.5) * 9, wy: (Math.random() - 0.5) * 10, wz: (Math.random() - 0.5) * 9, t: 4.5 };
+    v.view.flying = true;
   }
 
   update(dt: number, time: number, playerX: number, playerZ: number): void {
@@ -323,6 +363,24 @@ export class Traffic {
     const beaconOn = time % 0.6 < 0.3;
 
     for (const v of this.vehicles) {
+      if (v.fly) {
+        const f = v.fly;
+        f.vy -= 22 * dt;
+        v.mesh.position.x += f.vx * dt; v.mesh.position.z += f.vz * dt; f.y += f.vy * dt;
+        f.rx += f.wx * dt; f.rz += f.wz * dt; v.mesh.rotation.y += f.wy * dt;
+        if (f.y < 0) { f.y = 0; f.vy = Math.abs(f.vy) * 0.35; f.vx *= 0.7; f.vz *= 0.7; f.wx *= 0.6; f.wy *= 0.7; f.wz *= 0.6; f.rx *= 0.5; f.rz *= 0.5; }
+        v.mesh.position.y = f.y;
+        v.mesh.rotation.x = f.rx; v.mesh.rotation.z = f.rz;
+        v.view.x = v.mesh.position.x; v.view.z = v.mesh.position.z;
+        f.t -= dt;
+        if (f.t <= 0) {
+          v.fly = null; v.view.flying = false;
+          v.mesh.position.y = 0; v.mesh.rotation.x = 0; v.mesh.rotation.z = 0;
+          const span = (v.axis === 'h' ? GW : GH) + ROAD_OVERRUN;
+          v.pos = (v.pos + span / 2) % span;
+        }
+        continue;
+      }
       let stop = this.stopLineDist(v, time) < 0.75;
 
       if (!stop) {
@@ -378,6 +436,7 @@ export class Traffic {
         v.mesh.position.set(v.lane, 0, v.pos);
         v.mesh.rotation.y = v.dir > 0 ? 0 : Math.PI;
       }
+      v.view.x = v.mesh.position.x; v.view.z = v.mesh.position.z; v.view.yaw = v.mesh.rotation.y;
     }
 
     for (const l of this.lamps) {
