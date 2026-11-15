@@ -108,3 +108,9 @@
   .imp .mtg>.mtg-col:last-child{flex:1}
 }
 @media (max-width:720px),(max-height:560px){ .imp .hide-sm{display:none!important} }
+
+/* a word in a box (classic clue log, phones list) */
+.imp .imp-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 6px 5px 11px;border:3px solid #0e1113;border-radius:4px;background:#f5c518;color:#0e1113;font:800 15px Archivo,sans-serif;box-shadow:0 3px 0 #0e1113;animation:imp-popIn .2s}
+.imp .imp-chip button{border:0;background:rgba(14,17,19,.18);color:#0e1113;width:22px;height:22px;border-radius:3px;font:800 15px/1 Archivo,sans-serif;cursor:pointer;padding:0}
+.imp .imp-chip button:hover{background:rgba(14,17,19,.35)}
+.imp .imp-chip:not(:has(button)){padding-right:11px}

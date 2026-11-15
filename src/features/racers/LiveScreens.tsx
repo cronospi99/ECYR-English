@@ -75,7 +75,6 @@ const HOME_CSS = `
 .rch-sweep{position:absolute;left:29%;top:2%;width:42%;height:22%;overflow:hidden;pointer-events:none;mix-blend-mode:screen}
 .rch-sweep:before{content:'';position:absolute;inset:0;width:22%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:rch-sweep 5.5s ease-in-out infinite}
 .rch-flash{position:fixed;inset:0;z-index:9999;background:#fff;opacity:0;transition:opacity .55s ease-in;pointer-events:none}
-@media (prefers-reduced-motion:reduce){.rch-stage *{animation:none!important}}
 `;
 
 /** Engine start + the screen fading to white, then the next screen fades in from white. */

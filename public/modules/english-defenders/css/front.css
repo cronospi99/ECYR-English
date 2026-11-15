@@ -30,4 +30,3 @@
 @keyframes edMote { 0% { translate:0 0; opacity:0; } 20% { opacity:.9; } 100% { translate:var(--dx) -12cqw; opacity:0; } }
 @keyframes edLeaf { 0% { translate:0 0; rotate:0deg; opacity:0; } 10% { opacity:.9; } 100% { translate:var(--dx) 62cqw; rotate:540deg; opacity:0; } }
 @media (max-aspect-ratio: 1/1) { .edf { display:none; } #screen-menu:not(.classic) .menu-inner { visibility:visible; } .edf-title-btn { display:none; } }
-@media (prefers-reduced-motion: reduce) { .edf-stage * { animation:none !important; } }

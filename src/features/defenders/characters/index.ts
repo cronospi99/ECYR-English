@@ -47,7 +47,7 @@ export function renderPortraits(size = 256): void {
     const g = build(name, 1, 1);
     // portraits look at the viewer a little more than the board pose does
     const u = g.userData;
-    (u.rig.parts.turn as THREE.Group).rotation.y = (u.baseYaw as number) * 0.55;
+    (u.rig.parts.turn as THREE.Group).rotation.y = Math.sign(u.baseYaw as number) * 0.5;
     scene.add(g);
     g.updateMatrixWorld(true);
     box.setFromObject(g); box.getCenter(c); box.getSize(s);

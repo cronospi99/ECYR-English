@@ -1668,5 +1668,91 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   de marquesina, y las nubes y pájaros se mueven. En partida: luces alrededor de la ruleta, rayos,
   puntero que vibra al girar y botón SPIN que late. Ya no se paran las animaciones con
   «reducir movimiento».
+- Animaciones siempre activas en toda la app: se quitó la regla global que las congelaba cuando el
+  dispositivo pide «reducir movimiento» (index.css, index.html, MotionConfig y los juegos).
+- Apuestas y multiplicadores: se quedan en Phrasal Verb Roulette y salen de Too Good To Be True
+  (impostora +100, palabra real −50, siempre).
+- Too Good To Be True: nombre y miembros de cada equipo a la izquierda y a la derecha del tablero;
+  el equipo en turno se ilumina con su color, una flecha y «Turno de Ana», y el banner dice quién
+  juega (los miembros rotan solos). Botón del profesor «New cards: 2 · 4 · 6 · 8 · All hidden» que
+  cambia cartas ocultas al azar por nuevas. Banco ampliado (impostor-words-3.js): unas 385 impostoras
+  por nivel de A1 a C2, sobre todo trampas de una sola letra que cometen los hispanohablantes
+  (necesary, seperate, responsability, goed, childs, informacion), comprobadas contra un diccionario
+  de 275.000 palabras (scripts/tgtbt-impostors.mjs).
+- Impostor clásico con QR: el proyector muestra un QR (pantalla completa al tocarlo) y la lista de
+  móviles; con 3 o más, cada estudiante ve su carta solo en su móvil (mantener pulsado para verla,
+  «Ya la vi»), el proyector marca quién está listo y proyecta el orden para hablar con el turno
+  actual resaltado (botón Siguiente); el móvil dice «Te toca». En el registro de palabras cada palabra
+  va en su caja (Enter o coma para añadir, × para quitar). Salas clásicas: código de 5 letras.
+- Da World: el QR de clase abre /play/da-world#join=CÓDIGO dentro de la app (como los demás juegos en
+  vivo) y se amplía a pantalla completa al tocarlo.
+- Language Defenders: personajes alineados con los carriles (defensores mirando al este, distracciones
+  al oeste) y la tumba neón de frente a la arena.
 - Exámenes finales Pre-A1 a C2: 25 preguntas en listening, reading, grammar y vocabulary
   (tres textos y tres audios por examen).
+- Da World reconstruido en parte (scripts/da-world-overlay, aplicado por scripts/import-da-world.mjs):
+  materiales PBR en todos los modelos (rugosidad y metal por color del atlas, detalle a escala del
+  mundo), reflejos del cielo, sombras más definidas, viñeta y resplandor solo de noche. Vocabulary
+  pasa de 14 a 20 misiones; la portada muestra el número real de misiones y el progreso.
+- Da World · TAXI RUSH (modo nuevo, cartel «NEW!» en la portada): una ciudad unas 7 veces más grande
+  alrededor de la original, con 8 barrios y 155 lugares (internacionales y colombianos: Bogotá Books,
+  Tolima Fruits…). Antes de empezar se elige cuántos pasajeros llevar (3 a 20), el ritmo del
+  taxímetro, y se personaliza el taxi (pintura, decoración, rines, letrero) y el conductor, con vista
+  3D. El pasajero describe a dónde va y hay que entenderlo; flecha guía y minimapa; 56 semáforos ❓:
+  si paras en rojo respondes «arregla la frase» o ABCD (verde y dinero si aciertas; pasarlo en rojo
+  resta $10); preguntas sin repetir hasta agotar las 58. Derrapes, turbo, tráfico, música rock retro
+  propia que baja con los efectos, color estilo arcade de los 2000. Cooperativo con el mismo QR de
+  Clase (multijugador): todos ven el mismo pasaje y suman al equipo.
+- Da World y Taxi Rush · gráficos realistas:
+  · Personas realistas: todos los ciudadanos, compañeros, pasajeros y el taxista son humanos con
+    esqueleto, texturas y animaciones de captura de movimiento (quieto, caminar, correr, asentir,
+    negar), en dos cuerpos (hombre y mujer) que se recolorean por persona: camisa, pantalón, piel,
+    pelo y zapatos, sin perder pliegues ni costuras. Accesorios: gafas, gorra, casco, sombrero,
+    mochila, delantal. En «Your character» se elige Man, Woman o Robot. El taxista va sentado.
+    En calidad Low siguen las personas sencillas.
+  · Texturas PBR reales en toda la ciudad: asfalto con grava y grietas, losas de acera, césped,
+    estuco, ladrillo, concreto, tejas, metal y hojas, con relieve (normales) y rugosidad,
+    proyectadas en el espacio del mundo (las hiladas de ladrillo y las losas siguen la cuadrícula).
+  · Reflejos en vivo: una sonda de reflexión fotografía la ciudad alrededor del jugador cada pocos
+    segundos; vidrios, pintura de autos y cromo reflejan las calles y el cielo reales, a la hora
+    del día que sea.
+  · Sol visible con disco y halo, destellos (bloom) en los reflejos del sol también de día,
+    destello de lente cuando el sol está en pantalla y no lo tapa un edificio, aberración
+    cromática suave en los bordes y grano de película.
+  · Taxi Rush: humo de llantas al derrapar, frenar fuerte o arrancar; chispas al chocar;
+    desenfoque radial de velocidad con el turbo.
+- TAXI RUSH ES UN JUEGO INDEPENDIENTE en la biblioteca (portada propia, /play/taxi-rush): sale del
+  menú de Da World pero comparte su motor, la ciudad, las personas realistas y las texturas.
+  · Pantalla de carga propia y título nuevo estilo carreras con colores de taxi (amarillo, negro y
+    bandera a cuadros); garaje rediseñado en el mismo estilo.
+  · Clase con QR propia: «Play with your class (QR)» en el garaje; el QR abre /play/taxi-rush.
+  · El taxi es ahora un auto deportivo de alta calidad (modelo «Car Concept» de Khronos, CC-BY 4.0,
+    créditos en public/modules/da-world/cars/README.md): pintura con barniz en el color elegido,
+    paneles negros, vinilos de cuadros, «TAXI», número y teléfono en las puertas, franja de
+    cuadros en el capó, letrero TAXI iluminado en el techo, placa propia, rines cromo/negro/oro,
+    luces que funcionan, ruedas que giran y doblan, y el conductor sentado al volante.
+- Ciudad renovada: cada ventana de cada edificio deja ver una habitación en 3D (piso de madera,
+  techo con lámpara, paredes de colores, persianas, muebles), mezclada con el reflejo de la calle
+  según el ángulo; de noche se encienden unas habitaciones sí y otras no.
+- Taxi Rush · tráfico, caos y autopista:
+  · Autos realistas nuevos en lugar de los antiguos (10 modelos genéricos sin marca: compacto,
+    hatchback, sedán, familiar, coupé, deportivo, SUV, todoterreno, minivan y pickup; «Generic
+    passenger car pack» de Comrade1280, CC-BY 4.0), de muchos colores, también en Da World.
+  · Caos estilo arcade: si chocas un auto a velocidad sale volando, girando y rebotando, y el taxi
+    sigue; pasar rozando a un auto a alta velocidad es «CRAZY THROUGH» y derrapar con pasajero es
+    «CRAZY DRIFT»: propinas que crecen con el combo (contador abajo a la derecha); un choque corta
+    el combo.
+  · Zonas de mucho tráfico: avenidas del centro más cargadas y una AUTOPISTA DE 6 CARRILES (3 por
+    sentido) al sur de la ciudad, con barrera central, guardarrieles, postes de luz y pórticos con
+    letreros verdes en inglés («◀ DOWNTOWN · Next exit», «HARBOUR ▶»…). Las avenidas la cruzan a
+    nivel para entrar y salir.
+  · Semáforos ❓: al llegar a uno en rojo el taxi frena en seco y aparece la pregunta, siempre.
+    Acertar: verde, +$10 (+4 s con pasajero); fallar: −$5 y se puede seguir. Modelo nuevo y
+    detallado: base de concreto, poste galvanizado, brazo con tirante, dos cabezales de doble
+    cara con placa de borde amarillo, lentes con visera y botonera peatonal.
+  · Banda sonora nueva y original de 2 minutos, estilo electro-house francés / disco psicodélico
+    (bajo saturado con filtro, cuerdas disco, melodía con phaser y eco, «pump» de sidechain), con
+    intro, verso, coro, puente y final; baja sola bajo los efectos.
+  · Rendimiento: solo se dibujan los autos cercanos y la cantidad depende de la calidad gráfica.
+- Da World: las placas de las calles ya no se cruzan (la de la calle arriba y la de la avenida
+  abajo, cada una hacia su lado, con marco); el halo del sol ya no se ve como un disco gigante.

@@ -39,7 +39,6 @@ const CSS = `
 @keyframes yd-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2.2%) rotate(-1.6deg)}}
 .yd-home{background:radial-gradient(70% 60% at 50% 38%,#2b2674 0%,#211c5e 60%,#1a1650 100%)}
 .yd-pencil{transform-origin:55% 90%;animation:yd-float 3.4s ease-in-out infinite}
-@media (prefers-reduced-motion:reduce){.yd-pencil{animation:none}}
 @keyframes yd-glow{0%,100%{opacity:.55}50%{opacity:1}}
 `;
 

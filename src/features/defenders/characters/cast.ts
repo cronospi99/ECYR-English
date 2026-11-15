@@ -5,7 +5,9 @@ import * as THREE from 'three';
 import { Builder, type TickFn, type V3 } from './builder';
 import { human, humanTick } from './human';
 
-const YAW_D = 0.85, YAW_E = -1.12;
+// Everyone stands square to the lanes: defenders face straight down their row towards the
+// distractions (east), and the distractions face straight back (west). No 3/4 turns.
+const YAW_D = Math.PI / 2, YAW_E = -Math.PI / 2;
 type Make = (h: number) => THREE.Group;
 
 const SKIN = { fair: 0xf3cfa8, tan: 0xe0a878, brown: 0xb9794c, deep: 0x8a5836, pale: 0xf7dcc4 };
@@ -73,7 +75,7 @@ const lamp = (twin: boolean): Make => (h) => {
     const pulse = 0.9 + Math.sin(t * 3) * 0.1 + Math.sin(act * Math.PI) * 0.5;
     for (const g of rig.glows) g.scale.setScalar(0.12 * pulse);
   };
-  return b.finish(h, YAW_D * 0.6, tick);
+  return b.finish(h, YAW_D, tick);
 };
 
 /** Profe Tiza — the classic teacher, never misses with a piece of chalk. */
@@ -147,7 +149,7 @@ const bookWall = (tall: boolean): Make => (h) => {
     rig.parts.body.position.y = 0.1 + Math.sin(t * 2) * 0.006;
     rig.parts.armL.rotation.z = Math.sin(t * 2) * 0.15; rig.parts.armR.rotation.z = -Math.sin(t * 2) * 0.15;
   };
-  return b.finish(h, YAW_D * 0.75, tick);
+  return b.finish(h, YAW_D, tick);
 };
 
 /** Miss Shh — the librarian. One "shhh" and everything slows down. */
@@ -241,7 +243,7 @@ const bell: Make = (h) => {
     rig.parts.body.rotation.z = Math.sin(t * 9) * 0.16;
     rig.parts.clap.rotation.z = -Math.sin(t * 9 + 0.6) * 0.5;
   };
-  return b.finish(h, YAW_D * 0.6, tick);
+  return b.finish(h, YAW_D, tick);
 };
 
 /** Pop Quiz — lies face down in the corridor. Step on it and… surprise! */
@@ -263,7 +265,7 @@ const popQuiz: Make = (h) => {
     rig.parts.body.position.y = 0.05 + Math.abs(Math.sin(t * 3)) * 0.02;
     rig.glows[0].scale.setScalar(0.05 * (0.7 + Math.abs(Math.sin(t * 5)) * 0.6));
   };
-  return b.finish(h * 1.5, YAW_D * 0.5, tick);
+  return b.finish(h * 1.5, YAW_D, tick);
 };
 
 /** Profe Química — her flasks keep burning after they land. */
@@ -293,7 +295,7 @@ const tackMat: Make = (h) => {
     body.m('metal').add('cone', 0xd8dde6, [px, 0.26, pz], [0.022, 0.26, 0.022]);
   }
   const tick: TickFn = (rig, t) => { rig.parts.body.scale.y = 1 + Math.sin(t * 4) * 0.06; };
-  return b.finish(h, 0.2, tick);
+  return b.finish(h, 0, tick); // a flat mat: square to the grid
 };
 
 /** The Megaphone — one call from the principal clears the whole corridor (one use). */
@@ -312,7 +314,7 @@ const megaphone: Make = (h) => {
     rig.parts.body.rotation.x = Math.sin(t * 8) * 0.05;
     rig.glows.forEach((g, i) => g.scale.setScalar(1 + ((t * 1.6 + i * 0.33) % 1) * 0.35));
   };
-  return b.finish(h, YAW_D * 0.9, tick);
+  return b.finish(h, YAW_D, tick);
 };
 
 /** Robo-Tutor — its pointer beam goes through several targets in a row. */

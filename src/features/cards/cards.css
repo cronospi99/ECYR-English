@@ -53,8 +53,3 @@
 
 .ecyr-card-pop { animation: ecyr-card-pop .3s cubic-bezier(.2,1.3,.4,1) both; }
 
-@media (prefers-reduced-motion: reduce) {
-  .ecyr-card .ecyr-card-metal, .ecyr-card .ecyr-card-sheen, .ecyr-card .ecyr-card-holo, .ecyr-card .ecyr-card-spark,
-  .ecyr-card-reveal .ecyr-card-rays, .ecyr-card-reveal .ecyr-card-burst { animation: none !important; }
-  .ecyr-card .ecyr-card-spark { transform: scale(.7); opacity: .8; }
-}

@@ -66,6 +66,7 @@ export const TRACKED_GAMES: Record<
   'too-good-to-be-true': { skill: 'vocabulary', graded: true, minAnswers: 3, minSeconds: 30, maxPerMinute: 20 },
   'would-you-rather': { skill: 'speaking', graded: false, minAnswers: 2, minSeconds: 60, maxPerMinute: 10 },
   'da-world': { skill: 'vocabulary', graded: true, minAnswers: 3, minSeconds: 60, maxPerMinute: 20, leftCounts: true },
+  'taxi-rush': { skill: 'listening', graded: true, minAnswers: 3, minSeconds: 60, maxPerMinute: 20, leftCounts: true },
   'earth-modals': { skill: 'reading', graded: false, minAnswers: 2, minSeconds: 30, maxPerMinute: 15 },
   // Arcade word games (public/modules/<slug>/). maxPerMinute is the fastest real pace:
   // a 10-sentence round needs a few seconds per sentence; Fast Match locks ~0.4 s

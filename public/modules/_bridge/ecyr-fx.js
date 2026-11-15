@@ -14,7 +14,6 @@
   var embedded = false;
   try { embedded = window.parent !== window && window.parent.location.origin === location.origin; } catch (e) { embedded = false; }
   var reduce = false;
-  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* ignore */ }
 
   var css = document.createElement('style');
   css.textContent =
