@@ -151,7 +151,7 @@
    ============================================================ */
 #ld-app {
   /* five rows have to fit under the title, the hint and the button */
-  --ib: clamp(34px, min(8.4vw, calc((100dvh - 330px) / 5.5)), 112px);
+  --ib: clamp(28px, min(calc((100vw - 110px) / 9.6), calc((92dvh - 350px) / 5.6)), 112px);
   .improve-box { width:min(1240px, 97vw); padding:26px 34px 24px; }
   .improve-box h2 { font-size:clamp(26px, 3.6vw, 44px); margin-bottom:6px; }
   .improve-box .mini-desc { max-width:none; font-size:clamp(14px, 1.5vw, 18px); margin:0 auto 4px; }
@@ -238,6 +238,10 @@
   @media (max-width:900px), (max-height:540px) {
     .improve-box { padding:14px 12px 14px; }
     .improve-list { padding:8px 6px; margin:8px 0; }
+    /* tiny cells: just the defender and its price */
+    .ib-lvl { display:none; }
+    .ib-cell img { width:92%; height:92%; margin-top:-14%; }
+    .ib-cost { left:0; right:0; bottom:0; border-radius:0 0 6px 6px; font-size:8px; }
     .plant-card { width:62px; padding:4px 3px 5px; border-radius:12px; }
     .plant-card .card-icon { width:40px; height:40px; }
     .plant-card .card-name { display:none; }

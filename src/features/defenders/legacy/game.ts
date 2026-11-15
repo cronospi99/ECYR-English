@@ -63,6 +63,8 @@ export const PLANTS = {
   laserbean:   { name: 'Projecto',       tier: 'diamond',  sprite: 'd_projector', h: 0.95, cost: 200, hp: 140,  cooldown: 12, kind: 'spike', shot: 'fx_beam', fireRate: 1.1, dmg: 35, pierce: 5 },
   wintermelon: { name: 'Prof. Thesis',   tier: 'diamond',  sprite: 'd_thesis',    h: 1.05, cost: 175, hp: 150,  cooldown: 14, kind: 'lob', lobSprite: 'fx_binder', fireRate: 2.8, dmg: 50, aoe: 1.4, slow: true },
 };
+// Bigger, stronger weapons: every defender that attacks hits 20% harder.
+for (const d of Object.values(PLANTS)) if (d.dmg && (d.kind || d.special)) d.dmg = Math.round(d.dmg * 1.2);
 
 // ===== Dificultad de la partida =====
 // Se elige antes de cada batalla y toca de forma coherente TODAS las palancas:
@@ -206,7 +208,7 @@ function plantRange(def) {
   if (def.special === 'chain') return 'Its lane, then jumps to whoever is near';
   if (def.kind === 'lob') return 'Whole lane, in an arc over walls';
   if (def.kind) return 'Whole lane, straight ahead';
-  if (def.bomb === 'plus') return 'Its tile plus 2 tiles up, down, left and right';
+  if (def.bomb === 'plus') return 'The whole board: every distraction goes back to class (a boss loses half its life)';
   if (def.bomb === 'lane') return 'Its whole lane, left to right';
   if (def.mine) return 'Its own tile, once armed';
   if (def.ground) return 'Its own tile, all the time';
@@ -1335,22 +1337,22 @@ export class Game {
   // Bombas de un solo uso: Chili (arrasa el carril) y Cherry Bomb (cruz de 9 casillas).
   _detonate(r, c, def) {
     if (def.bomb === 'lane') return this._chiliLane(r, c, def);
-    // Cherry Bomb: su casilla + DOS casillas en cada dirección (arriba, abajo, izquierda
-    // y derecha). La cruz es larga, no de radio 1: en el centro del tablero alcanza los
-    // cinco carriles y cinco columnas.
+    // Recess Bell: one ring and the WHOLE board goes back to class. Every distraction on the
+    // board (flyers too) is knocked out; a boss is too big for that and loses half the life
+    // it has left. The blasts go off one by one as the sound ring reaches them.
     const center = new THREE.Vector3(colX(c), 0.5, rowZ(r));
     SFX.boom();
-    const tiles = [[r, c],
-      [r - 1, c], [r - 2, c], [r + 1, c], [r + 2, c],
-      [r, c - 1], [r, c - 2], [r, c + 1], [r, c + 2]]
-      .filter(([tr, tc]) => tr >= 0 && tr < ROWS && tc >= 0 && tc < COLS);
-    tiles.forEach(([tr, tc], i) => this.fx.explosion(new THREE.Vector3(colX(tc), 0.5, rowZ(tr)), i ? 0.8 : 1.5, 0xffc23d, i === 0));
-    for (const z of this.zombies) {
-      if (z.dying || z.flying) continue;   // los voladores sólo caen con el cactus estirado
-      const zc = Math.round(z.mesh.position.x + (COLS - 1) / 2);
-      if (tiles.some(([tr, tc]) => this._zInRow(z, tr) && tc === zc)) this._damageZombie(z, def.bombDmg);
+    const onBoard = this.zombies.filter(z => !z.dying && z.mesh.position.x < COLS / 2 + 1.2);
+    this.fx.bellBlast(center, onBoard.map(z => z.mesh.position.clone().setY(0.55)));
+    for (const z of onBoard) {
+      const boss = !!(z.boss || z.def.boss);
+      const dmg = boss ? z.hp * 0.5 : z.hp + 1;
+      // boss mode quarters small hits: pass the boss blow in full
+      z.hp -= dmg; z.flash = 0.25;
+      if (z.hp <= 0) { z.hp = 0.0001; this._damageZombie(z, 1000); }
+      else if (boss) this._say(z, 'hit', 1.5);
     }
-    this.hooks.onStreak('🔔 RIIING! Back to class!');
+    this.hooks.onStreak(onBoard.length ? `🔔 RIIING! ${onBoard.length} back to class!` : '🔔 RIIING! Back to class!');
   }
 
   // Chili Pepper: una llamarada recorre el carril de izquierda a derecha y deja a
@@ -1824,7 +1826,7 @@ export class Game {
     if (kind === 'lob') {
       // proyectil en arco (Cabbage-pult / Bloom Shroom / Winter Melon)
       const target = targets.reduce((a, b) => a.mesh.position.x < b.mesh.position.x ? a : b);
-      const mesh = makeBillboard(plant.def.lobSprite || 'fx_gas', 0.34, { shadow: false });
+      const mesh = makeBillboard(plant.def.lobSprite || 'fx_gas', 0.44, { shadow: false });
       mesh.position.copy(from);
       this._face(mesh);
       this.scene.add(mesh);
@@ -1840,7 +1842,7 @@ export class Game {
     // Sprites propios por tipo de disparo (guisante, hielo, fuego, pincho, maíz).
     const sprite = plant.def.shot || 'fx_chalk';
     // proporción del proyectil respecto a la casilla: antes se veían enormes
-    const h = { fx_ball: 0.3, fx_shh: 0.42, fx_flask: 0.3, fx_beam: 0.34, fx_bolt: 0.26, fx_tack: 0.16, fx_plane: 0.3 }[sprite] || 0.24;
+    const h = 1.3 * ({ fx_ball: 0.3, fx_shh: 0.42, fx_flask: 0.3, fx_beam: 0.34, fx_bolt: 0.26, fx_tack: 0.16, fx_plane: 0.3 }[sprite] || 0.24);
     // el cactus estirado es el único disparo que alcanza a los voladores
     const antiAir = !!(plant.def.antiAir && plant.tallForm);
     // the turret turns to the nearest target in its three lanes; the shot slides into that lane
@@ -1903,7 +1905,7 @@ export class Game {
           if (pr.slow) z.slowUntil = this.time + (pr.slowDur || 3);
           if (pr.kind === 'kernel') z.mesh.position.x += 0.18;
           SFX.hit();
-          this.fx.impact(pr.mesh.position, pr.shot);
+          this.fx.impact(pr.mesh.position, pr.shot, 1.25);
           if (!z.boss && z.hp > 0 && Math.random() < 0.035) this._say(z, 'hit');
           // Ember Torch: pequeña llamarada que quema a los vecinos
           if (pr.burn) {

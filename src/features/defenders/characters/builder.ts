@@ -189,11 +189,22 @@ export class Seg {
 
   /** Surface type for the pieces added from now on. */
   m(s: Surf): this { this.surf = s; return this; }
+  private bk = 1;
+  private bp: V3 = [0, 0, 0];
+  /** Pieces added from now on are scaled by `k` about `pivot` (the hand): bigger props and weapons. `big()` resets. */
+  big(k = 1, pivot: V3 = [0, 0, 0]): this { this.bk = k; this.bp = pivot; return this; }
   /** Pieces added from now on melt into each other with this blend radius (0 = hard, separate pieces). */
   soft(k = 0.022): this { this.blend = k; return this; }
   hard(): this { this.blend = 0; return this; }
 
   private push(op: Item['op'], shape: Item['shape'], color: number, p: V3, s: V3, r: V3, extra: number[] = [], geo: THREE.BufferGeometry | null = null, k = this.blend, feather = 0.01): this {
+    if (this.bk !== 1) {
+      const q = this.bk, o = this.bp;
+      p = [o[0] + (p[0] - o[0]) * q, o[1] + (p[1] - o[1]) * q, o[2] + (p[2] - o[2]) * q];
+      if (shape === 'cap') extra = [extra[0] * q, extra[1] * q];
+      else if (shape === 'torus') extra = [extra[0] * q, extra[1] * q, extra[2]];
+      else s = [s[0] * q, s[1] * q, s[2] * q];
+    }
     let sdf: Prim | null = null;
     if (shape !== 'geo') {
       const md = Math.min(s[0], s[1], s[2]);
