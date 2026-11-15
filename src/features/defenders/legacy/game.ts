@@ -515,13 +515,25 @@ export class Game {
 
     this.raycaster = new THREE.Raycaster();
     this.pointer = new THREE.Vector2();
+    // The canvas fills #ld-app through CSS; the renderer only sets the drawing-buffer size
+    // (setSize(..., false)), measured from the canvas itself. iOS (above all an installed PWA
+    // in full screen) fires 'resize' BEFORE the new size is real and sends nothing afterwards,
+    // so innerWidth/innerHeight at that moment were stale: the canvas was frozen at the old
+    // size and the rest of the screen stayed black. Now every size change is re-measured a few
+    // times as it settles, and the loop checks the canvas size twice a second as a safety net.
     this._onResize = () => {
-      this._fitCamera();
-      this.renderer.setSize(innerWidth, innerHeight);
-      this.post?.setSize(innerWidth, innerHeight);
+      this._applySize();
+      requestAnimationFrame(() => this._applySize());
+      clearTimeout(this._resizeT1); clearTimeout(this._resizeT2);
+      this._resizeT1 = setTimeout(() => this._applySize(), 250);
+      this._resizeT2 = setTimeout(() => this._applySize(), 800);
     };
     addEventListener('resize', this._onResize);
-    this.renderer.setSize(innerWidth, innerHeight);
+    addEventListener('orientationchange', this._onResize);
+    document.addEventListener('fullscreenchange', this._onResize);
+    window.visualViewport?.addEventListener('resize', this._onResize);
+    if (typeof ResizeObserver !== 'undefined') { this._ro = new ResizeObserver(() => this._applySize()); this._ro.observe(this.canvas); }
+    this._applySize(true);
 
     // contenedor de la escenografía 3D (casa/castillo + kit de naturaleza), que se
     // reconstruye al cambiar de escenario
@@ -542,10 +554,28 @@ export class Game {
     this.setTheme(localStorage.getItem('ld:theme') || 'dusk');
   }
 
+  // Real on-screen size of the canvas (CSS pixels). Falls back to the window before layout.
+  _view() {
+    const w = this.canvas.clientWidth || innerWidth, h = this.canvas.clientHeight || innerHeight;
+    return { w: Math.max(1, w), h: Math.max(1, h) };
+  }
+
+  // Matches the drawing buffer, the bloom targets and the camera to the canvas size.
+  _applySize(force = false) {
+    if (this.disposed || !this.renderer) return;
+    const { w, h } = this._view();
+    if (!force && w === this._vw && h === this._vh) return;
+    this._vw = w; this._vh = h;
+    this.renderer.setSize(w, h, false);
+    this.post?.setSize(w, h);
+    this._fitCamera();
+  }
+
   // Encuadra el tablero según la proporción de pantalla: en móviles verticales
   // se aleja y sube para que las 5 filas queden visibles sobre la bandeja de cartas.
   _fitCamera() {
-    const a = innerWidth / Math.max(innerHeight, 1);
+    const { w: vw, h: vh } = this._view();
+    const a = vw / Math.max(vh, 1);
     if (a < 0.7)       { this.camera.position.set(0.4, 9.6, 13.6); this.camera.fov = 55; }
     else if (a < 1.0)  { this.camera.position.set(0.5, 8.4, 11.8); this.camera.fov = 50; }
     else if (a < 1.35) { this.camera.position.set(0.55, 7.3, 10.4); this.camera.fov = 46; }
@@ -674,7 +704,7 @@ export class Game {
   // devicePixelRatio que usa el renderer). Se pide la de 4K sólo cuando la ligera
   // (1600 px) tendría que estirarse; en móvil se ahorra ancho de banda.
   _bgSources(id) {
-    const bufferW = innerWidth * Math.min(devicePixelRatio || 1, 2);
+    const bufferW = this._view().w * Math.min(devicePixelRatio || 1, 2);
     return bufferW >= 1600
       ? [`${id}.webp`, `${id}.sd.webp`]
       : [`${id}.sd.webp`, `${id}.webp`];
@@ -744,6 +774,11 @@ export class Game {
     this.disposed = true;
     cancelAnimationFrame(this._raf);
     removeEventListener('resize', this._onResize);
+    removeEventListener('orientationchange', this._onResize);
+    document.removeEventListener('fullscreenchange', this._onResize);
+    window.visualViewport?.removeEventListener('resize', this._onResize);
+    this._ro?.disconnect();
+    clearTimeout(this._resizeT1); clearTimeout(this._resizeT2);
     this.state = 'idle';
     this.scene.traverse((o) => {
       o.geometry?.dispose?.();
@@ -1025,7 +1060,8 @@ export class Game {
   }
 
   _ray(e) {
-    this.pointer.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+    const r = this.canvas.getBoundingClientRect();
+    this.pointer.set(((e.clientX - r.left) / Math.max(r.width, 1)) * 2 - 1, -((e.clientY - r.top) / Math.max(r.height, 1)) * 2 + 1);
     this.raycaster.setFromCamera(this.pointer, this.camera);
   }
 
@@ -1544,6 +1580,8 @@ export class Game {
     this._raf = requestAnimationFrame(this._animate);
     const rawDt = Math.min(this.clock.getDelta(), 0.08);
     this.worldT = (this.worldT || 0) + rawDt;
+    // safety net for size changes no event reported (iOS PWA rotation / full screen)
+    if ((this._sizeTick = (this._sizeTick || 0) + rawDt) > 0.5) { this._sizeTick = 0; this._applySize(); }
     if (this.clouds) for (const c of this.clouds) {
       c.position.x += rawDt * 0.25;
       if (c.position.x > 18) c.position.x = -18;
@@ -1578,11 +1616,11 @@ export class Game {
     // weak device: after a few slow seconds, drop the bloom pass for good
     if (this.post?.enabled) {
       this._slow = rawDt > 0.045 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);
-      if (this._slow > 4) { this.fx.detail = 0.5; this.post.enabled = false; this._slow = 0; this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25)); this.renderer.setSize(innerWidth, innerHeight); }
+      if (this._slow > 4) { this.fx.detail = 0.5; this.post.enabled = false; this._slow = 0; this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25)); this._applySize(true); }
     } else if (this.post && !this._lowest && localStorage.getItem('ld:gfx') !== 'low') {
       // still struggling without bloom: native resolution and no shadow maps
       this._slow = rawDt > 0.05 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);
-      if (this._slow > 5) { this._lowest = true; this.renderer.setPixelRatio(1); this.renderer.setSize(innerWidth, innerHeight); this.renderer.shadowMap.enabled = false; this.scene.traverse((o) => { if (o.material) o.material.needsUpdate = true; }); }
+      if (this._slow > 5) { this._lowest = true; this.renderer.setPixelRatio(1); this._applySize(true); this.renderer.shadowMap.enabled = false; this.scene.traverse((o) => { if (o.material) o.material.needsUpdate = true; }); }
     }
   }
 
