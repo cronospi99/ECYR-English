@@ -6,10 +6,11 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MARKUP } from './markup';
+import { neonIcons } from './icons';
 import './legacy.css';
 import './skin.css';
 
-const FONTS = 'https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@600;700;800;900&display=swap';
+const FONTS = 'https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@600;700;800;900&family=Orbitron:wght@600;800;900&family=Exo+2:wght@600;700;800;900&display=swap';
 
 function loadOnce(tag: 'link' | 'script', url: string) {
   if (document.querySelector(`[data-ld="${url}"]`)) return;
@@ -28,6 +29,7 @@ export default function DefendersApp() {
     loadOnce('link', FONTS);
     loadOnce('script', '/defenders/vendor/peerjs.min.js'); // Class Mode transport
     el.innerHTML = MARKUP;
+    const stopIcons = neonIcons(el); // every emoji in the UI becomes a neon icon
     const prevTitle = document.title;
     document.title = 'Language Defenders — Learn · Defend · Win';
     const prevOverflow = document.body.style.overflow;
@@ -56,6 +58,7 @@ export default function DefendersApp() {
 
     return () => {
       gone = true;
+      stopIcons();
       el.removeEventListener('click', onClick);
       dispose?.();
       el.innerHTML = '';

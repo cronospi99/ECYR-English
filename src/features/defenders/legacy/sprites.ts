@@ -90,24 +90,69 @@ function glowBar(x, col, w) {
   x.shadowColor = col; x.shadowBlur = 22; x.fillStyle = g;
   x.beginPath(); x.roundRect(4, 64 - w / 2, 120, w, w / 2); x.fill(); x.fill();
 }
-// The 3D title that floats over the board in the menu.
+// The 3D title that floats over the board in the menu: a synthwave neon sign that has seen the
+// end of the world — chrome letters with a sunset gradient, pink neon tubes, a cyan ghost of the
+// glitch behind them, horizontal scan cuts and a few cracks.
 function drawLogo() {
   const c = document.createElement('canvas'); c.width = 1024; c.height = 512;
   const x = c.getContext('2d');
   x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineJoin = 'round';
-  const line = (txt, y, size, fill, stroke) => {
-    x.font = `900 ${size}px "Luckiest Guy", "Nunito", "Arial Black", sans-serif`;
-    x.lineWidth = size * 0.26; x.strokeStyle = '#1a0833'; x.strokeText(txt, 512, y + size * 0.07);
-    x.lineWidth = size * 0.14; x.strokeStyle = stroke; x.strokeText(txt, 512, y);
-    const g = x.createLinearGradient(0, y - size / 2, 0, y + size / 2); g.addColorStop(0, fill[0]); g.addColorStop(1, fill[1]);
-    x.fillStyle = g; x.fillText(txt, 512, y);
-    x.fillStyle = 'rgba(255,255,255,.35)'; x.save(); x.beginPath(); x.rect(0, y - size / 2, 1024, size * 0.36); x.clip(); x.fillText(txt, 512, y); x.restore();
-  };
-  line('LANGUAGE', 150, 150, ['#fff36b', '#ff7a1e'], '#ff2d8a');
-  line('DEFENDERS', 310, 172, ['#9dffe0', '#19b8a6'], '#ff2d8a');
-  x.font = '800 44px "Nunito", sans-serif';
-  x.lineWidth = 12; x.strokeStyle = '#1a0833'; x.strokeText('LEARN  ·  DEFEND  ·  WIN', 512, 440);
-  x.fillStyle = '#ffffff'; x.fillText('LEARN  ·  DEFEND  ·  WIN', 512, 440);
+  const font = (size, w = 900) => `${w} ${size}px "Orbitron", "Exo 2", "Arial Black", sans-serif`;
+  const fit = (txt, size, max) => { x.font = font(size); const w = x.measureText(txt).width; return w > max ? size * max / w : size; };
+
+  // "LANGUAGE": hollow neon tube lettering in cyan, slightly italic
+  {
+    const y = 128, size = fit('LANGUAGE', 118, 900);
+    x.save(); x.translate(512, y); x.transform(1, 0, -0.12, 1, 0, 0);
+    x.font = font(size);
+    x.lineWidth = size * 0.2; x.strokeStyle = 'rgba(8,2,20,.85)'; x.strokeText('LANGUAGE', 4, 6);
+    x.shadowColor = '#2de2e6'; x.shadowBlur = 34;
+    x.lineWidth = size * 0.085; x.strokeStyle = '#2de2e6'; x.strokeText('LANGUAGE', 0, 0);
+    x.shadowBlur = 12; x.lineWidth = size * 0.03; x.strokeStyle = '#e9ffff'; x.strokeText('LANGUAGE', 0, 0);
+    x.restore();
+  }
+  // "DEFENDERS": chrome with a synthwave sunset, pink tube outline and a cyan glitch ghost
+  {
+    const y = 300, size = fit('DEFENDERS', 178, 960);
+    x.font = font(size);
+    x.save(); x.translate(512, y); x.transform(1, 0, -0.12, 1, 0, 0);
+    // drop shadow and the glitch ghost
+    x.lineWidth = size * 0.24; x.strokeStyle = '#0a0216'; x.strokeText('DEFENDERS', 6, 10);
+    x.globalAlpha = 0.75; x.fillStyle = '#2de2e6'; x.fillText('DEFENDERS', -9, 3);
+    x.fillStyle = '#ff3df0'; x.fillText('DEFENDERS', 9, -3); x.globalAlpha = 1;
+    // neon tube outline
+    x.shadowColor = '#ff3df0'; x.shadowBlur = 30;
+    x.lineWidth = size * 0.1; x.strokeStyle = '#ff3df0'; x.strokeText('DEFENDERS', 0, 0);
+    x.shadowBlur = 0;
+    // chrome sunset fill with a hard horizon
+    const g = x.createLinearGradient(0, -size / 2, 0, size / 2);
+    g.addColorStop(0, '#fffbe0'); g.addColorStop(0.28, '#ffd23f'); g.addColorStop(0.5, '#ff8a1e');
+    g.addColorStop(0.5, '#2a0a4a'); g.addColorStop(0.56, '#7a1fb8'); g.addColorStop(1, '#ff6ad8');
+    x.fillStyle = g; x.fillText('DEFENDERS', 0, 0);
+    x.lineWidth = 3; x.strokeStyle = 'rgba(255,255,255,.9)'; x.strokeText('DEFENDERS', 0, 0);
+    // scan cuts through the lower half, like a sun on a synthwave horizon
+    x.globalCompositeOperation = 'destination-out';
+    for (let i = 0; i < 4; i++) x.fillRect(-520, size * (0.08 + i * 0.1), 1040, 3 + i * 1.6);
+    // a few cracks: the sign survived something
+    x.lineWidth = 3; x.strokeStyle = '#000';
+    for (const [sx, sy, pts] of [[-300, -60, [[-280, -20], [-292, 10], [-270, 40]]], [210, -70, [[228, -30], [215, -5]]], [380, 20, [[395, 50], [380, 70]]]]) {
+      x.beginPath(); x.moveTo(sx, sy); for (const [px, py] of pts) x.lineTo(px, py); x.stroke();
+    }
+    x.globalCompositeOperation = 'source-over';
+    x.restore();
+  }
+  // tagline in a neon frame
+  {
+    x.font = font(38, 800);
+    const t = 'LEARN  ·  DEFEND  ·  WIN', w = x.measureText(t).width + 70;
+    x.shadowColor = '#2de2e6'; x.shadowBlur = 18;
+    x.lineWidth = 4; x.strokeStyle = '#2de2e6';
+    x.fillStyle = 'rgba(10,2,24,.82)';
+    x.beginPath(); x.moveTo(512 - w / 2 + 16, 412); x.lineTo(512 + w / 2, 412); x.lineTo(512 + w / 2 - 16, 468); x.lineTo(512 - w / 2, 468); x.closePath();
+    x.fill(); x.stroke();
+    x.shadowColor = '#ff3df0'; x.shadowBlur = 14; x.fillStyle = '#ffe9ff'; x.fillText(t, 512, 441);
+    x.shadowBlur = 0;
+  }
   return c;
 }
 function registerDrawn() {
@@ -125,7 +170,7 @@ function registerDrawn() {
 
 export async function preloadSprites() {
   // the title uses the display font: wait for it (briefly) so the texture is drawn with it
-  try { await Promise.race([document.fonts.load('900 60px "Luckiest Guy"'), new Promise(r => setTimeout(r, 1500))]); } catch { /* fallback font */ }
+  try { await Promise.race([Promise.all([document.fonts.load('900 60px "Luckiest Guy"'), document.fonts.load('900 60px "Orbitron"'), document.fonts.load('800 38px "Orbitron"')]), new Promise(r => setTimeout(r, 2500))]); } catch { /* fallback font */ }
   registerDrawn();
   renderPortraits();
   const loader = new THREE.TextureLoader();
