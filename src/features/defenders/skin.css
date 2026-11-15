@@ -150,15 +150,16 @@
    cells sized from the viewport so it reads at a glance.
    ============================================================ */
 #ld-app {
-  --ib: clamp(34px, min(8.4vw, 10.6vh), 112px);
+  /* five rows have to fit under the title, the hint and the button */
+  --ib: clamp(34px, min(8.4vw, calc((100dvh - 330px) / 5.5)), 112px);
   .improve-box { width:min(1240px, 97vw); padding:26px 34px 24px; }
   .improve-box h2 { font-size:clamp(26px, 3.6vw, 44px); margin-bottom:6px; }
   .improve-box .mini-desc { max-width:none; font-size:clamp(14px, 1.5vw, 18px); margin:0 auto 4px; }
   .improve-box .mini-desc b { color:var(--ld-yellow); }
-  .improve-list { max-height:none; margin:14px 0 12px; padding:14px 12px; border-radius:20px;
+  .improve-list { max-height:none; overflow:auto; display:flex; justify-content:safe center; margin:14px 0 12px; padding:14px 12px; border-radius:20px;
     background:radial-gradient(ellipse at 50% 30%, rgba(80,160,90,.22), rgba(10,4,24,.55) 75%);
     border:1px solid var(--ld-line); box-shadow:inset 0 2px 14px rgba(0,0,0,.45); }
-  .improve-board { gap:calc(var(--ib) * .09); }
+  .improve-board { gap:calc(var(--ib) * .09); width:max-content; }
   .ib-row { gap:calc(var(--ib) * .09); }
   .ib-rowlabel { width:calc(var(--ib) * .34); font-size:calc(var(--ib) * .26); font-family:'Luckiest Guy',cursive; font-weight:400; color:var(--ld-yellow); opacity:.9; }
   .ib-cell {

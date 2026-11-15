@@ -507,13 +507,13 @@ export class Scenery {
     const frame = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.16, 0.5), stone);
     frame.position.y = 0.02;
     gate.add(veil, glow, frame);
-    // centred on the middle lane (z = 0), so it sits in the very middle of the arena's side
-    gate.position.set(this.cols / 2 + 2.35, 0, 0.12);
-    this.gate = { pos: new THREE.Vector3(this.cols / 2 + 2.05, 0, 0.12), color: m.neon };
+    // a little south of the middle lane: the gate is tall, so this puts its body in the middle of the arena on screen
+    gate.position.set(this.cols / 2 + 2.35, 0, 0.45);
+    this.gate = { pos: new THREE.Vector3(this.cols / 2 + 2.05, 0, 0.45), color: m.neon };
     gate.rotation.y = -Math.PI / 2; // square on to the arena: its mouth looks straight down the lanes
     gate.scale.setScalar(0.86);
     g.add(gate);
-    this.gateLight.color.set(m.neon); this.gateLight.intensity = 22; this.gateLight.position.set(this.cols / 2 + 1.6, 1.5, 0.12);
+    this.gateLight.color.set(m.neon); this.gateLight.intensity = 22; this.gateLight.position.set(this.cols / 2 + 1.6, 1.5, 0.45);
     g.add(this.gateLight);
 
     /* a city that is still burning: fires and smoke behind the fence, searchlights, falling ash, far-off flashes */
