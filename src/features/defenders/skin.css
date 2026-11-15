@@ -144,3 +144,103 @@
   }
 }
 @keyframes ld-hop { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-14px) } }
+
+/* ============================================================
+   Improve pop-up, bigger: the board fills most of the screen, with
+   cells sized from the viewport so it reads at a glance.
+   ============================================================ */
+#ld-app {
+  --ib: clamp(34px, min(8.4vw, 10.6vh), 112px);
+  .improve-box { width:min(1240px, 97vw); padding:26px 34px 24px; }
+  .improve-box h2 { font-size:clamp(26px, 3.6vw, 44px); margin-bottom:6px; }
+  .improve-box .mini-desc { max-width:none; font-size:clamp(14px, 1.5vw, 18px); margin:0 auto 4px; }
+  .improve-box .mini-desc b { color:var(--ld-yellow); }
+  .improve-list { max-height:none; margin:14px 0 12px; padding:14px 12px; border-radius:20px;
+    background:radial-gradient(ellipse at 50% 30%, rgba(80,160,90,.22), rgba(10,4,24,.55) 75%);
+    border:1px solid var(--ld-line); box-shadow:inset 0 2px 14px rgba(0,0,0,.45); }
+  .improve-board { gap:calc(var(--ib) * .09); }
+  .ib-row { gap:calc(var(--ib) * .09); }
+  .ib-rowlabel { width:calc(var(--ib) * .34); font-size:calc(var(--ib) * .26); font-family:'Luckiest Guy',cursive; font-weight:400; color:var(--ld-yellow); opacity:.9; }
+  .ib-cell {
+    width:var(--ib); height:var(--ib); border-radius:calc(var(--ib) * .2); border:2px solid rgba(0,0,0,.28);
+    background:radial-gradient(circle at 50% 38%, #8fd36a, #4f9a35 70%);
+    box-shadow:inset 0 2px 0 rgba(255,255,255,.28), inset 0 -4px 0 rgba(0,0,0,.18), 0 3px 0 rgba(0,0,0,.3);
+  }
+  .ib-cell.alt { background:radial-gradient(circle at 50% 38%, #9be074, #58a53c 70%); }
+  .ib-cell.empty { opacity:.28; box-shadow:inset 0 2px 6px rgba(0,0,0,.35); }
+  .ib-cell:not(.empty):hover { transform:translateY(-3px) scale(1.06); }
+  .ib-cell img { width:84%; height:84%; margin-top:-6%; }
+  .ib-cell.ready { border-color:var(--ld-yellow); box-shadow:0 0 0 3px rgba(255,197,49,.35), 0 0 18px rgba(255,197,49,.45), inset 0 2px 0 rgba(255,255,255,.3); }
+  .ib-cell.maxed { border-color:var(--ld-blue); background:radial-gradient(circle at 50% 38%, #7ff0ff, #2c8fb8 72%); box-shadow:0 0 0 3px rgba(45,226,230,.3), 0 0 18px rgba(45,226,230,.4), inset 0 2px 0 rgba(255,255,255,.35); }
+  .ib-cell.poor { border-color:rgba(0,0,0,.35); }
+  .ib-cell.digg { border-color:var(--ld-coral); box-shadow:0 0 0 3px rgba(255,61,129,.3), inset 0 2px 0 rgba(255,255,255,.3); }
+  .ib-lvl {
+    top:calc(var(--ib) * .05); left:calc(var(--ib) * .05); padding:1px calc(var(--ib) * .07);
+    font:900 max(9px, calc(var(--ib) * .15)) 'Nunito',sans-serif; color:#fff; text-shadow:none;
+    background:rgba(20,8,46,.82); border-radius:999px; line-height:1.4;
+  }
+  .ib-cell.maxed .ib-lvl { background:linear-gradient(#2de2e6,#1a8fb8); color:#05202a; }
+  .ib-cost {
+    left:8%; right:8%; bottom:calc(var(--ib) * .05); border-radius:999px;
+    font:900 max(9px, calc(var(--ib) * .15)) 'Nunito',sans-serif; color:var(--ld-yellow);
+    background:rgba(20,8,46,.82); line-height:1.45;
+  }
+  .ib-cell.poor .ib-cost { color:#ff9ab8; }
+  .ib-star { font-size:max(11px, calc(var(--ib) * .2)); bottom:calc(var(--ib) * .03); right:calc(var(--ib) * .05); }
+  #improve-note { font-size:clamp(13px, 1.4vw, 16px); font-weight:800; }
+  #improve-accept { max-width:640px; width:100%; align-self:center; font-size:clamp(16px, 1.7vw, 20px); }
+
+  /* ============================================================
+     Defender cards: a trading-card frame in the tier's colour, the
+     defender lit from behind, its name, and the cost on a pill.
+     ============================================================ */
+  .plant-card {
+    --tc:#8dff4a; --tc2:#2f9a2c;
+    width:94px; padding:6px 5px 7px; border-radius:16px; overflow:hidden;
+    border:2px solid var(--tc);
+    background:
+      radial-gradient(circle at 50% 36%, color-mix(in srgb, var(--tc) 55%, transparent), transparent 62%),
+      linear-gradient(170deg, #3a1670, #1a0838 70%);
+    box-shadow:0 5px 0 color-mix(in srgb, var(--tc2) 70%, #000), 0 9px 16px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .12s, box-shadow .12s, filter .12s;
+  }
+  .plant-card::before {
+    content:''; position:absolute; inset:0; pointer-events:none; border-radius:14px;
+    background:linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,0) 38%);
+  }
+  .plant-card.tier-basic    { --tc:#8dff4a; --tc2:#2f9a2c; }
+  .plant-card.tier-silver   { --tc:#d4e2ec; --tc2:#6b7c8a; background:radial-gradient(circle at 50% 36%, rgba(212,226,236,.5), transparent 62%), linear-gradient(170deg, #3a3f62, #171a33 70%); border-color:var(--tc); }
+  .plant-card.tier-golden   { --tc:#ffcf4a; --tc2:#a87818; background:radial-gradient(circle at 50% 36%, rgba(255,207,74,.55), transparent 62%), linear-gradient(170deg, #4a2a5a, #200c2a 70%); border-color:var(--tc); }
+  .plant-card.tier-platinum { --tc:#b8e2ff; --tc2:#5878a0; background:radial-gradient(circle at 50% 36%, rgba(184,226,255,.55), transparent 62%), linear-gradient(170deg, #2a3a72, #0e1638 70%); border-color:var(--tc); }
+  .plant-card.tier-diamond  { --tc:#5ef4ff; --tc2:#1878a0; background:radial-gradient(circle at 50% 36%, rgba(94,244,255,.6), transparent 62%), linear-gradient(170deg, #12506e, #071a30 70%); border-color:var(--tc); }
+  .plant-card:hover { transform:translateY(-3px) scale(1.04); filter:brightness(1.08); }
+  .plant-card.selected { outline:3px solid var(--ld-yellow); outline-offset:2px; transform:translateY(-3px) scale(1.06);
+    box-shadow:0 0 0 6px rgba(255,197,49,.25), 0 0 22px rgba(255,197,49,.6), 0 5px 0 rgba(0,0,0,.35); }
+  .plant-card .card-icon { width:64px; height:64px; filter:drop-shadow(0 5px 4px rgba(0,0,0,.55)); position:relative; }
+  .plant-card .card-name {
+    display:block; margin:2px 0 4px; font:900 10.5px/1.1 'Nunito',sans-serif; color:#fff;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-shadow:0 1px 2px rgba(0,0,0,.7); position:relative;
+  }
+  .plant-card .card-cost {
+    display:inline-block; position:relative; padding:2px 9px; border-radius:999px;
+    font:900 13px/1.3 'Nunito',sans-serif; color:var(--ld-yellow); text-shadow:none;
+    background:rgba(10,4,24,.78); border:1px solid color-mix(in srgb, var(--tc) 55%, transparent);
+  }
+  .plant-card .tier-dot { top:6px; right:6px; width:11px; height:11px; border:1.5px solid rgba(255,255,255,.75); transform:rotate(45deg); border-radius:2px;
+    background:var(--tc) !important; box-shadow:0 0 8px var(--tc); }
+  .plant-card .card-cd { inset:0; border-radius:14px; background:linear-gradient(rgba(10,4,24,.62), rgba(10,4,24,.82)); z-index:2; }
+  .plant-card.unaffordable { filter:none; }
+  .plant-card.unaffordable .card-icon { filter:grayscale(.85) brightness(.6) drop-shadow(0 4px 3px rgba(0,0,0,.5)); }
+  .plant-card.unaffordable .card-cost { color:#ff7aa0; }
+  .plant-card.unaffordable .card-name { opacity:.6; }
+
+  @media (max-width:900px), (max-height:540px) {
+    .improve-box { padding:14px 12px 14px; }
+    .improve-list { padding:8px 6px; margin:8px 0; }
+    .plant-card { width:62px; padding:4px 3px 5px; border-radius:12px; }
+    .plant-card .card-icon { width:40px; height:40px; }
+    .plant-card .card-name { display:none; }
+    .plant-card .card-cost { font-size:11px; padding:1px 6px; margin-top:2px; }
+    .plant-card .tier-dot { width:8px; height:8px; top:4px; right:4px; }
+  }
+}

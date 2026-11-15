@@ -467,7 +467,7 @@ export class Scenery {
     }
 
     /* neon coffin gate: where the horde walks in */
-    const gate = new THREE.Group(), neon = new THREE.MeshBasicMaterial({ color: new THREE.Color(m.neon).multiplyScalar(2.6), toneMapped: false });
+    const gate = new THREE.Group(), neon = new THREE.MeshBasicMaterial({ color: new THREE.Color(m.neon).multiplyScalar(2.2), toneMapped: false });
     this.neon.push(neon);
     const pts: [number, number][] = [[-0.52, 3.3], [0.52, 3.3], [1.0, 2.45], [0.56, 0.06], [-0.56, 0.06], [-1.0, 2.45]];
     pts.forEach((p, i) => {
@@ -502,17 +502,18 @@ export class Scenery {
     });
     const veil = new THREE.Mesh(new THREE.ShapeGeometry(shape), this.veil);
     veil.position.z = -0.06;
-    const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: m.neon, transparent: true, opacity: 0.28, blending: THREE.AdditiveBlending, depthWrite: false }));
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: m.neon, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false }));
     glow.position.set(0, 1.7, -0.1); glow.scale.set(5, 6, 1);
     const frame = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.16, 0.5), stone);
     frame.position.y = 0.02;
     gate.add(veil, glow, frame);
-    gate.position.set(this.cols / 2 + 2.35, 0, -0.4);
-    this.gate = { pos: new THREE.Vector3(this.cols / 2 + 2.05, 0, -0.25), color: m.neon };
+    // centred on the middle lane (z = 0), so it sits in the very middle of the arena's side
+    gate.position.set(this.cols / 2 + 2.35, 0, 0.12);
+    this.gate = { pos: new THREE.Vector3(this.cols / 2 + 2.05, 0, 0.12), color: m.neon };
     gate.rotation.y = -Math.PI / 2; // square on to the arena: its mouth looks straight down the lanes
     gate.scale.setScalar(0.86);
     g.add(gate);
-    this.gateLight.color.set(m.neon); this.gateLight.intensity = 26; this.gateLight.position.set(this.cols / 2 + 1.6, 1.5, 0);
+    this.gateLight.color.set(m.neon); this.gateLight.intensity = 22; this.gateLight.position.set(this.cols / 2 + 1.6, 1.5, 0.12);
     g.add(this.gateLight);
 
     /* a city that is still burning: fires and smoke behind the fence, searchlights, falling ash, far-off flashes */
@@ -693,7 +694,7 @@ export class Scenery {
     this.gatePulse = Math.max(0, this.gatePulse - dt * 1.6);
     this.gateLight.intensity = 26 * hum + this.gatePulse * 60;
     if (this.veil) { this.veil.uniforms.t!.value += dt; this.veil.uniforms.pulse!.value = this.gatePulse; }
-    for (const n of this.neon) n.color.set(m.neon).multiplyScalar(2.6 * hum);
+    for (const n of this.neon) n.color.set(m.neon).multiplyScalar(2.2 * hum);
     for (const hm of this.house) hm.emissiveIntensity = 2.2 + Math.sin(t * 7.3) * 0.15 + (Math.sin(t * 1.7 + 2) > 0.97 ? -1.2 : 0);
     if (m.lightning) {
       this.nextFlash -= dt;

@@ -123,7 +123,7 @@ function renderCards() {
       el.className = `plant-card tier-${def.tier}`;
       el.dataset.id = card.id;
       el.title = `${def.name} (${def.tier})`;
-      el.innerHTML = `<img class="card-icon" src="${spriteURL(def.sprite)}" alt=""><span class="card-cost">💡${def.cost}</span><span class="tier-dot"></span><div class="card-cd"></div>`;
+      el.innerHTML = `<img class="card-icon" src="${spriteURL(def.sprite)}" alt=""><span class="card-name">${def.name}</span><span class="card-cost">💡${def.cost}</span><span class="tier-dot"></span><div class="card-cd"></div>`;
       el.addEventListener('click', () => {
         const c = game.cards.find(x => x.id === card.id);
         if (!c || c.cd > 0 || game.sunAmount < def.cost) return;
