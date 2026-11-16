@@ -799,7 +799,7 @@ export class Game {
     const logo = new THREE.Group();
     const LAYERS = 9;
     for (let i = LAYERS - 1; i >= 0; i--) {
-      const layer = makeBillboard('logo', 2.3, { shadow: false });
+      const layer = makeBillboard('logo', 3.2, { shadow: false });
       const p = layer.userData.plane;
       p.position.z = -i * 0.035;
       p.position.y = 1.15 - i * 0.008;
@@ -808,23 +808,23 @@ export class Game {
       layer.position.y = 0;
       logo.add(p);
     }
-    logo.position.y = 1.45;
-    logo.scale.setScalar(0.88);
+    logo.position.y = 1.7;
+    logo.scale.setScalar(0.92);
     t.add(logo);
     this.titleLogo = logo;
     this.titleLogo.userData.plane = logo.children[logo.children.length - 1];
 
-    const glow1 = makeGlowSprite(0xffd870, 6.5);
+    const glow1 = makeGlowSprite(0x39e6ff, 7.5);
     glow1.position.set(0, 2.8, -0.4);
-    const glow2 = makeGlowSprite(0x9adc60, 8.5);
+    const glow2 = makeGlowSprite(0x6aff8a, 9.5);
     glow2.position.set(0, 2.8, -0.6);
-    glow2.material.opacity = 0.55;
+    glow2.material.opacity = 0.35;
     t.add(glow2, glow1);
     this.titleGlows = [glow1, glow2];
 
     // anillos de chispas doradas
     this.sparkles = [];
-    for (const [n, color, r0] of [[42, 0xffe080, 3.2], [30, 0xfff8d0, 2.4]]) {
+    for (const [n, color, r0] of [[42, 0x7dfcff, 3.6], [30, 0xb6ffcf, 2.8]]) { // will-o'-the-wisps around the title
       const geo = new THREE.BufferGeometry();
       const pos = new Float32Array(n * 3);
       const meta = [];
@@ -863,12 +863,12 @@ export class Game {
   _updateTitle(dt) {
     this.menuT += dt;
     const t = this.menuT;
-    this.titleLogo.position.y = 1.45 + Math.sin(t * 1.2) * 0.12;
+    this.titleLogo.position.y = 1.7 + Math.sin(t * 1.2) * 0.1;
     this.titleLogo.rotation.z = Math.sin(t * 0.8) * 0.03;
     // giro suave para lucir la profundidad de la extrusión
     this.titleLogo.rotation.y = Math.sin(t * 0.5) * 0.22;
-    this.titleGlows[0].material.opacity = 0.5 + Math.sin(t * 2.1) * 0.25;
-    this.titleGlows[1].material.opacity = 0.3 + Math.sin(t * 1.4 + 2) * 0.18;
+    this.titleGlows[0].material.opacity = 0.3 + Math.sin(t * 2.1) * 0.12;
+    this.titleGlows[1].material.opacity = 0.16 + Math.sin(t * 1.4 + 2) * 0.08;
     for (const c of this.cast) {
       const tk = c.m.userData.tick;
       if (c.enemy) {

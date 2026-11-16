@@ -6,7 +6,7 @@
 
 const P = (d: string) => `<path d="${d}"/>`;
 const C = (x: number, y: number, r: number) => `<circle cx="${x}" cy="${y}" r="${r}"/>`;
-const T = (t: string, size = 8.5, y = 15.4) => `<text x="12" y="${y}" text-anchor="middle" font-size="${size}" font-weight="900" fill="currentColor" stroke="none" font-family="Orbitron,'Exo 2',sans-serif">${t}</text>`;
+const T = (t: string, size = 8.5, y = 15.4) => `<text x="12" y="${y}" text-anchor="middle" font-size="${size}" font-weight="900" fill="currentColor" stroke="none" font-family="Nunito,sans-serif">${t}</text>`;
 const phone = '<rect x="7" y="2.5" width="10" height="19" rx="2"/>' + P('M11 18.5h2');
 
 const ICONS: Record<string, string> = {

@@ -251,8 +251,8 @@
 }
 
 /* ============================================================
-   Neon icons (icons.ts): thin glowing tubes in the colour of their
-   family. They replace every emoji in the UI.
+   Neon icons (icons.ts): thin glowing tubes, like the neon coffin of
+   the graveyard gate. They replace every emoji in the UI.
    ============================================================ */
 #ld-app .nx {
   display:inline-block; width:1.15em; height:1.15em; vertical-align:-0.2em; color:var(--nx, #2de2e6);
@@ -266,124 +266,117 @@
 #ld-app .ld-mode i > .nx { width:30px; height:30px; vertical-align:middle; --nx:#fff !important; filter:drop-shadow(0 0 4px rgba(255,255,255,.7)); }
 
 /* ============================================================
-   Question window: neon cyberpunk after the end of the world.
-   Dark gunmetal panel, a hazard stripe, glowing edges and corner
-   brackets — but the question and the answers stay as plain, bright
-   text on a near-black surface so they are easy to read.
+   Question window: NEON GRAVE. A slab of night with one neon tube
+   around it (the coffin at the graveyard gate), dirt and grain, a
+   splintered horror title face for the labels — and the question and
+   answers in big bone-white type on near-black, so they read easily.
    ============================================================ */
 #ld-app {
-  --cx-cyan:#2de2e6; --cx-mag:#ff3df0; --cx-pink:#ff3d81; --cx-yel:#ffd23f; --cx-grn:#8dff4a; --cx-red:#ff4d6d;
-  --cx-ink:#07030f; --cx-panel:#120a22; --cx-text:#f2f4ff;
+  --ng-cyan:#39e6ff; --ng-toxic:#7dff6a; --ng-blood:#ff3d5a; --ng-bone:#eef0e2; --ng-moss:#9fc9a4;
+  --ng-night:#05070b; --ng-slab:#0b0f16;
+  --ng-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 0.75 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   #quiz-modal {
-    background:
-      repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px),
-      radial-gradient(ellipse at 50% 100%, rgba(255,61,240,.16), rgba(7,3,15,.55) 60%);
-    backdrop-filter:blur(2px);
+    background:radial-gradient(ellipse at 50% 110%, rgba(57,230,255,.10), rgba(3,4,8,.62) 55%, rgba(3,4,8,.78));
+    backdrop-filter:blur(2px) saturate(.8);
   }
   .quiz-box {
-    position:relative; width:min(900px, 96vw); padding:22px 24px 20px; border:0; border-radius:0;
-    background:
-      linear-gradient(180deg, rgba(45,226,230,.07), rgba(255,61,240,.05) 60%, transparent),
-      linear-gradient(160deg, #1a0f30, #0b0616 70%);
-    clip-path:polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
-    box-shadow:none;
-    filter:drop-shadow(0 0 1px var(--cx-cyan)) drop-shadow(0 0 14px rgba(45,226,230,.35)) drop-shadow(0 18px 30px rgba(0,0,0,.6));
+    position:relative; width:min(900px, 96vw); padding:22px 24px 20px;
+    border:3px solid var(--ng-cyan); border-radius:18px;
+    background:var(--ng-grain), radial-gradient(ellipse at 50% 0%, rgba(57,230,255,.08), transparent 60%), linear-gradient(180deg, #0d121b, var(--ng-night));
+    box-shadow:0 0 0 1px rgba(230,253,255,.55) inset, 0 0 10px rgba(57,230,255,.55), 0 0 34px rgba(57,230,255,.28), inset 0 0 26px rgba(57,230,255,.12), 0 22px 40px rgba(0,0,0,.7);
+    animation:ng-hum 5s infinite;
   }
-  /* glowing frame + hazard stripe on top + scanlines */
-  .quiz-box::before {
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background:
-      repeating-linear-gradient(-45deg, var(--cx-yel) 0 10px, #1a1208 10px 20px) top / 100% 6px no-repeat,
-      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 4px);
-    clip-path:inherit;
+  /* the two wires the tube hangs from */
+  .quiz-box::before, .quiz-box::after {
+    content:''; position:absolute; bottom:-34px; width:46px; height:40px; pointer-events:none;
+    border:2px solid #1d2a36; border-top:0; border-radius:0 0 40px 40px;
   }
-  .quiz-box::after {
-    content:''; position:absolute; inset:0; pointer-events:none; clip-path:inherit;
-    background:
-      linear-gradient(var(--cx-cyan), var(--cx-cyan)) left 0 bottom 0 / 28% 2px no-repeat,
-      linear-gradient(var(--cx-mag), var(--cx-mag)) right 0 bottom 0 / 28% 2px no-repeat,
-      linear-gradient(var(--cx-cyan), var(--cx-cyan)) left 0 top 18px / 2px 40% no-repeat,
-      linear-gradient(var(--cx-mag), var(--cx-mag)) right 0 top 18px / 2px 40% no-repeat;
-  }
+  .quiz-box::before { left:12%; border-right:0; }
+  .quiz-box::after { right:12%; border-left:0; }
+
   .quiz-topic, .quiz-kind, .quiz-for {
-    position:relative; font-family:'Orbitron','Exo 2',sans-serif; font-weight:800; letter-spacing:1.4px; text-transform:uppercase;
-    font-size:12px; border-radius:0; padding:6px 12px 5px; margin:8px 4px 14px;
-    clip-path:polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    font-family:'Creepster','Nunito',sans-serif; font-weight:400; letter-spacing:1.6px; text-transform:uppercase;
+    font-size:17px; line-height:1.15; border-radius:10px; padding:5px 14px 4px; margin:4px 4px 14px; clip-path:none;
+    background:rgba(5,7,11,.85); text-shadow:0 0 8px currentColor;
   }
-  .quiz-topic { color:#fff; background:linear-gradient(90deg, #b0168f, #ff3df0); text-shadow:0 0 6px rgba(0,0,0,.4); }
-  .quiz-kind { color:#04181a; background:var(--cx-cyan); }
-  .quiz-for { color:#1a1200; background:var(--cx-yel); border:0; }
-  .quiz-topic .nx, .quiz-kind .nx, .quiz-for .nx { --nx:currentColor !important; filter:none; }
+  .quiz-topic { color:var(--ng-cyan); box-shadow:inset 0 0 0 2px rgba(57,230,255,.7), 0 0 10px rgba(57,230,255,.25); }
+  .quiz-kind { color:var(--ng-toxic); box-shadow:inset 0 0 0 2px rgba(125,255,106,.6), 0 0 10px rgba(125,255,106,.2); }
+  .quiz-for { color:#ffd27a; box-shadow:inset 0 0 0 2px rgba(255,210,122,.6); border:0; }
+  .quiz-topic .nx, .quiz-kind .nx, .quiz-for .nx { --nx:currentColor !important; }
 
   .quiz-question {
-    position:relative; text-align:center;
-    font-family:'Exo 2','Nunito',sans-serif; font-weight:800; font-size:clamp(19px, 3.2vw, 27px); line-height:1.38; letter-spacing:.2px;
-    color:var(--cx-text); background:rgba(4,2,10,.86);
-    border:0; border-left:4px solid var(--cx-mag); border-right:4px solid var(--cx-cyan); border-radius:0;
-    padding:16px 18px; margin-bottom:16px; box-shadow:inset 0 0 0 1px rgba(255,255,255,.08), 0 0 18px rgba(255,61,240,.12);
-    text-shadow:none;
+    font-family:'Nunito',sans-serif; font-weight:900; font-size:clamp(20px, 3.2vw, 28px); line-height:1.38;
+    color:var(--ng-bone); background:rgba(3,4,7,.82); text-align:center; text-shadow:0 2px 0 #000;
+    border:1px solid rgba(238,240,226,.14); border-radius:12px; padding:16px 18px; margin-bottom:16px;
+    box-shadow:inset 0 0 22px rgba(0,0,0,.8);
   }
-  .quiz-question.passage { text-align:left; font-size:clamp(15px, 2.2vw, 19px); font-weight:700; line-height:1.6; color:#e8ecff; }
+  .quiz-question.passage { text-align:left; font-size:clamp(15px, 2.2vw, 19px); font-weight:800; line-height:1.6; }
 
-  .quiz-options { gap:10px; counter-reset:opt; }
+  .quiz-options { gap:12px; counter-reset:opt; }
   .quiz-opt {
-    position:relative; counter-increment:opt;
-    font-family:'Exo 2','Nunito',sans-serif; font-weight:800; font-size:17px; letter-spacing:.2px;
-    color:#eafcff; background:linear-gradient(180deg, #1b1234, #0e0820);
-    border:0; border-radius:0; padding:14px 10px 13px 34px; min-height:54px; text-shadow:none;
-    clip-path:polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-    box-shadow:inset 0 0 0 2px rgba(45,226,230,.75), inset 0 0 18px rgba(45,226,230,.12);
-    transition:transform .1s, box-shadow .12s, background .12s, color .12s;
+    position:relative; counter-increment:opt; clip-path:none;
+    font-family:'Nunito',sans-serif; font-weight:900; font-size:18px; color:var(--ng-bone); text-shadow:0 1px 0 #000;
+    background:var(--ng-grain), linear-gradient(180deg, #121925, #080b11);
+    border:0; border-radius:12px; padding:14px 10px 13px 40px; min-height:56px;
+    box-shadow:inset 0 0 0 2px rgba(57,230,255,.45), 0 4px 0 #020305, 0 8px 14px rgba(0,0,0,.5);
+    transition:transform .1s, box-shadow .14s, color .14s;
   }
+  /* a little tombstone with the letter on it */
   .quiz-opt::before {
-    content:counter(opt, upper-alpha); position:absolute; left:8px; top:50%; transform:translateY(-50%);
-    width:20px; height:20px; display:grid; place-items:center;
-    font:900 11px 'Orbitron',sans-serif; color:#04181a; background:var(--cx-cyan);
-    clip-path:polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+    content:counter(opt, upper-alpha); position:absolute; left:9px; top:50%; transform:translateY(-52%);
+    width:22px; height:26px; display:grid; place-items:center; padding-top:3px;
+    font:400 15px 'Creepster',sans-serif; color:#1a1f24; background:linear-gradient(#cfd3c4, #8e9686);
+    border-radius:11px 11px 3px 3px; box-shadow:0 2px 0 #000; clip-path:none;
   }
   .quiz-opt:hover:not(:disabled) {
-    transform:translateY(-2px); filter:none; color:#fff;
-    background:linear-gradient(180deg, #2a1650, #170c30);
-    box-shadow:inset 0 0 0 2px var(--cx-yel), inset 0 0 22px rgba(255,210,63,.18), 0 0 16px rgba(255,210,63,.25);
+    transform:translateY(-2px); filter:none; color:#fff; background:var(--ng-grain), linear-gradient(180deg, #16222e, #0a0f16);
+    box-shadow:inset 0 0 0 2px var(--ng-cyan), 0 0 14px rgba(57,230,255,.45), 0 6px 0 #020305;
   }
-  .quiz-opt:hover:not(:disabled)::before { background:var(--cx-yel); color:#1a1200; }
-  .quiz-opt.correct { color:#fff; background:linear-gradient(180deg, #145c32, #0a3a1f); box-shadow:inset 0 0 0 2px var(--cx-grn), 0 0 20px rgba(141,255,74,.45); }
-  .quiz-opt.correct::before { background:var(--cx-grn); content:'✓'; }
-  .quiz-opt.wrong { color:#fff; background:linear-gradient(180deg, #6a1430, #3a0a1a); box-shadow:inset 0 0 0 2px var(--cx-red), 0 0 20px rgba(255,77,109,.45); }
-  .quiz-opt.wrong::before { background:var(--cx-red); color:#fff; content:'✕'; }
-  .quiz-opt:disabled:not(.correct):not(.wrong) { opacity:.55; }
+  .quiz-opt.correct { color:#fff; background:var(--ng-grain), linear-gradient(180deg, #123a1c, #07170c); box-shadow:inset 0 0 0 2px var(--ng-toxic), 0 0 18px rgba(125,255,106,.5), 0 4px 0 #020305; animation:ld-bounce .4s; }
+  .quiz-opt.correct::before { content:'✓'; font-family:'Nunito',sans-serif; font-weight:900; background:linear-gradient(#c6ffb8, #5fd34c); }
+  .quiz-opt.wrong { color:#fff; background:var(--ng-grain), linear-gradient(180deg, #3a0d16, #16050a); box-shadow:inset 0 0 0 2px var(--ng-blood), 0 0 18px rgba(255,61,90,.5), 0 4px 0 #020305; animation:ld-shake .4s; }
+  .quiz-opt.wrong::before { content:'✕'; font-family:'Nunito',sans-serif; font-weight:900; color:#fff; background:linear-gradient(#ff8a9a, #c21f3a); }
+  .quiz-opt:disabled:not(.correct):not(.wrong) { opacity:.5; }
 
   .quiz-feedback {
-    font-family:'Exo 2','Nunito',sans-serif; font-weight:800; font-size:16px; border-radius:0;
-    background:rgba(4,2,10,.82); padding:11px 14px; margin-top:14px; border-left:4px solid currentColor;
+    font-family:'Nunito',sans-serif; font-weight:900; font-size:17px; border-radius:10px;
+    background:rgba(3,4,7,.85); padding:11px 14px; margin-top:14px; border:0; box-shadow:inset 0 0 0 1px currentColor;
   }
-  .quiz-feedback.good { color:var(--cx-grn); }
-  .quiz-feedback.bad { color:#ff9db0; }
+  .quiz-feedback.good { color:var(--ng-toxic); }
+  .quiz-feedback.bad { color:#ff9aa8; }
   .quiz-explain {
-    font-family:'Exo 2','Nunito',sans-serif; font-weight:600; font-size:15px; line-height:1.55;
-    color:#e6f0ff; background:rgba(4,2,10,.82); border:1px solid rgba(45,226,230,.45); border-radius:0;
+    font-family:'Nunito',sans-serif; font-weight:700; font-size:15px; line-height:1.55; border-radius:10px;
+    color:#e4ece6; background:rgba(3,4,7,.85); border:1px solid rgba(57,230,255,.3);
   }
-  .quiz-explain .why-line { color:#fff3c4; font-weight:700; }
-  .quiz-explain .grammar-note { color:#d8f7ff; border-top:1px dashed rgba(45,226,230,.4); }
+  .quiz-explain .why-line { color:#ffe9b0; font-weight:800; }
+  .quiz-explain .grammar-note { color:#d2ecf0; border-top:1px dashed rgba(57,230,255,.3); }
 
   .quiz-actions .wood-btn {
-    font-family:'Orbitron','Exo 2',sans-serif; font-weight:800; letter-spacing:1px; text-transform:uppercase; font-size:14px;
-    border-radius:0; color:#1a1200; background:linear-gradient(180deg, #ffe76a, var(--cx-yel));
-    clip-path:polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-    box-shadow:0 0 18px rgba(255,210,63,.45); padding:12px 26px;
+    font-family:'Creepster','Nunito',sans-serif; font-weight:400; letter-spacing:2px; text-transform:uppercase; font-size:24px; line-height:1;
+    border-radius:12px; clip-path:none; padding:12px 30px 10px;
+    color:#071a0a; background:linear-gradient(180deg, #b6ff9e, var(--ng-toxic) 55%, #3fbf33);
+    box-shadow:0 5px 0 #1b5a14, 0 0 18px rgba(125,255,106,.45), inset 0 2px 0 rgba(255,255,255,.5);
   }
+  .quiz-actions .wood-btn .nx { --nx:#071a0a !important; filter:none; }
   .quiz-actions .wood-btn.small {
-    color:var(--cx-cyan); background:rgba(4,2,10,.85);
-    box-shadow:inset 0 0 0 2px var(--cx-cyan), 0 0 12px rgba(45,226,230,.3); padding:10px 18px; font-size:12px;
+    font-size:17px; color:var(--ng-cyan); background:rgba(5,7,11,.9); padding:9px 18px 7px;
+    box-shadow:inset 0 0 0 2px rgba(57,230,255,.6), 0 0 12px rgba(57,230,255,.25); text-shadow:0 0 8px rgba(57,230,255,.6);
   }
-  .quiz-actions .wood-btn.small .nx { --nx:var(--cx-cyan) !important; filter:drop-shadow(0 0 3px var(--cx-cyan)); }
-  .quiz-actions .wood-btn:active { transform:translateY(2px); }
+  .quiz-actions .wood-btn.small .nx { --nx:var(--ng-cyan) !important; }
+  .quiz-actions .wood-btn:active { transform:translateY(3px); }
 
   @media (max-width:720px), (max-height:480px) {
-    .quiz-box { padding:14px 12px 12px; }
-    .quiz-opt { font-size:14.5px; padding:10px 6px 10px 30px; min-height:46px; }
-    .quiz-opt::before { left:6px; width:18px; height:18px; font-size:10px; }
-    .quiz-topic, .quiz-kind, .quiz-for { font-size:10px; margin:6px 3px 10px; }
+    .quiz-box { padding:14px 12px 12px; border-width:2px; }
+    .quiz-box::before, .quiz-box::after { display:none; }
+    .quiz-opt { font-size:15px; padding:10px 6px 10px 34px; min-height:46px; }
+    .quiz-opt::before { left:7px; width:19px; height:22px; font-size:13px; }
+    .quiz-topic, .quiz-kind, .quiz-for { font-size:14px; margin:3px 3px 10px; }
+    .quiz-actions .wood-btn { font-size:20px; }
   }
+}
+/* the tube flickers now and then, like an old sign in a graveyard */
+@keyframes ng-hum {
+  0%, 91%, 100% { border-color:#39e6ff; }
+  92% { border-color:#1a6a78; } 93% { border-color:#39e6ff; } 95% { border-color:#257f8f; } 96% { border-color:#39e6ff; }
 }

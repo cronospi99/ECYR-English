@@ -90,67 +90,77 @@ function glowBar(x, col, w) {
   x.shadowColor = col; x.shadowBlur = 22; x.fillStyle = g;
   x.beginPath(); x.roundRect(4, 64 - w / 2, 120, w, w / 2); x.fill(); x.fill();
 }
-// The 3D title that floats over the board in the menu: a synthwave neon sign that has seen the
-// end of the world — chrome letters with a sunset gradient, pink neon tubes, a cyan ghost of the
-// glitch behind them, horizontal scan cuts and a few cracks.
+// The 3D title that floats over the board in the menu, in the mood of a horror-dubstep record
+// sleeve: a cyan neon coffin glowing in the dark behind scratchy, splintered bone-white letters,
+// toxic slime dripping off them, the paint chipped and cracked. Original lettering (Google's
+// "Eater" and "Creepster" faces), no logo copied.
 function drawLogo() {
   const c = document.createElement('canvas'); c.width = 1024; c.height = 512;
   const x = c.getContext('2d');
-  x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineJoin = 'round';
-  const font = (size, w = 900) => `${w} ${size}px "Orbitron", "Exo 2", "Arial Black", sans-serif`;
-  const fit = (txt, size, max) => { x.font = font(size); const w = x.measureText(txt).width; return w > max ? size * max / w : size; };
+  const rnd = (() => { let s = 1337; return () => ((s = (s * 16807) % 2147483647) / 2147483647); })();
+  x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineJoin = 'round'; x.lineCap = 'round';
+  const fit = (txt, fam, size, max) => { x.font = `${size}px ${fam}`; const w = x.measureText(txt).width; return w > max ? size * max / w : size; };
+  const EATER = '"Eater", "Creepster", "Impact", sans-serif', CREEP = '"Creepster", "Eater", "Impact", sans-serif';
 
-  // "LANGUAGE": hollow neon tube lettering in cyan, slightly italic
+  // the neon coffin behind everything, hanging on its two wires
   {
-    const y = 128, size = fit('LANGUAGE', 118, 900);
-    x.save(); x.translate(512, y); x.transform(1, 0, -0.12, 1, 0, 0);
-    x.font = font(size);
-    x.lineWidth = size * 0.2; x.strokeStyle = 'rgba(8,2,20,.85)'; x.strokeText('LANGUAGE', 4, 6);
-    x.shadowColor = '#2de2e6'; x.shadowBlur = 34;
-    x.lineWidth = size * 0.085; x.strokeStyle = '#2de2e6'; x.strokeText('LANGUAGE', 0, 0);
-    x.shadowBlur = 12; x.lineWidth = size * 0.03; x.strokeStyle = '#e9ffff'; x.strokeText('LANGUAGE', 0, 0);
-    x.restore();
+    const cx = 512, top = 18, h = 470, w = 300;
+    const pts = [[-w * 0.3, 0], [w * 0.3, 0], [w * 0.5, h * 0.27], [w * 0.3, h], [-w * 0.3, h], [-w * 0.5, h * 0.27]];
+    x.save(); x.translate(cx, top);
+    x.strokeStyle = 'rgba(20,40,60,.9)'; x.lineWidth = 2;
+    x.beginPath(); x.moveTo(-w * 0.42, h * 0.62); x.quadraticCurveTo(-w * 0.62, h * 0.95, -w * 0.5, h + 30); x.stroke();
+    x.beginPath(); x.moveTo(w * 0.42, h * 0.62); x.quadraticCurveTo(w * 0.6, h * 0.9, w * 0.46, h + 30); x.stroke();
+    const tube = (lw, col, blur) => { x.shadowColor = '#39e6ff'; x.shadowBlur = blur; x.lineWidth = lw; x.strokeStyle = col; x.beginPath(); pts.forEach(([px, py], i) => (i ? x.lineTo(px, py) : x.moveTo(px, py))); x.closePath(); x.stroke(); };
+    x.globalAlpha = 0.85; tube(16, 'rgba(57,230,255,.25)', 40); tube(7, '#39e6ff', 26); tube(2.5, '#e6fdff', 8);
+    x.restore(); x.shadowBlur = 0; x.globalAlpha = 1;
   }
-  // "DEFENDERS": chrome with a synthwave sunset, pink tube outline and a cyan glitch ghost
-  {
-    const y = 300, size = fit('DEFENDERS', 178, 960);
-    x.font = font(size);
-    x.save(); x.translate(512, y); x.transform(1, 0, -0.12, 1, 0, 0);
-    // drop shadow and the glitch ghost
-    x.lineWidth = size * 0.24; x.strokeStyle = '#0a0216'; x.strokeText('DEFENDERS', 6, 10);
-    x.globalAlpha = 0.75; x.fillStyle = '#2de2e6'; x.fillText('DEFENDERS', -9, 3);
-    x.fillStyle = '#ff3df0'; x.fillText('DEFENDERS', 9, -3); x.globalAlpha = 1;
-    // neon tube outline
-    x.shadowColor = '#ff3df0'; x.shadowBlur = 30;
-    x.lineWidth = size * 0.1; x.strokeStyle = '#ff3df0'; x.strokeText('DEFENDERS', 0, 0);
-    x.shadowBlur = 0;
-    // chrome sunset fill with a hard horizon
+
+  // scratchy bone-white words with a dark gutter, a teal glow and slime drips
+  const word = (txt, y, size, fam, tilt, drips) => {
+    x.save(); x.translate(512, y); x.rotate(tilt);
+    x.font = `${size}px ${fam}`;
+    // grave-dark outline and drop shadow
+    x.lineWidth = size * 0.2; x.strokeStyle = '#05060a'; x.strokeText(txt, 5, 8);
+    x.lineWidth = size * 0.13; x.strokeStyle = '#0a1014'; x.strokeText(txt, 0, 0);
+    // eerie glow
+    x.shadowColor = '#39e6ff'; x.shadowBlur = 26; x.fillStyle = '#39e6ff'; x.fillText(txt, 0, 2); x.shadowBlur = 0;
+    // bone-white body, greener and dirtier towards the bottom
     const g = x.createLinearGradient(0, -size / 2, 0, size / 2);
-    g.addColorStop(0, '#fffbe0'); g.addColorStop(0.28, '#ffd23f'); g.addColorStop(0.5, '#ff8a1e');
-    g.addColorStop(0.5, '#2a0a4a'); g.addColorStop(0.56, '#7a1fb8'); g.addColorStop(1, '#ff6ad8');
-    x.fillStyle = g; x.fillText('DEFENDERS', 0, 0);
-    x.lineWidth = 3; x.strokeStyle = 'rgba(255,255,255,.9)'; x.strokeText('DEFENDERS', 0, 0);
-    // scan cuts through the lower half, like a sun on a synthwave horizon
-    x.globalCompositeOperation = 'destination-out';
-    for (let i = 0; i < 4; i++) x.fillRect(-520, size * (0.08 + i * 0.1), 1040, 3 + i * 1.6);
-    // a few cracks: the sign survived something
-    x.lineWidth = 3; x.strokeStyle = '#000';
-    for (const [sx, sy, pts] of [[-300, -60, [[-280, -20], [-292, 10], [-270, 40]]], [210, -70, [[228, -30], [215, -5]]], [380, 20, [[395, 50], [380, 70]]]]) {
-      x.beginPath(); x.moveTo(sx, sy); for (const [px, py] of pts) x.lineTo(px, py); x.stroke();
+    g.addColorStop(0, '#f6f4e6'); g.addColorStop(0.55, '#dfe6cf'); g.addColorStop(1, '#9fc9a4');
+    x.fillStyle = g; x.fillText(txt, 0, 0);
+    // slime drips running off the letters
+    const w = x.measureText(txt).width;
+    for (let i = 0; i < drips; i++) {
+      const dx = -w / 2 + w * (0.04 + rnd() * 0.92), len = size * (0.12 + rnd() * 0.42), dw = size * (0.035 + rnd() * 0.03), y0 = size * 0.3;
+      x.fillStyle = '#7dff6a'; x.shadowColor = '#7dff6a'; x.shadowBlur = 12;
+      x.beginPath(); x.moveTo(dx - dw, y0); x.lineTo(dx + dw, y0); x.lineTo(dx + dw * 0.6, y0 + len); x.arc(dx, y0 + len, dw * 0.9, 0, Math.PI); x.closePath(); x.fill();
+      x.beginPath(); x.arc(dx, y0 + len + dw * 2.4 + rnd() * 8, dw * 0.7, 0, Math.PI * 2); x.fill();
+      x.shadowBlur = 0;
+    }
+    // chipped paint and cracks
+    x.globalCompositeOperation = 'source-atop';
+    for (let i = 0; i < 260; i++) { x.fillStyle = `rgba(10,16,20,${0.25 + rnd() * 0.5})`; const r = rnd() * 3.2 + 0.6; x.beginPath(); x.arc(-w / 2 + rnd() * w, -size / 2 + rnd() * size, r, 0, 7); x.fill(); }
+    x.strokeStyle = 'rgba(8,12,16,.85)'; x.lineWidth = 2.2;
+    for (let i = 0; i < 7; i++) {
+      let px = -w / 2 + rnd() * w, py = -size * 0.45 + rnd() * size * 0.3;
+      x.beginPath(); x.moveTo(px, py);
+      for (let k = 0; k < 4; k++) { px += (rnd() - 0.5) * 26; py += 10 + rnd() * 16; x.lineTo(px, py); }
+      x.stroke();
     }
     x.globalCompositeOperation = 'source-over';
     x.restore();
-  }
-  // tagline in a neon frame
+  };
+  word('LANGUAGE', 132, fit('LANGUAGE', EATER, 150, 860), EATER, -0.035, 6);
+  word('DEFENDERS', 300, fit('DEFENDERS', EATER, 196, 1000), EATER, 0.025, 11);
+
+  // tagline on a cracked tombstone plate
   {
-    x.font = font(38, 800);
-    const t = 'LEARN  ·  DEFEND  ·  WIN', w = x.measureText(t).width + 70;
-    x.shadowColor = '#2de2e6'; x.shadowBlur = 18;
-    x.lineWidth = 4; x.strokeStyle = '#2de2e6';
-    x.fillStyle = 'rgba(10,2,24,.82)';
-    x.beginPath(); x.moveTo(512 - w / 2 + 16, 412); x.lineTo(512 + w / 2, 412); x.lineTo(512 + w / 2 - 16, 468); x.lineTo(512 - w / 2, 468); x.closePath();
-    x.fill(); x.stroke();
-    x.shadowColor = '#ff3df0'; x.shadowBlur = 14; x.fillStyle = '#ffe9ff'; x.fillText(t, 512, 441);
+    x.font = `46px ${CREEP}`;
+    const t = 'LEARN  ·  DEFEND  ·  WIN', w = x.measureText(t).width + 60;
+    x.fillStyle = 'rgba(6,8,12,.88)'; x.strokeStyle = 'rgba(57,230,255,.75)'; x.lineWidth = 3;
+    x.shadowColor = '#39e6ff'; x.shadowBlur = 14;
+    x.beginPath(); x.roundRect(512 - w / 2, 420, w, 58, 10); x.fill(); x.stroke();
+    x.shadowBlur = 10; x.fillStyle = '#c9fbff'; x.fillText(t, 512, 451);
     x.shadowBlur = 0;
   }
   return c;
@@ -170,7 +180,7 @@ function registerDrawn() {
 
 export async function preloadSprites() {
   // the title uses the display font: wait for it (briefly) so the texture is drawn with it
-  try { await Promise.race([Promise.all([document.fonts.load('900 60px "Luckiest Guy"'), document.fonts.load('900 60px "Orbitron"'), document.fonts.load('800 38px "Orbitron"')]), new Promise(r => setTimeout(r, 2500))]); } catch { /* fallback font */ }
+  try { await Promise.race([Promise.all([document.fonts.load('900 60px "Luckiest Guy"'), document.fonts.load('60px "Eater"'), document.fonts.load('46px "Creepster"')]), new Promise(r => setTimeout(r, 2500))]); } catch { /* fallback font */ }
   registerDrawn();
   renderPortraits();
   const loader = new THREE.TextureLoader();
