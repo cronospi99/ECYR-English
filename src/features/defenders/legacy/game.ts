@@ -388,9 +388,15 @@ export class Game {
     this.lightGPU = this.iOS || !!window.matchMedia?.('(pointer: coarse)').matches;
     let lostBefore = false;
     try { lostBefore = !!localStorage.getItem('ld:gfx-lost'); } catch { }
+    // "Safe" graphics draw straight to the screen like the first English Defenders did (no
+    // post-processing chain). It is the default on iPhone/iPad: there the bloom chain is what
+    // left part of the screen black. Players can switch it in the pause menu.
+    let mode = null;
+    try { mode = localStorage.getItem('ld:gfx-mode'); } catch { }
+    this.safeGfx = mode ? mode === 'safe' : this.iOS;
     // algunos equipos fallan con antialias: reintenta sin él
     try {
-      this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: !this.lightGPU });
+      this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: this.safeGfx || !this.lightGPU });
     } catch {
       this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: false, powerPreference: 'low-power' });
     }
@@ -552,6 +558,7 @@ export class Game {
     this._onCtxLost = (e) => {
       e.preventDefault();
       this._ctxLost = true;
+      this._lostCount = (this._lostCount || 0) + 1;
       try { localStorage.setItem('ld:gfx-lost', String(Date.now())); } catch { }
     };
     this._onCtxRestored = () => {
@@ -576,7 +583,7 @@ export class Game {
       hemi: this.hemi, sun: this.sunLight, wall: this.bgWall,
     });
     this.fx = new Fx(this.scene);
-    try { this.post = post(this.renderer, this.scene, this.camera, 0.34, this.lightGPU); } catch { this.post = null; }
+    if (!this.safeGfx) try { this.post = post(this.renderer, this.scene, this.camera, 0.34, this.lightGPU); } catch { this.post = null; }
     if (localStorage.getItem('ld:gfx') === 'low' && this.post) this.post.enabled = false;
     this._slow = 0;
 
@@ -597,11 +604,40 @@ export class Game {
     if (!force && w === this._vw && h === this._vh) return;
     this._vw = w; this._vh = h;
     this.renderer.setSize(w, h, false);
+    // a browser short on memory may hand back a smaller drawing buffer than asked: then three.js
+    // would draw past its edge and part of the screen stays empty. Step the resolution down.
+    const gl = this.renderer.getContext();
+    if (gl.drawingBufferWidth && gl.drawingBufferWidth < this.canvas.width - 2 && this.renderer.getPixelRatio() > 1) {
+      this.maxPR = Math.max(1, this.renderer.getPixelRatio() - 0.5);
+      this.renderer.setPixelRatio(this.maxPR);
+      this.renderer.setSize(w, h, false);
+    }
     this.post?.setSize(w, h);
     this._fitCamera();
     // setSize clears the canvas; outside the loop (resize events, the ResizeObserver) that
     // empty frame would reach the screen as a black flash, so draw the new size right away
     if (!this._inFrame && this.scene && this.camera) this._draw();
+  }
+
+  /** Switches between safe (direct) and full (bloom + grade) graphics; remembered. */
+  setSafeGraphics(on) {
+    this.safeGfx = !!on;
+    try { localStorage.setItem('ld:gfx-mode', on ? 'safe' : 'full'); } catch { }
+    if (!on && !this.post) {
+      try { this.post = post(this.renderer, this.scene, this.camera, 0.34, this.lightGPU); } catch { this.post = null; }
+    }
+    if (on && this.post) { this.post.dispose(); this.post = null; }
+    this._slow = 0;
+    this._applySize(true);
+  }
+
+  /** One line of what the GPU is really doing, shown in the pause menu to diagnose devices. */
+  gfxInfo() {
+    const gl = this.renderer.getContext(), c = this.canvas, v = new THREE.Vector4();
+    this.renderer.getCurrentViewport(v);
+    return `${this.safeGfx ? 'safe' : 'full'}${this.iOS ? ' · iOS' : ''} · view ${c.clientWidth}×${c.clientHeight} · canvas ${c.width}×${c.height}`
+      + ` · buffer ${gl.drawingBufferWidth}×${gl.drawingBufferHeight} · vp ${v.z}×${v.w} · pr ${this.renderer.getPixelRatio()}`
+      + ` · win ${innerWidth}×${innerHeight}${this._lostCount ? ' · lost ' + this._lostCount : ''}`;
   }
 
   _draw() {
