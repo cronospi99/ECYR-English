@@ -91,16 +91,16 @@ function glowBar(x, col, w) {
   x.beginPath(); x.roundRect(4, 64 - w / 2, 120, w, w / 2); x.fill(); x.fill();
 }
 // The 3D title that floats over the board in the menu, in the mood of a horror-dubstep record
-// sleeve: a cyan neon coffin glowing in the dark behind scratchy, splintered bone-white letters,
-// toxic slime dripping off them, the paint chipped and cracked. Original lettering (Google's
-// "Eater" and "Creepster" faces), no logo copied.
+// sleeve: a cyan neon coffin glowing in the dark behind hand-painted brush letters in bone white,
+// toxic slime dripping off them, the paint chipped and cracked. Free Google fonts ("Permanent
+// Marker" and "Creepster"), painted over in code; no artist's logo is copied.
 function drawLogo() {
   const c = document.createElement('canvas'); c.width = 1024; c.height = 512;
   const x = c.getContext('2d');
   const rnd = (() => { let s = 1337; return () => ((s = (s * 16807) % 2147483647) / 2147483647); })();
   x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineJoin = 'round'; x.lineCap = 'round';
   const fit = (txt, fam, size, max) => { x.font = `${size}px ${fam}`; const w = x.measureText(txt).width; return w > max ? size * max / w : size; };
-  const EATER = '"Eater", "Creepster", "Impact", sans-serif', CREEP = '"Creepster", "Eater", "Impact", sans-serif';
+  const BRUSH = '"Permanent Marker", "Creepster", "Impact", sans-serif';
 
   // the neon coffin behind everything, hanging on its two wires
   {
@@ -115,47 +115,54 @@ function drawLogo() {
     x.restore(); x.shadowBlur = 0; x.globalAlpha = 1;
   }
 
-  // scratchy bone-white words with a dark gutter, a teal glow and slime drips
-  const word = (txt, y, size, fam, tilt, drips) => {
+  // hand-painted bone-white words: rough brush caps (Google's "Permanent Marker"), each letter a
+  // little tilted and off the baseline as if painted fast, dry-brush streaks through the paint,
+  // a teal glow behind and slime dripping off the bottom
+  const word = (txt, y, size, tilt, drips) => {
     x.save(); x.translate(512, y); x.rotate(tilt);
-    x.font = `${size}px ${fam}`;
+    x.font = `${size}px ${BRUSH}`;
+    const track = -size * 0.02;
+    const ws = [...txt].map((ch) => x.measureText(ch).width + track);
+    const w = ws.reduce((a, b) => a + b, 0);
+    const glyphs = [];
+    let cx = -w / 2;
+    [...txt].forEach((ch, i) => { glyphs.push({ ch, x: cx + ws[i] / 2, y: (rnd() - 0.5) * size * 0.1, r: (rnd() - 0.5) * 0.12, k: 0.94 + rnd() * 0.14 }); cx += ws[i]; });
+    const each = (fn) => glyphs.forEach((g) => { x.save(); x.translate(g.x, g.y); x.rotate(g.r); x.scale(g.k, g.k); fn(g.ch); x.restore(); });
     // grave-dark outline and drop shadow
-    x.lineWidth = size * 0.2; x.strokeStyle = '#05060a'; x.strokeText(txt, 5, 8);
-    x.lineWidth = size * 0.13; x.strokeStyle = '#0a1014'; x.strokeText(txt, 0, 0);
+    each((ch) => { x.lineWidth = size * 0.17; x.strokeStyle = '#04050a'; x.strokeText(ch, 5, 8); x.lineWidth = size * 0.1; x.strokeStyle = '#0a1014'; x.strokeText(ch, 0, 0); });
     // eerie glow
-    x.shadowColor = '#39e6ff'; x.shadowBlur = 26; x.fillStyle = '#39e6ff'; x.fillText(txt, 0, 2); x.shadowBlur = 0;
-    // bone-white body, greener and dirtier towards the bottom
+    x.shadowColor = '#39e6ff'; x.shadowBlur = 28;
+    each((ch) => { x.fillStyle = '#39e6ff'; x.fillText(ch, 0, 2); });
+    x.shadowBlur = 0;
+    // bone-white paint, dirtier towards the bottom
     const g = x.createLinearGradient(0, -size / 2, 0, size / 2);
-    g.addColorStop(0, '#f6f4e6'); g.addColorStop(0.55, '#dfe6cf'); g.addColorStop(1, '#9fc9a4');
-    x.fillStyle = g; x.fillText(txt, 0, 0);
-    // slime drips running off the letters
-    const w = x.measureText(txt).width;
+    g.addColorStop(0, '#ffffff'); g.addColorStop(0.6, '#e9eddc'); g.addColorStop(1, '#a9cdb0');
+    each((ch) => { x.fillStyle = g; x.fillText(ch, 0, 0); });
+    // slime drips
     for (let i = 0; i < drips; i++) {
-      const dx = -w / 2 + w * (0.04 + rnd() * 0.92), len = size * (0.12 + rnd() * 0.42), dw = size * (0.035 + rnd() * 0.03), y0 = size * 0.3;
+      const dx = -w / 2 + w * (0.04 + rnd() * 0.92), len = size * (0.12 + rnd() * 0.4), dw = size * (0.03 + rnd() * 0.025), y0 = size * 0.28;
       x.fillStyle = '#7dff6a'; x.shadowColor = '#7dff6a'; x.shadowBlur = 12;
       x.beginPath(); x.moveTo(dx - dw, y0); x.lineTo(dx + dw, y0); x.lineTo(dx + dw * 0.6, y0 + len); x.arc(dx, y0 + len, dw * 0.9, 0, Math.PI); x.closePath(); x.fill();
       x.beginPath(); x.arc(dx, y0 + len + dw * 2.4 + rnd() * 8, dw * 0.7, 0, Math.PI * 2); x.fill();
       x.shadowBlur = 0;
     }
-    // chipped paint and cracks
+    // dry-brush streaks and chipped paint (only on the letters)
     x.globalCompositeOperation = 'source-atop';
-    for (let i = 0; i < 260; i++) { x.fillStyle = `rgba(10,16,20,${0.25 + rnd() * 0.5})`; const r = rnd() * 3.2 + 0.6; x.beginPath(); x.arc(-w / 2 + rnd() * w, -size / 2 + rnd() * size, r, 0, 7); x.fill(); }
-    x.strokeStyle = 'rgba(8,12,16,.85)'; x.lineWidth = 2.2;
-    for (let i = 0; i < 7; i++) {
-      let px = -w / 2 + rnd() * w, py = -size * 0.45 + rnd() * size * 0.3;
-      x.beginPath(); x.moveTo(px, py);
-      for (let k = 0; k < 4; k++) { px += (rnd() - 0.5) * 26; py += 10 + rnd() * 16; x.lineTo(px, py); }
-      x.stroke();
+    for (let i = 0; i < 70; i++) {
+      const sy = -size * 0.42 + rnd() * size * 0.84, sx = -w / 2 + rnd() * w, len = 20 + rnd() * 90;
+      x.strokeStyle = `rgba(6,10,14,${0.35 + rnd() * 0.45})`; x.lineWidth = 0.8 + rnd() * 2.2;
+      x.beginPath(); x.moveTo(sx, sy); x.lineTo(sx + len, sy + (rnd() - 0.5) * 6); x.stroke();
     }
+    for (let i = 0; i < 160; i++) { x.fillStyle = `rgba(8,12,16,${0.3 + rnd() * 0.5})`; x.beginPath(); x.arc(-w / 2 + rnd() * w, -size / 2 + rnd() * size, rnd() * 2.6 + 0.5, 0, 7); x.fill(); }
     x.globalCompositeOperation = 'source-over';
     x.restore();
   };
-  word('LANGUAGE', 132, fit('LANGUAGE', EATER, 150, 860), EATER, -0.035, 6);
-  word('DEFENDERS', 300, fit('DEFENDERS', EATER, 196, 1000), EATER, 0.025, 11);
+  word('LANGUAGE', 136, fit('LANGUAGE', BRUSH, 150, 840), -0.05, 6);
+  word('DEFENDERS', 300, fit('DEFENDERS', BRUSH, 190, 990), -0.03, 11);
 
   // tagline on a cracked tombstone plate
   {
-    x.font = `46px ${CREEP}`;
+    x.font = `40px ${BRUSH}`;
     const t = 'LEARN  ·  DEFEND  ·  WIN', w = x.measureText(t).width + 60;
     x.fillStyle = 'rgba(6,8,12,.88)'; x.strokeStyle = 'rgba(57,230,255,.75)'; x.lineWidth = 3;
     x.shadowColor = '#39e6ff'; x.shadowBlur = 14;
@@ -180,7 +187,7 @@ function registerDrawn() {
 
 export async function preloadSprites() {
   // the title uses the display font: wait for it (briefly) so the texture is drawn with it
-  try { await Promise.race([Promise.all([document.fonts.load('900 60px "Luckiest Guy"'), document.fonts.load('60px "Eater"'), document.fonts.load('46px "Creepster"')]), new Promise(r => setTimeout(r, 2500))]); } catch { /* fallback font */ }
+  try { await Promise.race([Promise.all([document.fonts.load('900 60px "Luckiest Guy"'), document.fonts.load('60px "Permanent Marker"'), document.fonts.load('40px "Permanent Marker"')]), new Promise(r => setTimeout(r, 2500))]); } catch { /* fallback font */ }
   registerDrawn();
   renderPortraits();
   const loader = new THREE.TextureLoader();

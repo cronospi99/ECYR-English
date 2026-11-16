@@ -10,7 +10,7 @@ import { neonIcons } from './icons';
 import './legacy.css';
 import './skin.css';
 
-const FONTS = 'https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@600;700;800;900&family=Eater&family=Creepster&display=swap';
+const FONTS = 'https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@600;700;800;900&family=Permanent+Marker&display=swap';
 
 function loadOnce(tag: 'link' | 'script', url: string) {
   if (document.querySelector(`[data-ld="${url}"]`)) return;
