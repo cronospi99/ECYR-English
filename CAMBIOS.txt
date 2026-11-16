@@ -1789,3 +1789,12 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
     Defenders…» y una barra de baba verde (en teléfono vertical se ve completo, con el fondo
     difuminado). Al terminar de cargar, la pantalla se oscurece a negro y del negro aparece el menú
     principal (ya no hay destello blanco).
+  · Arreglo (iPhone/iPad en horizontal): el fondo se quedaba negro en el menú y el tablero
+    parpadeaba en negro al entrar los enemigos. Era iOS cortando el contexto gráfico por exceso de
+    memoria. En teléfonos y tabletas el juego usa ahora un perfil ligero (sin multimuestreo en
+    pantalla ni en el brillo, suavizado FXAA, sombras de 1024 y fondos ligeros): mucha menos memoria
+    de vídeo. Si aun así iOS corta el contexto, el juego espera, lo recupera, repinta la iluminación
+    y sigue a menor resolución; los cambios de tamaño ya no dejan un fotograma negro.
+  · Tarjetas de defensores: salen del lado izquierdo (tapaban la casa y el castillo) y pasan a un
+    dock compacto abajo en el centro. Al elegir un defensor el dock se vuelve casi transparente
+    para ver el tablero, y con la pestaña de arriba se pliega del todo (se recuerda).

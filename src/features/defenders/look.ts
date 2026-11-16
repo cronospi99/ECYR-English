@@ -6,6 +6,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader.js';
 
 export interface EnvPalette { top: number; horizon: number; ground: number; key: number; rim: number; fill: number }
 
@@ -38,15 +39,22 @@ export function environment(renderer: THREE.WebGLRenderer, p: EnvPalette): THREE
 
 export interface Post { render(): void; setSize(w: number, h: number): void; bloom: UnrealBloomPass; dispose(): void; enabled: boolean }
 
-/** Bloom + tone mapping. With `enabled` off it draws straight to the screen (weak devices). */
-export function post(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, strength = 0.34): Post {
+/** Bloom + tone mapping. With `enabled` off it draws straight to the screen (weak devices).
+ *  `light` (phones and tablets): no multisampled half-float targets, which cost about four
+ *  times the memory and are what iOS drops first (the WebGL context is lost and the game turns
+ *  black); a cheap FXAA pass smooths the edges instead. */
+export function post(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, strength = 0.34, light = false): Post {
   const size = renderer.getDrawingBufferSize(new THREE.Vector2());
-  const target = new THREE.WebGLRenderTarget(size.x, size.y, { type: THREE.HalfFloatType, samples: 4 });
+  const target = new THREE.WebGLRenderTarget(size.x, size.y, { type: THREE.HalfFloatType, samples: light ? 0 : 4 });
   const composer = new EffectComposer(renderer, target);
   composer.addPass(new RenderPass(scene, camera));
   const bloom = new UnrealBloomPass(new THREE.Vector2(size.x / 2, size.y / 2), strength, 0.45, 1.0);
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
+  const fxaa = light ? new ShaderPass(FXAAShader) : null;
+  if (fxaa) composer.addPass(fxaa);
+  const fxaaSize = () => fxaa?.material.uniforms.resolution!.value.set(1 / Math.max(1, size.x), 1 / Math.max(1, size.y));
+  fxaaSize();
   // the final grade: a soft vignette, a hint of colour fringing at the edges and fine film grain
   const grade = new ShaderPass({
     uniforms: { tDiffuse: { value: null }, t: { value: 0 } },
@@ -69,7 +77,7 @@ export function post(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: 
     enabled: true,
     bloom,
     render() { if (api.enabled) { grade.uniforms.t!.value = (performance.now() % 1000) / 1000; composer.render(); } else renderer.render(scene, camera); },
-    setSize(w, h) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(w, h); },
+    setSize(w, h) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(w, h); renderer.getDrawingBufferSize(size); fxaaSize(); },
     dispose() { composer.dispose(); target.dispose(); },
   };
   return api;

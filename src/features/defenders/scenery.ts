@@ -585,6 +585,17 @@ export class Scenery {
   }
 
   /** Repaints the farmhouse's own texture: weathered boards, dead shrubs, windows lit from inside. */
+  /** After a lost WebGL context the painted lighting (a render target) comes back empty: paint it again. */
+  restoreEnv(): void {
+    for (const [id, set] of this.mats) {
+      const m = MOODS[id];
+      if (!m) continue;
+      set.env.dispose();
+      set.env = environment(this.renderer, m.env);
+      if (this.mood === m) this.scene.environment = set.env;
+    }
+  }
+
   haunt(house: THREE.Object3D): void {
     const m = this.mood;
     if (!m) return;

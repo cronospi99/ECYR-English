@@ -378,13 +378,25 @@ export class Game {
 
   /* ============================ SCENE ============================ */
   _initScene() {
+    // Phones and tablets (above all iPhone/iPad) get a lighter GPU profile: iOS kills the WebGL
+    // context when the page uses too much graphics memory, and then the canvas goes black (the
+    // menu showed only its buttons, and the board flickered black as enemies came in). The big
+    // costs were a multisampled screen AND multisampled half-float bloom targets, a 2048 shadow
+    // map and the 4K backdrops; on these devices none of that is used.
+    const ua = navigator.userAgent || '';
+    this.iOS = /iP(hone|ad|od)/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    this.lightGPU = this.iOS || !!window.matchMedia?.('(pointer: coarse)').matches;
+    let lostBefore = false;
+    try { lostBefore = !!localStorage.getItem('ld:gfx-lost'); } catch { }
     // algunos equipos fallan con antialias: reintenta sin él
     try {
-      this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
+      this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: !this.lightGPU });
     } catch {
       this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: false, powerPreference: 'low-power' });
     }
-    this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    // a device that already lost its context once draws at a lower resolution from then on
+    this.maxPR = lostBefore ? 1.5 : 2;
+    this.renderer.setPixelRatio(Math.min(devicePixelRatio, this.maxPR));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -404,7 +416,7 @@ export class Game {
     const sun = new THREE.DirectionalLight(0xfff2d8, 2.0);
     sun.position.set(6, 12, 4);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.mapSize.set(this.lightGPU ? 1024 : 2048, this.lightGPU ? 1024 : 2048);
     sun.shadow.camera.left = -9; sun.shadow.camera.right = 9;
     sun.shadow.camera.top = 8; sun.shadow.camera.bottom = -8;
     this.scene.add(sun);
@@ -533,6 +545,24 @@ export class Game {
     document.addEventListener('fullscreenchange', this._onResize);
     window.visualViewport?.addEventListener('resize', this._onResize);
     if (typeof ResizeObserver !== 'undefined') { this._ro = new ResizeObserver(() => this._applySize()); this._ro.observe(this.canvas); }
+
+    // Lost WebGL context (iOS under memory pressure, the app sent to the background...): stop
+    // drawing until the browser gives it back, then rebuild what lived only on the GPU (the
+    // painted lighting) and carry on in the light profile so it does not happen again.
+    this._onCtxLost = (e) => {
+      e.preventDefault();
+      this._ctxLost = true;
+      try { localStorage.setItem('ld:gfx-lost', String(Date.now())); } catch { }
+    };
+    this._onCtxRestored = () => {
+      this._ctxLost = false;
+      this.maxPR = 1.5;
+      this.renderer.setPixelRatio(Math.min(devicePixelRatio, this.maxPR));
+      this.scenery?.restoreEnv();
+      this._applySize(true);
+    };
+    this.canvas.addEventListener('webglcontextlost', this._onCtxLost);
+    this.canvas.addEventListener('webglcontextrestored', this._onCtxRestored);
     this._applySize(true);
 
     // contenedor de la escenografía 3D (casa/castillo + kit de naturaleza), que se
@@ -546,7 +576,7 @@ export class Game {
       hemi: this.hemi, sun: this.sunLight, wall: this.bgWall,
     });
     this.fx = new Fx(this.scene);
-    try { this.post = post(this.renderer, this.scene, this.camera); } catch { this.post = null; }
+    try { this.post = post(this.renderer, this.scene, this.camera, 0.34, this.lightGPU); } catch { this.post = null; }
     if (localStorage.getItem('ld:gfx') === 'low' && this.post) this.post.enabled = false;
     this._slow = 0;
 
@@ -569,6 +599,14 @@ export class Game {
     this.renderer.setSize(w, h, false);
     this.post?.setSize(w, h);
     this._fitCamera();
+    // setSize clears the canvas; outside the loop (resize events, the ResizeObserver) that
+    // empty frame would reach the screen as a black flash, so draw the new size right away
+    if (!this._inFrame && this.scene && this.camera) this._draw();
+  }
+
+  _draw() {
+    if (this._ctxLost || this.renderer.getContext().isContextLost?.()) return;
+    if (this.post) this.post.render(); else this.renderer.render(this.scene, this.camera);
   }
 
   // Encuadra el tablero según la proporción de pantalla: en móviles verticales
@@ -704,6 +742,7 @@ export class Game {
   // devicePixelRatio que usa el renderer). Se pide la de 4K sólo cuando la ligera
   // (1600 px) tendría que estirarse; en móvil se ahorra ancho de banda.
   _bgSources(id) {
+    if (this.lightGPU) return [`${id}.sd.webp`, `${id}.webp`];   // phones/tablets: always the light one
     const bufferW = this._view().w * Math.min(devicePixelRatio || 1, 2);
     return bufferW >= 1600
       ? [`${id}.webp`, `${id}.sd.webp`]
@@ -777,6 +816,8 @@ export class Game {
     removeEventListener('orientationchange', this._onResize);
     document.removeEventListener('fullscreenchange', this._onResize);
     window.visualViewport?.removeEventListener('resize', this._onResize);
+    this.canvas.removeEventListener('webglcontextlost', this._onCtxLost);
+    this.canvas.removeEventListener('webglcontextrestored', this._onCtxRestored);
     this._ro?.disconnect();
     clearTimeout(this._resizeT1); clearTimeout(this._resizeT2);
     this.state = 'idle';
@@ -1581,6 +1622,7 @@ export class Game {
     const rawDt = Math.min(this.clock.getDelta(), 0.08);
     this.worldT = (this.worldT || 0) + rawDt;
     // safety net for size changes no event reported (iOS PWA rotation / full screen)
+    this._inFrame = true;
     if ((this._sizeTick = (this._sizeTick || 0) + rawDt) > 0.5) { this._sizeTick = 0; this._applySize(); }
     if (this.clouds) for (const c of this.clouds) {
       c.position.x += rawDt * 0.25;
@@ -1612,7 +1654,9 @@ export class Game {
         this.camera.position.set(this._camBase.x + (Math.random() - 0.5) * k, this._camBase.y + (Math.random() - 0.5) * k, this._camBase.z);
       }
     }
-    if (this.post) this.post.render(); else this.renderer.render(this.scene, this.camera);
+    this._draw();
+    this._inFrame = false;
+    if (this._ctxLost) return;
     // weak device: after a few slow seconds, drop the bloom pass for good
     if (this.post?.enabled) {
       this._slow = rawDt > 0.045 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);

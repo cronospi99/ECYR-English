@@ -144,6 +144,8 @@ function renderCards() {
     el.querySelector('.card-cd').style.transform = `scaleY(${card.cd > 0 ? card.cd / def.cooldown : 0})`;
   }
   $('shovel').classList.toggle('selected', game.shovelMode);
+  // while a defender is picked the dock steps back so the board shows through
+  $('card-dock').classList.toggle('placing', !!game.selectedCard);
 }
 
 /* ============ Tablero de selección de plantas (Improve / Shovel) ============ */
@@ -1543,6 +1545,16 @@ function openSoundtrack() {
 
 /* ================= Buttons ================= */
 function bindUI() {
+  // fold / unfold the defenders dock (remembered between games)
+  const dock = $('card-dock');
+  let folded = false;
+  try { folded = localStorage.getItem('ld:dock') === 'folded'; } catch { }
+  dock.classList.toggle('folded', folded);
+  $('tray-toggle').addEventListener('click', () => {
+    SFX.click();
+    const f = dock.classList.toggle('folded');
+    try { localStorage.setItem('ld:dock', f ? 'folded' : 'open'); } catch { }
+  });
   $('btn-scenario').addEventListener('click', () => { SFX.click(); openScenario(); });
   $('btn-scenario-hud').addEventListener('click', () => { SFX.click(); openScenario(); });
   $('btn-scenario-close').addEventListener('click', () => { SFX.click(); $('scenario-modal').classList.add('hidden'); });
