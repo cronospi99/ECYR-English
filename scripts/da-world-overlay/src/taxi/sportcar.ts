@@ -315,8 +315,16 @@ export function buildSportCar(look: SportLook): SportCar | null {
   for (const name of ['WheelFrontL', 'WheelFrontR', 'WheelRearL', 'WheelRearR']) {
     const w = model.getObjectByName(name);
     if (!w || !w.parent) continue;
-    const box = new THREE.Box3().setFromObject(w);
-    const c = box.getCenter(new THREE.Vector3());
+    // The model was saved with its front wheels steered 30°: straighten every wheel so its axle
+    // runs across the car, or they look crooked (and the game's own steering adds on top).
+    const axle = new THREE.Vector3(1, 0, 0).applyQuaternion(w.quaternion).normalize();
+    w.quaternion.premultiply(new THREE.Quaternion().setFromUnitVectors(axle, new THREE.Vector3(Math.sign(axle.x) || 1, 0, 0)));
+    w.updateMatrixWorld(true);
+    // pivot on the wheel's own origin (the hub), not on its bounding box: the brake calliper
+    // hangs off one side and an off-centre pivot makes the wheel wobble as it rolls
+    const rim = w.children.find((k) => /Rim/.test(k.name)) ?? w;
+    const box = new THREE.Box3().setFromObject(rim);
+    const c = w.getWorldPosition(new THREE.Vector3());
     wheelRadius = (box.max.y - box.min.y) / 2;
     const st = new THREE.Group(), sp = new THREE.Group();
     model.worldToLocal(c);

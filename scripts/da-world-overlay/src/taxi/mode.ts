@@ -29,6 +29,11 @@ import type { StreetCar } from '../city/traffic';
 import { cluesFor } from './places';
 import { TaxiAudio } from './audio';
 import { TAXI_CSS } from './ui.css';
+import { CAMERA_FAR } from '../world/environment';
+import { QUALITY, rememberQuality, type QualityName } from '../core/quality';
+
+/** ECYR perf: how far the taxi's camera draws (the haze is opaque a little before this). */
+const TAXI_FAR = 175;
 
 export interface TaxiDeps {
   engine: Engine;
@@ -113,6 +118,7 @@ export class TaxiMode {
   private keys = new Set<string>();
   private touch = { l: false, r: false, gas: false, brake: false, drift: false, boost: false };
   private paused = false;
+  private perf: { t: number; frames: number; slow: number } | null = null;
   private passengers: Passenger[] = [];
   private nextPid = 1;
   private carrying: Passenger | null = null;
@@ -374,10 +380,50 @@ export class TaxiMode {
     const sess = this.deps.session();
     bridge()?.start({ mode: sess.connected ? 'class' : 'solo', meta: { gameMode: 'taxi', passengers: this.settings.goal, pace: this.settings.pace } });
     this.camPos.set(this.car.x - 8, 5, this.car.z);
+    // ECYR perf: draw only as far as the haze reaches (it is opaque past ~160 m), keep the sky dome
+    // inside that range, and refresh reflections every few seconds instead of every block.
+    const cam = this.deps.engine.camera;
+    cam.far = TAXI_FAR; cam.updateProjectionMatrix();
+    this.deps.environment.setDomeScale(0.5);
+    this.deps.environment.setProbeCadence(6, 140);
+    this.perf = { t: 0, frames: 0, slow: 0 };
+  }
+
+  /**
+   * ECYR perf: watch the frame rate while driving and step the graphics down by itself when the
+   * device cannot keep up (after a few seconds below ~32 fps), so a classroom laptop or an old
+   * phone ends up on the setting it can run without anybody opening a menu.
+   */
+  private watchFrameRate(dt: number): void {
+    const p = this.perf;
+    if (!p || this.paused) return;
+    p.t += dt; p.frames++;
+    if (p.t < 2) return;
+    const fps = p.frames / p.t;
+    p.t = 0; p.frames = 0;
+    p.slow = fps < 32 ? p.slow + 1 : Math.max(0, p.slow - 1);
+    if (p.slow < 2) return;
+    p.slow = 0;
+    const order: QualityName[] = ['low', 'medium', 'high', 'ultra'];
+    const now = order.indexOf(this.deps.engine.quality.name);
+    if (now <= 0) return;
+    const next = order[now - 1]!;
+    const { engine, environment } = this.deps;
+    engine.setQuality(next);
+    environment.setShadowQuality(QUALITY[next].shadowMap, QUALITY[next].shadowRadius);
+    environment.setReflections(QUALITY[next].reflections);
+    rememberQuality(next);
+    if (this.street) this.street.drawRadius = next === 'low' ? 70 : next === 'medium' ? 95 : 120;
+    this.callout('GRAPHICS: ' + next.toUpperCase(), '#7fd8ff');
   }
 
   /** Back to the walking game. */
   exit(): void {
+    const cam = this.deps.engine.camera;
+    cam.far = CAMERA_FAR; cam.updateProjectionMatrix();
+    this.deps.environment.setDomeScale(1);
+    this.deps.environment.setProbeCadence(2.5, 18);
+    this.perf = null;
     this.smoke.points.parent?.remove(this.smoke.points);
     this.deps.engine.post.setSpeedBlur(0);
     if (this.active) this.finishReport(false);
@@ -963,6 +1009,7 @@ export class TaxiMode {
 
   update(dt: number, elapsed: number): void {
     if (!this.active || !this.world || !this.model) return;
+    this.watchFrameRate(dt);
     const { engine, environment, dayNight } = this.deps;
     const sky = dayNight.current();
     environment.apply(sky);

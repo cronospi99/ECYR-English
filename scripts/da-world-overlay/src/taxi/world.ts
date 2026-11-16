@@ -129,13 +129,37 @@ function slab(bag: Bag, key: string, m: MeshStandardMaterial | MeshBasicMaterial
   e.geos.push(g);
 }
 
+/**
+ * ECYR perf: merge by city cell, not by list order. Merging "the next 400 pieces" made buffers that
+ * spanned the whole map, so the camera could never leave any of them out (and neither could the
+ * sun's shadow pass): every frame drew the entire city, ~7 million triangles. Grouped into cells of
+ * a block or so, whatever is behind the camera or past the fog is skipped.
+ */
+export const CELL = 44;
+export function mergeByCell(geos: BufferGeometry[], cap = 600): BufferGeometry[] {
+  const cells = new Map<string, BufferGeometry[]>();
+  for (const g of geos) {
+    if (!g.boundingBox) g.computeBoundingBox();
+    const b = g.boundingBox!;
+    const key = Math.floor((b.min.x + b.max.x) / 2 / CELL) + ',' + Math.floor((b.min.z + b.max.z) / 2 / CELL);
+    let l = cells.get(key);
+    if (!l) cells.set(key, (l = []));
+    l.push(g);
+  }
+  const out: BufferGeometry[] = [];
+  for (const l of cells.values()) {
+    for (let i = 0; i < l.length; i += cap) {
+      const m = mergeGeometries(l.slice(i, i + cap), false);
+      if (m) { m.computeBoundingSphere(); out.push(m); }
+    }
+  }
+  return out;
+}
+
 function flush(bag: Bag, parent: Group, shadows = true): void {
   for (const { mat: m, geos } of bag.values()) {
     if (!geos.length) continue;
-    // merge in chunks so one buffer never gets enormous
-    for (let i = 0; i < geos.length; i += 400) {
-      const merged = mergeGeometries(geos.slice(i, i + 400), false);
-      if (!merged) continue;
+    for (const merged of mergeByCell(geos)) {
       const mesh = new Mesh(merged, m);
       mesh.receiveShadow = true;
       mesh.castShadow = shadows;
@@ -479,10 +503,9 @@ export class TaxiWorld {
 
     flush(ground, this.group, false);
     for (const { kit, variation, geos } of buildings.values()) {
-      for (let i = 0; i < geos.length; i += 120) {
-        const merged = mergeGeometries(geos.slice(i, i + 120), false);
-        if (!merged) continue;
-        const mesh = new Mesh(merged, kitMaterial(kit, { variation, litWindows: true }));
+      const mat = kitMaterial(kit, { variation, litWindows: true });
+      for (const merged of mergeByCell(geos, 160)) {
+        const mesh = new Mesh(merged, mat);
         mesh.castShadow = true;
         mesh.receiveShadow = true;
         mesh.matrixAutoUpdate = false;
@@ -745,10 +768,7 @@ export class TaxiWorld {
       this.lights.push({ id: id++, x: n.x, z: n.z, red: rand() < 0.5, timer: 2 + rand() * 7, hold: 0, cleared: false, lampR, lampG, badge });
     }
     for (const [m, list] of statics) {
-      for (let i = 0; i < list.length; i += 300) {
-        const chunk = list.slice(i, i + 300).map((g) => (g.index ? g.toNonIndexed() : g));
-        const merged = mergeGeometries(chunk, false);
-        if (!merged) continue;
+      for (const merged of mergeByCell(list.map((g) => (g.index ? g.toNonIndexed() : g)), 400)) {
         const mesh = new Mesh(merged, m);
         mesh.castShadow = true;
         mesh.receiveShadow = true;

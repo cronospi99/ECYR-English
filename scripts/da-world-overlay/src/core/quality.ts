@@ -113,11 +113,11 @@ export function detectQuality(): QualityName {
 
   const touch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
   const cores = navigator.hardwareConcurrency ?? 4;
-  const small = Math.min(window.screen.width, window.screen.height) < 500;
 
-  if (touch && (small || cores <= 4)) return "medium";
-  if (touch) return "high";
-  return cores >= 8 ? "ultra" : "high";
+  // ECYR perf: start one step lower than before (ultra's 8× MSAA and 4096 shadows are rarely worth
+  // it); Taxi Rush also steps down by itself when the frame rate drops.
+  if (touch) return "medium";
+  return cores >= 8 ? "high" : "medium";
 }
 
 function read(): QualityName | null {

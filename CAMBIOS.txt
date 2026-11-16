@@ -1817,3 +1817,16 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
     barricadas y postes caídos, incendios en el suelo y en los techos con columnas de humo,
     grandes humaredas en el horizonte, reflectores y explosiones lejanas; ceniza y brasas en toda
     la profundidad. Se tiñe con los colores de cada mapa.
+
+Taxi Rush — Fase 1 (rendimiento y llantas)
+  · Llantas delanteras: el modelo 3D venía guardado con las ruedas delanteras giradas 30° y el juego
+    sumaba su propio giro encima; ahora se enderezan al cargar y giran sobre su eje (sin bamboleo).
+  · Rendimiento: cada fotograma dibujaba la ciudad entera (~7 millones de triángulos, 36 pasadas)
+    porque las piezas estaban fusionadas en bloques que cruzaban todo el mapa. Ahora se fusionan por
+    celdas de ciudad (~44 m), así la cámara y las sombras descartan lo que no ven; la cámara del taxi
+    sólo dibuja hasta donde llega la neblina (175 m, con el cielo ajustado), y los reflejos se
+    refrescan cada 6 s en vez de cada cuadra. Resultado medido: la pasada principal bajó de 4,8 a
+    2,7 millones de triángulos y los reflejos dejaron de recalcularse casi cada fotograma.
+  · Calidad automática: arranca un nivel más abajo (computador: High en vez de Ultra; teléfono:
+    Medium) y si mientras conduces el juego va por debajo de ~32 fps unos segundos, baja la calidad
+    sola y lo avisa en pantalla («GRAPHICS: MEDIUM»…), y lo recuerda.
