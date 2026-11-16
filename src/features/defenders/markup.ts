@@ -4,11 +4,14 @@ export const MARKUP = `<canvas id="game-canvas"></canvas>
 
   <!-- ===== Loading ===== -->
   <div id="screen-loading" class="screen visible">
+    <div class="ld-load-art" aria-hidden="true"><img src="/defenders/loading.webp" alt="" fetchpriority="high" decoding="async"></div>
     <div class="loading-inner">
-      <div class="ld-loader"><span></span><span></span><span></span></div>
-      <h2>Loading Language Defenders…</h2>
+      <h2>Loading Language Defenders<span class="ld-dots"><i>.</i><i>.</i><i>.</i></span></h2>
+      <div class="ld-load-bar"><span></span></div>
     </div>
   </div>
+  <!-- fade to black between the loading art and the main menu -->
+  <div id="ld-fade" class="ld-fade"></div>
 
   <!-- ===== Main menu (el título 3D flota en la escena detrás) ===== -->
   <div id="screen-menu" class="screen menu-screen">

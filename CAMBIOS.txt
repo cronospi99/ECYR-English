@@ -1756,3 +1756,36 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   · Rendimiento: solo se dibujan los autos cercanos y la cantidad depende de la calidad gráfica.
 - Da World: las placas de las calles ya no se cruzan (la de la calle arriba y la de la avenida
   abajo, cada una hacia su lado, con marco); el halo del sol ya no se ve como un disco gigante.
+- Language Defenders · noviembre 2026:
+  · Menú «Improve» más grande: el tablero ocupa casi toda la pantalla, las 5 filas caben siempre
+    (también en teléfono) y cada casilla muestra nivel y precio en etiquetas claras.
+  · Tarjetas de personajes nuevas: marco del color de su rango (verde, plata, oro, platino,
+    diamante), personaje iluminado desde atrás, nombre y precio en una pastilla; las que no
+    alcanzan se ven apagadas con el precio en rojo.
+  · El ataúd de neón (entrada de los enemigos) bajó al centro del costado de la arena.
+  · Brillo (glow) un poco más suave en todo el juego.
+  · Recess Bell: al sonar, un anillo de sonido recorre TODO el tablero y cada enemigo explota al
+    alcanzarlo; todos vuelven a clase, y el jefe (El Duro) pierde la mitad de la vida que le queda.
+  · Explosiones nuevas (bola de fuego, escombros 3D que rebotan, doble onda de choque, humo que
+    queda) e impactos más contundentes (destello, anillo y sacudida de cámara).
+  · Armas más grandes en los personajes (tiza, marcadores, resaltadores, libro, pelota, frasco,
+    avión de papel, baquetas, botiquín, puntero del robot…), proyectiles un 30 % más grandes y
+    +20 % de daño para todos los defensores que atacan.
+  · Ventana de preguntas estilo «neon grave» (tétrico, no moderno): una losa oscura con grano y un
+    solo tubo de neón cian alrededor que parpadea de vez en cuando, como el ataúd de la entrada; la
+    pregunta y las respuestas en letras grandes color hueso sobre fondo casi negro; cada opción
+    lleva su letra en una lapidita; verde tóxico al acertar, rojo sangre al fallar.
+  · Iconos de neón propios en lugar de TODOS los emojis del juego (botones, menús, avisos, oleadas,
+    explicaciones…).
+  · Título de la portada más grande y tétrico: letras pintadas a brocha (fuente libre «Permanent
+    Marker», no el logo de ningún artista) color hueso, torcidas a mano, con trazos de pincel seco,
+    pintura descascarada, baba verde chorreando y un ataúd de neón cian detrás; luces y chispas del
+    menú en cian y verde. La misma letra se usa en las etiquetas y botones de las preguntas.
+  · Arreglo: en la app instalada (PWA) del iPhone, en pantalla completa o al girar el teléfono, el
+    3D se quedaba en un rectángulo pequeño y el resto en negro. Ahora el lienzo se mide solo y se
+    reajusta aunque iOS no avise del cambio de tamaño; los toques en el tablero también caen bien.
+  · Portada nueva en la biblioteca de Juegos (el arte de los zombis con el título) en lugar del
+    pantallazo; el mismo arte es ahora la pantalla de carga, con un letrero «Loading Language
+    Defenders…» y una barra de baba verde (en teléfono vertical se ve completo, con el fondo
+    difuminado). Al terminar de cargar, la pantalla se oscurece a negro y del negro aparece el menú
+    principal (ya no hay destello blanco).

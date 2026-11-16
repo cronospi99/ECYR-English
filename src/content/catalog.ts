@@ -82,7 +82,7 @@ export const MODULES: ModuleEntry[] = [
       'The phone zombies are coming for your class. Every defender is earned with a grammar or vocabulary answer from your unit (A1–C1). 20 defenders and 9 zombies sculpted in 3D, haunted scenarios, 149 topics, 1,850+ questions with explanations in Spanish and two quick-review games.',
     kind: 'game',
     src: '/defenders',
-    cover: '/covers/language-defenders.webp',
+    cover: '/covers/language-defenders-art.webp',
     levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
     skills: ['grammar', 'vocabulary'],
     topics: ['Grammar by unit', 'Vocabulary', 'Review'],

@@ -144,3 +144,272 @@
   }
 }
 @keyframes ld-hop { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-14px) } }
+
+/* ============================================================
+   Improve pop-up, bigger: the board fills most of the screen, with
+   cells sized from the viewport so it reads at a glance.
+   ============================================================ */
+#ld-app {
+  /* five rows have to fit under the title, the hint and the button */
+  --ib: clamp(28px, min(calc((100vw - 110px) / 9.6), calc((92dvh - 350px) / 5.6)), 112px);
+  .improve-box { width:min(1240px, 97vw); padding:26px 34px 24px; }
+  .improve-box h2 { font-size:clamp(26px, 3.6vw, 44px); margin-bottom:6px; }
+  .improve-box .mini-desc { max-width:none; font-size:clamp(14px, 1.5vw, 18px); margin:0 auto 4px; }
+  .improve-box .mini-desc b { color:var(--ld-yellow); }
+  .improve-list { max-height:none; overflow:auto; display:flex; justify-content:safe center; margin:14px 0 12px; padding:14px 12px; border-radius:20px;
+    background:radial-gradient(ellipse at 50% 30%, rgba(80,160,90,.22), rgba(10,4,24,.55) 75%);
+    border:1px solid var(--ld-line); box-shadow:inset 0 2px 14px rgba(0,0,0,.45); }
+  .improve-board { gap:calc(var(--ib) * .09); width:max-content; }
+  .ib-row { gap:calc(var(--ib) * .09); }
+  .ib-rowlabel { width:calc(var(--ib) * .34); font-size:calc(var(--ib) * .26); font-family:'Luckiest Guy',cursive; font-weight:400; color:var(--ld-yellow); opacity:.9; }
+  .ib-cell {
+    width:var(--ib); height:var(--ib); border-radius:calc(var(--ib) * .2); border:2px solid rgba(0,0,0,.28);
+    background:radial-gradient(circle at 50% 38%, #8fd36a, #4f9a35 70%);
+    box-shadow:inset 0 2px 0 rgba(255,255,255,.28), inset 0 -4px 0 rgba(0,0,0,.18), 0 3px 0 rgba(0,0,0,.3);
+  }
+  .ib-cell.alt { background:radial-gradient(circle at 50% 38%, #9be074, #58a53c 70%); }
+  .ib-cell.empty { opacity:.28; box-shadow:inset 0 2px 6px rgba(0,0,0,.35); }
+  .ib-cell:not(.empty):hover { transform:translateY(-3px) scale(1.06); }
+  .ib-cell img { width:84%; height:84%; margin-top:-6%; }
+  .ib-cell.ready { border-color:var(--ld-yellow); box-shadow:0 0 0 3px rgba(255,197,49,.35), 0 0 18px rgba(255,197,49,.45), inset 0 2px 0 rgba(255,255,255,.3); }
+  .ib-cell.maxed { border-color:var(--ld-blue); background:radial-gradient(circle at 50% 38%, #7ff0ff, #2c8fb8 72%); box-shadow:0 0 0 3px rgba(45,226,230,.3), 0 0 18px rgba(45,226,230,.4), inset 0 2px 0 rgba(255,255,255,.35); }
+  .ib-cell.poor { border-color:rgba(0,0,0,.35); }
+  .ib-cell.digg { border-color:var(--ld-coral); box-shadow:0 0 0 3px rgba(255,61,129,.3), inset 0 2px 0 rgba(255,255,255,.3); }
+  .ib-lvl {
+    top:calc(var(--ib) * .05); left:calc(var(--ib) * .05); padding:1px calc(var(--ib) * .07);
+    font:900 max(9px, calc(var(--ib) * .15)) 'Nunito',sans-serif; color:#fff; text-shadow:none;
+    background:rgba(20,8,46,.82); border-radius:999px; line-height:1.4;
+  }
+  .ib-cell.maxed .ib-lvl { background:linear-gradient(#2de2e6,#1a8fb8); color:#05202a; }
+  .ib-cost {
+    left:8%; right:8%; bottom:calc(var(--ib) * .05); border-radius:999px;
+    font:900 max(9px, calc(var(--ib) * .15)) 'Nunito',sans-serif; color:var(--ld-yellow);
+    background:rgba(20,8,46,.82); line-height:1.45;
+  }
+  .ib-cell.poor .ib-cost { color:#ff9ab8; }
+  .ib-star { font-size:max(11px, calc(var(--ib) * .2)); bottom:calc(var(--ib) * .03); right:calc(var(--ib) * .05); }
+  #improve-note { font-size:clamp(13px, 1.4vw, 16px); font-weight:800; }
+  #improve-accept { max-width:640px; width:100%; align-self:center; font-size:clamp(16px, 1.7vw, 20px); }
+
+  /* ============================================================
+     Defender cards: a trading-card frame in the tier's colour, the
+     defender lit from behind, its name, and the cost on a pill.
+     ============================================================ */
+  .plant-card {
+    --tc:#8dff4a; --tc2:#2f9a2c;
+    width:94px; padding:6px 5px 7px; border-radius:16px; overflow:hidden;
+    border:2px solid var(--tc);
+    background:
+      radial-gradient(circle at 50% 36%, color-mix(in srgb, var(--tc) 55%, transparent), transparent 62%),
+      linear-gradient(170deg, #3a1670, #1a0838 70%);
+    box-shadow:0 5px 0 color-mix(in srgb, var(--tc2) 70%, #000), 0 9px 16px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .12s, box-shadow .12s, filter .12s;
+  }
+  .plant-card::before {
+    content:''; position:absolute; inset:0; pointer-events:none; border-radius:14px;
+    background:linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,0) 38%);
+  }
+  .plant-card.tier-basic    { --tc:#8dff4a; --tc2:#2f9a2c; }
+  .plant-card.tier-silver   { --tc:#d4e2ec; --tc2:#6b7c8a; background:radial-gradient(circle at 50% 36%, rgba(212,226,236,.5), transparent 62%), linear-gradient(170deg, #3a3f62, #171a33 70%); border-color:var(--tc); }
+  .plant-card.tier-golden   { --tc:#ffcf4a; --tc2:#a87818; background:radial-gradient(circle at 50% 36%, rgba(255,207,74,.55), transparent 62%), linear-gradient(170deg, #4a2a5a, #200c2a 70%); border-color:var(--tc); }
+  .plant-card.tier-platinum { --tc:#b8e2ff; --tc2:#5878a0; background:radial-gradient(circle at 50% 36%, rgba(184,226,255,.55), transparent 62%), linear-gradient(170deg, #2a3a72, #0e1638 70%); border-color:var(--tc); }
+  .plant-card.tier-diamond  { --tc:#5ef4ff; --tc2:#1878a0; background:radial-gradient(circle at 50% 36%, rgba(94,244,255,.6), transparent 62%), linear-gradient(170deg, #12506e, #071a30 70%); border-color:var(--tc); }
+  .plant-card:hover { transform:translateY(-3px) scale(1.04); filter:brightness(1.08); }
+  .plant-card.selected { outline:3px solid var(--ld-yellow); outline-offset:2px; transform:translateY(-3px) scale(1.06);
+    box-shadow:0 0 0 6px rgba(255,197,49,.25), 0 0 22px rgba(255,197,49,.6), 0 5px 0 rgba(0,0,0,.35); }
+  .plant-card .card-icon { width:64px; height:64px; filter:drop-shadow(0 5px 4px rgba(0,0,0,.55)); position:relative; }
+  .plant-card .card-name {
+    display:block; margin:2px 0 4px; font:900 10.5px/1.1 'Nunito',sans-serif; color:#fff;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-shadow:0 1px 2px rgba(0,0,0,.7); position:relative;
+  }
+  .plant-card .card-cost {
+    display:inline-block; position:relative; padding:2px 9px; border-radius:999px;
+    font:900 13px/1.3 'Nunito',sans-serif; color:var(--ld-yellow); text-shadow:none;
+    background:rgba(10,4,24,.78); border:1px solid color-mix(in srgb, var(--tc) 55%, transparent);
+  }
+  .plant-card .tier-dot { top:6px; right:6px; width:11px; height:11px; border:1.5px solid rgba(255,255,255,.75); transform:rotate(45deg); border-radius:2px;
+    background:var(--tc) !important; box-shadow:0 0 8px var(--tc); }
+  .plant-card .card-cd { inset:0; border-radius:14px; background:linear-gradient(rgba(10,4,24,.62), rgba(10,4,24,.82)); z-index:2; }
+  .plant-card.unaffordable { filter:none; }
+  .plant-card.unaffordable .card-icon { filter:grayscale(.85) brightness(.6) drop-shadow(0 4px 3px rgba(0,0,0,.5)); }
+  .plant-card.unaffordable .card-cost { color:#ff7aa0; }
+  .plant-card.unaffordable .card-name { opacity:.6; }
+
+  @media (max-width:900px), (max-height:540px) {
+    .improve-box { padding:14px 12px 14px; }
+    .improve-list { padding:8px 6px; margin:8px 0; }
+    /* tiny cells: just the defender and its price */
+    .ib-lvl { display:none; }
+    .ib-cell img { width:92%; height:92%; margin-top:-14%; }
+    .ib-cost { left:0; right:0; bottom:0; border-radius:0 0 6px 6px; font-size:8px; }
+    .plant-card { width:62px; padding:4px 3px 5px; border-radius:12px; }
+    .plant-card .card-icon { width:40px; height:40px; }
+    .plant-card .card-name { display:none; }
+    .plant-card .card-cost { font-size:11px; padding:1px 6px; margin-top:2px; }
+    .plant-card .tier-dot { width:8px; height:8px; top:4px; right:4px; }
+  }
+}
+
+/* ============================================================
+   Neon icons (icons.ts): thin glowing tubes, like the neon coffin of
+   the graveyard gate. They replace every emoji in the UI.
+   ============================================================ */
+#ld-app .nx {
+  display:inline-block; width:1.15em; height:1.15em; vertical-align:-0.2em; color:var(--nx, #2de2e6);
+  font-style:normal; line-height:1; flex:0 0 auto;
+  filter:drop-shadow(0 0 1.5px var(--nx, #2de2e6)) drop-shadow(0 0 5px color-mix(in srgb, var(--nx, #2de2e6) 55%, transparent));
+}
+#ld-app .nx svg { width:100%; height:100%; display:block; overflow:visible; }
+#ld-app .nx + * , #ld-app * + .nx { margin-left:.12em; }
+/* on yellow / light buttons the glow would smear: a dark tube reads better there */
+#ld-app .wood-btn:not(.small) .nx, #ld-app .wood-btn.small.selected .nx { --nx:#2a0a4a !important; filter:none; }
+#ld-app .ld-mode i > .nx { width:30px; height:30px; vertical-align:middle; --nx:#fff !important; filter:drop-shadow(0 0 4px rgba(255,255,255,.7)); }
+
+/* ============================================================
+   Question window: NEON GRAVE. A slab of night with one neon tube
+   around it (the coffin at the graveyard gate), dirt and grain, a
+   hand-painted brush face for the labels (the title's) — and the question and
+   answers in big bone-white type on near-black, so they read easily.
+   ============================================================ */
+#ld-app {
+  --ng-cyan:#39e6ff; --ng-toxic:#7dff6a; --ng-blood:#ff3d5a; --ng-bone:#eef0e2; --ng-moss:#9fc9a4;
+  --ng-night:#05070b; --ng-slab:#0b0f16;
+  --ng-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.7 0 0 0 0 0.75 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  #quiz-modal {
+    background:radial-gradient(ellipse at 50% 110%, rgba(57,230,255,.10), rgba(3,4,8,.62) 55%, rgba(3,4,8,.78));
+    backdrop-filter:blur(2px) saturate(.8);
+  }
+  .quiz-box {
+    position:relative; width:min(900px, 96vw); padding:22px 24px 20px;
+    border:3px solid var(--ng-cyan); border-radius:18px;
+    background:var(--ng-grain), radial-gradient(ellipse at 50% 0%, rgba(57,230,255,.08), transparent 60%), linear-gradient(180deg, #0d121b, var(--ng-night));
+    box-shadow:0 0 0 1px rgba(230,253,255,.55) inset, 0 0 10px rgba(57,230,255,.55), 0 0 34px rgba(57,230,255,.28), inset 0 0 26px rgba(57,230,255,.12), 0 22px 40px rgba(0,0,0,.7);
+    animation:ng-hum 5s infinite;
+  }
+  /* the two wires the tube hangs from */
+  .quiz-box::before, .quiz-box::after {
+    content:''; position:absolute; bottom:-34px; width:46px; height:40px; pointer-events:none;
+    border:2px solid #1d2a36; border-top:0; border-radius:0 0 40px 40px;
+  }
+  .quiz-box::before { left:12%; border-right:0; }
+  .quiz-box::after { right:12%; border-left:0; }
+
+  .quiz-topic, .quiz-kind, .quiz-for {
+    font-family:'Permanent Marker','Nunito',sans-serif; font-weight:400; letter-spacing:.6px; text-transform:uppercase;
+    font-size:15px; line-height:1.15; border-radius:10px; padding:5px 14px 4px; margin:4px 4px 14px; clip-path:none;
+    background:rgba(5,7,11,.85); text-shadow:0 0 8px currentColor;
+  }
+  .quiz-topic { color:var(--ng-cyan); box-shadow:inset 0 0 0 2px rgba(57,230,255,.7), 0 0 10px rgba(57,230,255,.25); }
+  .quiz-kind { color:var(--ng-toxic); box-shadow:inset 0 0 0 2px rgba(125,255,106,.6), 0 0 10px rgba(125,255,106,.2); }
+  .quiz-for { color:#ffd27a; box-shadow:inset 0 0 0 2px rgba(255,210,122,.6); border:0; }
+  .quiz-topic .nx, .quiz-kind .nx, .quiz-for .nx { --nx:currentColor !important; }
+
+  .quiz-question {
+    font-family:'Nunito',sans-serif; font-weight:900; font-size:clamp(20px, 3.2vw, 28px); line-height:1.38;
+    color:var(--ng-bone); background:rgba(3,4,7,.82); text-align:center; text-shadow:0 2px 0 #000;
+    border:1px solid rgba(238,240,226,.14); border-radius:12px; padding:16px 18px; margin-bottom:16px;
+    box-shadow:inset 0 0 22px rgba(0,0,0,.8);
+  }
+  .quiz-question.passage { text-align:left; font-size:clamp(15px, 2.2vw, 19px); font-weight:800; line-height:1.6; }
+
+  .quiz-options { gap:12px; counter-reset:opt; }
+  .quiz-opt {
+    position:relative; counter-increment:opt; clip-path:none;
+    font-family:'Nunito',sans-serif; font-weight:900; font-size:18px; color:var(--ng-bone); text-shadow:0 1px 0 #000;
+    background:var(--ng-grain), linear-gradient(180deg, #121925, #080b11);
+    border:0; border-radius:12px; padding:14px 10px 13px 40px; min-height:56px;
+    box-shadow:inset 0 0 0 2px rgba(57,230,255,.45), 0 4px 0 #020305, 0 8px 14px rgba(0,0,0,.5);
+    transition:transform .1s, box-shadow .14s, color .14s;
+  }
+  /* a little tombstone with the letter on it */
+  .quiz-opt::before {
+    content:counter(opt, upper-alpha); position:absolute; left:9px; top:50%; transform:translateY(-52%);
+    width:22px; height:26px; display:grid; place-items:center; padding-top:3px;
+    font:400 14px 'Permanent Marker',sans-serif; color:#1a1f24; background:linear-gradient(#cfd3c4, #8e9686);
+    border-radius:11px 11px 3px 3px; box-shadow:0 2px 0 #000; clip-path:none;
+  }
+  .quiz-opt:hover:not(:disabled) {
+    transform:translateY(-2px); filter:none; color:#fff; background:var(--ng-grain), linear-gradient(180deg, #16222e, #0a0f16);
+    box-shadow:inset 0 0 0 2px var(--ng-cyan), 0 0 14px rgba(57,230,255,.45), 0 6px 0 #020305;
+  }
+  .quiz-opt.correct { color:#fff; background:var(--ng-grain), linear-gradient(180deg, #123a1c, #07170c); box-shadow:inset 0 0 0 2px var(--ng-toxic), 0 0 18px rgba(125,255,106,.5), 0 4px 0 #020305; animation:ld-bounce .4s; }
+  .quiz-opt.correct::before { content:'✓'; font-family:'Nunito',sans-serif; font-weight:900; background:linear-gradient(#c6ffb8, #5fd34c); }
+  .quiz-opt.wrong { color:#fff; background:var(--ng-grain), linear-gradient(180deg, #3a0d16, #16050a); box-shadow:inset 0 0 0 2px var(--ng-blood), 0 0 18px rgba(255,61,90,.5), 0 4px 0 #020305; animation:ld-shake .4s; }
+  .quiz-opt.wrong::before { content:'✕'; font-family:'Nunito',sans-serif; font-weight:900; color:#fff; background:linear-gradient(#ff8a9a, #c21f3a); }
+  .quiz-opt:disabled:not(.correct):not(.wrong) { opacity:.5; }
+
+  .quiz-feedback {
+    font-family:'Nunito',sans-serif; font-weight:900; font-size:17px; border-radius:10px;
+    background:rgba(3,4,7,.85); padding:11px 14px; margin-top:14px; border:0; box-shadow:inset 0 0 0 1px currentColor;
+  }
+  .quiz-feedback.good { color:var(--ng-toxic); }
+  .quiz-feedback.bad { color:#ff9aa8; }
+  .quiz-explain {
+    font-family:'Nunito',sans-serif; font-weight:700; font-size:15px; line-height:1.55; border-radius:10px;
+    color:#e4ece6; background:rgba(3,4,7,.85); border:1px solid rgba(57,230,255,.3);
+  }
+  .quiz-explain .why-line { color:#ffe9b0; font-weight:800; }
+  .quiz-explain .grammar-note { color:#d2ecf0; border-top:1px dashed rgba(57,230,255,.3); }
+
+  .quiz-actions .wood-btn {
+    font-family:'Permanent Marker','Nunito',sans-serif; font-weight:400; letter-spacing:2px; text-transform:uppercase; font-size:24px; line-height:1;
+    border-radius:12px; clip-path:none; padding:12px 30px 10px;
+    color:#071a0a; background:linear-gradient(180deg, #b6ff9e, var(--ng-toxic) 55%, #3fbf33);
+    box-shadow:0 5px 0 #1b5a14, 0 0 18px rgba(125,255,106,.45), inset 0 2px 0 rgba(255,255,255,.5);
+  }
+  .quiz-actions .wood-btn .nx { --nx:#071a0a !important; filter:none; }
+  .quiz-actions .wood-btn.small {
+    font-size:17px; color:var(--ng-cyan); background:rgba(5,7,11,.9); padding:9px 18px 7px;
+    box-shadow:inset 0 0 0 2px rgba(57,230,255,.6), 0 0 12px rgba(57,230,255,.25); text-shadow:0 0 8px rgba(57,230,255,.6);
+  }
+  .quiz-actions .wood-btn.small .nx { --nx:var(--ng-cyan) !important; }
+  .quiz-actions .wood-btn:active { transform:translateY(3px); }
+
+  @media (max-width:720px), (max-height:480px) {
+    .quiz-box { padding:14px 12px 12px; border-width:2px; }
+    .quiz-box::before, .quiz-box::after { display:none; }
+    .quiz-opt { font-size:15px; padding:10px 6px 10px 34px; min-height:46px; }
+    .quiz-opt::before { left:7px; width:19px; height:22px; font-size:13px; }
+    .quiz-topic, .quiz-kind, .quiz-for { font-size:14px; margin:3px 3px 10px; }
+    .quiz-actions .wood-btn { font-size:20px; }
+  }
+}
+/* the tube flickers now and then, like an old sign in a graveyard */
+@keyframes ng-hum {
+  0%, 91%, 100% { border-color:#39e6ff; }
+  92% { border-color:#1a6a78; } 93% { border-color:#39e6ff; } 95% { border-color:#257f8f; } 96% { border-color:#39e6ff; }
+}
+
+/* ============================================================
+   Loading screen: the key art full screen, a neon-grave plate that
+   says it's loading, then a fade to black into the main menu.
+   ============================================================ */
+#ld-app {
+  #screen-loading { background:linear-gradient(rgba(5,3,10,.6), rgba(5,3,10,.6)), #05030a url('/defenders/loading-blur.webp') center / cover no-repeat; align-items:flex-end; justify-content:center; overflow:hidden; }
+  .ld-load-art { position:absolute; inset:0; }
+  .ld-load-art img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; display:block; animation:ld-art-in 1.2s ease-out both, ld-art-drift 18s ease-in-out infinite alternate; }
+  /* tall phones: show the whole picture, the blurred copy fills the rest */
+  @media (orientation:portrait) { .ld-load-art img { object-fit:contain; } }
+  .ld-load-art::after { content:''; position:absolute; inset:0; background:linear-gradient(transparent 70%, rgba(4,2,10,.75)); pointer-events:none; }
+  #screen-loading .loading-inner {
+    position:relative; z-index:1; margin-bottom:calc(14px + var(--safe-b, 0px)); padding:10px 22px 12px;
+    background:rgba(5,7,11,.82); border:2px solid #39e6ff; border-radius:14px;
+    box-shadow:0 0 12px rgba(57,230,255,.5), inset 0 0 14px rgba(57,230,255,.15); backdrop-filter:blur(4px);
+  }
+  #screen-loading .loading-inner h2 {
+    margin:0; font-family:'Permanent Marker','Luckiest Guy',cursive; font-weight:400; letter-spacing:1px;
+    font-size:clamp(16px, 2.6vw, 26px); color:#eef0e2; text-shadow:0 0 10px rgba(57,230,255,.7), 0 2px 0 #000;
+  }
+  .ld-dots i { font-style:normal; animation:ld-dot 1.2s infinite; }
+  .ld-dots i:nth-child(2) { animation-delay:.2s; } .ld-dots i:nth-child(3) { animation-delay:.4s; }
+  .ld-load-bar { position:relative; height:6px; margin-top:8px; border-radius:6px; background:#0d1a14; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(125,255,106,.35); }
+  .ld-load-bar span { position:absolute; top:0; bottom:0; width:38%; border-radius:6px; background:linear-gradient(90deg, transparent, #7dff6a, #c8ffb8); box-shadow:0 0 10px #7dff6a; animation:ld-slime 1.4s ease-in-out infinite; }
+
+  .ld-fade { position:absolute; inset:0; z-index:500; background:#000; opacity:0; pointer-events:none; transition:opacity 1.1s ease; }
+  .ld-fade.on { opacity:1; transition-duration:.7s; }
+}
+@keyframes ld-art-in { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+@keyframes ld-art-drift { from { transform:scale(1); } to { transform:scale(1.035); } }
+@keyframes ld-dot { 0%, 100% { opacity:.15; } 40% { opacity:1; } }
+@keyframes ld-slime { 0% { left:-40%; } 100% { left:102%; } }

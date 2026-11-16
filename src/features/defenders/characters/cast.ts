@@ -83,9 +83,10 @@ const chalkTeacher: Make = (h) => {
   const b = new Builder();
   const L = human(b, { skin: SKIN.tan, shirt: 0x2f8f6a, pants: 0x3a4660, hair: 0x4a2c1a, style: 'bun', glasses: 0x24303a, skirt: 0x3a4660, face: 'happy', armL: [-0.5, 0, -0.5] });
   L.torso.add('box', WHITE, [0, 0.21, 0.11], [0.09, 0.06, 0.03]);
-  L.armR.m('paper').add('cyl', WHITE, [0, -0.3, 0.03], [0.014, 0.09, 0.014], [1.2, 0, 0]);
-  L.armL.m('dark').add('box', 0x1f5a45, [0, -0.3, 0.02], [0.16, 0.02, 0.12], [0.3, 0, 0]);   // little slate
-  L.armL.m('wood').add('box', 0xc99a5a, [0, -0.3, 0.02], [0.18, 0.012, 0.14], [0.3, 0, 0]);
+  L.armR.big(2.1, [0, -0.28, 0.02]).m('paper').add('cyl', WHITE, [0, -0.3, 0.03], [0.014, 0.09, 0.014], [1.2, 0, 0]);
+  L.armR.add('cyl', 0xbfe6ff, [0, -0.302, 0.075], [0.016, 0.02, 0.016], [1.2, 0, 0]).big();
+  L.armL.big(1.35, [0, -0.28, 0.02]).m('dark').add('box', 0x1f5a45, [0, -0.3, 0.02], [0.16, 0.02, 0.12], [0.3, 0, 0]);   // little slate
+  L.armL.m('wood').add('box', 0xc99a5a, [0, -0.3, 0.02], [0.18, 0.012, 0.14], [0.3, 0, 0]).big();
   return b.finish(h, YAW_D, humanTick);
 };
 
@@ -96,8 +97,8 @@ const markerMax: Make = (h) => {
   L.torso.add('box', 0xd03a3a, [0, 0.16, 0.122], [0.035, 0.17, 0.02]);
   L.torso.add('box', WHITE, [0, 0.27, 0.1], [0.11, 0.04, 0.05]);
   for (const [arm, c] of [[L.armL, 0xe5484d], [L.armR, 0x2bb673]] as const) {
-    arm.add('cyl', c, [0, -0.3, 0.04], [0.02, 0.13, 0.02], [1.3, 0, 0]);
-    arm.add('cyl', INK, [0, -0.285, 0.11], [0.014, 0.03, 0.014], [1.3, 0, 0]);
+    arm.big(1.8, [0, -0.28, 0.02]).add('cyl', c, [0, -0.3, 0.04], [0.02, 0.13, 0.02], [1.3, 0, 0]);
+    arm.add('cyl', INK, [0, -0.285, 0.11], [0.014, 0.03, 0.014], [1.3, 0, 0]).big();
   }
   return b.finish(h, YAW_D, humanTick);
 };
@@ -107,6 +108,7 @@ const msHighlight: Make = (h) => {
   const b = new Builder();
   const L = human(b, { skin: SKIN.fair, shirt: 0xffd23f, pants: 0x4b3f72, hair: 0x2a1c3a, style: 'long', face: 'focus', armR: [-1.1, 0, 0.1], armL: [0, 0, -0.5] });
   L.torso.add('box', 0x4b3f72, [0, 0.2, 0.115], [0.16, 0.03, 0.03]);
+  L.armR.big(1.6, [0, -0.28, 0.02]);
   [0xfff04a, 0xff6fb1, 0x7cf07a].forEach((c, i) => {
     L.armR.add('cyl', c, [(i - 1) * 0.05, -0.34, 0.02], [0.02, 0.14, 0.02], [0.2, 0, (i - 1) * -0.35]);
     L.armR.add('cyl', INK, [(i - 1) * 0.085, -0.41, 0.03], [0.012, 0.03, 0.012], [0.2, 0, (i - 1) * -0.35]);
@@ -157,7 +159,7 @@ const librarian: Make = (h) => {
   const b = new Builder();
   const L = human(b, { skin: SKIN.pale, shirt: 0xb9a3e3, pants: 0x4a4458, hair: 0xb8b8c4, style: 'bun', glasses: 0xc23b6a, skirt: 0x5a5470, face: 'focus', armL: [-2.5, 0, 0.75], hold: 'L', thrower: 'R' });
   L.torso.add('sph', 0xf2efe6, [0, 0.27, 0.07], [0.09, 0.05, 0.06]);
-  L.armR.m('rubber').add('box', 0x3d7bd8, [0, -0.3, 0.05], [0.1, 0.14, 0.035]);
+  L.armR.big(1.55, [0, -0.28, 0.02]).m('rubber').add('box', 0x3d7bd8, [0, -0.3, 0.05], [0.1, 0.14, 0.035]);
   L.armR.m('paper').add('box', CREAM, [0.005, -0.3, 0.05], [0.09, 0.125, 0.03]);
   return b.finish(h, YAW_D, humanTick);
 };
@@ -168,7 +170,7 @@ const hallMonitor: Make = (h) => {
   const L = human(b, { skin: SKIN.deep, shirt: 0xf7f4ec, pants: 0x2f3f6a, hair: 0x15131a, style: 'afro', face: 'shout', shorts: true, armR: [-2.3, 0, 0.5], hold: 'R', thrower: 'none' });
   L.torso.add('box', 0xff7a1a, [0, 0.16, 0.0], [0.06, 0.34, 0.27], [0, 0, 0.75]);
   L.torso.m('metal').add('sph', 0xc0c6d0, [0.02, 0.2, 0.13], 0.025);
-  L.armR.m('wood').add('cyl', 0x8a6a4a, [0, -0.38, 0], [0.014, 0.2, 0.014]);
+  L.armR.big(1.35, [0, -0.28, 0.02]).m('wood').add('cyl', 0x8a6a4a, [0, -0.38, 0], [0.014, 0.2, 0.014]);
   L.armR.m('metal').add(new THREE.CylinderGeometry(1, 1, 1, 8), 0xe5333a, [0, -0.52, 0], [0.12, 0.025, 0.12], [Math.PI / 2, 0, 0.39]);
   L.armR.add('box', WHITE, [0, -0.52, 0.014], [0.14, 0.035, 0.008]);
   return b.finish(h, YAW_D, humanTick);
@@ -179,7 +181,7 @@ const paperPitcher: Make = (h) => {
   const b = new Builder();
   const L = human(b, { skin: SKIN.tan, shirt: 0xe5484d, pants: 0x3a5a8a, hair: 0x4a2c1a, style: 'capBack', hat: 0x2f5fa8, face: 'smirk', shorts: true, shoes: 0xf4f4f8, armR: [-2.6, 0, 0.2] });
   L.torso.add('box', WHITE, [0, 0.17, 0.123], [0.1, 0.05, 0.01]);
-  L.armR.m('paper').add('sph', WHITE, [0, -0.33, 0], [0.055, 0.05, 0.055]);
+  L.armR.big(1.7, [0, -0.28, 0.02]).m('paper').add('sph', WHITE, [0, -0.33, 0], [0.055, 0.05, 0.055]);
   L.armR.add('box', 0xe2e6ee, [0.02, -0.33, 0.03], [0.05, 0.04, 0.04], [0.5, 0.6, 0.3]);
   return b.finish(h, YAW_D, humanTick);
 };
@@ -190,7 +192,7 @@ const lunchLady: Make = (h) => {
   const L = human(b, { skin: SKIN.brown, shirt: 0xff8fa8, pants: 0x4a4458, hair: 0x2a1a14, style: 'net', hat: 0xbfe6f5, bulk: 1.28, face: 'happy', armR: [-1.3, 0, 0.1], hold: 'L', armL: [-0.9, 0, -0.3] });
   L.torso.add('sph', WHITE, [0, 0.1, 0.07], [0.13, 0.17, 0.1]);
   L.torso.add('box', WHITE, [0, 0.27, 0.12], [0.14, 0.04, 0.02]);
-  L.armR.add('cyl', 0x55565e, [0, -0.33, 0.14], [0.012, 0.22, 0.012], [1.5, 0, 0]);
+  L.armR.big(1.4, [0, -0.28, 0.02]).add('cyl', 0x55565e, [0, -0.33, 0.14], [0.012, 0.22, 0.012], [1.5, 0, 0]);
   L.armR.add('cyl', 0x35363e, [0, -0.33, 0.3], [0.11, 0.022, 0.11]);
   L.armR.m('paper').add('cyl', 0xf4d27a, [0, -0.31, 0.3], [0.085, 0.022, 0.085]);
   L.armR.add('sph', 0xc98a3a, [0.02, -0.298, 0.31], [0.04, 0.006, 0.03]);
@@ -206,7 +208,7 @@ const coach: Make = (h) => {
   L.torso.add('box', WHITE, [0.105, 0.14, 0.02], [0.02, 0.24, 0.2]);
   L.torso.ring(0xe5333a, 0.09, 0.008, [0, 0.27, 0.03], [1.2, 0, 0]);
   L.torso.m('metal').add('cyl', 0xc0c6d0, [0, 0.19, 0.125], [0.02, 0.03, 0.02], [0, 0, 1.57]);
-  L.armR.m('rubber').add('sph', 0xfdfdfd, [0, -0.36, 0.02], 0.085);
+  L.armR.big(1.4, [0, -0.28, 0.02]).m('rubber').add('sph', 0xfdfdfd, [0, -0.36, 0.02], 0.085);
   L.armR.ring(0x3d7bd8, 0.084, 0.008, [0, -0.36, 0.02], [0.6, 0, 0]);
   L.armR.ring(0xf2b632, 0.084, 0.008, [0, -0.36, 0.02], [0, 0.8, 1.2]);
   // tall form (set by the engine): he jumps and spikes over his head
@@ -273,11 +275,11 @@ const chemist: Make = (h) => {
   const b = new Builder();
   const L = human(b, { skin: SKIN.fair, shirt: 0xf4f6fb, pants: 0x3a4660, hair: 0xff7a2a, style: 'messy', glasses: 0x2bd4c4, face: 'happy', coat: 0xf4f6fb, armR: [-1.2, 0, 0.15] });
   L.torso.add('box', 0x8f5ad8, [0, 0.2, 0.122], [0.1, 0.12, 0.01]);
-  L.armR.m('gloss').add('cyl', 0xcfeef5, [0, -0.36, 0.02], [0.02, 0.09, 0.02]);
+  L.armR.big(1.7, [0, -0.28, 0.02]).m('gloss').add('cyl', 0xcfeef5, [0, -0.36, 0.02], [0.02, 0.09, 0.02]);
   L.armR.add('sph', 0xcfeef5, [0, -0.3, 0.02], 0.066);
   L.armR.m('wood').add('cyl', 0x8a6a4a, [0, -0.41, 0.02], [0.024, 0.02, 0.024]);
-  b.glow('armR', 'sph', 0x7dff6a, [0, -0.292, 0.02], 0.05);
-  const tick: TickFn = (rig, t, m, r, a, dt) => { humanTick(rig, t, m, r, a, dt); rig.glows[0].scale.setScalar(0.05 * (0.9 + Math.sin(t * 6) * 0.12)); };
+  b.glow('armR', 'sph', 0x7dff6a, [0, -0.3, 0.02], 0.085);
+  const tick: TickFn = (rig, t, m, r, a, dt) => { humanTick(rig, t, m, r, a, dt); rig.glows[0].scale.setScalar(0.085 * (0.9 + Math.sin(t * 6) * 0.12)); };
   return b.finish(h, YAW_D, tick);
 };
 
@@ -339,14 +341,14 @@ const robot: Make = (h) => {
     a.cap(0x8892a6, [0, 0, 0], [0, -0.17, 0], 0.035);
     a.add('sph', 0x3d7bd8, [0, -0.21, 0], 0.05);
     a.group.rotation.x = s > 0 ? -1.45 : 0;
-    if (s > 0) { a.add('cyl', 0x2b2b33, [0, -0.3, 0], [0.018, 0.16, 0.018]); b.glow('armR', 'sph', 0xff4d5e, [0, -0.39, 0], 0.025); }
+    if (s > 0) { a.add('cyl', 0x2b2b33, [0, -0.34, 0], [0.032, 0.26, 0.032]); a.add('cyl', 0x3d7bd8, [0, -0.27, 0], [0.045, 0.05, 0.045]); b.glow('armR', 'sph', 0xff4d5e, [0, -0.48, 0], 0.04); }
   }
   const tick: TickFn = (rig, t, _m, recoil) => {
     rig.parts.torso.position.y = 0.26 + Math.sin(t * 2.4) * 0.02;
     rig.parts.head.rotation.y = Math.sin(t * 1.3) * 0.18;
     rig.parts.armR.rotation.x = -1.45 - recoil * 0.4;
     rig.glows[3].visible = Math.sin(t * 6) > 0;
-    rig.glows[4].scale.setScalar(0.025 * (1 + recoil * 3));
+    rig.glows[4].scale.setScalar(0.04 * (1 + recoil * 3));
   };
   return b.finish(h, YAW_D, tick);
 };
@@ -380,7 +382,7 @@ const profThesis: Make = (h) => {
   const b = new Builder();
   const L = human(b, { skin: SKIN.fair, shirt: 0x8a6238, pants: 0x4a3f38, hair: 0xe9e9ee, style: 'short', beard: 0xe9e9ee, glasses: 0x2b2b33, face: 'focus', coat: 0x8a6238, thrower: 'both', armL: [-2.9, 0, 0.25], armR: [-2.9, 0, -0.25], hold: 'both' });
   L.torso.add('box', 0xc23b3b, [0, 0.25, 0.115], [0.07, 0.035, 0.03]);
-  L.armL.m('rubber').add('box', 0x2f5fa8, [0.2, -0.33, 0], [0.34, 0.11, 0.26]);
+  L.armL.big(1.25, [0, -0.3, 0]).m('rubber').add('box', 0x2f5fa8, [0.2, -0.33, 0], [0.34, 0.11, 0.26]);
   L.armL.m('paper').add('box', CREAM, [0.2, -0.33, 0.012], [0.32, 0.085, 0.25]);
   L.armL.m('gold').add('box', GOLD, [0.2, -0.33, 0.132], [0.2, 0.03, 0.006]);
   return b.finish(h, YAW_D, humanTick);
@@ -575,7 +577,7 @@ const nurse: Make = (h) => {
   const b = new Builder();
   const L = human(b, { skin: SKIN.tan, shirt: 0xf4f6fb, pants: 0x9fd8e8, hair: 0x4a2a1a, style: 'short', hat: 0xf4f6fb, face: 'happy', shoes: 0xf4f4f8, armR: [-0.9, 0, 0.2], armL: [0, 0, -0.25] });
   L.torso.add('box', 0xe5333a, [0, 0.17, 0.125], [0.1, 0.03, 0.012]); L.torso.add('box', 0xe5333a, [0, 0.17, 0.125], [0.03, 0.1, 0.012]);
-  L.armR.add('box', 0xf4f6fb, [0, -0.36, 0.04], [0.16, 0.12, 0.07]);
+  L.armR.big(1.4, [0, -0.28, 0.02]).add('box', 0xf4f6fb, [0, -0.36, 0.04], [0.16, 0.12, 0.07]);
   L.armR.add('box', 0xe5333a, [0, -0.36, 0.078], [0.07, 0.022, 0.008]); L.armR.add('box', 0xe5333a, [0, -0.36, 0.078], [0.022, 0.07, 0.008]);
   b.glow('torso', 'sph', 0x7dffb0, [0, 0.17, 0.14], 0.02);
   return b.finish(h, YAW_D, humanTick);
@@ -605,7 +607,7 @@ const drummer: Make = (h) => {
   L.torso.m('gloss').add('cyl', 0x3d7bd8, [0, 0.08, 0.27], [0.2, 0.14, 0.2], [1.5708, 0, 0]);
   L.torso.m('paper').add('cyl', 0xfdfdfd, [0, 0.08, 0.345], [0.185, 0.012, 0.185], [1.5708, 0, 0]);
   L.torso.m('gold').ring(GOLD, 0.2, 0.012, [0, 0.08, 0.34], [0, 0, 0]);
-  for (const arm of [L.armL, L.armR]) { arm.m('wood').add('cyl', 0xd8b07a, [0, -0.34, 0.08], [0.012, 0.16, 0.012], [1.2, 0, 0]); arm.add('sph', 0xf4f4f8, [0, -0.37, 0.16], 0.03); }
+  for (const arm of [L.armL, L.armR]) { arm.big(1.6, [0, -0.28, 0.02]).m('wood').add('cyl', 0xd8b07a, [0, -0.34, 0.08], [0.012, 0.16, 0.012], [1.2, 0, 0]); arm.add('sph', 0xf4f4f8, [0, -0.37, 0.16], 0.03); }
   return b.finish(h, YAW_D, humanTick);
 };
 
@@ -635,8 +637,8 @@ const paperAce: Make = (h) => {
   const b = new Builder();
   const L = human(b, { skin: SKIN.fair, shirt: 0xf2b632, pants: 0x3d4a6a, hair: 0xc8642a, style: 'short', face: 'smirk', thrower: 'R', armR: [-1.0, 0, 0.3], armL: [-0.3, 0, -0.3] });
   L.torso.add('box', 0x3d7bd8, [0, 0.16, 0.122], [0.16, 0.05, 0.012]);
-  L.armR.m('paper').add('cone', WHITE, [0, -0.36, 0.1], [0.07, 0.2, 0.012], [1.5708, 0, 0]);
-  L.armL.m('paper').add('box', WHITE, [0, -0.33, 0.05], [0.12, 0.012, 0.16]);
+  L.armR.big(1.8, [0, -0.28, 0.02]).m('paper').add('cone', WHITE, [0, -0.36, 0.1], [0.07, 0.2, 0.012], [1.5708, 0, 0]);
+  L.armL.big(1.4, [0, -0.28, 0.02]).m('paper').add('box', WHITE, [0, -0.33, 0.05], [0.12, 0.012, 0.16]);
   return b.finish(h, YAW_D, humanTick);
 };
 

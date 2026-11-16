@@ -225,6 +225,64 @@ export class Fx {
     }
   }
 
+  /** Runs `fn` after `delay` seconds (staggered blasts). */
+  private later(delay: number, fn: () => void) {
+    let done = false;
+    this.add(new THREE.Object3D(), Math.max(0.001, delay), (u) => { if (u >= 1 && !done) { done = true; fn(); } });
+  }
+
+  /** A rolling fireball: white-hot core that cools to orange, then to soot, as it swells and rises. */
+  private fireball(pos: THREE.Vector3, color: number, size: number, dur = 0.55) {
+    const n = Math.max(3, Math.round(6 * this.detail));
+    const hot = new THREE.Color(0xfff6d8), mid = new THREE.Color(color), cold = new THREE.Color(0x2a1a22);
+    for (let i = 0; i < n; i++) {
+      const s = this.sprite(TEX!.smoke, true, 'fire'), a = Math.random() * Math.PI * 2, r = Math.random() * size * 0.28;
+      const ox = Math.cos(a) * r, oy = Math.random() * size * 0.2, oz = Math.sin(a) * r * 0.5, rot = Math.random() * 6, sp = (Math.random() - 0.5) * 2;
+      const k = 0.6 + Math.random() * 0.6, d = dur * (0.8 + Math.random() * 0.4);
+      s.position.set(pos.x + ox, pos.y + oy, pos.z + oz);
+      this.add(s, d, (u, dt) => {
+        s.position.y += dt * size * 0.9 * (1 - u);
+        s.position.x += ox * dt * 1.6; s.position.z += oz * dt * 1.6;
+        s.scale.setScalar(size * k * (0.35 + Math.sqrt(u) * 0.95));
+        s.material.rotation = rot + sp * u;
+        const c = u < 0.35 ? hot.clone().lerp(mid, u / 0.35) : mid.clone().lerp(cold, (u - 0.35) / 0.65);
+        s.material.color.copy(c).multiplyScalar(u < 0.5 ? 1.5 : 0.8);
+        s.material.opacity = u < 0.1 ? u / 0.1 : (1 - u) * (1 - u);
+      }, 'fire');
+    }
+  }
+
+  /** Real 3D chunks thrown out of a blast: they tumble, bounce once and fade. */
+  private debris(pos: THREE.Vector3, color: number, n: number, speed: number, size = 0.07) {
+    n = Math.max(2, Math.round(n * this.detail));
+    const pool = (this.pools.chunk ||= []);
+    for (let i = 0; i < n; i++) {
+      const m = (pool.pop() as THREE.Mesh<THREE.BoxGeometry, THREE.MeshStandardMaterial>) || new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ roughness: 0.7, metalness: 0.1, transparent: true }));
+      m.visible = true; m.castShadow = false;
+      m.material.color.set(color).multiplyScalar(0.6 + Math.random() * 0.5); m.material.emissive.set(color).multiplyScalar(0.25);
+      const a = Math.random() * Math.PI * 2, v = speed * (0.5 + Math.random() * 0.7);
+      let vx = Math.cos(a) * v, vy = speed * (0.6 + Math.random() * 0.8), vz = Math.sin(a) * v * 0.6;
+      const wx = (Math.random() - 0.5) * 18, wz = (Math.random() - 0.5) * 18, k = size * (0.6 + Math.random() * 0.9);
+      m.scale.set(k, k * (0.5 + Math.random() * 0.6), k * (0.7 + Math.random() * 0.5));
+      m.position.copy(pos); m.rotation.set(Math.random() * 6, Math.random() * 6, 0);
+      let bounced = false;
+      this.add(m, 0.9 + Math.random() * 0.4, (u, dt) => {
+        vy -= 14 * dt;
+        m.position.x += vx * dt; m.position.y += vy * dt; m.position.z += vz * dt;
+        m.rotation.x += wx * dt; m.rotation.z += wz * dt;
+        if (m.position.y < 0.04) { m.position.y = 0.04; if (!bounced) { vy = -vy * 0.35; vx *= 0.5; vz *= 0.5; bounced = true; } else { vy = 0; vx *= 0.8; vz *= 0.8; } }
+        m.material.opacity = u < 0.7 ? 1 : 1 - (u - 0.7) / 0.3;
+      }, 'chunk');
+    }
+  }
+
+  /** A column of light shooting up from the floor. */
+  private pillar(pos: THREE.Vector3, color: number, width: number, height: number, dur = 0.6) {
+    const s = this.sprite(TEX!.glow, true, 'pillar');
+    s.position.set(pos.x, height / 2, pos.z); s.material.color.copy(HOT(color, 2.4));
+    this.add(s, dur, (u) => { s.scale.set(width * (1 - u * 0.6), height * (0.4 + Math.min(1, u * 4) * 0.6), 1); s.material.opacity = u < 0.15 ? u / 0.15 : (1 - u); }, 'pillar');
+  }
+
   private light(pos: THREE.Vector3, color: number, peak: number, dur: number) {
     const slot = this.lights.reduce((a, b) => (a.t / a.dur > b.t / b.dur ? a : b));
     slot.l.position.set(pos.x, Math.max(pos.y, 0.6), pos.z + 0.4); slot.l.color.set(color);
@@ -239,6 +297,12 @@ export class Fx {
     p.z += 0.12; // in front of the character, towards the camera
     this.star(p, c, 0.62 * power);
     this.flash(p, c, 0.9 * power, 0.16);
+    // the heavier hit: a white core, a crack of light across the impact and a small shock ring
+    this.flash(p, 0xffffff, 0.45 * power, 0.08, 2.6);
+    this.star(p, 0xffffff, 0.38 * power, 0.12);
+    this.ring(p, c, 0.7 * power, 0.2);
+    if (Math.random() < 0.5) this.floorRing(p, c, 0.9 * power, 0.32);
+    this.shake = Math.min(0.32, this.shake + 0.012 * power);
     switch (f.style) {
       case 'dust': this.puffs(p, 0xeef2ff, 3, 0.55, 0.55, 0.5, 0.6); this.streaks(p, c, 5, 2.4, 0.3); break;
       case 'splat': this.splat(p, c, 0.62 * power); this.streaks(p, c, 6, 2.8, 0.34, TEX!.spark, 9, 0.2); if (Math.random() < 0.5) this.splat(p, c, 0.5, true, 2.2); break;
@@ -261,6 +325,11 @@ export class Fx {
     this.streaks(p, 0xffffff, 6, 3.2, 0.4, TEX!.spark, 9, 0.2);
     this.puffs(p, 0x241c2c, 5, 1.2 * radius, 1.3, 1.1, 0.6);
     this.puffs(p, color, 2, 0.9 * radius, 0.5, 0.6, 0.45);
+    this.fireball(p, color, 1.5 * radius, 0.6);
+    this.debris(p, 0x3a2e3a, 7 * radius, 3.4 * Math.sqrt(radius));
+    this.floorRing(p, 0xffffff, 2.2 * radius, 0.3);
+    // a second, slower shock ring and smoke that lingers after the fire
+    this.later(0.08, () => { this.floorRing(p, color, 4.4 * radius, 0.85); this.puffs(p, 0x1a1420, 3, 1.5 * radius, 1.8, 0.6, 0.45); });
     // scorch mark that stays for a moment
     const pool = (this.pools.scorch ||= []);
     const m = (pool.pop() as THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>) || new THREE.Mesh(this.quad, new THREE.MeshBasicMaterial({ map: TEX!.scorch, transparent: true, depthWrite: false, fog: false }));
@@ -269,6 +338,30 @@ export class Fx {
     this.light(p, color, 26 * radius, 0.38);
     this.shake = Math.min(0.32, this.shake + 0.12 * radius);
     if (word && radius >= 0.9) this.word(p, WORDS[Math.floor(Math.random() * WORDS.length)], color);
+  }
+
+  /**
+   * Recess Bell: a golden blast in its tile, a ring of sound that sweeps the whole board,
+   * and every distraction it reaches goes off in turn, nearest first.
+   */
+  bellBlast(pos: THREE.Vector3, targets: THREE.Vector3[], color = 0xffc23d) {
+    const p = pos.clone(); p.y = Math.max(p.y, 0.5);
+    this.flash(p, 0xffffff, 2.6, 0.25, 2);
+    this.flash(p, color, 4.2, 0.6, 1.6);
+    this.pillar(p, color, 0.9, 7, 0.8);
+    this.fireball(p, color, 1.8, 0.8);
+    this.debris(p, 0xb07a2a, 14, 4.5, 0.09);
+    this.streaks(p, color, 30, 6, 0.9, TEX!.spark, 6, 0.36);
+    this.light(p, color, 34, 0.8);
+    this.shake = 0.36;
+    this.word(p, 'RIIIING!', color);
+    // three sound rings racing across the floor, and three in the air
+    for (let i = 0; i < 3; i++) this.later(i * 0.14, () => { this.floorRing(p, color, 26, 1.0); if (!i) this.ring(p, color, 4, 0.5); });
+    // each distraction goes off as the ring reaches it
+    for (const t of targets) {
+      const d = Math.hypot(t.x - p.x, t.z - p.z);
+      this.later(0.06 + d / 14, () => { this.explosion(t, 0.95, color, false); this.pillar(t, color, 0.45, 3.5, 0.4); });
+    }
   }
 
   /** A comic onomatopoeia that pops out of a blast. */

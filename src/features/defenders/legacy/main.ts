@@ -123,7 +123,7 @@ function renderCards() {
       el.className = `plant-card tier-${def.tier}`;
       el.dataset.id = card.id;
       el.title = `${def.name} (${def.tier})`;
-      el.innerHTML = `<img class="card-icon" src="${spriteURL(def.sprite)}" alt=""><span class="card-cost">💡${def.cost}</span><span class="tier-dot"></span><div class="card-cd"></div>`;
+      el.innerHTML = `<img class="card-icon" src="${spriteURL(def.sprite)}" alt=""><span class="card-name">${def.name}</span><span class="card-cost">💡${def.cost}</span><span class="tier-dot"></span><div class="card-cd"></div>`;
       el.addEventListener('click', () => {
         const c = game.cards.find(x => x.id === card.id);
         if (!c || c.cd > 0 || game.sunAmount < def.cost) return;
@@ -1787,7 +1787,18 @@ export async function boot() {
     window.__game = game; // debug/tests
     bindUI();
     buildMenu();
+    // Out of the loading art: fade to black, swap to the menu while it's dark, let the 3D scene
+    // settle (shaders compiled, first frames drawn) and only then fade the menu in.
+    const fade = $('ld-fade');
+    fade.classList.add('on');
+    await new Promise(r => setTimeout(r, 750));
+    if (disposed) return;
     show('screen-menu');
+    try { game.renderer.compile(game.scene, game.camera); } catch { /* compiles on first draw */ }
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+    await new Promise(r => setTimeout(r, 450));
+    if (disposed) return;
+    fade.classList.remove('on');
     // si llega por un enlace/QR de Class Mode, abre el flujo de unirse
     const m = location.hash.match(/^#join=([A-Za-z0-9]{4,8})$/);
     if (m) openClassJoin(m[1]);

@@ -39,12 +39,12 @@ export function environment(renderer: THREE.WebGLRenderer, p: EnvPalette): THREE
 export interface Post { render(): void; setSize(w: number, h: number): void; bloom: UnrealBloomPass; dispose(): void; enabled: boolean }
 
 /** Bloom + tone mapping. With `enabled` off it draws straight to the screen (weak devices). */
-export function post(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, strength = 0.42): Post {
+export function post(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, strength = 0.34): Post {
   const size = renderer.getDrawingBufferSize(new THREE.Vector2());
   const target = new THREE.WebGLRenderTarget(size.x, size.y, { type: THREE.HalfFloatType, samples: 4 });
   const composer = new EffectComposer(renderer, target);
   composer.addPass(new RenderPass(scene, camera));
-  const bloom = new UnrealBloomPass(new THREE.Vector2(size.x / 2, size.y / 2), strength, 0.5, 1.0);
+  const bloom = new UnrealBloomPass(new THREE.Vector2(size.x / 2, size.y / 2), strength, 0.45, 1.0);
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
   // the final grade: a soft vignette, a hint of colour fringing at the edges and fine film grain
