@@ -1798,3 +1798,8 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   · Tarjetas de defensores: salen del lado izquierdo (tapaban la casa y el castillo) y pasan a un
     dock compacto abajo en el centro. Al elegir un defensor el dock se vuelve casi transparente
     para ver el tablero, y con la pestaña de arriba se pliega del todo (se recuerda).
+  · iPhone/iPad (sigue el negro en parte de la pantalla): ahora el juego dibuja en modo «Safe»,
+    directo a la pantalla como el primer English Defenders, sin la cadena de post-proceso (brillo
+    y gradación de color), y sin desenfoques CSS sobre el 3D, que WebKit puede dejar en negro. Si el
+    navegador entrega un lienzo más pequeño del pedido, se baja la resolución sola. En Pausa hay un
+    botón «Graphics: Safe / Full» y una línea con los datos reales del lienzo para diagnosticar.

@@ -478,3 +478,11 @@
     .card-dock .plant-card .card-icon { width:32px; height:32px; }
   }
 }
+
+/* iPhone/iPad: no backdrop blur over the 3D view (WebKit can leave part of the canvas black);
+   the panels get a little more opacity instead. */
+#ld-app.ld-ios, #ld-app.ld-ios * { -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+#ld-app.ld-ios .card-dock .card-tray { background:linear-gradient(rgba(14,6,30,.84), rgba(8,3,20,.92)); }
+#ld-app.ld-ios .card-dock.placing .card-tray { background:rgba(8,3,20,.3); }
+#ld-app .gfx-btn { margin-top:6px; opacity:.9; }
+#ld-app .gfx-info { margin-top:8px; font:700 10px/1.35 ui-monospace, Menlo, monospace; color:rgba(238,240,226,.55); text-align:center; word-break:break-word; user-select:text; }

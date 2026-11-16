@@ -1691,8 +1691,15 @@ function bindUI() {
     if (game.state !== 'playing') return;
     SFX.click();
     game.pause();
+    showGfx();
     $('pause-modal').classList.remove('hidden');
   });
+  // graphics switch + a line of GPU facts (to diagnose a device from a screenshot)
+  const showGfx = () => {
+    $('btn-gfx').textContent = game.safeGfx ? 'Graphics: Safe (tap for Full)' : 'Graphics: Full (tap for Safe)';
+    $('gfx-info').textContent = game.gfxInfo();
+  };
+  $('btn-gfx').addEventListener('click', () => { SFX.click(); game.setSafeGraphics(!game.safeGfx); showGfx(); });
   $('btn-resume').addEventListener('click', () => { SFX.click(); $('pause-modal').classList.add('hidden'); game.resume(); });
   $('btn-restart').addEventListener('click', () => { SFX.click(); $('pause-modal').classList.add('hidden'); startStage(current.stageIdx, current.mode); });
   $('btn-quit').addEventListener('click', () => { SFX.click(); quitToMenu(); });

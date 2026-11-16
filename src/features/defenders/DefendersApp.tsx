@@ -29,6 +29,10 @@ export default function DefendersApp() {
     loadOnce('link', FONTS);
     loadOnce('script', '/defenders/vendor/peerjs.min.js'); // Class Mode transport
     el.innerHTML = MARKUP;
+    // iPhone/iPad: no backdrop blur anywhere in the game. WebKit composites blurred panels over a
+    // WebGL canvas in tiles and can leave part of the 3D view black.
+    const ua = navigator.userAgent;
+    if (/iP(hone|ad|od)/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) el.classList.add('ld-ios');
     const stopIcons = neonIcons(el); // every emoji in the UI becomes a neon icon
     const prevTitle = document.title;
     document.title = 'Language Defenders — Learn · Defend · Win';

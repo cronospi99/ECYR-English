@@ -309,6 +309,8 @@ export const MARKUP = `<canvas id="game-canvas"></canvas>
       <button id="btn-resume" class="wood-btn">▶ Resume</button>
       <button id="btn-restart" class="wood-btn">🔄 Restart stage</button>
       <button id="btn-quit" class="wood-btn">🏠 Main menu</button>
+      <button id="btn-gfx" class="wood-btn small gfx-btn"></button>
+      <div id="gfx-info" class="gfx-info"></div>
     </div>
   </div>
 
