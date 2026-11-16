@@ -1787,7 +1787,18 @@ export async function boot() {
     window.__game = game; // debug/tests
     bindUI();
     buildMenu();
+    // Out of the loading art: fade to black, swap to the menu while it's dark, let the 3D scene
+    // settle (shaders compiled, first frames drawn) and only then fade the menu in.
+    const fade = $('ld-fade');
+    fade.classList.add('on');
+    await new Promise(r => setTimeout(r, 750));
+    if (disposed) return;
     show('screen-menu');
+    try { game.renderer.compile(game.scene, game.camera); } catch { /* compiles on first draw */ }
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+    await new Promise(r => setTimeout(r, 450));
+    if (disposed) return;
+    fade.classList.remove('on');
     // si llega por un enlace/QR de Class Mode, abre el flujo de unirse
     const m = location.hash.match(/^#join=([A-Za-z0-9]{4,8})$/);
     if (m) openClassJoin(m[1]);
