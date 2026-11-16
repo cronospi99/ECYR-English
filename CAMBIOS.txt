@@ -1803,3 +1803,17 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
     y gradación de color), y sin desenfoques CSS sobre el 3D, que WebKit puede dejar en negro. Si el
     navegador entrega un lienzo más pequeño del pedido, se baja la resolución sola. En Pausa hay un
     botón «Graphics: Safe / Full» y una línea con los datos reales del lienzo para diagnosticar.
+  · Arreglo: el parpadeo en el adoquín de abajo a la izquierda era z-fighting (dos marcos de
+    piedra con la superficie a la misma altura); el marco oeste queda unos milímetros más alto.
+  · Nuevas frases de los zombis (en inglés), clásicas de clase: «Teacher, can I go to the
+    bathroom?», «Teacher, a family thing came up. I’m leaving!», «Teacher, can I take this call?»,
+    «Teacher, someone brought me something!», «Teacher, can I go now?», «Where can I charge my
+    phone?», «Can I eat in class?», «Teacher, want to buy some desserts?», «Teacher, want to buy
+    bracelets and necklaces?», «Teacher, how many absences do I have?», «Teacher, I don’t want to
+    do anything.», «I’m so sleepy…»; los padres: «My son/daughter always comes to class!».
+  · Fondos con profundidad: el cielo pintado se alejó (de 5 a 12,5 unidades detrás de la cerca) y
+    en medio hay una ciudad apocalíptica en 3D en tres capas, cada una más brumosa: edificios
+    rotos con vigas dobladas y ventanas que parpadean, autos destrozados, un bus escolar volcado,
+    barricadas y postes caídos, incendios en el suelo y en los techos con columnas de humo,
+    grandes humaredas en el horizonte, reflectores y explosiones lejanas; ceniza y brasas en toda
+    la profundidad. Se tiñe con los colores de cada mapa.

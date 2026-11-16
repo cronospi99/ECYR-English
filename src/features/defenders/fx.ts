@@ -592,5 +592,22 @@ export const LINES: Record<string, { walk: string[]; hit: string[]; bye: string[
   prof: { walk: ['Is this the bus stop?', 'I was just passing by.', 'Nice school…', 'Have you got a coin?', 'I’m so tired.'], hit: ['Easy, easy!', 'Hey now…', 'What was that?'], bye: ['I’ll find another bench.', 'Good night, everyone.'], eat: ['Just resting here.'] },
   boss: { walk: ['Turn it UP!', 'This is MY block!', 'Nobody studies today!', 'Louder! LOUDER!', 'Who’s the boss now?'], hit: ['Is that all?', 'Ha! That tickles!', 'You’ll pay for that!'], bye: ['The party is over…', 'I’ll be back!'], eat: ['Out of my way!'] },
 };
+/** Classic classroom excuses: any student-type distraction can say one of these on its way in. */
+export const EXCUSES = [
+  'Teacher, can I go to the bathroom?',
+  'Teacher, a family thing came up. I’m leaving!',
+  'Teacher, can I take this call?',
+  'Teacher, someone brought me something!',
+  'Teacher, can I go now?',
+  'Where can I charge my phone?',
+  'Can I eat in class?',
+  'Teacher, want to buy some desserts?',
+  'Teacher, want to buy bracelets and necklaces?',
+  'Teacher, how many absences do I have?',
+  'Teacher, I don’t want to do anything.',
+  'I’m so sleepy…',
+];
+/** What the parents insist on. */
+export const PARENT_LINES = ['My son always comes to class!', 'My daughter always comes to class!', 'Teacher, how many absences does he have?'];
 export const COLD = ['So… cold…', 'I can’t move!', 'Brrr!', 'My feet are frozen!'];
 export const pickLine = (list: string[]) => list[Math.floor(Math.random() * list.length)]!;

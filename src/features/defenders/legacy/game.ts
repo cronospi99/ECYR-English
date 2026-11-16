@@ -7,14 +7,15 @@ import { makeBillboard, makeGlowSprite, makeLabelSprite, setLabel, spriteTex } f
 import { modelsReady, makeBuilding } from './models3d';
 import { SFX } from './audio';
 import { isPainted, paintBackdrop } from '../backdrops';
-import { Scenery } from '../scenery';
+import { Scenery, FAR_Z } from '../scenery';
 import { post } from '../look';
-import { Fx, SHOT_FX, LINES, COLD, pickLine } from '../fx';
+import { Fx, SHOT_FX, LINES, COLD, EXCUSES, PARENT_LINES, pickLine } from '../fx';
 
 export const ROWS = 5, COLS = 9;
 // Borde norte del suelo = línea de la cerca. El fondo pintado arranca aquí.
 const GROUND_EDGE_Z = -(5 / 2) - 1.0;
-const BACKDROP_Z = -5.2; // plano del fondo pintado, justo detrás de la cerca
+// the painted sky stands far behind the fence: the ruined city in between (scenery.ts) gives depth
+const BACKDROP_Z = FAR_Z;
 const colX = (c) => c - (COLS - 1) / 2;
 const rowZ = (r) => r - (ROWS - 1) / 2;
 
@@ -462,7 +463,9 @@ export class Game {
     stonePiece(2.4, ROWS + 2.2, COLS / 2 + 1.1, 0);            // camino de los zombies
     stonePiece(COLS + 1.6, 0.8, 0, -(ROWS / 2) - 0.4, 0.005, 0.055); // marco norte
     stonePiece(COLS + 1.6, 0.8, 0, ROWS / 2 + 0.4, 0.005, 0.055);    // marco sur
-    stonePiece(0.8, ROWS + 2.2, -(COLS / 2) - 0.4, 0, 0.005, 0.055); // marco oeste
+    // the west strip overlaps the north and south strips at the corners: a few mm higher, or the
+    // two tops sit at exactly the same height and the corner flickers (z-fighting)
+    stonePiece(0.8, ROWS + 2.2, -(COLS / 2) - 0.4, 0, 0.009, 0.055); // marco oeste
 
     // ===== Escenografía =====
     // Telón del escenario: el fondo pintado va sobre un plano vertical situado
@@ -798,7 +801,8 @@ export class Game {
     // Borde inferior: la visual que roza el borde del suelo (la cerca), llevada
     // hasta el plano del telón.
     const tB = (BACKDROP_Z - cz) / (GROUND_EDGE_Z - cz);
-    const yBottom = cy + tB * (0 - cy);
+    // the wasteland floor runs all the way back to the sky, so the art starts at the horizon
+    const yBottom = -0.6;
 
     // Esquinas del frustum proyectadas sobre un plano z dado.
     const cornerAt = (ndcX, ndcY, z) => {
@@ -2199,8 +2203,15 @@ export class Game {
 
   // A speech bubble with one of the character's lines.
   _say(z, kind, dur) {
-    const set = LINES[z.type] || LINES.basic, list = set[kind] || set.walk;
-    return this.fx.say(z.mesh, z.def.h, pickLine(list), dur || (kind === 'hit' ? 1.6 : 2.8));
+    const set = LINES[z.type] || LINES.basic;
+    let list = set[kind] || set.walk;
+    // on the walk in, about half the time it is one of the classroom excuses (parents: their own)
+    if (kind === 'walk' && Math.random() < 0.5) {
+      if (z.type === 'book' || z.type === 'bucket') list = PARENT_LINES;
+      else if (!z.boss && !z.def.boss && z.type !== 'prof' && z.type !== 'balloon') list = EXCUSES;
+    }
+    const line = pickLine(list);
+    return this.fx.say(z.mesh, z.def.h, line, dur || (kind === 'hit' ? 1.6 : line.length > 28 ? 3.6 : 2.8));
   }
 
   _updateMowers(dt) {
