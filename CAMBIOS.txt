@@ -1771,3 +1771,13 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   · Armas más grandes en los personajes (tiza, marcadores, resaltadores, libro, pelota, frasco,
     avión de papel, baquetas, botiquín, puntero del robot…), proyectiles un 30 % más grandes y
     +20 % de daño para todos los defensores que atacan.
+  · Ventana de preguntas nueva, estilo neón cyberpunk post-apocalíptico: panel oscuro con franja
+    de peligro, bordes y esquinas de neón; la pregunta y las respuestas en letras grandes y claras
+    sobre fondo casi negro (A/B/C/D en cada opción, verde al acertar, rojo al fallar).
+  · Iconos neón propios en lugar de TODOS los emojis del juego (botones, menús, avisos, oleadas,
+    explicaciones…), del mismo estilo synthwave.
+  · Título de la portada nuevo: «LANGUAGE» en tubo de neón cian y «DEFENDERS» cromado con degradé
+    de atardecer synthwave, contorno rosa neón, efecto glitch, cortes de horizonte y grietas.
+  · Arreglo: en la app instalada (PWA) del iPhone, en pantalla completa o al girar el teléfono, el
+    3D se quedaba en un rectángulo pequeño y el resto en negro. Ahora el lienzo se mide solo y se
+    reajusta aunque iOS no avise del cambio de tamaño; los toques en el tablero también caen bien.
