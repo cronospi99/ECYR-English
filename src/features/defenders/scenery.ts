@@ -58,6 +58,9 @@ export const MOODS: Record<string, Mood> = {
 
 /* ------------------------------------------------------------------ procedural PBR maps */
 
+/** Where the painted sky stands: far behind the fence, so the ruins in between give the set depth. */
+export const FAR_Z = -12.5;
+
 function rng(seed: number) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
 const hex = (c: string): [number, number, number] => { const n = parseInt(c.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
 const sstep = (a: number, b: number, x: number) => { const t = Math.min(Math.max((x - a) / (b - a), 0), 1); return t * t * (3 - 2 * t); };
@@ -341,6 +344,7 @@ export class Scenery {
   private beams: THREE.Mesh[] = [];
   private flashes: THREE.Sprite[] = [];
   private ash: THREE.Points | null = null;
+  private windows: THREE.MeshBasicMaterial[] = [];
   private fireLight = new THREE.PointLight(0xffa24a, 0, 6, 1.6);
   private mist: THREE.Sprite[] = [];
   private bats: THREE.Sprite[] = [];
@@ -433,7 +437,7 @@ export class Scenery {
       const mm = s.material as THREE.MeshStandardMaterial;
       mm.map?.dispose(); mm.normalMap?.dispose(); mm.roughnessMap?.dispose(); mm.dispose();
     }
-    this.mist = []; this.bats = []; this.embers = null; this.neon = []; this.house = []; this.spill = null;
+    this.mist = []; this.bats = []; this.embers = null; this.windows = []; this.neon = []; this.house = []; this.spill = null;
   }
 
   private build(m: Mood): void {
@@ -539,25 +543,27 @@ export class Scenery {
     const beamGeo = new THREE.BufferGeometry();
     beamGeo.setAttribute('position', new THREE.Float32BufferAttribute([0, 0, 0, -0.9, 9, 0, 0.9, 9, 0], 3));
     beamGeo.setAttribute('uv', new THREE.Float32BufferAttribute([0.5, 0.5, 0.5, 1, 0.5, 1], 2));
-    for (const [bx, ph] of [[-6.5, 0], [7.2, 2.1]] as const) {
+    for (const [bx, ph] of [[-6.5, 0], [7.2, 2.1], [0.6, 4.2]] as const) {
       const b = new THREE.Mesh(beamGeo, new THREE.MeshBasicMaterial({ color: new THREE.Color(m.window), transparent: true, opacity: 0.16, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, fog: false, toneMapped: false }));
-      b.position.set(bx, 1.2, -5.05); b.userData.ph = ph; b.renderOrder = -5;
+      b.position.set(bx * 1.5, 1.6, FAR_Z + 1.4); b.scale.set(1.4, 1.2, 1); b.userData.ph = ph; b.renderOrder = -5;
       g.add(b); this.beams.push(b);
     }
     // something exploding far away, now and then
     for (let i = 0; i < 2; i++) {
       const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: fireCol.clone().multiplyScalar(2), transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, fog: false, toneMapped: false }));
-      f.position.set(0, 2.6, -5.1); f.scale.set(7, 4.5, 1); f.userData = { next: 3 + r() * 6, t: 9 }; f.renderOrder = -6;
+      f.position.set(0, 1.8, FAR_Z + 1.2); f.scale.set(9, 5, 1); f.userData = { next: 3 + r() * 6, t: 9 }; f.renderOrder = -6;
       g.add(f); this.flashes.push(f);
     }
     // ash coming down over everything
     {
-      const n = 150, pos = new Float32Array(n * 3);
-      for (let i = 0; i < n; i++) { pos[i * 3] = -13 + r() * 26; pos[i * 3 + 1] = r() * 7; pos[i * 3 + 2] = -5 + r() * 9; }
+      const n = 220, pos = new Float32Array(n * 3);
+      for (let i = 0; i < n; i++) { const z = FAR_Z + 2 + r() * (6 - FAR_Z); pos[i * 3] = (-13 + r() * 26) * (1 + Math.max(0, -z - 5) * 0.06); pos[i * 3 + 1] = r() * 7; pos[i * 3 + 2] = z; }
       const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
       this.ash = new THREE.Points(geo, new THREE.PointsMaterial({ color: 0xd8d0d8, size: 0.045, transparent: true, opacity: 0.55, depthWrite: false, fog: false }));
       g.add(this.ash);
     }
+
+    this.wasteland(m, r, north);
 
     /* mist, embers, bats */
     for (let i = 0; i < 14; i++) {
@@ -568,8 +574,8 @@ export class Scenery {
       s.userData.v = (0.12 + r() * 0.22) * (r() < 0.5 ? -1 : 1);
       g.add(s); this.mist.push(s);
     }
-    const N = 110, pos = new Float32Array(N * 3);
-    for (let i = 0; i < N; i++) { pos[i * 3] = -12 + r() * 24; pos[i * 3 + 1] = r() * 5.5; pos[i * 3 + 2] = -5 + r() * 9; }
+    const N = 170, pos = new Float32Array(N * 3);
+    for (let i = 0; i < N; i++) { const z = FAR_Z + 2 + r() * (6 - FAR_Z); pos[i * 3] = (-12 + r() * 24) * (1 + Math.max(0, -z - 5) * 0.06); pos[i * 3 + 1] = r() * 5.5; pos[i * 3 + 2] = z; }
     const eg = new THREE.BufferGeometry(); eg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     this.embers = new THREE.Points(eg, new THREE.PointsMaterial({ map: soft(), color: new THREE.Color(m.embers).multiplyScalar(1.8), size: 0.085, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false, fog: false }));
     g.add(this.embers);
@@ -580,6 +586,143 @@ export class Scenery {
         b.userData = { x: -16 + r() * 32, y: 4.2 + r() * 3.4, v: (1.2 + r() * 1.6) * (r() < 0.5 ? -1 : 1), s: 0.34 + r() * 0.3, p: r() * 6 };
         b.position.z = -4.9;
         g.add(b); this.bats.push(b);
+      }
+    }
+  }
+
+  /**
+   * Depth behind the fence: a wasteland floor that runs back to the painted sky, and three rows
+   * of a city falling apart (broken towers, bent girders, lit windows, wrecked cars, a school bus
+   * on its side, barricades), each row hazier than the one before so the eye reads distance.
+   * Fires burn on the rubble and the roofs and their smoke climbs high. Each row is one merged
+   * mesh (plus one for its windows): cheap enough for phones.
+   */
+  private wasteland(m: Mood, r: () => number, north: number): void {
+    const g = this.group;
+    const haze = new THREE.Color(m.fog[0]).lerp(new THREE.Color(m.env.horizon), 0.45);
+    const dark = new THREE.Color(m.ground[0]);
+    const fireCol = new THREE.Color(m.embers);
+
+    // the floor between the graves and the horizon
+    const depth = north - 1.9 - FAR_Z + 2;
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(90, depth), new THREE.MeshLambertMaterial({ color: dark.clone().multiplyScalar(0.8), emissive: haze.clone().multiplyScalar(0.12) }));
+    floor.rotation.x = -Math.PI / 2; floor.position.set(0, -0.03, north - 1.9 - depth / 2);
+    g.add(floor);
+
+    const rows = [
+      { z: north - 2.6, hz: 0.12, h: [0.35, 0.9], w: [0.8, 1.8], gap: [0.8, 2.4], span: 16, wreck: true },
+      { z: north - 4.9, hz: 0.32, h: [0.6, 1.5], w: [0.9, 2.0], gap: [0.4, 1.6], span: 19, wreck: false },
+      { z: FAR_Z + 1.7, hz: 0.55, h: [0.9, 2.0], w: [1.0, 2.4], gap: [0.3, 1.5], span: 23, wreck: false },
+    ];
+    const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), E = new THREE.Euler(), V = new THREE.Vector3(), S = new THREE.Vector3(1, 1, 1);
+    const box = (parts: THREE.BufferGeometry[], w: number, h: number, d: number, x: number, y: number, z: number, rx = 0, ry = 0, rz = 0, base?: THREE.Matrix4) => {
+      const b = new THREE.BoxGeometry(w, h, d);
+      M.compose(V.set(x, y, z), Q.setFromEuler(E.set(rx, ry, rz)), S);
+      if (base) M.premultiply(base);
+      b.applyMatrix4(M); parts.push(b);
+    };
+    rows.forEach((row, ri) => {
+      const solid: THREE.BufferGeometry[] = [], lit: THREE.BufferGeometry[] = [], lit2: THREE.BufferGeometry[] = [];
+      let x = -row.span + r() * 1.5;
+      while (x < row.span) {
+        const w = row.w[0] + r() * (row.w[1] - row.w[0]);
+        const h = row.h[0] + r() * (row.h[1] - row.h[0]);
+        const d = 1 + r() * 1.4, cx = x + w / 2, cz = row.z - r() * 0.8;
+        // keep the middle of the near row low so the board's back lanes stay readable
+        const hh = ri === 0 && Math.abs(cx) < 5 ? h * 0.55 : h;
+        const lean = r() < 0.25 ? (r() - 0.5) * 0.22 : 0;
+        const base = new THREE.Matrix4().compose(V.set(cx, 0, cz), Q.setFromEuler(E.set(0, (r() - 0.5) * 0.3, lean)), S);
+        box(solid, w, hh, d, 0, hh / 2, 0, 0, 0, 0, base);
+        // a broken crown: chunks of the upper floors still standing at different heights
+        const chunks = 1 + Math.floor(r() * 3);
+        for (let c = 0; c < chunks; c++) {
+          const cw = w * (0.2 + r() * 0.4), ch = hh * (0.08 + r() * 0.3);
+          box(solid, cw, ch, d * (0.5 + r() * 0.5), (r() - 0.5) * (w - cw), hh + ch / 2, 0, 0, 0, (r() - 0.5) * 0.3, base);
+        }
+        // bent steel sticking out of the top
+        if (r() < 0.6) for (let k = 0; k < 2; k++) box(solid, 0.07, 0.6 + r() * 1.2, 0.07, (r() - 0.5) * w * 0.8, hh + 0.4, 0, (r() - 0.5) * 0.6, 0, (r() - 0.5) * 1.1, base);
+        // windows: a grid on the front, a few still lit, most dark or gone
+        const cols = Math.max(1, Math.floor(w / 0.32)), floors = Math.max(1, Math.floor((hh - 0.2) / 0.36));
+        for (let fy = 0; fy < floors; fy++) for (let fx = 0; fx < cols; fx++) {
+          const roll = r();
+          if (roll > 0.12) continue;
+          const pw = new THREE.PlaneGeometry(0.09, 0.13);
+          M.compose(V.set(-w / 2 + (fx + 0.5) * (w / cols), 0.3 + fy * 0.36, d / 2 + 0.01), Q.identity(), S).premultiply(base);
+          pw.applyMatrix4(M);
+          (roll < 0.06 ? lit2 : lit).push(pw);
+        }
+        // a fire on some roofs, its smoke climbing high
+        if (ri > 0 && r() < (ri === 1 ? 0.26 : 0.18)) {
+          const top = new THREE.Vector3(0, hh + 0.1, 0).applyMatrix4(base), k = 0.8 + ri * 0.25;
+          for (let i = 0; i < 3; i++) {
+            const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: i === 2 ? 0xffffff : fireCol.clone().multiplyScalar(2.2 - i * 0.5), transparent: true, opacity: 1 - row.hz * 0.6, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false, fog: false }));
+            f.position.set(top.x, top.y, top.z + 0.3); f.userData = { k, ph: r() * 9, i, y: top.y - 0.2 }; g.add(f); this.fires.push(f);
+          }
+          for (let i = 0; i < 4; i++) {
+            const sm = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: new THREE.Color(0x0c0810).lerp(haze, 0.25 + row.hz * 0.5), transparent: true, opacity: 0, depthWrite: false, fog: false }));
+            sm.userData = { x: top.x, z: top.z - 0.1, k, u: i / 4, sway: r() * 6, y0: top.y - 0.6, rise: 4 + ri * 1.5, op: 0.55 };
+            g.add(sm); this.smoke.push(sm);
+          }
+        }
+        x += w + row.gap[0] + r() * (row.gap[1] - row.gap[0]);
+      }
+      // the near row: wrecked cars, a school bus on its side, barricades and leaning lamp posts
+      if (row.wreck) {
+        for (let i = 0; i < 7; i++) {
+          const cx = -13 + i * 4.2 + (r() - 0.5) * 1.6, cz = row.z + 1.0 + r() * 0.6;
+          const base = new THREE.Matrix4().compose(V.set(cx, 0, cz), Q.setFromEuler(E.set(r() < 0.3 ? 0.4 : 0, r() * 6, r() < 0.3 ? Math.PI / 2 * 0.9 : (r() - 0.5) * 0.15)), S);
+          box(solid, 1.7, 0.45, 0.8, 0, 0.3, 0, 0, 0, 0, base);
+          box(solid, 0.9, 0.35, 0.72, -0.1, 0.68, 0, 0, 0, 0, base);
+        }
+        for (let i = 0; i < 9; i++) { // lamp posts and barricades
+          const px = -15 + r() * 30, pz = row.z + 0.6 + r() * 1.6;
+          if (r() < 0.5) box(solid, 0.07, 1.8, 0.07, px, 0.85, pz, 0, 0, (r() - 0.5) * 0.7);
+          else box(solid, 1.4, 0.35, 0.12, px, 0.4, pz, 0, r() * 2, (r() - 0.5) * 0.3);
+        }
+        const bus = new THREE.Group();
+        // the school bus, on its side: yellow body, black stripe, a row of dark windows
+        const busMat = new THREE.MeshLambertMaterial({ color: new THREE.Color(0xd8a020).lerp(haze, 0.3).multiplyScalar(0.55) });
+        const black = new THREE.MeshLambertMaterial({ color: 0x0c0608 });
+        const body = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.8, 0.8), busMat); bus.add(body);
+        const stripe = new THREE.Mesh(new THREE.BoxGeometry(2.62, 0.06, 0.82), black); stripe.position.y = -0.08; bus.add(stripe);
+        for (let i = 0; i < 6; i++) { const wdw = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.2, 0.84), black); wdw.position.set(-1.0 + i * 0.36, 0.18, 0); bus.add(wdw); }
+        bus.position.set(6.4, 0.4, row.z + 1.2); bus.rotation.set(Math.PI / 2 * 0.94, 0.35, 0.05);
+        g.add(bus);
+        // a burning wreck in front
+        for (const [fx, fz, k] of [[-11.5, row.z + 1.3, 1.0], [-4.2, row.z + 0.9, 0.8], [6.4, row.z + 1.8, 1.1], [12.4, row.z + 1.1, 0.9]] as const) {
+          for (let i = 0; i < 3; i++) {
+            const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: i === 2 ? 0xffffff : fireCol.clone().multiplyScalar(2.2 - i * 0.5), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false, fog: false }));
+            f.position.set(fx, 0.5, fz + 0.02 * i); f.userData = { k, ph: r() * 9, i, y: 0.45 }; g.add(f); this.fires.push(f);
+          }
+          for (let i = 0; i < 5; i++) {
+            const sm = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: new THREE.Color(0x0c0810).lerp(haze, 0.2), transparent: true, opacity: 0, depthWrite: false, fog: false }));
+            sm.userData = { x: fx, z: fz - 0.1, k, u: i / 5, sway: r() * 6, rise: 4.5, op: 0.55 };
+            g.add(sm); this.smoke.push(sm);
+          }
+        }
+      }
+      const col = dark.clone().multiplyScalar(0.55).lerp(haze, row.hz);
+      const mesh = new THREE.Mesh(mergeGeometries(solid), new THREE.MeshLambertMaterial({ color: col, emissive: haze.clone().multiplyScalar(row.hz * 0.55) }));
+      g.add(mesh);
+      for (const [set, i] of [[lit, 0], [lit2, 1]] as const) {
+        if (!set.length) continue;
+        const wm = new THREE.MeshBasicMaterial({ color: new THREE.Color(m.window).lerp(haze, row.hz * 0.6).multiplyScalar(1.4), transparent: true, toneMapped: false, fog: false });
+        g.add(new THREE.Mesh(mergeGeometries(set), wm)); this.windows.push(wm);
+        void i;
+      }
+      // a band of haze at the foot of each row melts it into the next
+      for (let i = 0; i < 4; i++) {
+        const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: haze, transparent: true, opacity: 0.22 + row.hz * 0.25, depthWrite: false, fog: false }));
+        s.position.set(-row.span + (i + 0.5) * (row.span / 2), 0.35 + ri * 0.3, row.z + 1.0); s.scale.set(row.span * 0.75, 1.2 + ri * 0.9, 1);
+        g.add(s);
+      }
+    });
+    // three huge plumes on the skyline
+    for (const px of [-14, 3, 17]) {
+      for (let i = 0; i < 7; i++) {
+        const sm = new THREE.Sprite(new THREE.SpriteMaterial({ map: soft(), color: new THREE.Color(0x100a14).lerp(haze, 0.45), transparent: true, opacity: 0, depthWrite: false, fog: false }));
+        sm.userData = { x: px + (r() - 0.5) * 3, z: FAR_Z + 1.0, k: 2.2, u: i / 7, sway: r() * 6, y0: 1.2, rise: 6, op: 0.45 };
+        g.add(sm); this.smoke.push(sm);
       }
     }
   }
@@ -681,15 +824,20 @@ export class Scenery {
     for (const sm of this.smoke) {
       const d = sm.userData; d.u += dt * 0.11; if (d.u > 1) d.u -= 1;
       const u = d.u;
-      sm.position.set(d.x + Math.sin(u * 5 + d.sway) * 0.35 * u + u * 1.4, 0.8 * d.k + u * 5.2, d.z);
+      const rise = d.rise ?? 5.2;
+      sm.position.set(d.x + Math.sin(u * 5 + d.sway) * 0.35 * u * d.k + u * 1.4 * d.k, (d.y0 ?? 0) + 0.8 * d.k + u * rise, d.z);
       const sc = (0.5 + u * 2.6) * d.k; sm.scale.set(sc, sc, 1);
-      (sm.material as THREE.SpriteMaterial).opacity = 0.55 * Math.sin(Math.min(1, u * 5) * Math.PI / 2) * (1 - u);
+      (sm.material as THREE.SpriteMaterial).opacity = (d.op ?? 0.55) * Math.sin(Math.min(1, u * 5) * Math.PI / 2) * (1 - u);
     }
     this.fireLight.intensity = 7 + Math.sin(t * 13) * 1.6 + Math.sin(t * 7.1) * 1.2;
+    for (const [i, w] of this.windows.entries()) {
+      const flick = Math.sin(t * (3.1 + i) + i * 2) > 0.93 ? 0.35 : 1;
+      w.opacity = (i % 2 ? 0.75 : 0.9) * flick * (0.85 + 0.15 * Math.sin(t * (9 + i * 4)));
+    }
     for (const b of this.beams) { b.rotation.z = Math.sin(t * 0.23 + b.userData.ph) * 0.75; (b.material as THREE.MeshBasicMaterial).opacity = 0.13 + 0.04 * Math.sin(t * 1.7 + b.userData.ph); }
     for (const f of this.flashes) {
       const d = f.userData; d.t += dt;
-      if (d.t > d.next) { d.t = 0; d.next = 4 + Math.random() * 9; f.position.x = -10 + Math.random() * 20; f.position.y = 1.8 + Math.random() * 1.6; }
+      if (d.t > d.next) { d.t = 0; d.next = 4 + Math.random() * 9; f.position.x = -15 + Math.random() * 30; f.position.y = 1.0 + Math.random() * 1.4; }
       (f.material as THREE.SpriteMaterial).opacity = d.t < 0.9 ? 0.75 * Math.exp(-d.t * 5) * (0.6 + 0.4 * Math.sin(d.t * 40)) : 0;
     }
     if (this.ash) {
