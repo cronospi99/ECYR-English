@@ -413,3 +413,68 @@
 @keyframes ld-art-drift { from { transform:scale(1); } to { transform:scale(1.035); } }
 @keyframes ld-dot { 0%, 100% { opacity:.15; } 40% { opacity:1; } }
 @keyframes ld-slime { 0% { left:-40%; } 100% { left:102%; } }
+
+/* ============================================================
+   Defenders dock: the cards leave the left side (where they hid the
+   house and the castle) and sit in a compact dock at the bottom centre.
+   While a defender is picked the dock steps back so the board shows
+   through, and the chevron folds it away completely.
+   ============================================================ */
+#ld-app {
+  .card-dock {
+    position:absolute; left:50%; bottom:calc(6px + var(--safe-b, 0px)); transform:translateX(-50%);
+    max-width:calc(100% - 12px - var(--safe-l, 0px) - var(--safe-r, 0px));
+    display:flex; flex-direction:column; align-items:center; z-index:6; pointer-events:none;
+  }
+  .card-dock .card-tray {
+    position:static; inset:auto; transform:none; max-width:100%; max-height:none;
+    display:flex; flex-direction:row; flex-wrap:nowrap; align-items:flex-end; align-content:initial; justify-content:flex-start;
+    gap:6px; padding:8px 8px 7px; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; pointer-events:auto;
+    border-radius:18px; border:1.5px solid rgba(57,230,255,.32);
+    background:linear-gradient(rgba(14,6,30,.66), rgba(8,3,20,.84)); backdrop-filter:blur(6px);
+    box-shadow:0 8px 22px rgba(0,0,0,.45);
+    transition:background .25s, border-color .25s, box-shadow .25s;
+  }
+  .card-dock .card-tray::-webkit-scrollbar { display:none; }
+  .card-dock .plant-card { width:70px; flex:0 0 auto; padding:5px 4px 6px; transition:transform .12s, opacity .25s, filter .12s; }
+  .card-dock .plant-card .card-icon { width:46px; height:46px; }
+  .card-dock .plant-card .card-name { font-size:9.5px; margin:1px 0 3px; }
+  .card-dock .plant-card .card-cost { font-size:12px; padding:1px 7px; }
+  .card-dock .plant-card.selected { transform:translateY(-2px) scale(1.04); }
+
+  /* placing: the dock goes almost see-through, only the chosen card stays bright */
+  .card-dock.placing .card-tray { background:rgba(8,3,20,.25); border-color:transparent; box-shadow:none; backdrop-filter:none; }
+  .card-dock.placing .plant-card:not(.selected) { opacity:.42; }
+
+  /* fold handle on top of the dock */
+  .tray-toggle {
+    pointer-events:auto; display:inline-flex; align-items:center; gap:6px; margin-bottom:-1px; cursor:pointer;
+    padding:2px 12px 3px; min-height:22px; border-radius:10px 10px 0 0; border:1.5px solid rgba(57,230,255,.32); border-bottom:0;
+    background:rgba(8,3,20,.8); color:#bdf6ff; font:900 11px/1 'Nunito',sans-serif; letter-spacing:.5px; text-transform:uppercase;
+  }
+  .tray-toggle .tt-label { display:none; }
+  .tray-toggle .tt-ch { width:8px; height:8px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:translateY(-2px) rotate(45deg); }
+  .card-dock.folded .card-tray { display:none; }
+  .card-dock.folded .tray-toggle { border-radius:12px; border-bottom:1.5px solid rgba(57,230,255,.32); padding:7px 14px; box-shadow:0 0 12px rgba(57,230,255,.3); }
+  .card-dock.folded .tray-toggle .tt-label { display:inline; }
+  .card-dock.folded .tray-toggle .tt-ch { transform:translateY(2px) rotate(-135deg); }
+
+  /* phones (and any short landscape screen): smaller cards, no names */
+  @media (max-width:900px), (max-height:540px) {
+    .card-dock .card-tray { gap:5px; padding:6px 6px 5px; border-radius:14px; }
+    .card-dock .plant-card { width:54px; padding:3px 2px 4px; border-radius:11px; }
+    .card-dock .plant-card .card-icon { width:36px; height:36px; }
+    .card-dock .plant-card .card-name { display:none; }
+    .card-dock .plant-card .card-cost { font-size:10.5px; padding:0 5px; margin-top:1px; }
+    /* the handle sits beside the dock, not on top, so it does not cover the front row */
+    .card-dock { flex-direction:row; align-items:stretch; }
+    .tray-toggle { min-width:34px; padding:0 9px; margin:0 -1px 0 0; justify-content:center;   /* still an easy target for a thumb */
+      border-radius:12px 0 0 12px; border:1.5px solid rgba(57,230,255,.32); border-right:0; }
+    .tray-toggle .tt-ch { transform:translateY(-2px) rotate(45deg); }
+    .card-dock.folded .tray-toggle { border-radius:12px; border-right:1.5px solid rgba(57,230,255,.32); min-height:40px; padding:0 14px; }
+  }
+  @media (max-height:430px) {
+    .card-dock .plant-card { width:50px; }
+    .card-dock .plant-card .card-icon { width:32px; height:32px; }
+  }
+}

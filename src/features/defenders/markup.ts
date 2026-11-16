@@ -150,7 +150,12 @@ export const MARKUP = `<canvas id="game-canvas"></canvas>
         <button id="btn-pause" class="hud-btn" title="Pause">⏸</button>
       </div>
     </div>
-    <div id="card-tray" class="card-tray"></div>
+    <!-- Defender cards: a compact dock at the bottom centre, away from the house on the left;
+         the chevron folds it away to see the whole board -->
+    <div id="card-dock" class="card-dock">
+      <button id="tray-toggle" class="tray-toggle" title="Hide or show the defenders" aria-label="Hide or show the defenders"><span class="tt-ch"></span><span class="tt-label">Defenders</span></button>
+      <div id="card-tray" class="card-tray"></div>
+    </div>
     <div id="ammo-panel" class="ammo-panel panel-wood hidden">
       <img data-sprite="icon_book" alt="📖"><span id="ammo-count">0</span>
       <button id="btn-ammo" class="wood-btn small">❓ Answer now!</button>
