@@ -1784,3 +1784,8 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   · Arreglo: en la app instalada (PWA) del iPhone, en pantalla completa o al girar el teléfono, el
     3D se quedaba en un rectángulo pequeño y el resto en negro. Ahora el lienzo se mide solo y se
     reajusta aunque iOS no avise del cambio de tamaño; los toques en el tablero también caen bien.
+  · Portada nueva en la biblioteca de Juegos (el arte de los zombis con el título) en lugar del
+    pantallazo; el mismo arte es ahora la pantalla de carga, con un letrero «Loading Language
+    Defenders…» y una barra de baba verde (en teléfono vertical se ve completo, con el fondo
+    difuminado). Al terminar de cargar, la pantalla se oscurece a negro y del negro aparece el menú
+    principal (ya no hay destello blanco).

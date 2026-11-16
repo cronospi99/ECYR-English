@@ -386,7 +386,7 @@
    says it's loading, then a fade to black into the main menu.
    ============================================================ */
 #ld-app {
-  #screen-loading { background:#05030a url('/defenders/loading-blur.webp') center / cover no-repeat; align-items:flex-end; justify-content:center; overflow:hidden; }
+  #screen-loading { background:linear-gradient(rgba(5,3,10,.6), rgba(5,3,10,.6)), #05030a url('/defenders/loading-blur.webp') center / cover no-repeat; align-items:flex-end; justify-content:center; overflow:hidden; }
   .ld-load-art { position:absolute; inset:0; }
   .ld-load-art img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; display:block; animation:ld-art-in 1.2s ease-out both, ld-art-drift 18s ease-in-out infinite alternate; }
   /* tall phones: show the whole picture, the blurred copy fills the rest */
