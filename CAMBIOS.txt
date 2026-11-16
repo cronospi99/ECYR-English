@@ -1771,13 +1771,16 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
   · Armas más grandes en los personajes (tiza, marcadores, resaltadores, libro, pelota, frasco,
     avión de papel, baquetas, botiquín, puntero del robot…), proyectiles un 30 % más grandes y
     +20 % de daño para todos los defensores que atacan.
-  · Ventana de preguntas nueva, estilo neón cyberpunk post-apocalíptico: panel oscuro con franja
-    de peligro, bordes y esquinas de neón; la pregunta y las respuestas en letras grandes y claras
-    sobre fondo casi negro (A/B/C/D en cada opción, verde al acertar, rojo al fallar).
-  · Iconos neón propios en lugar de TODOS los emojis del juego (botones, menús, avisos, oleadas,
-    explicaciones…), del mismo estilo synthwave.
-  · Título de la portada nuevo: «LANGUAGE» en tubo de neón cian y «DEFENDERS» cromado con degradé
-    de atardecer synthwave, contorno rosa neón, efecto glitch, cortes de horizonte y grietas.
+  · Ventana de preguntas estilo «neon grave» (tétrico, no moderno): una losa oscura con grano y un
+    solo tubo de neón cian alrededor que parpadea de vez en cuando, como el ataúd de la entrada; la
+    pregunta y las respuestas en letras grandes color hueso sobre fondo casi negro; cada opción
+    lleva su letra en una lapidita; verde tóxico al acertar, rojo sangre al fallar.
+  · Iconos de neón propios en lugar de TODOS los emojis del juego (botones, menús, avisos, oleadas,
+    explicaciones…).
+  · Título de la portada más grande y tétrico: letras pintadas a brocha (fuente libre «Permanent
+    Marker», no el logo de ningún artista) color hueso, torcidas a mano, con trazos de pincel seco,
+    pintura descascarada, baba verde chorreando y un ataúd de neón cian detrás; luces y chispas del
+    menú en cian y verde. La misma letra se usa en las etiquetas y botones de las preguntas.
   · Arreglo: en la app instalada (PWA) del iPhone, en pantalla completa o al girar el teléfono, el
     3D se quedaba en un rectángulo pequeño y el resto en negro. Ahora el lienzo se mide solo y se
     reajusta aunque iOS no avise del cambio de tamaño; los toques en el tablero también caen bien.
