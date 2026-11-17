@@ -1830,3 +1830,16 @@ Taxi Rush — Fase 1 (rendimiento y llantas)
   · Calidad automática: arranca un nivel más abajo (computador: High en vez de Ultra; teléfono:
     Medium) y si mientras conduces el juego va por debajo de ~32 fps unos segundos, baja la calidad
     sola y lo avisa en pantalla («GRAPHICS: MEDIUM»…), y lo recuerda.
+
+Language Defenders — modo clase por el relay de la plataforma + 60 fps
+  · El modo clase (QR) ya no usa PeerJS/WebRTC: usa el MISMO servidor de partidas en vivo que
+    Impostor y Class Wars (WebSocket por el relay de Cloudflare). Funciona desde cualquier red
+    (datos móviles, otra wifi, la del colegio) sin STUN/TURN ni servidor propio; se quitaron «Test
+    connection» y «Relay server». Código de sala de 6 caracteres. Probado: host + alumno se unen,
+    el docente ve la lista y la actualiza cuando el alumno sale. Requiere VITE_RELAY_URL en Vercel
+    (el mismo de Impostor).
+  · Arreglo: el estado «You're in!» del alumno lanzaba un error de JavaScript en cada reintento.
+  · 60 fps: nuevo regulador de rendimiento. Mide los fotogramas reales cada segundo y, si bajan de
+    ~56 fps, baja la calidad paso a paso (resolución, brillo, partículas, sombras) hasta sostener
+    60; si el aparato está limitado a 30 fps por ahorro de batería, no lo degrada en vano. En Taxi
+    Rush la calidad automática ahora actúa por debajo de 54 fps (antes 32).

@@ -188,27 +188,8 @@ export const MARKUP = `<canvas id="game-canvas"></canvas>
           <div id="class-mode-row" class="diff-row"></div>
           <div id="class-mode-desc" class="diff-desc"></div>
         </div>
-        <!-- Diagnóstico y relevo: lo que hace falta para conectar entre redes -->
-        <div class="diff-block net-block">
-          <span class="diff-label">🔌 Connection</span>
-          <div id="net-status" class="net-status">Not tested yet.</div>
-          <div class="net-actions">
-            <button id="btn-net-test" class="wood-btn small">🔍 Test connection</button>
-            <button id="btn-net-turn" class="wood-btn small">⚙️ Relay server</button>
-          </div>
-          <div id="net-turn-form" class="net-turn hidden">
-            <p class="student-help">To play across <b>different networks</b> (mobile data, another
-              Wi‑Fi) WebRTC needs a <b>TURN relay</b>. Put yours here once — the QR will carry it to
-              your students automatically.</p>
-            <input id="turn-url" class="class-input student-input" placeholder="turn:my.server:3478">
-            <input id="turn-user" class="class-input student-input" placeholder="username">
-            <input id="turn-pass" class="class-input student-input" placeholder="password">
-            <div class="net-actions">
-              <button id="btn-turn-save" class="wood-btn small">💾 Save</button>
-              <button id="btn-turn-clear" class="wood-btn small">🗑 Clear</button>
-            </div>
-          </div>
-        </div>
+        <!-- Mismo servidor de partidas en vivo que Impostor y Class Wars: funciona desde cualquier red -->
+        <div id="net-status" class="net-status good">🌐 Students can join from any network (mobile data too) — no setup needed.</div>
         <!-- El nivel hace falta en los DOS modos: en el clásico define la batalla de
              cada alumno, y en el de turnos es el nivel con el que se abre el
              selector. -->

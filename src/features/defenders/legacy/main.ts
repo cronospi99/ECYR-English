@@ -11,7 +11,7 @@ import { SFX, setMuted, isMuted } from './audio';
 import { startMusic, stopMusic, isMusicPlaying, getTracks, getTrackSelection, selectTrack } from './music';
 import { bridge } from '../bridge';
 import { isPainted, backdropThumb } from '../backdrops';
-import { ClassHost, ClassClient, joinURL, makeQR, testIce, getTurn, setTurn } from './net';
+import { ClassHost, ClassClient, joinURL, makeQR } from './net';
 
 const musicWanted = () => localStorage.getItem('ld:music') !== 'off';
 
@@ -1122,17 +1122,11 @@ function openClassHost() {
   $('class-host').classList.remove('hidden');
   $('class-join').classList.add('hidden');
   $('class-code').textContent = '·····';
-  $('class-roster').textContent = 'Connecting to the network…';
+  $('class-roster').textContent = 'Connecting to the game server…';
   $('btn-class-start').disabled = true;
   classAssign = {};
   renderClassMode();
   syncClassOpts();
-  renderTurnForm();
-  $('net-turn-form').classList.add('hidden');
-  $('net-status').className = 'net-status';
-  $('net-status').textContent = getTurn()
-    ? 'Relay configured. Tap “Test connection” to confirm it works.'
-    : 'Not tested. Tap “Test connection” to see if students can join from other networks.';
   // selector de nivel
   const wrap = $('class-levels');
   wrap.innerHTML = '';
@@ -1184,34 +1178,7 @@ function openClassHost() {
   });
 }
 
-/* ---------- Diagnóstico de red y servidor de relevo (TURN) ---------- */
-// Traduce el resultado técnico a lo que le importa al docente: ¿va a funcionar
-// desde otra red, o sólo con los que estén en esta misma wifi?
-async function runNetTest() {
-  const el = $('net-status');
-  el.className = 'net-status testing';
-  el.textContent = '🔍 Checking… (a few seconds)';
-  const r = await testIce();
-  if (!r.ok) {
-    el.className = 'net-status bad';
-    el.textContent = `⚠ Could not test (${r.error}).`;
-    return;
-  }
-  if (r.relay) {
-    el.className = 'net-status good';
-    el.textContent = '✅ Relay works — students can join from any network (mobile data too).';
-  } else if (r.publicAddr) {
-    el.className = 'net-status warn';
-    el.textContent = '⚠ No relay. It will work on the same Wi‑Fi and on many home networks, ' +
-      'but students on mobile data or a locked-down school network may fail. Add a relay server below.';
-  } else {
-    el.className = 'net-status bad';
-    el.textContent = '⛔ Only local addresses. Right now this device can only play with people ' +
-      'on the SAME Wi‑Fi. Add a relay server below to fix it.';
-  }
-}
-// El QR y el enlace se rehacen cada vez que cambia el relevo, porque lo llevan
-// dentro para que el alumno lo herede al escanear.
+// El QR y el enlace de la sala.
 function refreshClassQR(code) {
   const url = joinURL(code);
   $('class-link').textContent = url;
@@ -1224,14 +1191,6 @@ function refreshClassQR(code) {
     qrImg.style.display = 'none'; // sin QR, el enlace/código bastan para unirse
   }
 }
-function renderTurnForm() {
-  const t = getTurn();
-  $('turn-url').value = t ? t.urls.join(',') : '';
-  $('turn-user').value = t?.username || '';
-  $('turn-pass').value = t?.credential || '';
-  $('btn-net-turn').textContent = t ? '⚙️ Relay server ✅' : '⚙️ Relay server';
-}
-
 /* ---------- Modo por turnos: transporte proyector ⇄ móviles ---------- */
 // El quiz pinta la pregunta en la pantalla grande (para que la clase la lea) y
 // delega la respuesta en el teléfono del alumno de turno.
@@ -1422,7 +1381,7 @@ function doJoin(code) {
         waiting: '✅ Connected! Saying hello to your teacher…',
         // el saludo se repite hasta que el docente contesta
         handshake: `⏳ Connected — waiting for the teacher to accept you… (${extra})`,
-        joined: `✅ You're in! Players: ${(extra || []).join(', ')}`,
+        joined: `✅ You're in! Players: ${Array.isArray(extra) ? extra.join(', ') : ''}`,
         // línea abierta pero el docente nunca respondió: no es fallo de internet
         nowelcome: '⚠ Connected, but your teacher\'s game never answered. ' +
           'Ask them to keep the Class Mode window open, then tap Retry.',
@@ -1623,28 +1582,6 @@ function bindUI() {
   $('btn-mini-bowl').addEventListener('click', () => { SFX.click(); openMini('boss'); });
   $('btn-mini-close').addEventListener('click', () => $('mini-modal').classList.add('hidden'));
   $('btn-class').addEventListener('click', () => { SFX.click(); openClassHost(); });
-  // red: diagnóstico y servidor de relevo
-  $('btn-net-test').addEventListener('click', () => { SFX.click(); runNetTest(); });
-  $('btn-net-turn').addEventListener('click', () => {
-    SFX.click();
-    $('net-turn-form').classList.toggle('hidden');
-    renderTurnForm();
-  });
-  $('btn-turn-save').addEventListener('click', () => {
-    SFX.click();
-    setTurn($('turn-url').value, $('turn-user').value, $('turn-pass').value);
-    renderTurnForm();
-    // el QR debe rehacerse: ahora lleva el relevo para los alumnos
-    if (classHost?.code) refreshClassQR(classHost.code);
-    $('net-status').className = 'net-status';
-    $('net-status').textContent = 'Relay saved. Tap “Test connection” to check it works.';
-  });
-  $('btn-turn-clear').addEventListener('click', () => {
-    SFX.click();
-    setTurn('');
-    renderTurnForm();
-    if (classHost?.code) refreshClassQR(classHost.code);
-  });
   $('btn-student-exit').addEventListener('click', () => {
     SFX.click();
     classClient?.leave(); classClient = null;

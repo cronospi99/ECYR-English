@@ -401,7 +401,7 @@ export class TaxiMode {
     if (p.t < 2) return;
     const fps = p.frames / p.t;
     p.t = 0; p.frames = 0;
-    p.slow = fps < 32 ? p.slow + 1 : Math.max(0, p.slow - 1);
+    p.slow = fps < 54 ? p.slow + 1 : Math.max(0, p.slow - 1);
     if (p.slow < 2) return;
     p.slow = 0;
     const order: QualityName[] = ['low', 'medium', 'high', 'ultra'];
