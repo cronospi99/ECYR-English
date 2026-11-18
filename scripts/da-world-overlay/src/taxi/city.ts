@@ -230,6 +230,8 @@ export class Layer {
   private cells = new Map<string, Mesher>();
   /** Which mesh each cell's mesher became, once flushed. */
   readonly built = new Map<Mesher, Mesh>();
+  /** Centre of the map cell each mesh covers. */
+  readonly centre = new Map<Mesh, [number, number]>();
   constructor(readonly material: Material, private readonly castShadow = false, private readonly layered = false) {}
 
   /** The cell's mesher; `layer` picks the ground surface for what is drawn next. */
@@ -243,7 +245,7 @@ export class Layer {
 
   flush(parent: Group): Mesh[] {
     const out: Mesh[] = [];
-    for (const m of this.cells.values()) {
+    for (const [key, m] of this.cells) {
       if (m.empty) continue;
       const mesh = new Mesh(m.build(), this.material);
       mesh.castShadow = this.castShadow;
@@ -251,6 +253,8 @@ export class Layer {
       mesh.matrixAutoUpdate = false;
       parent.add(mesh);
       this.built.set(m, mesh);
+      const [ci, cj] = key.split(',').map(Number);
+      this.centre.set(mesh, [(ci + 0.5) * CELL, (cj + 0.5) * CELL]);
       out.push(mesh);
     }
     this.cells.clear();

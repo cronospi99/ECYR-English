@@ -46,14 +46,12 @@ export class TaxiTraffic {
     if (!tpls.length) return;
     const rand = (() => { let s = 7; return () => ((s = (s * 16807) % 2147483647) / 2147483647); })();
     const lanes: { lane: Lane; n: number }[] = [];
-    // avenues (x = const) and streets (z = const) outside the original city
+    // avenues (x = const) and streets (z = const): the whole grid, centre included
     for (let k = K_MIN; k <= K_MAX; k++) {
-      if (k >= 0 && k <= 3) continue;
       const busy = k >= -1 && k <= 6 ? 3 : 2;
       for (const dir of [1, -1] as const) lanes.push({ lane: { axis: 'v', at: VX(k) + (dir > 0 ? 1.5 : 4.5), dir, span: [MIN_Z, HWY_LANES[0] - 6], speed: 7 }, n: busy });
     }
     for (let j = J_MIN; j <= J_MAX; j++) {
-      if (j >= 0 && j <= 4) continue;
       const busy = j >= -1 && j <= 7 ? 3 : 2;
       for (const dir of [1, -1] as const) lanes.push({ lane: { axis: 'h', at: HZ(j) + (dir > 0 ? 4.5 : 1.5), dir, span: [MIN_X, MAX_X], speed: 7 }, n: busy });
     }
@@ -98,6 +96,23 @@ export class TaxiTraffic {
     for (const m of this.meshes) {
       const body = m.parts[m.tpl.parts.findIndex((q) => q.role === 'body')];
       for (let i = 0; i < body.count; i++) body.setColorAt(i, tmpColor.set('#ffffff'));
+    }
+  }
+
+  /**
+   * Nobody at the start line: any car within `r` of (x, z) is moved half a lap along its
+   * lane. Call it whenever the taxi is put back at its start.
+   */
+  clearArea(x: number, z: number, r: number): void {
+    for (const c of this.cars) {
+      if (c.fly) continue;
+      const l = c.lane, span = l.span[1] - l.span[0];
+      for (let guard = 0; guard < 3; guard++) {
+        const cx = l.axis === 'h' ? l.span[0] + c.pos : l.at, cz = l.axis === 'h' ? l.at : l.span[0] + c.pos;
+        if (Math.hypot(cx - x, cz - z) > r) break;
+        c.pos = (c.pos + span / 2 + guard * 17) % span;
+        c.speed = 0;
+      }
     }
   }
 

@@ -352,6 +352,7 @@ export class TaxiMode {
         this.street.drawRadius = tier === 'low' ? 70 : tier === 'medium' ? 95 : 120;
         this.deps.engine.scene.add(this.street.group);
         this.street.setVisible(this.active);
+        this.street.clearArea(30, 16.5, 22);
       });
     }
     this.world.setVisible(true);
@@ -363,6 +364,7 @@ export class TaxiMode {
     // start on Main Street, by the taxi rank, facing east
     this.car = new CarBody();
     this.car.x = 30; this.car.z = 16.5; this.car.yaw = Math.PI / 2;
+    this.street?.clearArea(30, 16.5, 22);
     this.money = 0; this.delivered = 0; this.teamDelivered = 0; this.missed = 0; this.asked = 0; this.correct = 0; this.time = 0;
     this.carrying = null; this.passengers = []; this.ranRed.clear(); this.lastQuiz.clear(); this.combo = 0; this.comboTime = 0;
     for (const m of this.passengerMarks.values()) scene.remove(m.g);

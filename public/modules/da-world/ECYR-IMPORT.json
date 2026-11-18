@@ -1,11 +1,11 @@
 {
   "upstream": "github.com/cronospi99/Da-World",
   "commit": "c9bd445",
-  "importedAt": "2026-11-18T01:58:07.291Z",
+  "importedAt": "2026-11-18T02:11:54.410Z",
   "base": "/modules/da-world/",
   "build": "vite build --base=/modules/da-world/ (no source maps)",
   "files": 110,
-  "bytes": 17885587,
+  "bytes": 17895928,
   "modelsDropped": 154,
   "patches": [
     "src/game/state.ts: save key per mode (slot)",
@@ -84,6 +84,8 @@
     "src/taxi/buildings.ts: ECYR rebuild (overlay)",
     "src/taxi/car.ts: ECYR rebuild (overlay)",
     "src/taxi/city.ts: ECYR rebuild (overlay)",
+    "src/taxi/furniture.ts: ECYR rebuild (overlay)",
+    "src/taxi/icons.ts: ECYR rebuild (overlay)",
     "src/taxi/mode.ts: ECYR rebuild (overlay)",
     "src/taxi/music.ts: ECYR rebuild (overlay)",
     "src/taxi/places.ts: ECYR rebuild (overlay)",

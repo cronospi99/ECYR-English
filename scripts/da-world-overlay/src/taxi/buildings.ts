@@ -16,6 +16,8 @@ import type { District } from './places';
 export type Kind = 'tower' | 'block' | 'hall' | 'house';
 export type Zone = District | 'centre';
 export type Landmark = 'stadium' | 'airport' | 'terminal';
+/** What a place looks like at a glance (see icons.ts). */
+export type Icon = 'hospital' | 'gas' | 'school' | 'service' | 'awning' | 'hotel' | 'church' | 'shop' | 'bank' | 'classic';
 
 /** Top of the pavement slab, where every building stands. */
 export const GROUND = 0.16;
@@ -33,6 +35,9 @@ export interface Lot {
   /** Has a named place: its ground floor is a shopfront. */
   shop: boolean;
   seed: number;
+  /** Type of the place that lives here, and the landmark look it gets. */
+  type?: string;
+  icon?: Icon;
 }
 
 interface Look {
@@ -114,6 +119,27 @@ function lookFor(lot: Lot, r: () => number): Look {
     }
   }
   if (lot.shop && base.ground === 'plain') base.ground = 'shop';
+  switch (lot.icon) {
+    case 'hospital':
+      base.floors = Math.min(6, Math.max(4, base.floors)); base.tint = rgb('#eef2f5'); base.upper = ['officeGridA', 'officeGridB']; base.gable = false; base.tiers = 1; base.ground = 'shop';
+      break;
+    case 'gas':
+      base.floors = 1; base.floorH = 3.6; base.groundH = 3.6; base.tint = rgb('#ece8dc'); base.ground = 'shop'; base.gable = false; base.tiers = 1;
+      break;
+    case 'school':
+      base.floors = 2; base.tint = rgb(pick(r, ['#d9a05a', '#c98466', '#e2c27a'])); base.upper = ['resiA', 'resiB']; base.ground = 'plain'; base.gable = false; base.tiers = 1;
+      break;
+    case 'service':
+      base.floors = range(r, 2, 3); base.ground = 'hall'; base.tint = rgb(lot.type?.includes('fire') ? '#d88a7a' : '#9fb3d6'); base.gable = false; base.tiers = 1;
+      break;
+    case 'church':
+      base.floors = 2; base.floorH = 3.4; base.tint = rgb('#dcd3c3'); base.upper = ['tallA', 'tallB']; base.ground = 'plain'; base.gable = true; base.roof = rgb('#7a5a4a');
+      break;
+    case 'hotel':
+      if (lot.kind !== 'tower') base.floors = Math.max(5, base.floors);
+      break;
+    default:
+  }
   return base;
 }
 
@@ -122,21 +148,24 @@ interface Rect { x0: number; x1: number; z0: number; z1: number }
 /** Height of the ground floor, the sign band sits just under its top. */
 export function groundHeight(lot: Lot): number {
   if (lot.landmark) return 4.4;
+  if (lot.icon === 'gas') return 3.6;
   if (lot.kind === 'hall') return 4.4;
   if (lot.kind === 'house') return 2.9;
   if (lot.kind === 'tower') return 3.8;
   return 3.4;
 }
 
-function walls(m: Mesher, t: Rect, y: number, floors: number, look: Look, r: () => number, front: '+z' | '-z', groundTier: boolean): number {
+function walls(m: Mesher, t: Rect, y: number, floors: number, look: Look, r: () => number, front: '+z' | '-z', groundTier: boolean, simple: boolean): number {
   const faces: ('+z' | '-z' | '+x' | '-x')[] = ['+z', '-z', '+x', '-x'];
   const shutterBay = Math.floor(r() * 3);
-  for (let f = 0; f < floors; f++) {
+  for (let f = 0; f < floors;) {
     const ground = groundTier && f === 0;
-    const fh = ground ? look.groundH : look.floorH;
+    // far version: one bay per wall and two floors per quad
+    const n = simple && !ground ? Math.min(2, floors - f) : 1;
+    const fh = (ground ? look.groundH : look.floorH) * n;
     for (const face of faces) {
       const len = face === '+z' || face === '-z' ? t.x1 - t.x0 : t.z1 - t.z0;
-      const bays = Math.max(1, Math.round(len / look.bayW));
+      const bays = simple ? 1 : Math.max(1, Math.round(len / look.bayW));
       const isFront = face === front;
       const upper = (): CellName => (r() < 0.5 ? look.upper[0] : look.upper[1]);
       const uvFor = (i: number): [number, number, number, number] => {
@@ -151,6 +180,7 @@ function walls(m: Mesher, t: Rect, y: number, floors: number, look: Look, r: () 
       m.wall(face, t.x0, t.x1, t.z0, t.z1, y, y + fh, bays, uvFor, look.tint);
     }
     y += fh;
+    f += n;
   }
   return y;
 }
@@ -214,10 +244,10 @@ function roofClutter(m: Mesher, t: Rect, y: number, r: () => number, kind: Kind,
   }
 }
 
-/** Emit a regular lot. */
-export function emitBuilding(m: Mesher, lot: Lot): void {
+/** Emit a regular lot. `simple` is the far version: plain boxes, no tiers' clutter, no gables. */
+export function emitBuilding(m: Mesher, lot: Lot, simple = false): number {
   const r = mulberry32(lot.seed);
-  if (lot.landmark) { emitLandmark(m, lot, r); return; }
+  if (lot.landmark) { emitLandmark(m, lot, r); return GROUND + 8; }
   const look = lookFor(lot, r);
   const front: '+z' | '-z' = lot.face === 'up' ? '-z' : '+z';
   let t: Rect = { x0: lot.x0, x1: lot.x1, z0: lot.z0, z1: lot.z1 };
@@ -228,7 +258,7 @@ export function emitBuilding(m: Mesher, lot: Lot): void {
     for (let i = 0; i < look.tiers; i++) {
       const f = i === look.tiers - 1 ? left : Math.max(1, Math.round(look.floors * totals[i]));
       left -= f;
-      y = walls(m, t, y, f, look, r, front, i === 0);
+      y = walls(m, t, y, f, look, r, front, i === 0, simple);
       if (i < look.tiers - 1) {
         flatRoof(m, t, y, look);
         const ix = Math.min(0.5, (t.x1 - t.x0) * 0.14), iz = 0.4;
@@ -237,11 +267,11 @@ export function emitBuilding(m: Mesher, lot: Lot): void {
       if (left <= 0 && i < look.tiers - 1) break;
     }
     flatRoof(m, t, y, look);
-    roofClutter(m, t, y, r, lot.kind, true);
-    return;
+    if (!simple) roofClutter(m, t, y, r, lot.kind, true);
+    return y;
   }
-  y = walls(m, t, y, look.floors, look, r, front, true);
-  if (look.gable) {
+  y = walls(m, t, y, look.floors, look, r, front, true, simple);
+  if (look.gable && !simple) {
     const d = t.z1 - t.z0;
     const rise = lot.kind === 'hall' ? 0.9 : d * (lot.kind === 'house' ? 0.5 : 0.35);
     // the roof reads as a metal hall roof for halls, tiles otherwise
@@ -250,12 +280,14 @@ export function emitBuilding(m: Mesher, lot: Lot): void {
       const cx = t.x0 + (t.x1 - t.x0) * (0.2 + r() * 0.6), cz = (t.z0 + t.z1) / 2 + (r() < 0.5 ? -0.5 : 0.5);
       m.box(cx - 0.18, cx + 0.18, y, y + rise + 0.7, cz - 0.18, cz + 0.18, rgb('#9a6a5a'));
     }
-  } else if (lot.kind === 'hall' && lot.big) {
-    sawtooth(m, t, y, 3, look);
-  } else {
-    flatRoof(m, t, y, look);
-    roofClutter(m, t, y, r, lot.kind, false);
+    return y + rise;
   }
+  if (lot.kind === 'hall' && lot.big && !simple) sawtooth(m, t, y, 3, look);
+  else {
+    flatRoof(m, t, y, look);
+    if (!simple) roofClutter(m, t, y, r, lot.kind, false);
+  }
+  return y;
 }
 
 /* ------------------------------------------------------------------ *
@@ -285,7 +317,7 @@ function emitLandmark(m: Mesher, lot: Lot, r: () => number): void {
     floors: 1, floorH: 4.4, groundH: 4.4, upper: ['indA', 'indB'], ground: 'hall', bayW: 3,
     tint: rgb(lot.landmark === 'airport' ? '#a8c3d8' : '#d8bf8a'), roof: rgb('#8f9aa3'), tiers: 1, gable: false,
   };
-  const y = walls(m, t, GROUND, 1, look, r, front, true);
+  const y = walls(m, t, GROUND, 1, look, r, front, true, false);
   flatRoof(m, t, y, look);
   const fz0 = lot.face === 'up' ? t.z0 - 1.4 : t.z1, fz1 = lot.face === 'up' ? t.z0 : t.z1 + 1.4;
   m.box(t.x0, t.x1, y - 0.5, y - 0.3, fz0, fz1, WHITE, 'stripes');

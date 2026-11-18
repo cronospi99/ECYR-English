@@ -24,6 +24,7 @@ import {
   CanvasTexture,
   Color,
   CylinderGeometry,
+  Float32BufferAttribute,
   DoubleSide,
   Group,
   Mesh,
@@ -38,7 +39,9 @@ import { PALETTE } from '../city/palette';
 import { mulberry32 } from '../core/rng';
 import { CENTRE_PLACES, NEW_PLACES, type District } from './places';
 import { CELL, Layer, Mesher, mergeByCell, rgb, tree, lamp } from './city';
-import { GROUND, emitBuilding, groundHeight, type Kind, type Lot, type Zone } from './buildings';
+import { GROUND, emitBuilding, type Kind, type Lot, type Zone } from './buildings';
+import { emitIcon, iconFor, planLot, signHeight } from './icons';
+import { furnishBlock } from './furniture';
 import { GROUND_LAYER as GL, cityMaterial, groundMaterial, lensMaterial } from './textures';
 
 export { CELL, mergeByCell };
@@ -145,8 +148,14 @@ const SIGN_W = 352, SIGN_H = 66, ATLAS_COLS = 4;
 
 interface Sign { name: string; emoji: string; hue: number; x: number; y: number; z: number; rotY: number; w: number }
 
-function signAtlas(names: Sign[]): { tex: CanvasTexture; rows: number } {
-  const rows = Math.max(1, Math.ceil(names.length / ATLAS_COLS));
+const AVENUES = ['Oak', 'Maple', 'Cedar', 'Pine', 'Elm', 'Birch', 'Willow', 'Aspen', 'Poplar', 'Spruce', 'Hazel', 'Walnut', 'Cherry', 'Laurel', 'Linden'].map((n) => n + ' Ave');
+const STREETS = ['Hill St', 'Mill St', 'Union St', 'Lake St', 'Queen St', 'Main St', 'Oak St', 'River Rd', 'Market St', 'Sunset Blvd', 'Park St', 'Church St', 'Bridge St', 'Garden St', 'King St', 'Harbour Rd'];
+const STREET_NAMES = [...AVENUES, ...STREETS];
+
+/** One canvas for every sign in the city: place names, street plates, and a stop and a yield sign. */
+function signAtlas(names: Sign[], streets: string[]): { tex: CanvasTexture; rows: number } {
+  const total = names.length + streets.length + 1;
+  const rows = Math.max(1, Math.ceil(total / ATLAS_COLS));
   const cv = document.createElement('canvas');
   cv.width = SIGN_W * ATLAS_COLS;
   cv.height = SIGN_H * rows;
@@ -167,11 +176,37 @@ function signAtlas(names: Sign[]): { tex: CanvasTexture; rows: number } {
     while (c.measureText(n.name).width > SIGN_W - 78 && size > 13) { size -= 1; c.font = `800 ${size}px "Trebuchet MS",Arial,sans-serif`; }
     c.fillText(n.name, x + 62, y + SIGN_H / 2 + 1);
   });
+  streets.forEach((name, k) => {
+    const i = names.length + k, x = (i % ATLAS_COLS) * SIGN_W, y = Math.floor(i / ATLAS_COLS) * SIGN_H;
+    c.fillStyle = '#17623a'; c.fillRect(x, y, SIGN_W, SIGN_H);
+    c.strokeStyle = '#ffffff'; c.lineWidth = 5; c.strokeRect(x + 4, y + 4, SIGN_W - 8, SIGN_H - 8);
+    c.fillStyle = '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.font = '800 34px Arial,sans-serif'; c.fillText(name.toUpperCase(), x + SIGN_W / 2, y + SIGN_H / 2 + 2, SIGN_W - 24);
+    c.textAlign = 'left';
+  });
+  {
+    const i = names.length + streets.length, x = (i % ATLAS_COLS) * SIGN_W, y = Math.floor(i / ATLAS_COLS) * SIGN_H;
+    c.fillStyle = '#444'; c.fillRect(x, y, SIGN_W, SIGN_H);
+    // stop: red octagon in the first 66x66 square
+    c.beginPath();
+    STOP_POLY.forEach(([nx, ny], q) => { const px = x + (nx + 0.5) * SIGN_H, py = y + (0.5 - ny) * SIGN_H; if (q) c.lineTo(px, py); else c.moveTo(px, py); });
+    c.closePath(); c.fillStyle = '#c8281e'; c.fill(); c.strokeStyle = '#fff'; c.lineWidth = 3; c.stroke();
+    c.fillStyle = '#fff'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.font = '900 17px Arial,sans-serif'; c.fillText('STOP', x + SIGN_H / 2, y + SIGN_H / 2 + 1);
+    // yield: white triangle with a red border, pointing down
+    c.beginPath();
+    YIELD_POLY.forEach(([nx, ny], q) => { const px = x + SIGN_H + (nx + 0.5) * SIGN_H, py = y + (0.5 - ny) * SIGN_H; if (q) c.lineTo(px, py); else c.moveTo(px, py); });
+    c.closePath(); c.fillStyle = '#fff'; c.fill(); c.strokeStyle = '#c8281e'; c.lineWidth = 7; c.lineJoin = 'round'; c.stroke();
+    c.textAlign = 'left';
+  }
   const tex = new CanvasTexture(cv);
   tex.colorSpace = SRGBColorSpace;
   tex.anisotropy = 4;
   return { tex, rows };
 }
+
+/** Octagon and triangle, in a unit square centred on the origin (also the texture layout). */
+const STOP_POLY: [number, number][] = Array.from({ length: 8 }, (_, i) => [0.47 * Math.cos((i + 0.5) * Math.PI / 4), 0.47 * Math.sin((i + 0.5) * Math.PI / 4)]);
+const YIELD_POLY: [number, number][] = [[-0.47, 0.4], [0.47, 0.4], [0, -0.42]];
 
 function signQuad(i: number, rows: number, w: number, x: number, y: number, z: number, rotY: number): BufferGeometry {
   const h = w * (SIGN_H / SIGN_W);
@@ -183,6 +218,24 @@ function signQuad(i: number, rows: number, w: number, x: number, y: number, z: n
   for (let k = 0; k < uv.count; k++) uv.setXY(k, uv.getX(k) ? u1 : u0, uv.getY(k) ? v1 : v0);
   g.rotateY(rotY);
   g.translate(x, y, z);
+  return g;
+}
+
+/** A road sign cut to its shape (stop or yield): a triangle fan over the shape's own atlas square. */
+function shapeSign(cell: number, rows: number, second: boolean, poly: [number, number][], size: number, x: number, y: number, z: number, rotY: number): BufferGeometry {
+  const col = cell % ATLAS_COLS, row = Math.floor(cell / ATLAS_COLS);
+  const pos: number[] = [], nor: number[] = [], uv: number[] = [], idx: number[] = [];
+  poly.forEach(([nx, ny]) => {
+    pos.push(nx * size, ny * size, 0); nor.push(0, 0, 1);
+    uv.push((col + (second ? SIGN_H / SIGN_W : 0) + (nx + 0.5) * (SIGN_H / SIGN_W)) / ATLAS_COLS, 1 - (row + 1) / rows + (ny + 0.5) / rows);
+  });
+  for (let i = 1; i < poly.length - 1; i++) idx.push(0, i, i + 1);
+  const g = new BufferGeometry();
+  g.setAttribute('position', new Float32BufferAttribute(pos, 3));
+  g.setAttribute('normal', new Float32BufferAttribute(nor, 3));
+  g.setAttribute('uv', new Float32BufferAttribute(uv, 2));
+  g.setIndex(idx);
+  g.rotateY(rotY); g.translate(x, y, z);
   return g;
 }
 
@@ -242,6 +295,15 @@ function shuffle<T>(a: T[], rand: () => number): T[] {
   return a;
 }
 
+/**
+ * Level of detail, decided per map cell and per layer, never per object.
+ * keep: always (ground, highway) · near: full buildings and trees up to NEAR_R ·
+ * far: the same buildings as plain boxes beyond it · detail: furniture, signs,
+ * awnings, signals and facade extras up to DETAIL_R.
+ */
+type ChunkKind = 'keep' | 'near' | 'far' | 'detail';
+export const LOD = { detail: 75, near: 120 };
+
 export class TaxiWorld {
   readonly group = new Group();
   readonly places: Place[] = [];
@@ -250,7 +312,7 @@ export class TaxiWorld {
   /** Every building's footprint (for tests and tooling). */
   readonly footprints: Footprint[] = [];
   /** Merged static meshes, kept so far-away ones can be switched off. */
-  private chunks: { mesh: Mesh; x: number; z: number; r: number; max: number }[] = [];
+  private chunks: { mesh: Mesh; x: number; z: number; r: number; kind: ChunkKind }[] = [];
   private lightGroups: { g: Group; x: number; z: number }[] = [];
   /** 1 = a car may be here. */
   private grid: Uint8Array;
@@ -335,8 +397,17 @@ export class TaxiWorld {
    * distance checks. Call once per frame with the camera's focus (the taxi).
    */
   focus(x: number, z: number, radius = 165): void {
-    for (const c of this.chunks) c.mesh.visible = Math.hypot(c.x - x, c.z - z) - c.r < radius * c.max;
-    for (const l of this.lightGroups) l.g.visible = Math.hypot(l.x - x, l.z - z) < radius * 0.55;
+    const half = CELL / 2;
+    for (const c of this.chunks) {
+      const d = Math.hypot(c.x - x, c.z - z);
+      switch (c.kind) {
+        case 'keep': c.mesh.visible = d - c.r < radius; break;
+        case 'detail': c.mesh.visible = d - half < LOD.detail; break;
+        case 'near': c.mesh.visible = d < LOD.near; break;
+        default: c.mesh.visible = d >= LOD.near && d < radius + half;
+      }
+    }
+    for (const l of this.lightGroups) l.g.visible = Math.hypot(l.x - x, l.z - z) < LOD.detail + half;
   }
 
   update(dt: number, elapsed: number): void {
@@ -357,20 +428,26 @@ export class TaxiWorld {
 
   /* ---------------------------------------------------------------- */
 
-  private track(layer: Layer): void {
-    for (const mesh of layer.flush(this.group)) this.addChunk(mesh, 1);
+  private track(layer: Layer, kind: ChunkKind): void {
+    for (const mesh of layer.flush(this.group)) {
+      const c = layer.centre.get(mesh)!;
+      this.chunks.push({ mesh, x: c[0], z: c[1], r: mesh.geometry.boundingSphere!.radius, kind });
+    }
   }
 
-  /** `max` scales the focus radius: small things (signs, lenses) go away sooner. */
-  private addChunk(mesh: Mesh, max: number): void {
+  private addChunk(mesh: Mesh, kind: ChunkKind): void {
     const s = mesh.geometry.boundingSphere!;
-    this.chunks.push({ mesh, x: s.center.x, z: s.center.z, r: s.radius, max });
+    this.chunks.push({ mesh, x: s.center.x, z: s.center.z, r: s.radius, kind });
   }
 
   private build(): void {
     const rand = mulberry32(2026);
     const ground = new Layer(groundMaterial(), false, true);
-    const city = new Layer(cityMaterial(), true);
+    // the same atlas material in four layers: LOD switches whole layers of a cell on and off
+    const near = new Layer(cityMaterial(), true);
+    const far = new Layer(cityMaterial(), false);
+    const detail = new Layer(cityMaterial(), false);
+    const keep = new Layer(cityMaterial(), true);
     const ASPH = rgb(PALETTE.asphalt), PAVE = rgb(PALETTE.sidewalk), PARK = rgb(PALETTE.park);
     const LANE = rgb(PALETTE.laneMark);
     const ZEBRA = rgb(PALETTE.crosswalk);
@@ -469,11 +546,13 @@ export class TaxiWorld {
     const stopOf = (l: Lot): { x: number; z: number } => ({ x: (l.x0 + l.x1) / 2, z: l.face === 'up' ? l.z0 - 1.6 : l.z1 + 1.6 });
     const claim = (l: Lot, p: { id: string; name: string; type: string; emoji: string }, district: District | 'centre'): void => {
       l.shop = true;
+      l.type = p.type;
+      l.icon = iconFor(p.type);
       const s = stopOf(l);
       this.places.push({ id: p.id, name: p.name, type: p.type, emoji: p.emoji, x: s.x, z: s.z, district });
       const front = l.face === 'up' ? l.z0 - 0.05 : l.z1 + 0.05;
       const w = Math.min(4.2, Math.max(2.6, (l.x1 - l.x0) * 1.05));
-      signs.push({ name: p.name, emoji: p.emoji, hue: Math.floor(rand() * 360), x: s.x, y: CURB + groundHeight(l) - 0.5, z: front, rotY: l.face === 'up' ? Math.PI : 0, w });
+      signs.push({ name: p.name, emoji: p.emoji, hue: Math.floor(rand() * 360), x: s.x, y: signHeight(l), z: front, rotY: l.face === 'up' ? Math.PI : 0, w });
     };
     // centre: landmarks first onto their big lots, the rest spread block by block
     const centreBlocks = blocks.filter((b) => b.zone === 'centre' && !b.fringe && !b.park);
@@ -516,13 +595,13 @@ export class TaxiWorld {
       const green = b.fringe || b.park;
       if (green) {
         ground.at(cx, cz, GL.grass).top(b.lx0, b.lx1, b.lz0, b.lz1, CURB + 0.03, UVN, PARK);
-        const m = city.at(cx, cz);
+        const m = near.at(cx, cz);
         const n = b.park ? 9 : b.fringe ? 4 : 0;
         for (let i = 0; i < n; i++) tree(m, b.lx0 + 1 + rand() * Math.max(0.1, b.lx1 - b.lx0 - 2), b.lz0 + 1 + rand() * Math.max(0.1, b.lz1 - b.lz0 - 2), 0.9 + rand() * 0.6, rand);
       }
       if (b.fringe) continue;
       // street lamps along the north and south kerbs
-      const lm = city.at(cx, cz);
+      const lm = near.at(cx, cz);
       for (let x = b.bx0 + 2; x < b.bx1 - 1; x += 7) { lamp(lm, x, b.bz0 + 0.5, -1); lamp(lm, x, b.bz1 - 0.5, 1); }
       if (b.garden) {
         const gz0 = b.lz0 + 2.8, gz1 = b.lz1 - 2.8;
@@ -530,10 +609,15 @@ export class TaxiWorld {
         for (let x = b.lx0 + 1.2; x < b.lx1 - 0.5; x += 2.6 + rand()) tree(lm, x, (gz0 + gz1) / 2, 0.55 + rand() * 0.25, rand);
       }
       for (const l of b.lots) {
-        const m = city.at((l.x0 + l.x1) / 2, (l.z0 + l.z1) / 2);
-        emitBuilding(m, l);
+        const lx = (l.x0 + l.x1) / 2, lz = (l.z0 + l.z1) / 2;
+        const built = planLot(l); // pushed back behind its yard, for forecourts and playgrounds
+        const top = emitBuilding(near.at(lx, lz), built);
+        emitBuilding(far.at(lx, lz), built, true);
+        emitIcon(detail.at(lx, lz), l, top, l.seed);
         this.footprints.push(tail(l));
       }
+      const stops = this.places.filter((p) => p.x >= b.bx0 && p.x <= b.bx1 && p.z >= b.bz0 && p.z <= b.bz1);
+      furnishBlock(detail.at(cx, cz), b, stops, rand);
     }
     // tag the footprints that belong to a place, for the tests
     for (const p of this.places) {
@@ -542,14 +626,32 @@ export class TaxiWorld {
     }
 
     /* ---- signs over every door ---- */
-    const { tex, rows } = signAtlas(signs);
+    const { tex, rows } = signAtlas(signs, STREET_NAMES);
     const signMat = new MeshStandardMaterial({ map: tex, emissiveMap: tex, emissive: new Color('#ffffff'), emissiveIntensity: 0.55, roughness: 0.4, side: DoubleSide });
     const sgeos = signs.map((n, i) => signQuad(i, rows, n.w, n.x, n.y, n.z, n.rotY));
+    // street-name plates at every junction, stop and yield signs where there is no light
+    const lit = new Set(this.nodes.filter((n) => mod(n.k * 3 + n.j * 2, 4) === 0));
+    const stopCell = signs.length + STREET_NAMES.length;
+    for (const n of this.nodes) {
+      const px = n.x + ROAD_W / 2 + 0.8, pz = n.z + ROAD_W / 2 + 0.8;
+      const dm = detail.at(px, pz);
+      dm.box(px - 0.04, px + 0.04, CURB, CURB + 3.75, pz - 0.04, pz + 0.04, rgb('#6d747b'));
+      sgeos.push(signQuad(signs.length + (n.k - K_MIN), rows, 1.5, px, CURB + 3.6, pz, 0));
+      sgeos.push(signQuad(signs.length + AVENUES.length + (n.j - J_MIN), rows, 1.5, px, CURB + 3.25, pz, Math.PI / 2));
+      if (lit.has(n)) continue;
+      const yieldSign = mod(n.k + n.j, 2) === 1;
+      const poly = yieldSign ? YIELD_POLY : STOP_POLY;
+      // one facing each approach that has no pole of its own: north-west corner looks north, the plate pole looks south
+      const qx = n.x - ROAD_W / 2 - 0.8, qz = n.z - ROAD_W / 2 - 0.8;
+      detail.at(qx, qz).box(qx - 0.04, qx + 0.04, CURB, CURB + 2.5, qz - 0.04, qz + 0.04, rgb('#6d747b'));
+      sgeos.push(shapeSign(stopCell, rows, yieldSign, poly, 0.8, qx, CURB + 2.35, qz - 0.06, Math.PI));
+      sgeos.push(shapeSign(stopCell, rows, yieldSign, poly, 0.8, px, CURB + 2.35, pz + 0.06, 0));
+    }
     for (const merged of mergeByCell(sgeos, 400)) {
       const mesh = new Mesh(merged, signMat);
       mesh.matrixAutoUpdate = false;
       this.group.add(mesh);
-      this.addChunk(mesh, 0.6);
+      this.addChunk(mesh, 'detail');
     }
     sgeos.forEach((g) => g.dispose());
 
@@ -559,10 +661,10 @@ export class TaxiWorld {
     sea.receiveShadow = true;
     this.group.add(sea);
 
-    this.buildHighway(ground, city);
-    this.buildLights(city, rand);
+    this.buildHighway(ground, keep);
+    this.buildLights(detail, rand);
 
-    for (const l of [ground, city]) this.track(l);
+    this.track(ground, 'keep'); this.track(keep, 'keep'); this.track(near, 'near'); this.track(far, 'far'); this.track(detail, 'detail');
   }
 
   /**
@@ -778,6 +880,6 @@ export class TaxiWorld {
         lampR: new Lamp(lens, lm, rangeR, red ? 3.2 : 0.05), lampG: new Lamp(lens, lm, rangeG, red ? 0.05 : 2.6),
       });
     }
-    for (const mesh of lens.flush(this.group)) this.addChunk(mesh, 0.55);
+    for (const mesh of lens.flush(this.group)) this.addChunk(mesh, 'detail');
   }
 }

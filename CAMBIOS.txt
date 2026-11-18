@@ -1854,3 +1854,16 @@ Taxi Rush — Fase 2 (juego propio y ciudad nueva)
   dibujo y ~0,5 M triángulos por fotograma (antes ~1.750 y ~3,3 M).
 - Se conservan los 155 destinos (91 del centro con sus mismos ids + 64 de los distritos); todos
   comprobados: parada en zona transitable y con edificio delante.
+
+Taxi Rush — Fase 3 (detalle y vida)
+- Mobiliario urbano en las aceras (bancos, papeleras, hidrantes, bolardos, paradas de bus, kioscos),
+  más denso en el centro y el casco antiguo, escaso en puerto y aeropuerto.
+- Señales: placas con el nombre de la calle en cada cruce, stop/ceda donde no hay semáforo.
+- Edificios icónicos según el destino: hospital con cruz roja, gasolinera con surtidores, escuela con
+  reloj y bandera, policía/bomberos con franja, toldos en cafés y tiendas, hotel con marquesina,
+  iglesia con torre, banco con columnas, biblioteca/museo con frontón.
+- Semáforos con preguntas también en el centro; el tráfico circula por toda la ciudad sin atravesar
+  edificios y ningún auto aparece encima del taxi al empezar.
+- Lejanía simplificada: a partir de ~75 m se ocultan mobiliario y señales, y a partir de ~120 m los
+  edificios pasan a cajas simples. Medido: ~390 llamadas de dibujo y ~0,7 M triángulos por
+  fotograma; mismos 6 materiales, ningún modelo nuevo para descargar.
