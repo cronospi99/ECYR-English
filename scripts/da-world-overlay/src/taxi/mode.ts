@@ -15,7 +15,6 @@ import type { Engine } from '../core/engine';
 import type { Environment } from '../world/environment';
 import type { DayNight } from '../city/daynight';
 import { setNightGlow } from '../city/palette';
-import { setWoodland } from '../city/city';
 import { Character } from '../city/character';
 import { extListeners, type Session } from '../net/session';
 import { TaxiWorld, DISTRICT_LABEL, MIN_X, MAX_X, MIN_Z, MAX_Z, VX, HZ, K_MIN, K_MAX, J_MIN, J_MAX, type QuizLight } from './world';
@@ -41,7 +40,8 @@ export interface TaxiDeps {
   dayNight: DayNight;
   /** Hide or show the walking game's own things (player, citizens, HUD). */
   setWalking(visible: boolean): void;
-  traffic: { carPositions(): { x: number; z: number }[]; group: THREE.Group; cars?(): StreetCar[]; knock?(c: StreetCar, vx: number, vz: number): void };
+  /** Null when the mode runs on its own (taxi.html): no walking-city traffic to dodge. */
+  traffic?: null | { carPositions(): { x: number; z: number }[]; group: THREE.Group; cars?(): StreetCar[]; knock?(c: StreetCar, vx: number, vz: number): void };
   speak(text: string): void;
   session(): Session;
   myName(): string;
@@ -356,7 +356,6 @@ export class TaxiMode {
     }
     this.world.setVisible(true);
     this.street?.setVisible(true);
-    setWoodland(false);
     scene.add(this.arrow, this.destMarker);
     if (this.model) { scene.remove(this.model.group); }
     this.model = new TaxiModel(this.look);
@@ -432,7 +431,6 @@ export class TaxiMode {
     const scene = this.deps.engine.scene;
     if (this.world) this.world.setVisible(false);
     this.street?.setVisible(false);
-    setWoodland(true);
     scene.remove(this.arrow, this.destMarker);
     if (this.model) scene.remove(this.model.group);
     for (const m of this.passengerMarks.values()) scene.remove(m.g);
@@ -651,6 +649,8 @@ export class TaxiMode {
       ring.position.y = 0.22;
       const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 9, 16, 1, true), new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.18, depthWrite: false, side: THREE.DoubleSide }));
       beam.position.y = 4.5;
+      // ECYR perf: a waiting passenger's shadow is not worth a shadow-pass draw per body part
+      person.group.traverse((o) => { o.castShadow = false; });
       g.add(person.group, ring, beam);
       g.position.set(p.x, 0, p.z);
       scene.add(g);
@@ -983,8 +983,8 @@ export class TaxiMode {
     const street = this.street;
     if (street) for (const c of street.cars) hit(c, (vx, vz) => street.knock(c, vx, vz));
     const tr = this.deps.traffic;
-    const knockCity = tr.knock;
-    if (tr.cars && knockCity) for (const c of tr.cars()) hit(c, (vx, vz) => knockCity.call(tr, c, vx, vz));
+    const knockCity = tr?.knock;
+    if (tr?.cars && knockCity) for (const c of tr.cars()) hit(c, (vx, vz) => knockCity.call(tr, c, vx, vz));
     // drifting with a passenger: a tip for every second of it
     if (this.car.drifting && this.carrying && sp > 9) {
       this.driftTick += dt;
@@ -1024,7 +1024,7 @@ export class TaxiMode {
       this.time += dt;
       const { hit } = this.car.update(dt, inp, this.world);
       if (hit) { this.audio.play('crash'); }
-      if (!this.deps.traffic.cars) for (const p of this.deps.traffic.carPositions()) if (this.car.push(p.x, p.z, 1.9) && Math.hypot(this.car.vx, this.car.vz) > 6) this.audio.play('crash');
+      if (this.deps.traffic && !this.deps.traffic.cars) for (const p of this.deps.traffic.carPositions()) if (this.car.push(p.x, p.z, 1.9) && Math.hypot(this.car.vx, this.car.vz) > 6) this.audio.play('crash');
       this.updateAmbient(dt);
       this.trafficChaos(dt);
       if (this.car.drifting) { this.driftTime += dt; if (Math.floor(this.driftTime * 2) !== Math.floor((this.driftTime - dt) * 2)) this.audio.play('drift'); }
@@ -1050,6 +1050,7 @@ export class TaxiMode {
       this.updateAmbient(0);
     }
     this.world.update(this.paused ? 0 : dt, elapsed);
+    this.world.focus(this.car.x, this.car.z);
     this.audio.engine(this.car.speed, inp.throttle);
 
     // the cab

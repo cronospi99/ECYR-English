@@ -1843,3 +1843,14 @@ Language Defenders — modo clase por el relay de la plataforma + 60 fps
     ~56 fps, baja la calidad paso a paso (resolución, brillo, partículas, sombras) hasta sostener
     60; si el aparato está limitado a 30 fps por ahorro de batería, no lo degrada en vano. En Taxi
     Rush la calidad automática ahora actúa por debajo de 54 fps (antes 32).
+
+Taxi Rush — Fase 2 (juego propio y ciudad nueva)
+- Taxi Rush arranca con su propia entrada (src/taxi/boot.ts): ya no carga la ciudad, la gente, el
+  personaje ni el tráfico de Da World. Da World sigue igual.
+- Ciudad nueva y propia: edificios procedurales por zona (torres en el centro, casas con tejado,
+  naves industriales, landmarks), ventanas que se encienden de noche, calles con carriles, pasos de
+  cebra, aceras, parques y la autopista. Sin modelos de kits: solo se descargan el taxi y el tráfico.
+- 6 materiales compartidos, geometría fusionada por celdas. Medido en la salida: ~372 llamadas de
+  dibujo y ~0,5 M triángulos por fotograma (antes ~1.750 y ~3,3 M).
+- Se conservan los 155 destinos (91 del centro con sus mismos ids + 64 de los distritos); todos
+  comprobados: parada en zona transitable y con edificio delante.
