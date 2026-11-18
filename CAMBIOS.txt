@@ -1879,3 +1879,11 @@ Ayudas visuales de gramática (diagramas por datos)
   tienen textos alternativos descriptivos.
 - Auditados por el corrector de inglés (29 errores corregidos: escalas, ✓/✗, líneas de tiempo, rótulos)
   y revisados con capturas a 320 y 560 px en claro y oscuro (rótulos de escala sin solaparse).
+
+Contenido A1 ×3 (piloto)
+- Lecturas A1: 24 → 72 (+48), con glosario y 6 preguntas cada una (Verdadero/Falso equilibrados).
+- Listening A1: 21 → 63 (+42); el audio se genera con las voces de la plataforma.
+- Writing A1: 50 → 150 tareas extra (+100), añadidas al final de cada unidad (los borradores guardados
+  no se pierden), con modelo que cumple sus criterios y su longitud.
+- Auditado por el corrector de inglés (≈80 correcciones aplicadas) y validado con
+  npm run content:validate. Guía de calidad en docs/guia-contenido.md.
