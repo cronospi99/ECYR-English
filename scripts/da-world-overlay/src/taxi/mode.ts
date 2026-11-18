@@ -17,19 +17,27 @@ import type { DayNight } from '../city/daynight';
 import { setNightGlow } from '../city/palette';
 import { Character } from '../city/character';
 import { extListeners, type Session } from '../net/session';
-import { TaxiWorld, DISTRICT_LABEL, MIN_X, MAX_X, MIN_Z, MAX_Z, VX, HZ, K_MIN, K_MAX, J_MIN, J_MAX, type QuizLight } from './world';
+import { TaxiWorld, DISTRICT_LABEL, zoneOfBlock, HWY_Z0, HWY_W, HWY_MID, MIN_X, MAX_X, MIN_Z, MAX_Z, VX, HZ, K_MIN, K_MAX, J_MIN, J_MAX, type QuizLight } from './world';
 import { CarBody, TaxiModel, loadLook, saveLook, PAINTS, DRIVER_SHIRTS, DRIVER_SKINS, DRIVER_HAIR, DRIVER_OUTFITS, type TaxiLook, type DriveInput } from './car';
 import { LIGHT_QUESTIONS, type LightQuestion } from './questions';
 import { Smoke } from './smoke';
 import { loadSportCar } from './sportcar';
 import { TaxiTraffic } from './traffic';
+import { FrameGovernor } from './governor';
 import { loadCarPack } from '../city/carpack';
 import type { StreetCar } from '../city/traffic';
 import { cluesFor } from './places';
 import { TaxiAudio } from './audio';
 import { TAXI_CSS } from './ui.css';
 import { CAMERA_FAR } from '../world/environment';
-import { QUALITY, rememberQuality, type QualityName } from '../core/quality';
+
+/** Minimap: pixels per world unit of the cached base map, and the margin painted round the city. */
+const MAP_S = 2, MAP_PAD = 40;
+let mapBaseCache: HTMLCanvasElement | null = null;
+const ZONE_TINT: Record<string, string> = {
+  centre: '#6b5b2a', downtown: '#33466a', harbour: '#1f6275', oldtown: '#6a4630', campus: '#5a3f78',
+  airport: '#4b5563', suburbs: '#3f7a45', market: '#7a4a22', parkside: '#2f6b3a',
+};
 
 /** ECYR perf: how far the taxi's camera draws (the haze is opaque a little before this). */
 const TAXI_FAR = 175;
@@ -118,7 +126,7 @@ export class TaxiMode {
   private keys = new Set<string>();
   private touch = { l: false, r: false, gas: false, brake: false, drift: false, boost: false };
   private paused = false;
-  private perf: { t: number; frames: number; slow: number } | null = null;
+  private governor: FrameGovernor;
   private passengers: Passenger[] = [];
   private nextPid = 1;
   private carrying: Passenger | null = null;
@@ -147,6 +155,11 @@ export class TaxiMode {
   private sayTimer = 0;
 
   constructor(private deps: TaxiDeps) {
+    this.governor = new FrameGovernor({
+      engine: deps.engine, environment: deps.environment,
+      world: () => this.world, street: () => this.street,
+      note: (t) => this.callout(t, '#7fd8ff'),
+    });
     const style = document.createElement('style');
     style.textContent = TAXI_CSS;
     document.head.appendChild(style);
@@ -323,7 +336,16 @@ export class TaxiMode {
   private closePreview(): void {
     if (!this.preview) return;
     cancelAnimationFrame(this.preview.raf);
+    this.preview.model.dispose();
+    this.preview.scene.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (!m.isMesh) return;
+      m.geometry.dispose();
+      for (const mt of Array.isArray(m.material) ? m.material : [m.material]) mt.dispose();
+    });
+    (this.preview.scene.environment as THREE.Texture | null)?.dispose();
     this.preview.renderer.dispose();
+    this.preview.renderer.forceContextLoss();
     this.preview.renderer.domElement.remove();
     this.preview = null;
   }
@@ -348,8 +370,9 @@ export class TaxiMode {
       void loadCarPack().then(() => {
         if (this.street) return;
         const tier = this.deps.engine.quality.name;
-        this.street = new TaxiTraffic(tier === 'low' ? 0.45 : tier === 'medium' ? 0.7 : 1);
-        this.street.drawRadius = tier === 'low' ? 70 : tier === 'medium' ? 95 : 120;
+        this.street = new TaxiTraffic(FrameGovernor.trafficDensity(tier));
+        this.governor.apply();
+        this.street.setShare(this.governor.level >= 8 ? 0.6 : 1);
         this.deps.engine.scene.add(this.street.group);
         this.street.setVisible(this.active);
         this.street.clearArea(30, 16.5, 22);
@@ -358,7 +381,7 @@ export class TaxiMode {
     this.world.setVisible(true);
     this.street?.setVisible(true);
     scene.add(this.arrow, this.destMarker);
-    if (this.model) { scene.remove(this.model.group); }
+    if (this.model) { scene.remove(this.model.group); this.model.dispose(); }
     this.model = new TaxiModel(this.look);
     scene.add(this.model.group);
     // start on Main Street, by the taxi rank, facing east
@@ -367,7 +390,7 @@ export class TaxiMode {
     this.street?.clearArea(30, 16.5, 22);
     this.money = 0; this.delivered = 0; this.teamDelivered = 0; this.missed = 0; this.asked = 0; this.correct = 0; this.time = 0;
     this.carrying = null; this.passengers = []; this.ranRed.clear(); this.lastQuiz.clear(); this.combo = 0; this.comboTime = 0;
-    for (const m of this.passengerMarks.values()) scene.remove(m.g);
+    for (const m of this.passengerMarks.values()) this.dropMark(m);
     this.passengerMarks.clear();
     this.active = true;
     this.paused = false;
@@ -387,35 +410,7 @@ export class TaxiMode {
     cam.far = TAXI_FAR; cam.updateProjectionMatrix();
     this.deps.environment.setDomeScale(0.5);
     this.deps.environment.setProbeCadence(6, 140);
-    this.perf = { t: 0, frames: 0, slow: 0 };
-  }
-
-  /**
-   * ECYR perf: watch the frame rate while driving and step the graphics down by itself when the
-   * device cannot keep up (after a few seconds below ~32 fps), so a classroom laptop or an old
-   * phone ends up on the setting it can run without anybody opening a menu.
-   */
-  private watchFrameRate(dt: number): void {
-    const p = this.perf;
-    if (!p || this.paused) return;
-    p.t += dt; p.frames++;
-    if (p.t < 2) return;
-    const fps = p.frames / p.t;
-    p.t = 0; p.frames = 0;
-    p.slow = fps < 54 ? p.slow + 1 : Math.max(0, p.slow - 1);
-    if (p.slow < 2) return;
-    p.slow = 0;
-    const order: QualityName[] = ['low', 'medium', 'high', 'ultra'];
-    const now = order.indexOf(this.deps.engine.quality.name);
-    if (now <= 0) return;
-    const next = order[now - 1]!;
-    const { engine, environment } = this.deps;
-    engine.setQuality(next);
-    environment.setShadowQuality(QUALITY[next].shadowMap, QUALITY[next].shadowRadius);
-    environment.setReflections(QUALITY[next].reflections);
-    rememberQuality(next);
-    if (this.street) this.street.drawRadius = next === 'low' ? 70 : next === 'medium' ? 95 : 120;
-    this.callout('GRAPHICS: ' + next.toUpperCase(), '#7fd8ff');
+    this.governor.reset();
   }
 
   /** Back to the walking game. */
@@ -424,7 +419,6 @@ export class TaxiMode {
     cam.far = CAMERA_FAR; cam.updateProjectionMatrix();
     this.deps.environment.setDomeScale(1);
     this.deps.environment.setProbeCadence(2.5, 18);
-    this.perf = null;
     this.smoke.points.parent?.remove(this.smoke.points);
     this.deps.engine.post.setSpeedBlur(0);
     if (this.active) this.finishReport(false);
@@ -434,8 +428,8 @@ export class TaxiMode {
     if (this.world) this.world.setVisible(false);
     this.street?.setVisible(false);
     scene.remove(this.arrow, this.destMarker);
-    if (this.model) scene.remove(this.model.group);
-    for (const m of this.passengerMarks.values()) scene.remove(m.g);
+    if (this.model) { scene.remove(this.model.group); this.model.dispose(); this.model = null; }
+    for (const m of this.passengerMarks.values()) this.dropMark(m);
     this.passengerMarks.clear();
     for (const r of this.remotes.values()) scene.remove(r.body);
     this.remotes.clear();
@@ -558,37 +552,84 @@ export class TaxiMode {
   }
 
   /* ---- minimap ---- */
+  /**
+   * The static map — lawn, sea, districts, roads, highway, labels — is painted once (it is the same
+   * city every shift) and reused; each frame only rotates it and draws the markers on top.
+   */
   private drawMapBase(): HTMLCanvasElement {
-    const W = MAX_X - MIN_X, H = MAX_Z - MIN_Z, s = 2;
+    if (mapBaseCache) return mapBaseCache;
+    const s = MAP_S, P = MAP_PAD;
+    const W = MAX_X - MIN_X + P * 2, H = MAX_Z - MIN_Z + P * 2;
     const cv = document.createElement('canvas');
     cv.width = W * s; cv.height = H * s;
     const c = cv.getContext('2d')!;
-    c.fillStyle = '#2b5a3a'; c.fillRect(0, 0, cv.width, cv.height);
+    const X = (x: number) => (x - MIN_X + P) * s, Z = (z: number) => (z - MIN_Z + P) * s;
+    c.fillStyle = '#26472e'; c.fillRect(0, 0, cv.width, cv.height);
+    c.fillStyle = '#2f8fc4'; c.fillRect(X(MAX_X) - 4, 0, cv.width, cv.height); // the sea, east of the harbour
+    // districts: every block tinted by where it is
+    const sums = new Map<string, { x: number; z: number; n: number }>();
+    for (let k = K_MIN - 1; k <= K_MAX; k++) {
+      for (let j = J_MIN - 1; j <= J_MAX; j++) {
+        const x0 = Math.max(VX(k) + 6, MIN_X), x1 = Math.min(VX(k + 1), MAX_X);
+        const z0 = Math.max(HZ(j) + 6, MIN_Z), z1 = j >= J_MAX ? HWY_Z0 : HZ(j + 1);
+        const zone = zoneOfBlock(k, j);
+        c.fillStyle = ZONE_TINT[zone]; c.fillRect(X(x0), Z(z0), (x1 - x0) * s, (z1 - z0) * s);
+        const e = sums.get(zone) ?? { x: 0, z: 0, n: 0 };
+        e.x += (x0 + x1) / 2; e.z += (z0 + z1) / 2; e.n++; sums.set(zone, e);
+      }
+    }
     c.fillStyle = '#3b4252';
-    for (let k = K_MIN; k <= K_MAX; k++) c.fillRect((VX(k) - MIN_X) * s, 0, 6 * s, cv.height);
-    for (let j = J_MIN; j <= J_MAX; j++) c.fillRect(0, (HZ(j) - MIN_Z) * s, cv.width, 6 * s);
-    c.fillStyle = '#2f8fc4'; c.fillRect((MAX_X - MIN_X) * s - 4, 0, 4, cv.height);
-    c.strokeStyle = 'rgba(255,210,31,.5)'; c.lineWidth = 3; c.strokeRect((0 - MIN_X) * s, (0 - MIN_Z) * s, 99 * s, 108 * s);
+    for (let k = K_MIN; k <= K_MAX; k++) c.fillRect(X(VX(k)), Z(MIN_Z), 6 * s, (HWY_Z0 - MIN_Z) * s);
+    for (let j = J_MIN; j <= J_MAX; j++) c.fillRect(X(MIN_X), Z(HZ(j)), (MAX_X - MIN_X) * s, 6 * s);
+    // the highway: six lanes, a yellow median
+    c.fillStyle = '#5a6272'; c.fillRect(X(MIN_X), Z(HWY_Z0), (MAX_X - MIN_X) * s, HWY_W * s);
+    c.fillStyle = '#f2c230'; c.fillRect(X(MIN_X), Z(HWY_MID) - 1, (MAX_X - MIN_X) * s, 2);
+    c.strokeStyle = 'rgba(255,210,31,.55)'; c.lineWidth = 3; c.setLineDash([10, 8]);
+    c.strokeRect(X(VX(-1) + 6), Z(HZ(-1) + 6), (VX(4) - VX(-1) - 6) * s, (HZ(5) - HZ(-1) - 6) * s);
+    c.setLineDash([]);
+    // labels
+    c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
+    c.font = '800 22px "Trebuchet MS",Arial,sans-serif'; c.lineWidth = 5; c.strokeStyle = 'rgba(8,12,20,.85)'; c.fillStyle = '#fff';
+    for (const [zone, e] of sums) { const t = DISTRICT_LABEL[zone as keyof typeof DISTRICT_LABEL].toUpperCase(); c.strokeText(t, X(e.x / e.n), Z(e.z / e.n)); c.fillText(t, X(e.x / e.n), Z(e.z / e.n)); }
+    c.font = '800 20px Arial,sans-serif'; c.strokeText('HIGHWAY 1', X((MIN_X + MAX_X) / 2), Z(HWY_Z0 + HWY_W / 2)); c.fillText('HIGHWAY 1', X((MIN_X + MAX_X) / 2), Z(HWY_Z0 + HWY_W / 2));
+    c.font = '800 20px Arial,sans-serif'; c.strokeText('SEA', X(MAX_X) + 60, Z((MIN_Z + MAX_Z) / 2)); c.fillText('SEA', X(MAX_X) + 60, Z((MIN_Z + MAX_Z) / 2));
+    mapBaseCache = cv;
     return cv;
   }
 
   private drawMap(): void {
     const cv = this.mapCanvas, base = this.mapBase; if (!cv || !base || !this.world) return;
-    const c = cv.getContext('2d')!, s = 2, R = 70; // world units shown each side
+    const c = cv.getContext('2d')!, s = MAP_S, R = 70; // world units shown each side
+    const k = cv.width / (R * 2 * s), ang = this.car.yaw - Math.PI;
     c.save();
     c.fillStyle = '#10131a'; c.fillRect(0, 0, cv.width, cv.height);
     c.translate(cv.width / 2, cv.height / 2);
-    c.rotate(this.car.yaw - Math.PI);
-    const k = cv.width / (R * 2 * s);
+    c.rotate(ang);
     c.scale(k, k);
-    c.drawImage(base, -(this.car.x - MIN_X) * s, -(this.car.z - MIN_Z) * s);
-    const dot = (x: number, z: number, col: string, r: number) => { c.fillStyle = col; c.beginPath(); c.arc((x - this.car.x) * s, (z - this.car.z) * s, r, 0, 7); c.fill(); };
+    c.drawImage(base, -(this.car.x - MIN_X + MAP_PAD) * s, -(this.car.z - MIN_Z + MAP_PAD) * s);
+    const dot = (x: number, z: number, col: string, r: number) => {
+      c.fillStyle = col; c.strokeStyle = '#0b0e14'; c.lineWidth = 2.5;
+      c.beginPath(); c.arc((x - this.car.x) * s, (z - this.car.z) * s, r, 0, 7); c.fill(); c.stroke();
+    };
     for (const p of this.passengers) if (!p.taker) dot(p.x, p.z, this.fareColor(p), 9);
     for (const L of this.world.lights) if (L.red && !L.cleared) dot(L.x, L.z, '#ff4a3d', 5);
-    if (this.carrying && this.destKnown) { const p = this.world.places[this.carrying.dest]; dot(p.x, p.z, '#7dff6a', 13); }
     for (const r of this.remotes.values()) dot(r.x, r.z, '#ff7af6', 7);
+    const dest = this.carrying && this.destKnown ? this.world.places[this.carrying.dest] : null;
+    if (dest) { dot(dest.x, dest.z, '#7dff6a', 13); c.strokeStyle = '#fff'; c.lineWidth = 3; c.beginPath(); c.arc((dest.x - this.car.x) * s, (dest.z - this.car.z) * s, 20, 0, 7); c.stroke(); }
     c.restore();
-    c.fillStyle = '#ffd21f'; c.beginPath(); c.moveTo(cv.width / 2, cv.height / 2 - 14); c.lineTo(cv.width / 2 + 10, cv.height / 2 + 10); c.lineTo(cv.width / 2 - 10, cv.height / 2 + 10); c.fill();
+    // a destination off the map: an arrow on the rim, pointing at it
+    if (dest) {
+      const rx = (dest.x - this.car.x) * s * k, rz = (dest.z - this.car.z) * s * k;
+      const sx = rx * Math.cos(ang) - rz * Math.sin(ang), sy = rx * Math.sin(ang) + rz * Math.cos(ang);
+      const dist = Math.hypot(sx, sy), edge = cv.width / 2 - 16;
+      if (dist > edge) {
+        const ux = sx / dist, uy = sy / dist, bx = cv.width / 2 + ux * edge, by = cv.height / 2 + uy * edge;
+        c.fillStyle = '#7dff6a'; c.strokeStyle = '#0b0e14'; c.lineWidth = 3;
+        c.beginPath(); c.moveTo(bx + ux * 11, by + uy * 11); c.lineTo(bx - ux * 7 - uy * 9, by - uy * 7 + ux * 9); c.lineTo(bx - ux * 7 + uy * 9, by - uy * 7 - ux * 9); c.closePath(); c.fill(); c.stroke();
+      }
+    }
+    c.fillStyle = '#ffd21f'; c.strokeStyle = '#0b0e14'; c.lineWidth = 3;
+    c.beginPath(); c.moveTo(cv.width / 2, cv.height / 2 - 14); c.lineTo(cv.width / 2 + 10, cv.height / 2 + 10); c.lineTo(cv.width / 2 - 10, cv.height / 2 + 10); c.closePath(); c.fill(); c.stroke();
   }
 
   /* ================================================================ *
@@ -640,7 +681,7 @@ export class TaxiMode {
   private refreshMarks(): void {
     const scene = this.deps.engine.scene;
     const live = new Set(this.passengers.filter((p) => !p.taker).map((p) => p.id));
-    for (const [id, m] of this.passengerMarks) if (!live.has(id)) { scene.remove(m.g); this.passengerMarks.delete(id); }
+    for (const [id, m] of this.passengerMarks) if (!live.has(id)) { this.dropMark(m); this.passengerMarks.delete(id); }
     for (const p of this.passengers) {
       if (p.taker || this.passengerMarks.has(p.id)) continue;
       const g = new THREE.Group();
@@ -658,6 +699,19 @@ export class TaxiMode {
       scene.add(g);
       this.passengerMarks.set(p.id, { g, person });
     }
+  }
+
+  /** Take a waiting passenger's marker out of the scene and free what it owned. */
+  private dropMark(m: { g: THREE.Group; person: Character }): void {
+    m.g.parent?.remove(m.g);
+    m.person.dispose();
+    m.g.traverse((o) => {
+      const mesh = o as THREE.Mesh;
+      // the person's own pieces were freed above; the ring and the beam are ours
+      if (mesh.isMesh && (mesh.material as THREE.Material).type === 'MeshBasicMaterial' && (mesh.geometry.type === 'RingGeometry' || mesh.geometry.type === 'CylinderGeometry')) {
+        mesh.geometry.dispose(); (mesh.material as THREE.Material).dispose();
+      }
+    });
   }
 
   private nearestWaiting(): Passenger | null {
@@ -894,7 +948,7 @@ export class TaxiMode {
           this.remotes.set(from, r);
         }
         if (r.look !== d.c) {
-          if (r.model) r.body.remove(r.model.group);
+          if (r.model) { r.body.remove(r.model.group); r.model.dispose(); }
           r.model = new TaxiModel({ ...loadLook(), color: String(d.c), driver: { shirt: '#e8637c', pants: '#2d3a5a', skin: '#e0ac85', hair: '#2b1a10', outfit: 'cap' } });
           r.body.add(r.model.group);
           r.look = String(d.c);
@@ -950,7 +1004,7 @@ export class TaxiMode {
    * ================================================================ */
 
   private updateAmbient(dt: number): void {
-    this.street?.update(dt, { x: this.car.x, z: this.car.z });
+    this.street?.update(dt, { x: this.car.x, z: this.car.z, yaw: this.car.yaw });
   }
 
   /**
@@ -1011,7 +1065,7 @@ export class TaxiMode {
 
   update(dt: number, elapsed: number): void {
     if (!this.active || !this.world || !this.model) return;
-    this.watchFrameRate(dt);
+    this.governor.tick(this.paused);
     const { engine, environment, dayNight } = this.deps;
     const sky = dayNight.current();
     environment.apply(sky);
@@ -1090,7 +1144,7 @@ export class TaxiMode {
 
     // other drivers glide to where they said they were
     for (const [id, r] of this.remotes) {
-      if (performance.now() - r.seen > 8000) { engine.scene.remove(r.body); this.remotes.delete(id); continue; }
+      if (performance.now() - r.seen > 8000) { engine.scene.remove(r.body); r.model?.dispose(); this.remotes.delete(id); continue; }
       const k = Math.min(1, dt * 8);
       r.x += (r.tx - r.x) * k; r.z += (r.tz - r.z) * k;
       let dy = r.tyaw - r.yaw; while (dy > Math.PI) dy -= Math.PI * 2; while (dy < -Math.PI) dy += Math.PI * 2;

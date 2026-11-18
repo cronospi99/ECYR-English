@@ -1,7 +1,7 @@
 import "../styles.css";
 
 import { Engine } from "../core/engine";
-import { detectQuality, QUALITY } from "../core/quality";
+import { detectTaxiQuality, QUALITY } from "../core/quality";
 import { loadCarPack } from "../city/carpack";
 import { loadSurfaces, setSurfaceAnisotropy } from "../city/surfaces";
 import { DayNight } from "../city/daynight";
@@ -9,7 +9,7 @@ import { setTextureAnisotropy } from "../city/textures";
 import { loadAppearance } from "../game/appearance";
 import { Lobby } from "../ui/lobby";
 import { NetClient } from "../net/client";
-import { PeerGuest, PeerHost, clearCodeInUrl, codeInUrl, joinUrl } from "../net/peer";
+import { PeerGuest, PeerHost, clearCodeInUrl, codeInUrl, joinUrl, useRelayTransport } from "../net/peer";
 import { NO_SESSION, type NetHandlers, type Session } from "../net/session";
 import { Speech } from "../learn/speech";
 import { createEnvironment } from "../world/environment";
@@ -32,7 +32,9 @@ const setProgress = (fraction: number): void => {
 };
 
 async function boot(): Promise<void> {
-  const quality = detectQuality();
+  // class mode over the platform's WebSocket relay instead of PeerJS / WebRTC
+  useRelayTransport(true);
+  const quality = detectTaxiQuality();
   setTextureAnisotropy(QUALITY[quality].anisotropy);
   setSurfaceAnisotropy(QUALITY[quality].anisotropy);
   if (quality !== "low") loadSurfaces();

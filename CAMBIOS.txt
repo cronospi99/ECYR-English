@@ -1887,3 +1887,14 @@ Contenido A1 ×3 (piloto)
   no se pierden), con modelo que cumple sus criterios y su longitud.
 - Auditado por el corrector de inglés (≈80 correcciones aplicadas) y validado con
   npm run content:validate. Guía de calidad en docs/guia-contenido.md.
+
+Taxi Rush — Fase 4 (pulido y equipos de bajos recursos)
+- Regulador de 60 fps de varios pasos (resolución, brillo, sombras, distancia, reflejos, tráfico):
+  baja calidad si cae de ~56 fps y la recupera cuando sobra; no degrada en vano a 30 fps fijos.
+- Calidad inicial según el equipo: teléfonos con ≤ 6 núcleos o poca memoria empiezan en "baja".
+- Fugas de memoria corregidas al volver al garaje (taxi, vista previa, marcadores, autos remotos):
+  estable tras 5 ciclos.
+- Minimapa nuevo de la ciudad (distritos, autopista, mar) con flecha al destino fuera del mapa.
+- Rutas: la flecha lleva al destino en 200/200 viajes de prueba.
+- Modo clase por el relay de la plataforma (como Language Defenders): ya no depende de PeerJS ni de
+  la misma red. Producción usa la misma VITE_RELAY_URL que Impostor.

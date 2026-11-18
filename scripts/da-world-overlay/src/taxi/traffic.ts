@@ -40,6 +40,9 @@ export class TaxiTraffic {
   private meshes: { tpl: CarTemplate; parts: THREE.InstancedMesh[] }[] = [];
   /** Only cars this close to the taxi are drawn (the rest still drive). */
   drawRadius = 120;
+  /** Fraction of the cars that are on the road (the governor thins them on slow devices). */
+  private share = 1;
+  setShare(f: number): void { this.share = f; }
 
   constructor(density = 1) {
     const tpls = carTemplates();
@@ -130,10 +133,12 @@ export class TaxiTraffic {
     car.flying = true;
   }
 
-  update(dt: number, taxi: { x: number; z: number }): void {
+  update(dt: number, taxi: { x: number; z: number; yaw?: number }): void {
     // lane order, so each car can keep its distance from the one in front
     const byLane = new Map<Lane, Car[]>();
+    const limit = Math.ceil(this.cars.length * this.share);
     for (const c of this.cars) {
+      if (c.id >= limit) { c.x = c.z = -1e5; continue; }
       if (c.fly) continue;
       let l = byLane.get(c.lane);
       if (!l) byLane.set(c.lane, (l = []));
@@ -161,6 +166,7 @@ export class TaxiTraffic {
     const used = this.meshes.map(() => 0);
     const R2 = this.drawRadius * this.drawRadius;
     for (const c of this.cars) {
+      if (c.id >= limit) continue;
       const m = this.meshes[c.tpl];
       if (c.fly) {
         const f = c.fly;
@@ -192,6 +198,8 @@ export class TaxiTraffic {
       }
       const dx = c.x - taxi.x, dz = c.z - taxi.z;
       if (dx * dx + dz * dz > R2) continue;
+      // behind the camera (it follows the taxi's heading) nobody sees it: skip the draw, keep driving
+      if (taxi.yaw !== undefined && dx * Math.sin(taxi.yaw) + dz * Math.cos(taxi.yaw) < -24) continue;
       dummy.scale.setScalar(1);
       dummy.updateMatrix();
       const slot = used[c.tpl]++;

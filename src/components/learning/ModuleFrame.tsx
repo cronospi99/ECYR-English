@@ -9,6 +9,13 @@ import { cn } from '@/lib/cn';
  * /public as same-origin pages). A floating glass bar keeps the platform's
  * navigation one tap away without stealing space from the game.
  */
+/** Class mode in embedded games (Taxi Rush) talks to the platform's relay: hand them its URL. */
+function withRelay(src: string): string {
+  const relay = (import.meta.env.VITE_RELAY_URL as string | undefined)?.trim();
+  if (!relay || !src.includes('/modules/') || /[?&]relay=/.test(src)) return src;
+  return src + (src.includes('?') ? '&' : '?') + 'relay=' + encodeURIComponent(relay);
+}
+
 export function ModuleFrame({
   src,
   title,
@@ -75,7 +82,7 @@ export function ModuleFrame({
       )}
       <iframe
         ref={frame}
-        src={src}
+        src={withRelay(src)}
         title={title}
         onLoad={() => setLoaded(true)}
         allow="microphone; autoplay; fullscreen; clipboard-write; speaker-selection"

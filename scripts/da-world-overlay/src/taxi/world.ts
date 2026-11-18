@@ -260,6 +260,12 @@ export const DISTRICT_LABEL: Record<District | 'centre', string> = {
   parkside: 'Parkside',
 };
 
+/** Which district a block belongs to (the minimap paints them). */
+export function zoneOfBlock(k: number, j: number): District | 'centre' {
+  const dx = k < CENTRE.k0 ? -1 : k > CENTRE.k1 ? 1 : 0, dz = j < CENTRE.j0 ? -1 : j > CENTRE.j1 ? 1 : 0;
+  return dx === 0 && dz === 0 ? 'centre' : DISTRICT_OF(dx, dz);
+}
+
 /** The old city centre: five avenues wide, six streets deep, in the middle of the grid. */
 const CENTRE = { k0: -1, k1: 3, j0: -1, j1: 4 };
 /** Blocks that hold the three big landmarks, along the south edge of the centre. */
@@ -302,7 +308,7 @@ function shuffle<T>(a: T[], rand: () => number): T[] {
  * awnings, signals and facade extras up to DETAIL_R.
  */
 type ChunkKind = 'keep' | 'near' | 'far' | 'detail';
-export const LOD = { detail: 75, near: 120 };
+const LOD_BASE = { detail: 75, near: 120 };
 
 export class TaxiWorld {
   readonly group = new Group();
@@ -313,6 +319,7 @@ export class TaxiWorld {
   readonly footprints: Footprint[] = [];
   /** Merged static meshes, kept so far-away ones can be switched off. */
   private chunks: { mesh: Mesh; x: number; z: number; r: number; kind: ChunkKind }[] = [];
+  private lodK = 1;
   private lightGroups: { g: Group; x: number; z: number }[] = [];
   /** 1 = a car may be here. */
   private grid: Uint8Array;
@@ -396,8 +403,13 @@ export class TaxiWorld {
    * Switch off whatever is too far to matter (past the fog). Cheap: a few hundred
    * distance checks. Call once per frame with the camera's focus (the taxi).
    */
+  /** Governor / tier: scale every LOD distance (1 = full). */
+  setLod(k: number): void { this.lodK = k; }
+
   focus(x: number, z: number, radius = 165): void {
-    const half = CELL / 2;
+    const half = CELL / 2, k = this.lodK;
+    radius = Math.max(110, radius * k);
+    const LOD = { detail: LOD_BASE.detail * k, near: LOD_BASE.near * k };
     for (const c of this.chunks) {
       const d = Math.hypot(c.x - x, c.z - z);
       switch (c.kind) {
