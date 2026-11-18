@@ -20,12 +20,12 @@ export function VisualCard({ v, onOpen, focus, size = 'md' }: { v: Visual; onOpe
         'group bg-card shadow-card relative block overflow-hidden rounded-[20px] text-left transition-transform active:scale-[0.99]',
         size === 'sm' ? 'w-[180px] shrink-0' : size === 'lg' ? 'w-full' : 'w-[260px] shrink-0 sm:w-[300px]',
       )}
-      aria-label={`View infographic: ${v.title}`}
+      aria-label={`View infographic: ${v.title}. ${v.titleEs}`}
     >
-      <div className={cn('bg-fill-2 relative overflow-hidden', portrait ? 'aspect-[4/5]' : 'aspect-[3/2]')}>
+      <div className={cn('print-sheet relative overflow-hidden', portrait ? 'aspect-[4/5]' : 'aspect-[3/2]')}>
         <img
           src={visualUrl(v, true)}
-          alt=""
+          alt={`${v.title}. ${v.titleEs}`}
           loading="lazy"
           decoding="async"
           className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
@@ -169,7 +169,7 @@ export function VisualFigure({
             go(e.clientX < s.x ? 1 : -1);
           }
         }}
-        className="group bg-fill-2 relative block w-full touch-pan-y overflow-hidden"
+        className="group print-sheet relative block w-full touch-pan-y overflow-hidden"
         style={{ aspectRatio: `${v.w} / ${v.h}`, maxHeight: 'min(68vh, 520px)', minHeight: 180 }}
         aria-label={`Ampliar imagen: ${v.title}`}
       >
@@ -364,7 +364,7 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Visual[]; 
               src={visualUrl(v)}
               alt={`${v.title}. ${v.titleEs}`}
               draggable={false}
-              className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-2 sm:p-4"
+              className="print-sheet-img absolute inset-0 m-auto max-h-full max-w-full object-contain p-2 sm:p-4"
               style={{ transform: `translate(${pos.x}px, ${pos.y}px) scale(${scale})`, transition: pinch.current || drag.current ? 'none' : 'transform .2s ease-out' }}
             />
             {items.length > 1 && (

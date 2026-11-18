@@ -52,9 +52,9 @@ export function GrammarCuts({
               onClick={() => setOpen(i)}
               className="group bg-card shadow-card relative shrink-0 snap-start overflow-hidden rounded-[16px] text-left"
               style={{ width: `min(${width}px, 82vw)` }}
-              aria-label={`Ver imagen: ${c.title}`}
+              aria-label={`Ver imagen: ${c.title}. ${c.titleEs}`}
             >
-              <div className="bg-fill-2 flex h-[190px] items-center justify-center overflow-hidden">
+              <div className="print-sheet relative flex h-[190px] items-center justify-center overflow-hidden">
                 <img
                   src={visualUrl(c, true)}
                   alt={`${c.title}. ${c.titleEs}`}

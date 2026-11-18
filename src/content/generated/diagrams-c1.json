@@ -1,0 +1,261 @@
+{
+  "C1-1-0": {
+    "kind": "compare", "point": "Phrasal verbs", "tone": "orange",
+    "title": "Separable vs inseparable phrasal verbs",
+    "columns": [
+      { "head": "separable", "head_es": "se pueden separar", "use_es": "Con pronombre, va en medio.", "tone": "orange",
+        "items": [ { "t": "She turned off the light.", "ok": true }, { "t": "She turned the light off.", "ok": true }, { "t": "She turned it off.", "ok": true }, { "t": "She turned off it.", "ok": false } ] },
+      { "head": "inseparable", "head_es": "van juntos", "use_es": "Nunca se separan.", "tone": "blue",
+        "items": [ { "t": "She looks after the kids.", "ok": true }, { "t": "She looks after them.", "ok": true }, { "t": "She looks the kids after.", "ok": false }, { "t": "She looks them after.", "ok": false } ] }
+    ],
+    "note_es": "Si el objeto es un pronombre, en los separables va entre verbo y partícula. Los inseparables no admiten nada en medio."
+  },
+  "C1-1-1": {
+    "kind": "compare", "point": "Gerund & infinitive constructions", "tone": "purple",
+    "title": "Same verb, different meaning",
+    "columns": [
+      { "head": "verb + -ing", "head_es": "hecho previo o real", "use_es": "La acción ya ocurrió o es un hábito.", "tone": "blue",
+        "items": [ { "t": "I remember meeting her once." }, { "t": "I regret telling him." }, { "t": "I tried restarting it." } ] },
+      { "head": "verb + to + verb", "head_es": "tarea o propósito", "use_es": "La acción va después o es la meta.", "tone": "orange",
+        "items": [ { "t": "Remember to call her." }, { "t": "I regret to tell you this." }, { "t": "I tried to open the door." } ] }
+    ],
+    "note_es": "Remember, regret, try y stop cambian de significado: -ing mira al pasado o a lo hecho; to + verbo mira a lo que viene."
+  },
+  "C1-2-0": {
+    "kind": "slots", "point": "Review of verb patterns", "tone": "green",
+    "title": "Verb + object + verb",
+    "rows": [
+      { "label_es": "make / let", "slots": [ { "t": "She made", "role": "subject" }, { "t": "him", "role": "object" }, { "t": "apologise", "role": "verb", "label_es": "sin to" } ] },
+      { "label_es": "want / ask", "slots": [ { "t": "I want", "role": "subject" }, { "t": "him", "role": "object" }, { "t": "to help", "role": "verb", "label_es": "con to" } ] },
+      { "label_es": "see / hear", "slots": [ { "t": "We saw", "role": "subject" }, { "t": "them", "role": "object" }, { "t": "leaving", "role": "verb", "label_es": "-ing en curso" } ] }
+    ],
+    "note_es": "Make y let van sin to; want, ask y tell llevan to; see y hear admiten infinitivo sin to o -ing."
+  },
+  "C1-2-1": {
+    "kind": "transform", "point": "Cleft sentences with what", "tone": "pink",
+    "title": "Fronting with what",
+    "from": { "label_es": "Normal", "tokens": [ { "t": "I", "role": "subject", "id": "s" }, { "t": "love", "role": "verb", "id": "v" }, { "t": "her sense of humour", "role": "object", "id": "o" } ] },
+    "to": { "label_es": "Cleft", "tokens": [ { "t": "What", "role": "link", "add": true }, { "t": "I", "role": "subject", "id": "s" }, { "t": "love", "role": "verb", "id": "v" }, { "t": "is", "role": "aux", "add": true }, { "t": "her sense of humour", "role": "object", "id": "o" } ] },
+    "note_es": "What + oración + be + elemento destacado. La idea clave pasa al final, donde recibe el énfasis."
+  },
+  "C1-3-0": {
+    "kind": "compare", "point": "Indefinite & definite articles", "tone": "blue",
+    "title": "a / an, the, no article",
+    "columns": [
+      { "head": "a / an", "head_es": "nuevo o uno cualquiera", "use_es": "Primera mención.", "tone": "blue",
+        "items": [ { "t": "She bought a car." }, { "t": "He is an engineer." } ] },
+      { "head": "the", "head_es": "ya conocido", "use_es": "Ya se sabe cuál.", "tone": "green",
+        "items": [ { "t": "The car was red." }, { "t": "The sun is out." } ] },
+      { "head": "no article", "head_es": "general", "use_es": "Plurales e incontables en general.", "tone": "orange",
+        "items": [ { "t": "Cars are expensive." }, { "t": "Music helps me relax." } ] }
+    ],
+    "note_es": "A/an para algo nuevo, the para algo ya identificado y ningún artículo para generalizar con plurales e incontables."
+  },
+  "C1-3-1": {
+    "kind": "transform", "point": "-ing clauses", "tone": "teal",
+    "title": "Two sentences become one",
+    "from": { "label_es": "Dos acciones", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "walked home", "role": "verb", "id": "v" }, { "t": "and", "role": "link", "drop": true }, { "t": "she", "role": "subject", "drop": true }, { "t": "listened", "role": "verb", "id": "l" }, { "t": "to music", "role": "object", "id": "o" } ] },
+    "to": { "label_es": "Cláusula -ing", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "walked home", "role": "verb", "id": "v" }, { "t": "listening", "role": "verb", "id": "l" }, { "t": "to music", "role": "object", "id": "o" } ] },
+    "note_es": "Si el sujeto es el mismo y las acciones coinciden, se elimina and + sujeto y el segundo verbo pasa a -ing."
+  },
+  "C1-4-0": {
+    "kind": "transform", "point": "Reporting clauses", "tone": "indigo",
+    "title": "Direct speech to reported speech",
+    "from": { "label_es": "Directo", "tokens": [ { "t": "I", "role": "subject", "id": "i" }, { "t": "will call", "role": "verb", "id": "v" }, { "t": "you", "role": "object", "id": "y" }, { "t": "tomorrow", "role": "extra", "id": "t" } ] },
+    "to": { "label_es": "Indirecto", "tokens": [ { "t": "She said", "role": "other", "add": true }, { "t": "she", "role": "subject", "id": "i" }, { "t": "would call", "role": "verb", "id": "v" }, { "t": "me", "role": "object", "id": "y" }, { "t": "the next day", "role": "extra", "id": "t" } ] },
+    "note_es": "Al reportar cambian el tiempo (will a would), los pronombres y las expresiones de tiempo (tomorrow a the next day)."
+  },
+  "C1-4-1": {
+    "kind": "transform", "point": "Reporting clauses in the passive", "tone": "purple",
+    "title": "Reporting passive",
+    "from": { "label_es": "Activa", "tokens": [ { "t": "People say that", "role": "other", "drop": true }, { "t": "he", "role": "subject", "id": "s" }, { "t": "is", "role": "verb", "id": "v" }, { "t": "a genius", "role": "complement", "id": "c" } ] },
+    "to": { "label_es": "Pasiva", "tokens": [ { "t": "He", "role": "subject", "id": "s" }, { "t": "is said to be", "role": "verb", "id": "v" }, { "t": "a genius", "role": "complement", "id": "c" } ] },
+    "note_es": "El sujeto de la cláusula pasa al inicio: He is said to be… Evita decir quién lo afirma."
+  },
+  "C1-5-0": {
+    "kind": "slots", "point": "Sentence adverbs", "tone": "yellow",
+    "title": "Sentence adverb vs verb adverb",
+    "rows": [
+      { "label_es": "Opinión", "slots": [ { "t": "Fortunately,", "role": "extra", "label_es": "comenta todo" }, { "t": "nobody", "role": "subject" }, { "t": "was hurt", "role": "verb" } ] },
+      { "label_es": "Opinión", "slots": [ { "t": "Surprisingly,", "role": "extra", "label_es": "comenta todo" }, { "t": "the test", "role": "subject" }, { "t": "was easy", "role": "verb" } ] },
+      { "label_es": "Modo", "slots": [ { "t": "She", "role": "subject" }, { "t": "answered", "role": "verb" }, { "t": "honestly", "role": "extra", "label_es": "describe el verbo" } ] }
+    ],
+    "note_es": "Un adverbio de oración va al inicio con coma y comenta toda la frase. Un adverbio de modo describe cómo se hace la acción."
+  },
+  "C1-5-1": {
+    "kind": "compare", "point": "such…that / so…that", "tone": "red",
+    "title": "so + adjective, such + noun",
+    "columns": [
+      { "head": "so … that", "head_es": "+ adjetivo o adverbio", "use_es": "Grado + resultado.", "tone": "blue",
+        "items": [ { "t": "The film was so long that I fell asleep.", "ok": true }, { "t": "He ran so fast that nobody caught him.", "ok": true }, { "t": "It was so a long film that I slept.", "ok": false } ] },
+      { "head": "such … that", "head_es": "+ nombre", "use_es": "Grado con a/an + nombre.", "tone": "orange",
+        "items": [ { "t": "It was such a long film that I fell asleep.", "ok": true }, { "t": "They are such nice people that I miss them.", "ok": true }, { "t": "The film was such long that I slept.", "ok": false } ] }
+    ],
+    "note_es": "So va con adjetivo o adverbio; such va con un nombre (con a/an si es singular). That introduce el resultado."
+  },
+  "C1-6-0": {
+    "kind": "slots", "point": "Double comparatives", "tone": "mint",
+    "title": "The more…, the better…",
+    "rows": [
+      { "label_es": "Ejemplo 1", "slots": [ { "t": "The more", "role": "extra" }, { "t": "you practise,", "role": "subject" }, { "t": "the better", "role": "extra" }, { "t": "you’ll speak", "role": "verb" } ] },
+      { "label_es": "Ejemplo 2", "slots": [ { "t": "The sooner", "role": "extra" }, { "t": "we leave,", "role": "subject" }, { "t": "the earlier", "role": "extra" }, { "t": "we’ll arrive", "role": "verb" } ] }
+    ],
+    "note_es": "The + comparativo en cada mitad: si una cosa aumenta, la otra aumenta con ella."
+  },
+  "C1-6-1": {
+    "kind": "compare", "point": "will & would for habits", "tone": "teal",
+    "title": "will now, would then",
+    "columns": [
+      { "head": "will (present)", "head_es": "conducta típica", "use_es": "Rasgo habitual, a veces molesto.", "tone": "blue",
+        "items": [ { "t": "He will talk for hours.", "ok": true }, { "t": "Cats will sleep anywhere.", "ok": true } ] },
+      { "head": "would (past)", "head_es": "hábito pasado", "use_es": "Acciones repetidas, no estados.", "tone": "orange",
+        "items": [ { "t": "As kids, we would swim every day.", "ok": true }, { "t": "I would live in Paris as a child.", "ok": false }, { "t": "I used to live in Paris as a child.", "ok": true } ] }
+    ],
+    "note_es": "Will describe una conducta típica actual; would, hábitos pasados repetidos. Para estados se usa used to."
+  },
+  "C1-7-0": {
+    "kind": "compare", "point": "Optional & required relative pronouns", "tone": "green",
+    "title": "Can you drop the relative pronoun?",
+    "columns": [
+      { "head": "object: optional", "head_es": "puedes omitirlo", "use_es": "El pronombre es objeto de la cláusula.", "tone": "green",
+        "items": [ { "t": "The book that I bought was great.", "ok": true }, { "t": "The book I bought was great.", "ok": true } ] },
+      { "head": "subject: required", "head_es": "no se omite", "use_es": "El pronombre es sujeto de la cláusula.", "tone": "red",
+        "items": [ { "t": "The man who called is my boss.", "ok": true }, { "t": "The man lives next door is my boss.", "ok": false } ] }
+    ],
+    "note_es": "Si tras el pronombre viene un sujeto nuevo (I bought), se puede omitir. Si el pronombre es el sujeto, es obligatorio."
+  },
+  "C1-7-1": {
+    "kind": "compare", "point": "as if / as though / the way / like", "tone": "indigo",
+    "title": "Comparing manner",
+    "columns": [
+      { "head": "as if + past", "head_es": "irreal", "use_es": "No es cierto.", "tone": "purple",
+        "items": [ { "t": "He talks as if he knew everything." }, { "t": "She acts as though she owned it." } ] },
+      { "head": "as if + present", "head_es": "probable", "use_es": "Puede ser verdad.", "tone": "blue",
+        "items": [ { "t": "It looks as if it’s going to rain." }, { "t": "He sounds as though he’s ill." } ] },
+      { "head": "the way / like", "head_es": "manera", "use_es": "Cómo se hace algo.", "tone": "orange",
+        "items": [ { "t": "Do it the way I showed you." }, { "t": "She sings like a professional." } ] }
+    ],
+    "note_es": "As if + pasado da una comparación irreal; con presente, algo probable. The way y like indican manera."
+  },
+  "C1-8-0": {
+    "kind": "transform", "point": "Placement of direct & indirect objects", "tone": "orange",
+    "title": "Indirect object placement",
+    "from": { "label_es": "Sin to", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "gave", "role": "verb", "id": "v" }, { "t": "me", "role": "complement", "id": "i" }, { "t": "the receipt", "role": "object", "id": "d" } ] },
+    "to": { "label_es": "Con to", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "gave", "role": "verb", "id": "v" }, { "t": "the receipt", "role": "object", "id": "d" }, { "t": "to", "role": "extra", "add": true }, { "t": "me", "role": "complement", "id": "i" } ] },
+    "note_es": "Verbo + objeto indirecto + directo, o verbo + directo + to + indirecto. Con pronombres, suele ir give it to me."
+  },
+  "C1-8-1": {
+    "kind": "slots", "point": "Verbs in the subjunctive", "tone": "purple",
+    "title": "Subjunctive: base form after that",
+    "rows": [
+      { "label_es": "insist", "slots": [ { "t": "We insist", "role": "other" }, { "t": "that he", "role": "subject" }, { "t": "be", "role": "verb", "label_es": "forma base" }, { "t": "present", "role": "complement" } ] },
+      { "label_es": "recommend", "slots": [ { "t": "The doctor recommends", "role": "other" }, { "t": "that she", "role": "subject" }, { "t": "rest", "role": "verb", "label_es": "sin -s" }, { "t": "more", "role": "extra" } ] },
+      { "label_es": "essential", "slots": [ { "t": "It is essential", "role": "other" }, { "t": "that every student", "role": "subject" }, { "t": "bring", "role": "verb", "label_es": "sin -s" }, { "t": "an ID", "role": "object" } ] }
+    ],
+    "note_es": "Tras insist, recommend o it is essential + that, el verbo va en forma base: sin -s, sin tiempo, be en lugar de is."
+  },
+  "C1-9-0": {
+    "kind": "compare", "point": "whenever / wherever vs when / where", "tone": "teal",
+    "title": "Specific or any time and place",
+    "columns": [
+      { "head": "when / where", "head_es": "concreto", "use_es": "Un momento o lugar específico.", "tone": "blue",
+        "items": [ { "t": "I’ll call you when I arrive." }, { "t": "Meet me where we met last time." } ] },
+      { "head": "whenever / wherever", "head_es": "cualquiera", "use_es": "Cualquier momento o lugar.", "tone": "orange",
+        "items": [ { "t": "Call me whenever you want." }, { "t": "Wherever you go, I’ll find you." } ] }
+    ],
+    "note_es": "When y where señalan un momento o lugar concreto. Whenever y wherever significan cualquier momento o lugar."
+  },
+  "C1-9-1": [
+    {
+      "kind": "transform", "point": "Noun clauses with whoever / whatever", "tone": "mint",
+      "title": "Whoever as subject",
+      "from": { "label_es": "Larga", "tokens": [ { "t": "Any person who", "role": "other", "id": "w" }, { "t": "arrives first", "role": "verb", "id": "v" }, { "t": "gets a seat", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "Con whoever", "tokens": [ { "t": "Whoever", "role": "link", "id": "w" }, { "t": "arrives first", "role": "verb", "id": "v" }, { "t": "gets a seat", "role": "object", "id": "o" } ] },
+      "note_es": "Whoever = any person who. La cláusula entera actúa como sujeto."
+    },
+    {
+      "kind": "transform", "point": "Noun clauses with whoever / whatever", "tone": "mint",
+      "title": "Whatever as object",
+      "from": { "label_es": "Larga", "tokens": [ { "t": "Take", "role": "verb", "id": "v" }, { "t": "anything that", "role": "other", "id": "w" }, { "t": "you like", "role": "subject", "id": "s" } ] },
+      "to": { "label_es": "Con whatever", "tokens": [ { "t": "Take", "role": "verb", "id": "v" }, { "t": "whatever", "role": "link", "id": "w" }, { "t": "you like", "role": "subject", "id": "s" } ] },
+      "note_es": "Whatever = anything that. Aquí la cláusula es el objeto de take."
+    }
+  ],
+  "C1-10-0": {
+    "kind": "slots", "point": "Overview of passives", "tone": "blue",
+    "title": "be + past participle in every tense",
+    "rows": [
+      { "label_es": "Present simple", "slots": [ { "t": "The report", "role": "subject" }, { "t": "is", "role": "aux" }, { "t": "written", "role": "verb" }, { "t": "weekly", "role": "extra" } ] },
+      { "label_es": "Past simple", "slots": [ { "t": "The report", "role": "subject" }, { "t": "was", "role": "aux" }, { "t": "written", "role": "verb" }, { "t": "yesterday", "role": "extra" } ] },
+      { "label_es": "Present perfect", "slots": [ { "t": "The report", "role": "subject" }, { "t": "has been", "role": "aux" }, { "t": "written", "role": "verb" }, { "t": "already", "role": "extra" } ] },
+      { "label_es": "Modal", "slots": [ { "t": "The report", "role": "subject" }, { "t": "must be", "role": "aux" }, { "t": "written", "role": "verb" }, { "t": "today", "role": "extra" } ] }
+    ],
+    "note_es": "El participio pasado no cambia; solo se conjuga be para marcar el tiempo o el modal."
+  },
+  "C1-10-1": {
+    "kind": "compare", "point": "Subject-verb agreement with quantifiers", "tone": "red",
+    "title": "Which noun does the verb follow?",
+    "columns": [
+      { "head": "a number of", "head_es": "verbo en plural", "use_es": "Sigue al nombre plural.", "tone": "blue",
+        "items": [ { "t": "A number of students are late.", "ok": true }, { "t": "A number of students is late.", "ok": false } ] },
+      { "head": "the number of", "head_es": "verbo en singular", "use_es": "Sigue a number.", "tone": "orange",
+        "items": [ { "t": "The number of students is growing.", "ok": true }, { "t": "The number of students are growing.", "ok": false } ] },
+      { "head": "a lot of / most of", "head_es": "según el nombre", "use_es": "Sigue al nombre tras of.", "tone": "green",
+        "items": [ { "t": "A lot of the water is dirty.", "ok": true }, { "t": "A lot of the cars are old.", "ok": true } ] }
+    ],
+    "note_es": "A number of = varios (plural); the number of = la cifra (singular). Con a lot of, el verbo sigue al nombre."
+  },
+  "C1-11-0": {
+    "kind": "transform", "point": "Compound adjectives", "tone": "pink",
+    "title": "Noun phrase to compound adjective",
+    "from": { "label_es": "Frase larga", "tokens": [ { "t": "a", "role": "other", "id": "a" }, { "t": "trip", "role": "object", "id": "t" }, { "t": "that lasts", "role": "other", "drop": true }, { "t": "three days", "role": "complement", "id": "d" } ] },
+    "to": { "label_es": "Compuesto", "tokens": [ { "t": "a", "role": "other", "id": "a" }, { "t": "three-day", "role": "complement", "id": "d" }, { "t": "trip", "role": "object", "id": "t" } ] },
+    "note_es": "Número + nombre se une con guion y el nombre queda en singular: a three-day trip, no three-days."
+  },
+  "C1-11-1": {
+    "kind": "slots", "point": "Superlative compound adjectives", "tone": "yellow",
+    "title": "Superlative compound adjectives",
+    "rows": [
+      { "label_es": "best-known", "slots": [ { "t": "She is the", "role": "other" }, { "t": "best-known", "role": "complement" }, { "t": "author in Spain", "role": "subject" } ] },
+      { "label_es": "hardest-working", "slots": [ { "t": "He is the", "role": "other" }, { "t": "hardest-working", "role": "complement" }, { "t": "member of the team", "role": "subject" } ] },
+      { "label_es": "adverbio + participio", "slots": [ { "t": "She is the", "role": "other" }, { "t": "most widely respected", "role": "complement" }, { "t": "judge here", "role": "subject" } ] }
+    ],
+    "note_es": "Adjetivo/adverbio + participio forma el compuesto: best-known. Si el adverbio es largo, se usa most + adverbio + participio."
+  },
+  "C1-12-0": [
+    {
+      "kind": "transform", "point": "Subject-verb inversion in conditionals", "tone": "purple",
+      "title": "Inversion with were",
+      "from": { "label_es": "Con if", "tokens": [ { "t": "If", "role": "link", "drop": true }, { "t": "I", "role": "subject", "id": "s" }, { "t": "were", "role": "verb", "id": "v" }, { "t": "you,", "role": "complement", "id": "c" }, { "t": "I’d apologise", "role": "other" } ] },
+      "to": { "label_es": "Invertida", "tokens": [ { "t": "Were", "role": "verb", "id": "v" }, { "t": "I", "role": "subject", "id": "s" }, { "t": "you,", "role": "complement", "id": "c" }, { "t": "I’d apologise", "role": "other" } ] },
+      "note_es": "Se quita if y el verbo pasa antes del sujeto. Es más formal."
+    },
+    {
+      "kind": "transform", "point": "Subject-verb inversion in conditionals", "tone": "purple",
+      "title": "Inversion with had",
+      "from": { "label_es": "Con if", "tokens": [ { "t": "If", "role": "link", "drop": true }, { "t": "we", "role": "subject", "id": "s" }, { "t": "had", "role": "aux", "id": "a" }, { "t": "known,", "role": "verb", "id": "v" }, { "t": "we’d have come", "role": "other" } ] },
+      "to": { "label_es": "Invertida", "tokens": [ { "t": "Had", "role": "aux", "id": "a" }, { "t": "we", "role": "subject", "id": "s" }, { "t": "known,", "role": "verb", "id": "v" }, { "t": "we’d have come", "role": "other" } ] },
+      "note_es": "Had + sujeto + participio sustituye a if + past perfect para condiciones pasadas irreales."
+    },
+    {
+      "kind": "transform", "point": "Subject-verb inversion in conditionals", "tone": "purple",
+      "title": "Inversion with should",
+      "from": { "label_es": "Con if", "tokens": [ { "t": "If", "role": "link", "drop": true }, { "t": "you", "role": "subject", "id": "s" }, { "t": "should", "role": "aux", "id": "a" }, { "t": "need help,", "role": "verb", "id": "v" }, { "t": "call me", "role": "other" } ] },
+      "to": { "label_es": "Invertida", "tokens": [ { "t": "Should", "role": "aux", "id": "a" }, { "t": "you", "role": "subject", "id": "s" }, { "t": "need help,", "role": "verb", "id": "v" }, { "t": "call me", "role": "other" } ] },
+      "note_es": "Should + sujeto + verbo base expresa una posibilidad remota y formal."
+    }
+  ],
+  "C1-12-1": {
+    "kind": "compare", "point": "Adverb clauses of condition", "tone": "orange",
+    "title": "provided that, unless, in case",
+    "columns": [
+      { "head": "provided that / as long as", "head_es": "solo si", "use_es": "Condición necesaria.", "tone": "blue",
+        "items": [ { "t": "You can go provided that you finish." }, { "t": "I’ll help as long as you ask." } ] },
+      { "head": "unless", "head_es": "si no", "use_es": "Unless = if not.", "tone": "red",
+        "items": [ { "t": "Unless you hurry, you’ll miss it.", "ok": true }, { "t": "Unless you don’t hurry, you’ll miss it.", "ok": false } ] },
+      { "head": "in case", "head_es": "por precaución", "use_es": "Para estar preparado.", "tone": "green",
+        "items": [ { "t": "Take an umbrella in case it rains.", "ok": true }, { "t": "Take an umbrella in case it will rain.", "ok": false } ] }
+    ],
+    "note_es": "Provided that y as long as = solo si. Unless ya es negativo. In case = por precaución, no lleva will."
+  }
+}

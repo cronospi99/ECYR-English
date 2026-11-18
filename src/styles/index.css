@@ -236,6 +236,32 @@
     background-clip: text;
     color: transparent;
   }
+  /*
+   * Infographics (WebP) have a light page baked in. In dark mode they sit on a "printed sheet":
+   * a paper-toned backing, a faint rim and a slight dimming, so they read as a card, not a lamp.
+   * Put it on the (relative, overflow-hidden) box that holds the <img>.
+   */
+  .print-sheet {
+    background: var(--fill-2);
+  }
+  .dark .print-sheet {
+    background: #ebebe8;
+  }
+  .dark .print-sheet img {
+    filter: brightness(0.92);
+  }
+  .dark .print-sheet::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2);
+    pointer-events: none;
+  }
+  /* The full-screen viewer is always dark: dim the sheet and give it a hairline edge. */
+  .dark .print-sheet-img {
+    filter: brightness(0.92) drop-shadow(0 0 1px rgb(255 255 255 / 0.4));
+  }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

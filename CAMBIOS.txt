@@ -1867,3 +1867,14 @@ Taxi Rush — Fase 3 (detalle y vida)
 - Lejanía simplificada: a partir de ~75 m se ocultan mobiliario y señales, y a partir de ~120 m los
   edificios pasan a cajas simples. Medido: ~390 llamadas de dibujo y ~0,7 M triángulos por
   fotograma; mismos 6 materiales, ningún modelo nuevo para descargar.
+
+Ayudas visuales de gramática (diagramas por datos)
+- Nuevo sistema de diagramas SVG que se dibujan a partir de datos: transformación (activa→pasiva,
+  directa→indirecta), orden de palabras en casillas, escalas (obligación, certeza, frecuencia),
+  secuencias, coletillas (question tags), comparaciones ✓/✗ y líneas de tiempo. Accesibles
+  (role="img" + descripción), adaptados a móvil y a modo claro/oscuro.
+- 168 diagramas nuevos que cubren todos los puntos de gramática de A1 a C2 que no tenían diagrama
+  (los dibujados a mano se conservan). Validador: node scripts/validate-diagrams.mjs.
+- Las infografías en imagen ya no deslumbran en modo oscuro (se muestran como lámina impresa) y
+  tienen textos alternativos descriptivos.
+- Pendiente: auditoría completa del corrector de inglés y revisión de capturas en móvil.

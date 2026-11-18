@@ -1,0 +1,340 @@
+{
+  "B1-12-1": {
+    "kind": "compare",
+    "point": "Giving reasons with because, since, because of, for, due to and the reason",
+    "title": "Giving reasons",
+    "note_es": "Because y since van con una cláusula. Because of y due to van con un nombre. The reason is that introduce una explicación completa.",
+    "columns": [
+      { "head": "because / since", "head_es": "+ cláusula", "use_es": "Sujeto + verbo.", "tone": "blue", "items": [ { "t": "We stopped because the pump failed.", "ok": true }, { "t": "Since nobody replied, I decided.", "ok": true }, { "t": "We stopped because the failure.", "ok": false } ] },
+      { "head": "because of / due to", "head_es": "+ nombre", "use_es": "Un nombre o frase nominal.", "tone": "orange", "items": [ { "t": "We stopped because of the failure.", "ok": true }, { "t": "We stopped due to a pump failure.", "ok": true }, { "t": "We stopped due to the pump failed.", "ok": false } ] },
+      { "head": "the reason", "head_es": "explicación", "use_es": "The reason is that + cláusula.", "tone": "green", "items": [ { "t": "The reason is that the pump failed.", "ok": true }, { "t": "The reason for the delay was a failure.", "ok": true } ] }
+    ]
+  },
+  "B1-13-0": {
+    "kind": "scale",
+    "point": "Past modals for degrees of certainty",
+    "title": "Past certainty with modals",
+    "note_es": "Estos modales + have + participio expresan cuánta certeza tienes sobre algo del pasado.",
+    "tone": "purple",
+    "from_es": "Seguro que no",
+    "to_es": "Seguro que sí",
+    "marks": [
+      { "t": "can't have", "at": 5, "tone": "red", "label_es": "imposible", "ex": "It can't have been sabotage." },
+      { "t": "may / might have", "at": 40, "tone": "yellow", "label_es": "quizá", "ex": "It might have been the sensor." },
+      { "t": "must have", "at": 88, "tone": "green", "label_es": "casi seguro", "ex": "It must have overheated." }
+    ]
+  },
+  "B1-13-1": {
+    "kind": "compare",
+    "point": "Past modals for judgments and suggestions",
+    "title": "Judging the past with modals",
+    "note_es": "Se usa modal + have + participio para juzgar lo que pasó: should (crítica), could (otra opción posible) y would (lo que tú harías).",
+    "columns": [
+      { "head": "should have", "head_es": "crítica", "use_es": "Era lo correcto.", "tone": "orange", "items": [ { "t": "They should have run a second test." }, { "t": "You shouldn't have said that." } ] },
+      { "head": "could have", "head_es": "posibilidad", "use_es": "Era posible.", "tone": "blue", "items": [ { "t": "We could have caught it earlier." }, { "t": "They couldn't have known." } ] },
+      { "head": "would have", "head_es": "tú harías", "use_es": "Tu opinión.", "tone": "green", "items": [ { "t": "I would have waited." }, { "t": "I wouldn't have left." } ] }
+    ]
+  },
+  "B1-14-0": {
+    "kind": "sequence",
+    "point": "The passive to describe a process",
+    "title": "Describing a process with the passive",
+    "note_es": "En un proceso importa la acción, no quién la hace. Usa is/are + participio y secuenciadores como first, then, finally.",
+    "tone": "blue",
+    "steps": [
+      { "t": "First", "label_es": "primer paso", "ex": "The parts are cleaned in three baths." },
+      { "t": "Then", "label_es": "segundo paso", "ex": "They are inspected by hand." },
+      { "t": "Next", "label_es": "tercer paso", "ex": "Each unit must be tested." },
+      { "t": "Finally", "label_es": "último paso", "ex": "The units are packed and shipped." }
+    ]
+  },
+  "B1-14-1": {
+    "kind": "compare",
+    "point": "Defining and non-defining relative clauses",
+    "title": "Defining vs non-defining clauses",
+    "note_es": "La cláusula definitoria identifica al nombre y no lleva comas. La no definitoria añade información extra, va entre comas y no admite that.",
+    "columns": [
+      { "head": "defining", "head_es": "identifica", "use_es": "Sin comas. Who, that o which.", "tone": "blue", "items": [ { "t": "The engineer who signed it has left.", "ok": true }, { "t": "The machine that failed is old.", "ok": true } ] },
+      { "head": "non-defining", "head_es": "información extra", "use_es": "Entre comas. Who o which.", "tone": "orange", "items": [ { "t": "Ana, who signed it, has left.", "ok": true }, { "t": "The machine, which is ten years old, failed.", "ok": true }, { "t": "Ana, that signed it, has left.", "ok": false } ] }
+    ]
+  },
+  "B1-15-0": {
+    "kind": "scale",
+    "point": "Recommendations and opinions with passive modals",
+    "title": "Passive modals: how strong?",
+    "note_es": "Los modales en pasiva (modal + be + participio) dan desde una idea tentativa hasta una obligación fuerte.",
+    "tone": "orange",
+    "from_es": "Tentativo",
+    "to_es": "Muy fuerte",
+    "marks": [
+      { "t": "could / might be", "at": 8, "tone": "teal", "label_es": "tentativo", "ex": "It could be reviewed." },
+      { "t": "should be", "at": 40, "tone": "yellow", "label_es": "recomendación", "ex": "The manual should be updated." },
+      { "t": "must / has to be", "at": 72, "tone": "orange", "label_es": "obligación", "ex": "All entries must be signed." },
+      { "t": "has got to be", "at": 94, "tone": "red", "label_es": "urgente", "ex": "This has got to be fixed." }
+    ]
+  },
+  "B1-16-0": {
+    "kind": "timeline",
+    "point": "Accomplishments with the simple past and present perfect",
+    "title": "Accomplishments: finished time or open period",
+    "note_es": "Con un momento terminado (in May, last month) usa pasado simple. Con un periodo abierto (so far, this year) usa presente perfecto.",
+    "now": 70,
+    "marks": [ { "x": 28, "label": "in May", "tone": "orange" } ],
+    "spans": [ { "from": 45, "to": 70, "label": "so far", "tone": "green", "open": true } ],
+    "examples": [
+      { "t": "I finished the course in May.", "tone": "orange" },
+      { "t": "I've completed four modules so far.", "tone": "green" }
+    ]
+  },
+  "B1-16-1": {
+    "kind": "timeline",
+    "point": "Goals with the future perfect and would like to have + past participle",
+    "title": "Goals: future perfect",
+    "note_es": "Will have + participio dice que algo estará terminado antes de un momento futuro. Would like to have + participio expresa un deseo sobre algo hecho para entonces.",
+    "now": 20,
+    "marks": [ { "x": 80, "label": "by June", "tone": "purple" } ],
+    "spans": [ { "from": 20, "to": 80, "label": "working towards the goal", "tone": "teal", "dashed": true, "open": true } ],
+    "examples": [
+      { "t": "By June I'll have finished.", "tone": "purple" },
+      { "t": "I'd like to have travelled more by then.", "tone": "teal" }
+    ]
+  },
+  "B1-6-1": [
+    {
+      "kind": "transform",
+      "point": "Need + gerund, need + passive infinitive, and keep + gerund",
+      "title": "Need + gerund = need + passive infinitive",
+      "note_es": "Las dos formas tienen el mismo significado: algo necesita ser arreglado. Con -ing es activa en forma pero pasiva en sentido.",
+      "tone": "teal",
+      "from": { "label_es": "Need + gerund", "tokens": [ { "t": "It", "role": "subject", "id": "s" }, { "t": "needs", "role": "aux", "id": "n" }, { "t": "fixing.", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Need + to be + participle", "tokens": [ { "t": "It", "role": "subject", "id": "s" }, { "t": "needs", "role": "aux", "id": "n" }, { "t": "to be", "role": "extra", "add": true }, { "t": "fixed.", "role": "verb", "id": "v" } ] }
+    },
+    {
+      "kind": "slots",
+      "title": "Keep + gerund",
+      "note_es": "Keep + -ing describe algo que se repite o no para, y suele molestar.",
+      "tone": "teal",
+      "rows": [
+        { "label_es": "keep", "slots": [ { "t": "The engine", "role": "subject" }, { "t": "keeps", "role": "aux" }, { "t": "stalling.", "role": "verb", "label_es": "verbo + -ing" } ] },
+        { "label_es": "keep on", "slots": [ { "t": "The app", "role": "subject" }, { "t": "keeps on", "role": "aux" }, { "t": "crashing.", "role": "verb", "label_es": "verbo + -ing" } ] }
+      ]
+    }
+  ],
+  "B1-7-0": {
+    "kind": "timeline",
+    "point": "Passive in the present continuous and present perfect; prepositions of cause",
+    "title": "Passive: being repaired vs have been replaced",
+    "note_es": "Is being + participio: la acción ocurre ahora. Have been + participio: ya ocurrió y el resultado se ve ahora.",
+    "now": 60,
+    "marks": [ { "x": 25, "label": "panels replaced", "tone": "green" } ],
+    "spans": [
+      { "from": 45, "to": 80, "label": "is being repaired", "tone": "blue", "row": 0 },
+      { "from": 25, "to": 60, "label": "have been replaced", "tone": "green", "row": 1, "open": true }
+    ],
+    "examples": [
+      { "t": "The hull is being repaired.", "tone": "blue" },
+      { "t": "Three panels have been replaced.", "tone": "green" }
+    ]
+  },
+  "B1-7-1": {
+    "kind": "compare",
+    "point": "Infinitive clauses and phrases",
+    "title": "Purpose: same subject or different subject",
+    "note_es": "Si quien hace la acción es el mismo sujeto, usa to + verbo. Si es otra persona, añade for + persona antes de to + verbo.",
+    "columns": [
+      { "head": "to + verb", "head_es": "mismo sujeto", "use_es": "Quien actúa es quien tiene el objetivo.", "tone": "blue", "items": [ { "t": "We closed the bay to carry out repairs.", "ok": true }, { "t": "I called to confirm the time.", "ok": true } ] },
+      { "head": "for + object + to + verb", "head_es": "otro sujeto", "use_es": "Otra persona hace la acción final.", "tone": "orange", "items": [ { "t": "We closed the bay for the engineers to work.", "ok": true }, { "t": "We stopped for the crew to rest.", "ok": true } ] }
+    ]
+  },
+  "B1-8-0": {
+    "kind": "compare",
+    "point": "Would rather and would prefer",
+    "title": "Would rather vs would prefer",
+    "note_es": "Would rather va con verbo base, sin to. Would prefer va con to + verbo o con un nombre. Con otra persona: I'd rather you didn't.",
+    "columns": [
+      { "head": "would rather", "head_es": "+ verbo base", "use_es": "Sin to.", "tone": "blue", "items": [ { "t": "I'd rather walk.", "ok": true }, { "t": "I'd rather walk than drive.", "ok": true }, { "t": "I'd rather to walk.", "ok": false } ] },
+      { "head": "would prefer", "head_es": "+ to + verbo", "use_es": "Con to, o con un nombre.", "tone": "green", "items": [ { "t": "I'd prefer to walk.", "ok": true }, { "t": "I'd prefer tea to coffee.", "ok": true }, { "t": "I'd prefer walk.", "ok": false } ] }
+    ]
+  },
+  "B1-8-1": {
+    "kind": "slots",
+    "point": "By + gerund to describe how to do things",
+    "title": "By + gerund = how",
+    "note_es": "By + verbo con -ing explica cómo se logra el resultado. En negativo: by not + -ing.",
+    "tone": "green",
+    "rows": [
+      { "label_es": "result + method", "slots": [ { "t": "You can save fuel", "role": "subject", "label_es": "resultado" }, { "t": "by", "role": "link" }, { "t": "flying lower.", "role": "verb", "label_es": "método (-ing)" } ] },
+      { "label_es": "result + method", "slots": [ { "t": "We reduced costs", "role": "subject", "label_es": "resultado" }, { "t": "by", "role": "link" }, { "t": "cutting travel.", "role": "verb", "label_es": "método (-ing)" } ] },
+      { "label_es": "negative", "slots": [ { "t": "You save time", "role": "subject", "label_es": "resultado" }, { "t": "by not", "role": "link" }, { "t": "repeating the test.", "role": "verb", "label_es": "método (-ing)" } ] }
+    ]
+  },
+  "B1-9-0": {
+    "kind": "transform",
+    "point": "Get or have something done",
+    "title": "Have something done",
+    "note_es": "Have/get + objeto + participio: otra persona hace la acción por ti. El agente no se menciona. Get es más informal.",
+    "tone": "orange",
+    "from": { "label_es": "Activa", "tokens": [ { "t": "A mechanic", "role": "subject", "drop": true }, { "t": "serviced", "role": "verb", "id": "v" }, { "t": "the engine.", "role": "object", "id": "o" } ] },
+    "to": { "label_es": "Have + participio", "tokens": [ { "t": "I", "role": "subject", "add": true }, { "t": "had", "role": "aux", "add": true }, { "t": "the engine", "role": "object", "id": "o" }, { "t": "serviced.", "role": "verb", "id": "v" } ] }
+  },
+  "B1-9-1": {
+    "kind": "compare",
+    "point": "Making suggestions with modals, gerunds, negative questions and infinitives",
+    "title": "Four ways to suggest",
+    "note_es": "Cada fórmula pide una estructura distinta: modal + verbo, How about + -ing, pregunta negativa y it might be worth + -ing.",
+    "columns": [
+      { "head": "modals", "head_es": "modal + base", "use_es": "could / should / might + verbo.", "tone": "blue", "items": [ { "t": "We could ask them first." }, { "t": "We might ask them." } ] },
+      { "head": "gerund frames", "head_es": "+ -ing", "use_es": "How about / worth + -ing.", "tone": "green", "items": [ { "t": "How about asking them?" }, { "t": "It might be worth asking." } ] },
+      { "head": "questions", "head_es": "pregunta", "use_es": "Why don't we...?", "tone": "orange", "items": [ { "t": "Why don't we ask them?" }, { "t": "Couldn't we ask them?" } ] }
+    ]
+  },
+  "B1-11-0": {
+    "kind": "compare",
+    "point": "Time clauses: before, after, once, the moment, as soon as, until, by the time",
+    "title": "Time clauses: future vs past",
+    "note_es": "Para el futuro, la cláusula de tiempo usa presente (nunca will). Para el pasado, by the time + pasado simple lleva pasado perfecto en la otra oración.",
+    "columns": [
+      { "head": "future", "head_es": "presente en la cláusula", "use_es": "As soon as / once / until + presente.", "tone": "blue", "items": [ { "t": "As soon as I finish, I'll send it.", "ok": true }, { "t": "Once I've finished, I'll send it.", "ok": true }, { "t": "As soon as I will finish, I'll send it.", "ok": false } ] },
+      { "head": "past", "head_es": "secuencia en el pasado", "use_es": "After / by the time + pasado.", "tone": "orange", "items": [ { "t": "After I sent it, she called.", "ok": true }, { "t": "By the time we arrived, it had left.", "ok": true } ] }
+    ]
+  },
+  "B1-12-0": {
+    "kind": "slots",
+    "point": "Describing purpose with infinitive clauses and with for",
+    "title": "Purpose patterns",
+    "note_es": "Para el propósito usa to, in order to o so as to + verbo. En negativo: in order not to. Si cambia el sujeto: for + persona + to + verbo.",
+    "tone": "teal",
+    "rows": [
+      { "label_es": "to + verb", "slots": [ { "t": "We stopped", "role": "subject" }, { "t": "to", "role": "link" }, { "t": "refuel.", "role": "verb" } ] },
+      { "label_es": "in order to", "slots": [ { "t": "We left early", "role": "subject" }, { "t": "in order to", "role": "link" }, { "t": "avoid the traffic.", "role": "verb" } ] },
+      { "label_es": "negative", "slots": [ { "t": "I whispered", "role": "subject" }, { "t": "so as not to", "role": "link" }, { "t": "wake her.", "role": "verb" } ] },
+      { "label_es": "for + object", "slots": [ { "t": "We stopped", "role": "subject" }, { "t": "for the crew", "role": "object", "label_es": "otro sujeto" }, { "t": "to rest.", "role": "verb" } ] }
+    ]
+  },
+  "B1-1-0": {
+    "kind": "slots",
+    "point": "Relative pronouns as subjects and objects; pronoun omission",
+    "title": "Relative pronoun: subject or object?",
+    "note_es": "Si el pronombre relativo es el sujeto de la cláusula, no se puede omitir. Si es el objeto, puedes omitirlo.",
+    "tone": "blue",
+    "rows": [
+      { "label_es": "Subject: keep it", "slots": [ { "t": "an app", "role": "subject" }, { "t": "that", "role": "link", "label_es": "obligatorio" }, { "t": "works offline", "role": "verb", "label_es": "verbo" } ] },
+      { "label_es": "Object: can drop it", "slots": [ { "t": "the film", "role": "object" }, { "t": "(that)", "role": "link", "optional": true }, { "t": "we saw", "role": "subject", "label_es": "sujeto + verbo" } ] }
+    ]
+  },
+  "B1-1-1": {
+    "kind": "slots",
+    "point": "It-clauses and adverbial clauses with “when”",
+    "title": "It + feeling + when clause",
+    "note_es": "It es un sujeto formal. Después va el sentimiento y when + oración, que dice cuándo ocurre.",
+    "tone": "orange",
+    "rows": [
+      { "label_es": "verb", "slots": [ { "t": "It", "role": "subject" }, { "t": "bothers me", "role": "verb", "label_es": "verbo + objeto" }, { "t": "when", "role": "link" }, { "t": "people are late.", "role": "extra", "label_es": "cláusula" } ] },
+      { "label_es": "adjective", "slots": [ { "t": "It's", "role": "subject" }, { "t": "frustrating", "role": "complement", "label_es": "adjetivo" }, { "t": "when", "role": "link" }, { "t": "nobody replies.", "role": "extra", "label_es": "cláusula" } ] },
+      { "label_es": "noun", "slots": [ { "t": "It's", "role": "subject" }, { "t": "a problem", "role": "complement", "label_es": "nombre" }, { "t": "when", "role": "link" }, { "t": "the system is down.", "role": "extra", "label_es": "cláusula" } ] }
+    ]
+  },
+  "B1-2-0": {
+    "kind": "slots",
+    "point": "Gerund phrases as subjects and objects",
+    "title": "Gerund phrases",
+    "note_es": "Un gerundio (verbo + -ing) funciona como un nombre: puede ser sujeto, objeto de un verbo o objeto de una preposición.",
+    "tone": "green",
+    "rows": [
+      { "label_es": "Subject", "slots": [ { "t": "Learning a language", "role": "subject", "label_es": "sujeto" }, { "t": "takes patience.", "role": "verb" } ] },
+      { "label_es": "Object of verb", "slots": [ { "t": "I enjoy", "role": "verb" }, { "t": "working in the evenings.", "role": "object", "label_es": "objeto" } ] },
+      { "label_es": "After preposition", "slots": [ { "t": "She's good at", "role": "link" }, { "t": "solving problems.", "role": "object", "label_es": "objeto" } ] }
+    ]
+  },
+  "B1-2-1": {
+    "kind": "compare",
+    "point": "Comparisons with adjectives, nouns, verbs and past participles",
+    "title": "Comparing adjectives, nouns and verbs",
+    "note_es": "Los adjetivos usan -er/more... than. Los nombres usan more/fewer/less... than. Los verbos usan un adverbio comparativo: harder than.",
+    "columns": [
+      { "head": "adjectives", "head_es": "cómo es algo", "use_es": "-er / more + adj + than.", "tone": "blue", "items": [ { "t": "cheaper than" }, { "t": "as clean as" }, { "t": "not as modern as" } ] },
+      { "head": "nouns", "head_es": "cuánto hay", "use_es": "more / fewer / less + noun.", "tone": "orange", "items": [ { "t": "more options than" }, { "t": "fewer delays than" }, { "t": "as much light as" } ] },
+      { "head": "verbs", "head_es": "cómo se hace", "use_es": "verbo + adverbio + than.", "tone": "green", "items": [ { "t": "works harder than" }, { "t": "better organised than" } ] }
+    ]
+  },
+  "B1-3-0": {
+    "kind": "scale",
+    "point": "Requests with modals, if-clauses and gerunds",
+    "title": "Requests: how polite?",
+    "note_es": "Cada fórmula es más cortés que la anterior. Con Do you mind if I... y Would you mind... recuerda: if + sujeto + verbo; mind + -ing.",
+    "tone": "purple",
+    "from_es": "Informal",
+    "to_es": "Muy cortés",
+    "marks": [
+      { "t": "Can you...?", "at": 8, "tone": "teal", "label_es": "informal", "ex": "Can you open the window?" },
+      { "t": "Could you...?", "at": 33, "tone": "blue", "label_es": "cortés", "ex": "Could you help?" },
+      { "t": "Do you mind if I...?", "at": 62, "tone": "indigo", "label_es": "pedir permiso", "ex": "Do you mind if I sit here?" },
+      { "t": "Would you mind + -ing?", "at": 90, "tone": "purple", "label_es": "muy cortés", "ex": "Would you mind waiting?" }
+    ]
+  },
+  "B1-3-1": [
+    {
+      "kind": "transform",
+      "point": "Indirect requests and questions",
+      "title": "Yes/no question to indirect: if",
+      "note_es": "Una pregunta de sí/no se convierte en indirecta con if o whether. El orden vuelve a ser sujeto + verbo.",
+      "tone": "purple",
+      "from": { "label_es": "Directa", "tokens": [ { "t": "Is", "role": "aux", "id": "a" }, { "t": "it", "role": "subject", "id": "s" }, { "t": "open?", "role": "complement", "id": "c" } ] },
+      "to": { "label_es": "Indirecta", "tokens": [ { "t": "Do you know", "role": "extra", "add": true }, { "t": "if", "role": "link", "add": true }, { "t": "it", "role": "subject", "id": "s" }, { "t": "is", "role": "aux", "id": "a" }, { "t": "open?", "role": "complement", "id": "c" } ] }
+    },
+    {
+      "kind": "transform",
+      "title": "Past question to indirect: whether",
+      "note_es": "Con did, el auxiliar desaparece y el verbo pasa a pasado: Did he call? se convierte en I wonder whether he called.",
+      "tone": "purple",
+      "from": { "label_es": "Directa", "tokens": [ { "t": "Did", "role": "aux", "drop": true }, { "t": "he", "role": "subject", "id": "s" }, { "t": "call?", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Indirecta", "tokens": [ { "t": "I wonder", "role": "extra", "add": true }, { "t": "whether", "role": "link", "add": true }, { "t": "he", "role": "subject", "id": "s" }, { "t": "called.", "role": "verb", "id": "v" } ] }
+    }
+  ],
+  "B1-5-0": {
+    "kind": "slots",
+    "point": "Noun phrases containing relative clauses",
+    "title": "Noun + relative clause",
+    "note_es": "Un nombre general (the kind of..., someone, anything) se completa con una cláusula relativa que lo describe.",
+    "tone": "indigo",
+    "rows": [
+      { "label_es": "the kind of", "slots": [ { "t": "the kind of behaviour", "role": "subject", "label_es": "nombre" }, { "t": "that", "role": "link", "inserted": true }, { "t": "upsets people", "role": "extra", "inserted": true, "label_es": "cláusula" } ] },
+      { "label_es": "someone", "slots": [ { "t": "someone", "role": "subject", "label_es": "nombre" }, { "t": "who", "role": "link", "inserted": true }, { "t": "listens carefully", "role": "extra", "inserted": true, "label_es": "cláusula" } ] },
+      { "label_es": "the one thing", "slots": [ { "t": "the one thing", "role": "subject", "label_es": "nombre" }, { "t": "that", "role": "link", "inserted": true }, { "t": "matters", "role": "extra", "inserted": true, "label_es": "cláusula" } ] }
+    ]
+  },
+  "B1-5-1": {
+    "kind": "slots",
+    "point": "Expectations: it’s the custom to, (not) supposed to, expected to, (not) acceptable to",
+    "title": "Expectation patterns",
+    "note_es": "Todas estas frases expresan lo que se espera socialmente y van seguidas de to + verbo base.",
+    "tone": "pink",
+    "rows": [
+      { "label_es": "custom", "slots": [ { "t": "It's the custom", "role": "subject" }, { "t": "to", "role": "link" }, { "t": "greet everyone.", "role": "verb" } ] },
+      { "label_es": "supposed", "slots": [ { "t": "You're supposed", "role": "subject" }, { "t": "to", "role": "link" }, { "t": "take your shoes off.", "role": "verb" } ] },
+      { "label_es": "expected", "slots": [ { "t": "Guests are expected", "role": "subject" }, { "t": "to", "role": "link" }, { "t": "bring something.", "role": "verb" } ] },
+      { "label_es": "acceptable", "slots": [ { "t": "It's not acceptable", "role": "subject" }, { "t": "to", "role": "link" }, { "t": "arrive late.", "role": "verb" } ] }
+    ]
+  },
+  "B1-6-0": {
+    "kind": "transform",
+    "point": "Describing problems with past participles as adjectives and with nouns",
+    "title": "Participle to problem noun",
+    "note_es": "Un problema se puede decir con un participio (is cracked) o con un nombre (there's a crack in...).",
+    "tone": "red",
+    "from": { "label_es": "Participio", "tokens": [ { "t": "The screen", "role": "subject", "id": "s" }, { "t": "is", "role": "aux" }, { "t": "cracked", "role": "complement", "id": "c" } ] },
+    "to": { "label_es": "Nombre", "tokens": [ { "t": "There's", "role": "aux", "add": true }, { "t": "a crack", "role": "complement", "id": "c" }, { "t": "in", "role": "link", "add": true }, { "t": "the screen", "role": "subject", "id": "s" } ] }
+  },
+  "B1-15-1": {
+    "kind": "polarity",
+    "point": "Tag questions for opinions",
+    "title": "Tag questions: the sign flips",
+    "note_es": "La coletilla pide confirmar una opinión. Si la oración es afirmativa, la coletilla es negativa; si es negativa, la coletilla es afirmativa. Usa el mismo auxiliar.",
+    "pairs": [
+      { "statement": "It's a great film,", "tag": "isn't it?", "positive": true, "hint_es": "Verbo to be: se repite is." },
+      { "statement": "You don't like spicy food,", "tag": "do you?", "positive": false, "hint_es": "Presente simple: el auxiliar es do." },
+      { "statement": "They can swim,", "tag": "can't they?", "positive": true },
+      { "statement": "She went home,", "tag": "didn't she?", "positive": true, "hint_es": "Pasado simple: el auxiliar es did." }
+    ]
+  }
+}

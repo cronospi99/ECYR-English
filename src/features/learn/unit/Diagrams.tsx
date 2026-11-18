@@ -1,8 +1,8 @@
 import { useState, type ReactNode } from 'react';
-import { Shapes } from 'lucide-react';
 import { Segmented } from '@/components/ui/Segmented';
+import type { DiagramEntry } from '@/content/diagrams';
 import { deep, ink, tint } from '@/lib/color';
-import { Es } from './Es';
+import { DiagramFrame as Frame, SpecDiagram, TimelineBody } from './diagramKinds';
 
 /**
  * Diagrams drawn in code for the grammar points that are easier to see than to read:
@@ -17,31 +17,7 @@ const PURPLE = 'var(--purple)';
 const BLUE = 'var(--blue)';
 const ORANGE = 'var(--orange)';
 
-function Frame({ title, color, es, children }: { title: string; color: string; es?: string; children: ReactNode }) {
-  return (
-    <section className="overflow-hidden rounded-[20px]" style={{ background: tint(color, 5), boxShadow: `inset 0 0 0 1px ${tint(color, 20)}` }}>
-      <header className="flex items-center gap-2.5 px-4 pt-3.5 pb-1">
-        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] text-white" style={{ background: deep(color) }} aria-hidden>
-          <Shapes size={17} />
-        </span>
-        <div className="min-w-0">
-          <div className="text-[11px] font-bold tracking-[0.07em] uppercase" style={{ color: ink(color) }}>
-            Diagram
-          </div>
-          <h5 className="text-[16px] leading-snug font-semibold text-balance">{title}</h5>
-        </div>
-      </header>
-      <div className="px-3 pt-2 pb-3.5 sm:px-4">
-        {children}
-        {es && (
-          <Es part="explain">
-            <p className="text-label-2 mt-3 text-[13.5px] leading-snug">{es}</p>
-          </Es>
-        )}
-      </div>
-    </section>
-  );
-}
+// `Frame` (the card around every diagram) lives in diagramKinds.tsx, shared with the data-driven diagrams.
 
 // ------------------------------------------------------------ IN / ON / AT --
 
@@ -314,57 +290,9 @@ const TIMELINES: Record<string, TL> = {
 
 function Timeline({ id }: { id: keyof typeof TIMELINES }) {
   const t = TIMELINES[id]!;
-  const W = 360;
-  const x = (v: number) => 14 + (v / 100) * (W - 34);
-  const rows = Math.max(0, ...(t.spans ?? []).map((s) => (s.row ?? 0) + 1));
-  const axis = 26 + rows * 24;
-  const H = axis + 44;
   return (
     <Frame title={t.title} color={BLUE} es={t.es}>
-      <svg viewBox={`0 0 ${W} ${H}`} className="mx-auto block w-full max-w-[600px]" role="img" aria-label={`Timeline: ${t.title}`}>
-        <text x={x(t.now) - 30} y={12} fontSize={9} fontWeight={700} textAnchor="end" fill="var(--label-3)">
-          PAST
-        </text>
-        <text x={x(t.now) + 30} y={12} fontSize={9} fontWeight={700} fill="var(--label-3)">
-          FUTURE
-        </text>
-        <line x1={x(t.now)} y1={4} x2={x(t.now)} y2={axis + 10} stroke="var(--red)" strokeWidth={1.4} strokeDasharray="3 3" />
-        <text x={x(t.now)} y={axis + 22} fontSize={10} fontWeight={800} textAnchor="middle" fill="var(--red)">
-          NOW
-        </text>
-        <line x1={8} y1={axis} x2={W - 14} y2={axis} stroke="var(--label-2)" strokeWidth={2} strokeLinecap="round" />
-        <path d={`M${W - 16} ${axis - 5} L${W - 7} ${axis} L${W - 16} ${axis + 5}`} fill="none" stroke="var(--label-2)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-        {(t.spans ?? []).map((s, k) => {
-          const y = axis - 24 * ((s.row ?? 0) + 1);
-          const x1 = x(s.from);
-          const x2 = x(s.to);
-          return (
-            <g key={k}>
-              <rect x={x1} y={y} width={x2 - x1} height={17} rx={8.5} fill={s.dashed ? tint(s.color, 14) : deep(s.color, 80)} stroke={s.dashed ? deep(s.color, 80) : 'none'} strokeWidth={1.3} strokeDasharray={s.dashed ? '4 3' : undefined} />
-              {s.open && <path d={`M${x2 - 9} ${y + 4} L${x2 - 3} ${y + 8.5} L${x2 - 9} ${y + 13}`} fill="none" stroke="#fff" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />}
-              <text x={(x1 + x2) / 2} y={y + 12} fontSize={9.5} fontWeight={700} textAnchor="middle" fill={s.dashed ? 'var(--label)' : '#fff'}>
-                {s.label}
-              </text>
-            </g>
-          );
-        })}
-        {(t.marks ?? []).map((m, k) => (
-          <g key={k}>
-            <circle cx={x(m.x)} cy={axis} r={6} fill={deep(m.color, 80)} stroke="var(--bg, #fff)" strokeWidth={2} />
-            <text x={x(m.x)} y={axis + (k % 2 ? 36 : 22)} fontSize={9.5} fontWeight={700} textAnchor="middle" fill="var(--label)">
-              {m.label}
-            </text>
-          </g>
-        ))}
-      </svg>
-      <ul className="mt-2 space-y-1">
-        {t.examples.map((e) => (
-          <li key={e.text} className="flex items-baseline gap-2 text-[14.5px] leading-snug font-medium">
-            <span className="inline-block h-2.5 w-2.5 shrink-0 translate-y-[-1px] rounded-full" style={{ background: deep(e.color, 80) }} aria-hidden />
-            {e.text}
-          </li>
-        ))}
-      </ul>
+      <TimelineBody title={t.title} now={t.now} spans={t.spans} marks={t.marks} examples={t.examples} />
     </Frame>
   );
 }
@@ -634,9 +562,21 @@ const DIAGRAMS: Record<string, (() => ReactNode)[]> = {
 
 export const hasDiagrams = (key: string | undefined) => !!key && !!DIAGRAMS[key];
 
-export function Diagrams({ pointKey }: { pointKey?: string }) {
+/**
+ * Hand-drawn diagrams win; otherwise the data-driven one from `diagrams-*.json` (`spec`, see diagramKinds.tsx).
+ */
+export function Diagrams({ pointKey, spec }: { pointKey?: string; spec?: DiagramEntry }) {
   const list = pointKey ? DIAGRAMS[pointKey] : undefined;
-  if (!list) return null;
+  if (!list) {
+    if (!spec) return null;
+    return (
+      <div className="space-y-4">
+        {(Array.isArray(spec) ? spec : [spec]).map((s, k) => (
+          <SpecDiagram key={k} spec={s} />
+        ))}
+      </div>
+    );
+  }
   return (
     <div className="space-y-4">
       {list.map((Render, k) => (
