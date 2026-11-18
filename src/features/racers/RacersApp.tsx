@@ -15,6 +15,7 @@ import { CSS, Btn, Dot, PLACE_COL, Seg, Stepper, TIER, Toggle, initialToon, useC
 import { LiveClassHome, LiveHostRoute, LiveJoin, LivePlayRoute, LiveLobby, LiveResults, LivePodium, LiveScore } from './LiveScreens';
 import type { RacersClient } from './live';
 import { GaragePanel } from './GarageUI';
+import { KartSelect } from './KartSelect';
 import { garage } from './garage';
 import { GameTitle } from '@/components/brand/GameTitle';
 import { GameLangToggle } from '@/components/GameLangToggle';
@@ -270,6 +271,9 @@ function RaceScreen({ client }: { client?: RacersClient }) {
   const [gas, setGas] = useState<GasMode>(initialGas);
   const [steerMode, setSteerMode] = useState<SteerMode>(initialSteer);
   const [garageOpen, setGarageOpen] = useState(false);
+  /** The kart screen: from the menu, before the first race, or from the live lobby. */
+  const [kartOpen, setKartOpen] = useState<null | 'menu' | 'race'>(null);
+  const kartSeen = useRef(false);
   const lang = useGameLang();
   useClient(client);
 
@@ -314,7 +318,9 @@ function RaceScreen({ client }: { client?: RacersClient }) {
   const idx = TOONS.findIndex((x) => x.id === toon);
   const cur = TOONS[idx] ?? TOONS[0];
   const pickToon = (d: number) => { const n = TOONS[(idx + d + TOONS.length) % TOONS.length]; setToon(n.id); void game?.setToon(n.id); client?.setToon(n.id); };
-  const go = () => { unlock(); game?.start(); };
+  const start = () => { unlock(); game?.start(); };
+  // the first race of the visit goes through the kart screen (once: choosing there counts)
+  const go = () => { if (!kartSeen.current) { kartSeen.current = true; setKartOpen('race'); } else start(); };
   const s = game?.settings;
   const conf = (p: Parameters<RaceGame['configure']>[0]) => { game?.configure(p); force((n) => n + 1); };
   const name = (o: { en: string; es: string }) => (lang === 'en' ? o.en : o.es);
@@ -340,7 +346,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
       <div ref={host} className="absolute inset-0" />
 
       {/* ------------------------------------------------------------ menu */}
-      {client && (st === 'menu' || st === 'loading') && <LiveLobby client={client} driver={cur} onPick={pickToon} gasSeg={touchUi ? gasSeg : null} />}
+      {client && (st === 'menu' || st === 'loading') && <LiveLobby client={client} driver={cur} onPick={pickToon} onKart={() => setKartOpen('menu')} gasSeg={touchUi ? gasSeg : null} />}
       {!client && (st === 'menu' || st === 'loading') && s && (
         <div className="pointer-events-none absolute inset-0 flex flex-col p-3 pt-[max(12px,env(safe-area-inset-top))] pb-[max(12px,env(safe-area-inset-bottom))] sm:p-5">
           <div className="pointer-events-auto flex items-center gap-2">
@@ -366,7 +372,10 @@ function RaceScreen({ client }: { client?: RacersClient }) {
                   <div className="flex items-center justify-center gap-2 truncate text-[20px] font-black"><Dot color={cur.color} size={14} />{cur.name}</div>
                 </div>
                 <button type="button" onClick={() => pickToon(1)} className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label={t('Next', 'Siguiente')}><ChevronRight /></button>
-                <button type="button" onClick={() => setGarageOpen(true)} className="flex h-10 shrink-0 items-center gap-1.5 rounded-2xl bg-[#ffd23f] px-3 text-[13.5px] font-black text-[#2a1d00] shadow-[0_3px_0_#c79a00]"><Wrench size={16} />{t('Garage', 'Garaje')} <span className="flex items-center gap-0.5 text-[12px]"><Coins size={13} />{garage.coins}</span></button>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <button type="button" onClick={() => setGarageOpen(true)} className="flex h-11 items-center justify-center gap-1.5 rounded-2xl bg-[#ffd23f] px-3 text-[13.5px] font-black text-[#2a1d00] shadow-[0_3px_0_#c79a00]"><Wrench size={16} />{t('Garage', 'Garaje')} <span className="flex items-center gap-0.5 text-[12px]"><Coins size={13} />{garage.coins}</span></button>
+                <button type="button" onClick={() => { kartSeen.current = true; setKartOpen('menu'); }} className="flex h-11 items-center justify-center gap-1.5 rounded-2xl bg-white px-3 text-[13.5px] font-black text-[#10204a] shadow-[0_3px_0_#b9c6e6]"><Flag size={16} />Kart <span className="text-[12px] font-extrabold opacity-70">{garage.kartDef.name}</span></button>
               </div>
               {/* mode */}
               <Seg<Mode> value={s.mode} onChange={(m) => conf({ mode: m })} options={[
@@ -441,6 +450,11 @@ function RaceScreen({ client }: { client?: RacersClient }) {
             </div>
           </div>
         </div>
+      )}
+
+      {kartOpen && (
+        <KartSelect game={game} toon={cur} client={client} onClose={() => setKartOpen(null)}
+          onRace={kartOpen === 'race' ? () => { setKartOpen(null); start(); } : undefined} />
       )}
 
       {/* ------------------------------------------------------------ race HUD */}

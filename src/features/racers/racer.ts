@@ -1,7 +1,8 @@
 /* English Racers — one racer in the race: the kart and its physics, its 3D model, the bot brain
    (null for the player) and the race bookkeeping (distance, laps, place, coins, item). */
 import * as THREE from 'three';
-import { Kart, type BoostKind } from './kart';
+import { Kart, KART, type BoostKind, type KartParams } from './kart';
+import type { KartId } from './karts';
 import type { KartView } from './kartModel';
 import type { Flames } from './fx';
 import type { Bot } from './ai';
@@ -19,6 +20,8 @@ export interface Racer {
   name: string;
   color: string;
   player: boolean;
+  /** Which kart (body and attributes; see karts.ts) and its physics. */
+  kartId: KartId;
   kart: Kart;
   view: KartView | null;
   flames: Flames;
@@ -73,10 +76,10 @@ export interface RemoteSample {
 export const SCORE = { right: 100, wrong: -50, coin: 10 } as const;
 export const scoreOf = (r: { right: number; wrong: number; bank: number }) => r.right * SCORE.right + r.wrong * SCORE.wrong + r.bank * SCORE.coin;
 
-export function makeRacer(idx: number, track: Track, info: { id: string; name: string; color: string }, player: boolean, flames: Flames): Racer {
+export function makeRacer(idx: number, track: Track, info: { id: string; name: string; color: string }, player: boolean, flames: Flames, kart: { id: KartId; params: KartParams } = { id: 'balanced', params: KART }): Racer {
   return {
-    idx, toonId: info.id, name: info.name, color: info.color, player,
-    kart: new Kart(track), view: null, flames, bot: null,
+    idx, toonId: info.id, name: info.name, color: info.color, player, kartId: kart.id,
+    kart: new Kart(track, kart.params), view: null, flames, bot: null,
     dist: 0, prevS: 0, lapTimes: [], lapStart: 0, finished: false, finishT: 0, place: idx + 1,
     coins: 0, item: null, itemN: 0, bag: [], roll: 0, shield: false, hurtT: 0, respawnAt: 0, wrongT: 0, stuckT: 0,
     tips: [new THREE.Vector3(), new THREE.Vector3()], boostKind: 'pad', boostTier: 1, points: 0, right: 0, wrong: 0, bank: 0, peer: null, remote: null,

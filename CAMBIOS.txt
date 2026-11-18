@@ -1911,3 +1911,16 @@ Contenido A2 ×3
 - Listening A2: 21 → 63 (+42), Verdadero/Falso al 50 %.
 - Writing A2: 49 → 147 tareas extra (+98), añadidas al final de cada unidad.
 - Validado con npm run content:validate (0 errores en lo nuevo).
+
+English Racers — karts estilo Blur y mapas renovados
+- 6 karts con atributos (Aceleración, Velocidad, Agarre/Derrape, Control) y carrocería propia:
+  Classic, Ranger (todoterreno), Slider (derrapes), Bulldog (pesado), Bolt (velocista), Rocket.
+  El Classic conduce exactamente como el kart anterior; las mejoras suben como mucho +10 % de velocidad.
+- Pantalla de selección antes de correr: vista previa 3D girando, barras con la mejora en verde,
+  desbloquear con monedas y 5 niveles de mejora por atributo. En el modo live (clase) se usan solo
+  los atributos base, para que sea justo; el kart elegido se ve igual en todas las pantallas.
+- Bots con karts distintos en cada carrera. Las partidas guardadas antiguas se conservan.
+- Mapas: público animado en gradas, árboles por bioma (palmeras, cerezos, abetos nevados, saguaros…),
+  siluetas de fondo (Big Ben, Fuji, Pan de Azúcar, skylines, cordilleras) y nieve que cae en Snow.
+  Máximo +150 llamadas de dibujo por pista; menos cantidad en equipos modestos.
+- Se liberan mejor los recursos al cambiar de pista.

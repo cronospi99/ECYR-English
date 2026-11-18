@@ -16,6 +16,7 @@ import { MAX_BOTS, MAX_LAPS, RaceGame, fmt, ordinal, type Hud } from './engine';
 import { TRACKS, trackInfo, type TrackId } from './tracks';
 import { GP_NEXT_S, RacersHost, RacersClient, cleanName, type LivePlayer, type LivePub } from './live';
 import { SCORE } from './racer';
+import { garage } from './garage';
 import { CSS, Btn, Dot, PLACE_COL, Seg, Stepper, Toggle, initialToon, useClient } from './ui';
 import { ignition, prefs, setPref, unlock } from './audio';
 
@@ -296,7 +297,7 @@ function GpNext({ client }: { client: RacersClient }) {
 }
 
 /** The student's waiting room (over the 3D view of their kart). */
-export function LiveLobby({ client, driver, onPick, gasSeg }: { client: RacersClient; driver: { name: string; color: string }; onPick: (d: number) => void; gasSeg: ReactNode }) {
+export function LiveLobby({ client, driver, onPick, onKart, gasSeg }: { client: RacersClient; driver: { name: string; color: string }; onPick: (d: number) => void; onKart: () => void; gasSeg: ReactNode }) {
   useGameLang();
   const [, force] = useState(0);
   const pub = client.pub;
@@ -323,6 +324,7 @@ export function LiveLobby({ client, driver, onPick, gasSeg }: { client: RacersCl
           </div>
           <button type="button" onClick={() => onPick(1)} disabled={client.racing} className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label={t('Next', 'Siguiente')}><ChevronRight /></button>
         </div>
+        <button type="button" onClick={onKart} disabled={client.racing} className="flex h-11 items-center justify-center gap-2 rounded-2xl bg-white text-[14px] font-black text-[#10204a] shadow-[0_3px_0_#b9c6e6] disabled:opacity-55"><Flag size={16} />Kart · {garage.kartDef.name}</button>
         <div className="flex items-center gap-2 rounded-2xl bg-white/8 px-3 py-2.5 text-[15px] font-black">
           <span className="relative flex h-3 w-3 shrink-0"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#7dff9a] opacity-70" /><span className="relative inline-flex h-3 w-3 rounded-full bg-[#2fd27a]" /></span>
           <span>{status}</span>

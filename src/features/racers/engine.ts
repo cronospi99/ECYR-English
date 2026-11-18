@@ -26,6 +26,7 @@ import { Gates, type GateSite } from './gates';
 import { SLOTS, makeRacer, rank, scoreOf, type HitKind, type ItemKind, type Racer, type RemoteSample } from './racer';
 import { t } from '@/lib/gameLang';
 import { flameColor, garage, raceEarnings, type KartStyle } from './garage';
+import { botKart, kartDef, kartParams, type KartBody, type KartId } from './karts';
 import { engineSet, engineStop, sfx, startMusic, stopMusic, setMusicFast, setSong, unlock } from './audio';
 
 export type RaceState = 'loading' | 'menu' | 'countdown' | 'race' | 'paused' | 'finish' | 'podium';
@@ -59,7 +60,8 @@ export interface Hud {
 export interface Toast { id: number; text: string; sub?: string; color: string; /** Gone in half the time (answers at a gate). */ brief?: boolean }
 
 /* ---- live class mode: the race as the network sees it ---- */
-export interface LiveEntry { peer: string; name: string; toon: string }
+/** A student in a class race. `kart` was added later: old clients leave it out (= 'balanced'). */
+export interface LiveEntry { peer: string; name: string; toon: string; kart?: KartId }
 export interface LiveCfg { track: TrackId; laps: number; level: RunLevel; items: boolean; bots?: number; roster: LiveEntry[]; race: number }
 /** This student's kart, sent to the teacher's screen a few times a second. */
 export interface LiveState { x: number; y: number; z: number; yaw: number; spd: number; drift: number; flags: number; dist: number; fin: boolean; ft: number; bank: number; right: number; wrong: number; /** Loop being ridden (-1 none) and progress. */ li: number; lu: number }
@@ -88,6 +90,8 @@ export const GP_POINTS = [15, 12, 10, 8, 6, 4, 2, 1];
 /** The two Grand Prix cups: the original four tracks, and the four world cities. */
 export const CUPS: Record<Cup, TrackId[]> = { classic: ['campus', 'beach', 'roofs', 'neon'], world: ['london', 'newyork', 'tokyo', 'rio'], stunt: ['canyon', 'splash', 'snow', 'roofs'] };
 const N_RIVALS = 7;
+/** A kart model with this body (`KartBody`, one per kart in karts.ts). */
+const kartView = (color: string, name: string, body: KartBody, style?: Partial<KartStyle>) => new KartView(color, name, style, body);
 const PODIUM_H = [1.6, 1.05, 0.65];
 /** Records are kept per track and number of laps (and start again when the tracks are redrawn). */
 const recKey = (def: { id: string; laps: number }) => `${def.id}:v8:${def.laps}`;
@@ -181,6 +185,9 @@ export class RaceGame {
   private rivalsReady = false;
   private pendingStart = false;
   private gpRace = 0;
+  /** Races started in this session: the seed that deals the bots their karts (a whole Grand Prix
+      keeps the karts of its first race). */
+  private raceNo = 0;
   private podium: THREE.Group | null = null;
   private podiumS = 30;
   private rollShow: ItemKind | null = null;
@@ -234,7 +241,7 @@ export class RaceGame {
     const pInfo = TOONS.find((x) => x.id === opts.toon) ?? TOONS[0];
     if (this.live) this.settings = { ...this.settings, mode: 'live' };
     this.loadTrack(this.live ? 'campus' : this.settings.mode === 'gp' ? this.cup[0] : this.settings.track, false);
-    this.me = makeRacer(0, this.track, pInfo, true, this.newFlames());
+    this.me = makeRacer(0, this.track, pInfo, true, this.newFlames(), this.myKart());
     this.racers.push(this.me);
     this.placeGrid();
 
@@ -282,7 +289,7 @@ export class RaceGame {
     this.track.def.laps = this.live ? this.liveLaps : this.settings.laps;
     this.line = racingLine(this.track);
     for (const r of this.racers) {
-      r.kart = new Kart(this.track);
+      r.kart = new Kart(this.track, r.kart.p);
       if (r.bot) r.bot = new Bot(SKILL[this.settings.difficulty], this.bias(r), this.track, this.line);
     }
     this.meshes = buildTrackMeshes(this.track, this.worldMat, info.style);
@@ -422,7 +429,7 @@ export class RaceGame {
     const actor = await ToonActor.create(id);
     if (this.toonId !== id) { actor.dispose(); return; }
     this.me.view?.dispose();
-    const v = new KartView(info.color, info.name, garage.style);
+    const v = kartView(info.color, info.name, kartDef(this.me.kartId).style, garage.style);
     v.setDriver(actor);
     this.me.view = v;
     this.scene.add(v.root);
@@ -434,17 +441,45 @@ export class RaceGame {
 
   /** The garage changed the kart: build it again with the new parts (same driver). */
   setStyle(style: KartStyle) {
-    const me = this.me, old = me.view;
-    if (!old) return;
     const info = TOONS.find((x) => x.id === this.toonId) ?? TOONS[0];
+    this.rebuildView(this.me, info.color, info.name, style);
+  }
+  /** The kart this device's player drives: the garage's choice with its upgrades, or in a class race
+      only the base attributes (fair for everybody: upgrades are bought with coins, which depend on
+      how much each student has played at home). */
+  private myKart(id: KartId = garage.kart) { return { id, params: kartParams(id, this.live ? undefined : garage.kartLevels(id)) }; }
+  /** The garage changed the kart (another one, or an upgrade bought): its physics and its body. */
+  setKart(id: KartId = garage.kart) {
+    if (this.live && this.state !== 'menu' && this.state !== 'loading') return; // the class race keeps the kart it started with
+    const k = this.myKart(kartDef(id).id);
+    const body = kartDef(this.me.kartId).style !== kartDef(k.id).style;
+    this.me.kartId = k.id; this.me.kart.p = k.params;
+    if (body) this.setStyle(garage.style);
+  }
+  /** A racer's kart model built again with another body or parts, keeping the driver. */
+  private rebuildView(r: Racer, color: string, name: string, style?: Partial<KartStyle>) {
+    const old = r.view;
+    if (!old) return;
     const actor = old.takeDriver();
-    const v = new KartView(info.color, info.name, style);
+    const v = kartView(color, name, kartDef(r.kartId).style, style);
     if (actor) v.setDriver(actor);
+    const tag = old.root.getObjectByName('nameTag'); // a student's name over the kart moves across
+    if (tag) v.root.add(tag);
     v.root.visible = old.root.visible;
     old.dispose();
-    me.view = v;
+    r.view = v;
     this.scene.add(v.root);
-    v.update(0.016, me.kart, 0, false);
+    v.update(0.016, r.kart, 0, false);
+  }
+  /** Deal the local bots their karts for a race (base attributes, no upgrades; their skill still
+      sets their top speed through `topMul`). Same seed = same karts. */
+  private dealBotKarts(seed: number) {
+    for (const r of this.racers) {
+      if (!r.bot || r.remote) continue;
+      const id = botKart(seed, r.idx - 1), same = id === r.kartId;
+      r.kartId = id; r.kart.p = kartParams(id);
+      if (!same) this.rebuildView(r, r.color, r.name);
+    }
   }
 
   /** Load the rival teachers (light models) and their karts. */
@@ -460,8 +495,9 @@ export class RaceGame {
       for (const r of this.racers.filter((x) => !x.player)) { r.view?.dispose(); r.flames.group.removeFromParent(); r.flames.dispose(); }
       this.racers.length = 1;
       pool.forEach((p, i) => {
-        const r = makeRacer(i + 1, this.track, p, false, this.newFlames());
-        const v = new KartView(p.color, p.name);
+        const kid = botKart(this.raceNo, i);
+        const r = makeRacer(i + 1, this.track, p, false, this.newFlames(), { id: kid, params: kartParams(kid) });
+        const v = kartView(p.color, p.name, kartDef(kid).style);
         const a = actors[i];
         if (a) v.setDriver(a);
         r.view = v;
@@ -605,6 +641,7 @@ export class RaceGame {
   /** Countdown on the current track. */
   private begin() {
     this.clearPodium();
+    if (!this.live && !(this.settings.mode === 'gp' && this.gpRace > 0)) this.dealBotKarts(this.raceNo++);
     this.placeGrid();
     this.results = null;
     this.review = [];
@@ -1537,9 +1574,11 @@ export class RaceGame {
 
   private makeRemote(e: LiveEntry, i: number): Racer {
     const info = TOONS.find((x) => x.id === e.toon) ?? TOONS[i % TOONS.length];
-    const r = makeRacer(i + 1, this.track, { id: info.id, name: e.name, color: info.color }, false, this.newFlames());
+    // (an old client sends no kart: the Classic)
+    const kid = kartDef(e.kart).id;
+    const r = makeRacer(i + 1, this.track, { id: info.id, name: e.name, color: info.color }, false, this.newFlames(), { id: kid, params: kartParams(kid) });
     r.peer = e.peer; r.remote = [];
-    const v = new KartView(info.color, e.name);
+    const v = kartView(info.color, e.name, kartDef(kid).style);
     v.root.add(nameTag(e.name, info.color));
     r.view = v;
     this.scene.add(v.root);
@@ -1553,8 +1592,9 @@ export class RaceGame {
     const taken = new Set([this.toonId, ...cfg.roster.map((e) => e.toon)]);
     const free = TOONS.filter((x) => !taken.has(x.id)), pool = [...free, ...TOONS.filter((x) => taken.has(x.id) && x.id !== this.toonId)].slice(0, n);
     pool.forEach((p) => {
-      const r = makeRacer(order.length + 1, this.track, p, false, this.newFlames());
-      const v = new KartView(p.color, p.name);
+      const kid = botKart(cfg.race, order.length);
+      const r = makeRacer(order.length + 1, this.track, p, false, this.newFlames(), { id: kid, params: kartParams(kid) });
+      const v = kartView(p.color, p.name, kartDef(kid).style);
       r.view = v;
       this.scene.add(v.root);
       void ToonActor.create(p.id, true).then((a) => { if (r.view === v && this.racers.includes(r)) v.setDriver(a); else a.dispose(); }).catch(() => { /* kart without a driver */ });
@@ -1577,9 +1617,18 @@ export class RaceGame {
     const keep = new Map(this.racers.filter((r) => r.remote && r.peer).map((r) => [r.peer!, r]));
     const order: Racer[] = [];
     cfg.roster.forEach((e, i) => {
-      if (e.peer === me) { this.me.peer = me; order.push(this.me); return; }
+      // every screen draws each student's kart from the roster (base attributes only: see myKart)
+      const kid = kartDef(e.kart).id;
+      if (e.peer === me) {
+        this.me.peer = me; order.push(this.me);
+        const body = this.me.kartId !== kid;
+        this.me.kartId = kid; this.me.kart.p = kartParams(kid);
+        if (body) this.rebuildView(this.me, this.me.color, this.me.name, garage.style);
+        return;
+      }
       let r = keep.get(e.peer);
-      if (r) keep.delete(e.peer); else r = this.makeRemote(e, i);
+      if (r) { keep.delete(e.peer); if (r.kartId !== kid) { r.kartId = kid; r.kart.p = kartParams(kid); this.rebuildView(r, r.color, r.name); } }
+      else r = this.makeRemote(e, i);
       order.push(r);
     });
     for (const r of keep.values()) this.dropRacer(r);
@@ -1752,6 +1801,7 @@ function nameTag(name: string, color: string) {
   sp.scale.set(2.6, 0.65, 1);
   sp.position.y = 2.45;
   sp.renderOrder = 5;
+  sp.name = 'nameTag';
   return sp;
 }
 

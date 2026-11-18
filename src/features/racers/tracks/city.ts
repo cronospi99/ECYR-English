@@ -263,30 +263,38 @@ function personGeo(arms: boolean) {
 }
 const headGeo = () => new Geo().add(U.ball, 0xffffff, 0, 1.55, 0, 0.17, 0.19, 0.17).build();
 
-/** People standing at spots: cheering (bounce, arms up) or just chatting (gentle sway). */
+/** People standing at spots: cheering (bounce, arms up) or just chatting (gentle sway). The motion runs
+    in the vertex shader (uTime + a per-person phase and speed): no matrices are touched per frame. */
 export function crowd(c: City, spots: { x: number; y: number; z: number; ry: number }[], cheer = true) {
   if (!spots.length) return;
+  const uTime = { value: 0 };
   const mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.7 });
-  const body = new THREE.InstancedMesh(personGeo(cheer), mat, spots.length), head = new THREE.InstancedMesh(headGeo(), mat, spots.length);
-  const col = new THREE.Color(), ph = spots.map(() => c.rand() * 10), sp = spots.map(() => 5 + c.rand() * 4);
-  spots.forEach((_, i) => { body.setColorAt(i, col.setHex(SHIRT[Math.floor(c.rand() * SHIRT.length)])); head.setColorAt(i, col.setHex(SKIN[Math.floor(c.rand() * SKIN.length)])); });
-  body.frustumCulled = head.frustumCulled = false;
+  mat.onBeforeCompile = (sh) => {
+    sh.uniforms.uTime = uTime;
+    sh.vertexShader = 'uniform float uTime;\nattribute vec2 aPh;\n' + sh.vertexShader.replace('#include <begin_vertex>', `#include <begin_vertex>
+      float ry = sin(uTime * 1.3 + aPh.x) * 0.3, rz = ${cheer ? 'sin(uTime * aPh.y * 0.5 + aPh.x) * 0.08' : '0.0'};
+      transformed.xy = mat2(cos(rz), sin(rz), -sin(rz), cos(rz)) * transformed.xy;
+      transformed.xz = mat2(cos(ry), -sin(ry), sin(ry), cos(ry)) * transformed.xz;
+      transformed.y += ${cheer ? 'max(0.0, sin(uTime * aPh.y + aPh.x)) * 0.28' : '0.0'};`);
+  };
+  mat.customProgramCacheKey = () => 'racers-crowd-' + cheer;
+  const ph = new Float32Array(spots.length * 2);
+  spots.forEach((_, i) => ph.set([c.rand() * 10, 5 + c.rand() * 4], i * 2));
+  const aPh = new THREE.InstancedBufferAttribute(ph, 2);
+  const bg = personGeo(cheer), hg = headGeo();
+  bg.setAttribute('aPh', aPh); hg.setAttribute('aPh', aPh);
+  const body = new THREE.InstancedMesh(bg, mat, spots.length), head = new THREE.InstancedMesh(hg, mat, spots.length);
+  const col = new THREE.Color(), o = new THREE.Object3D();
+  spots.forEach((s, i) => {
+    body.setColorAt(i, col.setHex(SHIRT[Math.floor(c.rand() * SHIRT.length)])); head.setColorAt(i, col.setHex(SKIN[Math.floor(c.rand() * SKIN.length)]));
+    o.position.set(s.x, s.y, s.z); o.rotation.set(0, s.ry, 0); o.updateMatrix();
+    body.setMatrixAt(i, o.matrix); head.setMatrixAt(i, o.matrix);
+  });
+  body.computeBoundingSphere(); head.computeBoundingSphere();
+  body.boundingSphere!.radius += 1; head.boundingSphere!.radius += 1;
   body.castShadow = true;
   c.group.add(body, head);
-  const o = new THREE.Object3D();
-  let k = 0;
-  c.updates.push((_, t) => {
-    // half of them per frame (still smooth at 60 fps, half the cost)
-    k ^= 1;
-    for (let i = k; i < spots.length; i += 2) {
-      const s = spots[i], b = cheer ? Math.max(0, Math.sin(t * sp[i] + ph[i])) * 0.28 : 0;
-      o.position.set(s.x, s.y + b, s.z);
-      o.rotation.set(0, s.ry + Math.sin(t * 1.3 + ph[i]) * 0.3, cheer ? Math.sin(t * sp[i] * 0.5 + ph[i]) * 0.08 : 0);
-      o.updateMatrix();
-      body.setMatrixAt(i, o.matrix); head.setMatrixAt(i, o.matrix);
-    }
-    body.instanceMatrix.needsUpdate = head.instanceMatrix.needsUpdate = true;
-  });
+  c.updates.push((_, t) => { uTime.value = t; });
 }
 
 /** Spots for a crowd along the road (behind the wall), on the frames that `keep` allows. */
