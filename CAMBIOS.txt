@@ -1934,3 +1934,7 @@ Contenido B2 ×3
 - Lecturas B2: 27 → 81 (+54); Listening B2: 23 → 69 (+46); Writing B2: 37 → 111 tareas extra (+74).
 - Validado (0 errores en lo nuevo), opciones barajadas; tareas con estructuras de C1 marcadas
   «B2+ / puente a C1».
+
+Contenido C1 ×3
+- Lecturas C1: 27 → 81 (+54); Listening C1: 23 → 69 (+46); Writing C1: 36 → 108 tareas extra (+72).
+- Validado (0 errores en lo nuevo), opciones barajadas.
