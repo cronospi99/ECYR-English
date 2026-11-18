@@ -102,3 +102,13 @@ Reglas obligatorias para el `director-contenido-pedagogico` al crear contenido n
     (cita del modelo que lo cumple) y contra el rango de palabras antes de entregar.
 15. **Etiquetado de nivel.** Si una unidad del currículo exige estructuras del nivel siguiente, la tarea
     se marca en `brief`/`briefEs` como «A2+ / puente a B1» (análogo en otros niveles).
+
+## Reglas añadidas tras la auditoría B1
+
+16. **Longitud de opciones.** Todas las opciones de una pregunta con la misma estructura y una longitud
+    parecida (±25 %). La clave nunca debe ser la más larga ni la más concreta de forma sistemática.
+17. **Glosario y vocabulario.** Si una pregunta `vocab` (o mc de significado) pregunta por un término, ese
+    término NO va en el glosario de esa lectura.
+18. **T/F por formato.** El equilibrio 50 ± 10 % de True se cumple también dentro de cada pista o lectura
+    con 3+ ítems T/F (no 1 T y 2 F en todas). Distractores plausibles, nunca absurdos.
+    `accept` sin punto final y sin repetir `answer`.
