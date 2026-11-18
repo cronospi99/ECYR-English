@@ -222,6 +222,9 @@ export interface TimelineSpec extends SpecBase {
   examples: { t: string; tone?: Tone }[];
 }
 
+/** Compares tokens ignoring case and edge punctuation, so "late" → "late?" reads as a move, not a change. */
+const normTok = (s: string): string => s.toLowerCase().replace(/^[¿¡"“'‘]+|[\s.,;:!?"”'’…]+$/g, '');
+
 export type DiagramSpec = TransformSpec | SlotsSpec | ScaleSpec | SequenceSpec | PolaritySpec | CompareSpec | TimelineSpec;
 export type DiagramKind = DiagramSpec['kind'];
 
@@ -390,7 +393,7 @@ function TransformBody({ s }: { s: TransformSpec }) {
         y1: ra.bottom - r.top,
         x2: rb.left + rb.width / 2 - r.left,
         y2: rb.top - r.top,
-        change: target.t.toLowerCase() !== c.t.toLowerCase(),
+        change: normTok(target.t) !== normTok(c.t),
         color: roleOf(target.role ?? c.role).color ?? 'var(--label-2)',
       });
     }
@@ -493,29 +496,59 @@ function SlotsBody({ s }: { s: SlotsSpec }) {
 
 // ------------------------------------------------------------------ scale --
 
-function labelStyle(above: boolean, align: 'left' | 'right' | 'center', color: string): CSSProperties {
-  const v: CSSProperties = above ? { bottom: 82 } : { top: 86 };
-  const h: CSSProperties = align === 'left' ? { left: -12, textAlign: 'left' } : align === 'right' ? { right: -12, textAlign: 'right' } : { left: 0, transform: 'translateX(-50%)', textAlign: 'center' };
-  return { ...v, ...h, color };
+const LABEL_H = 40;
+
+/**
+ * Greedy label layout over up to 4 rows (even rows above the bar, odd below, tiers stack outward):
+ * each label takes the first row where it does not touch the previous label of that row, and is
+ * clamped so it never leaves the frame. `left` is the offset (px) from the mark's own x.
+ */
+function layoutLabels(marks: ScaleMark[], width: number): { row: number; left: number; w: number }[] {
+  const ends = [-Infinity, -Infinity, -Infinity, -Infinity];
+  return marks.map((m) => {
+    const x = (Math.min(100, Math.max(0, m.at)) / 100) * width;
+    const w = Math.min(118, Math.ceil(m.t.length * 7.6) + 2);
+    const l = Math.min(Math.max(x - w / 2, -12), width + 12 - w);
+    let row = ends.findIndex((e) => l >= e + 8);
+    if (row < 0) row = ends.indexOf(Math.min(...ends));
+    ends[row] = l + w;
+    return { row, left: l - x, w };
+  });
 }
 
 function ScaleBody({ s }: { s: ScaleSpec }) {
   const reduce = useReducedMotion();
+  const box = useRef<HTMLDivElement>(null);
+  const [bw, setBw] = useState(280);
+  useLayoutEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const upd = () => setBw(el.clientWidth || 280);
+    upd();
+    const ro = new ResizeObserver(upd);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   const marks = [...s.marks].sort((a, b) => a.at - b.at);
+  const lay = layoutLabels(marks, bw);
+  const tiers = (odd: boolean) => Math.max(0, ...lay.filter((l) => l.row % 2 === (odd ? 1 : 0)).map((l) => l.row >> 1));
+  const trackTop = 61 + LABEL_H * tiers(false);
+  const height = 132 + LABEL_H * (tiers(false) + tiers(true));
   const gradient = `linear-gradient(90deg, ${marks.map((m) => `${tint(col(m.tone, 'blue'), 55)} ${Math.min(100, Math.max(0, m.at))}%`).join(', ')})`;
   return (
     <div role="img" aria-label={describe(s)}>
-      <div className="relative mx-auto h-[132px] max-w-[540px] px-3">
-        <div className="relative h-full">
-          <div className="absolute inset-x-0 top-[61px] h-[10px] rounded-full" style={{ background: marks.length > 1 ? gradient : 'var(--fill)' }} />
+      <div className="relative mx-auto max-w-[540px] px-3" style={{ height }}>
+        <div ref={box} className="relative h-full">
+          <div className="absolute inset-x-0 h-[10px] rounded-full" style={{ top: trackTop, background: marks.length > 1 ? gradient : 'var(--fill)' }} />
           {marks.map((m, i) => {
             const c = col(m.tone, 'blue');
             const at = Math.min(100, Math.max(0, m.at));
-            const above = i % 2 === 0;
-            const align = at < 14 ? 'left' : at > 86 ? 'right' : 'center';
+            const { row, left, w } = lay[i]!;
+            const above = row % 2 === 0;
+            const tier = row >> 1;
             return (
               <div key={`${m.t}-${i}`} className="absolute top-0 h-full w-0" style={{ left: `${at}%` }}>
-                <div className="absolute top-[54px] -translate-x-1/2">
+                <div className="absolute -translate-x-1/2" style={{ top: trackTop - 7 }}>
                   <motion.span
                     className="flex h-6 w-6 items-center justify-center rounded-full text-[13px] font-black text-white"
                     style={{ background: fillOf(c), boxShadow: '0 0 0 3px var(--card)' }}
@@ -525,8 +558,8 @@ function ScaleBody({ s }: { s: ScaleSpec }) {
                   </motion.span>
                 </div>
                 <div
-                  className="absolute w-max max-w-[118px] text-[14px] leading-tight font-bold"
-                  style={labelStyle(above, align, ink(c, 78))}
+                  className="absolute text-center text-[14px] leading-tight font-bold"
+                  style={{ width: w, left, color: ink(c, 78), ...(above ? { bottom: height - (trackTop - 11 - LABEL_H * tier) } : { top: trackTop + 25 + LABEL_H * tier }) }}
                 >
                   {m.t}
                 </div>
@@ -697,10 +730,11 @@ export function TimelineBody({ title, now, spans, marks, examples }: TimelineDat
     <>
       <svg viewBox={`0 0 ${W} ${H}`} className="mx-auto block w-full max-w-[600px]" role="img" aria-label={`Timeline: ${title}. ${examples.map((e) => e.text).join(' ')}`}>
         <title>{`Timeline: ${title}`}</title>
-        <text x={x(now) - 30} y={12} fontSize={9} fontWeight={700} textAnchor="end" fill="var(--label-3)">
+        {/* PAST / FUTURE sit 30 units either side of NOW; near an edge they tuck in beside the NOW line instead. */}
+        <text x={x(now) - 30 - 26 < 4 ? x(now) - 6 : x(now) - 30} y={12} fontSize={9} fontWeight={700} textAnchor="end" fill="var(--label-3)">
           PAST
         </text>
-        <text x={x(now) + 30} y={12} fontSize={9} fontWeight={700} fill="var(--label-3)">
+        <text x={x(now) + 30 + 36 > W - 4 ? x(now) + 6 : x(now) + 30} y={12} fontSize={9} fontWeight={700} textAnchor="start" fill="var(--label-3)">
           FUTURE
         </text>
         <line x1={x(now)} y1={4} x2={x(now)} y2={axis + 10} stroke="var(--red)" strokeWidth={1.4} strokeDasharray="3 3" />
@@ -717,7 +751,7 @@ export function TimelineBody({ title, now, spans, marks, examples }: TimelineDat
           return (
             <g key={k}>
               <rect x={x1} y={y} width={x2 - x1} height={17} rx={8.5} fill={s.dashed ? tint(c, 14) : deep(c, 80)} stroke={s.dashed ? deep(c, 80) : 'none'} strokeWidth={1.3} strokeDasharray={s.dashed ? '4 3' : undefined} />
-              {s.open && <path d={`M${x2 - 9} ${y + 4} L${x2 - 3} ${y + 8.5} L${x2 - 9} ${y + 13}`} fill="none" stroke="#fff" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />}
+              {s.open && <path d={`M${x2 - 9} ${y + 4} L${x2 - 3} ${y + 8.5} L${x2 - 9} ${y + 13}`} fill="none" stroke={s.dashed ? 'currentColor' : '#fff'} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />}
               <text x={(x1 + x2) / 2} y={y + 12} fontSize={9.5} fontWeight={700} textAnchor="middle" fill={s.dashed ? 'var(--label)' : '#fff'}>
                 {s.label}
               </text>
@@ -727,7 +761,14 @@ export function TimelineBody({ title, now, spans, marks, examples }: TimelineDat
         {(marks ?? []).map((m, k) => (
           <g key={k}>
             <circle cx={x(m.x)} cy={axis} r={6} fill={deep(col(m.color), 80)} stroke="var(--bg, #fff)" strokeWidth={2} />
-            <text x={x(m.x)} y={axis + (k % 2 ? 36 : 22)} fontSize={9.5} fontWeight={700} textAnchor="middle" fill="var(--label)">
+            <text
+              x={Math.min(W - 4 - m.label.length * 2.9, Math.max(4 + m.label.length * 2.9, x(m.x)))}
+              y={axis + (k % 2 ? 36 : 22)}
+              fontSize={9.5}
+              fontWeight={700}
+              textAnchor="middle"
+              fill="var(--label)"
+            >
               {m.label}
             </text>
           </g>

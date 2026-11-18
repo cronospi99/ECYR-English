@@ -1877,4 +1877,5 @@ Ayudas visuales de gramática (diagramas por datos)
   (los dibujados a mano se conservan). Validador: node scripts/validate-diagrams.mjs.
 - Las infografías en imagen ya no deslumbran en modo oscuro (se muestran como lámina impresa) y
   tienen textos alternativos descriptivos.
-- Pendiente: auditoría completa del corrector de inglés y revisión de capturas en móvil.
+- Auditados por el corrector de inglés (29 errores corregidos: escalas, ✓/✗, líneas de tiempo, rótulos)
+  y revisados con capturas a 320 y 560 px en claro y oscuro (rótulos de escala sin solaparse).

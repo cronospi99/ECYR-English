@@ -15,11 +15,11 @@
     "title": "Same verb, different meaning",
     "columns": [
       { "head": "verb + -ing", "head_es": "hecho previo o real", "use_es": "La acción ya ocurrió o es un hábito.", "tone": "blue",
-        "items": [ { "t": "I remember meeting her once." }, { "t": "I regret telling him." }, { "t": "I tried restarting it." } ] },
+        "items": [ { "t": "I remember meeting her once." }, { "t": "I regret telling him." }, { "t": "I’ll never forget seeing the sea." } ] },
       { "head": "verb + to + verb", "head_es": "tarea o propósito", "use_es": "La acción va después o es la meta.", "tone": "orange",
-        "items": [ { "t": "Remember to call her." }, { "t": "I regret to tell you this." }, { "t": "I tried to open the door." } ] }
+        "items": [ { "t": "Remember to call her." }, { "t": "I regret to tell you this." }, { "t": "Don’t forget to lock the door." } ] }
     ],
-    "note_es": "Remember, regret, try y stop cambian de significado: -ing mira al pasado o a lo hecho; to + verbo mira a lo que viene."
+    "note_es": "Remember, forget y regret cambian de significado: -ing mira a lo ya hecho; to + verbo, a lo que hay que hacer. Try y stop también cambian, pero de otra forma."
   },
   "C1-2-0": {
     "kind": "slots", "point": "Review of verb patterns", "tone": "green",
@@ -88,7 +88,7 @@
     "columns": [
       { "head": "so … that", "head_es": "+ adjetivo o adverbio", "use_es": "Grado + resultado.", "tone": "blue",
         "items": [ { "t": "The film was so long that I fell asleep.", "ok": true }, { "t": "He ran so fast that nobody caught him.", "ok": true }, { "t": "It was so a long film that I slept.", "ok": false } ] },
-      { "head": "such … that", "head_es": "+ nombre", "use_es": "Grado con a/an + nombre.", "tone": "orange",
+      { "head": "such … that", "head_es": "+ nombre", "use_es": "Grado con (a/an) + adjetivo + nombre.", "tone": "orange",
         "items": [ { "t": "It was such a long film that I fell asleep.", "ok": true }, { "t": "They are such nice people that I miss them.", "ok": true }, { "t": "The film was such long that I slept.", "ok": false } ] }
     ],
     "note_es": "So va con adjetivo o adverbio; such va con un nombre (con a/an si es singular). That introduce el resultado."
@@ -109,7 +109,7 @@
       { "head": "will (present)", "head_es": "conducta típica", "use_es": "Rasgo habitual, a veces molesto.", "tone": "blue",
         "items": [ { "t": "He will talk for hours.", "ok": true }, { "t": "Cats will sleep anywhere.", "ok": true } ] },
       { "head": "would (past)", "head_es": "hábito pasado", "use_es": "Acciones repetidas, no estados.", "tone": "orange",
-        "items": [ { "t": "As kids, we would swim every day.", "ok": true }, { "t": "I would live in Paris as a child.", "ok": false }, { "t": "I used to live in Paris as a child.", "ok": true } ] }
+        "items": [ { "t": "As kids, we would swim every day.", "ok": true }, { "t": "I used to live in Paris as a child.", "ok": true }, { "t": "I would live in Paris as a child.", "ok": false } ] }
     ],
     "note_es": "Will describe una conducta típica actual; would, hábitos pasados repetidos. Para estados se usa used to."
   },
@@ -120,7 +120,7 @@
       { "head": "object: optional", "head_es": "puedes omitirlo", "use_es": "El pronombre es objeto de la cláusula.", "tone": "green",
         "items": [ { "t": "The book that I bought was great.", "ok": true }, { "t": "The book I bought was great.", "ok": true } ] },
       { "head": "subject: required", "head_es": "no se omite", "use_es": "El pronombre es sujeto de la cláusula.", "tone": "red",
-        "items": [ { "t": "The man who called is my boss.", "ok": true }, { "t": "The man lives next door is my boss.", "ok": false } ] }
+        "items": [ { "t": "The man who lives next door is my boss.", "ok": true }, { "t": "The man lives next door is my boss.", "ok": false } ] }
     ],
     "note_es": "Si tras el pronombre viene un sujeto nuevo (I bought), se puede omitir. Si el pronombre es el sujeto, es obligatorio."
   },
@@ -169,9 +169,9 @@
     {
       "kind": "transform", "point": "Noun clauses with whoever / whatever", "tone": "mint",
       "title": "Whoever as subject",
-      "from": { "label_es": "Larga", "tokens": [ { "t": "Any person who", "role": "other", "id": "w" }, { "t": "arrives first", "role": "verb", "id": "v" }, { "t": "gets a seat", "role": "object", "id": "o" } ] },
-      "to": { "label_es": "Con whoever", "tokens": [ { "t": "Whoever", "role": "link", "id": "w" }, { "t": "arrives first", "role": "verb", "id": "v" }, { "t": "gets a seat", "role": "object", "id": "o" } ] },
-      "note_es": "Whoever = any person who. La cláusula entera actúa como sujeto."
+      "from": { "label_es": "Larga", "tokens": [ { "t": "Anyone who", "role": "other", "id": "w" }, { "t": "arrives early", "role": "verb", "id": "v" }, { "t": "gets a seat", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "Con whoever", "tokens": [ { "t": "Whoever", "role": "link", "id": "w" }, { "t": "arrives early", "role": "verb", "id": "v" }, { "t": "gets a seat", "role": "object", "id": "o" } ] },
+      "note_es": "Whoever = anyone who. La cláusula entera actúa como sujeto."
     },
     {
       "kind": "transform", "point": "Noun clauses with whoever / whatever", "tone": "mint",
@@ -216,9 +216,9 @@
     "kind": "slots", "point": "Superlative compound adjectives", "tone": "yellow",
     "title": "Superlative compound adjectives",
     "rows": [
-      { "label_es": "best-known", "slots": [ { "t": "She is the", "role": "other" }, { "t": "best-known", "role": "complement" }, { "t": "author in Spain", "role": "subject" } ] },
-      { "label_es": "hardest-working", "slots": [ { "t": "He is the", "role": "other" }, { "t": "hardest-working", "role": "complement" }, { "t": "member of the team", "role": "subject" } ] },
-      { "label_es": "adverbio + participio", "slots": [ { "t": "She is the", "role": "other" }, { "t": "most widely respected", "role": "complement" }, { "t": "judge here", "role": "subject" } ] }
+      { "label_es": "best-known", "slots": [ { "t": "She is the", "role": "other" }, { "t": "best-known", "role": "complement" }, { "t": "author in Spain", "role": "other", "label_es": "nombre" } ] },
+      { "label_es": "hardest-working", "slots": [ { "t": "He is the", "role": "other" }, { "t": "hardest-working", "role": "complement" }, { "t": "member of the team", "role": "other", "label_es": "nombre" } ] },
+      { "label_es": "adverbio + participio", "slots": [ { "t": "She is the", "role": "other" }, { "t": "most widely respected", "role": "complement" }, { "t": "judge here", "role": "other", "label_es": "nombre" } ] }
     ],
     "note_es": "Adjetivo/adverbio + participio forma el compuesto: best-known. Si el adverbio es largo, se usa most + adverbio + participio."
   },
@@ -226,9 +226,9 @@
     {
       "kind": "transform", "point": "Subject-verb inversion in conditionals", "tone": "purple",
       "title": "Inversion with were",
-      "from": { "label_es": "Con if", "tokens": [ { "t": "If", "role": "link", "drop": true }, { "t": "I", "role": "subject", "id": "s" }, { "t": "were", "role": "verb", "id": "v" }, { "t": "you,", "role": "complement", "id": "c" }, { "t": "I’d apologise", "role": "other" } ] },
-      "to": { "label_es": "Invertida", "tokens": [ { "t": "Were", "role": "verb", "id": "v" }, { "t": "I", "role": "subject", "id": "s" }, { "t": "you,", "role": "complement", "id": "c" }, { "t": "I’d apologise", "role": "other" } ] },
-      "note_es": "Se quita if y el verbo pasa antes del sujeto. Es más formal."
+      "from": { "label_es": "Con if", "tokens": [ { "t": "If", "role": "link", "drop": true }, { "t": "I", "role": "subject", "id": "s" }, { "t": "were", "role": "verb", "id": "v" }, { "t": "in your position,", "role": "complement", "id": "c" }, { "t": "I’d apologise", "role": "other" } ] },
+      "to": { "label_es": "Invertida", "tokens": [ { "t": "Were", "role": "verb", "id": "v" }, { "t": "I", "role": "subject", "id": "s" }, { "t": "in your position,", "role": "complement", "id": "c" }, { "t": "I’d apologise", "role": "other" } ] },
+      "note_es": "Se quita if y el verbo pasa antes del sujeto. Es más formal. En negativa: Had we not known, no Hadn’t we known."
     },
     {
       "kind": "transform", "point": "Subject-verb inversion in conditionals", "tone": "purple",
@@ -250,7 +250,7 @@
     "title": "provided that, unless, in case",
     "columns": [
       { "head": "provided that / as long as", "head_es": "solo si", "use_es": "Condición necesaria.", "tone": "blue",
-        "items": [ { "t": "You can go provided that you finish." }, { "t": "I’ll help as long as you ask." } ] },
+        "items": [ { "t": "You can go provided that you finish your work.", "ok": true }, { "t": "I’ll help as long as you ask.", "ok": true }, { "t": "I’ll help as long as you will ask.", "ok": false } ] },
       { "head": "unless", "head_es": "si no", "use_es": "Unless = if not.", "tone": "red",
         "items": [ { "t": "Unless you hurry, you’ll miss it.", "ok": true }, { "t": "Unless you don’t hurry, you’ll miss it.", "ok": false } ] },
       { "head": "in case", "head_es": "por precaución", "use_es": "Para estar preparado.", "tone": "green",

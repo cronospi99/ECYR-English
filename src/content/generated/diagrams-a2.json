@@ -1,98 +1,13 @@
 {
-  "A2-8-1": {
-    "kind": "transform",
-    "point": "Adverbial clauses of time: when, after, before",
-    "title": "Time clause: first or last",
-    "note_es": "La cláusula de tiempo puede ir al principio (con coma) o al final (sin coma). Para el futuro usa presente simple: after I finish.",
-    "tone": "yellow",
-    "from": { "label_es": "Cláusula primero", "tokens": [ { "t": "After I finish,", "role": "extra", "id": "t" }, { "t": "I'll call you.", "role": "verb", "id": "m" } ] },
-    "to": { "label_es": "Cláusula al final", "tokens": [ { "t": "I'll call you", "role": "verb", "id": "m" }, { "t": "after I finish.", "role": "extra", "id": "t" } ] }
-  },
-  "A2-10-0": {
-    "kind": "compare",
-    "point": "Gerunds and short responses",
-    "title": "Agree or disagree with short responses",
-    "note_es": "Tras like, love, hate + -ing, responde con So do I o Neither do I para coincidir, y con I don't o I do para contradecir.",
-    "columns": [
-      { "head": "agree", "head_es": "coincidir", "use_es": "So / Neither / Me too.", "tone": "green", "items": [ { "t": "I love cooking. — So do I." }, { "t": "I hate waiting. — Me too." }, { "t": "I don't like fish. — Neither do I." } ] },
-      { "head": "disagree", "head_es": "contradecir", "use_es": "Opuesto con do / don't.", "tone": "red", "items": [ { "t": "I love cooking. — I don't." }, { "t": "I hate waiting. — Oh, I don't mind it." }, { "t": "I don't like fish. — I do." } ] }
-    ]
-  },
-  "A2-10-1": {
-    "kind": "compare",
-    "point": "Clauses with “because”",
-    "title": "Because, because of and so",
-    "note_es": "Because va con una oración (sujeto + verbo). Because of va con un nombre. So da el resultado.",
-    "columns": [
-      { "head": "because", "head_es": "+ oración", "use_es": "Razón con sujeto y verbo.", "tone": "blue", "items": [ { "t": "I stayed home because I felt ill.", "ok": true }, { "t": "I stayed home because the rain.", "ok": false } ] },
-      { "head": "because of", "head_es": "+ nombre", "use_es": "Razón con un nombre.", "tone": "orange", "items": [ { "t": "I stayed home because of the rain.", "ok": true }, { "t": "I stayed home because of I felt ill.", "ok": false } ] },
-      { "head": "so", "head_es": "resultado", "use_es": "Va después de la causa.", "tone": "green", "items": [ { "t": "It was raining, so we stayed in.", "ok": true }, { "t": "So it was raining, we stayed in.", "ok": false } ] }
-    ]
-  },
-  "A2-13-0": {
-    "kind": "compare",
-    "point": "Participles as adjectives: present and past",
-    "title": "Boring vs bored",
-    "note_es": "-ing describe lo que causa la emoción (la película). -ed describe a quien la siente (yo).",
-    "columns": [
-      { "head": "-ing", "head_es": "la causa", "use_es": "Cosas o situaciones.", "tone": "orange", "items": [ { "t": "The film was boring.", "ok": true }, { "t": "It was a tiring journey.", "ok": true }, { "t": "The film was bored.", "ok": false } ] },
-      { "head": "-ed", "head_es": "quien lo siente", "use_es": "Personas que sienten.", "tone": "blue", "items": [ { "t": "I was bored.", "ok": true }, { "t": "She was tired after the trip.", "ok": true }, { "t": "We watched a bored film.", "ok": false } ] }
-    ]
-  },
-  "A2-14-0": {
-    "kind": "scale",
-    "point": "Modals and adverbs for degrees of certainty",
-    "title": "How sure are you?",
-    "note_es": "Los modales y adverbios muestran cuánta certeza tienes: can't (seguro que no), might (posible), probably, must (casi seguro).",
-    "tone": "purple",
-    "from_es": "Seguro que no",
-    "to_es": "Seguro que sí",
-    "marks": [
-      { "t": "can't", "at": 5, "tone": "red", "label_es": "imposible", "ex": "It can't be the software." },
-      { "t": "might / could", "at": 32, "tone": "yellow", "label_es": "posible", "ex": "It might be the cable." },
-      { "t": "probably", "at": 62, "tone": "teal", "label_es": "probable", "ex": "It's probably the battery." },
-      { "t": "must", "at": 90, "tone": "green", "label_es": "casi seguro", "ex": "It must be broken." }
-    ]
-  },
-  "A2-15-1": {
-    "kind": "compare",
-    "point": "Past modals: should have and would have",
-    "title": "Should have, would have, could have",
-    "note_es": "Estas formas hablan de lo que no ocurrió en el pasado: un consejo tardío, una crítica o una posibilidad perdida. Siempre llevan participio.",
-    "columns": [
-      { "head": "should have", "head_es": "debí (no lo hice)", "use_es": "Consejo sobre el pasado.", "tone": "orange", "items": [ { "t": "I should have called.", "ok": true }, { "t": "You shouldn't have said that.", "ok": true }, { "t": "I should have call.", "ok": false } ] },
-      { "head": "would have", "head_es": "habría hecho", "use_es": "Lo que habrías hecho.", "tone": "blue", "items": [ { "t": "I would have helped.", "ok": true }, { "t": "If I had known, I would have called.", "ok": true }, { "t": "I would have help.", "ok": false } ] },
-      { "head": "could have", "head_es": "pude (y no)", "use_es": "Posibilidad que no ocurrió.", "tone": "green", "items": [ { "t": "We could have won.", "ok": true }, { "t": "She could have gone.", "ok": true }, { "t": "We could have win.", "ok": false } ] }
-    ]
-  },
-  "A2-16-1": [
-    {
-      "kind": "transform",
-      "point": "Reported speech: requests and commands",
-      "title": "Reported request: asked me to",
-      "note_es": "Para repetir una petición usa asked + persona + to + verbo. Se quita please y no se usa la oración directa.",
-      "tone": "teal",
-      "from": { "label_es": "Directo", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "said to me:", "role": "verb", "id": "v" }, { "t": "“Please wait.”", "role": "object", "id": "o" } ] },
-      "to": { "label_es": "Indirecto", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "asked me", "role": "verb", "id": "v" }, { "t": "to", "role": "link", "add": true }, { "t": "wait", "role": "object", "id": "o" } ] }
-    },
-    {
-      "kind": "transform",
-      "title": "Reported negative request: not to",
-      "note_es": "En negativo, pon not antes de to + verbo: asked me not to call. No se usa don't.",
-      "tone": "teal",
-      "from": { "label_es": "Directo", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "said to me:", "role": "verb", "id": "v" }, { "t": "“Don't call.”", "role": "object", "id": "o" } ] },
-      "to": { "label_es": "Indirecto", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "asked me", "role": "verb", "id": "v" }, { "t": "not to", "role": "link", "add": true }, { "t": "call", "role": "object", "id": "o" } ] }
-    }
-  ],
   "A2-1-0": [
     {
       "kind": "transform",
       "point": "Simple past: ordinary verbs and the verb “to be”",
-      "title": "Past simple: negative with didn't",
-      "note_es": "En la negativa usa didn't y el verbo vuelve a la forma base. Nunca digas didn't worked.",
+      "title": "Past simple: negative with didn’t",
+      "note_es": "En la negativa usa didn’t y el verbo vuelve a la forma base. Nunca digas didn’t worked.",
       "tone": "orange",
       "from": { "label_es": "Afirmativa", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "worked", "role": "verb", "id": "v" }, { "t": "late", "role": "complement", "id": "c" } ] },
-      "to": { "label_es": "Negativa", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "didn't", "role": "aux", "add": true }, { "t": "work", "role": "verb", "id": "v" }, { "t": "late", "role": "complement", "id": "c" } ] }
+      "to": { "label_es": "Negativa", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "didn’t", "role": "aux", "add": true }, { "t": "work", "role": "verb", "id": "v" }, { "t": "late", "role": "complement", "id": "c" } ] }
     },
     {
       "kind": "transform",
@@ -103,15 +18,63 @@
       "to": { "label_es": "Pregunta", "tokens": [ { "t": "Did", "role": "aux", "add": true }, { "t": "she", "role": "subject", "id": "s" }, { "t": "work", "role": "verb", "id": "v" }, { "t": "late?", "role": "complement", "id": "c" } ] }
     }
   ],
+  "A2-2-1": [
+    {
+      "kind": "transform",
+      "point": "Indirect questions from wh-questions (to be, do/does, can)",
+      "title": "Direct to indirect question: to be",
+      "note_es": "En la pregunta indirecta el orden vuelve a ser el de una oración normal: el verbo to be pasa al final, sin inversión.",
+      "from": {
+        "label_es": "Directa",
+        "tokens": [
+          { "t": "Where", "role": "link", "id": "w" },
+          { "t": "is", "role": "aux", "id": "a" },
+          { "t": "the bank?", "role": "subject", "id": "s" }
+        ]
+      },
+      "to": {
+        "label_es": "Indirecta",
+        "tokens": [
+          { "t": "Could you tell me", "role": "extra", "add": true },
+          { "t": "where", "role": "link", "id": "w" },
+          { "t": "the bank", "role": "subject", "id": "s" },
+          { "t": "is?", "role": "aux", "id": "a" }
+        ]
+      }
+    },
+    {
+      "kind": "transform",
+      "title": "Direct to indirect question: do / does",
+      "note_es": "Con do/does: desaparece el auxiliar y el verbo toma la -s si hace falta (live pasa a lives).",
+      "from": {
+        "label_es": "Directa",
+        "tokens": [
+          { "t": "Where", "role": "link", "id": "w" },
+          { "t": "does", "role": "aux", "drop": true },
+          { "t": "she", "role": "subject", "id": "s" },
+          { "t": "live?", "role": "verb", "id": "v" }
+        ]
+      },
+      "to": {
+        "label_es": "Indirecta",
+        "tokens": [
+          { "t": "Do you know", "role": "extra", "add": true },
+          { "t": "where", "role": "link", "id": "w" },
+          { "t": "she", "role": "subject", "id": "s" },
+          { "t": "lives?", "role": "verb", "id": "v" }
+        ]
+      }
+    }
+  ],
   "A2-3-0": {
     "kind": "compare",
     "point": "Evaluations and comparisons with adjectives and nouns",
     "title": "Too, enough and as...as",
     "note_es": "Too = más de lo necesario (algo malo). Enough = suficiente, va después del adjetivo. As...as compara dos cosas iguales.",
     "columns": [
-      { "head": "too", "head_es": "demasiado", "use_es": "Too + adjetivo; too much/many + nombre.", "tone": "red", "items": [ { "t": "The flat is too small.", "ok": true }, { "t": "There is too much noise.", "ok": true }, { "t": "The flat is very too small.", "ok": false } ] },
-      { "head": "enough", "head_es": "suficiente", "use_es": "Adjetivo + enough; enough + nombre.", "tone": "green", "items": [ { "t": "It isn't big enough.", "ok": true }, { "t": "We have enough chairs.", "ok": true }, { "t": "It isn't enough big.", "ok": false } ] },
-      { "head": "as ... as", "head_es": "igual de", "use_es": "Compara dos cosas iguales.", "tone": "blue", "items": [ { "t": "It's as expensive as my old flat.", "ok": true }, { "t": "It's not as clean as mine.", "ok": true }, { "t": "It's as expensive than mine.", "ok": false } ] }
+      { "head": "too", "head_es": "demasiado", "use_es": "Too + adjetivo; too much/many + nombre.", "tone": "red", "items": [ { "t": "The flat is too small.", "ok": true }, { "t": "There is too much noise.", "ok": true }, { "t": "The flat is too much small.", "ok": false } ] },
+      { "head": "enough", "head_es": "suficiente", "use_es": "Adjetivo + enough; enough + nombre.", "tone": "green", "items": [ { "t": "It isn’t big enough.", "ok": true }, { "t": "We have enough chairs.", "ok": true }, { "t": "It isn’t enough big.", "ok": false } ] },
+      { "head": "as ... as", "head_es": "igual de", "use_es": "Compara dos cosas iguales.", "tone": "blue", "items": [ { "t": "It’s as expensive as my old flat.", "ok": true }, { "t": "It’s not as clean as mine.", "ok": true }, { "t": "It’s as expensive than mine.", "ok": false } ] }
     ]
   },
   "A2-3-1": {
@@ -121,9 +84,22 @@
     "note_es": "Wish va seguido de un tiempo más atrás: pasado simple para el presente, could para habilidad y pasado perfecto para un arrepentimiento.",
     "tone": "pink",
     "rows": [
-      { "label_es": "Present", "slots": [ { "t": "I wish", "role": "aux" }, { "t": "I had", "role": "verb", "label_es": "pasado simple" }, { "t": "more time.", "role": "object" } ] },
-      { "label_es": "Ability", "slots": [ { "t": "I wish", "role": "aux" }, { "t": "I could", "role": "verb", "label_es": "could" }, { "t": "drive.", "role": "object" } ] },
-      { "label_es": "Past regret", "slots": [ { "t": "I wish", "role": "aux" }, { "t": "I hadn't", "role": "verb", "label_es": "pasado perfecto" }, { "t": "sent that email.", "role": "object" } ] }
+      { "label_es": "Presente", "slots": [ { "t": "I wish", "role": "other" }, { "t": "I had", "role": "verb", "label_es": "pasado simple" }, { "t": "more time.", "role": "object" } ] },
+      { "label_es": "Habilidad", "slots": [ { "t": "I wish", "role": "other" }, { "t": "I could", "role": "verb", "label_es": "could" }, { "t": "drive.", "role": "verb", "label_es": "verbo base" } ] },
+      { "label_es": "Arrepentimiento", "slots": [ { "t": "I wish", "role": "other" }, { "t": "I hadn’t", "role": "verb", "label_es": "pasado perfecto" }, { "t": "sent that email.", "role": "complement", "label_es": "participio + resto" } ] }
+    ]
+  },
+  "A2-4-1": {
+    "kind": "sequence",
+    "point": "Sequence adverbs: first, then, after that, next, finally",
+    "title": "Sequence adverbs: first, then, after that, next, finally",
+    "note_es": "Estas palabras ordenan los pasos de una historia o una rutina. Van al principio de la oración, normalmente seguidas de coma.",
+    "steps": [
+      { "t": "First", "label_es": "primero", "ex": "First, I wake up at six." },
+      { "t": "Then", "label_es": "luego", "ex": "Then, I take a shower." },
+      { "t": "Next", "label_es": "a continuación", "ex": "Next, I make breakfast." },
+      { "t": "After that", "label_es": "después de eso", "ex": "After that, I walk to school." },
+      { "t": "Finally", "label_es": "por último", "ex": "Finally, I get to class." }
     ]
   },
   "A2-5-0": {
@@ -132,26 +108,39 @@
     "title": "Going to vs will",
     "note_es": "Going to es para planes ya decididos. Will es para decisiones del momento, ofertas y promesas.",
     "columns": [
-      { "head": "be going to", "head_es": "plan decidido", "use_es": "Ya lo has pensado.", "tone": "blue", "items": [ { "t": "I'm going to study tonight.", "ok": true }, { "t": "She's going to look for a job.", "ok": true }, { "t": "She's going to looks for a job.", "ok": false } ] },
-      { "head": "will", "head_es": "decisión ahora", "use_es": "Ofrecer, prometer, decidir.", "tone": "orange", "items": [ { "t": "I'll help you.", "ok": true }, { "t": "I'll call you tonight.", "ok": true }, { "t": "I will to help you.", "ok": false } ] }
+      { "head": "be going to", "head_es": "plan decidido", "use_es": "Ya lo has pensado.", "tone": "blue", "items": [ { "t": "I’m going to study tonight.", "ok": true }, { "t": "She’s going to look for a job.", "ok": true }, { "t": "She’s going to looks for a job.", "ok": false } ] },
+      { "head": "will", "head_es": "decisión ahora", "use_es": "Ofrecer, prometer, decidir.", "tone": "orange", "items": [ { "t": "I’ll help you.", "ok": true }, { "t": "I’ll call you tonight.", "ok": true }, { "t": "I will to help you.", "ok": false } ] }
     ]
   },
-  "A2-5-1": {
-    "kind": "scale",
-    "point": "Modals for necessity and suggestion",
-    "title": "Necessity and suggestion",
-    "note_es": "Los modales van de menos a más fuerza: no es necesario, consejo, consejo fuerte, obligación y prohibición.",
-    "tone": "orange",
-    "from_es": "Opcional",
-    "to_es": "Obligatorio",
-    "marks": [
-      { "t": "don't have to", "at": 8, "tone": "teal", "label_es": "no es necesario", "ex": "You don't have to pay in advance." },
-      { "t": "should", "at": 30, "tone": "green", "label_es": "consejo", "ex": "You should get some sleep." },
-      { "t": "had better", "at": 52, "tone": "yellow", "label_es": "consejo fuerte", "ex": "You'd better hurry." },
-      { "t": "have to / must", "at": 74, "tone": "orange", "label_es": "obligación", "ex": "You have to show your ID." },
-      { "t": "mustn't", "at": 95, "tone": "red", "label_es": "prohibido", "ex": "You mustn't use your phone here." }
-    ]
-  },
+  "A2-5-1": [
+    {
+      "kind": "scale",
+      "point": "Modals for necessity and suggestion",
+      "title": "Necessity: how much choice?",
+      "note_es": "Must y have to: no hay opción. Need to: hace falta en la práctica. Don’t have to: puedes elegir (no es una prohibición).",
+      "tone": "orange",
+      "from_es": "Puedes elegir",
+      "to_es": "No hay opción",
+      "marks": [
+        { "t": "don’t have to", "at": 10, "tone": "teal", "label_es": "no es necesario", "ex": "You don’t have to pay in advance." },
+        { "t": "need to", "at": 50, "tone": "yellow", "label_es": "hace falta", "ex": "You need to bring a photo." },
+        { "t": "must / have to", "at": 90, "tone": "orange", "label_es": "obligatorio", "ex": "You have to show your ID." }
+      ]
+    },
+    {
+      "kind": "scale",
+      "title": "Advice: how strong?",
+      "note_es": "Could ofrece una opción, should recomienda y had better avisa de una consecuencia si no lo haces.",
+      "tone": "green",
+      "from_es": "Una opción",
+      "to_es": "Urgente",
+      "marks": [
+        { "t": "could", "at": 12, "tone": "teal", "label_es": "opción", "ex": "You could take a taxi." },
+        { "t": "should / ought to", "at": 50, "tone": "green", "label_es": "recomendación", "ex": "You should get some sleep." },
+        { "t": "had better", "at": 88, "tone": "red", "label_es": "urgente, con consecuencia", "ex": "You’d better hurry, or you’ll miss the bus." }
+      ]
+    }
+  ],
   "A2-6-0": {
     "kind": "slots",
     "point": "Two-part verbs and “will” for responding to requests",
@@ -159,9 +148,9 @@
     "note_es": "Con un nombre, el objeto puede ir en medio o al final. Con un pronombre (it, them), siempre va en medio.",
     "tone": "indigo",
     "rows": [
-      { "label_es": "noun: after", "slots": [ { "t": "Turn off", "role": "verb", "label_es": "verbo + partícula" }, { "t": "the light", "role": "object", "label_es": "objeto" } ] },
-      { "label_es": "noun: middle", "slots": [ { "t": "Turn", "role": "verb", "label_es": "verbo" }, { "t": "the light", "role": "object", "label_es": "objeto" }, { "t": "off", "role": "link", "label_es": "partícula" } ] },
-      { "label_es": "pronoun: middle only", "slots": [ { "t": "Turn", "role": "verb", "label_es": "verbo" }, { "t": "it", "role": "object", "label_es": "pronombre" }, { "t": "off", "role": "link", "label_es": "partícula" } ] }
+      { "label_es": "nombre: al final", "slots": [ { "t": "Turn off", "role": "verb", "label_es": "verbo + partícula" }, { "t": "the light", "role": "object", "label_es": "objeto" } ] },
+      { "label_es": "nombre: en medio", "slots": [ { "t": "Turn", "role": "verb", "label_es": "verbo" }, { "t": "the light", "role": "object", "label_es": "objeto" }, { "t": "off", "role": "link", "label_es": "partícula" } ] },
+      { "label_es": "pronombre: solo en medio", "slots": [ { "t": "Turn", "role": "verb", "label_es": "verbo" }, { "t": "it", "role": "object", "label_es": "pronombre" }, { "t": "off", "role": "link", "label_es": "partícula" } ] }
     ]
   },
   "A2-6-1": {
@@ -184,19 +173,19 @@
     "title": "To + verb vs for + -ing",
     "note_es": "Para explicar el objetivo de una acción usa to + verbo. Para decir la función de una cosa usa for + -ing.",
     "columns": [
-      { "head": "to + verb", "head_es": "objetivo de una acción", "use_es": "Por qué haces algo.", "tone": "blue", "items": [ { "t": "I called to confirm the time.", "ok": true }, { "t": "I left early so as not to miss it.", "ok": true }, { "t": "I called for confirm the time.", "ok": false } ] },
-      { "head": "for + -ing", "head_es": "función de una cosa", "use_es": "Para qué sirve algo.", "tone": "green", "items": [ { "t": "This key is for opening the back door.", "ok": true }, { "t": "It's used for opening files.", "ok": true }, { "t": "This key is for open the door.", "ok": false } ] }
+      { "head": "to + verb", "head_es": "objetivo de una acción", "use_es": "Por qué haces algo.", "tone": "blue", "items": [ { "t": "I called to confirm the time.", "ok": true }, { "t": "She went out to buy bread.", "ok": true }, { "t": "I called for confirm the time.", "ok": false } ] },
+      { "head": "for + -ing", "head_es": "función de una cosa", "use_es": "Para qué sirve algo.", "tone": "green", "items": [ { "t": "This key is for opening the back door.", "ok": true }, { "t": "It’s used for opening files.", "ok": true }, { "t": "This key is for open the door.", "ok": false } ] }
     ]
   },
   "A2-7-1": {
     "kind": "compare",
     "point": "Imperatives and infinitives for giving suggestions",
     "title": "Three ways to suggest",
-    "note_es": "Puedes dar una instrucción directa, suavizarla con Try o Please, o usar it's a good idea to + verbo.",
+    "note_es": "Puedes dar una instrucción directa, suavizarla con Try o Please, o usar it’s a good idea to + verbo.",
     "columns": [
-      { "head": "Imperative", "head_es": "directo", "use_es": "Verbo base al principio.", "tone": "orange", "items": [ { "t": "Check the cable." }, { "t": "Don't click that link." } ] },
+      { "head": "Imperative", "head_es": "directo", "use_es": "Verbo base al principio.", "tone": "orange", "items": [ { "t": "Check the cable." }, { "t": "Don’t click that link." } ] },
       { "head": "Softened", "head_es": "suave", "use_es": "Please, Try, Make sure.", "tone": "teal", "items": [ { "t": "Please check the cable." }, { "t": "Try restarting it." } ] },
-      { "head": "Infinitive", "head_es": "consejo", "use_es": "Frase fija + to + verbo.", "tone": "green", "items": [ { "t": "It's a good idea to back up." }, { "t": "I advise you to wait." } ] }
+      { "head": "Infinitive", "head_es": "consejo", "use_es": "Frase fija + to + verbo.", "tone": "green", "items": [ { "t": "It’s a good idea to back up." }, { "t": "I advise you to wait." } ] }
     ]
   },
   "A2-8-0": {
@@ -206,69 +195,38 @@
     "note_es": "Después de un nombre de tiempo (day, year, time) puedes añadir when + oración. Muchas veces se puede omitir when.",
     "tone": "yellow",
     "rows": [
-      { "label_es": "the day", "slots": [ { "t": "I remember", "role": "subject" }, { "t": "the day", "role": "complement", "label_es": "tiempo" }, { "t": "when", "role": "link", "optional": true }, { "t": "we met.", "role": "extra", "label_es": "sujeto + verbo" } ] },
-      { "label_es": "the year", "slots": [ { "t": "It was", "role": "subject" }, { "t": "the year", "role": "complement", "label_es": "tiempo" }, { "t": "when", "role": "link", "optional": true }, { "t": "everything changed.", "role": "extra", "label_es": "sujeto + verbo" } ] }
+      { "label_es": "the day", "slots": [ { "t": "I remember", "role": "other", "label_es": "oración principal" }, { "t": "the day", "role": "complement", "label_es": "tiempo" }, { "t": "when", "role": "link", "optional": true }, { "t": "we met.", "role": "extra", "label_es": "sujeto + verbo" } ] },
+      { "label_es": "the year", "slots": [ { "t": "It was", "role": "other", "label_es": "oración principal" }, { "t": "the year", "role": "complement", "label_es": "tiempo" }, { "t": "when", "role": "link", "optional": true }, { "t": "everything changed.", "role": "extra", "label_es": "sujeto + verbo" } ] }
     ]
   },
-  "A2-2-1": [
-    {
-      "kind": "transform",
-      "point": "Indirect questions from wh-questions (to be, do/does, can)",
-      "title": "Direct to indirect question: to be",
-      "note_es": "En la pregunta indirecta el orden vuelve a ser el de una oración normal: el verbo to be pasa al final, sin inversión.",
-      "from": {
-        "label_es": "Directa",
-        "tokens": [
-          { "t": "Where", "role": "link", "id": "w" },
-          { "t": "is", "role": "aux", "id": "a" },
-          { "t": "the bank", "role": "subject", "id": "s" }
-        ]
-      },
-      "to": {
-        "label_es": "Indirecta",
-        "tokens": [
-          { "t": "Could you tell me", "role": "extra", "add": true },
-          { "t": "where", "role": "link", "id": "w" },
-          { "t": "the bank", "role": "subject", "id": "s" },
-          { "t": "is", "role": "aux", "id": "a" }
-        ]
-      }
-    },
-    {
-      "kind": "transform",
-      "title": "Direct to indirect question: do / does",
-      "note_es": "Con do/does: desaparece el auxiliar y el verbo toma la -s si hace falta (live pasa a lives).",
-      "from": {
-        "label_es": "Directa",
-        "tokens": [
-          { "t": "Where", "role": "link", "id": "w" },
-          { "t": "does", "role": "aux", "drop": true },
-          { "t": "she", "role": "subject", "id": "s" },
-          { "t": "live", "role": "verb", "id": "v" }
-        ]
-      },
-      "to": {
-        "label_es": "Indirecta",
-        "tokens": [
-          { "t": "Do you know", "role": "extra", "add": true },
-          { "t": "where", "role": "link", "id": "w" },
-          { "t": "she", "role": "subject", "id": "s" },
-          { "t": "lives", "role": "verb", "id": "v" }
-        ]
-      }
-    }
-  ],
-  "A2-4-1": {
-    "kind": "sequence",
-    "point": "Sequence adverbs: first, then, after that, next, finally",
-    "title": "Sequence adverbs: first, then, after that, next, finally",
-    "note_es": "Estas palabras ordenan los pasos de una historia o una rutina. Van al principio de la oración, seguidas de coma.",
-    "steps": [
-      { "t": "First", "label_es": "primero", "ex": "First, I wake up at six." },
-      { "t": "Then", "label_es": "luego", "ex": "Then, I take a shower." },
-      { "t": "Next", "label_es": "a continuación", "ex": "Next, I make breakfast." },
-      { "t": "After that", "label_es": "después de eso", "ex": "After that, I walk to school." },
-      { "t": "Finally", "label_es": "por último", "ex": "Finally, I arrive in class." }
+  "A2-8-1": {
+    "kind": "transform",
+    "point": "Adverbial clauses of time: when, after, before",
+    "title": "Time clause: first or last",
+    "note_es": "La cláusula de tiempo puede ir al principio (con coma) o al final (sin coma). Para el futuro usa presente simple: after I finish.",
+    "tone": "yellow",
+    "from": { "label_es": "Cláusula primero", "tokens": [ { "t": "After I finish,", "role": "extra", "id": "t" }, { "t": "I’ll call you.", "role": "verb", "id": "m" } ] },
+    "to": { "label_es": "Cláusula al final", "tokens": [ { "t": "I’ll call you", "role": "verb", "id": "m" }, { "t": "after I finish.", "role": "extra", "id": "t" } ] }
+  },
+  "A2-10-0": {
+    "kind": "compare",
+    "point": "Gerunds and short responses",
+    "title": "Agree or disagree with short responses",
+    "note_es": "Tras like, love, hate + -ing, responde con So do I o Neither do I para coincidir, y con I don’t o I do para contradecir.",
+    "columns": [
+      { "head": "agree", "head_es": "coincidir", "use_es": "So / Neither / Me too.", "tone": "green", "items": [ { "t": "I love cooking. — So do I." }, { "t": "I hate waiting. — Me too." }, { "t": "I don’t like fish. — Neither do I." } ] },
+      { "head": "disagree", "head_es": "contradecir", "use_es": "Opuesto con do / don’t.", "tone": "red", "items": [ { "t": "I love cooking. — I don’t." }, { "t": "I hate waiting. — Oh, I don’t mind it." }, { "t": "I don’t like fish. — I do." } ] }
+    ]
+  },
+  "A2-10-1": {
+    "kind": "compare",
+    "point": "Clauses with “because”",
+    "title": "Because, because of and so",
+    "note_es": "Because va con una oración (sujeto + verbo). Because of va con un nombre. So da el resultado.",
+    "columns": [
+      { "head": "because", "head_es": "+ oración", "use_es": "Razón con sujeto y verbo.", "tone": "blue", "items": [ { "t": "I stayed home because I felt ill.", "ok": true }, { "t": "I stayed home because the rain.", "ok": false } ] },
+      { "head": "because of", "head_es": "+ nombre", "use_es": "Razón con un nombre.", "tone": "orange", "items": [ { "t": "I stayed home because of the rain.", "ok": true }, { "t": "I stayed home because of I felt ill.", "ok": false } ] },
+      { "head": "so", "head_es": "resultado", "use_es": "Va después de la causa.", "tone": "green", "items": [ { "t": "It was raining, so we stayed in.", "ok": true }, { "t": "So it was raining, we stayed in.", "ok": false } ] }
     ]
   },
   "A2-11-0": {
@@ -319,6 +277,16 @@
       ]
     }
   },
+  "A2-13-0": {
+    "kind": "compare",
+    "point": "Participles as adjectives: present and past",
+    "title": "Boring vs bored",
+    "note_es": "-ing describe lo que causa la emoción (la película). -ed describe a quien la siente (yo).",
+    "columns": [
+      { "head": "-ing", "head_es": "la causa", "use_es": "Cosas o situaciones.", "tone": "orange", "items": [ { "t": "The film was boring.", "ok": true }, { "t": "It was a tiring journey.", "ok": true }, { "t": "The film was bored.", "ok": false } ] },
+      { "head": "-ed", "head_es": "quien lo siente", "use_es": "Personas que sienten.", "tone": "blue", "items": [ { "t": "I was bored.", "ok": true }, { "t": "She was tired after the trip.", "ok": true }, { "t": "I’m boring in this class.", "ok": false } ] }
+    ]
+  },
   "A2-13-1": {
     "kind": "slots",
     "point": "Relative pronouns for people and things: who, that, which",
@@ -345,18 +313,63 @@
       }
     ]
   },
+  "A2-14-0": {
+    "kind": "scale",
+    "point": "Modals and adverbs for degrees of certainty",
+    "title": "How sure are you?",
+    "note_es": "Los modales y adverbios muestran cuánta certeza tienes: can’t (seguro que no), might (posible), probably, must (casi seguro).",
+    "tone": "purple",
+    "from_es": "Seguro que no",
+    "to_es": "Seguro que sí",
+    "marks": [
+      { "t": "can’t", "at": 5, "tone": "red", "label_es": "imposible", "ex": "It can’t be the software." },
+      { "t": "might / could", "at": 32, "tone": "yellow", "label_es": "posible", "ex": "It might be the cable." },
+      { "t": "probably", "at": 62, "tone": "teal", "label_es": "probable", "ex": "It’s probably the battery." },
+      { "t": "must", "at": 90, "tone": "green", "label_es": "casi seguro", "ex": "It must be broken." }
+    ]
+  },
   "A2-14-1": {
     "kind": "scale",
     "point": "Permission, obligation and prohibition",
     "title": "Permission, obligation and prohibition",
-    "note_es": "De izquierda a derecha, la regla es cada vez más fuerte. Cuidado: don't have to (no es necesario) no es lo mismo que mustn't (está prohibido).",
+    "note_es": "De izquierda a derecha, la regla es cada vez más fuerte. Cuidado: don’t have to (no es necesario) no es lo mismo que mustn’t (está prohibido).",
     "from_es": "Tú decides",
     "to_es": "La regla manda",
     "marks": [
       { "t": "can / may", "at": 5, "tone": "green", "label_es": "permiso", "ex": "You can park here after six." },
-      { "t": "don't have to", "at": 33, "tone": "teal", "label_es": "no es necesario", "ex": "You don't have to pay to enter." },
+      { "t": "don’t have to", "at": 33, "tone": "teal", "label_es": "no es necesario", "ex": "You don’t have to pay to enter." },
       { "t": "have to / must", "at": 68, "tone": "orange", "label_es": "obligación", "ex": "You have to wear a helmet." },
-      { "t": "mustn't / can't", "at": 95, "tone": "red", "label_es": "prohibición", "ex": "You mustn't smoke here." }
+      { "t": "mustn’t / can’t", "at": 95, "tone": "red", "label_es": "prohibición", "ex": "You mustn’t smoke here." }
     ]
-  }
+  },
+  "A2-15-1": {
+    "kind": "compare",
+    "point": "Past modals: should have and would have",
+    "title": "Should have, would have, could have",
+    "note_es": "Estas formas hablan de lo que no ocurrió en el pasado: un consejo tardío, una crítica o una posibilidad perdida. Siempre llevan participio.",
+    "columns": [
+      { "head": "should have", "head_es": "debería haber (y no)", "use_es": "Consejo sobre el pasado.", "tone": "orange", "items": [ { "t": "I should have called.", "ok": true }, { "t": "You shouldn’t have said that.", "ok": true }, { "t": "I should have call.", "ok": false } ] },
+      { "head": "would have", "head_es": "habría hecho", "use_es": "Lo que habrías hecho.", "tone": "blue", "items": [ { "t": "I would have helped.", "ok": true }, { "t": "If I had known, I would have called.", "ok": true }, { "t": "I would have help.", "ok": false } ] },
+      { "head": "could have", "head_es": "podría haber (y no)", "use_es": "Posibilidad que no ocurrió.", "tone": "green", "items": [ { "t": "We could have won.", "ok": true }, { "t": "She could have gone.", "ok": true }, { "t": "We could have win.", "ok": false } ] }
+    ]
+  },
+  "A2-16-1": [
+    {
+      "kind": "transform",
+      "point": "Reported speech: requests and commands",
+      "title": "Reported request: asked me to",
+      "note_es": "Para repetir una petición usa asked + persona + to + verbo. Se quita please y no se usa la oración directa.",
+      "tone": "teal",
+      "from": { "label_es": "Directo", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "said to me:", "role": "verb", "id": "v" }, { "t": "“Please wait.”", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "Indirecto", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "asked me", "role": "verb", "id": "v" }, { "t": "to", "role": "link", "add": true }, { "t": "wait", "role": "object", "id": "o" } ] }
+    },
+    {
+      "kind": "transform",
+      "title": "Reported negative request: not to",
+      "note_es": "En negativo, pon not antes de to + verbo: asked me not to call. No se usa don’t.",
+      "tone": "teal",
+      "from": { "label_es": "Directo", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "said to me:", "role": "verb", "id": "v" }, { "t": "“Don’t call.”", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "Indirecto", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "asked me", "role": "verb", "id": "v" }, { "t": "not to", "role": "link", "add": true }, { "t": "call", "role": "object", "id": "o" } ] }
+    }
+  ]
 }
