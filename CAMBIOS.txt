@@ -1898,3 +1898,10 @@ Taxi Rush — Fase 4 (pulido y equipos de bajos recursos)
 - Rutas: la flecha lleva al destino en 200/200 viajes de prueba.
 - Modo clase por el relay de la plataforma (como Language Defenders): ya no depende de PeerJS ni de
   la misma red. Producción usa la misma VITE_RELAY_URL que Impostor.
+
+Language Defenders — correcciones de la auditoría
+- Sombras y reloj actualizados a la API actual de three.js (sin avisos de obsolescencia).
+- Al salir del juego se liberan todas las texturas no compartidas, se quitan los listeners de música
+  pendientes, se cancela el temporizador de carga y se suspende el audio.
+- La variable de depuración window.__game solo existe en desarrollo.
+- Pendiente: medir fugas en 5 ciclos de entrada/salida con la máquina libre.

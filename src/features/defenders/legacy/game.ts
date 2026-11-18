@@ -371,7 +371,7 @@ export class Game {
     this._initScene();
     this._buildTitle();
     this._bindInput();
-    this.clock = new THREE.Clock();
+    this.clock = new THREE.Timer();
     this.menuT = 0;
     this._animate = this._animate.bind(this);
     this._raf = requestAnimationFrame(this._animate);
@@ -405,7 +405,7 @@ export class Game {
     this.maxPR = lostBefore ? 1.5 : 2;
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, this.maxPR));
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.05;
 
@@ -849,6 +849,9 @@ export class Game {
   }
 
   // Leaving the game (the React screen unmounts): stop the loop and free the GPU.
+  // Timer replaces the deprecated Clock: update() once per call, then read the delta.
+  _dt() { this.clock.update(); return this.clock.getDelta(); }
+
   dispose() {
     this.disposed = true;
     cancelAnimationFrame(this._raf);
@@ -864,7 +867,12 @@ export class Game {
     this.scene.traverse((o) => {
       o.geometry?.dispose?.();
       const ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];
-      for (const m of ms) m.dispose?.();
+      for (const m of ms) {
+        // Free every texture slot of the material, except the module-level caches shared
+        // between games (sprites, fx, scenery props, GLB models), flagged userData.shared.
+        for (const k in m) { const t = m[k]; if (t && t.isTexture && !t.userData?.shared) t.dispose(); }
+        m.dispose?.();
+      }
     });
     this.fx?.dispose();
     this.scenery?.dispose();
@@ -1090,7 +1098,7 @@ export class Game {
     // El motor arranca ANTES de avisar al HUD: si un aviso de interfaz fallara, la
     // partida ya está en marcha y no se queda congelada (sin poder plantar ni empezar).
     this.state = 'playing';
-    this.clock.getDelta();
+    this._dt();
     this.hooks.onCards(this.cards);
     this.hooks.onSun(this.sunAmount);
   }
@@ -1247,7 +1255,7 @@ export class Game {
     this.rowHighlight.visible = false;
     const res = await this.quiz.ask();
     this.state = prev;
-    this.clock.getDelta();
+    this._dt();
     return res;
   }
 
@@ -1349,7 +1357,7 @@ export class Game {
     return true;
   }
   closeImprove() {
-    if (this.state === 'improve') { this.state = 'playing'; this.clock.getDelta(); }
+    if (this.state === 'improve') { this.state = 'playing'; this._dt(); }
   }
   // Lista de plantas plantadas (modo clásico) para el pop-up de mejora.
   plantsForImprove() {
@@ -1659,7 +1667,7 @@ export class Game {
   _animate() {
     if (this.disposed) return;
     this._raf = requestAnimationFrame(this._animate);
-    const rawDt = Math.min(this.clock.getDelta(), 0.08);
+    const rawDt = Math.min(this._dt(), 0.08);
     this.worldT = (this.worldT || 0) + rawDt;
     // safety net for size changes no event reported (iOS PWA rotation / full screen)
     this._inFrame = true;
@@ -2360,6 +2368,6 @@ export class Game {
   timeUp() { if (this.state === 'playing' || this.state === 'quiz') { this.quiz.hide(); this.state = 'playing'; this._win(); } }
 
   pause() { if (this.state === 'playing') this.state = 'paused'; }
-  resume() { if (this.state === 'paused') { this.state = 'playing'; this.clock.getDelta(); } }
+  resume() { if (this.state === 'paused') { this.state = 'playing'; this._dt(); } }
   toggleSpeed() { this.speed = this.speed === 1 ? 2 : 1; return this.speed; }
 }

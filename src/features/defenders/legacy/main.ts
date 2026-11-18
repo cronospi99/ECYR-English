@@ -7,8 +7,8 @@ import { Game, PLANTS, THEMES, PLANT_DESC, ZOMBIE_INFO, availablePlants, ROWS, C
          MAX_PLANT_LEVEL } from './game';
 import { preloadSprites, spriteURL } from './sprites';
 import { preloadModels } from './models3d';
-import { SFX, setMuted, isMuted } from './audio';
-import { startMusic, stopMusic, isMusicPlaying, getTracks, getTrackSelection, selectTrack } from './music';
+import { SFX, setMuted, isMuted, suspendAudio } from './audio';
+import { startMusic, stopMusic, disposeMusic, isMusicPlaying, getTracks, getTrackSelection, selectTrack } from './music';
 import { bridge } from '../bridge';
 import { isPainted, backdropThumb } from '../backdrops';
 import { ClassHost, ClassClient, joinURL, makeQR } from './net';
@@ -1710,6 +1710,7 @@ function bindUI() {
 /* ================= Boot ================= */
 function bootError(msg) {
   const inner = document.querySelector('.loading-inner');
+  if (!inner) return;
   inner.innerHTML =
     `<div style="font-size:46px">📚</div>` +
     `<h2 style="color:#ffb0a0">The game could not start</h2>` +
@@ -1735,12 +1736,13 @@ export async function boot() {
     // si la carga de sprites/modelos tarda demasiado, seguimos con respaldos
     await Promise.race([
       Promise.all([preloadSprites(), preloadModels()]),
-      new Promise(res => setTimeout(res, 20000)),
+      new Promise(res => { loadTimer = setTimeout(res, 20000); }),
     ]);
+    clearTimeout(loadTimer); loadTimer = 0;
     if (disposed) return;
     for (const img of document.querySelectorAll('#ld-app img[data-sprite]')) img.src = spriteURL(img.dataset.sprite);
     game = new Game($('game-canvas'), quiz, hooks);
-    window.__game = game; // debug/tests
+    if (import.meta.env.DEV) window.__game = game; // debug/tests
     bindUI();
     buildMenu();
     // Out of the loading art: fade to black, swap to the menu while it's dark, let the 3D scene
@@ -1774,12 +1776,15 @@ export async function boot() {
 
 // The React screen is leaving: stop everything this module started.
 let disposed = false;
+let loadTimer = 0; // 20 s fallback of the sprite preload
 export function dispose() {
   disposed = true;
+  clearTimeout(loadTimer); loadTimer = 0;
   try { stopClass(); } catch { /* not in a class */ }
-  try { stopMusic(); } catch { /* not playing */ }
+  try { stopMusic(); disposeMusic(); } catch { /* not playing */ }
+  try { suspendAudio(); } catch { /* no audio context */ }
   if (kickMusicRef) document.removeEventListener('pointerdown', kickMusicRef);
   try { quiz.hide?.(); } catch { /* no question open */ }
   if (game) { game.dispose(); game = null; }
-  if (window.__game) window.__game = null;
+  if (import.meta.env.DEV && window.__game) window.__game = null;
 }
