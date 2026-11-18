@@ -90,3 +90,15 @@ Reglas obligatorias para el `director-contenido-pedagogico` al crear contenido n
 - **Distractores y modelos:**
   - Los distractores son en general plausibles y del mismo tipo; los fallos están listados.
   - La gramática de los modelos es correcta, pero cerca de un 25 % no cumple su propio criterio o la longitud (patrón 2). Es el punto crítico para escalar.
+
+## Reglas añadidas tras la auditoría A2
+
+12. **Posición de la clave.** Tras generar, ejecutar `node scripts/shuffle-options.mjs "/-more\.json$/"`
+    (baraja opciones de forma determinista y reescribe `answer`). Nunca dejar la clave siempre en la misma posición.
+13. **Datos factuales y lógica interna.** Todo dato histórico, científico o geográfico debe ser verificable
+    y exacto; si hay duda, reformular sin el dato. Revisar la coherencia interna de cada historia
+    (quién tiene qué, días y fechas, cuentas de precios).
+14. **Autocomprobación obligatoria del writing (patrón 2).** Cada `model` se revisa contra cada criterio
+    (cita del modelo que lo cumple) y contra el rango de palabras antes de entregar.
+15. **Etiquetado de nivel.** Si una unidad del currículo exige estructuras del nivel siguiente, la tarea
+    se marca en `brief`/`briefEs` como «A2+ / puente a B1» (análogo en otros niveles).
