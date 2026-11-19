@@ -9,6 +9,18 @@ import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.j
 import { makeToonMaterial, type ToonActor, type Face } from '@/features/toons3d/runtime';
 import { RIM_COLORS, type KartStyle } from './garage';
 import type { Kart } from './kart';
+import type { KartBody } from './karts';
+
+/** Body proportions (length, width, height of the shell), wheel radius front / rear and tyre width
+    front / rear multipliers, and how far the body rides up (offroad). 'balanced' is the original kart. */
+const BODY: Record<KartBody, { L: number; W: number; H: number; rf: number; rr: number; wf: number; wr: number; lift: number }> = {
+  balanced: { L: 1, W: 1, H: 1, rf: 1, rr: 1, wf: 1, wr: 1, lift: 0 },
+  speedster: { L: 1.18, W: 0.92, H: 0.82, rf: 0.9, rr: 0.9, wf: 0.75, wr: 0.78, lift: 0.02 },
+  drifter: { L: 1, W: 1.18, H: 0.95, rf: 1, rr: 1.04, wf: 1, wr: 1.4, lift: 0 },
+  tank: { L: 1.05, W: 1.15, H: 1.12, rf: 1.1, rr: 1.1, wf: 1.12, wr: 1.12, lift: 0 },
+  rocket: { L: 0.85, W: 0.9, H: 0.95, rf: 0.95, rr: 1, wf: 1, wr: 1.05, lift: 0 },
+  offroad: { L: 1.05, W: 1.1, H: 1.2, rf: 1.25, rr: 1.25, wf: 1.15, wr: 1.1, lift: 0.08 },
+};
 
 /** Material classes (alpha): < .5 non-metal with roughness a·2; ≥ .5 metal with roughness (a−.5)·2. */
 const A = { paint: 0.07, plastic: 0.2, fabric: 0.42, rubber: 0.45, chrome: 0.52, metal: 0.62 } as const;
@@ -126,9 +138,19 @@ export class KartView {
   face: Face = 'smile';
   cheer = false;
 
-  constructor(color0: string, label = '', style?: Partial<KartStyle>) {
+  /** Body shape (see BODY): the seat, the rear contact patches and the wheel anchors follow it. */
+  readonly bodyKind: KartBody;
+  private seat = new THREE.Vector3(0, 0.42, -0.16);
+  private rear = [0.69, -0.62];
+
+  constructor(color0: string, label = '', style?: Partial<KartStyle>, body: KartBody = 'balanced') {
     this.mat = makeToonMaterial();
-    const color = style?.paint ?? color0, wing = style?.wing ?? 'std', [rim, rim2] = RIM_COLORS[style?.rim ?? 'chrome'];
+    this.bodyKind = body;
+    const B = BODY[body] ?? BODY.balanced, S = new THREE.Vector3(B.W, B.H, B.L), lift = B.lift;
+    // the drifter always carries a big wing, the rocket a twin one (unless the garage gave it more)
+    const wing0 = style?.wing ?? 'std';
+    const wing = body === 'drifter' && (wing0 === 'std' || wing0 === 'none') ? 'big' : body === 'rocket' && (wing0 === 'std' || wing0 === 'none') ? 'twin' : wing0;
+    const color = style?.paint ?? color0, [rim, rim2] = RIM_COLORS[style?.rim ?? 'chrome'];
     const paint = new THREE.Color(color), dark = '#1d2230', accent = new THREE.Color(color).offsetHSL(0, 0.05, 0.22), deep = new THREE.Color(color).offsetHSL(0, 0, -0.16), seat = '#2a2f3d';
     const g = new KGeo();
     // chassis tray, side pods with intakes and stripes
@@ -258,6 +280,8 @@ export class KartView {
     // number-plate holder and a fine pinstripe round the nose
     g.add(RB(0.3, 0.1, 0.012, 0.004), '#f4f4f2', 'plastic', [0, 0.335, -1.098]);
     g.add(new THREE.TorusGeometry(0.33, 0.006, 4, 28, Math.PI), accent, 'paint', [0, 0.31, 0.62], [Math.PI / 2 - 0.02, 0, 0], [1, 1.72, 1]);
+    const lamps: THREE.BufferGeometry[] = [];
+    if (body !== 'balanced') this.bodyKit(g, body, paint, deep, accent, lamps, S, lift);
     const shell = new THREE.Mesh(g.build(), this.mat);
     shell.castShadow = true;
     this.body.add(shell);
@@ -276,7 +300,7 @@ export class KartView {
 
     // lights: headlights, and two round tail lamps that flare when braking
     const lights = new THREE.Mesh(
-      mergeGeometries([new THREE.SphereGeometry(0.05, 12, 8).translate(-0.16, 0.33, 1.08), new THREE.SphereGeometry(0.05, 12, 8).translate(0.16, 0.33, 1.08)]),
+      mergeGeometries([new THREE.SphereGeometry(0.05, 12, 8).translate(-0.16, 0.33, 1.08), new THREE.SphereGeometry(0.05, 12, 8).translate(0.16, 0.33, 1.08), ...lamps]),
       new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 1.5, 1.2), toneMapped: false }),
     );
     this.body.add(lights);
@@ -332,7 +356,10 @@ export class KartView {
     }
 
     // wheels: rubber tyres with a fine tread and a white sidewall band, chrome rims
-    for (const [x, y, z, r, w, front] of [[-0.64, 0.22, 0.62, 0.22, 0.2, true], [0.64, 0.22, 0.62, 0.22, 0.2, true], [-0.69, 0.28, -0.62, 0.28, 0.3, false], [0.69, 0.28, -0.62, 0.28, 0.3, false]] as const) {
+    // (scaled with the body: radius = height of the axle, so the tyres stay on the ground)
+    const fr = 0.22 * B.rf, rr = 0.28 * B.rr, fw = 0.2 * B.wf, rw = 0.3 * B.wr, fx = 0.64 * B.W + (fw - 0.2) / 2, rx = 0.69 * B.W + (rw - 0.3) / 2;
+    this.rear = [rx, -0.62 * B.L];
+    for (const [x, y, z, r, w, front] of [[-fx, fr, 0.62 * B.L, fr, fw, true], [fx, fr, 0.62 * B.L, fr, fw, true], [-rx, rr, -0.62 * B.L, rr, rw, false], [rx, rr, -0.62 * B.L, rr, rw, false]] as const) {
       const wg = new KGeo();
       const sx = Math.sign(x);
       wg.add(tyre(r, w), '#202228', 'rubber', [0, 0, 0]);
@@ -351,7 +378,9 @@ export class KartView {
       const nT = front ? 22 : 26;
       for (let k = 0; k < nT; k++) {
         const a = (k / nT) * Math.PI * 2;
-        for (const side of [-1, 1]) wg.add(BOX, '#26282e', 'rubber', [side * w * 0.22, Math.cos(a + side * 0.07) * (r + 0.004), Math.sin(a + side * 0.07) * (r + 0.004)], [a + side * 0.07, side * 0.35, 0], [w * 0.4, 0.016, 0.045]);
+        // (offroad: chunky knobs instead of a fine tread)
+        const knob = body === 'offroad' ? 0.045 : 0.016;
+        for (const side of [-1, 1]) wg.add(BOX, '#26282e', 'rubber', [side * w * 0.22, Math.cos(a + side * 0.07) * (r + knob / 4), Math.sin(a + side * 0.07) * (r + knob / 4)], [a + side * 0.07, side * 0.35, 0], [w * 0.4, knob, body === 'offroad' ? 0.07 : 0.045]);
       }
       const pivot = new THREE.Group(), spin = new THREE.Group();
       pivot.position.set(x, y, z);
@@ -362,6 +391,7 @@ export class KartView {
       this.wheels.push({ pivot, spin, r, w, front, base: new THREE.Vector3(x, y, z) });
     }
     this.root.add(this.body);
+    if (body !== 'balanced') this.fitBody(S, lift, B.W, B.L);
 
     // the driver's scarf (placed when a driver sits down)
     {
@@ -390,6 +420,94 @@ export class KartView {
     this.root.add(this.blob);
   }
 
+  /** Stretch the shell and everything fixed to it to the body's proportions (the wheels were already
+      built in place); the anchors (exhaust, wing tips, seat, tail lamps) move with it. */
+  private fitBody(S: THREE.Vector3, lift: number, W: number, L: number) {
+    for (const c of this.body.children) {
+      if (c === this.steering || c === this.stars || c === this.scarf || this.wheels.some((w) => w.pivot === c)) continue;
+      const m = c as THREE.Mesh;
+      const flat = m.geometry && (m.geometry as THREE.PlaneGeometry).type === 'PlaneGeometry';
+      // decals and name plates keep their shape and just move; everything else stretches
+      if (flat) { c.position.multiply(S); c.position.y += lift; c.scale.x *= c.position.z < -0.5 ? W : 1; }
+      else { c.scale.multiply(S); c.position.multiply(S); c.position.y += lift; }
+    }
+    this.steering.position.multiply(S); this.steering.position.y += lift;
+    for (const e of this.exhaust) { e.multiply(S); e.y += lift; }
+    this.wingTip = [this.wingTip[0] * S.x, this.wingTip[1] * S.y + lift, this.wingTip[2] * S.z];
+    this.seat.multiply(S); this.seat.y += lift;
+    if (this.bodyKind === 'speedster') this.seat.z -= 0.1;
+    this.under.scale.set(W, 1, L);
+  }
+
+  /** The traits of each body (in the original kart's coordinates: they stretch with it). */
+  private bodyKit(g: KGeo, body: KartBody, paint: THREE.Color, deep: THREE.Color, accent: THREE.Color, lamps: THREE.BufferGeometry[], S: THREE.Vector3, lift: number) {
+    const carbon = '#191b21', steel = '#9aa1ab', chrome = '#d7dce3';
+    // (lamps are given in final coordinates: they join the unlit headlight mesh, which also stretches)
+    const lamp = (x: number, y: number, z: number, r: number) => lamps.push(new THREE.SphereGeometry(r, 10, 6).scale(1 / S.x, 1 / S.y, 1 / S.z).translate(x / S.x, (y - lift) / S.y, z / S.z));
+    if (body === 'speedster') {
+      // long wedge nose with a sharp tip, a dorsal fin behind the driver, low side blades
+      g.add(new THREE.ConeGeometry(0.34, 0.75, 4), paint, 'paint', [0, 0.24, 1.2], [Math.PI / 2, Math.PI / 4, 0], [1.25, 1, 0.42]);
+      g.add(new THREE.ConeGeometry(0.1, 0.5, 4), '#ffffff', 'paint', [0, 0.335, 1.12], [Math.PI / 2, Math.PI / 4, 0], [1, 1, 0.3]);
+      g.add(RB(0.035, 0.42, 0.62, 0.015), paint, 'paint', [0, 0.84, -0.78], [-0.42, 0, 0]);
+      g.add(RB(0.04, 0.05, 0.6, 0.012), '#ffffff', 'paint', [0, 1.02, -0.86], [-0.42, 0, 0]);
+      for (const sx of [-1, 1]) g.add(RB(0.05, 0.06, 1.3, 0.02), accent, 'paint', [sx * 0.6, 0.27, 0.05]);
+    } else if (body === 'drifter') {
+      // flared arches over every wheel, a wide splitter and canards
+      for (const sx of [-1, 1]) {
+        g.add(RB(0.2, 0.09, 0.62, 0.035), paint, 'paint', [sx * 0.66, 0.47, 0.62]);
+        g.add(RB(0.3, 0.1, 0.78, 0.04), paint, 'paint', [sx * 0.72, 0.66, -0.62]);
+        g.add(RB(0.31, 0.025, 0.7, 0.01), '#ffffff', 'paint', [sx * 0.72, 0.715, -0.62]);
+        g.add(RB(0.18, 0.02, 0.12, 0.008), carbon, 'plastic', [sx * 0.55, 0.3, 1.12], [0, sx * -0.4, 0.25 * sx]);
+      }
+      g.add(RB(1.56, 0.03, 0.3, 0.012), carbon, 'plastic', [0, 0.08, 1.24]);
+      g.add(RB(1.5, 0.02, 0.05, 0.008), accent, 'paint', [0, 0.1, 1.38]);
+    } else if (body === 'tank') {
+      // square bumpers, a roll bar over the driver, two thick exhausts, armour on the pods
+      g.add(RB(1.42, 0.22, 0.2, 0.04), '#3a404c', 'metal', [0, 0.26, 1.22]);
+      g.add(RB(1.44, 0.05, 0.21, 0.015), '#ffd23f', 'paint', [0, 0.3, 1.23]);
+      g.add(RB(1.3, 0.2, 0.18, 0.04), '#3a404c', 'metal', [0, 0.24, -1.15]);
+      for (const sx of [-1, 1]) {
+        g.add(CYL, chrome, 'chrome', [sx * 0.27, 0.82, -0.52], [0, 0, 0], [0.04, 0.62, 0.04]);
+        g.add(RB(0.36, 0.3, 0.9, 0.05), deep, 'paint', [sx * 0.5, 0.38, -0.02]);
+        g.add(CYL, '#4a505c', 'metal', [sx * 0.34, 0.5, -1.12], [Math.PI / 2, 0, 0], [0.1, 0.36, 0.1]);
+        g.add(CYL, '#14161c', 'metal', [sx * 0.34, 0.5, -1.305], [Math.PI / 2, 0, 0], [0.075, 0.02, 0.075]);
+      }
+      g.add(CYL, chrome, 'chrome', [0, 1.12, -0.52], [0, 0, Math.PI / 2], [0.04, 0.58, 0.04]);
+      g.add(CYL, chrome, 'chrome', [0, 0.98, -0.8], [0.95, 0, 0], [0.03, 0.62, 0.03]);
+      this.exhaust[0].set(-0.34, 0.5, -1.33); this.exhaust[1].set(0.34, 0.5, -1.33);
+    } else if (body === 'rocket') {
+      // two big rocket nozzles, an exposed tube frame along the sides
+      for (const sx of [-1, 1]) {
+        g.add(CYL, '#3a404c', 'metal', [sx * 0.24, 0.55, -1.02], [Math.PI / 2, 0, 0], [0.15, 0.5, 0.15]);
+        g.add(CYL, paint, 'paint', [sx * 0.24, 0.55, -0.92], [Math.PI / 2, 0, 0], [0.16, 0.1, 0.16]);
+        g.add(new THREE.CylinderGeometry(0.13, 0.2, 0.22, 16, 1, true), chrome, 'chrome', [sx * 0.24, 0.55, -1.36], [Math.PI / 2, 0, 0]);
+        g.add(CYL, '#ff8a3d', 'plastic', [sx * 0.24, 0.55, -1.29], [Math.PI / 2, 0, 0], [0.11, 0.02, 0.11]);
+        g.add(CYL, chrome, 'chrome', [sx * 0.58, 0.14, 0], [Math.PI / 2, 0, 0], [0.028, 1.9, 0.028]);
+        g.add(CYL, chrome, 'chrome', [sx * 0.58, 0.42, 0.05], [Math.PI / 2, 0, 0], [0.022, 1.1, 0.022]);
+        for (const z of [-0.45, 0.05, 0.55]) g.add(CYL, chrome, 'chrome', [sx * 0.58, 0.28, z], [0, 0, 0], [0.02, 0.28, 0.02]);
+      }
+      this.exhaust[0].set(-0.24, 0.55, -1.47); this.exhaust[1].set(0.24, 0.55, -1.47);
+    } else if (body === 'offroad') {
+      // roll cage with a light bar on the roof, a bull bar, skid plate and mud flaps
+      for (const sx of [-1, 1]) {
+        g.add(CYL, '#30343c', 'metal', [sx * 0.34, 0.86, -0.2], [0.18, 0, 0], [0.03, 0.82, 0.03]);
+        g.add(CYL, '#30343c', 'metal', [sx * 0.34, 0.86, -0.72], [-0.12, 0, 0], [0.03, 0.82, 0.03]);
+        g.add(CYL, '#30343c', 'metal', [sx * 0.34, 1.26, -0.45], [Math.PI / 2, 0, 0], [0.03, 0.62, 0.03]);
+        g.add(CYL, chrome, 'chrome', [sx * 0.3, 0.32, 1.28], [0, 0, 0], [0.03, 0.3, 0.03]);
+        g.add(RB(0.3, 0.26, 0.03, 0.01), '#14161c', 'rubber', [sx * 0.69, 0.18, -0.98]);
+        g.add(RB(0.38, 0.06, 0.66, 0.02), deep, 'paint', [sx * 0.66, 0.5, 0.62]);
+      }
+      g.add(RB(0.78, 0.06, 0.12, 0.02), '#30343c', 'metal', [0, 1.28, -0.16]);
+      g.add(CYL, chrome, 'chrome', [0, 0.46, 1.28], [0, 0, Math.PI / 2], [0.03, 0.62, 0.03]);
+      g.add(CYL, chrome, 'chrome', [0, 0.2, 1.28], [0, 0, Math.PI / 2], [0.03, 0.62, 0.03]);
+      g.add(RB(0.9, 0.04, 0.5, 0.015), steel, 'metal', [0, 0.08, 0.95], [0.25, 0, 0]);
+      for (const x of [-0.27, -0.09, 0.09, 0.27]) {
+        g.add(CYL, '#14161c', 'plastic', [x, 1.33, -0.14], [Math.PI / 2, 0, 0], [0.06, 0.06, 0.06]);
+        lamp(x * S.x, 1.33 * S.y + lift, -0.105 * S.z, 0.045);
+      }
+    }
+  }
+
   /** Take the driver out (to seat them in a new kart: the garage). */
   takeDriver() { const d = this.driver; if (d) d.object.removeFromParent(); this.driver = null; return d; }
 
@@ -408,7 +526,7 @@ export class KartView {
     this.parts = {};
     for (const n of ['hips', 'legL', 'legR', 'chest', 'armL', 'armR', 'head']) { const p = o.getObjectByName(n); if (p) this.parts[n] = p; }
     this.legLen = this.parts.hips?.position.y ?? 0.4;
-    o.position.set(0, 0.42 - this.legLen * s, -0.16);
+    o.position.set(this.seat.x, this.seat.y - this.legLen * s, this.seat.z);
     o.traverse((m) => { if ((m as THREE.Mesh).isMesh) m.castShadow = true; });
     this.body.add(o);
     actor.play('idle', 0);
@@ -586,7 +704,7 @@ export class KartView {
   }
   /** World position of a rear tyre's contact patch (side −1 / +1). */
   rearContact(side: number, out: THREE.Vector3) {
-    out.set(side * 0.69, 0.02, -0.62).applyMatrix4(this.body.matrixWorld);
+    out.set(side * this.rear[0], 0.02, this.rear[1]).applyMatrix4(this.body.matrixWorld);
     return out;
   }
 

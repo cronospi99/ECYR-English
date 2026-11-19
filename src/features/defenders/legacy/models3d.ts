@@ -12,7 +12,11 @@ let ready = false;
 
 function load(url) {
   return new Promise((res) => {
-    loader.load(url, (g) => res(g), undefined, (e) => { console.warn('GLB no cargó:', url, e?.message || e); res(null); });
+    loader.load(url, (g) => {
+      // GLB assets are cached at module level: flag their textures as shared
+      g.scene.traverse((o) => { const ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : []; for (const m of ms) for (const k in m) if (m[k]?.isTexture) m[k].userData.shared = true; });
+      res(g);
+    }, undefined, (e) => { console.warn('GLB no cargó:', url, e?.message || e); res(null); });
   });
 }
 

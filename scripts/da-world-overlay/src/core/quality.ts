@@ -113,11 +113,11 @@ export function detectQuality(): QualityName {
 
   const touch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
   const cores = navigator.hardwareConcurrency ?? 4;
-  const small = Math.min(window.screen.width, window.screen.height) < 500;
 
-  if (touch && (small || cores <= 4)) return "medium";
-  if (touch) return "high";
-  return cores >= 8 ? "ultra" : "high";
+  // ECYR perf: start one step lower than before (ultra's 8× MSAA and 4096 shadows are rarely worth
+  // it); Taxi Rush also steps down by itself when the frame rate drops.
+  if (touch) return "medium";
+  return cores >= 8 ? "high" : "medium";
 }
 
 function read(): QualityName | null {
@@ -135,4 +135,20 @@ export function rememberQuality(name: QualityName): void {
   } catch {
     /* private browsing: the choice lasts for this session only. */
   }
+}
+
+/**
+ * Taxi Rush's first guess: more cautious than the walking city, because a taxi draws a whole map
+ * at speed. A touch screen with few cores (an older phone) starts on "low"; the frame-rate
+ * governor (taxi/governor.ts) then trims or restores individual settings from there.
+ */
+export function detectTaxiQuality(): QualityName {
+  const stored = read();
+  if (stored) return stored;
+  const touch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  const cores = navigator.hardwareConcurrency ?? 4;
+  const mem = (navigator as unknown as { deviceMemory?: number }).deviceMemory ?? 4;
+  if (touch) return cores <= 6 || mem <= 3 ? "low" : "medium";
+  if (cores <= 2 || mem <= 2) return "low";
+  return cores >= 8 ? "high" : "medium";
 }

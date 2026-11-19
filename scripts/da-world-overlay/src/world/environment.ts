@@ -40,6 +40,10 @@ export interface Environment {
    * cube face size of a probe that photographs the city around the player.
    */
   setReflections(size: number): void;
+  /** ECYR perf: refresh the reflection probe at most every `seconds`, or after moving `metres`. */
+  setProbeCadence(seconds: number, metres: number): void;
+  /** ECYR perf: shrink the sky dome and stars to fit a shorter camera far plane. */
+  setDomeScale(k: number): void;
 }
 
 /* ------------------------------------------------------------------ *
@@ -305,6 +309,9 @@ export function createEnvironment(
   const probeAt = new THREE.Vector3(1e9, 0, 0);
   let probeAge = 1e9;
   let lastElapsed = 0;
+  // ECYR perf: how stale the reflections may get. A taxi crosses a block a second, so chasing
+  // "every 18 m" re-photographed the city all the time (six extra city renders + PMREM per refresh).
+  let probeEvery = 2.5, probeMove = 18;
   // One face per frame, so a refresh never costs more than a sixth of a city.
   let face = -1;
   const captureFace = () => {
@@ -339,6 +346,14 @@ export function createEnvironment(
   return {
     sun,
     sky,
+
+    setDomeScale(k: number) {
+      sky.scale.setScalar(k); stars.scale.setScalar(k);
+    },
+
+    setProbeCadence(seconds: number, metres: number) {
+      probeEvery = seconds; probeMove = metres;
+    },
 
     setReflections(size: number) {
       if (size === probeSize) return;
@@ -408,7 +423,7 @@ export function createEnvironment(
       probeAge += Math.max(0, elapsed - lastElapsed);
       lastElapsed = elapsed;
       if (face >= 0) captureFace();
-      else if (probeCam && (probeAge > 2.5 || probeAt.distanceToSquared(target) > 18 * 18)) startCapture(target);
+      else if (probeCam && (probeAge > probeEvery || probeAt.distanceToSquared(target) > probeMove * probeMove)) startCapture(target);
       skyMaterial.uniforms.uTime.value = elapsed;
       sky.position.set(target.x, 0, target.z);
       stars.position.set(target.x, 0, target.z);

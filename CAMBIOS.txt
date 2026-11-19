@@ -1817,3 +1817,128 @@ G19 — Estabilidad, juegos y exámenes (noviembre)
     barricadas y postes caídos, incendios en el suelo y en los techos con columnas de humo,
     grandes humaredas en el horizonte, reflectores y explosiones lejanas; ceniza y brasas en toda
     la profundidad. Se tiñe con los colores de cada mapa.
+
+Taxi Rush — Fase 1 (rendimiento y llantas)
+  · Llantas delanteras: el modelo 3D venía guardado con las ruedas delanteras giradas 30° y el juego
+    sumaba su propio giro encima; ahora se enderezan al cargar y giran sobre su eje (sin bamboleo).
+  · Rendimiento: cada fotograma dibujaba la ciudad entera (~7 millones de triángulos, 36 pasadas)
+    porque las piezas estaban fusionadas en bloques que cruzaban todo el mapa. Ahora se fusionan por
+    celdas de ciudad (~44 m), así la cámara y las sombras descartan lo que no ven; la cámara del taxi
+    sólo dibuja hasta donde llega la neblina (175 m, con el cielo ajustado), y los reflejos se
+    refrescan cada 6 s en vez de cada cuadra. Resultado medido: la pasada principal bajó de 4,8 a
+    2,7 millones de triángulos y los reflejos dejaron de recalcularse casi cada fotograma.
+  · Calidad automática: arranca un nivel más abajo (computador: High en vez de Ultra; teléfono:
+    Medium) y si mientras conduces el juego va por debajo de ~32 fps unos segundos, baja la calidad
+    sola y lo avisa en pantalla («GRAPHICS: MEDIUM»…), y lo recuerda.
+
+Language Defenders — modo clase por el relay de la plataforma + 60 fps
+  · El modo clase (QR) ya no usa PeerJS/WebRTC: usa el MISMO servidor de partidas en vivo que
+    Impostor y Class Wars (WebSocket por el relay de Cloudflare). Funciona desde cualquier red
+    (datos móviles, otra wifi, la del colegio) sin STUN/TURN ni servidor propio; se quitaron «Test
+    connection» y «Relay server». Código de sala de 6 caracteres. Probado: host + alumno se unen,
+    el docente ve la lista y la actualiza cuando el alumno sale. Requiere VITE_RELAY_URL en Vercel
+    (el mismo de Impostor).
+  · Arreglo: el estado «You're in!» del alumno lanzaba un error de JavaScript en cada reintento.
+  · 60 fps: nuevo regulador de rendimiento. Mide los fotogramas reales cada segundo y, si bajan de
+    ~56 fps, baja la calidad paso a paso (resolución, brillo, partículas, sombras) hasta sostener
+    60; si el aparato está limitado a 30 fps por ahorro de batería, no lo degrada en vano. En Taxi
+    Rush la calidad automática ahora actúa por debajo de 54 fps (antes 32).
+
+Taxi Rush — Fase 2 (juego propio y ciudad nueva)
+- Taxi Rush arranca con su propia entrada (src/taxi/boot.ts): ya no carga la ciudad, la gente, el
+  personaje ni el tráfico de Da World. Da World sigue igual.
+- Ciudad nueva y propia: edificios procedurales por zona (torres en el centro, casas con tejado,
+  naves industriales, landmarks), ventanas que se encienden de noche, calles con carriles, pasos de
+  cebra, aceras, parques y la autopista. Sin modelos de kits: solo se descargan el taxi y el tráfico.
+- 6 materiales compartidos, geometría fusionada por celdas. Medido en la salida: ~372 llamadas de
+  dibujo y ~0,5 M triángulos por fotograma (antes ~1.750 y ~3,3 M).
+- Se conservan los 155 destinos (91 del centro con sus mismos ids + 64 de los distritos); todos
+  comprobados: parada en zona transitable y con edificio delante.
+
+Taxi Rush — Fase 3 (detalle y vida)
+- Mobiliario urbano en las aceras (bancos, papeleras, hidrantes, bolardos, paradas de bus, kioscos),
+  más denso en el centro y el casco antiguo, escaso en puerto y aeropuerto.
+- Señales: placas con el nombre de la calle en cada cruce, stop/ceda donde no hay semáforo.
+- Edificios icónicos según el destino: hospital con cruz roja, gasolinera con surtidores, escuela con
+  reloj y bandera, policía/bomberos con franja, toldos en cafés y tiendas, hotel con marquesina,
+  iglesia con torre, banco con columnas, biblioteca/museo con frontón.
+- Semáforos con preguntas también en el centro; el tráfico circula por toda la ciudad sin atravesar
+  edificios y ningún auto aparece encima del taxi al empezar.
+- Lejanía simplificada: a partir de ~75 m se ocultan mobiliario y señales, y a partir de ~120 m los
+  edificios pasan a cajas simples. Medido: ~390 llamadas de dibujo y ~0,7 M triángulos por
+  fotograma; mismos 6 materiales, ningún modelo nuevo para descargar.
+
+Ayudas visuales de gramática (diagramas por datos)
+- Nuevo sistema de diagramas SVG que se dibujan a partir de datos: transformación (activa→pasiva,
+  directa→indirecta), orden de palabras en casillas, escalas (obligación, certeza, frecuencia),
+  secuencias, coletillas (question tags), comparaciones ✓/✗ y líneas de tiempo. Accesibles
+  (role="img" + descripción), adaptados a móvil y a modo claro/oscuro.
+- 168 diagramas nuevos que cubren todos los puntos de gramática de A1 a C2 que no tenían diagrama
+  (los dibujados a mano se conservan). Validador: node scripts/validate-diagrams.mjs.
+- Las infografías en imagen ya no deslumbran en modo oscuro (se muestran como lámina impresa) y
+  tienen textos alternativos descriptivos.
+- Auditados por el corrector de inglés (29 errores corregidos: escalas, ✓/✗, líneas de tiempo, rótulos)
+  y revisados con capturas a 320 y 560 px en claro y oscuro (rótulos de escala sin solaparse).
+
+Contenido A1 ×3 (piloto)
+- Lecturas A1: 24 → 72 (+48), con glosario y 6 preguntas cada una (Verdadero/Falso equilibrados).
+- Listening A1: 21 → 63 (+42); el audio se genera con las voces de la plataforma.
+- Writing A1: 50 → 150 tareas extra (+100), añadidas al final de cada unidad (los borradores guardados
+  no se pierden), con modelo que cumple sus criterios y su longitud.
+- Auditado por el corrector de inglés (≈80 correcciones aplicadas) y validado con
+  npm run content:validate. Guía de calidad en docs/guia-contenido.md.
+
+Taxi Rush — Fase 4 (pulido y equipos de bajos recursos)
+- Regulador de 60 fps de varios pasos (resolución, brillo, sombras, distancia, reflejos, tráfico):
+  baja calidad si cae de ~56 fps y la recupera cuando sobra; no degrada en vano a 30 fps fijos.
+- Calidad inicial según el equipo: teléfonos con ≤ 6 núcleos o poca memoria empiezan en "baja".
+- Fugas de memoria corregidas al volver al garaje (taxi, vista previa, marcadores, autos remotos):
+  estable tras 5 ciclos.
+- Minimapa nuevo de la ciudad (distritos, autopista, mar) con flecha al destino fuera del mapa.
+- Rutas: la flecha lleva al destino en 200/200 viajes de prueba.
+- Modo clase por el relay de la plataforma (como Language Defenders): ya no depende de PeerJS ni de
+  la misma red. Producción usa la misma VITE_RELAY_URL que Impostor.
+
+Language Defenders — correcciones de la auditoría
+- Sombras y reloj actualizados a la API actual de three.js (sin avisos de obsolescencia).
+- Al salir del juego se liberan todas las texturas no compartidas, se quitan los listeners de música
+  pendientes, se cancela el temporizador de carga y se suspende el audio.
+- La variable de depuración window.__game solo existe en desarrollo.
+- Pendiente: medir fugas en 5 ciclos de entrada/salida con la máquina libre.
+
+Contenido A2 ×3
+- Lecturas A2: 25 → 75 (+50), 10 géneros, ambientación latinoamericana e internacional con su moneda.
+- Listening A2: 21 → 63 (+42), Verdadero/Falso al 50 %.
+- Writing A2: 49 → 147 tareas extra (+98), añadidas al final de cada unidad.
+- Validado con npm run content:validate (0 errores en lo nuevo).
+
+English Racers — karts estilo Blur y mapas renovados
+- 6 karts con atributos (Aceleración, Velocidad, Agarre/Derrape, Control) y carrocería propia:
+  Classic, Ranger (todoterreno), Slider (derrapes), Bulldog (pesado), Bolt (velocista), Rocket.
+  El Classic conduce exactamente como el kart anterior; las mejoras suben como mucho +10 % de velocidad.
+- Pantalla de selección antes de correr: vista previa 3D girando, barras con la mejora en verde,
+  desbloquear con monedas y 5 niveles de mejora por atributo. En el modo live (clase) se usan solo
+  los atributos base, para que sea justo; el kart elegido se ve igual en todas las pantallas.
+- Bots con karts distintos en cada carrera. Las partidas guardadas antiguas se conservan.
+- Mapas: público animado en gradas, árboles por bioma (palmeras, cerezos, abetos nevados, saguaros…),
+  siluetas de fondo (Big Ben, Fuji, Pan de Azúcar, skylines, cordilleras) y nieve que cae en Snow.
+  Máximo +150 llamadas de dibujo por pista; menos cantidad en equipos modestos.
+- Se liberan mejor los recursos al cambiar de pista.
+
+Contenido B1 ×3
+- Lecturas B1: 25 → 75 (+50); Listening B1: 21 → 63 (+42); Writing B1: 49 → 147 tareas extra (+98).
+- Validado (0 errores en lo nuevo), opciones barajadas; tareas que exigen estructuras B2 marcadas
+  «B1+ / puente a B2». Pendiente: auditoría de muestra del corrector de inglés.
+
+Contenido B2 ×3
+- Lecturas B2: 27 → 81 (+54); Listening B2: 23 → 69 (+46); Writing B2: 37 → 111 tareas extra (+74).
+- Validado (0 errores en lo nuevo), opciones barajadas; tareas con estructuras de C1 marcadas
+  «B2+ / puente a C1».
+
+Contenido C1 ×3
+- Lecturas C1: 27 → 81 (+54); Listening C1: 23 → 69 (+46); Writing C1: 36 → 108 tareas extra (+72).
+- Validado (0 errores en lo nuevo), opciones barajadas.
+
+Contenido C2 ×3
+- Lecturas C2: 13 → 39 (+26); Listening C2: 12 → 36 (+24); Writing C2: 20 → 60 tareas extra (+40).
+- Validado (0 errores en lo nuevo), opciones barajadas, Verdadero/Falso al 50 % (antes C2 tenía 18 % True).

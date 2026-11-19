@@ -16,6 +16,8 @@ import type { RunLevel } from '@/features/run/questions';
 import { TRACKS, type TrackId } from './tracks';
 import type { LiveCfg, LiveEntry, LiveFinish, LiveOut, LiveState } from './engine';
 import { scoreOf, type HitKind } from './racer';
+import { isKartId, type KartId } from './karts';
+import { garage } from './garage';
 const HIT_KINDS: HitKind[] = ['plane', 'ink', 'chalk', 'storm', 'burst'];
 
 export const MAX_STUDENTS = 30;
@@ -37,7 +39,10 @@ export interface LiveSettings {
 }
 /** The Grand Prix being raced: its tracks and how many have started. */
 export interface LiveGp { tracks: TrackId[]; round: number }
-export interface LivePlayer { peer: string; name: string; toon: string; online: boolean; total: number }
+/** `kart`: the kart the student picked (the Classic for old clients that do not send one). In a
+    class race everybody drives their kart with its base attributes only, without the upgrades
+    bought in their own garage, so the race is fair (see RaceGame.myKart). */
+export interface LivePlayer { peer: string; name: string; toon: string; kart: KartId; online: boolean; total: number }
 export interface LiveResult { peer: string; name: string; toon: string; right: number; wrong: number; bank: number; score: number; total: number; time: number; done: boolean; place: number }
 export interface LivePub { ph: LivePhase; set: LiveSettings; players: LivePlayer[]; race: number; track: TrackId | null; left: number; results: LiveResult[] | null; gp: LiveGp | null; /** ms until the next race (or the podium) starts by itself; 0 = not scheduled. */ next: number }
 export type Snap = Omit<LiveState, never> & { peer: string };
@@ -113,7 +118,7 @@ export class RacersHost {
   /** The track of the next Grand Prix race. */
   get gpNext(): TrackId | null { return this.gp && this.gp.round < this.gp.tracks.length ? this.gp.tracks[this.gp.round] : null; }
   pub(): LivePub {
-    return { ph: this.phase, set: this.set, players: this.list.map(({ peer, name, toon, online, total }) => ({ peer, name, toon, online, total })), race: this.race, track: this.cfg?.track ?? null, left: this.left, results: this.results, gp: this.gp, next: this.nextIn };
+    return { ph: this.phase, set: this.set, players: this.list.map(({ peer, name, toon, kart, online, total }) => ({ peer, name, toon, kart, online, total })), race: this.race, track: this.cfg?.track ?? null, left: this.left, results: this.results, gp: this.gp, next: this.nextIn };
   }
   /** Live scores during the race (best first). */
   live() {
@@ -137,7 +142,7 @@ export class RacersHost {
 
   start() {
     if (this.phase === 'race') return;
-    const roster: LiveEntry[] = this.online.slice(0, MAX_STUDENTS).map((p) => ({ peer: p.peer, name: p.name, toon: p.toon }));
+    const roster: LiveEntry[] = this.online.slice(0, MAX_STUDENTS).map((p) => ({ peer: p.peer, name: p.name, toon: p.toon, kart: p.kart }));
     if (!roster.length) return;
     let track: TrackId;
     if (this.set.mode === 'gp') {
@@ -245,10 +250,11 @@ export class RacersHost {
         const name = cleanName(d.name);
         if (name.length < 2) return;
         const toon = TOONS.some((x) => x.id === d.toon) ? String(d.toon) : TOONS[0].id;
+        const kart: KartId = isKartId(d.kart) ? d.kart : 'balanced'; // (old clients send no kart)
         const p = this.players.get(peer);
         if (!p && this.players.size >= MAX_STUDENTS + 10) { this.relay.send({ k: 'full' }, peer); return; }
-        if (p) Object.assign(p, { name, toon, online: true });
-        else this.players.set(peer, { peer, name, toon, online: true, total: 0, joinedAt: Date.now() });
+        if (p) Object.assign(p, { name, toon, kart, online: true });
+        else this.players.set(peer, { peer, name, toon, kart, online: true, total: 0, joinedAt: Date.now() });
         this.relay.send({ k: 'pub', st: this.pub() }, peer);
         // back after a reload: hand over the race in progress (they start it from the grid)
         if (this.phase === 'race' && this.cfg && this.cfg.roster.some((e) => e.peer === peer) && d.fresh) this.relay.send({ k: 'go', cfg: this.cfg }, peer);
@@ -283,6 +289,8 @@ export class RacersClient {
   readonly peer: string;
   name: string;
   toon: string;
+  /** The kart picked in the garage (sent in `hi`; the teacher puts it in the race roster). */
+  kart: KartId;
   net: NetStatus = 'connecting';
   status: ClientStatus = 'ok';
   pub: LivePub | null = null;
@@ -306,8 +314,8 @@ export class RacersClient {
   onLobby: (() => void) | null = null;
   onPodium: ((totals: Record<string, number>) => void) | null = null;
 
-  constructor(code: string, peer: string, name: string, toon: string) {
-    this.code = code; this.peer = peer; this.name = name; this.toon = toon;
+  constructor(code: string, peer: string, name: string, toon: string, kart: KartId = garage.kart) {
+    this.code = code; this.peer = peer; this.name = name; this.toon = toon; this.kart = kart;
     this.relay = new Relay(code, peer, 'player');
     this.offs.push(this.relay.on((e) => this.onMsg(e)));
     this.offs.push(this.relay.onStatus((s) => { const was = this.net; this.net = s; if (s === 'open' && was !== 'open') this.hello(); this.bump(); }));
@@ -315,8 +323,10 @@ export class RacersClient {
   subscribe(f: () => void) { this.listeners.add(f); return () => { this.listeners.delete(f); }; }
   private bump() { this.listeners.forEach((f) => f()); }
   close() { this.offs.forEach((f) => f()); this.relay.close(); }
-  private hello() { this.relay.send({ k: 'hi', name: this.name, toon: this.toon, fresh: this.fresh }, 'host'); this.fresh = false; }
+  private hello() { this.relay.send({ k: 'hi', name: this.name, toon: this.toon, kart: this.kart, fresh: this.fresh }, 'host'); this.fresh = false; }
   setToon(id: string) { this.toon = id; this.hello(); }
+  /** Another kart picked in the waiting room (counts from the next race). */
+  setKart(id: KartId) { this.kart = id; this.hello(); }
   /** In the race the teacher is running now. */
   get racing() { return !!this.cfg && this.pub?.ph === 'race' && this.pub.race === this.cfg.race; }
 

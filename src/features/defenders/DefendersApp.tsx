@@ -27,7 +27,6 @@ export default function DefendersApp() {
   useEffect(() => {
     const el = root.current!;
     loadOnce('link', FONTS);
-    loadOnce('script', '/defenders/vendor/peerjs.min.js'); // Class Mode transport
     el.innerHTML = MARKUP;
     // iPhone/iPad: no backdrop blur anywhere in the game. WebKit composites blurred panels over a
     // WebGL canvas in tiles and can leave part of the 3D view black.

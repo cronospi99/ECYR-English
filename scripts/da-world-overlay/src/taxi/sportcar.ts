@@ -268,12 +268,26 @@ export function buildSportCar(look: SportLook): SportCar | null {
   let head: THREE.MeshStandardMaterial | null = null;
   let brake: THREE.MeshStandardMaterial | null = null;
 
+  // ECYR perf: the sun's shadow only needs the big pieces; bolts, callipers and trim
+  // would each cost a draw call in the shadow pass for a shadow nobody can see.
+  const radius = new Map<THREE.Object3D, number>();
+  let biggest = 0;
+  model.updateMatrixWorld(true);
+  model.traverse((o) => {
+    const m = o as THREE.Mesh;
+    if (!m.isMesh) return;
+    if (!m.geometry.boundingSphere) m.geometry.computeBoundingSphere();
+    const r = m.geometry.boundingSphere!.radius * m.matrixWorld.getMaxScaleOnAxis();
+    radius.set(m, r);
+    if (r > biggest) biggest = r;
+  });
+
   const swap = new Map<THREE.Material, THREE.Material>();
   model.traverse((o) => {
     const mesh = o as THREE.Mesh;
     if (!mesh.isMesh) return;
     if (/Emblem/.test(mesh.name)) { mesh.visible = false; return; }
-    mesh.castShadow = !/Interior|Windshield|Window|Glass/.test(mesh.name);
+    mesh.castShadow = !/Interior|Windshield|Window|Glass/.test(mesh.name) && (radius.get(mesh) ?? 0) >= biggest * 0.2;
     mesh.receiveShadow = true;
     const src = mesh.material as THREE.MeshStandardMaterial;
     const name = src.name || '';
@@ -315,8 +329,16 @@ export function buildSportCar(look: SportLook): SportCar | null {
   for (const name of ['WheelFrontL', 'WheelFrontR', 'WheelRearL', 'WheelRearR']) {
     const w = model.getObjectByName(name);
     if (!w || !w.parent) continue;
-    const box = new THREE.Box3().setFromObject(w);
-    const c = box.getCenter(new THREE.Vector3());
+    // The model was saved with its front wheels steered 30°: straighten every wheel so its axle
+    // runs across the car, or they look crooked (and the game's own steering adds on top).
+    const axle = new THREE.Vector3(1, 0, 0).applyQuaternion(w.quaternion).normalize();
+    w.quaternion.premultiply(new THREE.Quaternion().setFromUnitVectors(axle, new THREE.Vector3(Math.sign(axle.x) || 1, 0, 0)));
+    w.updateMatrixWorld(true);
+    // pivot on the wheel's own origin (the hub), not on its bounding box: the brake calliper
+    // hangs off one side and an off-centre pivot makes the wheel wobble as it rolls
+    const rim = w.children.find((k) => /Rim/.test(k.name)) ?? w;
+    const box = new THREE.Box3().setFromObject(rim);
+    const c = w.getWorldPosition(new THREE.Vector3());
     wheelRadius = (box.max.y - box.min.y) / 2;
     const st = new THREE.Group(), sp = new THREE.Group();
     model.worldToLocal(c);

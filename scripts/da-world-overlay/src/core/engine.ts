@@ -30,7 +30,7 @@ export class Engine {
       antialias: false,
       powerPreference: "high-performance",
     });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.tier.pixelRatio));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.tier.pixelRatio) * this.pixelScale);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     // Tone mapping is applied by the OutputPass, then graded by the LUT-style
@@ -63,6 +63,15 @@ export class Engine {
     window.addEventListener("resize", this.onResize);
   }
 
+  /** ECYR perf: the frame-rate governor's extra resolution scale on top of the tier's pixel ratio. */
+  pixelScale = 1;
+
+  setPixelScale(k: number): void {
+    if (k === this.pixelScale) return;
+    this.pixelScale = k;
+    this.onResize();
+  }
+
   /** The graphics settings in force. */
   get quality(): QualityTier {
     return this.tier;
@@ -76,7 +85,7 @@ export class Engine {
    */
   setQuality(name: QualityName): void {
     this.tier = QUALITY[name];
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.tier.pixelRatio));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.tier.pixelRatio) * this.pixelScale);
     this.renderer.shadowMap.enabled = this.tier.shadowMap > 0;
     this.post.setSamples(this.tier.samples);
     this.post.setEffects(this.tier.ao, this.tier.bloom);
@@ -113,7 +122,7 @@ export class Engine {
     const h = window.innerHeight;
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.tier.pixelRatio));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.tier.pixelRatio) * this.pixelScale);
     this.renderer.setSize(w, h);
     this.post.setSize(w, h);
   };

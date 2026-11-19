@@ -8,6 +8,7 @@ import {
   type PeerLook,
   type ServerMessage,
 } from "./protocol";
+import { RelayPeer } from "./relaypeer";
 import { GuestSession, emitExt, type NetHandlers, type Session } from "./session";
 
 /**
@@ -43,6 +44,17 @@ import { GuestSession, emitExt, type NetHandlers, type Session } from "./session
  *   relay to fall back on they simply hang, which is what the free TURN
  *   servers below are here to stop.
  */
+
+/**
+ * Which transport new rooms use. Da World keeps PeerJS (WebRTC); Taxi Rush switches to the
+ * platform's WebSocket relay (relaypeer.ts), which needs no STUN/TURN and works from any network.
+ */
+let relayTransport = false;
+export function useRelayTransport(on = true): void {
+  relayTransport = on;
+}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const makePeer = (...args: any[]): PeerJs => (relayTransport ? new RelayPeer(...(args as [string?, unknown?])) : new (PeerJs as any)(...args)) as unknown as PeerJs;
 
 /** Namespaced so we cannot collide with another PeerJS app's room codes. */
 const ID_PREFIX = "daworld-";
@@ -227,7 +239,7 @@ export class PeerHost implements Session {
 
   private boot(): void {
     this.code = randomCode();
-    const peer = new PeerJs(ID_PREFIX + this.code, peerOptions());
+    const peer = makePeer(ID_PREFIX + this.code, peerOptions());
     this.peer = peer;
 
     // A code clash throws this peer away and takes another one; the discarded
@@ -578,7 +590,7 @@ export class PeerGuest extends GuestSession {
 
   private boot(): void {
     if (this.destroyed) return;
-    const peer = new PeerJs(peerOptions());
+    const peer = makePeer(peerOptions());
     this.peer = peer;
 
     this.openTimer = window.setTimeout(() => this.retry("the network is slow"), OPEN_TIMEOUT_MS);

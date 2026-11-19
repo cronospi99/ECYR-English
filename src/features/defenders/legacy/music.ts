@@ -17,6 +17,7 @@ let volume = 0.5;
 let playing = false;
 let failures = 0;   // tracks in a row that could not be played
 let waitingTap = false;
+let tapCleanup = null; // removes the pending tap listeners
 
 const stored = localStorage.getItem('ld:track');
 // 'auto' rotates the playlist; a number loops that track. A choice saved for a removed track goes back to auto.
@@ -27,13 +28,26 @@ function resumeOnTap() {
   if (waitingTap) return;
   waitingTap = true;
   const go = () => {
-    waitingTap = false;
+    waitingTap = false; tapCleanup = null;
     window.removeEventListener('pointerdown', go);
     window.removeEventListener('keydown', go);
     if (playing) playTrack(trackIdx);
   };
+  tapCleanup = () => {
+    window.removeEventListener('pointerdown', go);
+    window.removeEventListener('keydown', go);
+    waitingTap = false;
+    tapCleanup = null;
+  };
   window.addEventListener('pointerdown', go, { once: true });
   window.addEventListener('keydown', go, { once: true });
+}
+
+// Drop the pending "start on next tap" listeners (the game screen is closing).
+export function disposeMusic() {
+  playing = false;
+  if (tapCleanup) tapCleanup();
+  if (audio) audio.pause();
 }
 
 // A track that cannot be loaded is skipped; if none can, the game stays silent.

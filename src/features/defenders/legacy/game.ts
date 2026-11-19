@@ -371,7 +371,7 @@ export class Game {
     this._initScene();
     this._buildTitle();
     this._bindInput();
-    this.clock = new THREE.Clock();
+    this.clock = new THREE.Timer();
     this.menuT = 0;
     this._animate = this._animate.bind(this);
     this._raf = requestAnimationFrame(this._animate);
@@ -405,7 +405,7 @@ export class Game {
     this.maxPR = lostBefore ? 1.5 : 2;
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, this.maxPR));
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.05;
 
@@ -849,6 +849,9 @@ export class Game {
   }
 
   // Leaving the game (the React screen unmounts): stop the loop and free the GPU.
+  // Timer replaces the deprecated Clock: update() once per call, then read the delta.
+  _dt() { this.clock.update(); return this.clock.getDelta(); }
+
   dispose() {
     this.disposed = true;
     cancelAnimationFrame(this._raf);
@@ -864,7 +867,12 @@ export class Game {
     this.scene.traverse((o) => {
       o.geometry?.dispose?.();
       const ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];
-      for (const m of ms) m.dispose?.();
+      for (const m of ms) {
+        // Free every texture slot of the material, except the module-level caches shared
+        // between games (sprites, fx, scenery props, GLB models), flagged userData.shared.
+        for (const k in m) { const t = m[k]; if (t && t.isTexture && !t.userData?.shared) t.dispose(); }
+        m.dispose?.();
+      }
     });
     this.fx?.dispose();
     this.scenery?.dispose();
@@ -1090,7 +1098,7 @@ export class Game {
     // El motor arranca ANTES de avisar al HUD: si un aviso de interfaz fallara, la
     // partida ya está en marcha y no se queda congelada (sin poder plantar ni empezar).
     this.state = 'playing';
-    this.clock.getDelta();
+    this._dt();
     this.hooks.onCards(this.cards);
     this.hooks.onSun(this.sunAmount);
   }
@@ -1247,7 +1255,7 @@ export class Game {
     this.rowHighlight.visible = false;
     const res = await this.quiz.ask();
     this.state = prev;
-    this.clock.getDelta();
+    this._dt();
     return res;
   }
 
@@ -1349,7 +1357,7 @@ export class Game {
     return true;
   }
   closeImprove() {
-    if (this.state === 'improve') { this.state = 'playing'; this.clock.getDelta(); }
+    if (this.state === 'improve') { this.state = 'playing'; this._dt(); }
   }
   // Lista de plantas plantadas (modo clásico) para el pop-up de mejora.
   plantsForImprove() {
@@ -1659,7 +1667,7 @@ export class Game {
   _animate() {
     if (this.disposed) return;
     this._raf = requestAnimationFrame(this._animate);
-    const rawDt = Math.min(this.clock.getDelta(), 0.08);
+    const rawDt = Math.min(this._dt(), 0.08);
     this.worldT = (this.worldT || 0) + rawDt;
     // safety net for size changes no event reported (iOS PWA rotation / full screen)
     this._inFrame = true;
@@ -1694,18 +1702,49 @@ export class Game {
         this.camera.position.set(this._camBase.x + (Math.random() - 0.5) * k, this._camBase.y + (Math.random() - 0.5) * k, this._camBase.z);
       }
     }
+    this._govern();
     this._draw();
     this._inFrame = false;
-    if (this._ctxLost) return;
-    // weak device: after a few slow seconds, drop the bloom pass for good
-    if (this.post?.enabled) {
-      this._slow = rawDt > 0.045 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);
-      if (this._slow > 4) { this.fx.detail = 0.5; this.post.enabled = false; this._slow = 0; this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25)); this._applySize(true); }
-    } else if (this.post && !this._lowest && localStorage.getItem('ld:gfx') !== 'low') {
-      // still struggling without bloom: native resolution and no shadow maps
-      this._slow = rawDt > 0.05 ? this._slow + rawDt : Math.max(0, this._slow - rawDt * 0.5);
-      if (this._slow > 5) { this._lowest = true; this.renderer.setPixelRatio(1); this._applySize(true); this.renderer.shadowMap.enabled = false; this.scene.traverse((o) => { if (o.material) o.material.needsUpdate = true; }); }
+  }
+
+  /**
+   * Frame-rate governor: the game aims at a steady 60 fps on any device. It measures real
+   * frame times over one-second windows and, while it is below ~56 fps, steps the graphics
+   * down one notch at a time (resolution, bloom, particles, shadows) until 60 holds. It runs
+   * BEFORE the frame is drawn, so the canvas is never left empty by a resize. A device that is
+   * pinned at ~30 fps with an even rhythm is on a battery-saver cap, which no setting can beat,
+   * so the governor stops stepping down there instead of ruining the picture for nothing.
+   */
+  _govern() {
+    const now = performance.now();
+    const g = this._gov || (this._gov = { last: now, acc: 0, n: 0, bad: 0, level: 0, hold: 3000, times: [] });
+    const dt = now - g.last; g.last = now;
+    if (dt > 2000 || document.hidden || this.state === 'idle') { g.acc = 0; g.n = 0; g.times.length = 0; return; }   // tab hidden / loading
+    g.acc += dt; g.n++; g.times.push(dt);
+    if (g.acc < 1000) return;
+    const fps = (g.n * 1000) / g.acc;
+    const sorted = g.times.slice().sort((a, b) => a - b), med = sorted[sorted.length >> 1];
+    g.acc = 0; g.n = 0; g.times.length = 0;
+    this.fps = Math.round(fps);
+    if (g.hold > 0) { g.hold -= 1000; return; }                    // let a change settle first
+    if (fps >= 56) { g.bad = 0; return; }
+    const capped = fps > 27 && fps < 33 && med > 30 && med < 36;  // even 30 fps = battery-saver cap
+    if (capped && g.level >= 3) return;
+    if (++g.bad < 2) return;
+    g.bad = 0; g.hold = 2000;
+    if (g.level >= 6) return;
+    g.level++;
+    const pr = (k) => this.renderer.setPixelRatio(Math.max(1, Math.min(devicePixelRatio, this.maxPR) * k));
+    switch (g.level) {
+      case 1: pr(0.85); break;
+      case 2: pr(0.72); this.fx.detail = 0.75; break;
+      case 3: if (this.post) this.post.enabled = false; pr(0.72); break;
+      case 4: this.fx.detail = 0.5; pr(0.6); break;
+      case 5: this.renderer.shadowMap.enabled = false; this._lowest = true;
+        this.scene.traverse((o) => { if (o.material) o.material.needsUpdate = true; }); break;
+      case 6: this.renderer.setPixelRatio(Math.max(0.75, this.renderer.getPixelRatio() * 0.8)); this.fx.detail = 0.3; break;
     }
+    this._applySize(true);
   }
 
   _updateSpawning(dt) {
@@ -2329,6 +2368,6 @@ export class Game {
   timeUp() { if (this.state === 'playing' || this.state === 'quiz') { this.quiz.hide(); this.state = 'playing'; this._win(); } }
 
   pause() { if (this.state === 'playing') this.state = 'paused'; }
-  resume() { if (this.state === 'paused') { this.state = 'playing'; this.clock.getDelta(); } }
+  resume() { if (this.state === 'paused') { this.state = 'playing'; this._dt(); } }
   toggleSpeed() { this.speed = this.speed === 1 ? 2 : 1; return this.speed; }
 }

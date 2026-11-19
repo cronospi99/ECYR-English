@@ -40,20 +40,21 @@ export class TaxiTraffic {
   private meshes: { tpl: CarTemplate; parts: THREE.InstancedMesh[] }[] = [];
   /** Only cars this close to the taxi are drawn (the rest still drive). */
   drawRadius = 120;
+  /** Fraction of the cars that are on the road (the governor thins them on slow devices). */
+  private share = 1;
+  setShare(f: number): void { this.share = f; }
 
   constructor(density = 1) {
     const tpls = carTemplates();
     if (!tpls.length) return;
     const rand = (() => { let s = 7; return () => ((s = (s * 16807) % 2147483647) / 2147483647); })();
     const lanes: { lane: Lane; n: number }[] = [];
-    // avenues (x = const) and streets (z = const) outside the original city
+    // avenues (x = const) and streets (z = const): the whole grid, centre included
     for (let k = K_MIN; k <= K_MAX; k++) {
-      if (k >= 0 && k <= 3) continue;
       const busy = k >= -1 && k <= 6 ? 3 : 2;
       for (const dir of [1, -1] as const) lanes.push({ lane: { axis: 'v', at: VX(k) + (dir > 0 ? 1.5 : 4.5), dir, span: [MIN_Z, HWY_LANES[0] - 6], speed: 7 }, n: busy });
     }
     for (let j = J_MIN; j <= J_MAX; j++) {
-      if (j >= 0 && j <= 4) continue;
       const busy = j >= -1 && j <= 7 ? 3 : 2;
       for (const dir of [1, -1] as const) lanes.push({ lane: { axis: 'h', at: HZ(j) + (dir > 0 ? 4.5 : 1.5), dir, span: [MIN_X, MAX_X], speed: 7 }, n: busy });
     }
@@ -101,6 +102,23 @@ export class TaxiTraffic {
     }
   }
 
+  /**
+   * Nobody at the start line: any car within `r` of (x, z) is moved half a lap along its
+   * lane. Call it whenever the taxi is put back at its start.
+   */
+  clearArea(x: number, z: number, r: number): void {
+    for (const c of this.cars) {
+      if (c.fly) continue;
+      const l = c.lane, span = l.span[1] - l.span[0];
+      for (let guard = 0; guard < 3; guard++) {
+        const cx = l.axis === 'h' ? l.span[0] + c.pos : l.at, cz = l.axis === 'h' ? l.at : l.span[0] + c.pos;
+        if (Math.hypot(cx - x, cz - z) > r) break;
+        c.pos = (c.pos + span / 2 + guard * 17) % span;
+        c.speed = 0;
+      }
+    }
+  }
+
   /** Send a car flying: the taxi's velocity, plus a hop and a spin. */
   knock(c: TrafficCar, vx: number, vz: number): void {
     const car = c as Car;
@@ -115,10 +133,12 @@ export class TaxiTraffic {
     car.flying = true;
   }
 
-  update(dt: number, taxi: { x: number; z: number }): void {
+  update(dt: number, taxi: { x: number; z: number; yaw?: number }): void {
     // lane order, so each car can keep its distance from the one in front
     const byLane = new Map<Lane, Car[]>();
+    const limit = Math.ceil(this.cars.length * this.share);
     for (const c of this.cars) {
+      if (c.id >= limit) { c.x = c.z = -1e5; continue; }
       if (c.fly) continue;
       let l = byLane.get(c.lane);
       if (!l) byLane.set(c.lane, (l = []));
@@ -146,6 +166,7 @@ export class TaxiTraffic {
     const used = this.meshes.map(() => 0);
     const R2 = this.drawRadius * this.drawRadius;
     for (const c of this.cars) {
+      if (c.id >= limit) continue;
       const m = this.meshes[c.tpl];
       if (c.fly) {
         const f = c.fly;
@@ -177,6 +198,8 @@ export class TaxiTraffic {
       }
       const dx = c.x - taxi.x, dz = c.z - taxi.z;
       if (dx * dx + dz * dz > R2) continue;
+      // behind the camera (it follows the taxi's heading) nobody sees it: skip the draw, keep driving
+      if (taxi.yaw !== undefined && dx * Math.sin(taxi.yaw) + dz * Math.cos(taxi.yaw) < -24) continue;
       dummy.scale.setScalar(1);
       dummy.updateMatrix();
       const slot = used[c.tpl]++;

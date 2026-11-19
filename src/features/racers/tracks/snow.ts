@@ -8,7 +8,7 @@ import { Geo, U, shade } from '@/features/run/gfx';
 import { KERB, withSpiral, type CP, type Track, type TrackDef } from '../track';
 import { side, type TrackStyle } from '../trackMesh';
 import { billboards, cloudRing, startGantry, type Scenery } from '../scenery';
-import { birds, bunting, city, crowd, done, fallers, lamps, roadsideSpots, strollers, terrain, walkers } from './city';
+import { birds, bunting, city, crowd, done, lamps, roadsideSpots, strollers, terrain, walkers } from './city';
 
 const PTS: [number, number][] = [[-211.7,26],[-211.7,9],[-211.8,-9],[-212.2,-25.9],[-212.3,-42.9],[-212.5,-59.9],[-212.6,-77.9],[-212.9,-94.9],[-213,-111.9],[-212.8,-129.8],[-208.7,-143.4],[-201.4,-152.4],[-194.9,-156.5],[-189,-158.3],[-183,-158.5],[-177.1,-157.3],[-171.5,-154.5],[-165.1,-148.7],[-159.4,-137.9],[-157.8,-121.9],[-159,-104.9],[-160.3,-88],[-161.3,-71],[-160.8,-53.2],[-155.8,-40.9],[-149,-33.7],[-141.2,-29.6],[-132.5,-28.2],[-123.6,-29.5],[-113.3,-34.4],[-101.2,-41],[-89.9,-46.8],[-83.4,-53.1],[-79.2,-59.8],[-76.4,-67],[-75.4,-74.8],[-76.6,-85.2],[-78,-95.7],[-76.9,-103.3],[-74.6,-109.2],[-71.5,-113.7],[-67.3,-117.6],[-62.4,-120.3],[-55.8,-122],[-48,-121.6],[-38.2,-117.6],[-29.1,-109.4],[-20.9,-94],[-15,-78.1],[-5.3,-64.2],[6.8,-52.3],[21.1,-43.2],[37,-37.2],[53.6,-33.8],[70.6,-32.6],[87.6,-32.6],[105.6,-32.9],[122.5,-32.4],[139.5,-31.7],[156.5,-32.3],[169.8,-38.4],[179.2,-48.8],[184.9,-57.3],[191.5,-63.4],[196.6,-66.1],[201,-67.3],[204.5,-67.7],[207.9,-67.5],[211.7,-66.6],[215.2,-65.1],[219.9,-61.8],[224.7,-55.6],[228.1,-46.6],[228.6,-32.9],[228.7,-15.9],[229.1,1.1],[229.7,18.1],[230.4,36.1],[231.4,53.1],[232.4,67.1],[229.7,77.9],[225.1,85],[220.7,88.8],[216.7,91],[213.1,92.2],[209.4,92.8],[205.6,92.7],[200.3,91.7],[194.4,89.2],[187,83.6],[181.5,77.2],[175.2,71.1],[167.3,67.2],[158.6,65.1],[147.2,65.6],[132.4,67.4],[116.4,67.4],[100.7,70.4],[85,73.3],[69.1,71.9],[53.5,68.2],[37.6,66.4],[21.7,65.3],[6.3,60.8],[-8.1,59.8],[-18.5,63.2],[-27,69.8],[-33.5,79.7],[-39.7,88.4],[-46.5,93.9],[-52.7,96.9],[-58.6,98.2],[-65.5,98.4],[-72.4,96.9],[-81.4,92.7],[-87.8,89],[-95.1,86.8],[-101.7,86.1],[-108.9,86.8],[-116.6,89.2],[-125.6,94.9],[-134.3,105.9],[-138.4,121.6],[-139.1,138.6],[-139.8,156.6],[-142.2,173.4],[-147.3,188.5],[-156.5,201.4],[-170.3,209.4],[-185.1,209.5],[-198.5,202.9],[-208.6,190.7],[-214.4,174.7],[-216.5,157.9],[-216.7,140.9],[-216.1,123.9],[-215.2,106.9],[-213.9,89],[-212.9,72],[-212.2,55],[-211.7,38]];
 /** The layout was scaled up by SC (and its tight curves smoothed open) after drawing; heights keep the drawing's coordinates. */
@@ -62,7 +62,7 @@ export function buildSnow(track: Track): Scenery {
   };
 
   /* ---------------- snowy ground, the frozen lake, far peaks ---------------- */
-  terrain(c, { cx: track.box.cx, cz: track.box.cz, size: Math.max(1000, track.box.span + 300), n: 215, y: ground, rough: 0.7, color: (x, z, y) => { const n = nearest(x, z); return n.d < 1.5 ? 0xd9e2ec : y > 22 ? 0xf8fbff : shade(0xf0f5fb, Math.sin(x * 0.07 + z * 0.05) * 0.02 - 0.01); } });
+  terrain(c, { cx: track.box.cx, cz: track.box.cz, size: Math.max(1000, track.box.span + 640), n: 215, y: ground, rough: 0.7, color: (x, z, y) => { const n = nearest(x, z); return n.d < 1.5 ? 0xd9e2ec : y > 22 ? 0xf8fbff : shade(0xf0f5fb, Math.sin(x * 0.07 + z * 0.05) * 0.02 - 0.01); } });
   {
     const ly = iceY;
     const ice = new THREE.Mesh(new THREE.CircleGeometry(lake.r, 40).rotateX(-Math.PI / 2), new THREE.MeshPhysicalMaterial({ color: 0xbfe4f5, roughness: 0.08, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.05 }));
@@ -92,9 +92,11 @@ export function buildSnow(track: Track): Scenery {
       world.add(new THREE.ConeGeometry(1, 1, 8), 0xf8fbff, x, h + 0.55 * s, z, r * 0.7, 1.1 * s, r * 0.7);
     }
   };
-  for (let k = 0; k < 520; k++) {
+  // (fewer than before: the biome layer adds instanced firs; the band 10–30 m from the road stays
+  // free here for the grandstands)
+  for (let k = 0; k < 400; k++) {
     const x = (rand() - 0.5) * 640, z = (rand() - 0.5) * 520, n = nearest(x, z);
-    if (n.d < 4 || Math.hypot(x - lake.x, z - lake.z) < lake.r + 3 || rand() < Math.min(0.6, n.d / 120)) continue;
+    if (n.d < 4 || (n.d > 10 && n.d < 30 && rand() < 0.85) || Math.hypot(x - lake.x, z - lake.z) < lake.r + 3 || rand() < Math.min(0.6, n.d / 120)) continue;
     pine(x, z, 0.9 + rand() * 0.8);
   }
   // a rocky snow peak in the middle of the spiral, with a flag on top
@@ -135,7 +137,7 @@ export function buildSnow(track: Track): Scenery {
     c.updates.push((_, t) => { for (let k = 0; k < n; k++) { const u = ((t * 0.02 + k / n) % 1), up = u < 0.5, w = up ? u * 2 : 2 - u * 2, side2 = up ? 1.6 : -1.6; o.position.set(A.x + (B.x - A.x) * w + Math.cos(ry) * side2, A.y + (B.y - A.y) * w, A.z + (B.z - A.z) * w - Math.sin(ry) * side2); o.rotation.set(0, ry + (up ? 0 : Math.PI), Math.sin(t * 2 + k) * 0.05); o.updateMatrix(); chairs.setMatrixAt(k, o.matrix); } chairs.instanceMatrix.needsUpdate = true; });
     strollers(c, ([[-150, -320, -250, -240], [-170, -330, -240, -230], [-140, -300, -230, -250]] as const).map((r) => r.map((v) => v * SC) as [number, number, number, number]), 14, (x, z) => ground(x, z));
   }
-  fallers(c, { x: 0, z: 0, w: 520 * SC, d: 420 * SC, y0: 0, h: 40 }, 2600, [0xffffff, 0xf2f8ff], 0.24, 1.6);
+  // (the falling snow follows the camera: see biomes.ts)
 
   /* ---------------- start, people, signs ---------------- */
   const lampsM = startGantry(track, group, glossy, 'SNOW PEAK', ['#2f6fd0', '#7fd3ff'], 0x1b1d24, 0xd32f2f);

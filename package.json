@@ -10,6 +10,7 @@
     "search:index": "node scripts/build-search-index.mjs",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
+    "content:validate": "node scripts/validate-content.mjs",
     "content:extract": "node scripts/extract-content.mjs",
     "db:bundle": "node scripts/bundle-sql.mjs",
     "relay": "node scripts/relay-dev.mjs"

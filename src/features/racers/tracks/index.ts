@@ -16,6 +16,7 @@ import { SPLASH, SPLASH_STYLE, buildSplash } from './splash';
 import { CANYON, CANYON_STYLE, buildCanyon } from './canyon';
 import { SNOW, SNOW_STYLE, buildSnow } from './snow';
 import { LONG, LONGER } from './detours';
+import { dress } from '../biomes';
 
 export type TrackId = 'campus' | 'beach' | 'roofs' | 'neon' | 'london' | 'newyork' | 'tokyo' | 'rio' | 'splash' | 'canyon' | 'snow';
 export interface Look {
@@ -51,7 +52,7 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xfff1dc, sunI: 2.7, sunOffset: [45, 70, 30], hemiSky: 0xcfe8ff, hemiGround: 0x5d8a46, hemiI: 0.85,
       envGround: 0x5c8f45, envI: 0.6, exposure: 1.02, bloom: [0.5, 0.35, 1.1], dust: [0.55, 0.62, 0.34], water: true,
     },
-    build: buildCampus,
+    build: (t) => dress(buildCampus(t), t, 'campus'),
   },
   {
     id: 'beach', def: LONGER.beach(LONG.beach(BEACH)), style: BEACH_STYLE, color: '#36c2ff',
@@ -62,7 +63,7 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xfff0d4, sunI: 2.9, sunOffset: [30, 70, 55], hemiSky: 0xd8efff, hemiGround: 0xd9c08a, hemiI: 0.9,
       envGround: 0x2a8fb8, envI: 0.7, exposure: 1.04, bloom: [0.5, 0.35, 1.1], dust: [0.86, 0.78, 0.58], water: true,
     },
-    build: buildBeach,
+    build: (t) => dress(buildBeach(t), t, 'beach'),
   },
   {
     id: 'roofs', def: LONGER.roofs(LONG.roofs(ROOFS)), style: ROOFS_STYLE, color: '#ff9f1c',
@@ -73,7 +74,7 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xffc48a, sunI: 2.6, sunOffset: [-55, 40, 40], hemiSky: 0xffd9b8, hemiGround: 0x6b5a66, hemiI: 0.85,
       envGround: 0x7b6a72, envI: 0.65, exposure: 1.0, bloom: [0.55, 0.4, 1.0], dust: [0.62, 0.62, 0.64], water: false,
     },
-    build: buildRoofs,
+    build: (t) => dress(buildRoofs(t), t, 'roofs'),
   },
   {
     id: 'neon', def: LONGER.neon(LONG.neon(NEON)), style: NEON_STYLE, color: '#ff2bd6',
@@ -84,18 +85,18 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xb07cff, sunI: 1.4, sunOffset: [20, 60, 60], hemiSky: 0x6a4cff, hemiGround: 0xff2bd6, hemiI: 0.7,
       envGround: 0x2a0f50, envI: 0.9, exposure: 1.06, bloom: [0.7, 0.45, 0.82], dust: [0.5, 0.35, 0.9], water: false,
     },
-    build: buildNeon,
+    build: (t) => dress(buildNeon(t), t, 'neon'),
   },
   {
     id: 'london', def: LONGER.london(LONG.london(LONDON)), style: LONDON_STYLE, color: '#c8102e',
     name: { en: 'London Loop', es: 'Londres' },
     desc: { en: 'Along the river: jump the open bascule bridge, pass the giant wheel and the clock tower', es: 'Junto al río: salta el puente levadizo abierto, pasa la noria gigante y la torre del reloj' },
     look: {
-      sky: { top: 0x4f7fb8, mid: 0x9dbedc, horizon: 0xe8eef3, fog: 0xd3dde6, sun: [0.5, 0.45, 0.6], sunGlow: 0.9 }, fogNear: 240, fogFar: 1200,
+      sky: { top: 0x4f7fb8, mid: 0x9dbedc, horizon: 0xe8eef3, fog: 0xd3dde6, sun: [0.5, 0.45, 0.6], sunGlow: 0.9 }, fogNear: 205, fogFar: 1040,
       sun: 0xfff3e2, sunI: 2.4, sunOffset: [40, 70, 35], hemiSky: 0xd8e4f0, hemiGround: 0x8a8578, hemiI: 0.95,
       envGround: 0x6f6a60, envI: 0.65, exposure: 1.02, bloom: [0.45, 0.35, 1.1], dust: [0.62, 0.6, 0.56], water: true,
     },
-    build: buildLondon,
+    build: (t) => dress(buildLondon(t), t, 'london'),
   },
   {
     id: 'newyork', def: LONGER.newyork(LONG.newyork(NEWYORK)), style: NEWYORK_STYLE, color: '#ffc61a',
@@ -106,7 +107,7 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xffd4a0, sunI: 2.6, sunOffset: [-50, 50, 40], hemiSky: 0xffe2c8, hemiGround: 0x7a7066, hemiI: 0.9,
       envGround: 0x7a7066, envI: 0.7, exposure: 1.02, bloom: [0.5, 0.38, 1.05], dust: [0.62, 0.6, 0.58], water: true,
     },
-    build: buildNewYork,
+    build: (t) => dress(buildNewYork(t), t, 'newyork'),
   },
   {
     id: 'tokyo', def: LONGER.tokyo(LONG.tokyo(TOKYO)), style: TOKYO_STYLE, color: '#ff2bd6',
@@ -117,7 +118,7 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xffc0a0, sunI: 1.9, sunOffset: [-45, 35, 55], hemiSky: 0xd8b8e8, hemiGround: 0x5a4a60, hemiI: 0.95,
       envGround: 0x4a3a58, envI: 0.75, exposure: 1.04, bloom: [0.65, 0.42, 0.9], dust: [0.6, 0.55, 0.6], water: true,
     },
-    build: buildTokyo,
+    build: (t) => dress(buildTokyo(t), t, 'tokyo'),
   },
   {
     id: 'rio', def: LONGER.rio(LONG.rio(RIO)), style: RIO_STYLE, color: '#009c3b',
@@ -128,7 +129,7 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xfff2d8, sunI: 3.0, sunOffset: [35, 75, 30], hemiSky: 0xd8f0ff, hemiGround: 0xc9b88a, hemiI: 0.95,
       envGround: 0x2a8fb8, envI: 0.7, exposure: 1.03, bloom: [0.48, 0.35, 1.1], dust: [0.86, 0.78, 0.58], water: true,
     },
-    build: buildRio,
+    build: (t) => dress(buildRio(t), t, 'rio'),
   },
   {
     id: 'splash', def: LONGER.splash(LONG.splash(SPLASH)), style: SPLASH_STYLE, color: '#00d2ff',
@@ -139,7 +140,7 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xfff4dc, sunI: 3.0, sunOffset: [35, 75, 35], hemiSky: 0xdaf4ff, hemiGround: 0x9ccf7a, hemiI: 0.95,
       envGround: 0x2aa0c8, envI: 0.75, exposure: 1.03, bloom: [0.5, 0.36, 1.05], dust: [0.86, 0.8, 0.6], water: true,
     },
-    build: buildSplash,
+    build: (t) => dress(buildSplash(t), t, 'splash'),
   },
   {
     id: 'canyon', def: LONGER.canyon(CANYON), style: CANYON_STYLE, color: '#ff7a1a',
@@ -150,18 +151,18 @@ export const TRACKS: TrackInfo[] = [
       sun: 0xffe6c0, sunI: 3.0, sunOffset: [45, 70, 30], hemiSky: 0xffe8cc, hemiGround: 0xb5502e, hemiI: 0.9,
       envGround: 0xb5602e, envI: 0.65, exposure: 1.02, bloom: [0.45, 0.35, 1.1], dust: [0.82, 0.6, 0.42], water: false,
     },
-    build: buildCanyon,
+    build: (t) => dress(buildCanyon(t), t, 'canyon'),
   },
   {
     id: 'snow', def: LONGER.snow(SNOW), style: SNOW_STYLE, color: '#7fd3ff',
     name: { en: 'Snow Peak', es: 'Pico Nevado' },
     desc: { en: 'From a student\'s drawing: the long left straight, a twisty cup, a fast spine, a hairpin finger and waves', es: 'De un dibujo: la gran recta de la izquierda, una copa de curvas, la espina rápida, un dedo en horquilla y ondas' },
     look: {
-      sky: { top: 0x3f7fd8, mid: 0xa8d0f4, horizon: 0xf2f8ff, fog: 0xe4eef8, sun: [0.4, 0.45, 0.6], sunGlow: 1.1 }, fogNear: 320, fogFar: 1500,
+      sky: { top: 0x3f7fd8, mid: 0xa8d0f4, horizon: 0xf2f8ff, fog: 0xe4eef8, sun: [0.4, 0.45, 0.6], sunGlow: 1.1 }, fogNear: 250, fogFar: 1300,
       sun: 0xffffff, sunI: 2.6, sunOffset: [40, 70, 40], hemiSky: 0xe8f2ff, hemiGround: 0xc8d4e2, hemiI: 1.05,
       envGround: 0xdde6f0, envI: 0.8, exposure: 0.98, bloom: [0.4, 0.35, 1.15], dust: [0.95, 0.97, 1.0], water: false,
     },
-    build: buildSnow,
+    build: (t) => dress(buildSnow(t), t, 'snow'),
   },
 ];
 

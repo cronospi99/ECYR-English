@@ -1,0 +1,225 @@
+{
+  "B2-1-0": {
+    "kind": "compare", "point": "Verbs followed by gerunds", "tone": "blue",
+    "title": "Gerund after verbs and prepositions",
+    "columns": [
+      { "head": "verb + -ing", "head_es": "verbos fijos", "use_es": "enjoy, avoid, mind, keep, suggest.", "tone": "blue",
+        "items": [ { "t": "I enjoy spending time alone.", "ok": true }, { "t": "She avoids arguing with him.", "ok": true }, { "t": "He suggested leaving early.", "ok": true }, { "t": "I enjoy to spend time alone.", "ok": false } ] },
+      { "head": "preposition + -ing", "head_es": "tras preposición", "use_es": "Siempre -ing, nunca to + verbo.", "tone": "purple",
+        "items": [ { "t": "She is good at solving problems.", "ok": true }, { "t": "Thanks for helping me.", "ok": true }, { "t": "He left without saying goodbye.", "ok": true }, { "t": "Thanks for help me.", "ok": false } ] }
+    ],
+    "note_es": "Tras enjoy, avoid, mind, keep y tras cualquier preposición, el verbo siguiente va en -ing, nunca en infinitivo."
+  },
+  "B2-1-1": {
+    "kind": "slots", "point": "Noun clauses after ‘be’", "tone": "teal",
+    "title": "Noun clause after be",
+    "rows": [
+      { "label_es": "that-clause", "slots": [ { "t": "The problem", "role": "subject" }, { "t": "is", "role": "verb" }, { "t": "that we never listen", "role": "complement", "label_es": "oración nominal" } ] },
+      { "label_es": "wh-clause", "slots": [ { "t": "What matters", "role": "subject" }, { "t": "is", "role": "verb" }, { "t": "how we treat people", "role": "complement", "label_es": "oración nominal" } ] }
+    ],
+    "note_es": "Tras be, una oración entera hace de complemento: define o explica el sujeto."
+  },
+  "B2-2-0": {
+    "kind": "compare", "point": "Past modals of obligation", "tone": "orange",
+    "title": "Past obligation: three structures",
+    "columns": [
+      { "head": "had to", "head_es": "obligación real", "use_es": "Era necesario y se hizo.", "tone": "blue",
+        "items": [ { "t": "I had to work late on Friday." }, { "t": "We had to show our passports." } ] },
+      { "head": "should have", "head_es": "reproche o pesar", "use_es": "Era lo correcto, pero no se hizo.", "tone": "orange",
+        "items": [ { "t": "You should have called me." }, { "t": "I should have studied more." } ] },
+      { "head": "was supposed to", "head_es": "lo esperado", "use_es": "Era el plan, pero no ocurrió.", "tone": "purple",
+        "items": [ { "t": "He was supposed to arrive at six." }, { "t": "We were supposed to meet." } ] }
+    ],
+    "note_es": "Had to = obligación cumplida. Should have y was supposed to = algo esperado que no sucedió."
+  },
+  "B2-2-1": {
+    "kind": "scale", "point": "Modals for degrees of certainty about the past", "tone": "indigo",
+    "title": "How sure are you about the past?",
+    "from_es": "Seguro que no", "to_es": "Seguro que sí",
+    "marks": [
+      { "t": "can’t have", "at": 8, "tone": "red", "label_es": "imposible", "ex": "He can’t have left; his coat is here." },
+      { "t": "might have", "at": 45, "tone": "yellow", "label_es": "quizá", "ex": "She might have missed the bus." },
+      { "t": "may well have", "at": 66, "tone": "orange", "label_es": "bastante probable", "ex": "He may well have missed the call." },
+      { "t": "must have", "at": 88, "tone": "green", "label_es": "casi seguro", "ex": "They must have forgotten the time." }
+    ],
+    "note_es": "Must have = deducción casi segura; might have = posibilidad; can’t have = deducción de que fue imposible."
+  },
+  "B2-3-0": {
+    "kind": "compare", "point": "Defining & non-defining relative clauses", "tone": "green",
+    "title": "Defining vs non-defining clauses",
+    "columns": [
+      { "head": "defining", "head_es": "sin comas", "use_es": "Identifica cuál; permite that.", "tone": "blue",
+        "items": [ { "t": "The man who called is my boss.", "ok": true }, { "t": "The book that I read was long.", "ok": true }, { "t": "The book that I read it was long.", "ok": false } ] },
+      { "head": "non-defining", "head_es": "con comas", "use_es": "Solo añade información; no admite that.", "tone": "green",
+        "items": [ { "t": "My boss, who called, is away.", "ok": true }, { "t": "Paris, which I love, is huge.", "ok": true }, { "t": "My sister, that lives in Rome, is ill.", "ok": false } ] }
+    ],
+    "note_es": "La cláusula defining identifica y no lleva comas. La non-defining solo añade datos, va entre comas y no usa that."
+  },
+  "B2-3-1": {
+    "kind": "slots", "point": "Order of modifiers", "tone": "purple",
+    "title": "Adjective order: opinion to material",
+    "rows": [
+      { "label_es": "Orden fijo", "slots": [
+        { "t": "a lovely", "role": "extra", "label_es": "opinión" },
+        { "t": "big", "role": "aux", "label_es": "tamaño" },
+        { "t": "old", "role": "complement", "label_es": "edad" },
+        { "t": "Italian", "role": "link", "label_es": "origen" },
+        { "t": "wooden", "role": "object", "label_es": "material" },
+        { "t": "table", "role": "subject", "label_es": "nombre" } ] }
+    ],
+    "note_es": "Orden habitual: opinión, tamaño, edad, forma, color, origen, material y luego el nombre."
+  },
+  "B2-3-2": {
+    "kind": "compare", "point": "Connecting contrasting ideas", "tone": "red",
+    "title": "Despite, although, however",
+    "columns": [
+      { "head": "despite", "head_es": "+ nombre o -ing", "use_es": "No lleva sujeto + verbo.", "tone": "blue",
+        "items": [ { "t": "Despite the rain, we went out.", "ok": true }, { "t": "Despite being tired, he smiled.", "ok": true }, { "t": "Despite it rained, we went out.", "ok": false } ] },
+      { "head": "although", "head_es": "+ oración", "use_es": "Lleva sujeto + verbo.", "tone": "orange",
+        "items": [ { "t": "Although it rained, we went out.", "ok": true }, { "t": "Although the rain, we went out.", "ok": false } ] },
+      { "head": "however", "head_es": "nueva oración", "use_es": "Va con coma, entre dos frases.", "tone": "green",
+        "items": [ { "t": "It rained. However, we went out.", "ok": true }, { "t": "It rained however we went out.", "ok": false } ] }
+    ],
+    "note_es": "Despite + nombre/-ing; although + oración completa; however conecta dos oraciones y lleva coma."
+  },
+  "B2-4-0": {
+    "kind": "transform", "point": "Reduced time clauses", "tone": "teal",
+    "title": "Reduced time clause",
+    "from": { "label_es": "Completa", "tokens": [ { "t": "While", "role": "link", "id": "w" }, { "t": "I was", "role": "aux", "drop": true }, { "t": "cooking,", "role": "verb", "id": "v" }, { "t": "I burned my hand.", "role": "other", "id": "m" } ] },
+    "to": { "label_es": "Reducida", "tokens": [ { "t": "While", "role": "link", "id": "w" }, { "t": "cooking,", "role": "verb", "id": "v" }, { "t": "I burned my hand.", "role": "other", "id": "m" } ] },
+    "note_es": "Con el mismo sujeto en ambas cláusulas, se omite el sujeto y was/were tras while. Con before o after, el verbo pasa a -ing."
+  },
+  "B2-4-1": {
+    "kind": "compare", "point": "Clauses of reason and condition", "tone": "indigo",
+    "title": "Reason and condition",
+    "columns": [
+      { "head": "because / since / as", "head_es": "razón", "use_es": "Explica por qué ocurre algo.", "tone": "blue",
+        "items": [ { "t": "I stayed in because it was cold." }, { "t": "Since you’re here, let’s start." }, { "t": "As it was late, we left." } ] },
+      { "head": "if / unless / as long as", "head_es": "condición", "use_es": "Dice en qué caso ocurre algo.", "tone": "orange",
+        "items": [ { "t": "If it rains, we’ll stay in." }, { "t": "Unless you hurry, you’ll be late." }, { "t": "You can go as long as you call." } ] }
+    ],
+    "note_es": "Because, since y as dan la razón. If, unless y as long as dan la condición (unless = if not)."
+  },
+  "B2-5-0": {
+    "kind": "slots", "point": "It’s + adjective / noun + infinitive", "tone": "pink",
+    "title": "It’s + adjective + to + verb",
+    "rows": [
+      { "label_es": "Adjetivo", "slots": [ { "t": "It’s", "role": "link" }, { "t": "rude", "role": "complement", "label_es": "opinión" }, { "t": "to interrupt people", "role": "verb", "label_es": "infinitivo" } ] },
+      { "label_es": "Nombre", "slots": [ { "t": "It’s", "role": "link" }, { "t": "a pity", "role": "complement", "label_es": "opinión" }, { "t": "to waste so much food", "role": "verb", "label_es": "infinitivo" } ] }
+    ],
+    "note_es": "Se comenta una conducta sin culpar a nadie: It’s + adjetivo o nombre + infinitivo con to."
+  },
+  "B2-5-1": {
+    "kind": "slots", "point": "Gerunds as subjects", "tone": "mint",
+    "title": "The -ing form as subject",
+    "rows": [
+      { "label_es": "Sujeto -ing", "slots": [ { "t": "Listening carefully", "role": "subject" }, { "t": "is", "role": "verb" }, { "t": "a real skill", "role": "complement" } ] },
+      { "label_es": "Negativo", "slots": [ { "t": "Not sleeping enough", "role": "subject" }, { "t": "makes", "role": "verb" }, { "t": "you irritable", "role": "object" } ] }
+    ],
+    "note_es": "Un gerundio puede ser el sujeto de la oración y lleva el verbo en singular."
+  },
+  "B2-7-0": {
+    "kind": "polarity", "point": "Tag questions", "tone": "orange",
+    "title": "Tag questions",
+    "pairs": [
+      { "statement": "It’s addictive,", "tag": "isn’t it?", "positive": true },
+      { "statement": "They don’t track us,", "tag": "do they?", "positive": false },
+      { "statement": "You’ve seen the news,", "tag": "haven’t you?", "positive": true },
+      { "statement": "Nobody reads the terms,", "tag": "do they?", "positive": false, "hint_es": "Nobody ya es negativo." },
+      { "statement": "Let’s check the settings,", "tag": "shall we?", "positive": true, "hint_es": "Excepción con Let’s." }
+    ],
+    "note_es": "La coletilla repite el auxiliar con signo contrario. Nobody y never cuentan como negativos."
+  },
+  "B2-7-1": {
+    "kind": "transform", "point": "Negative questions for opinions", "tone": "purple",
+    "title": "Statement to negative question",
+    "from": { "label_es": "Afirmación", "tokens": [ { "t": "It", "role": "subject", "id": "s" }, { "t": "is", "role": "aux", "id": "a" }, { "t": "worrying", "role": "complement", "id": "c" }, { "t": "how much they collect", "role": "extra", "id": "e" } ] },
+    "to": { "label_es": "Pregunta negativa", "tokens": [ { "t": "Isn’t", "role": "aux", "id": "a" }, { "t": "it", "role": "subject", "id": "s" }, { "t": "worrying", "role": "complement", "id": "c" }, { "t": "how much they collect?", "role": "extra", "id": "e" } ] },
+    "note_es": "Se invierte el auxiliar negativo para dar tu opinión y pedir acuerdo: Isn’t it worrying…?"
+  },
+  "B2-7-2": [
+    {
+      "kind": "transform", "point": "Passive of present continuous, present perfect, future", "tone": "blue",
+      "title": "Present continuous passive",
+      "from": { "label_es": "Activa", "tokens": [ { "t": "They", "role": "subject", "drop": true }, { "t": "are building", "role": "verb", "id": "v" }, { "t": "a new bridge", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "Pasiva", "tokens": [ { "t": "A new bridge", "role": "object", "id": "o" }, { "t": "is being built", "role": "verb", "id": "v" } ] },
+      "note_es": "Present continuous pasivo: am/is/are + being + participio. El agente obvio se omite."
+    },
+    {
+      "kind": "transform", "point": "Passive of present continuous, present perfect, future", "tone": "blue",
+      "title": "Present perfect passive with agent",
+      "from": { "label_es": "Activa", "tokens": [ { "t": "The council", "role": "subject", "id": "s" }, { "t": "has approved", "role": "verb", "id": "v" }, { "t": "the plan", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "Pasiva", "tokens": [ { "t": "The plan", "role": "object", "id": "o" }, { "t": "has been approved", "role": "verb", "id": "v" }, { "t": "by", "role": "extra", "add": true }, { "t": "the council", "role": "subject", "id": "s" } ] },
+      "note_es": "Present perfect pasivo: has/have + been + participio. Usa by solo si el agente importa."
+    }
+  ],
+  "B2-8-0": [
+    {
+      "kind": "transform", "point": "Reduced relative clauses", "tone": "green",
+      "title": "Reduced relative: -ing",
+      "from": { "label_es": "Completa", "tokens": [ { "t": "the woman", "role": "subject", "id": "n" }, { "t": "who is", "role": "aux", "drop": true }, { "t": "standing at the door", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Reducida", "tokens": [ { "t": "the woman", "role": "subject", "id": "n" }, { "t": "standing at the door", "role": "verb", "id": "v" } ] },
+      "note_es": "Se omite who/that + be delante de un -ing: la forma -ing da la acción en curso."
+    },
+    {
+      "kind": "transform", "point": "Reduced relative clauses", "tone": "green",
+      "title": "Reduced relative: participle",
+      "from": { "label_es": "Completa", "tokens": [ { "t": "the book", "role": "subject", "id": "n" }, { "t": "that was", "role": "aux", "drop": true }, { "t": "written by Orwell", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Reducida", "tokens": [ { "t": "the book", "role": "subject", "id": "n" }, { "t": "written by Orwell", "role": "verb", "id": "v" } ] },
+      "note_es": "Con voz pasiva se omite that + was y queda el participio pasado."
+    }
+  ],
+  "B2-8-1": {
+    "kind": "slots", "point": "Sentence-modifying ‘which’", "tone": "orange",
+    "title": "Which refers to the whole sentence",
+    "rows": [
+      { "label_es": "Ejemplo 1", "slots": [ { "t": "He forgot my name,", "role": "subject", "label_es": "toda la idea" }, { "t": "which", "role": "link", "label_es": "se refiere a ella" }, { "t": "was embarrassing", "role": "complement", "label_es": "comentario" } ] },
+      { "label_es": "Ejemplo 2", "slots": [ { "t": "She passed the exam,", "role": "subject", "label_es": "toda la idea" }, { "t": "which", "role": "link", "label_es": "se refiere a ella" }, { "t": "surprised everyone", "role": "complement", "label_es": "comentario" } ] }
+    ],
+    "note_es": "Which tras una coma puede referirse a toda la oración anterior y no solo a un nombre."
+  },
+  "B2-9-0": {
+    "kind": "compare", "point": "Contrast and exception", "tone": "red",
+    "title": "Unlike, while, whereas, except that",
+    "columns": [
+      { "head": "unlike", "head_es": "+ nombre", "use_es": "Contrasta dos cosas o personas.", "tone": "blue",
+        "items": [ { "t": "Unlike my brother, I hate fish." }, { "t": "Unlike Spain, Norway is cold." } ] },
+      { "head": "while / whereas", "head_es": "+ oración", "use_es": "Contrasta dos hechos.", "tone": "orange",
+        "items": [ { "t": "He loves tea, whereas I prefer coffee." }, { "t": "While she saves, he spends." } ] },
+      { "head": "except that", "head_es": "+ oración", "use_es": "Introduce la excepción.", "tone": "teal",
+        "items": [ { "t": "It was perfect, except that it rained." }, { "t": "I like it, except that it’s expensive." } ] }
+    ],
+    "note_es": "Unlike va con un nombre; while, whereas y except that van con una oración completa."
+  },
+  "B2-10-0": {
+    "kind": "compare", "point": "Noun clauses and relative clauses", "tone": "teal",
+    "title": "Noun clause vs relative clause",
+    "columns": [
+      { "head": "noun clause", "head_es": "hace de nombre", "use_es": "What = the thing that.", "tone": "blue",
+        "items": [ { "t": "What annoys me is the noise.", "ok": true }, { "t": "That annoys me is the noise.", "ok": false } ] },
+      { "head": "relative clause", "head_es": "describe un nombre", "use_es": "Va tras un nombre.", "tone": "green",
+        "items": [ { "t": "The item that broke was cheap.", "ok": true }, { "t": "The item what broke was cheap.", "ok": false } ] }
+    ],
+    "note_es": "What no lleva antecedente (es un nombre en sí). Una relativa modifica un nombre con that, which o who."
+  },
+  "B2-10-1": {
+    "kind": "transform", "point": "Indirect questions", "tone": "mint",
+    "title": "Direct to indirect question",
+    "from": { "label_es": "Directa", "tokens": [ { "t": "Where", "role": "link", "id": "w" }, { "t": "is", "role": "aux", "id": "a" }, { "t": "the manager?", "role": "subject", "id": "s" } ] },
+    "to": { "label_es": "Indirecta", "tokens": [ { "t": "Could you tell me", "role": "extra", "add": true }, { "t": "where", "role": "link", "id": "w" }, { "t": "the manager", "role": "subject", "id": "s" }, { "t": "is?", "role": "aux", "id": "a" } ] },
+    "note_es": "En la pregunta indirecta el orden es afirmativo: sujeto + verbo, sin inversión ni do."
+  },
+  "B2-11-1": {
+    "kind": "compare", "point": "Wishes and regrets", "tone": "pink",
+    "title": "Three ways to use wish",
+    "columns": [
+      { "head": "wish + past", "head_es": "ahora", "use_es": "Deseo sobre el presente.", "tone": "blue",
+        "items": [ { "t": "I wish I had more time." }, { "t": "I wish I were taller." } ] },
+      { "head": "wish + past perfect", "head_es": "pasado", "use_es": "Pesar por algo que ya pasó.", "tone": "orange",
+        "items": [ { "t": "I wish I had studied more." }, { "t": "She wishes she hadn’t left." } ] },
+      { "head": "wish + would", "head_es": "queja", "use_es": "Molestia por la conducta de otro.", "tone": "red",
+        "items": [ { "t": "I wish he would stop talking." }, { "t": "I wish you wouldn’t interrupt." } ] }
+    ],
+    "note_es": "Wish + pasado = presente irreal; + past perfect = pesar del pasado; + would = queja o cambio deseado."
+  }
+}

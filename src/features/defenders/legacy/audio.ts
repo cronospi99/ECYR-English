@@ -9,6 +9,8 @@ function ac() {
   return ctx;
 }
 
+// The AudioContext is module-level and reused: suspend it when the game screen closes.
+export function suspendAudio() { if (ctx && ctx.state === 'running') ctx.suspend().catch(() => {}); }
 export function setMuted(m) { muted = m; }
 export function isMuted() { return muted; }
 

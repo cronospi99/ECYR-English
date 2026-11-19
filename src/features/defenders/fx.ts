@@ -12,7 +12,8 @@ type Tick = (u: number, dt: number) => void;
 interface Item { obj: THREE.Object3D; t: number; dur: number; tick: Tick; pool?: THREE.Object3D[]; parent: THREE.Object3D }
 
 const canvas = (w: number, h: number) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
-const tex = (c: HTMLCanvasElement) => { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; };
+// Module-level cache (TEX) shared between games: flagged so Game.dispose() does not free it.
+const tex = (c: HTMLCanvasElement) => { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.userData.shared = true; return t; };
 
 let TEX: { glow: THREE.Texture; ring: THREE.Texture; spark: THREE.Texture; smoke: THREE.Texture; star: THREE.Texture; shard: THREE.Texture; splat: THREE.Texture; scorch: THREE.Texture } | null = null;
 

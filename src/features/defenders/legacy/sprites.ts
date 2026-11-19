@@ -177,11 +177,13 @@ function registerDrawn() {
     const c = document.createElement('canvas'); c.width = c.height = 128;
     DRAW[name](c.getContext('2d'));
     const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+    tex.userData.shared = true;
     cache[name] = { tex, aspect: 1 };
     drawnURL[name] = c.toDataURL('image/png');
   }
   const lc = drawLogo();
   const lt = new THREE.CanvasTexture(lc); lt.colorSpace = THREE.SRGBColorSpace; lt.anisotropy = 4;
+  lt.userData.shared = true;
   cache.logo = { tex: lt, aspect: 2 };
 }
 
@@ -195,6 +197,7 @@ export async function preloadSprites() {
     loader.load(`/defenders/sprites/${name}.webp`, (tex) => {
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = 4;
+      tex.userData.shared = true;
       cache[name] = { tex, aspect: tex.image.width / tex.image.height };
       res();
     }, undefined, () => { cache[name] = null; res(); }); // tolerante a faltantes
@@ -219,6 +222,7 @@ function getShadowTex() {
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, 128, 128);
   shadowTex = new THREE.CanvasTexture(c);
+  shadowTex.userData.shared = true;
   return shadowTex;
 }
 

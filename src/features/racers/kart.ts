@@ -15,12 +15,33 @@ import { LOOP_HW, type Loop, type Query, type Track } from './track';
 export interface KartInput { throttle: number; brake: number; steer: number; drift: boolean }
 export const NO_INPUT: KartInput = { throttle: 0, brake: 0, steer: 0, drift: false };
 
-export const KART = {
+/** Physics tuning of one kart. `KART` is the reference kart (every attribute at 6 in karts.ts gives
+    exactly these values); each kart gets its own copy from `statsToParams`. */
+export interface KartParams {
+  /** Top speed, top speed while boosting (m/s), pull off the line, braking, reverse and coasting (m/s²). */
+  maxSpeed: number; boostSpeed: number; accel: number; brake: number; reverse: number; coast: number;
+  /** Steering rate (rad/s at full lock), the part of it lost at top speed (understeer, 0..1) and how
+      fast the wheel turns in / comes back (1/s). */
+  turn: number; turnFade: number; steerIn: number; steerOut: number;
+  /** Sideways grip (1/s): on the road, drifting, on grass; base yaw rate of a drift (rad/s). */
+  grip: number; driftGrip: number; grassGrip: number; driftTurn: number;
+  /** Top speed on grass (m/s). */
+  grassMax: number;
+  gravity: number; hop: number; radius: number;
+  /** Drift charge (s) for the blue / orange / purple mini-turbo, and its length (s) by tier. */
+  tiers: readonly [number, number, number];
+  tierBoost: readonly [number, number, number, number];
+  /** Multiplies the spin-out time after a hit; speed lost per m/s of a square wall hit. */
+  spinMul: number; wallLoss: number;
+}
+export const KART: Readonly<KartParams> = {
   maxSpeed: 27, boostSpeed: 37, accel: 21, brake: 34, reverse: 9, coast: 5,
-  turn: 2.45, grip: 14, driftGrip: 5.5, grassMax: 12.5, grassGrip: 8,
+  turn: 2.45, turnFade: 0.34, steerIn: 10, steerOut: 15,
+  grip: 14, driftGrip: 5.5, grassGrip: 8, driftTurn: 1.15, grassMax: 12.5,
   gravity: 27, hop: 3.6, radius: 0.8,
-  tiers: [0.7, 1.55, 2.5] as const,
-  tierBoost: [0, 0.55, 0.95, 1.45] as const,
+  tiers: [0.7, 1.55, 2.5],
+  tierBoost: [0, 0.55, 0.95, 1.45],
+  spinMul: 1, wallLoss: 0.02,
 };
 
 export type BoostKind = 'mini' | 'pad' | 'trick' | 'start' | 'item' | 'gate';
@@ -77,7 +98,9 @@ export class Kart {
   private wet = false;
   private static _f = new THREE.Vector3(); private static _u = new THREE.Vector3(); private static _x = new THREE.Vector3(); private static _m = new THREE.Matrix4();
 
-  constructor(private track: Track) {}
+  /** This kart's physics (its own attributes and upgrades; see karts.ts). Swappable between races. */
+  p: KartParams;
+  constructor(private track: Track, params: KartParams = KART) { this.p = params; }
 
   /** Put the kart on the road at (s, d), facing forward. */
   place(s: number, d: number) {
@@ -103,7 +126,7 @@ export class Kart {
     this.events.push({ e: 'boost', secs, kind });
   }
 
-  spin(secs = 0.9) { this.spinT = secs; this.drift = 0; this.tier = 0; this.events.push({ e: 'spin' }); }
+  spin(secs = 0.9) { this.spinT = secs * this.p.spinMul; this.drift = 0; this.tier = 0; this.events.push({ e: 'spin' }); }
   /** Barrel roll left after a big hit (seconds, for the model), and which way it rolls. */
   tumbleT = 0;
   tumbleDir = 1;
@@ -115,14 +138,14 @@ export class Kart {
     if (up > 0 && !this.loop && !this.falling) {
       this.vel.y = up; this.grounded = false; this.hopping = false; this.wantDrift = false;
       this.airT = 0; this.trick = false; this.launch = 0;
-      this.tumbleT = Math.min(0.9, (2 * up) / KART.gravity + 0.05); this.tumbleDir = Math.random() < 0.5 ? -1 : 1;
+      this.tumbleT = Math.min(0.9, (2 * up) / this.p.gravity + 0.05); this.tumbleDir = Math.random() < 0.5 ? -1 : 1;
     }
   }
 
   step(dt: number, inp: KartInput) {
-    const K = KART;
+    const K = this.p;
     // the wheel turns in a little slower than it comes back (smooth on keys, quick to straighten)
-    this.steer += (inp.steer - this.steer) * Math.min(1, dt * (Math.abs(inp.steer) > Math.abs(this.steer) ? 10 : 15));
+    this.steer += (inp.steer - this.steer) * Math.min(1, dt * (Math.abs(inp.steer) > Math.abs(this.steer) ? K.steerIn : K.steerOut));
     if (this.loop) { this.loopStep(dt, inp); return; }
     this.loopCd = Math.max(0, this.loopCd - dt);
     const prevS = this.s;
@@ -175,8 +198,8 @@ export class Kart {
       const sp = Math.min(1, Math.abs(vf) / 5) * Math.sign(vf || 1);
       if (!control) this.yawRate = 11 * (this.spinT > 0 ? 1 : 0);
       // drifting: steering into the turn tightens it, steering out widens it (it never just slides straight)
-      else if (this.drift) this.yawRate = -this.drift * (1.15 + 0.8 * this.steer * this.drift) * sp;
-      else this.yawRate = -this.steer * K.turn * sp * (1 - 0.34 * Math.min(1, Math.abs(vf) / K.maxSpeed));
+      else if (this.drift) this.yawRate = -this.drift * (K.driftTurn + 0.8 * this.steer * this.drift) * sp;
+      else this.yawRate = -this.steer * K.turn * sp * (1 - K.turnFade * Math.min(1, Math.abs(vf) / K.maxSpeed));
     } else {
       this.yawRate = -this.steer * 0.9; // a little air control
     }
@@ -236,7 +259,7 @@ export class Kart {
         const bounce = hit > 6 ? 0.35 : 0;
         this.vel.x -= q.r.x * vn * (1 + bounce); this.vel.z -= q.r.z * vn * (1 + bounce);
         // a real hit costs speed once (by how square it was); scraping only rubs a little
-        const keep = hit > 3 && this.wallCd <= 0 ? 1 - Math.min(0.3, hit * 0.02) : 1 - dt * 0.35;
+        const keep = hit > 3 && this.wallCd <= 0 ? 1 - Math.min(0.3, hit * K.wallLoss) : 1 - dt * 0.35;
         this.vel.x *= keep; this.vel.z *= keep;
         if (hit > 3 && this.wallCd <= 0) { this.events.push({ e: 'wall', v: hit }); this.wallCd = 0.3; }
         if (hit > 4 && this.drift) this.endDrift(false);
@@ -311,7 +334,7 @@ export class Kart {
   private loopStep(dt: number, inp: KartInput) {
     const lp = this.loop!, tr = this.track;
     this.boostT = Math.max(0, this.boostT - dt); this.spinT = 0; this.slowT = 0;
-    const target = this.boostT > 0 ? KART.boostSpeed : Math.max(22, Math.min(KART.maxSpeed, this.loopV));
+    const target = this.boostT > 0 ? this.p.boostSpeed : Math.max(22, Math.min(this.p.maxSpeed, this.loopV));
     this.loopV += (target - this.loopV) * Math.min(1, dt * 1.5);
     this.loopU += (this.loopV * dt) / (Math.PI * 2 * lp.r);
     this.loopD = THREE.MathUtils.clamp(this.loopD + inp.steer * 2.5 * dt, -LOOP_HW + 0.9, LOOP_HW - 0.9);
@@ -339,7 +362,7 @@ export class Kart {
 
   private endDrift(keepHold: boolean) {
     void keepHold;
-    if (this.tier > 0) this.boost(KART.tierBoost[this.tier], 'mini');
+    if (this.tier > 0) this.boost(this.p.tierBoost[this.tier], 'mini');
     this.drift = 0; this.driftT = 0; this.tier = 0;
   }
 }

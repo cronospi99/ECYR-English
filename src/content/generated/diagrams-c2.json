@@ -1,0 +1,399 @@
+{
+  "C2-1-0": {
+    "kind": "timeline", "point": "Aspect and nuance: perfect and continuous forms", "tone": "blue",
+    "title": "Perfect result vs continuous activity",
+    "now": 75,
+    "marks": [ { "x": 55, "label": "finished", "tone": "green" } ],
+    "spans": [ { "from": 10, "to": 75, "label": "have been revising", "tone": "blue", "row": 0, "open": true } ],
+    "examples": [
+      { "t": "I’ve been revising all week, so I’m exhausted.", "tone": "blue" },
+      { "t": "I’ve finished the report; it’s on your desk.", "tone": "green" }
+    ],
+    "note_es": "El perfecto mira el resultado desde ahora; el continuo destaca la actividad en curso, su duración o su efecto."
+  },
+  "C2-1-1": {
+    "kind": "scale", "point": "Past tenses for distancing and politeness", "tone": "purple",
+    "title": "How indirect is the request?",
+    "from_es": "Más directo", "to_es": "Más indirecto",
+    "marks": [
+      { "t": "I wonder if", "at": 12, "tone": "orange", "label_es": "presente", "ex": "I wonder if you could help me." },
+      { "t": "I wondered if", "at": 48, "tone": "purple", "label_es": "pasado simple", "ex": "I wondered if you could help me." },
+      { "t": "I was wondering if", "at": 85, "tone": "indigo", "label_es": "pasado continuo: lo más suave", "ex": "I was wondering if you might lend me a hand." }
+    ],
+    "note_es": "El pasado no habla del pasado: pone distancia. El pasado simple suaviza la petición y el pasado continuo es la forma más tentativa."
+  },
+  "C2-1-2": {
+    "kind": "compare", "point": "Stative verbs used dynamically", "tone": "teal",
+    "title": "State vs action meaning",
+    "columns": [
+      { "head": "state (simple)", "head_es": "opinión o estado", "use_es": "Describe cómo es algo.", "tone": "blue",
+        "items": [ { "t": "I think it’s unfair." }, { "t": "She has a flat in Rome." }, { "t": "He is polite." } ] },
+      { "head": "dynamic (continuous)", "head_es": "acción o proceso", "use_es": "Describe lo que ocurre o cómo se comporta.", "tone": "orange",
+        "items": [ { "t": "I’m thinking about leaving." }, { "t": "She’s having lunch." }, { "t": "He’s being rude today." } ] }
+    ],
+    "note_es": "Los verbos de estado en continuo cambian de sentido: think = opinar o reflexionar; have = poseer o tomar; be + -ing = comportarse."
+  },
+  "C2-2-0": [
+    {
+      "kind": "transform", "point": "Cleft sentences (it-clefts and wh-clefts)", "tone": "pink",
+      "title": "It-cleft",
+      "from": { "label_es": "Normal", "tokens": [ { "t": "Maria", "role": "subject", "id": "s" }, { "t": "broke", "role": "verb", "id": "v" }, { "t": "the window", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "It-cleft", "tokens": [ { "t": "It was", "role": "link", "add": true }, { "t": "Maria", "role": "subject", "id": "s" }, { "t": "who", "role": "link", "add": true }, { "t": "broke", "role": "verb", "id": "v" }, { "t": "the window", "role": "object", "id": "o" } ] },
+      "note_es": "It + be + elemento destacado + who/that + resto. Sirve para corregir o contrastar: fue Maria, no otra persona."
+    },
+    {
+      "kind": "transform", "point": "Cleft sentences (it-clefts and wh-clefts)", "tone": "pink",
+      "title": "Wh-cleft with all",
+      "from": { "label_es": "Normal", "tokens": [ { "t": "I", "role": "subject", "id": "s" }, { "t": "just need", "role": "verb", "id": "v" }, { "t": "a long break", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "Wh-cleft", "tokens": [ { "t": "All", "role": "link", "add": true }, { "t": "I", "role": "subject", "id": "s" }, { "t": "need", "role": "verb", "id": "v" }, { "t": "is", "role": "aux", "add": true }, { "t": "a long break", "role": "object", "id": "o" } ] },
+      "note_es": "All (o What) + oración + be + elemento destacado. All I need is… destaca lo único que se necesita; el foco queda al final."
+    }
+  ],
+  "C2-2-1": [
+    {
+      "kind": "transform", "point": "Fronting and inversion for emphasis", "tone": "orange",
+      "title": "Place fronting with inversion",
+      "from": { "label_es": "Normal", "tokens": [ { "t": "A woman", "role": "subject", "id": "s" }, { "t": "stood", "role": "verb", "id": "v" }, { "t": "in the doorway", "role": "extra", "id": "e" } ] },
+      "to": { "label_es": "Frontal", "tokens": [ { "t": "In the doorway", "role": "extra", "id": "e" }, { "t": "stood", "role": "verb", "id": "v" }, { "t": "a woman", "role": "subject", "id": "s" } ] },
+      "note_es": "El lugar pasa al inicio y el verbo va antes del sujeto: crea un efecto narrativo o dramático."
+    },
+    {
+      "kind": "transform", "point": "Fronting and inversion for emphasis", "tone": "orange",
+      "title": "Such was… that…",
+      "from": { "label_es": "Normal", "tokens": [ { "t": "His anger", "role": "subject", "id": "s" }, { "t": "was", "role": "verb", "id": "v" }, { "t": "so great", "role": "complement", "id": "c" }, { "t": "that he left", "role": "extra" } ] },
+      "to": { "label_es": "Frontal", "tokens": [ { "t": "Such", "role": "complement", "id": "c" }, { "t": "was", "role": "verb", "id": "v" }, { "t": "his anger", "role": "subject", "id": "s" }, { "t": "that he left", "role": "extra" } ] },
+      "note_es": "El complemento va primero y la oración se invierte para enfatizar el grado."
+    }
+  ],
+  "C2-2-2": {
+    "kind": "slots", "point": "Inversion after negative and restrictive adverbials", "tone": "red",
+    "title": "Negative adverbial + auxiliary + subject",
+    "rows": [
+      { "label_es": "Never", "slots": [ { "t": "Never", "role": "extra", "label_es": "adverbial" }, { "t": "have", "role": "aux" }, { "t": "I", "role": "subject" }, { "t": "seen such chaos", "role": "verb" } ] },
+      { "label_es": "Not only", "slots": [ { "t": "Not only", "role": "extra", "label_es": "adverbial" }, { "t": "did", "role": "aux" }, { "t": "she", "role": "subject" }, { "t": "win, she broke a record", "role": "verb" } ] },
+      { "label_es": "No sooner", "slots": [ { "t": "No sooner", "role": "extra", "label_es": "adverbial" }, { "t": "had", "role": "aux" }, { "t": "we", "role": "subject" }, { "t": "sat down than it rang", "role": "verb" } ] }
+    ],
+    "note_es": "Tras Never, Not only o No sooner al inicio, el auxiliar va antes del sujeto, como en una pregunta."
+  },
+  "C2-3-0": {
+    "kind": "scale", "point": "Modals of speculation and deduction (present, past, future)", "tone": "indigo",
+    "title": "Graded certainty",
+    "from_es": "Seguro que no", "to_es": "Seguro que sí",
+    "marks": [
+      { "t": "can’t be", "at": 8, "tone": "red", "label_es": "imposible", "ex": "That can’t be Sam; he’s abroad." },
+      { "t": "might be", "at": 38, "tone": "yellow", "label_es": "posible", "ex": "It might be a fault in the wiring." },
+      { "t": "may well be", "at": 65, "tone": "orange", "label_es": "bastante probable", "ex": "It may well be the best option." },
+      { "t": "must be", "at": 92, "tone": "green", "label_es": "casi seguro", "ex": "She must be exhausted by now." }
+    ],
+    "note_es": "Con la misma estructura (modal + be, have been, be + -ing) gradúas lo seguro que estás sobre el presente, el pasado o el futuro."
+  },
+  "C2-3-1": {
+    "kind": "compare", "point": "Needn’t have vs didn’t need to; should have, might have, could have", "tone": "orange",
+    "title": "Judging the past",
+    "columns": [
+      { "head": "needn’t have + pp", "head_es": "lo hizo, sin necesidad", "use_es": "Se hizo y fue innecesario.", "tone": "blue",
+        "items": [ { "t": "You needn’t have brought food." } ] },
+      { "head": "didn’t need to", "head_es": "no hacía falta", "use_es": "No dice si se hizo o no.", "tone": "teal",
+        "items": [ { "t": "I didn’t need to bring food." } ] },
+      { "head": "should / could have", "head_es": "pesar o posibilidad", "use_es": "Crítica o posibilidad perdida.", "tone": "red",
+        "items": [ { "t": "You should have called us." }, { "t": "We could have won the match." } ] }
+    ],
+    "note_es": "Needn’t have: lo hiciste y no era necesario. Didn’t need to: no era necesario (quizá no lo hiciste). Should/could have: reproche o posibilidad perdida."
+  },
+  "C2-3-2": {
+    "kind": "compare", "point": "Will and would for assumption and characteristic behaviour", "tone": "purple",
+    "title": "Assumption and typical behaviour",
+    "columns": [
+      { "head": "will", "head_es": "suposición y hábito actual", "use_es": "Presente: lo que supones o sueles hacer.", "tone": "blue",
+        "items": [ { "t": "That’ll be Sam at the door." }, { "t": "She’ll sit for hours reading." } ] },
+      { "head": "would", "head_es": "pasado o comentario", "use_es": "Hábito pasado o suposición sobre el pasado.", "tone": "orange",
+        "items": [ { "t": "Every summer we would visit her." }, { "t": "That would have been Sam." }, { "t": "He would say that, wouldn’t he?" } ] }
+    ],
+    "note_es": "Will expresa una suposición o conducta típica ahora; would, lo mismo en el pasado o un comentario sobre alguien predecible."
+  },
+  "C2-4-0": [
+    {
+      "kind": "transform", "point": "Nominalisation and complex noun phrases", "tone": "green",
+      "title": "Verb phrase to noun phrase",
+      "from": { "label_es": "Verbal", "tokens": [ { "t": "The company", "role": "subject", "id": "s" }, { "t": "expanded", "role": "verb", "id": "v" }, { "t": "rapidly", "role": "extra", "id": "e" } ] },
+      "to": { "label_es": "Nominal", "tokens": [ { "t": "The", "role": "other", "add": true }, { "t": "rapid", "role": "extra", "id": "e" }, { "t": "expansion", "role": "verb", "id": "v" }, { "t": "of the company", "role": "subject", "id": "s" } ] },
+      "note_es": "El verbo pasa a nombre y el adverbio a adjetivo. El resultado es más denso y académico."
+    },
+    {
+      "kind": "transform", "point": "Nominalisation and complex noun phrases", "tone": "green",
+      "title": "Clause to noun phrase as subject",
+      "from": { "label_es": "Verbal", "tokens": [ { "t": "Prices", "role": "subject", "id": "s" }, { "t": "rose", "role": "verb", "id": "v" }, { "t": "sharply,", "role": "extra", "id": "e" }, { "t": "which", "role": "link", "drop": true }, { "t": "alarmed investors", "role": "object", "id": "o" } ] },
+      "to": { "label_es": "Nominal", "tokens": [ { "t": "The", "role": "other", "add": true }, { "t": "sharp", "role": "extra", "id": "e" }, { "t": "rise", "role": "verb", "id": "v" }, { "t": "in prices", "role": "subject", "id": "s" }, { "t": "alarmed investors", "role": "object", "id": "o" } ] },
+      "note_es": "Dos oraciones se condensan en una: la acción nominalizada se convierte en sujeto del verbo principal."
+    }
+  ],
+  "C2-4-1": [
+    {
+      "kind": "transform", "point": "Participle and reduced relative clauses", "tone": "teal",
+      "title": "Active: -ing",
+      "from": { "label_es": "Completa", "tokens": [ { "t": "candidates", "role": "subject", "id": "n" }, { "t": "who are", "role": "aux", "drop": true }, { "t": "applying", "role": "verb", "id": "v" }, { "t": "for the post", "role": "extra", "id": "e" } ] },
+      "to": { "label_es": "Reducida", "tokens": [ { "t": "candidates", "role": "subject", "id": "n" }, { "t": "applying", "role": "verb", "id": "v" }, { "t": "for the post", "role": "extra", "id": "e" } ] },
+      "note_es": "Who + be + -ing se reduce a -ing."
+    },
+    {
+      "kind": "transform", "point": "Participle and reduced relative clauses", "tone": "teal",
+      "title": "Passive: -ed",
+      "from": { "label_es": "Completa", "tokens": [ { "t": "the report", "role": "subject", "id": "n" }, { "t": "that was", "role": "aux", "drop": true }, { "t": "published", "role": "verb", "id": "v" }, { "t": "last week", "role": "extra", "id": "e" } ] },
+      "to": { "label_es": "Reducida", "tokens": [ { "t": "the report", "role": "subject", "id": "n" }, { "t": "published", "role": "verb", "id": "v" }, { "t": "last week", "role": "extra", "id": "e" } ] },
+      "note_es": "That + be + participio se reduce al participio pasado."
+    },
+    {
+      "kind": "transform", "point": "Participle and reduced relative clauses", "tone": "teal",
+      "title": "After first, last, only: to-infinitive",
+      "from": { "label_es": "Completa", "tokens": [ { "t": "the first person", "role": "subject", "id": "n" }, { "t": "who", "role": "link", "drop": true }, { "t": "arrived", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Reducida", "tokens": [ { "t": "the first person", "role": "subject", "id": "n" }, { "t": "to arrive", "role": "verb", "id": "v" } ] },
+      "note_es": "Tras first, last, only o un superlativo, la relativa se reduce a to + infinitivo."
+    }
+  ],
+  "C2-4-2": {
+    "kind": "compare", "point": "Advanced verb patterns: gerund vs infinitive with change of meaning", "tone": "purple",
+    "title": "Gerund vs infinitive: new meaning",
+    "columns": [
+      { "head": "+ -ing", "head_es": "implica o consecuencia", "use_es": "Resultado, hecho o acción continuada.", "tone": "blue",
+        "items": [ { "t": "This means working late." }, { "t": "He proposed moving the meeting." }, { "t": "She went on talking for an hour." } ] },
+      { "head": "+ to + verb", "head_es": "intención o paso siguiente", "use_es": "Propósito o nueva acción.", "tone": "orange",
+        "items": [ { "t": "I mean to apologise." }, { "t": "He proposed to move the meeting." }, { "t": "She went on to become a judge." } ] }
+    ],
+    "note_es": "Mean, propose, go on, regret o stop cambian de sentido: -ing expresa hecho o consecuencia; to + verbo, intención o paso nuevo."
+  },
+  "C2-5-0": [
+    {
+      "kind": "transform", "point": "Advanced passives: reporting passives and passive infinitives", "tone": "blue",
+      "title": "Reporting passive with perfect infinitive",
+      "from": { "label_es": "Activa", "tokens": [ { "t": "People think that", "role": "other", "drop": true }, { "t": "the drug", "role": "subject", "id": "s" }, { "t": "was tested", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Pasiva", "tokens": [ { "t": "The drug", "role": "subject", "id": "s" }, { "t": "is thought", "role": "aux", "add": true }, { "t": "to have been tested", "role": "verb", "id": "v" } ] },
+      "note_es": "Si la acción es anterior al verbo de opinión, se usa to have + participio: is thought to have been tested."
+    },
+    {
+      "kind": "transform", "point": "Advanced passives: reporting passives and passive infinitives", "tone": "blue",
+      "title": "Reporting passive: said to have",
+      "from": { "label_es": "Activa", "tokens": [ { "t": "They say that", "role": "other", "drop": true }, { "t": "the minister", "role": "subject", "id": "s" }, { "t": "has resigned", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Pasiva", "tokens": [ { "t": "The minister", "role": "subject", "id": "s" }, { "t": "is said", "role": "aux", "add": true }, { "t": "to have resigned", "role": "verb", "id": "v" } ] },
+      "note_es": "Estructura típica de prensa y textos formales: da la información con distancia."
+    }
+  ],
+  "C2-5-1": {
+    "kind": "compare", "point": "Causatives: have/get something done; have someone do", "tone": "orange",
+    "title": "Three causative patterns",
+    "columns": [
+      { "head": "have / get + thing + pp", "head_es": "servicio o desgracia", "use_es": "Otro lo hace por ti, o te ocurre.", "tone": "blue",
+        "items": [ { "t": "I had my car repaired." }, { "t": "He had his phone stolen." } ] },
+      { "head": "have + person + verb", "head_es": "encargar", "use_es": "Das una orden con autoridad.", "tone": "green",
+        "items": [ { "t": "I’ll have the team send it." }, { "t": "She had us rewrite the plan." } ] },
+      { "head": "get + person + to + verb", "head_es": "convencer", "use_es": "Consigues que alguien actúe.", "tone": "orange",
+        "items": [ { "t": "She got him to sign." }, { "t": "I got them to agree." } ] }
+    ],
+    "note_es": "Have/get + objeto + participio: la acción la hace otro. Have + persona + verbo base; get + persona + to + verbo."
+  },
+  "C2-5-2": {
+    "kind": "scale", "point": "Hedging and impersonal structures in academic English", "tone": "teal",
+    "title": "How strongly do you claim it?",
+    "from_es": "Muy cauto", "to_es": "Categórico",
+    "marks": [
+      { "t": "may suggest", "at": 10, "tone": "teal", "label_es": "tentativo", "ex": "The data may suggest a link." },
+      { "t": "it would appear", "at": 32, "tone": "blue", "label_es": "impersonal", "ex": "It would appear that demand is falling." },
+      { "t": "suggests", "at": 54, "tone": "indigo", "label_es": "moderado", "ex": "The evidence suggests a link." },
+      { "t": "clearly shows", "at": 76, "tone": "orange", "label_es": "firme", "ex": "The study clearly shows a decline." },
+      { "t": "proves", "at": 95, "tone": "red", "label_es": "categórico", "ex": "This proves the theory is correct." }
+    ],
+    "note_es": "Cubrirse bien no es ser débil: gradúa la fuerza de tu afirmación según la evidencia que tengas."
+  },
+  "C2-6-0": {
+    "kind": "compare", "point": "Mixed and implied conditionals", "tone": "purple",
+    "title": "Mixed and implied conditionals",
+    "columns": [
+      { "head": "past cause, present result", "head_es": "mixto", "use_es": "If + past perfect, would + verbo.", "tone": "blue",
+        "items": [ { "t": "If I had taken the job, I’d be rich now." } ] },
+      { "head": "present cause, past result", "head_es": "mixto", "use_es": "If + pasado, would have + pp.", "tone": "orange",
+        "items": [ { "t": "If she weren’t so careful, she’d have failed." } ] },
+      { "head": "implied (no if)", "head_es": "condición implícita", "use_es": "Con without, otherwise, but for…", "tone": "green",
+        "items": [ { "t": "Without your help, I would have failed." }, { "t": "A better driver would have braked." } ] }
+    ],
+    "note_es": "En los mixtos, la condición y el resultado están en tiempos distintos. En los implícitos, la condición se sugiere sin if."
+  },
+  "C2-6-1": [
+    {
+      "kind": "transform", "point": "Inverted conditionals (Should…, Were…, Had…)", "tone": "indigo",
+      "title": "Had + subject + participle",
+      "from": { "label_es": "Con if", "tokens": [ { "t": "If", "role": "link", "drop": true }, { "t": "the board", "role": "subject", "id": "s" }, { "t": "had", "role": "aux", "id": "a" }, { "t": "been informed,", "role": "verb", "id": "v" }, { "t": "it would have acted", "role": "other" } ] },
+      "to": { "label_es": "Invertida", "tokens": [ { "t": "Had", "role": "aux", "id": "a" }, { "t": "the board", "role": "subject", "id": "s" }, { "t": "been informed,", "role": "verb", "id": "v" }, { "t": "it would have acted", "role": "other" } ] },
+      "note_es": "Had + sujeto + participio, sin if: condición pasada irreal, muy formal."
+    },
+    {
+      "kind": "transform", "point": "Inverted conditionals (Should…, Were…, Had…)", "tone": "indigo",
+      "title": "Were it not for",
+      "from": { "label_es": "Con if", "tokens": [ { "t": "If", "role": "link", "drop": true }, { "t": "it", "role": "subject", "id": "s" }, { "t": "were", "role": "verb", "id": "v" }, { "t": "not for his support,", "role": "extra", "id": "e" }, { "t": "we would fail", "role": "other" } ] },
+      "to": { "label_es": "Invertida", "tokens": [ { "t": "Were", "role": "verb", "id": "v" }, { "t": "it", "role": "subject", "id": "s" }, { "t": "not for his support,", "role": "extra", "id": "e" }, { "t": "we would fail", "role": "other" } ] },
+      "note_es": "Were it not for + nombre = si no fuera por. Es la forma invertida y formal de if it were not for."
+    },
+    {
+      "kind": "transform", "point": "Inverted conditionals (Should…, Were…, Had…)", "tone": "indigo",
+      "title": "Should + subject + verb",
+      "from": { "label_es": "Con if", "tokens": [ { "t": "If", "role": "link", "drop": true }, { "t": "you", "role": "subject", "id": "s" }, { "t": "should", "role": "aux", "id": "a" }, { "t": "require assistance,", "role": "verb", "id": "v" }, { "t": "contact us", "role": "other" } ] },
+      "to": { "label_es": "Invertida", "tokens": [ { "t": "Should", "role": "aux", "id": "a" }, { "t": "you", "role": "subject", "id": "s" }, { "t": "require assistance,", "role": "verb", "id": "v" }, { "t": "contact us", "role": "other" } ] },
+      "note_es": "Should + sujeto + verbo base: posibilidad remota, típica de cartas y avisos formales."
+    }
+  ],
+  "C2-6-2": {
+    "kind": "compare", "point": "Alternatives to if: but for, otherwise, provided, supposing, were it not for", "tone": "green",
+    "title": "Connectors that replace if",
+    "columns": [
+      { "head": "but for / were it not for", "head_es": "sin", "use_es": "Si no fuera por algo.", "tone": "blue",
+        "items": [ { "t": "But for your help, we’d have failed." }, { "t": "Were it not for him, I’d resign." } ] },
+      { "head": "otherwise", "head_es": "de lo contrario", "use_es": "Consecuencia si no.", "tone": "red",
+        "items": [ { "t": "Leave now; otherwise, you’ll miss it." } ] },
+      { "head": "provided / supposing", "head_es": "siempre que / y si", "use_es": "Condición o hipótesis.", "tone": "orange",
+        "items": [ { "t": "Provided you pay, we’ll deliver." }, { "t": "Supposing it rains, what then?" } ] }
+    ],
+    "note_es": "Cada conector precisa el tipo de condición: but for = sin; otherwise = o si no; provided = solo si; supposing = hipótesis."
+  },
+  "C2-7-0": [
+    {
+      "kind": "transform", "point": "Ellipsis and substitution (so, not, do so, one)", "tone": "mint",
+      "title": "Substitution with so",
+      "from": { "label_es": "Completa", "tokens": [ { "t": "I hope", "role": "other" }, { "t": "she will pass", "role": "complement", "id": "c" } ] },
+      "to": { "label_es": "Sustituida", "tokens": [ { "t": "I hope", "role": "other" }, { "t": "so", "role": "complement", "id": "c" } ] },
+      "note_es": "So (o not) sustituye a toda la cláusula tras hope, think, believe y suppose."
+    },
+    {
+      "kind": "transform", "point": "Ellipsis and substitution (so, not, do so, one)", "tone": "mint",
+      "title": "Substitution with one",
+      "from": { "label_es": "Completa", "tokens": [ { "t": "I’ll buy", "role": "verb" }, { "t": "a new pen", "role": "object", "id": "p" } ] },
+      "to": { "label_es": "Sustituida", "tokens": [ { "t": "I’ll buy", "role": "verb" }, { "t": "a new one", "role": "object", "id": "p" } ] },
+      "note_es": "One evita repetir un nombre contable ya mencionado."
+    }
+  ],
+  "C2-7-1": {
+    "kind": "compare", "point": "Intensifiers, downtoners and gradable vs ungradable adjectives", "tone": "yellow",
+    "title": "Match the modifier to the adjective",
+    "columns": [
+      { "head": "gradable", "head_es": "good, tired, cold", "use_es": "very, rather, fairly, extremely.", "tone": "blue",
+        "items": [ { "t": "very good", "ok": true }, { "t": "rather tired", "ok": true }, { "t": "absolutely good", "ok": false } ] },
+      { "head": "ungradable", "head_es": "superb, exhausted, freezing", "use_es": "absolutely, utterly, completely.", "tone": "orange",
+        "items": [ { "t": "absolutely superb", "ok": true }, { "t": "completely exhausted", "ok": true }, { "t": "very superb", "ok": false } ] }
+    ],
+    "note_es": "Los adjetivos graduables aceptan very o rather. Los extremos o absolutos piden absolutely, utterly o completely."
+  },
+  "C2-7-2": {
+    "kind": "slots", "point": "Adjective order and compound modifiers", "tone": "pink",
+    "title": "Order and compound modifiers",
+    "rows": [
+      { "label_es": "Orden", "slots": [ { "t": "a stunning", "role": "extra", "label_es": "opinión" }, { "t": "ancient", "role": "aux", "label_es": "edad" }, { "t": "Roman", "role": "link", "label_es": "origen" }, { "t": "stone", "role": "object", "label_es": "material" }, { "t": "bridge", "role": "subject", "label_es": "nombre" } ] },
+      { "label_es": "Compuestos", "slots": [ { "t": "a", "role": "other" }, { "t": "well-paid", "role": "complement", "label_es": "con guion" }, { "t": "part-time", "role": "complement", "label_es": "con guion" }, { "t": "job", "role": "subject", "label_es": "nombre" } ] }
+    ],
+    "note_es": "La opinión va antes que los datos objetivos. Los modificadores compuestos llevan guion cuando van antes del nombre."
+  },
+  "C2-8-0": {
+    "kind": "slots", "point": "The subjunctive and formulaic expressions", "tone": "purple",
+    "title": "Subjunctive and fixed phrases",
+    "rows": [
+      { "label_es": "Tras demanda", "slots": [ { "t": "We insist", "role": "other" }, { "t": "that he", "role": "subject" }, { "t": "resign", "role": "verb", "label_es": "forma base" } ] },
+      { "label_es": "Tras adjetivo", "slots": [ { "t": "It is vital", "role": "other" }, { "t": "that she", "role": "subject" }, { "t": "be", "role": "verb", "label_es": "forma base" }, { "t": "informed", "role": "complement" } ] },
+      { "label_es": "Fórmula fija", "slots": [ { "t": "Come what may,", "role": "link", "label_es": "fórmula" }, { "t": "we", "role": "subject" }, { "t": "will proceed", "role": "verb" } ] }
+    ],
+    "note_es": "Tras demandas y recomendaciones, el verbo va en forma base. Frases como come what may o be that as it may conservan el subjuntivo."
+  },
+  "C2-8-1": {
+    "kind": "compare", "point": "Unreal past: wish, if only, it’s (high) time, would rather, as if", "tone": "red",
+    "title": "Unreal past forms",
+    "columns": [
+      { "head": "past = now", "head_es": "irreal presente", "use_es": "Forma de pasado para hoy.", "tone": "blue",
+        "items": [ { "t": "I wish I were taller." }, { "t": "It’s high time we left." }, { "t": "I’d rather you stayed." } ] },
+      { "head": "past perfect = past", "head_es": "irreal pasado", "use_es": "Algo que no ocurrió.", "tone": "orange",
+        "items": [ { "t": "I wish I had listened." }, { "t": "If only I had called." }, { "t": "He acts as if he had won." } ] }
+    ],
+    "note_es": "Un pasado simple expresa algo irreal ahora; un past perfect expresa un pesar sobre el pasado."
+  },
+  "C2-8-2": {
+    "kind": "compare", "point": "Concession and contrast: albeit, notwithstanding, much as, however + adjective", "tone": "teal",
+    "title": "Formal concession",
+    "columns": [
+      { "head": "albeit / notwithstanding", "head_es": "formal", "use_es": "Admite un punto, estilo escrito.", "tone": "blue",
+        "items": [ { "t": "A slow, albeit steady, recovery." }, { "t": "Notwithstanding the delay, we opened." } ] },
+      { "head": "much as", "head_es": "por mucho que", "use_es": "Admite un sentimiento.", "tone": "orange",
+        "items": [ { "t": "Much as I admire her, I disagree." } ] },
+      { "head": "however + adjective", "head_es": "por muy… que", "use_es": "Grado ilimitado.", "tone": "green",
+        "items": [ { "t": "However hard you try, you can’t please everyone." }, { "t": "However tired, she kept going." } ] }
+    ],
+    "note_es": "Se concede un punto con elegancia antes de defender el tuyo: albeit y notwithstanding son formales; much as e however + adjetivo dan énfasis."
+  },
+  "C2-9-0": {
+    "kind": "timeline", "point": "Future forms in the past (was to, was about to, would)", "tone": "indigo",
+    "title": "Looking forward from the past",
+    "now": 90,
+    "marks": [ { "x": 15, "label": "then", "tone": "blue" }, { "x": 30, "label": "was about to", "tone": "orange" }, { "x": 50, "label": "was to", "tone": "purple" }, { "x": 72, "label": "would (later)", "tone": "teal" } ],
+    "spans": [ { "from": 15, "to": 72, "label": "seen from then", "tone": "indigo", "row": 0, "dashed": true } ],
+    "examples": [
+      { "t": "She was about to leave when the phone rang.", "tone": "orange" },
+      { "t": "The meeting was to start at nine.", "tone": "purple" },
+      { "t": "He would later become a famous director.", "tone": "teal" }
+    ],
+    "note_es": "Desde un momento del pasado se mira hacia delante: was to (plan), was about to (inminente) y would (lo que ocurriría después)."
+  },
+  "C2-9-1": {
+    "kind": "sequence", "point": "Discourse markers and cohesive devices at C2", "tone": "blue",
+    "title": "Building an argument",
+    "steps": [
+      { "t": "To begin with", "ex": "To begin with, the cost is too high.", "label_es": "abre el argumento" },
+      { "t": "Moreover", "ex": "Moreover, the plan lacks public support.", "label_es": "añade otro punto" },
+      { "t": "Nevertheless", "ex": "Nevertheless, some benefits are clear.", "label_es": "introduce el contraste" },
+      { "t": "Consequently", "ex": "Consequently, the council delayed the vote.", "label_es": "expresa el resultado" },
+      { "t": "In sum", "ex": "In sum, the proposal needs revision.", "label_es": "concluye" }
+    ],
+    "note_es": "Cada conector dice al lector qué hace la frase: abrir, añadir, contrastar, sacar una consecuencia o resumir."
+  },
+  "C2-9-2": {
+    "kind": "compare", "point": "Prepositional and phrasal verb nuance in formal writing", "tone": "orange",
+    "title": "Phrasal verbs in formal writing",
+    "columns": [
+      { "head": "fine in formal writing", "head_es": "aceptables", "use_es": "Precisos y neutros.", "tone": "green",
+        "items": [ { "t": "carry out a study", "ok": true }, { "t": "set out the aims", "ok": true }, { "t": "rule out an option", "ok": true } ] },
+      { "head": "too informal", "head_es": "mejor evitar", "use_es": "Coloquiales; hay verbos más precisos.", "tone": "red",
+        "items": [ { "t": "mess up the results", "ok": false }, { "t": "chuck out old files", "ok": false }, { "t": "go on about the topic", "ok": false } ] }
+    ],
+    "note_es": "No todo phrasal verb es informal: carry out o rule out son estándar en textos formales. Otros, como mess up, suenan coloquiales."
+  },
+  "C2-10-0": {
+    "kind": "timeline", "point": "Advanced future forms: future perfect continuous, be to, be on the verge of, be due to", "tone": "teal",
+    "title": "Advanced future forms",
+    "now": 25,
+    "marks": [ { "x": 30, "label": "on the verge of", "tone": "orange" }, { "x": 55, "label": "due to / is to", "tone": "purple" }, { "x": 85, "label": "next June", "tone": "blue" } ],
+    "spans": [
+      { "from": 8, "to": 85, "label": "will have been working", "tone": "blue", "row": 0 }
+    ],
+    "examples": [
+      { "t": "By next June, I’ll have been working here for ten years.", "tone": "blue" },
+      { "t": "The train is due to arrive at six.", "tone": "purple" },
+      { "t": "The president is to visit Rome next week.", "tone": "purple" },
+      { "t": "She is on the verge of resigning.", "tone": "orange" }
+    ],
+    "note_es": "El future perfect continuous mide la duración hasta un punto futuro; be to y be due to, planes oficiales; be on the verge of, algo inminente."
+  },
+  "C2-10-1": {
+    "kind": "scale", "point": "Comparative structures with nuance (the more…the more, nowhere near, every bit as)", "tone": "pink",
+    "title": "How equal are the two things?",
+    "from_es": "Muy distintos", "to_es": "Iguales",
+    "marks": [
+      { "t": "nowhere near as", "at": 10, "tone": "red", "label_es": "muy por debajo", "ex": "It’s nowhere near as big as ours." },
+      { "t": "not quite as", "at": 65, "tone": "yellow", "label_es": "casi igual", "ex": "It’s not quite as fast as mine." },
+      { "t": "every bit as", "at": 88, "tone": "green", "label_es": "exactamente igual", "ex": "She is every bit as skilled as he is." }
+    ],
+    "note_es": "Estas estructuras miden la diferencia con precisión: de nowhere near as (mucho menos) a every bit as (exactamente igual)."
+  },
+  "C2-10-2": {
+    "kind": "compare", "point": "Proverbs, fixed expressions and register at C2", "tone": "purple",
+    "title": "Fixed expressions and register",
+    "columns": [
+      { "head": "casual chat", "head_es": "informal", "use_es": "Conversación entre amigos.", "tone": "orange",
+        "items": [ { "t": "It’s a piece of cake.", "ok": true }, { "t": "Easier said than done.", "ok": true }, { "t": "Don’t count your chickens.", "ok": true } ] },
+      { "head": "formal report", "head_es": "formal", "use_es": "Texto escrito o profesional.", "tone": "blue",
+        "items": [ { "t": "It remains to be seen.", "ok": true }, { "t": "In the light of these findings…", "ok": true }, { "t": "It’s a piece of cake.", "ok": false } ] }
+    ],
+    "note_es": "Una expresión fija arrastra un registro: úsala solo donde encaja. A piece of cake es informal; it remains to be seen es formal."
+  }
+}

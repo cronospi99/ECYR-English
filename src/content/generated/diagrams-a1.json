@@ -1,0 +1,315 @@
+{
+  "A1-1-0": {
+    "kind": "slots",
+    "point": "Verb “to be” + possessive adjectives",
+    "title": "To be + possessive adjectives",
+    "note_es": "Am, is y are cambian según el sujeto. El adjetivo posesivo (my, his, their...) va delante del nombre.",
+    "tone": "blue",
+    "rows": [
+      { "label_es": "I", "slots": [ { "t": "I", "role": "subject", "label_es": "sujeto" }, { "t": "am", "role": "aux", "label_es": "to be" }, { "t": "your", "role": "link", "label_es": "posesivo" }, { "t": "friend", "role": "object", "label_es": "nombre" } ] },
+      { "label_es": "He / she / it", "slots": [ { "t": "She", "role": "subject", "label_es": "sujeto" }, { "t": "is", "role": "aux", "label_es": "to be" }, { "t": "my", "role": "link", "label_es": "posesivo" }, { "t": "sister", "role": "object", "label_es": "nombre" } ] },
+      { "label_es": "You / we / they", "slots": [ { "t": "They", "role": "subject", "label_es": "sujeto" }, { "t": "are", "role": "aux", "label_es": "to be" }, { "t": "our", "role": "link", "label_es": "posesivo" }, { "t": "teachers", "role": "object", "label_es": "nombre" } ] }
+    ]
+  },
+  "A1-1-1": [
+    {
+      "kind": "transform",
+      "point": "Wh-questions and yes/no questions with “to be”",
+      "title": "Yes/no question with to be",
+      "note_es": "En la pregunta, el verbo to be pasa delante del sujeto. La respuesta corta repite el verbo.",
+      "tone": "purple",
+      "from": { "label_es": "Afirmación", "tokens": [ { "t": "You", "role": "subject", "id": "s" }, { "t": "are", "role": "aux", "id": "a" }, { "t": "Colombian", "role": "complement", "id": "c" } ] },
+      "to": { "label_es": "Pregunta", "tokens": [ { "t": "Are", "role": "aux", "id": "a" }, { "t": "you", "role": "subject", "id": "s" }, { "t": "Colombian", "role": "complement", "id": "c" } ] }
+    },
+    {
+      "kind": "slots",
+      "title": "Wh-question with to be",
+      "note_es": "Orden: palabra interrogativa, to be, sujeto. Where is your school? Who are you?",
+      "tone": "purple",
+      "rows": [
+        { "label_es": "Where", "slots": [ { "t": "Where", "role": "link", "label_es": "wh-word" }, { "t": "is", "role": "aux", "label_es": "to be" }, { "t": "your school", "role": "subject", "label_es": "sujeto" } ] },
+        { "label_es": "Who", "slots": [ { "t": "Who", "role": "link", "label_es": "wh-word" }, { "t": "are", "role": "aux", "label_es": "to be" }, { "t": "you", "role": "subject", "label_es": "sujeto" } ] }
+      ]
+    }
+  ],
+  "A1-2-0": {
+    "kind": "slots",
+    "point": "Present simple wh-questions with do/does",
+    "title": "Present simple wh-questions",
+    "note_es": "Do/does va después de la palabra interrogativa. Con does, el verbo queda en forma base: no lleva -s.",
+    "tone": "purple",
+    "rows": [
+      { "label_es": "I / you / we / they", "slots": [ { "t": "Where", "role": "link", "label_es": "wh-word" }, { "t": "do", "role": "aux", "label_es": "auxiliar" }, { "t": "you", "role": "subject", "label_es": "sujeto" }, { "t": "live?", "role": "verb", "label_es": "verbo base" } ] },
+      { "label_es": "he / she / it", "slots": [ { "t": "Where", "role": "link", "label_es": "wh-word" }, { "t": "does", "role": "aux", "label_es": "auxiliar" }, { "t": "she", "role": "subject", "label_es": "sujeto" }, { "t": "work?", "role": "verb", "label_es": "verbo base" } ] }
+    ]
+  },
+  "A1-4-0": {
+    "kind": "compare",
+    "point": "Wh- and yes/no questions + object pronouns",
+    "title": "Subject pronouns vs object pronouns",
+    "note_es": "Antes del verbo va el pronombre sujeto (I, he, she). Después del verbo va el pronombre objeto (me, him, her).",
+    "columns": [
+      { "head": "subject", "head_es": "antes del verbo", "use_es": "Hace la acción.", "tone": "blue", "items": [ { "t": "He helps us.", "ok": true }, { "t": "I know him.", "ok": true }, { "t": "Me call her.", "ok": false } ] },
+      { "head": "object", "head_es": "después del verbo", "use_es": "Recibe la acción: me, you, him, her, it, us, them.", "tone": "orange", "items": [ { "t": "Who does she call?", "ok": true }, { "t": "She calls me.", "ok": true }, { "t": "She calls I.", "ok": false } ] }
+    ]
+  },
+  "A1-4-1": {
+    "kind": "slots",
+    "point": "Yes/no questions with “would”",
+    "title": "Would you like...?",
+    "note_es": "Would no cambia con ninguna persona. Después de like va un nombre o to + verbo.",
+    "tone": "pink",
+    "rows": [
+      { "label_es": "+ nombre", "slots": [ { "t": "Would", "role": "aux" }, { "t": "you", "role": "subject" }, { "t": "like", "role": "verb" }, { "t": "a coffee?", "role": "object", "label_es": "nombre" } ] },
+      { "label_es": "+ to + verbo", "slots": [ { "t": "Would", "role": "aux" }, { "t": "you", "role": "subject" }, { "t": "like", "role": "verb" }, { "t": "to sit here?", "role": "complement", "label_es": "to + verbo" } ] }
+    ]
+  },
+  "A1-5-0": [
+    {
+      "kind": "transform",
+      "point": "Present continuous: yes/no and wh-questions",
+      "title": "Present continuous: yes/no question",
+      "note_es": "El verbo to be pasa delante del sujeto. El verbo con -ing se queda igual.",
+      "tone": "green",
+      "from": { "label_es": "Afirmación", "tokens": [ { "t": "She", "role": "subject", "id": "s" }, { "t": "is", "role": "aux", "id": "a" }, { "t": "studying", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Pregunta", "tokens": [ { "t": "Is", "role": "aux", "id": "a" }, { "t": "she", "role": "subject", "id": "s" }, { "t": "studying?", "role": "verb", "id": "v" } ] }
+    },
+    {
+      "kind": "transform",
+      "title": "Present continuous: wh-question",
+      "note_es": "Se añade la palabra interrogativa al principio y se mantiene el orden to be + sujeto + verbo con -ing.",
+      "tone": "green",
+      "from": { "label_es": "Afirmación", "tokens": [ { "t": "You", "role": "subject", "id": "s" }, { "t": "are", "role": "aux", "id": "a" }, { "t": "going", "role": "verb", "id": "v" } ] },
+      "to": { "label_es": "Pregunta", "tokens": [ { "t": "Where", "role": "link", "add": true }, { "t": "are", "role": "aux", "id": "a" }, { "t": "you", "role": "subject", "id": "s" }, { "t": "going?", "role": "verb", "id": "v" } ] }
+    }
+  ],
+  "A1-6-0": {
+    "kind": "scale",
+    "point": "Adverbs of frequency",
+    "title": "Adverbs of frequency",
+    "note_es": "Estos adverbios dicen cuántas veces ocurre algo. Van antes del verbo principal y después de am/is/are.",
+    "tone": "orange",
+    "from_es": "0 % de las veces",
+    "to_es": "100 % de las veces",
+    "marks": [
+      { "t": "never", "at": 3, "tone": "red", "label_es": "nunca", "ex": "I never eat meat." },
+      { "t": "hardly ever", "at": 20, "tone": "orange", "label_es": "casi nunca", "ex": "She hardly ever walks to school." },
+      { "t": "sometimes", "at": 41, "tone": "yellow", "label_es": "a veces", "ex": "We sometimes eat out." },
+      { "t": "usually", "at": 62, "tone": "mint", "label_es": "normalmente", "ex": "We usually have lunch at one." },
+      { "t": "almost always", "at": 80, "tone": "teal", "label_es": "casi siempre", "ex": "He is almost always on time." },
+      { "t": "always", "at": 97, "tone": "green", "label_es": "siempre", "ex": "I always brush my teeth." }
+    ]
+  },
+  "A1-6-1": {
+    "kind": "compare",
+    "point": "Questions with “how” and short answers",
+    "title": "How often? How long? How well?",
+    "note_es": "How + otra palabra pregunta algo preciso: how often (frecuencia), how long (duración), how well (calidad).",
+    "columns": [
+      { "head": "How often?", "head_es": "frecuencia", "use_es": "Cuántas veces.", "tone": "blue", "items": [ { "t": "Twice a week." }, { "t": "Every day." }, { "t": "Hardly ever." } ] },
+      { "head": "How long?", "head_es": "duración", "use_es": "Cuánto tiempo.", "tone": "orange", "items": [ { "t": "For two years." }, { "t": "About an hour." } ] },
+      { "head": "How well?", "head_es": "habilidad", "use_es": "Qué tan bien.", "tone": "green", "items": [ { "t": "Quite well." }, { "t": "Really well." }, { "t": "Not very well." } ] }
+    ]
+  },
+  "A1-7-0": {
+    "kind": "timeline",
+    "point": "Past simple with ordinary verbs (did)",
+    "title": "Past simple: finished actions",
+    "note_es": "El pasado simple habla de acciones terminadas. En preguntas y negativas usa did y el verbo vuelve a la forma base.",
+    "now": 80,
+    "marks": [ { "x": 55, "label": "yesterday", "tone": "orange" } ],
+    "spans": [ { "from": 15, "to": 38, "label": "last year", "tone": "blue" } ],
+    "examples": [
+      { "t": "I worked yesterday.", "tone": "orange" },
+      { "t": "Did you work yesterday?", "tone": "orange" },
+      { "t": "She didn’t go to school last year.", "tone": "blue" }
+    ]
+  },
+  "A1-7-1": {
+    "kind": "compare",
+    "point": "Past simple of “to be” (was / were)",
+    "title": "Was vs were",
+    "note_es": "To be no usa did. Was va con I, he, she, it. Were va con you, we, they.",
+    "columns": [
+      { "head": "was", "head_es": "I, he, she, it", "use_es": "Singular y I.", "tone": "blue", "items": [ { "t": "I was tired.", "ok": true }, { "t": "It was good.", "ok": true }, { "t": "You was late.", "ok": false } ] },
+      { "head": "were", "head_es": "you, we, they", "use_es": "Plural y you.", "tone": "orange", "items": [ { "t": "They were at home.", "ok": true }, { "t": "You were late.", "ok": true }, { "t": "I were tired.", "ok": false } ] }
+    ]
+  },
+  "A1-9-0": {
+    "kind": "compare",
+    "point": "Wh-questions about descriptions",
+    "title": "Look like vs be like",
+    "note_es": "Look like pregunta por el aspecto físico. Be like pregunta por la personalidad o cómo es algo.",
+    "columns": [
+      { "head": "look like", "head_es": "aspecto", "use_es": "Cómo se ve.", "tone": "pink", "items": [ { "t": "What does he look like?", "ok": true }, { "t": "He is tall with short dark hair.", "ok": true }, { "t": "What is he look like?", "ok": false } ] },
+      { "head": "be like", "head_es": "personalidad", "use_es": "Cómo es como persona.", "tone": "teal", "items": [ { "t": "What is she like?", "ok": true }, { "t": "She is friendly and very funny.", "ok": true }, { "t": "How is she like?", "ok": false } ] }
+    ]
+  },
+  "A1-9-1": {
+    "kind": "slots",
+    "point": "Modifiers with present participles",
+    "title": "Who is she? Add an -ing phrase",
+    "note_es": "Para identificar a una persona, añade verbo + -ing justo después del nombre o de the one.",
+    "tone": "indigo",
+    "rows": [
+      { "label_es": "the one", "slots": [ { "t": "The one", "role": "subject" }, { "t": "wearing the red coat", "role": "extra", "inserted": true, "label_es": "-ing + resto" }, { "t": "is Ana.", "role": "verb" } ] },
+      { "label_es": "the noun", "slots": [ { "t": "The woman", "role": "subject" }, { "t": "standing near the door", "role": "extra", "inserted": true, "label_es": "-ing + resto" }, { "t": "is my teacher.", "role": "verb" } ] }
+    ]
+  },
+  "A1-10-0": {
+    "kind": "timeline",
+    "point": "Present perfect with “already” and “yet”",
+    "title": "Already and yet",
+    "note_es": "Already: la acción ya está hecha antes de ahora. Yet: todavía no se ha hecho (en negativas) o se pregunta si ya se hizo.",
+    "now": 70,
+    "marks": [{ "x": 44, "label": "finished", "tone": "green" }],
+    "spans": [
+      { "from": 44, "to": 70, "label": "already done", "tone": "green" },
+      { "from": 70, "to": 94, "label": "not yet", "tone": "orange", "dashed": true, "open": true }
+    ],
+    "examples": [
+      { "t": "I have already finished my homework.", "tone": "green" },
+      { "t": "I haven’t called Ana yet.", "tone": "orange" },
+      { "t": "Have you eaten yet?", "tone": "blue" }
+    ]
+  },
+  "A1-11-0": [
+    {
+      "kind": "scale",
+      "point": "Adverbs before adjectives + conjunctions",
+      "title": "Adverbs before adjectives",
+      "note_es": "El adverbio va delante del adjetivo y cambia su fuerza: a bit es poco, quite es medio, really es mucho.",
+      "tone": "orange",
+      "from_es": "Poco",
+      "to_es": "Mucho",
+      "marks": [
+        { "t": "a bit", "at": 12, "tone": "teal", "label_es": "un poco", "ex": "The room is a bit small." },
+        { "t": "quite", "at": 45, "tone": "yellow", "label_es": "bastante", "ex": "It’s quite far." },
+        { "t": "really", "at": 80, "tone": "red", "label_es": "muy / de verdad", "ex": "The food is really cheap." }
+      ]
+    },
+    {
+      "kind": "slots",
+      "title": "Conjunctions: and, but, so, because",
+      "note_es": "And suma, but contrasta, so da el resultado y because da la razón.",
+      "tone": "orange",
+      "rows": [
+        { "label_es": "suma", "slots": [ { "t": "It’s cheap", "role": "other", "label_es": "idea 1" }, { "t": "and", "role": "link", "label_es": "conector" }, { "t": "it’s near.", "role": "other", "label_es": "idea 2" } ] },
+        { "label_es": "contraste", "slots": [ { "t": "It’s cheap", "role": "other", "label_es": "idea 1" }, { "t": "but", "role": "link", "label_es": "conector" }, { "t": "it’s far.", "role": "other", "label_es": "idea 2" } ] },
+        { "label_es": "resultado", "slots": [ { "t": "It’s cheap", "role": "other", "label_es": "idea 1" }, { "t": "so", "role": "link", "label_es": "conector" }, { "t": "I buy it.", "role": "other", "label_es": "idea 2" } ] },
+        { "label_es": "razón", "slots": [ { "t": "I buy it", "role": "other", "label_es": "idea 1" }, { "t": "because", "role": "link", "label_es": "conector" }, { "t": "it’s cheap.", "role": "other", "label_es": "idea 2" } ] }
+      ]
+    }
+  ],
+  "A1-11-1": {
+    "kind": "compare",
+    "point": "Modals “can” and “should” for recommendations",
+    "title": "Can vs should",
+    "note_es": "Can presenta una opción posible. Should da un consejo. Los dos van con verbo base: sin to y sin -s.",
+    "columns": [
+      { "head": "can", "head_es": "opción", "use_es": "Es posible hacerlo.", "tone": "blue", "items": [ { "t": "You can take the bus.", "ok": true }, { "t": "She can walk there.", "ok": true }, { "t": "You can to take the bus.", "ok": false } ] },
+      { "head": "should", "head_es": "consejo", "use_es": "Es una buena idea.", "tone": "green", "items": [ { "t": "You should try the coffee.", "ok": true }, { "t": "Should I book a table?", "ok": true }, { "t": "She should goes home.", "ok": false } ] }
+    ]
+  },
+  "A1-12-0": {
+    "kind": "slots",
+    "point": "Recommendations with infinitives",
+    "title": "Recommendations with to + verb",
+    "note_es": "Después de una frase fija como it’s a good idea o de verbos como need y try, usa to + verbo base.",
+    "tone": "green",
+    "rows": [
+      { "label_es": "buena idea", "slots": [ { "t": "It’s a good idea", "role": "other" }, { "t": "to", "role": "link" }, { "t": "book", "role": "verb" }, { "t": "in advance.", "role": "complement" } ] },
+      { "label_es": "necesidad", "slots": [ { "t": "You need", "role": "other" }, { "t": "to", "role": "link" }, { "t": "buy", "role": "verb" }, { "t": "a ticket first.", "role": "object" } ] },
+      { "label_es": "mejor forma", "slots": [ { "t": "The best way is", "role": "other" }, { "t": "to", "role": "link" }, { "t": "walk.", "role": "verb" } ] }
+    ]
+  },
+  "A1-12-1": {
+    "kind": "compare",
+    "point": "Suggestions and requests with can, could and should",
+    "title": "Can, could and should",
+    "note_es": "Can you y could you piden algo (could es más cortés). Should we sugiere hacer algo juntos.",
+    "columns": [
+      { "head": "Can you...?", "head_es": "petición normal", "use_es": "Con amigos.", "tone": "blue", "items": [ { "t": "Can you help me?" }, { "t": "Can you open the door?" } ] },
+      { "head": "Could you...?", "head_es": "petición cortés", "use_es": "Más amable.", "tone": "purple", "items": [ { "t": "Could you help me, please?" }, { "t": "Could you repeat that?" } ] },
+      { "head": "Should we...?", "head_es": "sugerencia", "use_es": "Proponer un plan.", "tone": "green", "items": [ { "t": "Should we go now?" }, { "t": "Should we take a taxi?" } ] }
+    ]
+  },
+  "A1-13-0": {
+    "kind": "compare",
+    "point": "Agreeing and disagreeing with so, too, neither, either",
+    "title": "So, too, neither, either",
+    "note_es": "Tras una frase afirmativa, usa So do I o Me too. Tras una negativa, usa Neither do I o I don’t either.",
+    "columns": [
+      { "head": "positive", "head_es": "afirmativa: so / me too", "use_es": "Estás de acuerdo con algo afirmativo.", "tone": "green", "items": [ { "t": "I like pizza. So do I.", "ok": true }, { "t": "I’m tired. Me too.", "ok": true }, { "t": "I like pizza. Neither do I.", "ok": false } ] },
+      { "head": "negative", "head_es": "negativa: neither / either", "use_es": "Estás de acuerdo con algo negativo.", "tone": "red", "items": [ { "t": "I don’t like fish. Neither do I.", "ok": true }, { "t": "I don’t like fish. I don’t either.", "ok": true }, { "t": "I don’t like fish. So do I.", "ok": false } ] }
+    ]
+  },
+  "A1-13-1": {
+    "kind": "compare",
+    "point": "Requests with “would”",
+    "title": "Would: offers, requests, wishes",
+    "note_es": "Would hace más educado lo que dices. Cambia el patrón: would you like (oferta), would you mind + -ing (petición), I’d like (deseo).",
+    "columns": [
+      { "head": "offer", "head_es": "ofrecer", "use_es": "Would you like...?", "tone": "orange", "items": [ { "t": "Would you like a coffee?" }, { "t": "Yes, please." } ] },
+      { "head": "request", "head_es": "pedir", "use_es": "Would you mind + -ing?", "tone": "purple", "items": [ { "t": "Would you mind closing the door?" }, { "t": "Not at all." } ] },
+      { "head": "want", "head_es": "querer", "use_es": "I’d like...", "tone": "pink", "items": [ { "t": "I’d like the menu, please." }, { "t": "I’d like some water." } ] }
+    ]
+  },
+  "A1-14-1": {
+    "kind": "slots",
+    "point": "Questions with “how” about measurements",
+    "title": "How + adjective questions",
+    "note_es": "Para medidas usa how + adjetivo + to be + sujeto. La respuesta da un número y la unidad.",
+    "tone": "teal",
+    "rows": [
+      { "label_es": "longitud", "slots": [ { "t": "How", "role": "link" }, { "t": "long", "role": "complement", "label_es": "adjetivo" }, { "t": "is", "role": "aux" }, { "t": "the river?", "role": "subject" } ] },
+      { "label_es": "altura", "slots": [ { "t": "How", "role": "link" }, { "t": "high", "role": "complement", "label_es": "adjetivo" }, { "t": "is", "role": "aux" }, { "t": "the mountain?", "role": "subject" } ] },
+      { "label_es": "profundidad", "slots": [ { "t": "How", "role": "link" }, { "t": "deep", "role": "complement", "label_es": "adjetivo" }, { "t": "is", "role": "aux" }, { "t": "the lake?", "role": "subject" } ] }
+    ]
+  },
+  "A1-15-1": {
+    "kind": "compare",
+    "point": "Messages with “tell” and “say” + requests with modals",
+    "title": "Say vs tell",
+    "note_es": "Tell siempre lleva a la persona que escucha. Say lleva lo que se dijo.",
+    "columns": [
+      {
+        "head": "say",
+        "head_es": "decir algo",
+        "use_es": "Sin persona: dices palabras o una frase.",
+        "tone": "blue",
+        "items": [
+          { "t": "She said hello.", "ok": true },
+          { "t": "He said he was late.", "ok": true },
+          { "t": "She said me a secret.", "ok": false }
+        ]
+      },
+      {
+        "head": "tell",
+        "head_es": "decirle a alguien",
+        "use_es": "Con persona: tell + alguien.",
+        "tone": "orange",
+        "items": [
+          { "t": "She told me a secret.", "ok": true },
+          { "t": "He told us to wait.", "ok": true },
+          { "t": "He told that he was late.", "ok": false }
+        ]
+      }
+    ]
+  },
+  "A1-16-1": {
+    "kind": "scale",
+    "point": "Verbs + infinitives for plans",
+    "title": "How sure is your plan?",
+    "note_es": "Cada verbo + to indica una certeza distinta: going to es un plan firme, hope to es solo un deseo.",
+    "tone": "blue",
+    "from_es": "Deseo lejano",
+    "to_es": "Plan seguro",
+    "marks": [
+      { "t": "would like to / want to", "at": 12, "tone": "pink", "label_es": "deseo", "ex": "I’d like to study design." },
+      { "t": "hope to", "at": 40, "tone": "yellow", "label_es": "esperanza", "ex": "I hope to travel abroad." },
+      { "t": "plan to", "at": 68, "tone": "teal", "label_es": "intención", "ex": "I plan to move next year." },
+      { "t": "going to", "at": 92, "tone": "green", "label_es": "plan firme", "ex": "I’m going to start a course in March." }
+    ]
+  }
+}

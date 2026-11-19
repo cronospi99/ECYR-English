@@ -5,7 +5,7 @@
    gates (right more often on harder levels), does tricks on ramps, uses its items with simple
    tactics and reverses out when it gets stuck. */
 import * as THREE from 'three';
-import { KART, type Kart, type KartInput } from './kart';
+import type { Kart, KartInput } from './kart';
 import { KERB, type Track } from './track';
 import type { ItemKind } from './racer';
 
@@ -141,8 +141,9 @@ export class Bot {
     // speed: the tightest corner within reach
     let cmax = 0;
     for (let x = 4; x < v * 1.05 + 10; x += 2) cmax = Math.max(cmax, Math.abs(this.curvAt(k.s + x)));
-    const turn = this.drifting ? 1.9 : KART.turn;
-    const vT = turn / (cmax + (this.drifting ? 0 : (KART.turn * 0.34) / KART.maxSpeed));
+    // (by this bot's own kart: its steering and how much of it fades at its top speed)
+    const turn = this.drifting ? 1.9 : k.p.turn;
+    const vT = turn / (cmax + (this.drifting ? 0 : (k.p.turn * k.p.turnFade) / k.p.maxSpeed));
     let throttle = 1, brake = 0;
     if (v > vT + 2) { throttle = 0; if (v > vT + 5) brake = 1; }
 

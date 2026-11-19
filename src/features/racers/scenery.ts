@@ -153,8 +153,10 @@ export function mergeInto(group: THREE.Group, M: ReturnType<typeof MATS>, sets: 
 export function disposeGroup(group: THREE.Group) {
   group.traverse((o) => {
     const m = o as THREE.Mesh;
-    if (!m.isMesh) return;
+    // (points and lines too: petals, confetti, fountains)
+    if (!m.isMesh && !(o as THREE.Points).isPoints && !(o as THREE.Line).isLine) return;
     m.geometry.dispose();
+    if ((o as THREE.InstancedMesh).isInstancedMesh) (o as THREE.InstancedMesh).dispose();
     const mats = Array.isArray(m.material) ? m.material : [m.material];
     for (const mm of mats as THREE.MeshStandardMaterial[]) { mm.map?.dispose(); mm.normalMap?.dispose(); mm.emissiveMap?.dispose(); mm.dispose(); }
   });

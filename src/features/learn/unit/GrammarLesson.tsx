@@ -27,6 +27,7 @@ import { useAsync } from '@/hooks/useAsync';
 import { loadExplainers } from '@/content/explainers';
 import { loadAids, loadDrills, type Aid, type DrillExtra } from '@/content/aids';
 import { loadDialogues, type ExtraDialogue } from '@/content/dialogues';
+import { loadDiagrams, type DiagramEntry } from '@/content/diagrams';
 import { cutsFor, unitVisualPlan, type Visual } from '@/content/visuals';
 import { VisualFigure } from '@/components/visuals/Visuals';
 import { FoundationExtras } from '@/features/foundations/inline';
@@ -49,15 +50,16 @@ interface LessonData {
   aids: Record<string, Aid[]>;
   drills: Record<string, DrillExtra>;
   dialogues: Record<string, ExtraDialogue[]>;
+  diagrams: Record<string, DiagramEntry>;
 }
 
-const EMPTY: LessonData = { explainers: {}, aids: {}, drills: {}, dialogues: {} };
+const EMPTY: LessonData = { explainers: {}, aids: {}, drills: {}, dialogues: {}, diagrams: {} };
 
 function loadLessonData(level?: CefrLevel): Promise<LessonData> {
   if (!level) return Promise.resolve(EMPTY);
   const safe = <T,>(p: Promise<Record<string, T>>) => p.catch(() => ({}) as Record<string, T>);
-  return Promise.all([safe(loadExplainers(level)), safe(loadAids(level)), safe(loadDrills(level)), safe(loadDialogues(level))]).then(
-    ([explainers, aids, drills, dialogues]) => ({ explainers, aids, drills, dialogues }),
+  return Promise.all([safe(loadExplainers(level)), safe(loadAids(level)), safe(loadDrills(level)), safe(loadDialogues(level)), safe(loadDiagrams(level))]).then(
+    ([explainers, aids, drills, dialogues, diagrams]) => ({ explainers, aids, drills, dialogues, diagrams }),
   );
 }
 
@@ -119,6 +121,7 @@ export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoin
               aids={data?.aids[key]}
               drill={data?.drills[key]}
               dialogues={data?.dialogues[key]}
+              diagram={data?.diagrams[key]}
               visuals={plan?.points[i]}
               index={i}
               total={points.length}
@@ -160,6 +163,7 @@ export function GrammarLesson({
   aids,
   drill,
   dialogues,
+  diagram,
   visuals,
   index,
   total,
@@ -174,6 +178,8 @@ export function GrammarLesson({
   aids?: Aid[];
   drill?: DrillExtra;
   dialogues?: ExtraDialogue[];
+  /** Data-driven diagram(s) from diagrams-*.json; used when no hand-drawn one exists. */
+  diagram?: DiagramEntry;
   /** Infographics declared for this point (src/content/visuals.ts). */
   visuals?: Visual[];
   index: number;
@@ -223,7 +229,7 @@ export function GrammarLesson({
       ),
     });
   const pointKey = unitKey ? `${unitKey}-${index}` : undefined;
-  const diagrams = hasDiagrams(pointKey);
+  const diagrams = hasDiagrams(pointKey) || !!diagram;
   if (g.examples?.length || g.more?.length || figures.length || aids?.length || diagrams)
     steps.push({
       key: 'see',
@@ -240,7 +246,7 @@ export function GrammarLesson({
                 In diagrams
               </Kicker>
               <div className="space-y-4">
-                <Diagrams pointKey={pointKey} />
+                <Diagrams pointKey={pointKey} spec={diagram} />
                 <Aids aids={aids} color={color} />
               </div>
             </section>

@@ -125,6 +125,7 @@ async function boot(): Promise<void> {
   if (quality !== "low") loadSurfaces();
 
   const engine = new Engine(container!, quality);
+  (window as unknown as Record<string, unknown>).__engine = engine;
   const environment = createEnvironment(engine.scene, engine.renderer);
   environment.setShadowQuality(QUALITY[quality].shadowMap, QUALITY[quality].shadowRadius);
   environment.setReflections(QUALITY[quality].reflections);
