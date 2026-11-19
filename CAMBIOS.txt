@@ -1938,3 +1938,7 @@ Contenido B2 ×3
 Contenido C1 ×3
 - Lecturas C1: 27 → 81 (+54); Listening C1: 23 → 69 (+46); Writing C1: 36 → 108 tareas extra (+72).
 - Validado (0 errores en lo nuevo), opciones barajadas.
+
+Contenido C2 ×3
+- Lecturas C2: 13 → 39 (+26); Listening C2: 12 → 36 (+24); Writing C2: 20 → 60 tareas extra (+40).
+- Validado (0 errores en lo nuevo), opciones barajadas, Verdadero/Falso al 50 % (antes C2 tenía 18 % True).
