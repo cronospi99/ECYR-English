@@ -274,7 +274,7 @@
     "Use one modal of criticism (should have) and a title.",
     "End with a personal opinion that answers the question in the introduction."
    ],
-   "model": "The Riddle of the Nazca Lines\n\nIn the dry desert of southern Peru, huge drawings of animals and shapes cover the ground. The hummingbird, the monkey and the spider are so large that they are best seen from the air. Who made them, and why?\n\nArchaeologists agree that they were made by the Nazca people more than a thousand years ago. They must have used simple tools, such as wooden sticks and ropes, because no machines existed then. However, nobody knows what the lines were for. They might have been part of religious ceremonies, or they could have marked the way to sources of water in a very dry land. Others believe they can't have been roads, since many of the figures are too large to walk around easily.\n\nOne thing is certain: the climate has protected them. Little rain and almost no wind have kept the surface intact.\n\nPersonally, I find the water theory the most convincing. Whoever drew them should have left a written explanation, but perhaps the silence is part of their charm."
+   "model": "The Riddle of the Nazca Lines\n\nIn the dry desert of southern Peru, huge drawings of animals and shapes cover the ground. The hummingbird, the monkey and the spider are so large that they are best seen from the air. Who made them, and why?\n\nArchaeologists agree that they were made by the Nazca people more than a thousand years ago. They must have used simple tools, such as wooden sticks and ropes, because no machines existed then. However, nobody knows what the lines were for. They might have been part of religious ceremonies, or they could have marked the way to sources of water in a very dry land. Others believe they can't have been ordinary roads, since many lines start and end in the middle of nowhere.\n\nOne thing is certain: the climate has protected them. Little rain and almost no wind have kept the surface intact. The authorities should have protected the site better: in 2018 a lorry driver damaged several lines.\n\nPersonally, I find the water theory the most convincing, but perhaps the silence of the Nazca people is part of their charm."
   }
  ],
  "3": [
@@ -743,8 +743,8 @@
    "title": "An unverified claim in the newsletter",
    "genre": "Email profesional",
    "length": "140–190 words",
-   "brief": "Write an email to a colleague who has drafted a newsletter article containing an unverified claim. Explain your concern and suggest what to do.",
-   "briefEs": "Escribe un correo a un colega que redactó un artículo de boletín con una afirmación no verificada: explica tu preocupación y propón qué hacer.",
+   "brief": "Write an email to the colleague who edits the company newsletter. One draft article contains an unverified claim. Explain your concern and suggest what to do.",
+   "briefEs": "Escribe un correo a la persona que edita el boletín de la empresa: un artículo en borrador contiene una afirmación no verificada. Explica tu preocupación y propón qué hacer.",
    "criteria": [
     "Use the present perfect, the present perfect continuous and the simple past correctly (for the last hour, since, last week).",
     "Use at least one past perfect verb (had circulated).",
