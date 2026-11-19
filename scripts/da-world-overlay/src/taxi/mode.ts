@@ -178,7 +178,8 @@ export class TaxiMode {
     arrowMesh.castShadow = true;
     // tilted back towards the chase camera, so it reads as an arrow and not as a bar
     arrowMesh.rotation.x = -0.75;
-    arrowMesh.scale.setScalar(1.35);
+    // ECYR fix: at 1.35 it hid the whole road ahead (and the traffic on it) from the chase camera
+    arrowMesh.scale.setScalar(0.95);
     this.arrow.add(arrowMesh);
     this.arrow.visible = false;
 
@@ -213,50 +214,54 @@ export class TaxiMode {
     void loadSportCar();
     void loadCarPack();
     this.deps.setWalking(false);
+    if (isTouchDevice()) document.documentElement.classList.add('tx-touchmode');
     this.root.style.display = '';
     this.root.innerHTML = '';
     const s = el('div', 'tx-setup');
     const sess = this.deps.session();
     const inRoom = sess.connected;
     const host = inRoom && sess.myId === 'host';
+    const chip = (attr: string, val: string, on: boolean, label: string) => `<button class="tx-chip${on ? ' on' : ''}" data-${attr}="${val}">${label}</button>`;
+    const sw = (attr: string, c: string, on: boolean) => `<button class="tx-sw${on ? ' on' : ''}" data-${attr}="${c}" style="background:${c}" aria-label="${attr} ${c}"></button>`;
+    const classBtn = inRoom ? (host ? '<button class="tx-chip" data-class="1">📱 QR</button>' : '') : this.deps.standalone ? '<button class="tx-chip" data-class="1">📱 Class (QR)</button>' : '';
+    const roomMsg = inRoom && !host ? '<div class="tx-room">⏳ Waiting for your teacher to start…</div>' : '';
     s.innerHTML = `
       <div class="tx-wrap">
-        <div class="tx-logo">${LOGO_HTML}<p>Pick up passengers, work out where they want to go, and race to the door before the clock runs out. Stop at the ❓ traffic lights and answer to turn them green!</p></div>
-        <div>
-          <div class="tx-card">
-            <h2>1 · The shift</h2>
-            <div class="tx-row"><span class="tx-lbl">Passengers to deliver</span>${[3, 5, 8, 10, 15, 20].map((n) => `<button class="tx-chip${n === this.settings.goal ? ' on' : ''}" data-goal="${n}">${n}</button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Fare clock</span>${(['relaxed', 'normal', 'crazy'] as const).map((p) => `<button class="tx-chip${p === this.settings.pace ? ' on' : ''}" data-pace="${p}">${p === 'relaxed' ? '🐢 Relaxed' : p === 'normal' ? '🚕 Normal' : '🔥 Crazy'}</button>`).join('')}</div>
-            <div class="tx-note">Drive: <b>W A S D</b> or arrows · <b>Space</b> drift · <b>Shift</b> turbo · <b>H</b> horn. On a phone, use the buttons on screen.</div>
-            ${inRoom ? `<div class="tx-room">👥 Class room: ${host ? 'you are hosting — <b>START</b> sends every student into the same shift.' : 'your teacher starts the shift for everybody. You can get your cab ready meanwhile.'}${host ? ' <button class="tx-chip" data-class="1">📱 Show the QR</button>' : ''}</div>` : this.deps.standalone ? '<div class="tx-room">👥 Drive together: <button class="tx-chip on" data-class="1">📱 Play with your class (QR)</button></div>' : '<div class="tx-room">👥 To drive together, open <b>Class (multiplayer)</b> first and share the QR code; then come back to Taxi Rush.</div>'}
-          </div>
-          <div class="tx-card" style="margin-top:16px">
-            <h2>2 · Your taxi</h2>
-            <div class="tx-row"><span class="tx-lbl">Paint</span>${PAINTS.map((c) => `<button class="tx-sw${c === this.look.color ? ' on' : ''}" data-paint="${c}" style="background:${c}" aria-label="paint ${c}"></button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Livery</span>${(['checker', 'stripe', 'flames', 'none'] as const).map((v) => `<button class="tx-chip${v === this.look.stripe ? ' on' : ''}" data-stripe="${v}">${v}</button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Rims</span>${(['chrome', 'black', 'gold'] as const).map((v) => `<button class="tx-chip${v === this.look.rims ? ' on' : ''}" data-rims="${v}">${v}</button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Roof sign</span>${(['classic', 'neon', 'none'] as const).map((v) => `<button class="tx-chip${v === this.look.roof ? ' on' : ''}" data-roof="${v}">${v}</button>`).join('')}</div>
-          </div>
-          <div class="tx-card" style="margin-top:16px">
-            <h2>3 · The driver</h2>
-            <div class="tx-row"><span class="tx-lbl">Skin</span>${DRIVER_SKINS.map((c) => `<button class="tx-sw${c === this.look.driver.skin ? ' on' : ''}" data-skin="${c}" style="background:${c}"></button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Hair</span>${DRIVER_HAIR.map((c) => `<button class="tx-sw${c === this.look.driver.hair ? ' on' : ''}" data-hair="${c}" style="background:${c}"></button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Shirt</span>${DRIVER_SHIRTS.map((c) => `<button class="tx-sw${c === this.look.driver.shirt ? ' on' : ''}" data-shirt="${c}" style="background:${c}"></button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Style</span>${DRIVER_OUTFITS.map((o) => `<button class="tx-chip${o === this.look.driver.outfit ? ' on' : ''}" data-outfit="${o ?? ''}">${o === 'cap' ? '🧢 Cap' : o === 'hat' ? '👒 Hat' : o === 'glasses' ? '🕶️ Shades' : 'None'}</button>`).join('')}</div>
-          </div>
+        <div class="tx-logo">${LOGO_HTML}</div>
+        <div class="tx-view"><div class="tx-card"><div class="tx-preview" id="txPreview"></div></div></div>
+        <div class="tx-opts-main">
+          <div class="tx-row"><span class="tx-lbl">Passengers to deliver</span>${[3, 5, 8, 10, 15, 20].map((n) => chip('goal', String(n), n === this.settings.goal, String(n))).join('')}</div>
+          <div class="tx-row sws"><span class="tx-lbl">Taxi colour</span>${PAINTS.map((c) => sw('paint', c, c === this.look.color)).join('')}</div>
+          <div class="tx-btns"><button class="tx-chip on" data-cust="1">🎨 Customize</button>${classBtn}<button class="tx-chip" data-back="1">${this.deps.standalone ? '← Games' : '← Da World'}</button></div>
         </div>
-        <div style="position:sticky;top:16px">
-          <div class="tx-card"><div class="tx-preview" id="txPreview"></div></div>
-          ${inRoom && !host ? '<div class="tx-room" style="margin-top:12px;text-align:center">⏳ Waiting for your teacher to start…</div>' : '<button class="tx-go" data-go="1">▶ START SHIFT</button>'}
-          <div style="margin-top:14px;display:flex;gap:10px"><button class="tx-back" data-back="1">${this.deps.standalone ? '← Games' : '← Da World'}</button></div>
+        <div class="tx-bottom">
+          ${roomMsg || '<button class="tx-go" data-go="1">▶ START SHIFT</button>'}
         </div>
+        ${this.custOpen ? `<div class="tx-cust"><div class="tx-card">
+          <h2>Customize</h2><button class="tx-cust-x" data-cust="0" aria-label="Close">✕</button>
+          <div class="tx-row"><span class="tx-lbl">Fare clock</span>${(['relaxed', 'normal', 'crazy'] as const).map((p) => chip('pace', p, p === this.settings.pace, p === 'relaxed' ? '🐢 Relaxed' : p === 'normal' ? '🚕 Normal' : '🔥 Crazy')).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Livery</span>${(['checker', 'stripe', 'flames', 'none'] as const).map((v) => chip('stripe', v, v === this.look.stripe, v)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Rims</span>${(['chrome', 'black', 'gold'] as const).map((v) => chip('rims', v, v === this.look.rims, v)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Roof sign</span>${(['classic', 'neon', 'none'] as const).map((v) => chip('roof', v, v === this.look.roof, v)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Skin</span>${DRIVER_SKINS.map((c) => sw('skin', c, c === this.look.driver.skin)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Hair</span>${DRIVER_HAIR.map((c) => sw('hair', c, c === this.look.driver.hair)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Shirt</span>${DRIVER_SHIRTS.map((c) => sw('shirt', c, c === this.look.driver.shirt)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Style</span>${DRIVER_OUTFITS.map((o) => chip('outfit', o ?? '', o === this.look.driver.outfit, o === 'cap' ? '🧢 Cap' : o === 'hat' ? '👒 Hat' : o === 'glasses' ? '🕶️ Shades' : 'None')).join('')}</div>
+          <div class="tx-note">Drive: <b>W A S D</b> or arrows · <b>Space</b> drift · <b>Shift</b> turbo · <b>H</b> horn. On a phone, use the buttons on screen.</div>
+        </div></div>` : ''}
       </div>`;
     this.root.appendChild(s);
+    if (this.setupKey) removeEventListener('keydown', this.setupKey);
+    this.setupKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && this.custOpen && this.root.querySelector('.tx-setup')) { this.custOpen = false; this.rerenderSetup(); }
+    };
+    addEventListener('keydown', this.setupKey);
     s.addEventListener('click', (e) => {
       const b = (e.target as HTMLElement).closest('button') as HTMLButtonElement | null;
       if (!b) return;
       const d = b.dataset;
-      if (d.goal) this.settings.goal = Number(d.goal);
+      if (d.cust !== undefined) this.custOpen = d.cust === '1';
+      else if (d.goal) this.settings.goal = Number(d.goal);
       else if (d.pace) this.settings.pace = d.pace as Settings['pace'];
       else if (d.paint) this.look.color = d.paint;
       else if (d.stripe) this.look.stripe = d.stripe as TaxiLook['stripe'];
@@ -266,25 +271,29 @@ export class TaxiMode {
       else if (d.hair) this.look.driver.hair = d.hair;
       else if (d.shirt) this.look.driver.shirt = d.shirt;
       else if (d.outfit !== undefined && 'outfit' in d) this.look.driver.outfit = (d.outfit || undefined) as TaxiLook['driver']['outfit'];
-      else if (d.go) { saveLook(this.look); this.closePreview(); if (host) sess.ext({ k: 'start', goal: this.settings.goal, pace: this.settings.pace }); this.start(); return; }
+      else if (d.go) { this.custOpen = false; saveLook(this.look); this.closePreview(); if (host) sess.ext({ k: 'start', goal: this.settings.goal, pace: this.settings.pace }); this.start(); return; }
       else if (d.back) { this.closePreview(); if (this.deps.standalone) { this.deps.onHome?.(); return; } this.exit(); return; }
       else if (d.class) { this.closePreview(); this.root.style.display = 'none'; this.deps.onClass?.(); return; }
       else return;
       saveLook(this.look);
-      const keep = this.preview;
-      this.preview = null;
-      if (keep) cancelAnimationFrame(keep.raf);
-      this.openSetupKeepPreview(keep);
+      this.rerenderSetup();
     });
     this.mountPreview(null);
   }
 
+  private custOpen = false;
+  private setupKey: ((e: KeyboardEvent) => void) | null = null;
+  private previewRO: ResizeObserver | null = null;
+  private rerenderSetup(): void {
+    const keep = this.preview;
+    this.preview = null;
+    if (keep) cancelAnimationFrame(keep.raf);
+    this.openSetupKeepPreview(keep);
+  }
+
   /** Re-render the setup, reusing the preview renderer (only the cab is rebuilt). */
   private openSetupKeepPreview(keep: TaxiMode['preview']): void {
-    const scroll = this.root.querySelector('.tx-setup')?.scrollTop ?? 0;
     this.openSetup();
-    const sc = this.root.querySelector('.tx-setup');
-    if (sc) sc.scrollTop = scroll;
     if (keep && this.preview) { /* openSetup made a new one */ keep.renderer.dispose(); }
   }
 
@@ -331,9 +340,19 @@ export class TaxiMode {
     };
     loop();
     this.preview = p;
+    this.previewRO?.disconnect();
+    this.previewRO = new ResizeObserver(() => {
+      const nw = host.clientWidth, nh = host.clientHeight;
+      if (!nw || !nh) return;
+      renderer.setSize(nw, nh, false);
+      cam.aspect = nw / nh; cam.updateProjectionMatrix();
+    });
+    this.previewRO.observe(host);
   }
 
   private closePreview(): void {
+    this.previewRO?.disconnect(); this.previewRO = null;
+    if (this.setupKey && !this.root.querySelector('.tx-setup')) { removeEventListener('keydown', this.setupKey); this.setupKey = null; }
     if (!this.preview) return;
     cancelAnimationFrame(this.preview.raf);
     this.preview.model.dispose();
@@ -371,8 +390,7 @@ export class TaxiMode {
         if (this.street) return;
         const tier = this.deps.engine.quality.name;
         this.street = new TaxiTraffic(FrameGovernor.trafficDensity(tier));
-        this.governor.apply();
-        this.street.setShare(this.governor.level >= 8 ? 0.6 : 1);
+        this.governor.attachStreet();
         this.deps.engine.scene.add(this.street.group);
         this.street.setVisible(this.active);
         this.street.clearArea(30, 16.5, 22);
@@ -473,22 +491,25 @@ export class TaxiMode {
     h.querySelector('[data-home]')!.addEventListener('click', () => this.confirmExit());
     this.mapCanvas = h.querySelector('#txMap');
     this.mapBase = this.drawMapBase();
-    if (matchMedia('(pointer: coarse)').matches) this.buildTouch(h.querySelector('#txTouch')!);
+    if (isTouchDevice()) this.buildTouch(h.querySelector('#txTouch')!);
   }
 
   private buildTouch(host: HTMLElement): void {
-    const pads: [keyof TaxiMode['touch'], string, string][] = [
-      ['l', '◀', 'left:16px'], ['r', '▶', 'left:100px'], ['drift', 'D', 'left:58px;bottom:170px'],
-      ['brake', '▼', 'right:100px'], ['gas', '▲', 'right:16px'], ['boost', '⚡', 'right:58px;bottom:170px'],
+    const pads: [keyof TaxiMode['touch'], string, string, string][] = [
+      ['l', '◀', 'pl', 'Steer left'], ['r', '▶', 'pr', 'Steer right'],
+      ['brake', 'R', 'pv rv', 'Brake / reverse'], ['gas', 'D', 'pd d', 'Accelerate'],
     ];
-    for (const [k, label, pos] of pads) {
-      const b = el('button', 'tx-pad', label);
-      b.setAttribute('style', pos);
-      const on = (v: boolean) => (e: Event) => { e.preventDefault(); this.touch[k] = v; b.classList.toggle('on', v); };
-      b.addEventListener('pointerdown', on(true));
-      b.addEventListener('pointerup', on(false));
-      b.addEventListener('pointercancel', on(false));
-      b.addEventListener('pointerleave', on(false));
+    for (const [k, label, cls, aria] of pads) {
+      const b = el('button', 'tx-pad ' + cls, label);
+      b.setAttribute('aria-label', aria);
+      const active = new Set<number>();
+      const set = () => { const v = active.size > 0; this.touch[k] = v; b.classList.toggle('on', v); };
+      b.addEventListener('pointerdown', (e) => { e.preventDefault(); active.add(e.pointerId); try { b.setPointerCapture(e.pointerId); } catch { /* ignore */ } set(); });
+      const up = (e: PointerEvent) => { active.delete(e.pointerId); set(); };
+      b.addEventListener('pointerup', up);
+      b.addEventListener('pointercancel', up);
+      b.addEventListener('lostpointercapture', up);
+      b.addEventListener('contextmenu', (e) => e.preventDefault());
       host.appendChild(b);
     }
   }
@@ -685,7 +706,7 @@ export class TaxiMode {
     for (const p of this.passengers) {
       if (p.taker || this.passengerMarks.has(p.id)) continue;
       const g = new THREE.Group();
-      const person = new Character({ shirt: SHIRTS[p.look % SHIRTS.length], pants: '#2d3a5a', skin: SKINS[(p.look >> 3) % SKINS.length], hair: HAIRS[(p.look >> 5) % HAIRS.length], outfit: (['cap', 'glasses', 'backpack', undefined] as const)[(p.look >> 7) % 4] }, 0.76);
+      const person = new Character({ shirt: SHIRTS[p.look % SHIRTS.length], pants: '#2d3a5a', skin: SKINS[(p.look >> 3) % SKINS.length], hair: HAIRS[(p.look >> 5) % HAIRS.length], outfit: (['cap', 'glasses', 'backpack', undefined] as const)[(p.look >> 7) % 4] }, 0.95);
       person.group.position.y = 0.16;
       const col = this.fareColor(p);
       const ring = new THREE.Mesh(new THREE.RingGeometry(2.4, 3.1, 40).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.9, depthWrite: false }));
@@ -961,7 +982,8 @@ export class TaxiMode {
         if (this.isAuthority()) return;
         this.passengers = (d.list as Passenger[]) || [];
         this.teamDelivered = Number(d.done) || 0;
-        if (d.goal) this.settings.goal = Number(d.goal);
+        if (d.cust !== undefined) this.custOpen = d.cust === '1';
+      else if (d.goal) this.settings.goal = Number(d.goal);
         this.refreshMarks();
         if (this.active && this.teamDelivered >= this.settings.goal) setTimeout(() => this.results(true), 800);
         break;
@@ -1185,6 +1207,10 @@ export class TaxiMode {
     const right = k.has('d') || k.has('arrowright') || t.r;
     return { throttle: up ? 1 : 0, brake: down ? 1 : 0, steer: (right ? 1 : 0) - (left ? 1 : 0), handbrake: k.has(' ') || t.drift, boost: k.has('shift') || t.boost };
   }
+}
+
+function isTouchDevice(): boolean {
+  return matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
 
 function fmt(t: number): string {

@@ -223,10 +223,20 @@ export interface SportLook {
   number: string;
 }
 
+export interface DriverSeat {
+  hips: THREE.Vector3;
+  hands: [THREE.Vector3, THREE.Vector3];
+  feet: [THREE.Vector3, THREE.Vector3];
+  /** Torso lean, radians back from upright. */
+  recline: number;
+  /** Scale of the 1.58-unit character rig that makes a ~1.7 m adult at the car's scale. */
+  scale: number;
+}
+
 export interface SportCar {
   root: THREE.Group;
-  /** Hip position of the driver, in the root's space. */
-  seat: THREE.Vector3;
+  /** Where the driver sits, in the root's space: hips, hands on the wheel, feet on the pedals. */
+  driver: DriverSeat;
   wheelRadius: number;
   animate(speed: number, steer: number, dt: number, braking: boolean, night: number): void;
   dispose(): void;
@@ -248,6 +258,7 @@ export function buildSportCar(look: SportLook): SportCar | null {
   const owned: THREE.Material[] = [];
   const textures: THREE.Texture[] = [side, top];
   const own = <T extends THREE.Material>(m: T): T => { owned.push(m); return m; };
+  const geometries: THREE.BufferGeometry[] = [];
 
   const paint = own(new THREE.MeshPhysicalMaterial({
     color: look.color, metalness: 0.45, roughness: 0.28,
@@ -313,13 +324,20 @@ export function buildSportCar(look: SportLook): SportCar | null {
     const t = signTexture(look.roof);
     textures.push(t);
     signMat = own(new THREE.MeshStandardMaterial({ map: t, emissiveMap: t, emissive: new THREE.Color('#ffffff'), emissiveIntensity: look.roof === 'neon' ? 1.8 : 0.7, roughness: 0.25 }));
-    const capMat = own(new THREE.MeshStandardMaterial({ color: '#111214', roughness: 0.4, metalness: 0.4 }));
-    const geo = new RoundedBoxGeometry(0.78, 0.24, 0.3, 4, 0.06);
+    // ECYR fix: the ends and the top used to be black metal, which from the side read as a
+    // black box stuck on the roof. Now the whole lamp is the lit sign's colour; only the
+    // low mounting foot is dark.
+    const neon = look.roof === 'neon';
+    const capMat = own(new THREE.MeshStandardMaterial({ color: neon ? '#2a0f47' : '#ffe27a', emissive: new THREE.Color(neon ? '#ff3df2' : '#ffd84a'), emissiveIntensity: 0.12, roughness: 0.35 }));
+    const footMat = own(new THREE.MeshStandardMaterial({ color: '#1a1b1e', roughness: 0.5, metalness: 0.3 }));
+    const geo = new RoundedBoxGeometry(0.7, 0.2, 0.26, 4, 0.07);
+    const footGeo = new RoundedBoxGeometry(0.56, 0.04, 0.3, 3, 0.015);
+    geometries.push(geo, footGeo);
     const sign = new THREE.Mesh(geo, [capMat, capMat, capMat, capMat, signMat, signMat]);
     sign.position.set(0, 1.27, -0.12);
     sign.castShadow = true;
-    const foot = new THREE.Mesh(new RoundedBoxGeometry(0.62, 0.05, 0.36, 3, 0.02), capMat);
-    foot.position.set(0, 1.16, -0.12);
+    const foot = new THREE.Mesh(footGeo, footMat);
+    foot.position.set(0, 1.165, -0.12);
     model.add(sign, foot);
   }
 
@@ -351,12 +369,22 @@ export function buildSportCar(look: SportLook): SportCar | null {
     if (/Front/.test(name)) steer.push(st);
   }
 
-  // driver: the car has one central seat
-  const seat = new THREE.Vector3(0, 0.36, 0.18).multiplyScalar(scale).add(model.position);
+  // driver: the car has one central seat. Measured from the model (model units = metres
+  // of the real 4.36 m car): hip point ~0.33 m up at z 0.45, wheel grips at y 0.65,
+  // z 0.92, pedals at z ~1.35 under the dash; the roof glass is ~1.15 m up.
+  const P = (x: number, y: number, z: number) => new THREE.Vector3(x, y, z).multiplyScalar(scale).add(model.position);
+  const driver: DriverSeat = {
+    hips: P(0, 0.33, 0.45),
+    hands: [P(0.15, 0.65, 0.92), P(-0.15, 0.65, 0.92)],
+    feet: [P(0.1, 0.16, 1.32), P(-0.1, 0.16, 1.32)],
+    recline: 0.3,
+    // a 1.7 m adult: 1.7 m × (CAR_LENGTH / 4.36 m) / 1.58 rig units
+    scale: (1.7 * CAR_LENGTH) / 4.36 / 1.58,
+  };
 
   return {
     root,
-    seat,
+    driver,
     wheelRadius,
     animate(speed, steerAmt, dt, braking, night) {
       root.updateWorldMatrix(true, false);
@@ -371,6 +399,7 @@ export function buildSportCar(look: SportLook): SportCar | null {
     dispose() {
       for (const m of owned) m.dispose();
       for (const t of textures) t.dispose();
+      for (const g of geometries) g.dispose();
     },
   };
 }

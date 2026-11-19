@@ -139,8 +139,8 @@ export function rememberQuality(name: QualityName): void {
 
 /**
  * Taxi Rush's first guess: more cautious than the walking city, because a taxi draws a whole map
- * at speed. A touch screen with few cores (an older phone) starts on "low"; the frame-rate
- * governor (taxi/governor.ts) then trims or restores individual settings from there.
+ * at speed. Phones start on "medium" (only a very weak one on "low"); the frame-rate governor
+ * (taxi/governor.ts) then trims or restores individual settings from there.
  */
 export function detectTaxiQuality(): QualityName {
   const stored = read();
@@ -148,7 +148,16 @@ export function detectTaxiQuality(): QualityName {
   const touch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
   const cores = navigator.hardwareConcurrency ?? 4;
   const mem = (navigator as unknown as { deviceMemory?: number }).deviceMemory ?? 4;
-  if (touch) return cores <= 6 || mem <= 3 ? "low" : "medium";
+  // ECYR quality: a mid-range phone runs "medium" (real surfaces, sun shadows, people);
+  // the frame governor trims resolution and draw distance first if it cannot keep 60.
+  // iOS reports few cores whatever the chip, so it is never sent to "low" for that.
+  if (touch) return isIOS() ? "medium" : cores <= 2 || mem <= 2 ? "low" : "medium";
   if (cores <= 2 || mem <= 2) return "low";
   return cores >= 8 ? "high" : "medium";
+}
+
+/** iPhone / iPad (iPadOS reports itself as a Mac with a touch screen). */
+export function isIOS(): boolean {
+  const ua = navigator.userAgent;
+  return /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
 }

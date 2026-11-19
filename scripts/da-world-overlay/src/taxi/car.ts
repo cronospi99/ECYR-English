@@ -20,6 +20,7 @@ import {
   RepeatWrapping,
   SRGBColorSpace,
   TorusGeometry,
+  Vector3,
 } from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { Character, type CharacterColors } from '../city/character';
@@ -201,10 +202,19 @@ export class TaxiModel {
       g.add(w);
       this.wheels.push(w);
     }
-    // the driver, seated on the left, visible through the glass
+    // the driver, seated on the left, visible through the glass (poses are in the
+    // character's own units: the car-space point divided by the character's scale)
     this.driver = new Character(look.driver, 0.5);
-    this.driver.group.position.set(0.24, 0.32, -0.02);
-    this.driver.setSeated(true);
+    {
+      const k = 0.5, v = (x: number, y: number, z: number) => new Vector3(x / k, y / k, z / k);
+      this.driver.group.position.set(0, 0, 0);
+      this.driver.setSeated(true, {
+        hips: v(0.24, 0.5, -0.1),
+        hands: [v(0.36, 0.78, 0.3), v(0.12, 0.78, 0.3)],
+        feet: [v(0.32, 0.3, 0.5), v(0.16, 0.3, 0.5)],
+        recline: 0.2,
+      });
+    }
     this.driver.update(0, 0);
     g.add(this.driver.group);
 
@@ -220,10 +230,20 @@ export class TaxiModel {
     if (!this.sport) return;
     this.simple.visible = false;
     this.group.add(this.sport.root);
-    // the driver sits in the central seat, hands on the wheel
-    const k = 0.66;
+    // the driver sits in the central seat, hands on the wheel, feet on the pedals; the
+    // seat's points are in car space, the pose wants the character's own units
+    const seat = this.sport.driver, k = seat.scale;
+    const local = (p: Vector3) => p.clone().divideScalar(k);
     this.driver.group.scale.setScalar(k);
-    this.driver.group.position.set(this.sport.seat.x, this.sport.seat.y - 0.84 * k, this.sport.seat.z);
+    this.driver.group.position.set(0, 0, 0);
+    this.driver.group.rotation.set(0, 0, 0);
+    this.driver.setSeated(true, {
+      hips: local(seat.hips),
+      hands: [local(seat.hands[0]), local(seat.hands[1])],
+      feet: [local(seat.feet[0]), local(seat.feet[1])],
+      recline: seat.recline,
+    });
+    this.driver.update(0, 0);
   }
 
   /** Per frame: wheels roll and steer, brake lights, the night glow. */
@@ -244,6 +264,7 @@ export class TaxiModel {
   dispose(): void {
     this.unsubscribe?.();
     this.sport?.dispose();
+    this.driver.dispose();
     // only the simple cab owns its geometry; the real car and the driver share theirs
     this.simple.traverse((o) => {
       if (o instanceof Mesh) {

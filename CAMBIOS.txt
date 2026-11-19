@@ -1942,3 +1942,13 @@ Contenido C1 ×3
 Contenido C2 ×3
 - Lecturas C2: 13 → 39 (+26); Listening C2: 12 → 36 (+24); Writing C2: 20 → 60 tareas extra (+40).
 - Validado (0 errores en lo nuevo), opciones barajadas, Verdadero/Falso al 50 % (antes C2 tenía 18 % True).
+
+== Taxi Rush: menú en una pantalla, personajes, tráfico y gráficos (tanda 1) ==
+- Menú en una sola pantalla sin deslizar (PC y móvil); personalización del conductor en un panel "Customize".
+- Controles táctiles estilo Crazy Taxi: ◀ ▶ a la izquierda, R y D a la derecha; girar y acelerar a la vez; sin scroll ni zoom.
+- Vuelven los humanos realistas (conductor sentado con manos al volante y pies en pedales; pasajeros a escala adulta).
+- Letrero TAXI sin la "caja negra".
+- Tráfico rehecho: grupo de coches que vive alrededor del taxi (≈15 visibles en vez de 3), sin atascos.
+- Gráficos: los móviles ya no caen en calidad baja de entrada; fachadas PBR y vidrio reflectante; sombras estables;
+  el regulador baja primero resolución y distancia antes que materiales y sombras.
+- Nuevos: especificación de arte costero (docs/taxi-arte-v2.md) y banco de frases de direcciones revisado (directions.ts).
