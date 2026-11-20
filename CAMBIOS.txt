@@ -1962,3 +1962,13 @@ Contenido C2 ×3
 - GPS en inglés con frases de "asking and giving directions": el pasajero pide el destino al subir, el GPS anuncia cada
   maniobra (turn left, take the 2nd right, go past…), reacciones al llegar, chocar o girar mal; voz opcional.
 - HUD nuevo: flecha y destino, minimapa con norte arriba, tiempo y ganancias, burbuja de diálogo del pasajero.
+
+== Seguridad: blindaje de datos de estudiantes (migración 22, pendiente de aplicar en Supabase) ==
+- Solo la cuenta dueña ve nombres y correos de todos los alumnos, y solo con verificación en dos pasos (MFA);
+  un único dueño permitido; registro de auditoría de cada acceso de administrador.
+- Los docentes ya no ven correos (ni de sus alumnos ni del grupo compartido); siguen viendo nombres y progreso.
+- Cerrado el alta manual de perfiles (no se puede elegir rol); sin privilegios para visitantes sin sesión.
+- Gemini con límite diario por usuario y control del tamaño real; CORS limitado a orígenes permitidos.
+- Murales: nunca se muestra el correo de un alumno sin nombre ("Estudiante").
+- Cabeceras de seguridad y CSP en modo informe. Pantalla de MFA en /admin/teachers.
+- Pasos para aplicarlo: supabase/APLICAR-22.md.

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { FileUp, Mail } from 'lucide-react';
+import { FileUp } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card, CardHeader } from '@/components/ui/Card';
 import { Segmented } from '@/components/ui/Segmented';
@@ -39,7 +39,7 @@ export default function StudentPage() {
     );
   const s = students.find((x) => x.profile.id === id);
   if (!s) return <NotFound />;
-  const name = s.profile.full_name || s.profile.email || 'Student';
+  const name = s.profile.full_name || 'Student';
   const level = currentLevel(s.progress.units);
 
   return (
@@ -50,11 +50,6 @@ export default function StudentPage() {
           <h1 className="text-large-title truncate">{name}</h1>
           <div className="text-label-2 mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
             <LevelChip level={level} />
-            {s.profile.email && (
-              <a href={`mailto:${s.profile.email}`} className="text-ink-blue inline-flex items-center gap-1">
-                <Mail size={14} /> {s.profile.email}
-              </a>
-            )}
             <span>{s.syncedAt ? `Sincronizado ${relativeTime(s.syncedAt)}` : 'Hasn’t synced progress yet'}</span>
           </div>
         </div>

@@ -11,10 +11,10 @@ clases, sesión y el mismo cliente.
 Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
 
 Incluye todas las migraciones en orden y se puede re-ejecutar sin perder datos.
-(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `20` **en orden** (no hay `10`):
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `22` **en orden** (no hay `10`):
 `05` y de `07` a `20` dependen de la tabla `profiles` que crea `01`.)
 
-> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `21_shared_students.sql` (las nuevas: `13_c2_level.sql` a `21_shared_students.sql`)
+> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `22_security_hardening.sql` (las nuevas: `13_c2_level.sql` a `22_security_hardening.sql`)
 > (o volver a pegar `setup.sql` completo: es seguro re-ejecutarlo).
 
 | Migración | Qué hace |
@@ -39,8 +39,9 @@ Incluye todas las migraciones en orden y se puede re-ejecutar sin perder datos.
 | `19_game_cards.sql` | **Cartas de profes**: puntos por carta y por estudiante (`game_card_points`) y registro de partidas para no pagar dos veces. Solo el docente que dirige la partida asigna puntos, a sus estudiantes, con topes. Rangos bronce/plata/oro/diamante. |
 | `20_class_wars.sql` | **Class Wars**: sets de preguntas propias del docente (`class_wars_sets`), solo visibles para su dueño, con validación y límites. |
 | `21_shared_students.sql` | **Estudiantes compartidos entre docentes**: tabla `teacher_students` (docentes extra de un estudiante), `profiles.shared_pool` y funciones. Solo la administración vincula docentes o abre un estudiante a todos; un docente (que ya tiene código de invitación) añade a su clase los abiertos sin pedir permiso. `is_my_student`, tareas, historial y muros siguen al vínculo. |
+| `22_security_hardening.sql` | **Blindaje de seguridad**: un solo dueño con verificación en dos pasos (MFA/aal2), correos de estudiantes solo para el dueño (docentes ven nombre y progreso, no correo), perfiles sin INSERT desde el cliente, `anon` sin permisos salvo `check_teacher_invite`, límite diario de Gemini (`bump_gemini_usage`) y `admin_audit`. **Lee `APLICAR-22.md` antes de ejecutarla** (hay que inscribir el MFA primero). |
 
-`setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.
+`setup.sql` se genera con `npm run db:bundle` (ya incluye la 22); edita siempre `migrations/*`. En un proyecto **en producción** no repegues `setup.sql`: sigue `APLICAR-22.md` y pega solo `migrations/22_security_hardening.sql`.
 
 ### 1b. Hazte dueño de la plataforma (una vez)
 

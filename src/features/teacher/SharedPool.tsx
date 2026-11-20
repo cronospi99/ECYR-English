@@ -37,8 +37,8 @@ export function SharedPool({ onAdded }: { onAdded: () => void | Promise<void> })
         {rows.map((r) => (
           <li key={r.id} className="flex items-center gap-3 py-2">
             <div className="min-w-0 flex-1">
-              <div className="truncate text-[15px] font-medium">{r.full_name || r.email}</div>
-              <div className="text-label-2 truncate text-[12.5px]">{r.full_name ? `${r.email} · ` : ''}{r.teacher_name ?? 'sin clase'}</div>
+              <div className="truncate text-[15px] font-medium">{r.full_name || 'Estudiante'}</div>
+              <div className="text-label-2 truncate text-[12.5px]">{r.teacher_name ?? 'sin clase'}</div>
             </div>
             <Button variant="gray" size="sm" disabled={busy === r.id} onClick={() => void add(r.id)}>
               <UserPlus size={15} /> Add to my class
