@@ -20,10 +20,12 @@
  */
 import * as THREE from 'three';
 import { carTemplates, CAR_COLOURS, type CarTemplate } from '../city/carpack';
-import { HZ, J_MAX, J_MIN, K_MAX, K_MIN, MAX_X, MIN_X, MIN_Z, VX, HWY_LANES } from './world';
+import { HZ, J_MAX, J_MIN, K_MAX, K_MIN, MAX_X, MIN_X, MIN_Z, VX, HWY_LANES, COAST_U0, COAST_U1 } from './world';
+import { BAND, coastPoint, coastS, coastU, type CoastPt } from './coast';
 
 interface Lane {
-  axis: 'h' | 'v'; at: number; dir: 1 | -1; span: [number, number]; speed: number;
+  /** 'h': z = at, 'v': x = at, 'c': Ocean Drive, `at` = offset s from its centre line, span in u. */
+  axis: 'h' | 'v' | 'c'; at: number; dir: 1 | -1; span: [number, number]; speed: number;
   /** How busy the road is (downtown 1.3, suburbs 0.8, highway 1.6). */
   weight: number;
   /** The cars on it, sorted by `pos` (kept sorted by insertion, no allocation). */
@@ -61,11 +63,14 @@ const BEHIND = 45;
 const SPAWN_GAP = 9;
 /** Only cars this close cast a shadow (the sun's map covers about ±44 around the taxi). */
 const SHADOW_NEAR = 42;
+/** Past this, a car is drawn as a 70-triangle stand-in (the haze softens it anyway). */
+const LOD_FAR = 52;
 
 /** Render layer of the traffic (the game camera enables it; see boot.ts). */
 export const TRAFFIC_LAYER = 1;
 
 const dummy = new THREE.Object3D();
+const CP: CoastPt = { x: 0, z: 0, tx: 1, tz: 0 };
 const OFF = -1e5;
 
 export class TaxiTraffic {
@@ -94,13 +99,29 @@ export class TaxiTraffic {
     if (!tpls.length) return;
     const rand = this.rand;
     // avenues (x = const) and streets (z = const): the whole grid, centre included
+    // (an avenue or street that runs into the bend of Ocean Drive stops where the drive begins)
     for (let k = K_MIN; k <= K_MAX; k++) {
       const busy = k >= -1 && k <= 6 ? 1.3 : 0.8;
-      for (const dir of [1, -1] as const) this.lanes.push({ axis: 'v', at: VX(k) + (dir > 0 ? 1.5 : 4.5), dir, span: [MIN_Z, HWY_LANES[0] - 6], speed: 7.5, weight: busy, cars: [] });
+      for (const dir of [1, -1] as const) {
+        const at = VX(k) + (dir > 0 ? 1.5 : 4.5);
+        let z0 = MIN_Z;
+        while (coastS(at, z0) > -BAND.road - 0.5) z0 += 0.5;
+        this.lanes.push({ axis: 'v', at, dir, span: [z0, HWY_LANES[0] - 6], speed: 7.5, weight: busy, cars: [] });
+      }
     }
     for (let j = J_MIN; j <= J_MAX; j++) {
       const busy = j >= -1 && j <= 7 ? 1.3 : 0.8;
-      for (const dir of [1, -1] as const) this.lanes.push({ axis: 'h', at: HZ(j) + (dir > 0 ? 4.5 : 1.5), dir, span: [MIN_X, MAX_X], speed: 7.5, weight: busy, cars: [] });
+      for (const dir of [1, -1] as const) {
+        const at = HZ(j) + (dir > 0 ? 4.5 : 1.5);
+        let x1 = MAX_X;
+        while (coastS(x1, at) > -BAND.road - 0.5) x1 -= 0.5;
+        this.lanes.push({ axis: 'h', at, dir, span: [MIN_X, x1], speed: 7.5, weight: busy, cars: [] });
+      }
+    }
+    // ECYR v2: Ocean Drive, three lanes each way round the bend (east- and southbound inside)
+    for (const s of BAND.lanes) {
+      this.lanes.push({ axis: 'c', at: -s, dir: 1, span: [COAST_U0 + 2, COAST_U1 - 2], speed: 9.5 - s * 0.15, weight: 1.7, cars: [] });
+      this.lanes.push({ axis: 'c', at: s, dir: -1, span: [COAST_U0 + 2, COAST_U1 - 2], speed: 9.5 - s * 0.15, weight: 1.7, cars: [] });
     }
     // the highway: six lanes, three each way, nose to tail
     HWY_LANES.forEach((z, i) => {
@@ -147,14 +168,51 @@ export class TaxiTraffic {
       shadowed.onBeforeShadow = () => { full = shadowed.count; shadowed.count = Math.min(full, entry.shadowCount); };
       shadowed.onAfterShadow = () => { shadowed.count = full; };
       this.meshes.push(entry);
+      void ti;
       this.used.push(0);
     });
+    this.buildProxy(n);
+  }
+
+  /** One low-poly stand-in for every model, used past LOD_FAR (a unit car scaled per instance). */
+  private proxy: THREE.InstancedMesh | null = null;
+  private buildProxy(n: number): void {
+    const pos: number[] = [], col: number[] = [];
+    const W: [number, number, number] = [1, 1, 1], G: [number, number, number] = [0.06, 0.08, 0.1], T: [number, number, number] = [0.03, 0.03, 0.035];
+    // a box from (x0,y0,z0) to (x1,y1,z1), five faces (no bottom); `top` shrinks the top face inwards
+    const box = (x0: number, x1: number, y0: number, y1: number, z0: number, z1: number, c: [number, number, number], ti = 0, tz = 0) => {
+      const A = [x0, y0, z0], B = [x1, y0, z0], C = [x1, y0, z1], D = [x0, y0, z1];
+      const E = [x0 + ti, y1, z0 + tz], F = [x1 - ti, y1, z0 + tz], Gp = [x1 - ti, y1, z1 - tz], H = [x0 + ti, y1, z1 - tz];
+      const q = (a: number[], b: number[], cc: number[], d: number[]) => { for (const v of [a, b, cc, a, cc, d]) { pos.push(v[0], v[1], v[2]); col.push(c[0], c[1], c[2]); } };
+      q(D, C, Gp, H); q(B, A, E, F); q(C, B, F, Gp); q(A, D, H, E); q(H, Gp, F, E);
+    };
+    box(-0.5, 0.5, 0.2, 0.62, -0.5, 0.5, W, 0.02, 0.04);
+    box(-0.43, 0.43, 0.62, 0.97, -0.28, 0.18, G, 0.07, 0.09);
+    box(-0.44, 0.44, 0.955, 0.985, -0.2, 0.1, W, 0.03, 0.03);
+    for (const x of [-0.5, 0.42]) for (const z of [-0.36, 0.26]) box(x, x + 0.08, 0.0, 0.34, z, z + 0.14, T);
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+    g.computeVertexNormals();
+    const mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.35, metalness: 0.25 });
+    const m = new THREE.InstancedMesh(g, mat, n);
+    m.frustumCulled = false;
+    m.castShadow = false;
+    m.receiveShadow = true;
+    m.layers.set(TRAFFIC_LAYER);
+    m.count = 0;
+    m.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    for (let i = 0; i < n; i++) m.setColorAt(i, new THREE.Color('#ffffff'));
+    this.proxy = m;
+    this.group.add(m);
   }
 
   /* -------------------------------------------------------------- lanes -- */
 
   private laneXZ(l: Lane, pos: number, out: { x: number; z: number }): void {
-    if (l.axis === 'h') { out.x = l.span[0] + pos; out.z = l.at; } else { out.x = l.at; out.z = l.span[0] + pos; }
+    if (l.axis === 'h') { out.x = l.span[0] + pos; out.z = l.at; }
+    else if (l.axis === 'v') { out.x = l.at; out.z = l.span[0] + pos; }
+    else { coastPoint(l.span[0] + pos, l.at, CP); out.x = CP.x; out.z = CP.z; }
   }
 
   private take(c: Car): void {
@@ -176,9 +234,40 @@ export class TaxiTraffic {
     const p = this.tmpP;
     this.laneXZ(l, pos, p);
     c.x = p.x; c.z = p.z;
-    c.yaw = l.axis === 'h' ? (l.dir > 0 ? Math.PI / 2 : -Math.PI / 2) : (l.dir > 0 ? 0 : Math.PI);
+    c.yaw = this.laneYaw(l, pos);
   }
   private readonly tmpP = { x: 0, z: 0 };
+
+  private laneYaw(l: Lane, pos: number): number {
+    if (l.axis === 'h') return l.dir > 0 ? Math.PI / 2 : -Math.PI / 2;
+    if (l.axis === 'v') return l.dir > 0 ? 0 : Math.PI;
+    coastPoint(l.span[0] + pos, l.at, CP);
+    return Math.atan2(CP.tx * l.dir, CP.tz * l.dir);
+  }
+
+  /**
+   * A car at the end of its avenue or street, where it meets Ocean Drive, turns onto
+   * the drive's inner lane instead of vanishing. False when there is no room there.
+   */
+  private turnOnto(c: Car): boolean {
+    const l = c.lane!;
+    let u: number;
+    if (l.axis === 'v' && l.dir < 0 && c.pos < 0) u = coastU(l.at, l.span[0]);
+    else if (l.axis === 'h' && l.dir > 0 && c.pos > l.span[1] - l.span[0]) u = coastU(l.span[1], l.at);
+    else return false;
+    const target = this.coastIn;
+    if (!target) return false;
+    const pos = u - target.span[0];
+    if (pos < 0 || pos > target.span[1] - target.span[0]) return false;
+    for (const o of target.cars) if (Math.abs(o.pos - pos) < 4 + (o.len + c.len) / 2) return false;
+    const speed = c.speed;
+    this.take(c);
+    this.put(c, target, pos);
+    c.speed = Math.max(2.5, speed * 0.6);
+    return true;
+  }
+  /** Ocean Drive's inner eastbound lane, where side roads turn in. */
+  private get coastIn(): Lane | undefined { return this.lanes.find((q) => q.axis === 'c' && q.at === -BAND.lanes[2]); }
 
   /**
    * Drop a car onto a lane near (tx, tz), at least `minD` from it, with room in front
@@ -190,9 +279,9 @@ export class TaxiTraffic {
     cand.length = 0; w.length = 0; lo.length = 0; hi.length = 0;
     let total = 0;
     for (const l of this.lanes) {
-      const lat = Math.abs(l.axis === 'h' ? l.at - tz : l.at - tx);
+      const lat = Math.abs(l.axis === 'h' ? l.at - tz : l.axis === 'v' ? l.at - tx : l.at - coastS(tx, tz));
       if (lat > LATERAL) continue;
-      const along = (l.axis === 'h' ? tx : tz) - l.span[0];
+      const along = (l.axis === 'h' ? tx : l.axis === 'v' ? tz : coastU(tx, tz)) - l.span[0];
       const reach = Math.sqrt(Math.max(0, RANGE * RANGE - lat * lat));
       const a = Math.max(0, along - reach), b = Math.min(l.span[1] - l.span[0], along + reach);
       if (b - a < 8) continue;
@@ -279,7 +368,9 @@ export class TaxiTraffic {
         // gone out of range, off the end of its road, or well behind the chase camera
         // (which only looks where the taxi is heading): deal it again ahead
         const behind = ahead !== null && d2 > BEHIND * BEHIND && dx * ahead.x + dz * ahead.z < 0;
-        if (d2 > (RANGE + 14) * (RANGE + 14) || c.pos < 0 || c.pos > span || behind) this.park(c);
+        const off = c.pos < 0 || c.pos > span;
+        if (off && !behind && this.turnOnto(c)) continue;
+        if (d2 > (RANGE + 14) * (RANGE + 14) || off || behind) this.park(c);
         else continue;
       }
       if (spawns > 0) { spawns--; this.spawn(c, tx, tz, this.filled ? RESPAWN_MIN : NEAR, ahead); }
@@ -298,9 +389,10 @@ export class TaxiTraffic {
         while (j >= 0 && list[j].pos > c.pos) { list[j + 1] = list[j]; j--; }
         list[j + 1] = c;
       }
-      const fx = lane.axis === 'h' ? lane.dir : 0, fz = lane.axis === 'v' ? lane.dir : 0;
+      let fx = lane.axis === 'h' ? lane.dir : 0, fz = lane.axis === 'v' ? lane.dir : 0;
       for (let i = 0; i < n; i++) {
         const c = list[i];
+        if (lane.axis === 'c') { fx = Math.sin(c.yaw); fz = Math.cos(c.yaw); }
         const k = i + lane.dir;
         const front = k >= 0 && k < n ? list[k] : null;
         let want = c.base;
@@ -315,7 +407,9 @@ export class TaxiTraffic {
         if (along > 0 && along < c.len / 2 + 5 && side < 1.8) want = 0;
         c.speed += (want - c.speed) * Math.min(1, dt * (want < c.speed ? 6 : 1.5));
         c.pos += c.speed * lane.dir * dt;
-        if (lane.axis === 'h') c.x = lane.span[0] + c.pos; else c.z = lane.span[0] + c.pos;
+        if (lane.axis === 'h') c.x = lane.span[0] + c.pos;
+        else if (lane.axis === 'v') c.z = lane.span[0] + c.pos;
+        else { coastPoint(lane.span[0] + c.pos, lane.at, CP); c.x = CP.x; c.z = CP.z; c.yaw = Math.atan2(CP.tx * lane.dir, CP.tz * lane.dir); }
       }
     }
 
@@ -345,6 +439,7 @@ export class TaxiTraffic {
     const used = this.used;
     for (let i = 0; i < used.length; i++) used[i] = 0;
     const R2 = this.drawRadius * this.drawRadius, S2 = SHADOW_NEAR * SHADOW_NEAR;
+    let proxies = 0;
     for (let pass = 0; pass < 2; pass++) {
       for (const c of this.cars) {
         if (!c.fly && !c.lane) continue;
@@ -363,11 +458,26 @@ export class TaxiTraffic {
         else { dummy.position.set(c.x, 0, c.z); dummy.rotation.set(0, c.yaw, 0); }
         dummy.updateMatrix();
         const m = this.meshes[c.tpl];
+        if (pass === 1 && this.proxy && d2 > LOD_FAR * LOD_FAR && !f) {
+          // far away: the low-poly stand-in, scaled to this model's size
+          dummy.scale.set(m.tpl.width, m.tpl.height, m.tpl.length);
+          dummy.updateMatrix();
+          this.proxy.setMatrixAt(proxies, dummy.matrix);
+          this.proxy.setColorAt(proxies, c.color);
+          proxies++;
+          dummy.scale.set(1, 1, 1);
+          continue;
+        }
         const slot = used[c.tpl]++;
         for (const part of m.parts) part.setMatrixAt(slot, dummy.matrix);
         m.parts[m.body].setColorAt(slot, c.color);
       }
       if (pass === 0) for (let i = 0; i < this.meshes.length; i++) this.meshes[i].shadowCount = used[i];
+    }
+    if (this.proxy) {
+      this.proxy.count = proxies;
+      this.proxy.instanceMatrix.needsUpdate = true;
+      if (this.proxy.instanceColor) this.proxy.instanceColor.needsUpdate = true;
     }
     for (let i = 0; i < this.meshes.length; i++) {
       for (const part of this.meshes[i].parts) {
@@ -393,6 +503,7 @@ export class TaxiTraffic {
   /** Free the instance buffers (the car geometry and materials belong to the car pack). */
   dispose(): void {
     for (const m of this.meshes) for (const p of m.parts) p.dispose();
+    if (this.proxy) { this.proxy.geometry.dispose(); (this.proxy.material as THREE.Material).dispose(); this.proxy.dispose(); this.proxy = null; }
     this.group.removeFromParent();
     this.meshes = [];
   }

@@ -1952,3 +1952,13 @@ Contenido C2 ×3
 - Gráficos: los móviles ya no caen en calidad baja de entrada; fachadas PBR y vidrio reflectante; sombras estables;
   el regulador baja primero resolución y distancia antes que materiales y sombras.
 - Nuevos: especificación de arte costero (docs/taxi-arte-v2.md) y banco de frases de direcciones revisado (directions.ts).
+
+== Taxi Rush: ciudad costera, taxi clásico y GPS en inglés (tanda 2) ==
+- Ciudad costera estilo Crazy Taxi: Ocean Drive (3 carriles por sentido, curva amplia), mar con olas, playa, boardwalk,
+  pier transitable con noria y PIER ARCADE, faro, 3 plazas, ~260 palmeras; 12 destinos nuevos de costa.
+  PC: 196 draw calls / 424 k triángulos (antes 361 / 898 k).
+- Taxi clásico convertible de los 50 (aletas, cromados, damero, asientos rojos, letrero TAXI en arco) con conductor y
+  pasajeros sentados; la carrocería se inclina en curvas, frenadas y derrapes. El deportivo queda como opción "Sport".
+- GPS en inglés con frases de "asking and giving directions": el pasajero pide el destino al subir, el GPS anuncia cada
+  maniobra (turn left, take the 2nd right, go past…), reacciones al llegar, chocar o girar mal; voz opcional.
+- HUD nuevo: flecha y destino, minimapa con norte arriba, tiempo y ganancias, burbuja de diálogo del pasajero.

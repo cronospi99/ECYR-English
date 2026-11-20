@@ -61,6 +61,8 @@ const IND = ['#c8cdd2', '#b6c1c9', '#d8d2c0', '#a9b5ae', '#c9b58f', '#bfc7cf'];
 const GRAVEL = ['#9a9a95', '#8c8f8f', '#a3a29a', '#84878a'];
 const CLAY = ['#b5533c', '#8a4b3a', '#a85a3a', '#6d5a4e', '#9a6a4a'];
 const METAL = ['#8f9aa3', '#9aa7a0', '#a39a8a'];
+/** ECYR v2 (spec §A Paleta): seafront facades. */
+const COAST_FACADES = ['#f6e3b8', '#ff8a65', '#4fc3d9', '#f2c94c', '#e8588a', '#8bd17c'];
 
 const pick = <T>(r: () => number, a: T[]): T => a[Math.floor(r() * a.length)];
 const range = (r: () => number, a: number, b: number): number => a + Math.floor(r() * (b - a + 1));
@@ -117,6 +119,17 @@ function lookFor(lot: Lot, r: () => number): Look {
       base.roof = rgb(pick(r, CLAY));
       break;
     }
+  }
+  // ECYR v2: the seafront — one or two storeys of bright stucco, shops and cafés on the ground floor
+  if (z === 'coast' && lot.kind !== 'hall') {
+    base.floors = lot.kind === 'block' ? range(r, 2, 3) : range(r, 1, 2);
+    base.floorH = 2.8; base.groundH = 3.2;
+    base.upper = r() < 0.5 ? ['resiA', 'resiB'] : ['tallA', 'tallB'];
+    base.tint = rgb(pick(r, COAST_FACADES));
+    base.ground = 'shop';
+    base.gable = lot.kind === 'house' && r() < 0.35;
+    base.roof = rgb(base.gable ? '#c0583a' : pick(r, GRAVEL));
+    base.tiers = 1;
   }
   if (lot.shop && base.ground === 'plain') base.ground = 'shop';
   switch (lot.icon) {

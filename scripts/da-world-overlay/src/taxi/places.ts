@@ -8,7 +8,7 @@
  * post office, and the student has to know it.
  */
 
-export type District = 'downtown' | 'harbour' | 'oldtown' | 'campus' | 'airport' | 'suburbs' | 'market' | 'parkside';
+export type District = 'downtown' | 'harbour' | 'oldtown' | 'campus' | 'airport' | 'suburbs' | 'market' | 'parkside' | 'coast';
 
 export interface NewPlace {
   name: string;
@@ -211,7 +211,31 @@ export const TYPE_CLUES: Record<string, string[]> = {
   'a zoo': ['I want to see lions and giraffes!'],
   'a botanical garden': ['I want to see exotic plants and flowers.'],
   'a playground': ['My kids want to play on the swings.'],
+  // ECYR v2: the coast
+  'a lighthouse': ['I want to climb the old lighthouse and look at the ships.'],
+  'a square': ['I’m meeting my friends by the fountain.'],
+  'a clock tower': ['I want to see the big clock by the beach.'],
+  'a lifeguard station': ['I’m a lifeguard, and my shift on the beach starts now.'],
+  'an open-air theatre': ['There’s a concert on the beach tonight.'],
+  'a fish and chip shop': ['I’d like some fried fish and chips, please.'],
 };
+
+/**
+ * ECYR v2: places on the coast. Shops take a seafront lot near `nearX` (their door faces
+ * Ocean Drive); landmarks stand on the beach or the pier and give their stop directly.
+ */
+export interface CoastPlace {
+  id: string; name: string; type: string; emoji: string;
+  kind?: 'house' | 'block';
+  nearX?: number;
+}
+export const COAST_SHOPS: CoastPlace[] = [
+  { id: 'surf-shop', name: 'Sunset Surf Shop', type: 'a surf shop', emoji: '🏄', kind: 'house', nearX: 18 },
+  { id: 'boardwalk-cafe', name: 'Boardwalk Café', type: 'a coffee shop', emoji: '☕', kind: 'house', nearX: 70 },
+  { id: 'seaside-ice-cream', name: 'Seaside Ice Cream', type: 'an ice cream shop', emoji: '🍦', kind: 'house', nearX: 40 },
+  { id: 'harbour-fish-chips', name: 'Harbour Fish & Chips', type: 'a fish and chip shop', emoji: '🐟', kind: 'house', nearX: 125 },
+  { id: 'hotel-playa-azul', name: 'Hotel Playa Azul', type: 'a hotel', emoji: '🏨', kind: 'block', nearX: -30 },
+];
 
 export function cluesFor(type: string, name: string): string[] {
   return TYPE_CLUES[type] ?? [`Take me to ${name}, please.`];

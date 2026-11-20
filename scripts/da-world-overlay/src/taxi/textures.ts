@@ -41,6 +41,7 @@ export const CELL = {
   plate: [3, 2],
   stripes: [4, 2],
   pitch: [5, 2],
+  planks: [6, 2],
 } as const;
 export type CellName = keyof typeof CELL;
 
@@ -177,6 +178,14 @@ function makeAtlas(): { map: CanvasTexture; emissive: CanvasTexture } {
   { // striped canopy
     const [x, y] = cellAt('stripes');
     for (let i = 0; i < 8; i++) { c.fillStyle = i % 2 ? '#ffffff' : '#d8d2c4'; c.fillRect(x + i * 16, y, 16, CELL_PX); }
+  }
+  { // ECYR v2: boardwalk boards, eight across the cell (0.6 each on a 4.8 run)
+    const [x, y] = cellAt('planks');
+    for (let i = 0; i < 8; i++) {
+      c.fillStyle = i % 2 ? '#e6dccb' : '#efe6d6'; c.fillRect(x + i * 16, y, 16, CELL_PX);
+      c.fillStyle = 'rgba(60,40,20,0.35)'; c.fillRect(x + i * 16 + 15, y, 1, CELL_PX);
+      for (let k = 0; k < 3; k++) { c.fillStyle = 'rgba(90,60,30,0.10)'; c.fillRect(x + i * 16 + 2 + rand() * 11, y + rand() * CELL_PX, 1, 10 + rand() * 30); }
+    }
   }
   { // the stadium's pitch
     const [x, y] = cellAt('pitch');

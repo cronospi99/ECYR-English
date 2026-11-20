@@ -43,6 +43,10 @@ import { GROUND, emitBuilding, type Kind, type Lot, type Zone } from './building
 import { emitIcon, iconFor, planLot, signHeight } from './icons';
 import { furnishBlock } from './furniture';
 import { GROUND_LAYER as GL, cityMaterial, groundMaterial, lensMaterial } from './textures';
+import { ARC, BAND, COAST, CURB as COAST_CURB, Plants, SPOT, WATER_Y, coastDrivable, coastPoint, coastS, coastU, seaTime, type CoastPt } from './coast';
+import { buildCoast, COAST_PLACES, CORNER_FOUNTAIN } from './coastBuild';
+import type { SkySample } from '../city/daynight';
+import { Color as TColor, Mesh as TMesh, type Object3D } from 'three';
 
 export { CELL, mergeByCell };
 
@@ -73,6 +77,66 @@ export const HWY_MID = HWY_Z0 + HWY_SHOULDER + HWY_LANE * 3 + HWY_GAP + HWY_MEDI
 export const HWY_LANES = [0, 1, 2].map((i) => HWY_Z0 + HWY_SHOULDER + HWY_LANE * (i + 0.5))
   .concat([0, 1, 2].map((i) => HWY_MID + HWY_MEDIAN / 2 + HWY_GAP + HWY_LANE * (i + 0.5)));
 export const MAX_Z = HWY_Z0 + HWY_W + 12;
+
+/* ECYR v2: the coast. Ocean Drive runs along the north edge of the grid (z < MIN_Z), bends
+ * south at the north-east corner and runs down the east edge (x > MAX_X) to the highway. */
+/** Ocean Drive from its west end to its south end, in coast space (see coast.ts). */
+export const COAST_U0 = MIN_X - 12 - COAST.CX;
+export const COAST_U1 = ARC + (MAX_Z - COAST.CZ);
+/** The whole drivable map, coast included (the minimap and the collision grid use it). */
+export const MAP_MIN_X = MIN_X - 20;
+export const MAP_MAX_X = COAST.XE + BAND.shore + 24;
+export const MAP_MIN_Z = COAST.ZN - SPOT.pierPlaza.s1 - 14;
+export const MAP_MAX_Z = MAX_Z;
+/** Where a shift starts: on Ocean Drive, eastbound, the beach and the pier ahead on the left. */
+// (turned a little towards the sea, so the first view has the beach and the boardwalk in it)
+export const TAXI_START = { x: -6, z: COAST.ZN + BAND.lanes[0] + 0.4, yaw: Math.PI / 2 + 0.3 };
+
+/**
+ * The coast on the minimap (called by the minimap painter with its own projection):
+ * first the sea, the land, the beach and the boardwalk (`roads` false), then, over the
+ * city's blocks, Ocean Drive and the pier (`roads` true).
+ */
+export function paintCoastMap(c: CanvasRenderingContext2D, X: (x: number) => number, Z: (z: number) => number, k: number, roads: boolean): void {
+  const p: CoastPt = { x: 0, z: 0, tx: 1, tz: 0 };
+  const line = (off: number, width: number, colour: string, from = COAST_U0, to = COAST_U1) => {
+    c.beginPath();
+    for (let u = from; u <= to + 0.01; u += u >= 0 && u <= ARC ? 3 : 20) { coastPoint(Math.min(u, to), off, p); if (u === from) c.moveTo(X(p.x), Z(p.z)); else c.lineTo(X(p.x), Z(p.z)); }
+    c.strokeStyle = colour; c.lineWidth = width * k; c.lineJoin = 'round'; c.lineCap = 'butt'; c.stroke();
+  };
+  if (!roads) {
+    c.save();
+    c.fillStyle = '#1fa6c9'; c.fillRect(0, 0, c.canvas.width, c.canvas.height);
+    // the land: everything inland of the beach
+    c.beginPath();
+    coastPoint(COAST_U0 - 200, BAND.board, p); c.moveTo(X(p.x), Z(p.z));
+    for (let u = COAST_U0 - 200; u <= COAST_U1 + 200; u += u >= 0 && u <= ARC ? 3 : 20) { coastPoint(u, BAND.board, p); c.lineTo(X(p.x), Z(p.z)); }
+    c.lineTo(X(MAP_MIN_X - 400), Z(MAP_MAX_Z + 400)); c.closePath();
+    c.fillStyle = '#26472e'; c.fill();
+    line((BAND.board + BAND.shore) / 2, BAND.shore - BAND.board, '#e8cf8f', COAST_U0 - 200, COAST_U1 + 200);
+    line((BAND.side + BAND.board) / 2, BAND.board - BAND.side, '#b98a5a');
+    line((BAND.road + BAND.side) / 2, BAND.side - BAND.road, '#c9c6bd');
+    c.restore();
+    return;
+  }
+  line(0, BAND.road * 2, '#3b4252');
+  line(0, 0.9, '#f2c230');
+  const P = SPOT.pier, PP = SPOT.pierPlaza;
+  c.fillStyle = '#b98a5a';
+  c.fillRect(X(COAST.CX + P.u - P.half), Z(COAST.ZN - P.s1), P.half * 2 * k, (P.s1 - P.s0) * k);
+  c.fillRect(X(COAST.CX + PP.u0), Z(COAST.ZN - PP.s1), (PP.u1 - PP.u0) * k, (PP.s1 - PP.s0) * k);
+  c.fillStyle = '#e6d3b0';
+  for (const Q of [SPOT.plazaA, SPOT.plazaB]) c.fillRect(X(COAST.CX + Q.u0), Z(COAST.ZN - Q.s1), (Q.u1 - Q.u0) * k, (Q.s1 - Q.s0) * k);
+  coastPoint(SPOT.lighthouse.u, SPOT.lighthouse.s, p);
+  c.fillStyle = '#d9302b'; c.beginPath(); c.arc(X(p.x), Z(p.z), 4 * k, 0, Math.PI * 2); c.fill();
+}
+
+/** A block the bend of Ocean Drive cuts through: it becomes Palm Fountain Plaza, no lots. */
+export function cornerBlock(x0: number, x1: number, z0: number, z1: number): boolean {
+  // (blocks along the straights touch the road edge at s = -10 exactly; only the bend cuts in)
+  for (const [x, z] of [[x0, z0], [x1, z0], [x0, z1], [x1, z1], [(x0 + x1) / 2, z0], [x1, (z0 + z1) / 2]]) if (coastS(x, z) > -9) return true;
+  return false;
+}
 
 /** On an avenue's carriageway (the x-columns of the grid)? */
 const avenueColumn = (tx: number): boolean => ((((tx - 15) % 21) + 21) % 21) < ROAD_W;
@@ -243,6 +307,12 @@ function shapeSign(cell: number, rows: number, second: boolean, poly: [number, n
  * The world                                                           *
  * ------------------------------------------------------------------ */
 
+const SKY = {
+  top: new TColor('#3f9bff'), bottom: new TColor('#bfe4ff'), fog: new TColor('#cfe8fb'), sun: new TColor('#fff1d6'),
+  hemiSky: new TColor('#bfe4ff'), hemiGround: new TColor('#e3cf9e'),
+};
+void TMesh; void WATER_Y; void COAST_CURB;
+
 const DISTRICT_OF = (dx: number, dz: number): District =>
   dz < 0 ? (dx < 0 ? 'campus' : dx > 0 ? 'parkside' : 'downtown')
     : dz > 0 ? (dx < 0 ? 'market' : dx > 0 ? 'airport' : 'suburbs')
@@ -258,10 +328,12 @@ export const DISTRICT_LABEL: Record<District | 'centre', string> = {
   suburbs: 'The Suburbs',
   market: 'Market Quarter',
   parkside: 'Parkside',
+  coast: 'The Coast',
 };
 
 /** Which district a block belongs to (the minimap paints them). */
 export function zoneOfBlock(k: number, j: number): District | 'centre' {
+  if ((j === J_MIN - 1 || k === K_MAX) && j < J_MAX) return 'coast';
   const dx = k < CENTRE.k0 ? -1 : k > CENTRE.k1 ? 1 : 0, dz = j < CENTRE.j0 ? -1 : j > CENTRE.j1 ? 1 : 0;
   return dx === 0 && dz === 0 ? 'centre' : DISTRICT_OF(dx, dz);
 }
@@ -281,6 +353,8 @@ interface Block {
   lots: Lot[];
   /** Back-garden strip between the two rows of houses. */
   garden: boolean;
+  /** Cut by the bend of Ocean Drive: paved over as a square, no lots. */
+  corner: boolean;
 }
 
 function rollKind(zone: Zone, r: number): Kind {
@@ -292,6 +366,7 @@ function rollKind(zone: Zone, r: number): Kind {
     case 'market': return r < 0.45 ? 'hall' : r < 0.8 ? 'house' : 'block';
     case 'campus': return r < 0.5 ? 'block' : r < 0.75 ? 'tower' : 'house';
     case 'parkside': return r < 0.5 ? 'house' : r < 0.9 ? 'block' : 'hall';
+    case 'coast': return r < 0.6 ? 'house' : 'block';
     default: return r < 0.22 ? 'tower' : r < 0.77 ? 'block' : r < 0.9 ? 'house' : 'hall'; // centre
   }
 }
@@ -323,41 +398,84 @@ export class TaxiWorld {
   private lightGroups: { g: Group; x: number; z: number }[] = [];
   /** 1 = a car may be here. */
   private grid: Uint8Array;
-  private gw = MAX_X - MIN_X;
-  private gh = MAX_Z - MIN_Z;
+  private gw = MAP_MAX_X - MAP_MIN_X;
+  private gh = MAP_MAX_Z - MAP_MIN_Z;
+  /** Junctions for the arrow's route: the grid's, plus a row along Ocean Drive and a column down the east coast. */
+  private route: Node[] = [];
+  /** Blocks the bend cuts through (paved over as a square). */
+  private corners: { x0: number; x1: number; z0: number; z1: number }[] = [];
+  readonly plants = new Plants();
+  private wheel: Mesh | null = null;
+  private surfShop: Lot | null = null;
+  private lawn: Object3D | null = null;
 
   constructor() {
     this.group.name = 'taxi-world';
+    for (let k = K_MIN - 1; k <= K_MAX; k++) for (let j = J_MIN - 1; j <= J_MAX; j++) {
+      const x0 = Math.max(VX(k) + ROAD_W, MIN_X), x1 = Math.min(VX(k + 1), MAX_X), z0 = Math.max(HZ(j) + ROAD_W, MIN_Z), z1 = j >= J_MAX ? HWY_Z0 : HZ(j + 1);
+      if (cornerBlock(x0, x1, z0, z1)) this.corners.push({ x0, x1, z0, z1 });
+    }
     this.grid = new Uint8Array(this.gw * this.gh);
-    for (let z = MIN_Z; z < MAX_Z; z++) {
-      for (let x = MIN_X; x < MAX_X; x++) {
+    for (let z = MAP_MIN_Z; z < MAP_MAX_Z; z++) {
+      for (let x = MAP_MIN_X; x < MAP_MAX_X; x++) {
         let ok: boolean;
-        if (z >= HWY_Z0) {
+        const cs = coastS(x + 0.5, z + 0.5);
+        if (cs > -10) ok = coastDrivable(coastU(x + 0.5, z + 0.5), cs, COAST_U0, COAST_U1);
+        else if (x < MIN_X || x >= MAX_X || z < MIN_Z || z >= MAX_Z) ok = false;
+        else if (this.corners.some((c) => x >= c.x0 - 0.01 && x < c.x1 && z >= c.z0 - 0.01 && z < c.z1)) ok = Math.hypot(x + 0.5 - CORNER_FOUNTAIN.x, z + 0.5 - CORNER_FOUNTAIN.z) > CORNER_FOUNTAIN.r + 0.7;
+        else if (z >= HWY_Z0) {
           // the highway: everything but the median barrier, which avenues cut through
           const onHwy = z < HWY_Z0 + HWY_W;
           const median = Math.abs(z + 0.5 - HWY_MID) < HWY_MEDIAN / 2 + 0.3;
           ok = onHwy && (!median || avenueColumn(x));
         } else if (z >= HZ(J_MAX) + ROAD_W) ok = avenueColumn(x) || gridSidewalk(x, z) && z < HZ(J_MAX) + ROAD_W + SW;
         else ok = gridRoad(x, z) || gridSidewalk(x, z);
-        this.grid[(z - MIN_Z) * this.gw + (x - MIN_X)] = ok ? 1 : 0;
+        this.grid[(z - MAP_MIN_Z) * this.gw + (x - MAP_MIN_X)] = ok ? 1 : 0;
       }
     }
     for (let k = K_MIN; k <= K_MAX; k++) for (let j = J_MIN; j <= J_MAX; j++) this.nodes.push({ k, j, x: VX(k) + ROAD_W / 2, z: HZ(j) + ROAD_W / 2 });
+    // the route grid: one more row (Ocean Drive, j = J_MIN - 1) and column (the east coast,
+    // k = K_MAX + 1), each junction put on the drive's centre line where the avenue or street meets it
+    const p: CoastPt = { x: 0, z: 0, tx: 1, tz: 0 };
+    for (let k = K_MIN; k <= K_MAX + 1; k++) {
+      for (let j = J_MIN - 1; j <= J_MAX; j++) {
+        if (k <= K_MAX && j >= J_MIN) { this.route.push(this.nodes[(k - K_MIN) * (J_MAX - J_MIN + 1) + (j - J_MIN)]); continue; }
+        let u: number;
+        if (k <= K_MAX) u = coastU(VX(k) + ROAD_W / 2, COAST.ZN); // where avenue k meets the drive
+        else if (j >= J_MIN) u = coastU(COAST.XE, HZ(j) + ROAD_W / 2); // where street j meets it
+        else u = ARC / 2; // the corner: the middle of the bend
+        if (k === K_MAX && j === J_MIN - 1) { const x = VX(k) + ROAD_W / 2; u = COAST.R * (Math.acos(Math.min(1, (x - COAST.CX) / COAST.R)) * -1 + Math.PI / 2); }
+        if (k === K_MAX + 1 && j === J_MIN) { const z = HZ(j) + ROAD_W / 2; u = COAST.R * (Math.asin(Math.max(-1, (z - COAST.CZ) / COAST.R)) + Math.PI / 2); }
+        coastPoint(u, 0, p);
+        this.route.push({ k, j, x: p.x, z: p.z });
+      }
+    }
     this.build();
   }
 
   /** Can a car be here? Roads and pavements yes; buildings, parks and the sea no. */
   drivable(x: number, z: number): boolean {
     const tx = Math.floor(x), tz = Math.floor(z);
-    if (tx < MIN_X || tz < MIN_Z || tx >= MAX_X || tz >= MAX_Z) return false;
-    return this.grid[(tz - MIN_Z) * this.gw + (tx - MIN_X)] === 1;
+    if (tx < MAP_MIN_X || tz < MAP_MIN_Z || tx >= MAP_MAX_X || tz >= MAP_MAX_Z) return false;
+    return this.grid[(tz - MAP_MIN_Z) * this.gw + (tx - MAP_MIN_X)] === 1;
   }
 
   nodeAt(k: number, j: number): Node {
-    return this.nodes[(k - K_MIN) * (J_MAX - J_MIN + 1) + (j - J_MIN)];
+    const kk = Math.max(K_MIN, Math.min(K_MAX + 1, k)), jj = Math.max(J_MIN - 1, Math.min(J_MAX, j));
+    return this.route[(kk - K_MIN) * (J_MAX - J_MIN + 2) + (jj - J_MIN + 1)];
   }
 
   nearestNode(x: number, z: number): Node {
+    // on or by the coast: the nearest junction of Ocean Drive
+    if (coastS(x, z) > -16) {
+      let best = this.route[0], bd = Infinity;
+      for (const n of this.route) {
+        if (n.j !== J_MIN - 1 && n.k !== K_MAX + 1) continue;
+        const d = (n.x - x) ** 2 + (n.z - z) ** 2;
+        if (d < bd) { bd = d; best = n; }
+      }
+      return best;
+    }
     const k = Math.max(K_MIN, Math.min(K_MAX, Math.round((x - 3 - 15) / 21)));
     const j = Math.max(J_MIN, Math.min(J_MAX, Math.round((z - 3 - 13) / 19)));
     return this.nodeAt(k, j);
@@ -397,6 +515,33 @@ export class TaxiWorld {
 
   setVisible(v: boolean): void {
     this.group.visible = v;
+    // the walking city's endless lawn would cover the sea: the coast brings its own land
+    if (!this.lawn) this.lawn = this.group.parent?.getObjectByName('lawn') ?? null;
+    if (this.lawn) this.lawn.visible = !v;
+  }
+
+  /**
+   * The seaside look (spec §A, Iluminación): a high warm sun from the south-east, a sky-blue
+   * and sand hemisphere, a deep blue zenith over a pale horizon, and a light haze that keeps
+   * the far end of the boulevard soft. Adjusts the day-night sample before it is applied.
+   */
+  tintSky(s: SkySample, tier: string): SkySample {
+    if (s.night > 0.25) return s;
+    const k = 1 - s.night / 0.25;
+    s.top.lerp(SKY.top, k); s.bottom.lerp(SKY.bottom, k); s.fog.lerp(SKY.fog, k);
+    s.sun.lerp(SKY.sun, k);
+    s.sunIntensity += (3.0 - s.sunIntensity) * k;
+    s.hemiSky.lerp(SKY.hemiSky, k); s.hemiGround.lerp(SKY.hemiGround, k);
+    s.hemiIntensity += (0.9 - s.hemiIntensity) * k;
+    s.envIntensity += (0.7 - s.envIntensity) * k;
+    s.ambient *= 1 - 0.6 * k;
+    s.dirX += (-0.5 - s.dirX) * k; s.dirY += (0.75 - s.dirY) * k; s.dirZ += (0.4 - s.dirZ) * k;
+    // linear haze; the camera stops at 175, so the far edge must already be in the haze there
+    // (environment.apply stretches fogFar by 1.35)
+    const mobile = tier === 'low' || tier === 'medium';
+    s.fogNear += ((mobile ? 55 : 70) - s.fogNear) * k;
+    s.fogFar += ((mobile ? 150 : 172) / 1.35 - s.fogFar) * k;
+    return s;
   }
 
   /**
@@ -407,6 +552,8 @@ export class TaxiWorld {
   setLod(k: number): void { this.lodK = k; }
 
   focus(x: number, z: number, radius = 165): void {
+    this.plants.radius = 150 * this.lodK;
+    this.plants.update(x, z);
     const half = CELL / 2, k = this.lodK;
     radius = Math.max(110, radius * k);
     const LOD = { detail: LOD_BASE.detail * k, near: LOD_BASE.near * k };
@@ -423,6 +570,8 @@ export class TaxiWorld {
   }
 
   update(dt: number, elapsed: number): void {
+    seaTime.value = elapsed;
+    if (this.wheel) { this.wheel.rotation.z -= dt * 0.12; this.wheel.updateMatrix(); }
     for (const L of this.lights) {
       L.timer -= dt;
       if (L.hold > 0) { L.hold -= dt; L.red = true; }
@@ -511,15 +660,18 @@ export class TaxiWorld {
       for (let j = J_MIN - 1; j <= J_MAX; j++) {
         const bx0 = Math.max(VX(k) + ROAD_W, MIN_X), bx1 = Math.min(VX(k + 1), MAX_X);
         const bz0 = Math.max(HZ(j) + ROAD_W, MIN_Z), bz1 = j >= J_MAX ? HWY_Z0 : HZ(j + 1);
-        const fringe = k < K_MIN || k >= K_MAX || j < J_MIN || j >= J_MAX;
+        // ECYR v2: the north row and the east column face the sea now: seafront shops, not lawn
+        const coast = (j === J_MIN - 1 || k === K_MAX) && j < J_MAX;
+        const corner = this.corners.some((c) => c.x0 === bx0 && c.z0 === bz0);
+        const fringe = !coast && (k < K_MIN || k >= K_MAX || j < J_MIN || j >= J_MAX);
         const dx = k < CENTRE.k0 ? -1 : k > CENTRE.k1 ? 1 : 0, dz = j < CENTRE.j0 ? -1 : j > CENTRE.j1 ? 1 : 0;
-        const zone: Zone = dx === 0 && dz === 0 ? 'centre' : DISTRICT_OF(dx, dz);
+        const zone: Zone = coast ? 'coast' : dx === 0 && dz === 0 ? 'centre' : DISTRICT_OF(dx, dz);
         const landmark = LANDMARK_BLOCKS.find(([lk, lj]) => lk === k && lj === j);
         const pr = rand();
-        const park = !fringe && !landmark && pr < (zone === 'parkside' ? 0.45 : zone === 'suburbs' ? 0.18 : zone === 'campus' ? 0.22 : zone === 'centre' ? 0.06 : 0.05);
+        const park = !fringe && !landmark && !coast && pr < (zone === 'parkside' ? 0.45 : zone === 'suburbs' ? 0.18 : zone === 'campus' ? 0.22 : zone === 'centre' ? 0.06 : 0.05);
         blocks.push({
           k, j, bx0, bx1, bz0, bz1, lx0: bx0 + SW, lx1: bx1 - SW, lz0: bz0 + SW, lz1: j >= J_MAX ? bz1 : bz1 - SW,
-          zone, fringe, park, lots: [], garden: !fringe && !park && !landmark && (zone === 'suburbs' || zone === 'parkside'),
+          zone, fringe, park, corner, lots: [], garden: !fringe && !park && !landmark && !coast && (zone === 'suburbs' || zone === 'parkside'),
         });
       }
     }
@@ -527,7 +679,7 @@ export class TaxiWorld {
       x0: x0 + 0.04, x1: x1 - 0.04, z0, z1, face, kind, zone: b.zone, big, landmark, shop: false, seed: Math.floor(rand() * 1e9),
     });
     for (const b of blocks) {
-      if (b.fringe || b.park) continue;
+      if (b.fringe || b.park || b.corner) continue;
       const landmark = LANDMARK_BLOCKS.find(([lk, lj]) => lk === b.k && lj === b.j);
       if (landmark) { b.lots.push(lotOf(b, b.lx0, b.lx1, b.lz0, b.lz1, 'up', 'hall', true, landmark[2])); continue; }
       if ((b.zone === 'harbour' || b.zone === 'airport') && rand() < 0.3) {
@@ -598,9 +750,30 @@ export class TaxiWorld {
       }
     }
 
+    // the seafront: shops on the lots that face Ocean Drive, landmarks on the beach and the pier
+    {
+      const front = shuffle(blocks.filter((b) => b.zone === 'coast' && b.j === J_MIN - 1 && !b.corner).flatMap((b) => b.lots).filter((l) => l.face === 'up' && !l.shop && l.x1 - l.x0 >= 2.2 && l.x0 > -60 && l.x1 < 175), rand);
+      for (const p of COAST_PLACES) {
+        if (p.at) {
+          this.places.push({ id: p.id, name: p.name, type: p.type, emoji: p.emoji, x: p.at.x, z: p.at.z, district: 'coast' });
+          if (p.sign) signs.push({ name: p.name, emoji: p.emoji, hue: p.sign.hue, x: p.sign.x, y: p.sign.y, z: p.sign.z, rotY: p.sign.rotY, w: p.sign.w });
+          continue;
+        }
+        // nearest free seafront lot to where the place would like to be
+        let bi = 0, bd = Infinity;
+        front.forEach((l, i) => { const d = Math.abs((l.x0 + l.x1) / 2 - (p.nearX ?? 0)); if (d < bd) { bd = d; bi = i; } });
+        const [lot] = front.splice(bi, 1);
+        if (!lot) continue;
+        lot.kind = p.kind ?? 'house';
+        claim(lot, p, 'coast');
+        if (p.id === 'surf-shop') this.surfShop = lot;
+      }
+    }
+
     /* ---- build the blocks ---- */
     const tail = (l: Lot) => ({ x0: l.x0, x1: l.x1, z0: l.z0, z1: l.z1 });
     for (const b of blocks) {
+      if (b.corner) continue; // paved by the coast builder
       const cx = (b.bx0 + b.bx1) / 2, cz = (b.bz0 + b.bz1) / 2;
       // pavement slab over the whole block, lawn or paving in the middle
       ground.at(cx, cz, GL.paving).box(b.bx0, b.bx1, 0, CURB, b.bz0, b.bz1, PAVE);
@@ -667,11 +840,16 @@ export class TaxiWorld {
     }
     sgeos.forEach((g) => g.dispose());
 
-    /* ---- the sea, east of the harbour ---- */
-    const sea = new Mesh(new PlaneGeometry(400, 900).rotateX(-Math.PI / 2), new MeshStandardMaterial({ color: '#2f8fc4', roughness: 0.08, metalness: 0.25, envMapIntensity: 1.4 }));
-    sea.position.set(MAX_X + 200 - 2, -0.25, (MIN_Z + MAX_Z) / 2);
-    sea.receiveShadow = true;
-    this.group.add(sea);
+    /* ---- the coast: Ocean Drive, the boardwalk, the beach, the pier, the sea ---- */
+    const built = buildCoast({
+      ground, near, detail, keep, rand, plants: this.plants, group: this.group,
+      u0: COAST_U0, u1: COAST_U1, corners: this.corners,
+      onGridRoad: (x, z) => x >= MIN_X && x < MAX_X && z >= MIN_Z && z < HWY_Z0 && gridRoad(Math.floor(x), Math.floor(z)),
+      surfShop: this.surfShop,
+    });
+    this.wheel = built.wheel;
+    this.plants.finish();
+    this.group.add(this.plants.group);
 
     this.buildHighway(ground, keep);
     this.buildLights(detail, rand);
