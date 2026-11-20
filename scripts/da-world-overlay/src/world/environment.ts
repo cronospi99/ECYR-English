@@ -293,6 +293,7 @@ export function createEnvironment(
   const cloudWarm = new THREE.Color("#fff0d4");
   const fog = scene.fog as THREE.Fog;
   const sunDirection = new THREE.Vector3(-0.55, 1, 0.42);
+  const snapRight = new THREE.Vector3(), snapUp = new THREE.Vector3(), snapAt = new THREE.Vector3();
 
   /* ---- ECYR rebuild: a reflection probe ----
    * A cube camera a few metres above the player photographs the real city —
@@ -431,13 +432,23 @@ export function createEnvironment(
 
       // Keep the shadow frustum glued to the player, so the whole 2048² map is
       // spent on what is actually on screen.
+      // ECYR quality: snap the frustum to whole shadow texels across the light's view, so
+      // the shadow edges stay still instead of crawling while the car moves.
       const d = SHADOW_EXTENT * 1.4;
+      const texel = (2 * SHADOW_EXTENT) / Math.max(1, sun.shadow.mapSize.x);
+      snapRight.set(sunDirection.z, 0, -sunDirection.x);
+      if (snapRight.lengthSq() < 1e-6) snapRight.set(1, 0, 0);
+      snapRight.normalize();
+      snapUp.crossVectors(sunDirection, snapRight).normalize();
+      snapAt.set(target.x, 0, target.z);
+      const r = snapAt.dot(snapRight), u = snapAt.dot(snapUp);
+      snapAt.addScaledVector(snapRight, Math.round(r / texel) * texel - r).addScaledVector(snapUp, Math.round(u / texel) * texel - u);
       sun.position.set(
-        target.x + sunDirection.x * d,
-        Math.max(6, sunDirection.y * d),
-        target.z + sunDirection.z * d,
+        snapAt.x + sunDirection.x * d,
+        snapAt.y + Math.max(6, sunDirection.y * d),
+        snapAt.z + sunDirection.z * d,
       );
-      sun.target.position.set(target.x, 0, target.z);
+      sun.target.position.copy(snapAt);
       sun.target.updateMatrixWorld();
     },
   };

@@ -4,12 +4,14 @@
  * Copies the idea of Language Defenders' `_govern`: measure real frame times over
  * one-second windows and, while the median is under ~56 fps, give up one notch of
  * graphics at a time until 60 holds; when it has been comfortably over 59 for
- * several windows, take one notch back. The notches, cheapest-to-lose first:
+ * several windows, take one notch back. The notches, cheapest-to-lose first —
+ * resolution and draw distance go before anything that changes how a surface looks
+ * (ECYR quality: shadows and materials used to be the second thing to go):
  *
- *   1 pixel ratio x0.85      2 pixel ratio x0.7       3 bloom off
- *   4 sun shadows at half resolution                  5 sun shadows off
- *   6 shorter draw distance (LOD thresholds x0.8, fewer far cars)
- *   7 reflection probe refreshed rarely               8 traffic thinned, LOD x0.65
+ *   1 pixel ratio x0.85      2 draw distance x0.85 (LOD thresholds, car draw radius)
+ *   3 pixel ratio x0.7       4 reflection probe refreshed rarely
+ *   5 draw distance x0.7, traffic thinned to 85 %     6 bloom off
+ *   7 sun shadows at half resolution                  8 sun shadows off
  *
  * It sits out hidden tabs and frames longer than 2 s, and it does not keep stepping
  * down on a device pinned at an even ~30 fps (a battery-saver cap nothing can beat).
@@ -34,7 +36,10 @@ interface Deps {
 
 /** Draw-distance scale the quality tier starts from. */
 const TIER_LOD = { low: 0.7, medium: 0.9, high: 1, ultra: 1 } as const;
-const TIER_TRAFFIC = { low: 0.45, medium: 0.7, high: 1, ultra: 1 } as const;
+/** Size of the traffic pool per tier: a phone keeps at least ~60 % of a desktop's cars. */
+const TIER_TRAFFIC = { low: 0.7, medium: 0.85, high: 1, ultra: 1 } as const;
+/** Share of the pool left on the road from level 5. */
+export const TRAFFIC_THIN = 0.85;
 const TIER_RADIUS = { low: 60, medium: 85, high: 105, ultra: 120 } as const;
 
 export class FrameGovernor {
@@ -58,6 +63,12 @@ export class FrameGovernor {
     this.level = 0; this.acc = 0; this.times.length = 0; this.hold = 3; this.bad = 0; this.good = 0; this.upNeed = 6;
     this.last = performance.now();
     this.applied = { pr: -1, bloom: true, shadow: -1, lod: -1, probe: -1, share: -1 };
+    this.apply();
+  }
+
+  /** The traffic has just been built: give it this level's draw radius and share. */
+  attachStreet(): void {
+    this.applied.lod = -1; this.applied.share = -1;
     this.apply();
   }
 
@@ -108,26 +119,27 @@ export class FrameGovernor {
     const { engine, environment } = this.d;
     const tier = engine.quality;
     const L = this.level, a = this.applied;
-    const pr = L >= 2 ? 0.7 : L >= 1 ? 0.85 : 1;
+    const pr = L >= 3 ? 0.7 : L >= 1 ? 0.85 : 1;
     if (pr !== a.pr) { a.pr = pr; engine.setPixelScale(pr); }
-    const bloom = tier.bloom && L < 3;
-    if (bloom !== a.bloom) { a.bloom = bloom; engine.post.setEffects(tier.ao, bloom); }
-    const shadow = tier.shadowMap <= 0 || L >= 5 ? 0 : L >= 4 ? Math.max(512, tier.shadowMap >> 1) : tier.shadowMap;
-    if (shadow !== a.shadow) { a.shadow = shadow; environment.setShadowQuality(shadow, tier.shadowRadius); }
-    const lod = TIER_LOD[tier.name] * (L >= 8 ? 0.65 : L >= 6 ? 0.8 : 1);
+    const far = L >= 5 ? 0.7 : L >= 2 ? 0.85 : 1;
+    const lod = TIER_LOD[tier.name] * far;
     if (lod !== a.lod) {
       a.lod = lod;
       this.d.world()?.setLod(lod);
       const s = this.d.street();
-      if (s) s.drawRadius = TIER_RADIUS[tier.name] * (L >= 6 ? 0.8 : 1);
+      if (s) s.drawRadius = TIER_RADIUS[tier.name] * far;
     }
-    const probe = L >= 7 ? 1 : 0;
+    const probe = L >= 4 ? 1 : 0;
     if (probe !== a.probe) { a.probe = probe; environment.setProbeCadence(probe ? 20 : 6, probe ? 400 : 140); }
-    const share = L >= 8 ? 0.6 : 1;
+    const share = L >= 5 ? TRAFFIC_THIN : 1;
     if (share !== a.share) { a.share = share; this.d.street()?.setShare(share); }
+    const bloom = tier.bloom && L < 6;
+    if (bloom !== a.bloom) { a.bloom = bloom; engine.post.setEffects(tier.ao, bloom); }
+    const shadow = tier.shadowMap <= 0 || L >= 8 ? 0 : L >= 7 ? Math.max(512, tier.shadowMap >> 1) : tier.shadowMap;
+    if (shadow !== a.shadow) { a.shadow = shadow; environment.setShadowQuality(shadow, tier.shadowRadius); }
     if (dir) this.d.note?.(`GRAPHICS ${dir === 'down' ? '▼' : '▲'} ${L}/${MAX_LEVEL}`);
   }
 
-  /** The traffic's size for this tier (the governor thins it further at level 8). */
+  /** The traffic's size for this tier (the governor thins it further from level 5). */
   static trafficDensity(name: keyof typeof TIER_TRAFFIC): number { return TIER_TRAFFIC[name]; }
 }

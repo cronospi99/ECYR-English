@@ -17,16 +17,18 @@ import type { DayNight } from '../city/daynight';
 import { setNightGlow } from '../city/palette';
 import { Character } from '../city/character';
 import { extListeners, type Session } from '../net/session';
-import { TaxiWorld, DISTRICT_LABEL, zoneOfBlock, HWY_Z0, HWY_W, HWY_MID, MIN_X, MAX_X, MIN_Z, MAX_Z, VX, HZ, K_MIN, K_MAX, J_MIN, J_MAX, type QuizLight } from './world';
-import { CarBody, TaxiModel, loadLook, saveLook, PAINTS, DRIVER_SHIRTS, DRIVER_SKINS, DRIVER_HAIR, DRIVER_OUTFITS, type TaxiLook, type DriveInput } from './car';
+import { TaxiWorld, DISTRICT_LABEL, zoneOfBlock, HWY_Z0, HWY_W, HWY_MID, MIN_X, MAX_X, MIN_Z, MAX_Z, VX, HZ, K_MIN, K_MAX, J_MIN, J_MAX, MAP_MIN_X, MAP_MAX_X, MAP_MIN_Z, MAP_MAX_Z, TAXI_START, paintCoastMap, type QuizLight } from './world';
+import { CarBody, TaxiModel, cabFov, loadLook, saveLook, PAINTS, DRIVER_SHIRTS, DRIVER_SKINS, DRIVER_HAIR, DRIVER_OUTFITS, type TaxiLook, type DriveInput } from './car';
 import { LIGHT_QUESTIONS, type LightQuestion } from './questions';
 import { Smoke } from './smoke';
 import { loadSportCar } from './sportcar';
-import { TaxiTraffic } from './traffic';
+import { TaxiTraffic, type TrafficCar } from './traffic';
 import { FrameGovernor } from './governor';
 import { loadCarPack } from '../city/carpack';
 import type { StreetCar } from '../city/traffic';
 import { cluesFor } from './places';
+import { PICKUP_LINES, REACTIONS, pick, type ReactionKey } from './directions';
+import { Gps } from './gps';
 import { TaxiAudio } from './audio';
 import { TAXI_CSS } from './ui.css';
 import { CAMERA_FAR } from '../world/environment';
@@ -36,7 +38,7 @@ const MAP_S = 2, MAP_PAD = 40;
 let mapBaseCache: HTMLCanvasElement | null = null;
 const ZONE_TINT: Record<string, string> = {
   centre: '#6b5b2a', downtown: '#33466a', harbour: '#1f6275', oldtown: '#6a4630', campus: '#5a3f78',
-  airport: '#4b5563', suburbs: '#3f7a45', market: '#7a4a22', parkside: '#2f6b3a',
+  airport: '#4b5563', suburbs: '#3f7a45', market: '#7a4a22', parkside: '#2f6b3a', coast: '#8a6f3c',
 };
 
 /** ECYR perf: how far the taxi's camera draws (the haze is opaque a little before this). */
@@ -153,6 +155,19 @@ export class TaxiMode {
   private mapBase: HTMLCanvasElement | null = null;
   private say: HTMLElement | null = null;
   private sayTimer = 0;
+  private sayFollow = true;
+  private sayAnchor = new THREE.Vector3();
+  private sayProj = new THREE.Vector3();
+  private gps = new Gps();
+  private gpsLineId = '';
+  private gpsVoice = (() => { try { return localStorage.getItem('taxi.gpsVoice') !== '0'; } catch { return true; } })();
+  private lastSpeakAt = -99;
+  private bestRoute = Infinity;
+  private lastReact = -99;
+  private shownMoney = 0;
+  private hudCache = new Map<string, string>();
+  private hudEls: Record<string, HTMLElement> = {};
+  private chaosSp = 0;
 
   constructor(private deps: TaxiDeps) {
     this.governor = new FrameGovernor({
@@ -178,7 +193,8 @@ export class TaxiMode {
     arrowMesh.castShadow = true;
     // tilted back towards the chase camera, so it reads as an arrow and not as a bar
     arrowMesh.rotation.x = -0.75;
-    arrowMesh.scale.setScalar(1.35);
+    // ECYR fix: at 1.35 it hid the whole road ahead (and the traffic on it) from the chase camera
+    arrowMesh.scale.setScalar(0.95);
     this.arrow.add(arrowMesh);
     this.arrow.visible = false;
 
@@ -210,55 +226,61 @@ export class TaxiMode {
    * ================================================================ */
 
   openSetup(): void {
-    void loadSportCar();
+    if (this.look.body === 'sport') void loadSportCar();
     void loadCarPack();
     this.deps.setWalking(false);
+    if (isTouchDevice()) document.documentElement.classList.add('tx-touchmode');
     this.root.style.display = '';
     this.root.innerHTML = '';
     const s = el('div', 'tx-setup');
     const sess = this.deps.session();
     const inRoom = sess.connected;
     const host = inRoom && sess.myId === 'host';
+    const chip = (attr: string, val: string, on: boolean, label: string) => `<button class="tx-chip${on ? ' on' : ''}" data-${attr}="${val}">${label}</button>`;
+    const sw = (attr: string, c: string, on: boolean) => `<button class="tx-sw${on ? ' on' : ''}" data-${attr}="${c}" style="background:${c}" aria-label="${attr} ${c}"></button>`;
+    const classBtn = inRoom ? (host ? '<button class="tx-chip" data-class="1">📱 QR</button>' : '') : this.deps.standalone ? '<button class="tx-chip" data-class="1">📱 Class (QR)</button>' : '';
+    const roomMsg = inRoom && !host ? '<div class="tx-room">⏳ Waiting for your teacher to start…</div>' : '';
     s.innerHTML = `
       <div class="tx-wrap">
-        <div class="tx-logo">${LOGO_HTML}<p>Pick up passengers, work out where they want to go, and race to the door before the clock runs out. Stop at the ❓ traffic lights and answer to turn them green!</p></div>
-        <div>
-          <div class="tx-card">
-            <h2>1 · The shift</h2>
-            <div class="tx-row"><span class="tx-lbl">Passengers to deliver</span>${[3, 5, 8, 10, 15, 20].map((n) => `<button class="tx-chip${n === this.settings.goal ? ' on' : ''}" data-goal="${n}">${n}</button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Fare clock</span>${(['relaxed', 'normal', 'crazy'] as const).map((p) => `<button class="tx-chip${p === this.settings.pace ? ' on' : ''}" data-pace="${p}">${p === 'relaxed' ? '🐢 Relaxed' : p === 'normal' ? '🚕 Normal' : '🔥 Crazy'}</button>`).join('')}</div>
-            <div class="tx-note">Drive: <b>W A S D</b> or arrows · <b>Space</b> drift · <b>Shift</b> turbo · <b>H</b> horn. On a phone, use the buttons on screen.</div>
-            ${inRoom ? `<div class="tx-room">👥 Class room: ${host ? 'you are hosting — <b>START</b> sends every student into the same shift.' : 'your teacher starts the shift for everybody. You can get your cab ready meanwhile.'}${host ? ' <button class="tx-chip" data-class="1">📱 Show the QR</button>' : ''}</div>` : this.deps.standalone ? '<div class="tx-room">👥 Drive together: <button class="tx-chip on" data-class="1">📱 Play with your class (QR)</button></div>' : '<div class="tx-room">👥 To drive together, open <b>Class (multiplayer)</b> first and share the QR code; then come back to Taxi Rush.</div>'}
-          </div>
-          <div class="tx-card" style="margin-top:16px">
-            <h2>2 · Your taxi</h2>
-            <div class="tx-row"><span class="tx-lbl">Paint</span>${PAINTS.map((c) => `<button class="tx-sw${c === this.look.color ? ' on' : ''}" data-paint="${c}" style="background:${c}" aria-label="paint ${c}"></button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Livery</span>${(['checker', 'stripe', 'flames', 'none'] as const).map((v) => `<button class="tx-chip${v === this.look.stripe ? ' on' : ''}" data-stripe="${v}">${v}</button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Rims</span>${(['chrome', 'black', 'gold'] as const).map((v) => `<button class="tx-chip${v === this.look.rims ? ' on' : ''}" data-rims="${v}">${v}</button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Roof sign</span>${(['classic', 'neon', 'none'] as const).map((v) => `<button class="tx-chip${v === this.look.roof ? ' on' : ''}" data-roof="${v}">${v}</button>`).join('')}</div>
-          </div>
-          <div class="tx-card" style="margin-top:16px">
-            <h2>3 · The driver</h2>
-            <div class="tx-row"><span class="tx-lbl">Skin</span>${DRIVER_SKINS.map((c) => `<button class="tx-sw${c === this.look.driver.skin ? ' on' : ''}" data-skin="${c}" style="background:${c}"></button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Hair</span>${DRIVER_HAIR.map((c) => `<button class="tx-sw${c === this.look.driver.hair ? ' on' : ''}" data-hair="${c}" style="background:${c}"></button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Shirt</span>${DRIVER_SHIRTS.map((c) => `<button class="tx-sw${c === this.look.driver.shirt ? ' on' : ''}" data-shirt="${c}" style="background:${c}"></button>`).join('')}</div>
-            <div class="tx-row"><span class="tx-lbl">Style</span>${DRIVER_OUTFITS.map((o) => `<button class="tx-chip${o === this.look.driver.outfit ? ' on' : ''}" data-outfit="${o ?? ''}">${o === 'cap' ? '🧢 Cap' : o === 'hat' ? '👒 Hat' : o === 'glasses' ? '🕶️ Shades' : 'None'}</button>`).join('')}</div>
-          </div>
+        <div class="tx-logo">${LOGO_HTML}</div>
+        <div class="tx-view"><div class="tx-card"><div class="tx-preview" id="txPreview"></div></div></div>
+        <div class="tx-opts-main">
+          <div class="tx-row"><span class="tx-lbl">Passengers to deliver</span>${[3, 5, 8, 10, 15, 20].map((n) => chip('goal', String(n), n === this.settings.goal, String(n))).join('')}</div>
+          <div class="tx-row sws"><span class="tx-lbl">Taxi colour</span>${PAINTS.map((c) => sw('paint', c, c === this.look.color)).join('')}</div>
+          <div class="tx-btns"><button class="tx-chip on" data-cust="1">🎨 Customize</button>${classBtn}<button class="tx-chip" data-back="1">${this.deps.standalone ? '← Games' : '← Da World'}</button></div>
         </div>
-        <div style="position:sticky;top:16px">
-          <div class="tx-card"><div class="tx-preview" id="txPreview"></div></div>
-          ${inRoom && !host ? '<div class="tx-room" style="margin-top:12px;text-align:center">⏳ Waiting for your teacher to start…</div>' : '<button class="tx-go" data-go="1">▶ START SHIFT</button>'}
-          <div style="margin-top:14px;display:flex;gap:10px"><button class="tx-back" data-back="1">${this.deps.standalone ? '← Games' : '← Da World'}</button></div>
+        <div class="tx-bottom">
+          ${roomMsg || '<button class="tx-go" data-go="1">▶ START SHIFT</button>'}
         </div>
+        ${this.custOpen ? `<div class="tx-cust"><div class="tx-card">
+          <h2>Customize</h2><button class="tx-cust-x" data-cust="0" aria-label="Close">✕</button>
+          <div class="tx-row"><span class="tx-lbl">Fare clock</span>${(['relaxed', 'normal', 'crazy'] as const).map((p) => chip('pace', p, p === this.settings.pace, p === 'relaxed' ? '🐢 Relaxed' : p === 'normal' ? '🚕 Normal' : '🔥 Crazy')).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Cab</span>${(['classic', 'sport'] as const).map((v) => chip('body', v, v === (this.look.body ?? 'classic'), v === 'classic' ? '🚕 Classic' : '🏎️ Sport')).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Livery</span>${(['checker', 'stripe', 'flames', 'none'] as const).map((v) => chip('stripe', v, v === this.look.stripe, v)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Rims</span>${(['chrome', 'black', 'gold'] as const).map((v) => chip('rims', v, v === this.look.rims, v)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Roof sign</span>${(['classic', 'neon', 'none'] as const).map((v) => chip('roof', v, v === this.look.roof, v)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Skin</span>${DRIVER_SKINS.map((c) => sw('skin', c, c === this.look.driver.skin)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Hair</span>${DRIVER_HAIR.map((c) => sw('hair', c, c === this.look.driver.hair)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Shirt</span>${DRIVER_SHIRTS.map((c) => sw('shirt', c, c === this.look.driver.shirt)).join('')}</div>
+          <div class="tx-row"><span class="tx-lbl">Style</span>${DRIVER_OUTFITS.map((o) => chip('outfit', o ?? '', o === this.look.driver.outfit, o === 'cap' ? '🧢 Cap' : o === 'hat' ? '👒 Hat' : o === 'glasses' ? '🕶️ Shades' : 'None')).join('')}</div>
+          <div class="tx-note">Drive: <b>W A S D</b> or arrows · <b>Space</b> drift · <b>Shift</b> turbo · <b>H</b> horn. On a phone, use the buttons on screen.</div>
+        </div></div>` : ''}
       </div>`;
     this.root.appendChild(s);
+    if (this.setupKey) removeEventListener('keydown', this.setupKey);
+    this.setupKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && this.custOpen && this.root.querySelector('.tx-setup')) { this.custOpen = false; this.rerenderSetup(); }
+    };
+    addEventListener('keydown', this.setupKey);
     s.addEventListener('click', (e) => {
       const b = (e.target as HTMLElement).closest('button') as HTMLButtonElement | null;
       if (!b) return;
       const d = b.dataset;
-      if (d.goal) this.settings.goal = Number(d.goal);
+      if (d.cust !== undefined) this.custOpen = d.cust === '1';
+      else if (d.goal) this.settings.goal = Number(d.goal);
       else if (d.pace) this.settings.pace = d.pace as Settings['pace'];
       else if (d.paint) this.look.color = d.paint;
+      else if (d.body) this.look.body = d.body as TaxiLook['body'];
       else if (d.stripe) this.look.stripe = d.stripe as TaxiLook['stripe'];
       else if (d.rims) this.look.rims = d.rims as TaxiLook['rims'];
       else if (d.roof) this.look.roof = d.roof as TaxiLook['roof'];
@@ -266,25 +288,29 @@ export class TaxiMode {
       else if (d.hair) this.look.driver.hair = d.hair;
       else if (d.shirt) this.look.driver.shirt = d.shirt;
       else if (d.outfit !== undefined && 'outfit' in d) this.look.driver.outfit = (d.outfit || undefined) as TaxiLook['driver']['outfit'];
-      else if (d.go) { saveLook(this.look); this.closePreview(); if (host) sess.ext({ k: 'start', goal: this.settings.goal, pace: this.settings.pace }); this.start(); return; }
+      else if (d.go) { this.custOpen = false; saveLook(this.look); this.closePreview(); if (host) sess.ext({ k: 'start', goal: this.settings.goal, pace: this.settings.pace }); this.start(); return; }
       else if (d.back) { this.closePreview(); if (this.deps.standalone) { this.deps.onHome?.(); return; } this.exit(); return; }
       else if (d.class) { this.closePreview(); this.root.style.display = 'none'; this.deps.onClass?.(); return; }
       else return;
       saveLook(this.look);
-      const keep = this.preview;
-      this.preview = null;
-      if (keep) cancelAnimationFrame(keep.raf);
-      this.openSetupKeepPreview(keep);
+      this.rerenderSetup();
     });
     this.mountPreview(null);
   }
 
+  private custOpen = false;
+  private setupKey: ((e: KeyboardEvent) => void) | null = null;
+  private previewRO: ResizeObserver | null = null;
+  private rerenderSetup(): void {
+    const keep = this.preview;
+    this.preview = null;
+    if (keep) cancelAnimationFrame(keep.raf);
+    this.openSetupKeepPreview(keep);
+  }
+
   /** Re-render the setup, reusing the preview renderer (only the cab is rebuilt). */
   private openSetupKeepPreview(keep: TaxiMode['preview']): void {
-    const scroll = this.root.querySelector('.tx-setup')?.scrollTop ?? 0;
     this.openSetup();
-    const sc = this.root.querySelector('.tx-setup');
-    if (sc) sc.scrollTop = scroll;
     if (keep && this.preview) { /* openSetup made a new one */ keep.renderer.dispose(); }
   }
 
@@ -331,9 +357,19 @@ export class TaxiMode {
     };
     loop();
     this.preview = p;
+    this.previewRO?.disconnect();
+    this.previewRO = new ResizeObserver(() => {
+      const nw = host.clientWidth, nh = host.clientHeight;
+      if (!nw || !nh) return;
+      renderer.setSize(nw, nh, false);
+      cam.aspect = nw / nh; cam.updateProjectionMatrix();
+    });
+    this.previewRO.observe(host);
   }
 
   private closePreview(): void {
+    this.previewRO?.disconnect(); this.previewRO = null;
+    if (this.setupKey && !this.root.querySelector('.tx-setup')) { removeEventListener('keydown', this.setupKey); this.setupKey = null; }
     if (!this.preview) return;
     cancelAnimationFrame(this.preview.raf);
     this.preview.model.dispose();
@@ -371,11 +407,10 @@ export class TaxiMode {
         if (this.street) return;
         const tier = this.deps.engine.quality.name;
         this.street = new TaxiTraffic(FrameGovernor.trafficDensity(tier));
-        this.governor.apply();
-        this.street.setShare(this.governor.level >= 8 ? 0.6 : 1);
+        this.governor.attachStreet();
         this.deps.engine.scene.add(this.street.group);
         this.street.setVisible(this.active);
-        this.street.clearArea(30, 16.5, 22);
+        this.street.clearArea(TAXI_START.x, TAXI_START.z, 22);
       });
     }
     this.world.setVisible(true);
@@ -386,8 +421,8 @@ export class TaxiMode {
     scene.add(this.model.group);
     // start on Main Street, by the taxi rank, facing east
     this.car = new CarBody();
-    this.car.x = 30; this.car.z = 16.5; this.car.yaw = Math.PI / 2;
-    this.street?.clearArea(30, 16.5, 22);
+    this.car.x = TAXI_START.x; this.car.z = TAXI_START.z; this.car.yaw = TAXI_START.yaw;
+    this.street?.clearArea(TAXI_START.x, TAXI_START.z, 22);
     this.money = 0; this.delivered = 0; this.teamDelivered = 0; this.missed = 0; this.asked = 0; this.correct = 0; this.time = 0;
     this.carrying = null; this.passengers = []; this.ranRed.clear(); this.lastQuiz.clear(); this.combo = 0; this.comboTime = 0;
     for (const m of this.passengerMarks.values()) this.dropMark(m);
@@ -458,12 +493,13 @@ export class TaxiMode {
     this.root.innerHTML = '';
     const h = el('div', 'tx-hud');
     h.innerHTML = `
-      <div class="tx-money big outline" id="txMoney">$0</div>
-      <div class="tx-sub" id="txSub"></div>
-      <div class="tx-timer" id="txTimer"></div>
-      <div class="tx-map"><canvas id="txMap" width="380" height="380"></canvas></div>
+      <div class="tx-tl"><div class="tx-arrow" id="txArrow"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 L94 60 L64 52 L64 96 L36 96 L36 52 L6 60 Z"/></svg></div>
+        <div class="tx-info"><div class="tx-k" id="txDK">PASSENGER</div><div class="tx-dn" id="txDN"></div><div class="tx-fare" id="txFare"></div><div class="tx-prog" id="txProg"></div></div></div>
+      <div class="tx-tc" id="txMapBox"><canvas id="txMap" width="440" height="300"></canvas></div>
+      <div class="tx-tr"><div class="tx-time" id="txTime"><span id="txTimeV">-</span><i class="tx-bonus" id="txBonus"></i></div>
+        <div class="tx-earn">EARNED <b id="txEarn">$0</b></div>
+        <div class="tx-gps" id="txGps" data-gps="1"><div class="tx-gpsl big" id="txGpsL"></div><div class="tx-gpss" id="txGpsS"></div></div></div>
       <div class="tx-mates" id="txMates"></div>
-      <div class="tx-dest" id="txDest"></div>
       <div class="tx-combo" id="txCombo"></div>
       <div class="tx-speed"><div class="n big outline" id="txSpeed">0</div><div class="u">KM/H</div><div class="tx-boost"><i id="txBoost"></i></div></div>
       <button class="tx-home" data-home="1">🏠 Exit</button>
@@ -471,24 +507,37 @@ export class TaxiMode {
     this.root.appendChild(h);
     this.hud = h;
     h.querySelector('[data-home]')!.addEventListener('click', () => this.confirmExit());
+    this.hudEls = {};
+    for (const id of ['txMap', 'txArrow', 'txDK', 'txDN', 'txFare', 'txProg', 'txTime', 'txTimeV', 'txBonus', 'txEarn', 'txGps', 'txGpsL', 'txGpsS', 'txMates', 'txCombo', 'txSpeed', 'txBoost']) this.hudEls[id] = h.querySelector('#' + (id === 'txMap' ? 'txMapBox' : id)) as HTMLElement;
+    this.hudCache.clear();
+    this.gps.reset(); this.gpsLineId = ''; this.shownMoney = this.money;
+    h.querySelector('#txGps')!.addEventListener('click', () => {
+      this.gpsVoice = !this.gpsVoice;
+      try { localStorage.setItem('taxi.gpsVoice', this.gpsVoice ? '1' : '0'); } catch { /* ignore */ }
+      if (!this.gpsVoice) window.speechSynthesis?.cancel();
+      this.callout(this.gpsVoice ? 'GPS VOICE ON' : 'GPS VOICE OFF', '#7fd8ff');
+    });
     this.mapCanvas = h.querySelector('#txMap');
     this.mapBase = this.drawMapBase();
-    if (matchMedia('(pointer: coarse)').matches) this.buildTouch(h.querySelector('#txTouch')!);
+    if (isTouchDevice()) this.buildTouch(h.querySelector('#txTouch')!);
   }
 
   private buildTouch(host: HTMLElement): void {
-    const pads: [keyof TaxiMode['touch'], string, string][] = [
-      ['l', '◀', 'left:16px'], ['r', '▶', 'left:100px'], ['drift', 'D', 'left:58px;bottom:170px'],
-      ['brake', '▼', 'right:100px'], ['gas', '▲', 'right:16px'], ['boost', '⚡', 'right:58px;bottom:170px'],
+    const pads: [keyof TaxiMode['touch'], string, string, string][] = [
+      ['l', '◀', 'pl', 'Steer left'], ['r', '▶', 'pr', 'Steer right'],
+      ['brake', 'R', 'pv rv', 'Brake / reverse'], ['gas', 'D', 'pd d', 'Accelerate'],
     ];
-    for (const [k, label, pos] of pads) {
-      const b = el('button', 'tx-pad', label);
-      b.setAttribute('style', pos);
-      const on = (v: boolean) => (e: Event) => { e.preventDefault(); this.touch[k] = v; b.classList.toggle('on', v); };
-      b.addEventListener('pointerdown', on(true));
-      b.addEventListener('pointerup', on(false));
-      b.addEventListener('pointercancel', on(false));
-      b.addEventListener('pointerleave', on(false));
+    for (const [k, label, cls, aria] of pads) {
+      const b = el('button', 'tx-pad ' + cls, label);
+      b.setAttribute('aria-label', aria);
+      const active = new Set<number>();
+      const set = () => { const v = active.size > 0; this.touch[k] = v; b.classList.toggle('on', v); };
+      b.addEventListener('pointerdown', (e) => { e.preventDefault(); active.add(e.pointerId); try { b.setPointerCapture(e.pointerId); } catch { /* ignore */ } set(); });
+      const up = (e: PointerEvent) => { active.delete(e.pointerId); set(); };
+      b.addEventListener('pointerup', up);
+      b.addEventListener('pointercancel', up);
+      b.addEventListener('lostpointercapture', up);
+      b.addEventListener('contextmenu', (e) => e.preventDefault());
       host.appendChild(b);
     }
   }
@@ -514,41 +563,134 @@ export class TaxiMode {
     setTimeout(() => c.remove(), 1500);
   }
 
-  private bubble(text: string): void {
+  /** A speech bubble anchored over the passenger (follows the cab) or over a fixed spot (they have got out). */
+  private bubble(text: string, secs = 2.8, follow = true): void {
     this.say?.remove();
-    this.say = el('div', 'tx-say', text);
+    this.say = el('div', 'tx-bubble', text);
     this.root.appendChild(this.say);
-    this.sayTimer = 5;
+    this.sayTimer = secs;
+    this.sayFollow = follow;
+    this.sayAnchor.set(this.car.x, 1.9, this.car.z);
+    this.placeBubble();
+  }
+
+  private placeBubble(): void {
+    const b = this.say; if (!b) return;
+    if (this.sayFollow) this.sayAnchor.set(this.car.x, 1.9, this.car.z);
+    const cam = this.deps.engine.camera;
+    const v = this.sayProj.copy(this.sayAnchor).project(cam);
+    const behind = v.z > 1 || Math.abs(v.x) > 1.2 || Math.abs(v.y) > 1.2;
+    b.style.opacity = behind ? '0' : this.sayTimer < 0.25 ? String(Math.max(0, this.sayTimer / 0.25)) : '1';
+    const w = innerWidth, h = innerHeight;
+    const x = Math.max(8, Math.min(w - 8, (v.x * 0.5 + 0.5) * w)), y = (-v.y * 0.5 + 0.5) * h;
+    // never over the minimap: sit just below it if the cab is high on the screen
+    const mapB = this.hudEls.txMap ? this.hudEls.txMap.getBoundingClientRect().bottom : 0;
+    const yy = Math.max(y, mapB + b.offsetHeight + 16);
+    b.style.transform = `translate(${x.toFixed(1)}px, ${yy.toFixed(1)}px) translate(-50%, -100%)`;
+  }
+
+  /** The passenger reacts (arrival, crash, wrong turn); never twice in a few seconds. */
+  private react(key: ReactionKey, secs = 2.6, follow = true, force = false): void {
+    if (!force && this.time - this.lastReact < 5) return;
+    this.lastReact = this.time;
+    const r = pick(REACTIONS[key], this.delivered * 13 + this.asked * 5 + Math.floor(this.time));
+    this.bubble(esc(r.text), secs, follow);
+  }
+
+  private setText(id: string, v: string): void {
+    if (this.hudCache.get(id) === v) return;
+    this.hudCache.set(id, v);
+    const e = this.hudEls[id]; if (e) e.textContent = v;
+  }
+  private setHtml(id: string, v: string): void {
+    if (this.hudCache.get(id) === v) return;
+    this.hudCache.set(id, v);
+    const e = this.hudEls[id]; if (e) e.innerHTML = v;
   }
 
   private updateHud(): void {
     const h = this.hud; if (!h || !this.world) return;
-    (h.querySelector('#txMoney') as HTMLElement).textContent = '$' + this.money;
-    const done = this.deps.session().connected ? this.teamDelivered : this.delivered;
-    (h.querySelector('#txSub') as HTMLElement).innerHTML = `<span>🧍 ${done} / ${this.settings.goal}</span><span>⏱ ${fmt(this.time)}</span><span>✅ ${this.correct}/${this.asked}</span>`;
-    const timer = h.querySelector('#txTimer') as HTMLElement;
-    if (this.carrying && this.destKnown) {
-      const t = Math.max(0, Math.ceil(this.fareTime));
-      timer.innerHTML = `<div class="n big outline${t <= 5 ? ' hot' : ''}">${t}</div><div class="l">SECONDS LEFT</div>`;
-    } else timer.innerHTML = `<div class="l" style="font-size:18px;padding-top:12px">🚕 PICK UP A PASSENGER! FOLLOW THE ARROW</div>`;
-    const dest = h.querySelector('#txDest') as HTMLElement;
-    if (this.carrying && this.destKnown) {
-      const p = this.world.places[this.carrying.dest];
-      const d = Math.hypot(p.x - this.car.x, p.z - this.car.z) * 1.5;
-      dest.style.display = '';
-      dest.innerHTML = `<span class="e">${p.emoji}</span><span><div class="t">${esc(DISTRICT_LABEL[p.district])}</div><div class="nm">${esc(p.name)}</div></span><span class="d">${Math.round(d)} m</span>`;
-    } else dest.style.display = 'none';
-    (h.querySelector('#txSpeed') as HTMLElement).textContent = String(Math.round(Math.abs(this.car.speed) * 5.4));
-    const combo = h.querySelector('#txCombo') as HTMLElement | null;
-    if (combo) {
-      const on = this.combo > 0;
-      combo.style.opacity = on ? '1' : '0';
-      if (on) combo.innerHTML = `<div class="t big outline">${this.comboLabel}!</div><div class="c"><b class="big outline">${this.combo}</b> COMBO · +$${Math.min(10, this.combo)}</div>`;
+    const E = this.hudEls;
+    const sess = this.deps.session();
+    const done = sess.connected ? this.teamDelivered : this.delivered;
+    const dest = this.carrying && this.destKnown ? this.world.places[this.carrying.dest] : null;
+    const wait = this.carrying ? null : this.nearestWaiting();
+    const tgt = dest ?? wait;
+    // top left: arrow (relative to the heading), what and where, the fare
+    if (tgt) {
+      const wp = this.world.waypoint(this.car.x, this.car.z, this.car.yaw, tgt.x, tgt.z);
+      const a = Gps.bearing(this.car, wp.x, wp.z);
+      E.txArrow.style.transform = `rotate(${a.toFixed(3)}rad)`;
     }
-    (h.querySelector('#txBoost') as HTMLElement).style.width = Math.round(this.car.boostFuel * 100) + '%';
-    const mates = h.querySelector('#txMates') as HTMLElement;
-    mates.innerHTML = [...this.remotes.values()].map((r) => `<span>🚕 ${esc(r.name)} · $${r.money}</span>`).join('');
+    E.txArrow.classList.toggle('pick', !dest);
+    const dm = tgt ? Math.round(Math.hypot(tgt.x - this.car.x, tgt.z - this.car.z) * 1.5) : 0;
+    if (dest) {
+      this.setText('txDK', 'DESTINATION');
+      this.setText('txDN', dest.emoji + ' ' + dest.name);
+      this.setText('txFare', `FARE $${this.fareOf(this.carrying!)} · ${dm} m`);
+    } else if (this.carrying) {
+      this.setText('txDK', 'PASSENGER ABOARD');
+      this.setText('txDN', 'Where to?');
+      this.setText('txFare', '');
+    } else {
+      this.setText('txDK', 'NEXT FARE');
+      this.setText('txDN', wait ? 'Pick up a passenger' : 'Looking for fares…');
+      this.setText('txFare', wait ? `${dm} m · follow the arrow` : '');
+    }
+    this.setText('txProg', `🧍 ${done}/${this.settings.goal}  ✅ ${this.correct}/${this.asked}`);
+    // top right: time, earnings (counting up), the GPS under them
+    const live = !!(this.carrying && this.destKnown);
+    const t = Math.max(0, this.fareTime);
+    this.setText('txTimeV', live ? `${Math.floor(t / 60)}'${String(Math.floor(t % 60)).padStart(2, '0')}"${String(Math.floor((t % 1) * 100)).padStart(2, '0')}` : fmt(this.time));
+    E.txTime.classList.toggle('hot', live && t <= 10);
+    E.txTime.classList.toggle('idle', !live);
+    if (this.shownMoney !== this.money) {
+      const up = this.money > this.shownMoney;
+      this.shownMoney += (this.money - this.shownMoney) * 0.12;
+      if (Math.abs(this.money - this.shownMoney) < 0.6) this.shownMoney = this.money;
+      if (up && !E.txEarn.classList.contains('pop')) { E.txEarn.classList.add('pop'); setTimeout(() => E.txEarn.classList.remove('pop'), 350); }
+    }
+    this.setText('txEarn', '$' + Math.round(this.shownMoney));
+    this.updateGps(live);
+    this.setText('txSpeed', String(Math.round(Math.abs(this.car.speed) * 5.4)));
+    const combo = E.txCombo;
+    const on = this.combo > 0;
+    combo.style.opacity = on ? '1' : '0';
+    if (on) this.setHtml('txCombo', `<div class="t big outline">${this.comboLabel}!</div><div class="c"><b class="big outline">${this.combo}</b> COMBO · +$${Math.min(10, this.combo)}</div>`);
+    const bw = Math.round(this.car.boostFuel * 100) + '%';
+    if (this.hudCache.get('boost') !== bw) { this.hudCache.set('boost', bw); E.txBoost.style.width = bw; }
+    this.setHtml('txMates', [...this.remotes.values()].map((r) => `<span>🚕 ${esc(r.name)} · $${r.money}</span>`).join(''));
     this.drawMap();
+  }
+
+  private flashBonus(txt: string): void {
+    const e = this.hudEls.txBonus; if (!e) return;
+    e.textContent = txt; e.classList.remove('go'); void e.offsetWidth; e.classList.add('go');
+  }
+
+  private fareOf(p: Passenger): number {
+    const d = this.world!.places[p.dest];
+    return Math.round(8 + Math.hypot(d.x - p.x, d.z - p.z) / 5);
+  }
+
+  /** The big GPS phrase: only rewritten when the manoeuvre changes. */
+  private updateGps(live: boolean): void {
+    const E = this.hudEls, w = this.world!;
+    if (!live || !this.carrying) {
+      if (this.gpsLineId) { this.gpsLineId = ''; this.gps.reset(); E.txGps.classList.remove('on'); }
+      return;
+    }
+    const d = w.places[this.carrying.dest];
+    const { line, changed } = this.gps.update(w, this.car, d, this.time, this.carrying.id);
+    if (!changed && this.gpsLineId === line.id) return;
+    this.gpsLineId = line.id;
+    E.txGpsL.textContent = line.text.toUpperCase();
+    E.txGpsS.textContent = line.es ?? '';
+    E.txGps.classList.remove('on'); void E.txGps.offsetWidth; E.txGps.classList.add('on');
+    E.txGps.dataset.key = line.key;
+    // optional voice: never over another utterance, never faster than every few seconds
+    const syn = window.speechSynthesis;
+    if (this.gpsVoice && syn && !syn.speaking && this.time - this.lastSpeakAt > 3.5) { this.lastSpeakAt = this.time; this.deps.speak(line.text); }
   }
 
   /* ---- minimap ---- */
@@ -559,13 +701,13 @@ export class TaxiMode {
   private drawMapBase(): HTMLCanvasElement {
     if (mapBaseCache) return mapBaseCache;
     const s = MAP_S, P = MAP_PAD;
-    const W = MAX_X - MIN_X + P * 2, H = MAX_Z - MIN_Z + P * 2;
+    const W = MAP_MAX_X - MAP_MIN_X + P * 2, H = MAP_MAX_Z - MAP_MIN_Z + P * 2;
     const cv = document.createElement('canvas');
     cv.width = W * s; cv.height = H * s;
     const c = cv.getContext('2d')!;
-    const X = (x: number) => (x - MIN_X + P) * s, Z = (z: number) => (z - MIN_Z + P) * s;
+    const X = (x: number) => (x - MAP_MIN_X + P) * s, Z = (z: number) => (z - MAP_MIN_Z + P) * s;
     c.fillStyle = '#26472e'; c.fillRect(0, 0, cv.width, cv.height);
-    c.fillStyle = '#2f8fc4'; c.fillRect(X(MAX_X) - 4, 0, cv.width, cv.height); // the sea, east of the harbour
+    paintCoastMap(c, X, Z, s, false); // the sea, the beach and the boardwalk (world.ts)
     // districts: every block tinted by where it is
     const sums = new Map<string, { x: number; z: number; n: number }>();
     for (let k = K_MIN - 1; k <= K_MAX; k++) {
@@ -584,6 +726,7 @@ export class TaxiMode {
     // the highway: six lanes, a yellow median
     c.fillStyle = '#5a6272'; c.fillRect(X(MIN_X), Z(HWY_Z0), (MAX_X - MIN_X) * s, HWY_W * s);
     c.fillStyle = '#f2c230'; c.fillRect(X(MIN_X), Z(HWY_MID) - 1, (MAX_X - MIN_X) * s, 2);
+    paintCoastMap(c, X, Z, s, true); // Ocean Drive and the pier
     c.strokeStyle = 'rgba(255,210,31,.55)'; c.lineWidth = 3; c.setLineDash([10, 8]);
     c.strokeRect(X(VX(-1) + 6), Z(HZ(-1) + 6), (VX(4) - VX(-1) - 6) * s, (HZ(5) - HZ(-1) - 6) * s);
     c.setLineDash([]);
@@ -599,14 +742,14 @@ export class TaxiMode {
 
   private drawMap(): void {
     const cv = this.mapCanvas, base = this.mapBase; if (!cv || !base || !this.world) return;
-    const c = cv.getContext('2d')!, s = MAP_S, R = 70; // world units shown each side
-    const k = cv.width / (R * 2 * s), ang = this.car.yaw - Math.PI;
+    const c = cv.getContext('2d')!, s = MAP_S, R = 75; // world units shown each side
+    const k = cv.width / (R * 2 * s), ang = 0; // north up: labels stay upright, the cab's arrow turns
     c.save();
-    c.fillStyle = '#10131a'; c.fillRect(0, 0, cv.width, cv.height);
+    c.fillStyle = '#2b4a6b'; c.fillRect(0, 0, cv.width, cv.height);
     c.translate(cv.width / 2, cv.height / 2);
     c.rotate(ang);
     c.scale(k, k);
-    c.drawImage(base, -(this.car.x - MIN_X + MAP_PAD) * s, -(this.car.z - MIN_Z + MAP_PAD) * s);
+    c.drawImage(base, -(this.car.x - MAP_MIN_X + MAP_PAD) * s, -(this.car.z - MAP_MIN_Z + MAP_PAD) * s);
     const dot = (x: number, z: number, col: string, r: number) => {
       c.fillStyle = col; c.strokeStyle = '#0b0e14'; c.lineWidth = 2.5;
       c.beginPath(); c.arc((x - this.car.x) * s, (z - this.car.z) * s, r, 0, 7); c.fill(); c.stroke();
@@ -615,21 +758,35 @@ export class TaxiMode {
     for (const L of this.world.lights) if (L.red && !L.cleared) dot(L.x, L.z, '#ff4a3d', 5);
     for (const r of this.remotes.values()) dot(r.x, r.z, '#ff7af6', 7);
     const dest = this.carrying && this.destKnown ? this.world.places[this.carrying.dest] : null;
-    if (dest) { dot(dest.x, dest.z, '#7dff6a', 13); c.strokeStyle = '#fff'; c.lineWidth = 3; c.beginPath(); c.arc((dest.x - this.car.x) * s, (dest.z - this.car.z) * s, 20, 0, 7); c.stroke(); }
+    if (dest && this.gps.route.length > 1) {
+      // the route to the door, cyan
+      c.strokeStyle = '#38d6ff'; c.lineWidth = 5; c.lineJoin = 'round'; c.beginPath();
+      this.gps.route.forEach((q, i) => { const X = (q.x - this.car.x) * s, Z = (q.z - this.car.z) * s; if (i) c.lineTo(X, Z); else c.moveTo(X, Z); });
+      c.stroke();
+    }
+    if (dest) {
+      // the chequered pin
+      const X = (dest.x - this.car.x) * s, Z = (dest.z - this.car.z) * s, q = 7;
+      c.save(); c.translate(X, Z); c.rotate(-ang);
+      for (let i = 0; i < 4; i++) { c.fillStyle = (i % 3 === 0) ? '#fff' : '#0b0b0c'; c.fillRect((i % 2 - 1) * q, (Math.floor(i / 2) - 1) * q, q, q); }
+      c.strokeStyle = '#ffd21a'; c.lineWidth = 2.5; c.strokeRect(-q, -q, q * 2, q * 2);
+      c.restore();
+    }
     c.restore();
     // a destination off the map: an arrow on the rim, pointing at it
     if (dest) {
       const rx = (dest.x - this.car.x) * s * k, rz = (dest.z - this.car.z) * s * k;
       const sx = rx * Math.cos(ang) - rz * Math.sin(ang), sy = rx * Math.sin(ang) + rz * Math.cos(ang);
-      const dist = Math.hypot(sx, sy), edge = cv.width / 2 - 16;
-      if (dist > edge) {
-        const ux = sx / dist, uy = sy / dist, bx = cv.width / 2 + ux * edge, by = cv.height / 2 + uy * edge;
+      const hw = cv.width / 2 - 18, hh = cv.height / 2 - 18;
+      if (Math.abs(sx) > hw || Math.abs(sy) > hh) {
+        const dist = Math.hypot(sx, sy), ux = sx / dist, uy = sy / dist, tk = Math.min(hw / Math.max(1e-6, Math.abs(ux)), hh / Math.max(1e-6, Math.abs(uy))), bx = cv.width / 2 + ux * tk, by = cv.height / 2 + uy * tk;
         c.fillStyle = '#7dff6a'; c.strokeStyle = '#0b0e14'; c.lineWidth = 3;
         c.beginPath(); c.moveTo(bx + ux * 11, by + uy * 11); c.lineTo(bx - ux * 7 - uy * 9, by - uy * 7 + ux * 9); c.lineTo(bx - ux * 7 + uy * 9, by - uy * 7 - ux * 9); c.closePath(); c.fill(); c.stroke();
       }
     }
     c.fillStyle = '#ffd21f'; c.strokeStyle = '#0b0e14'; c.lineWidth = 3;
-    c.beginPath(); c.moveTo(cv.width / 2, cv.height / 2 - 14); c.lineTo(cv.width / 2 + 10, cv.height / 2 + 10); c.lineTo(cv.width / 2 - 10, cv.height / 2 + 10); c.closePath(); c.fill(); c.stroke();
+    c.save(); c.translate(cv.width / 2, cv.height / 2); c.rotate(Math.PI - this.car.yaw);
+    c.beginPath(); c.moveTo(0, -14); c.lineTo(10, 10); c.lineTo(-10, 10); c.closePath(); c.fill(); c.stroke(); c.restore();
   }
 
   /* ================================================================ *
@@ -685,7 +842,7 @@ export class TaxiMode {
     for (const p of this.passengers) {
       if (p.taker || this.passengerMarks.has(p.id)) continue;
       const g = new THREE.Group();
-      const person = new Character({ shirt: SHIRTS[p.look % SHIRTS.length], pants: '#2d3a5a', skin: SKINS[(p.look >> 3) % SKINS.length], hair: HAIRS[(p.look >> 5) % HAIRS.length], outfit: (['cap', 'glasses', 'backpack', undefined] as const)[(p.look >> 7) % 4] }, 0.76);
+      const person = new Character({ shirt: SHIRTS[p.look % SHIRTS.length], pants: '#2d3a5a', skin: SKINS[(p.look >> 3) % SKINS.length], hair: HAIRS[(p.look >> 5) % HAIRS.length], outfit: (['cap', 'glasses', 'backpack', undefined] as const)[(p.look >> 7) % 4] }, 0.95);
       person.group.position.y = 0.16;
       const col = this.fareColor(p);
       const ring = new THREE.Mesh(new THREE.RingGeometry(2.4, 3.1, 40).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.9, depthWrite: false }));
@@ -740,9 +897,12 @@ export class TaxiMode {
     this.audio.play('pickup');
     this.callout('HEY, TAXI!');
     this.car.vx *= 0.3; this.car.vz *= 0.3;
+    // ECYR: the fare climbs onto the back bench (a friend comes along now and then)
+    const who = (n: number) => ({ shirt: SHIRTS[n % SHIRTS.length], pants: '#2d3a5a', skin: SKINS[(n >> 3) % SKINS.length], hair: HAIRS[(n >> 5) % HAIRS.length], outfit: (['cap', 'glasses', undefined, undefined] as const)[(n >> 7) % 4] });
+    this.model?.boardPassengers(p.look % 3 === 0 ? [who(p.look), who(p.look * 7 + 3)] : [who(p.look)]);
     const places = this.world.places;
     const right = places[p.dest];
-    const others = shuffle(places.filter((q) => q.type !== right.type)).slice(0, 2);
+    const others = shuffle(places.filter((q) => q.type !== right.type && !(/theatre/.test(q.type) && /theatre/.test(right.type)))).slice(0, 2);
     const opts = shuffle([right, ...others]);
     const dist = Math.hypot(right.x - p.x, right.z - p.z);
     this.fareTime = Math.max(16, Math.min(110, dist / 9 * PACE[this.settings.pace] + 8));
@@ -758,8 +918,11 @@ export class TaxiMode {
       onDone: (ok) => {
         this.destKnown = true;
         if (ok) { this.money += 5; this.callout('+$5 GOOD ENGLISH!', '#7dff6a'); }
-        this.bubble(`🧳 “Take me to <b>${esc(right.name)}</b>, please!”`);
-        this.deps.speak(`Take me to ${right.name}, please!`);
+        const line = pick(PICKUP_LINES, p.id * 17 + this.delivered).text.replace('{place}', right.name);
+        this.bubble(`🧳 ${esc(line)}`, 4.2);
+        this.deps.speak(line);
+        this.lastSpeakAt = this.time;
+        this.bestRoute = Infinity; this.gps.reset(); this.gpsLineId = '';
       },
     });
   }
@@ -774,7 +937,9 @@ export class TaxiMode {
     this.delivered++;
     this.audio.play('cash');
     this.callout(tip > 15 ? `CRAZY! +$${fare + tip}` : `+$${fare + tip}`, '#7dff6a');
-    this.bubble(['Thanks! Keep the change! 💵', 'Wow, that was fast! 😄', 'Great driving! See you! 👋', 'Perfect, thank you! 🙌'][this.delivered % 4]);
+    this.sayFollow = false;
+    this.react('onTime', 2.6, false, true);
+    this.model?.alight(true);
     this.carrying = null;
     this.driftTime = 0;
     const s = this.deps.session();
@@ -788,10 +953,11 @@ export class TaxiMode {
     if (!this.carrying) return;
     const p = this.carrying;
     this.carrying = null;
+    this.model?.alight(false);
     this.missed++;
     this.audio.play('wrong');
     this.callout('TOO LATE!', '#ff4a3d');
-    this.bubble('😤 “I’m late! I’ll walk!”');
+    this.react('late', 2.6, false, true);
     const s = this.deps.session();
     if (s.connected && !this.isAuthority()) s.ext({ k: 'lost', id: p.id });
     else { this.passengers = this.passengers.filter((q) => q.id !== p.id); this.topUpPassengers(); this.syncPassengers(); }
@@ -843,7 +1009,7 @@ export class TaxiMode {
         if (ok) {
           L.red = false; L.cleared = true; L.timer = 8; L.hold = 0;
           this.money += 10;
-          if (this.carrying) this.fareTime += 4;
+          if (this.carrying) { this.fareTime += 4; this.flashBonus('+4s'); }
           this.callout(this.carrying ? 'GREEN! +$10 +4s' : 'GREEN! +$10', '#7dff6a');
         } else {
           // a wrong answer costs money, and the light still lets the cab through
@@ -961,7 +1127,8 @@ export class TaxiMode {
         if (this.isAuthority()) return;
         this.passengers = (d.list as Passenger[]) || [];
         this.teamDelivered = Number(d.done) || 0;
-        if (d.goal) this.settings.goal = Number(d.goal);
+        if (d.cust !== undefined) this.custOpen = d.cust === '1';
+      else if (d.goal) this.settings.goal = Number(d.goal);
         this.refreshMarks();
         if (this.active && this.teamDelivered >= this.settings.goal) setTimeout(() => this.results(true), 800);
         break;
@@ -1014,39 +1181,45 @@ export class TaxiMode {
    * Drifting with a fare aboard counts too. A crash ends the combo.
    */
   private trafficChaos(dt: number): void {
-    const sp = Math.hypot(this.car.vx, this.car.vz);
-    const hit = (c: StreetCar, knock: (vx: number, vz: number) => void): void => {
-      if (c.flying) return;
-      const dx = this.car.x - c.x, dz = this.car.z - c.z;
-      if (Math.abs(dx) > 7 || Math.abs(dz) > 7) return;
-      const sn = Math.sin(c.yaw), co = Math.cos(c.yaw);
-      const lx = dx * co - dz * sn, lz = dx * sn + dz * co;
-      const hx = c.wid / 2 + 0.62, hz = c.len / 2 + 1.0;
-      if (Math.abs(lx) < hx && Math.abs(lz) < hz) {
-        if (sp > 7) {
-          knock(this.car.vx * 1.1, this.car.vz * 1.1);
-          this.car.vx *= 0.8; this.car.vz *= 0.8;
-          this.audio.play('crash');
-          this.smoke.sparks((this.car.x + c.x) / 2, (this.car.z + c.z) / 2, 18);
-          if (this.combo > 1) this.callout('CRASH! COMBO LOST', '#ff8a3d');
-          this.combo = 0; this.comboTime = 0;
-        } else if (this.car.push(c.x, c.z, Math.min(hx, hz) + 0.4) && sp > 4) this.audio.play('crash');
-      } else if (sp > 13 && Math.abs(lx) < hx + 1.5 && Math.abs(lz) < hz + 0.6 && this.time - c.grazed > 2) {
-        c.grazed = this.time;
-        this.bumpCombo('CRAZY THROUGH');
-      }
-    };
+    this.chaosSp = Math.hypot(this.car.vx, this.car.vz);
+    const sp = this.chaosSp;
     const street = this.street;
-    if (street) for (const c of street.cars) hit(c, (vx, vz) => street.knock(c, vx, vz));
+    if (street) for (const c of street.cars) this.chaosHit(c, 0);
     const tr = this.deps.traffic;
-    const knockCity = tr?.knock;
-    if (tr?.cars && knockCity) for (const c of tr.cars()) hit(c, (vx, vz) => knockCity.call(tr, c, vx, vz));
+    if (tr?.cars && tr.knock) for (const c of tr.cars()) this.chaosHit(c, 1);
     // drifting with a passenger: a tip for every second of it
     if (this.car.drifting && this.carrying && sp > 9) {
       this.driftTick += dt;
       if (this.driftTick > 1) { this.driftTick = 0; this.bumpCombo('CRAZY DRIFT'); }
     } else this.driftTick = 0;
     if (this.comboTime > 0) { this.comboTime -= dt; if (this.comboTime <= 0) this.combo = 0; }
+  }
+
+  /** One car against the cab. kind 0 = the taxi game's own street traffic, 1 = the walking city's (no per-frame closures). */
+  private chaosHit(c: StreetCar & Partial<TrafficCar>, kind: 0 | 1): void {
+    if (c.flying) return;
+    const dx = this.car.x - c.x, dz = this.car.z - c.z;
+    if (Math.abs(dx) > 7 || Math.abs(dz) > 7) return;
+    const sp = this.chaosSp;
+    const sn = Math.sin(c.yaw), co = Math.cos(c.yaw);
+    const lx = dx * co - dz * sn, lz = dx * sn + dz * co;
+    const hx = c.wid / 2 + 0.62, hz = c.len / 2 + 1.0;
+    if (Math.abs(lx) < hx && Math.abs(lz) < hz) {
+      if (sp > 7) {
+        const kvx = this.car.vx * 1.1, kvz = this.car.vz * 1.1;
+        if (kind === 0) this.street!.knock(c as TrafficCar, kvx, kvz);
+        else { const tr = this.deps.traffic!; tr.knock!(c, kvx, kvz); }
+        this.car.vx *= 0.8; this.car.vz *= 0.8;
+        this.audio.play('crash');
+        this.smoke.sparks((this.car.x + c.x) / 2, (this.car.z + c.z) / 2, 18);
+        if (this.combo > 1) this.callout('CRASH! COMBO LOST', '#ff8a3d');
+        this.combo = 0; this.comboTime = 0;
+        if (this.carrying && this.destKnown) this.react('crash');
+      } else if (this.car.push(c.x, c.z, Math.min(hx, hz) + 0.4) && sp > 4) this.audio.play('crash');
+    } else if (sp > 13 && Math.abs(lx) < hx + 1.5 && Math.abs(lz) < hz + 0.6 && this.time - c.grazed > 2) {
+      c.grazed = this.time;
+      this.bumpCombo('CRAZY THROUGH');
+    }
   }
 
   private bumpCombo(label: string): void {
@@ -1067,7 +1240,7 @@ export class TaxiMode {
     if (!this.active || !this.world || !this.model) return;
     this.governor.tick(this.paused);
     const { engine, environment, dayNight } = this.deps;
-    const sky = dayNight.current();
+    const sky = this.world.tintSky(dayNight.current(), engine.quality.name);
     environment.apply(sky);
     engine.post.setMood(sky.night);
     setNightGlow(sky.night);
@@ -1079,7 +1252,7 @@ export class TaxiMode {
     if (!this.paused) {
       this.time += dt;
       const { hit } = this.car.update(dt, inp, this.world);
-      if (hit) { this.audio.play('crash'); }
+      if (hit) { this.audio.play('crash'); if (this.carrying && this.destKnown && Math.abs(this.car.speed) > 6) this.react('crash'); }
       if (this.deps.traffic && !this.deps.traffic.cars) for (const p of this.deps.traffic.carPositions()) if (this.car.push(p.x, p.z, 1.9) && Math.hypot(this.car.vx, this.car.vz) > 6) this.audio.play('crash');
       this.updateAmbient(dt);
       this.trafficChaos(dt);
@@ -1099,6 +1272,12 @@ export class TaxiMode {
         if (Math.hypot(dest.x - this.car.x, dest.z - this.car.z) < 5.5 && Math.abs(this.car.speed) < 6) this.deliver();
         else if (this.fareTime <= 0) this.failFare();
         else if (this.fareTime < 5.5 && Math.ceil(this.fareTime) !== Math.ceil(this.fareTime + dt)) this.audio.play('tick');
+        else if (this.destKnown) {
+          // driving away from the door for a good while: the passenger notices
+          const md = Math.abs(dest.x - this.car.x) + Math.abs(dest.z - this.car.z);
+          if (md < this.bestRoute) this.bestRoute = md;
+          else if (md > this.bestRoute + 34 && Math.abs(this.car.speed) > 6) { this.bestRoute = md; this.react('wrongTurn'); }
+        }
       } else this.tryPickup();
       this.checkLights();
       this.sendCar();
@@ -1113,9 +1292,8 @@ export class TaxiMode {
     const g = this.model.group;
     g.position.set(this.car.x, 0, this.car.z);
     g.rotation.y = this.car.yaw;
-    const lean = Math.max(-0.08, Math.min(0.08, -this.car.steer * Math.abs(this.car.speed) / 120));
-    g.rotation.z = lean;
-    this.model.animate(this.car.speed, this.car.steer, dt, inp.brake > 0 && this.car.speed > 0.5, sky.night);
+    // roll, pitch, springs and steering are the model's own (smoothed, still when parked)
+    this.model.animate(this.car.speed, this.car.steer, dt, inp.brake > 0 && this.car.speed > 0.5, sky.night, this.car.drifting);
 
     // the arrow
     const target = this.carrying ? (this.destKnown ? this.world.places[this.carrying.dest] : null) : this.nearestWaiting();
@@ -1167,11 +1345,11 @@ export class TaxiMode {
     const shake = this.car.bump < 0.25 ? (0.25 - this.car.bump) * 0.9 : 0;
     cam.position.set(this.camPos.x + (Math.random() - 0.5) * shake, this.camPos.y + (Math.random() - 0.5) * shake, this.camPos.z);
     cam.lookAt(this.camLook);
-    const fov = 56 + Math.min(18, sp * 0.55) + (inp.boost && this.car.boostFuel > 0.02 ? 6 : 0);
+    const fov = cabFov(sp, inp.boost && this.car.boostFuel > 0.02);
     if (Math.abs(cam.fov - fov) > 0.05) { cam.fov += (fov - cam.fov) * Math.min(1, dt * 4); cam.updateProjectionMatrix(); }
     environment.follow(elapsed, new THREE.Vector3(this.car.x, 0, this.car.z));
 
-    if (this.say && (this.sayTimer -= dt) <= 0) { this.say.remove(); this.say = null; }
+    if (this.say) { if ((this.sayTimer -= dt) <= 0) { this.say.remove(); this.say = null; } else this.placeBubble(); }
     this.smoke.update(dt);
     this.updateHud();
   }
@@ -1185,6 +1363,10 @@ export class TaxiMode {
     const right = k.has('d') || k.has('arrowright') || t.r;
     return { throttle: up ? 1 : 0, brake: down ? 1 : 0, steer: (right ? 1 : 0) - (left ? 1 : 0), handbrake: k.has(' ') || t.drift, boost: k.has('shift') || t.boost };
   }
+}
+
+function isTouchDevice(): boolean {
+  return matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
 
 function fmt(t: number): string {

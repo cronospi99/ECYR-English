@@ -13,7 +13,7 @@ import { GROUND } from './buildings';
 import type { Zone } from './buildings';
 
 const DENSITY: Record<Zone, number> = {
-  centre: 1, oldtown: 1, downtown: 0.8, market: 0.6, campus: 0.5, parkside: 0.5, suburbs: 0.35, harbour: 0.12, airport: 0.12,
+  centre: 1, oldtown: 1, downtown: 0.8, market: 0.6, campus: 0.5, parkside: 0.5, suburbs: 0.35, harbour: 0.12, airport: 0.12, coast: 0.5,
 };
 
 const WOOD = rgb('#8a5a3a'), IRON = rgb('#30343a'), BIN = rgb('#3d5a46'), HYD = rgb('#c8302a'), GLASS = rgb('#9fc4d8');

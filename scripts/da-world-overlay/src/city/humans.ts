@@ -279,6 +279,59 @@ function womanParts(scene: THREE.Object3D): Map<string, PartSpec> {
 
 /* --------------------------------------------------------------- people -- */
 
+/**
+ * Where a seated person's body goes, in the Human root's own space (rig units:
+ * y up, z forward, soles at y 0). The hips are put there, the torso leans back by
+ * `recline` radians and the hands and feet reach their targets (two-bone IK).
+ */
+export interface SeatPose {
+  hips: THREE.Vector3;
+  /** Left hand, right hand (the person's own left is +x). */
+  hands: [THREE.Vector3, THREE.Vector3];
+  feet: [THREE.Vector3, THREE.Vector3];
+  recline: number;
+}
+
+/* Scratch space for the seated pose: nothing is allocated per frame. */
+const _v = [0, 1, 2, 3, 4, 5, 6, 7].map(() => new THREE.Vector3());
+const _q = [0, 1, 2].map(() => new THREE.Quaternion());
+const _rootQ = new THREE.Quaternion();
+const POLE = new THREE.Vector3();
+const TARGET = new THREE.Vector3();
+const SIDE = new THREE.Vector3(), UP = new THREE.Vector3(), FWD = new THREE.Vector3();
+
+/** Turn `bone` (in world space) so that the world direction `from` points along `to`. */
+function aimBone(bone: THREE.Object3D, from: THREE.Vector3, to: THREE.Vector3): void {
+  if (from.lengthSq() < 1e-12 || to.lengthSq() < 1e-12) return;
+  const delta = _q[0].setFromUnitVectors(from.normalize(), to.normalize());
+  const parentQ = bone.parent ? bone.parent.getWorldQuaternion(_q[1]) : _q[1].identity();
+  // local' = parent^-1 · delta · parent · local
+  const inv = _q[2].copy(parentQ).invert();
+  bone.quaternion.premultiply(parentQ).premultiply(delta).premultiply(inv);
+  bone.updateMatrixWorld(true);
+}
+
+/** Two-bone IK: a (shoulder/hip) → b (elbow/knee) → c (hand/foot) towards `target`, bending towards `pole`. */
+function reach(a: THREE.Object3D, b: THREE.Object3D, c: THREE.Object3D, target: THREE.Vector3, pole: THREE.Vector3): void {
+  const pA = a.getWorldPosition(_v[0]), pB = b.getWorldPosition(_v[1]), pC = c.getWorldPosition(_v[2]);
+  const la = pA.distanceTo(pB), lb = pB.distanceTo(pC);
+  const dir = _v[3].copy(target).sub(pA);
+  const dist = THREE.MathUtils.clamp(dir.length(), Math.abs(la - lb) + 1e-4, (la + lb) * 0.999);
+  dir.normalize();
+  const bend = _v[4].copy(pole).addScaledVector(dir, -pole.dot(dir));
+  if (bend.lengthSq() < 1e-10) bend.set(0, 1, 0);
+  bend.normalize();
+  const cosA = THREE.MathUtils.clamp((la * la + dist * dist - lb * lb) / (2 * la * dist), -1, 1);
+  const sinA = Math.sqrt(1 - cosA * cosA);
+  // where the elbow (knee) has to be
+  const wantB = _v[5].copy(pA).addScaledVector(dir, cosA * la).addScaledVector(bend, sinA * la);
+  aimBone(a, _v[6].copy(pB).sub(pA), _v[7].copy(wantB).sub(pA));
+  b.getWorldPosition(pB);
+  c.getWorldPosition(pC);
+  const wantC = _v[5].copy(pA).addScaledVector(dir, dist);
+  aimBone(b, _v[6].copy(pC).sub(pB), _v[7].copy(wantC).sub(pB));
+}
+
 export interface HumanColors {
   shirt: string; pants: string; skin: string; hair: string;
   shoes?: string; hat?: string; accent?: string;
@@ -294,6 +347,7 @@ export class Human {
   private readonly bones = new Map<string, THREE.Bone>();
   private gesture: THREE.AnimationAction | null = null;
   private seated = false;
+  private seatPose: SeatPose | null = null;
   private walkPhase = 0;
 
   constructor(figure: Figure, colors: HumanColors, opts: { hat?: boolean; outfit?: string; hairStyle?: number } = {}) {
@@ -326,7 +380,6 @@ export class Human {
       if (!mesh.isMesh) return;
       mesh.castShadow = true;
       mesh.receiveShadow = true;
-      mesh.frustumCulled = false;
       if (/Headwear/.test(mesh.name) && figure === 'man' && !opts.hat) { mesh.visible = false; return; }
       const part = base.parts.get(mesh.name) ?? (figure === 'woman' ? base.parts.get('*') : undefined);
       const src = mesh.material as THREE.MeshStandardMaterial;
@@ -340,6 +393,18 @@ export class Human {
       mesh.material = m;
     });
     body.updateMatrixWorld(true);
+    // ECYR perf: cull each person as a whole. A skinned mesh's own bounds would be its bind
+    // pose (or a per-vertex skinning pass); one generous sphere around the rig — standing,
+    // walking, arms out or seated at a wheel — is enough, and far passengers stop costing
+    // draw calls in the main view, the shadow map and the reflection probe.
+    const reach = new THREE.Sphere(new THREE.Vector3(0, RIG_HEIGHT / 2, 0), RIG_HEIGHT * 0.78);
+    const inv = new THREE.Matrix4();
+    body.traverse((o) => {
+      const mesh = o as THREE.SkinnedMesh;
+      if (!mesh.isSkinnedMesh) return;
+      mesh.frustumCulled = true;
+      mesh.boundingSphere = reach.clone().applyMatrix4(inv.copy(mesh.matrixWorld).invert());
+    });
     this.dress(figure, colors, opts);
     this.mixer = new THREE.AnimationMixer(body);
     for (const [move, clip] of base.clips) {
@@ -455,9 +520,10 @@ export class Human {
     return this.bones.get(name);
   }
 
-  /** Sit down (a driver): the legs fold, the rest keeps breathing. */
-  setSeated(on: boolean): void {
+  /** Sit down (a driver): hips on the seat, hands and feet on their targets, the rest keeps breathing. */
+  setSeated(on: boolean, pose: SeatPose | null = null): void {
     this.seated = on;
+    this.seatPose = on ? pose : null;
   }
 
   /** A nod or a shake of the head, on top of whatever the body is doing. */
@@ -489,21 +555,79 @@ export class Human {
     if (this.seated) this.sit();
   }
 
+  /**
+   * The seated pose, laid over the idle clip every frame (the clip writes every
+   * bone absolutely, so nothing accumulates). Works in world space so the bones'
+   * own axis conventions do not matter.
+   */
   private sit(): void {
-    const q = new THREE.Quaternion(), ax = new THREE.Vector3(1, 0, 0);
-    for (const side of ['Left', 'Right']) {
-      const up = this.bones.get(side + 'UpLeg'), knee = this.bones.get(side + 'Leg');
-      if (up) up.quaternion.multiply(q.setFromAxisAngle(ax, -1.45));
-      if (knee) knee.quaternion.multiply(q.setFromAxisAngle(ax, 1.5));
+    const b = this.bones;
+    const hips = b.get('Hips');
+    const pose = this.seatPose;
+    if (!hips || !pose) {
+      // no seat given: fold the legs forward in place
+      const ax = _v[0].set(1, 0, 0);
+      for (const side of ['Left', 'Right']) {
+        const up = b.get(side + 'UpLeg'), knee = b.get(side + 'Leg');
+        if (up) up.quaternion.multiply(_q[0].setFromAxisAngle(ax, -1.45));
+        if (knee) knee.quaternion.multiply(_q[0].setFromAxisAngle(ax, 1.5));
+      }
+      return;
+    }
+    const root = this.root;
+    root.updateMatrixWorld(true);
+    root.getWorldQuaternion(_rootQ);
+    // hips onto the seat
+    const at = root.localToWorld(_v[0].copy(pose.hips));
+    hips.parent!.worldToLocal(at);
+    hips.position.copy(at);
+    hips.updateMatrixWorld(true);
+    // lean the torso back against the seat, keep the eyes on the road
+    const spine = b.get('Spine'), head = b.get('Head'), neck = b.get('Neck');
+    const side = SIDE.set(1, 0, 0).applyQuaternion(_rootQ);
+    const tilt = (bone: THREE.Bone | undefined, angle: number): void => {
+      if (!bone) return;
+      const parentQ = bone.parent!.getWorldQuaternion(_q[1]);
+      const delta = _q[0].setFromAxisAngle(side, angle);
+      const inv = _q[2].copy(parentQ).invert();
+      bone.quaternion.premultiply(parentQ).premultiply(delta).premultiply(inv);
+      bone.updateMatrixWorld(true);
+    };
+    tilt(spine, -pose.recline);
+    tilt(neck, pose.recline * 0.3);
+    tilt(head, pose.recline * 0.25);
+    // legs to the pedals (knees up), arms to the wheel (elbows down and out)
+    const up = UP.set(0, 1, 0).applyQuaternion(_rootQ);
+    const fwd = FWD.set(0, 0, 1).applyQuaternion(_rootQ);
+    for (let i = 0; i < 2; i++) {
+      const s = i === 0 ? 'Left' : 'Right';
+      const sx = i === 0 ? 1 : -1;
+      const ul = b.get(s + 'UpLeg'), lg = b.get(s + 'Leg'), ft = b.get(s + 'Foot');
+      if (ul && lg && ft) {
+        const kneePole = POLE.copy(up).multiplyScalar(1).addScaledVector(fwd, 0.6).addScaledVector(side, sx * 0.15);
+        reach(ul, lg, ft, root.localToWorld(TARGET.copy(pose.feet[i])), kneePole);
+      }
+      const ar = b.get(s + 'Arm'), fa = b.get(s + 'ForeArm'), hd = b.get(s + 'Hand');
+      if (ar && fa && hd) {
+        const elbowPole = POLE.copy(up).multiplyScalar(-1).addScaledVector(side, sx * 0.8).addScaledVector(fwd, -0.3);
+        reach(ar, fa, hd, root.localToWorld(TARGET.copy(pose.hands[i])), elbowPole);
+      }
     }
   }
 
   dispose(): void {
     this.mixer.stopAllAction();
+    this.mixer.uncacheRoot(this.mixer.getRoot());
+    // the body's geometry is shared with the loaded base; the hair, hats and glasses are ours
+    const shared = new Set<THREE.BufferGeometry>();
+    bases.get(this.figure)?.scene.traverse((o) => { if ((o as THREE.Mesh).isMesh) shared.add((o as THREE.Mesh).geometry); });
     this.root.traverse((o) => {
-      const m = (o as THREE.Mesh).material as THREE.Material | undefined;
-      if (m && (o as THREE.Mesh).isMesh) m.dispose();
+      const mesh = o as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      (mesh.material as THREE.Material).dispose();
+      if (!shared.has(mesh.geometry)) mesh.geometry.dispose();
     });
+    this.root.removeFromParent();
   }
 }
 

@@ -1,8 +1,9 @@
 import "../styles.css";
 
 import { Engine } from "../core/engine";
-import { detectTaxiQuality, QUALITY } from "../core/quality";
+import { detectTaxiQuality, isIOS, QUALITY } from "../core/quality";
 import { loadCarPack } from "../city/carpack";
+import { setRealHumans } from "../city/humans";
 import { loadSurfaces, setSurfaceAnisotropy } from "../city/surfaces";
 import { DayNight } from "../city/daynight";
 import { setTextureAnisotropy } from "../city/textures";
@@ -14,6 +15,7 @@ import { NO_SESSION, type NetHandlers, type Session } from "../net/session";
 import { Speech } from "../learn/speech";
 import { createEnvironment } from "../world/environment";
 import { TaxiMode } from "./mode";
+import { TRAFFIC_LAYER } from "./traffic";
 
 /**
  * Taxi Rush's own entry point (taxi.html).
@@ -38,9 +40,20 @@ async function boot(): Promise<void> {
   setTextureAnisotropy(QUALITY[quality].anisotropy);
   setSurfaceAnisotropy(QUALITY[quality].anisotropy);
   if (quality !== "low") loadSurfaces();
+  // Realistic people (driver + passengers): skinned man/woman bodies streamed in the
+  // background. Until they land — and on the lowest tier — Character keeps the boxes.
+  setRealHumans(quality !== "low");
 
   const engine = new Engine(container!, quality);
   (window as unknown as Record<string, unknown>).__engine = engine;
+  // iOS safe mode: no MSAA on the half-float composer target (WebKit drops or breaks it).
+  if (isIOS()) engine.post.setSamples(0);
+  // A lost GPU context (iOS does this to background tabs): stop drawing until it is back;
+  // three.js re-uploads every geometry and texture on the first frame after restoration.
+  engine.canvas.addEventListener("webglcontextlost", (e) => { e.preventDefault(); engine.stop(); }, false);
+  engine.canvas.addEventListener("webglcontextrestored", () => { engine.start(); }, false);
+  // the street traffic lives on its own layer (kept out of the reflection probe)
+  engine.camera.layers.enable(TRAFFIC_LAYER);
   const environment = createEnvironment(engine.scene, engine.renderer);
   environment.setShadowQuality(QUALITY[quality].shadowMap, QUALITY[quality].shadowRadius);
   environment.setReflections(QUALITY[quality].reflections);

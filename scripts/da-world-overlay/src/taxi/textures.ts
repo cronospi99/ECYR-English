@@ -41,6 +41,7 @@ export const CELL = {
   plate: [3, 2],
   stripes: [4, 2],
   pitch: [5, 2],
+  planks: [6, 2],
 } as const;
 export type CellName = keyof typeof CELL;
 
@@ -178,6 +179,14 @@ function makeAtlas(): { map: CanvasTexture; emissive: CanvasTexture } {
     const [x, y] = cellAt('stripes');
     for (let i = 0; i < 8; i++) { c.fillStyle = i % 2 ? '#ffffff' : '#d8d2c4'; c.fillRect(x + i * 16, y, 16, CELL_PX); }
   }
+  { // ECYR v2: boardwalk boards, eight across the cell (0.6 each on a 4.8 run)
+    const [x, y] = cellAt('planks');
+    for (let i = 0; i < 8; i++) {
+      c.fillStyle = i % 2 ? '#e6dccb' : '#efe6d6'; c.fillRect(x + i * 16, y, 16, CELL_PX);
+      c.fillStyle = 'rgba(60,40,20,0.35)'; c.fillRect(x + i * 16 + 15, y, 1, CELL_PX);
+      for (let k = 0; k < 3; k++) { c.fillStyle = 'rgba(90,60,30,0.10)'; c.fillRect(x + i * 16 + 2 + rand() * 11, y + rand() * CELL_PX, 1, 10 + rand() * 30); }
+    }
+  }
   { // the stadium's pitch
     const [x, y] = cellAt('pitch');
     for (let i = 0; i < 8; i++) { c.fillStyle = i % 2 ? '#5aa04f' : '#63ab57'; c.fillRect(x + i * 16, y, 16, CELL_PX); }
@@ -214,6 +223,40 @@ export function cityMaterial(): MeshStandardMaterial {
     roughness: 0.82,
     metalness: 0,
   });
+  // ECYR quality: the facades get the real PBR surfaces (surfaces.ts) and the windows
+  // become glass. The atlas is painted neutral, so its own texel says what it is: light
+  // and grey is wall (brick where the building's tint is a strong red-brown, render on
+  // the other walls, roofing on what faces up, leaves on green props), dark blue is a
+  // window pane (smooth and half-metallic, so it reflects the sky and the street).
+  material.onBeforeCompile = (shader) => {
+    shader.fragmentShader = shader.fragmentShader
+      .replace('void main() {', 'float dwCityLayer = -1.0;\nfloat dwGlass = 0.0;\nvoid main() {')
+      .replace(
+        '#include <map_fragment>',
+        `#include <map_fragment>
+        {
+          vec3 tx = sampledDiffuseColor.rgb;
+          float mx = max(tx.r, max(tx.g, tx.b)), mn = min(tx.r, min(tx.g, tx.b));
+          float lum = dot(tx, vec3(0.2126, 0.7152, 0.0722));
+          dwGlass = step(tx.r * 1.6, tx.b) * step(0.035, tx.b) * (1.0 - step(0.5, tx.b));
+          float wall = step(0.3, lum) * step((mx - mn) / max(mx, 1e-3), 0.28) * (1.0 - dwGlass);
+          vec3 tint = vColor.rgb;
+          float warm = (tint.r - tint.b) / max(tint.r, 1e-3);
+          float layer = warm > 0.62 ? 4.0 : 3.0;
+          if (tint.g > tint.r * 1.08 && tint.g > tint.b * 1.15) layer = 8.0;
+          if (normalize(vDwSN).y > 0.7) layer = warm > 0.62 ? 6.0 : 5.0;
+          dwCityLayer = wall > 0.5 ? layer : -1.0;
+        }`,
+      )
+      .replace(
+        '#include <metalnessmap_fragment>',
+        `#include <metalnessmap_fragment>
+        metalnessFactor = mix(metalnessFactor, 0.55, dwGlass);
+        roughnessFactor = mix(roughnessFactor, 0.07, dwGlass);`,
+      );
+    injectSurface(shader, 'dwCityLayer', '0.85');
+  };
+  material.customProgramCacheKey = () => 'taxi-city-pbr';
   registerGlow('window', material);
   return material;
 }

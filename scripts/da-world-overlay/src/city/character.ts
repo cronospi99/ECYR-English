@@ -17,7 +17,7 @@ import { CanvasTexture, CapsuleGeometry, Group, Mesh, MeshBasicMaterial, PlaneGe
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { mat } from './palette';
 import type { Outfit } from './npcData';
-import { Human, figureFor, humansReady, onHumansReady, type Figure } from './humans';
+import { Human, figureFor, humansReady, onHumansReady, type Figure, type SeatPose } from './humans';
 
 export interface CharacterColors {
   shirt: string;
@@ -139,6 +139,7 @@ export class Character {
   private readonly procedural = new Group();
   private human: Human | null = null;
   private seated = false;
+  private seatPose: SeatPose | null = null;
   private unsubscribe: (() => void) | null = null;
   private readonly colors: CharacterColors;
 
@@ -256,15 +257,33 @@ export class Character {
       console.warn('[Da World] person stays procedural:', e);
       return;
     }
-    this.human.setSeated(this.seated);
+    this.human.setSeated(this.seated, this.seatPose);
     this.procedural.visible = false;
     this.group.add(this.human.root);
   }
 
-  /** A driver sits; everybody else stands. */
-  setSeated(on: boolean): void {
+  /**
+   * A driver sits; everybody else stands. With a `pose` (in this character's own
+   * units, see SeatPose) the hips go onto the seat and the hands and feet onto
+   * the wheel and the pedals — the realistic body by IK, the procedural one by
+   * folding its hinges.
+   */
+  setSeated(on: boolean, pose: SeatPose | null = null): void {
     this.seated = on;
-    this.human?.setSeated(on);
+    this.seatPose = on ? pose : null;
+    this.human?.setSeated(on, this.seatPose);
+    // the procedural rig: hips (0.52 up) onto the seat, legs forward, arms to the wheel
+    if (on && pose) {
+      this.procedural.position.set(pose.hips.x, pose.hips.y - 0.52, pose.hips.z);
+      // lean back about the hips, not about the soles
+      const r = pose.recline;
+      this.upper.rotation.x = -r;
+      this.upper.position.set(0, 0.52 * (1 - Math.cos(r)), 0.52 * Math.sin(r));
+    } else {
+      this.procedural.position.set(0, 0, 0);
+      this.upper.rotation.x = 0;
+      this.upper.position.set(0, 0, 0);
+    }
   }
 
   /** A nod (yes) or a shake of the head (no) — realistic bodies only. */
@@ -334,6 +353,15 @@ export class Character {
   update(dt: number, speed01: number): void {
     if (this.human) {
       this.human.update(dt, speed01);
+      return;
+    }
+    if (this.seated && this.seatPose) {
+      this.legL.rotation.set(-1.4, 0, 0.06);
+      this.legR.rotation.set(-1.4, 0, -0.06);
+      this.armL.rotation.set(-1.05, 0, -0.12);
+      this.armR.rotation.set(-1.05, 0, 0.12);
+      this.chest.rotation.set(0, 0, 0);
+      this.head.rotation.x = this.seatPose.recline * 0.6;
       return;
     }
     this.phase += dt * (4 + speed01 * 7);
