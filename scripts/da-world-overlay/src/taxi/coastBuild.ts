@@ -47,12 +47,12 @@ export const CORNER_FOUNTAIN = { x: 195.5, z: -87, r: 2.4 };
 export const COAST_PLACES: CoastPlaceDef[] = [
   ...COAST_SHOPS,
   {
-    id: 'pier-arcade', name: 'Pier Arcade', type: 'an arcade', emoji: '🎡', at: at(-89.5, 101),
+    id: 'pier-arcade', name: 'Pier Arcade', type: 'an arcade', emoji: '🕹️', at: at(-89.5, 101),
     sign: { ...at(-92 + 0.08, 101.5), y: CURB + 3.35, rotY: Math.PI / 2, w: 3.6, hue: 320 },
   },
   { id: 'old-point-lighthouse', name: 'Old Point Lighthouse', type: 'a lighthouse', emoji: '🗼', at: at(SPOT.lighthouse.u, 27), sign: signAt(SPOT.lighthouse.u + 3.2, 31.5, 2.2, 3.4, 0) },
   { id: 'beach-plaza', name: 'Beach Plaza', type: 'a square', emoji: '⛲', at: at(-138, 26), sign: signAt(-131, 23.2, 2.4, 3.4, 190) },
-  { id: 'clock-tower-square', name: 'Clock Tower Square', type: 'a clock tower', emoji: '🕰️', at: at(-35, 26), sign: signAt(-28, 23.2, 2.4, 3.6, 40) },
+  { id: 'clock-tower-square', name: 'Old Clock Tower', type: 'a clock tower', emoji: '🕰️', at: at(-35, 26), sign: signAt(-28, 23.2, 2.4, 3.6, 40) },
   { id: 'palm-fountain-plaza', name: 'Palm Fountain Plaza', type: 'a square', emoji: '🌴', at: { x: 199.5, z: -84 }, sign: { x: 201.8, y: 2.4, z: -82.6, rotY: 0, w: 3.6, hue: 140 } },
   { id: 'lifeguard-station', name: 'Lifeguard Station', type: 'a lifeguard station', emoji: '🛟', at: at(-110, 27.5), sign: signAt(-110, 31.2, 2.9, 2.8, 0) },
   { id: 'sandy-amphitheatre', name: 'Sandy Amphitheatre', type: 'an open-air theatre', emoji: '🎭', at: at(-222, 25), sign: signAt(-226, 23.2, 2.4, 3.6, 30) },

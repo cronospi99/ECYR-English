@@ -902,7 +902,7 @@ export class TaxiMode {
     this.model?.boardPassengers(p.look % 3 === 0 ? [who(p.look), who(p.look * 7 + 3)] : [who(p.look)]);
     const places = this.world.places;
     const right = places[p.dest];
-    const others = shuffle(places.filter((q) => q.type !== right.type)).slice(0, 2);
+    const others = shuffle(places.filter((q) => q.type !== right.type && !(/theatre/.test(q.type) && /theatre/.test(right.type)))).slice(0, 2);
     const opts = shuffle([right, ...others]);
     const dist = Math.hypot(right.x - p.x, right.z - p.z);
     this.fareTime = Math.max(16, Math.min(110, dist / 9 * PACE[this.settings.pace] + 8));
