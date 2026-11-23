@@ -202,6 +202,13 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
 .tools .lbl { font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; margin-right: 4px; }
 .tools button { border: 2px solid var(--line); background: var(--card); color: var(--ink); border-radius: 999px; padding: 7px 14px; font-weight: 800; font-size: 14px; }
 .tools button:hover { border-color: var(--gold); }
+.tools button { min-height: 44px; min-width: 44px; }
+.tools .newwords { background: var(--gold); border-color: var(--gold); color: #2a1d00; }
+.tools .nwmsg { font-size: 13px; color: var(--gold); }
+.meta .pill.timer { background: #2A1A66; border: 2px solid var(--gold); color: var(--gold); font-size: 17px; min-height: 44px; display: inline-flex; align-items: center; font-variant-numeric: tabular-nums; }
+.meta .pill.timer.low { background: var(--red); border-color: var(--red); color: #fff; animation: tmPulse .5s ease-in-out infinite alternate; }
+.meta .pill.timer.paused { opacity: .6; animation: none; }
+@keyframes tmPulse { to { transform: scale(1.08); } }
 .tools button:disabled { opacity: .35; cursor: default; }
 @keyframes swapIn { 0% { transform: rotateY(90deg) scale(.8); opacity: 0; } 60% { transform: rotateY(-12deg) scale(1.05); opacity: 1; } 100% { transform: none; } }
 .card.swapin { animation: swapIn .55s cubic-bezier(.2, .9, .3, 1.2) both; }
@@ -231,7 +238,7 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
   var app = document.getElementById('app');
 
   var st = { phase: 'setup', level: 'B1', nTeams: SOLO ? 1 : 2, names: ['Team A', 'Team B', 'Team C', 'Team D'],
-    members: ['', '', '', ''], fakes: 'auto', boards: 3, wagerOn: false, multOn: false, mult: 1, wager: 0, teams: [], turn: 0, board: 0, cards: [], pending: null, used: {}, rep: null, found: 0, missed: 0 };
+    members: ['', '', '', ''], fakes: 'auto', boards: 3, wagerOn: false, multOn: false, mult: 1, wager: 0, teams: [], turn: 0, board: 0, cards: [], pending: null, tl: 15, used: {}, rep: null, found: 0, missed: 0 };
   try { var saved = JSON.parse(localStorage.getItem('tgtbt:setup') || 'null'); if (saved) { st.level = saved.level || st.level; st.nTeams = SOLO ? 1 : saved.nTeams || 2; st.names = saved.names || st.names;
     if (FAKES.indexOf(saved.fakes) >= 0) st.fakes = saved.fakes; if (BOARDS.indexOf(saved.boards) >= 0) st.boards = saved.boards;
     if (!Array.isArray(st.names) || st.names.length < 4) st.names = ['Team A', 'Team B', 'Team C', 'Team D'];
@@ -283,14 +290,30 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
   function betOk(v) { var t = st.teams[st.turn]; return v === 0 || (v <= t.score && !(standing(st.turn) === 'leader' && v > HIT)); }
   function gain() { return HIT * st.mult + st.wager; }
   function loss() { return MISS * st.mult + st.wager; }
-  function nextTurn() { st.turn = (st.turn + 1) % st.teams.length; rollMult(); }
+  var TURN_SECS = 15;
+  function nextTurn() { st.turn = (st.turn + 1) % st.teams.length; st.tl = TURN_SECS; rollMult(); }
+  // Turn timer: counts down only while a team is choosing (not during the result panel, a swap or another screen).
+  var tmLast = Date.now(), swapping = false;
+  function timerText() { return '⏱ ' + Math.ceil(Math.max(0, st.tl)) + ' s'; }
+  setInterval(function () {
+    var now = Date.now(), dt = Math.min(1, (now - tmLast) / 1000); tmLast = now;
+    if (st.phase !== 'play' || st.pending || swapping || busy || document.hidden) return;
+    st.tl -= dt;
+    if (st.tl <= 0) {
+      var team = st.teams[st.turn];
+      if (team.members.length) team.mi = (team.mi + 1) % team.members.length;
+      nextTurn(); render(); return;
+    }
+    var el = document.getElementById('tgtimer');
+    if (el) { el.textContent = timerText(); el.classList.toggle('low', st.tl <= 5); }
+  }, 200);
 
   function start() {
     try { localStorage.setItem('tgtbt:setup', JSON.stringify({ level: st.level, nTeams: st.nTeams, names: st.names, members: st.members, fakes: st.fakes, boards: st.boards })); } catch (e) {}
     st.teams = []; for (var i = 0; i < st.nTeams; i++) st.teams.push({ name: (st.names[i] || '').trim() || 'Team ' + 'ABCD'[i], members: st.nTeams > 1 ? parseMembers(st.members[i]) : [], mi: 0, score: 0, hits: 0, misses: 0 });
     if (st.nTeams === 1) st.teams[0].name = SOLO ? 'You' : 'The class';
     st.turn = 0; st.board = 0; st.used = {}; st.found = 0; st.missed = 0;
-    newBoard(); st.phase = 'play'; rollMult();
+    newBoard(); st.phase = 'play'; st.tl = TURN_SECS; rollMult();
     st.rep = { t0: Date.now() };
     window.ECYRBridge && window.ECYRBridge.start({ level: st.level, mode: SOLO ? 'solo' : 'class', meta: { teams: st.nTeams, boards: st.boards, fakes: st.fakes, game: 'impostor-words' } });
     render();
@@ -332,8 +355,40 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
       render();
     }, 300);
   }
-  function closePanel() { st.pending = null; if (!impLeft()) st.phase = 'board-done'; render(); }
-  function nextBoard() { st.board++; newBoard(); st.phase = 'play'; rollMult(); render(); }
+  // Teacher tool "New words": every hidden card flips and is replaced by a fresh word from the same level's bank
+  // (never one already used in this game), mixing real words and impostors. Opened cards and scores stay as they are.
+  function freshOf(list, key) { var u = st.used[key] || {}; return shuffle(list.filter(function (x) { return !u[x]; })); }
+  function newWordsPlan() {
+    var n = st.cards.filter(function (c) { return !c.open; }).length; if (!n) return null;
+    var b = BANK[st.level], R = freshOf(b.real, st.level + 'r'), A = freshOf(b.alike, st.level + 'a'), F = freshOf(b.fake, st.level + 'f');
+    var nF = Math.max(1, Math.min(n - (n > 1 ? 1 : 0), Math.round(n * impFor(st.board) / 16) + Math.floor(Math.random() * 3) - 1));
+    if (n === 1) nF = Math.random() < 0.5 ? 1 : 0;
+    var nR = n - nF, nA = Math.min(A.length, Math.round(nF * 0.6)), nP = nF - nA;
+    if (nR > R.length || nP > F.length) return null;
+    return { n: n, real: R.slice(0, nR), alike: A.slice(0, nA), fake: F.slice(0, nP), st: st };
+  }
+  function newWords() {
+    if (st.pending || swapping) return;
+    var p = newWordsPlan(); if (!p) { render(); return; }
+    var closed = st.cards.filter(function (c) { return !c.open; });
+    // every impostor must not vanish entirely: guaranteed by nF >= 1 (except a single card, where a real word is allowed
+    // only if impostors remain among the opened ones)
+    var fresh = [];
+    p.real.forEach(function (s) { var r = parseReal(s); r.fake = false; fresh.push(r); st.used[st.level + 'r'][s] = 1; });
+    p.alike.forEach(function (s) { var q = s.split('|'); fresh.push({ word: q[0], fake: true, alikeOf: q[1] }); st.used[st.level + 'a'][s] = 1; });
+    p.fake.forEach(function (w) { fresh.push({ word: w, fake: true }); st.used[st.level + 'f'][w] = 1; });
+    fresh = shuffle(fresh);
+    swapping = true;
+    closed.forEach(function (c) { var el = app.querySelector('[data-card="' + c.id + '"]'); if (el) el.classList.add('swapout'); });
+    setTimeout(function () {
+      closed.forEach(function (old, i) { var nc = fresh[i]; nc.id = old.id; nc.open = false; nc.swapin = true; st.cards[st.cards.indexOf(old)] = nc; });
+      swapping = false; st.tl = TURN_SECS;
+      if (!impLeft()) { st.phase = 'board-done'; }
+      render();
+    }, 300);
+  }
+  function closePanel() { st.pending = null; st.tl = TURN_SECS; if (!impLeft()) st.phase = 'board-done'; render(); }
+  function nextBoard() { st.board++; newBoard(); st.phase = 'play'; st.tl = TURN_SECS; rollMult(); render(); }
   function endGame(ask, instant) {
     if (ask && !confirm('End the game now and see the results?')) return;
     if (!instant) { curtain(function () { endGame(false, true); }); return; }
@@ -433,11 +488,14 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
     var closed = st.cards.filter(function (c) { return !c.open; }).length;
     var tools = '<div class="tools"><span class="lbl">🔀 Teacher · new cards</span>' + [2, 4, 6, 8].map(function (n) {
       return '<button data-swap="' + n + '"' + (st.pending || closed < 1 ? ' disabled' : '') + ' title="Swap ' + n + ' random hidden cards for new ones">' + n + '</button>';
-    }).join('') + '<button data-swap="all"' + (st.pending || closed < 1 ? ' disabled' : '') + '>All hidden</button></div>';
+    }).join('') + '<button data-swap="all"' + (st.pending || closed < 1 ? ' disabled' : '') + '>All hidden</button>' +
+      '<button class="newwords" data-swap="mix"' + (st.pending || swapping || !newWordsPlan() ? ' disabled' : '') + ' title="Flip every hidden card and bring new words">🔄 New words</button>' +
+      (!st.pending && closed && !newWordsPlan() ? '<span class="nwmsg">No more new words at this level.</span>' : '') + '</div>';
     var left = '', right = '';
     st.teams.forEach(function (tm, i) { if (i % 2 === 0) left += teamPanel(tm, i); else right += teamPanel(tm, i); });
     var center = (st.pending ? '' : banner) + stakeView() + '<div class="board">' + cards + '</div>' + panelView() + tools;
     return '<div class="top"><div class="meta"><span class="pill">Level ' + st.level + '</span><span class="pill">Board ' + (st.board + 1) + ' of ' + st.boards + '</span>' +
+      '<span class="pill timer' + (st.tl <= 5 ? ' low' : '') + (st.pending ? ' paused' : '') + '" id="tgtimer" role="timer" aria-label="Seconds left in this turn">' + timerText() + '</span>' +
       '<span class="pill imp">' + impLeft() + ' of ' + nImp() + ' impostors left</span></div>' +
       '<div class="row">' + (many ? '' : '<div class="teams">' + st.teams.map(function (tm) { return '<div class="team-box"><div class="n">' + esc(tm.name) + '</div><div class="s">' + tm.score + '</div></div>'; }).join('') + '</div>') +
       '<button class="btn ghost" data-act="end">End game</button></div></div>' +
@@ -529,6 +587,7 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
     else if (el.dataset.tog) { st[el.dataset.tog] = !st[el.dataset.tog]; render(); }
     else if (el.dataset.bet) { var v = el.dataset.bet === 'all' ? st.teams[st.turn].score : Number(el.dataset.bet); if (betOk(v)) { st.wager = st.wager === v && v ? 0 : v; render(); } }
     else if (el.dataset.card) pick(Number(el.dataset.card));
+    else if (el.dataset.swap === 'mix') newWords();
     else if (el.dataset.swap) swapCards(el.dataset.swap === 'all' ? 'all' : Number(el.dataset.swap));
     else switch (el.dataset.act) {
       case 'start': launch(); break;

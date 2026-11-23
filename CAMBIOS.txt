@@ -1972,3 +1972,8 @@ Contenido C2 ×3
 - Murales: nunca se muestra el correo de un alumno sin nombre ("Estudiante").
 - Cabeceras de seguridad y CSP en modo informe. Pantalla de MFA en /admin/teachers.
 - Pasos para aplicarlo: supabase/APLICAR-22.md.
+
+== Too Good To Be True: botón "New words" y temporizador de turno ==
+- Botón de profesor "🔄 New words": todas las cartas sin descubrir giran y salen palabras nuevas del nivel
+  (reales y falsas mezcladas, sin repetir); el contador de impostores se actualiza solo.
+- Temporizador de 15 s por turno (rojo en los últimos 5 s); al agotarse pasa el turno sin puntos.
