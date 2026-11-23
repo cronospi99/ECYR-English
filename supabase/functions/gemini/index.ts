@@ -20,6 +20,10 @@
 //   Supabase dashboard → Edge Functions → Deploy a new function → Via editor.
 //   Name it exactly   gemini   paste this file, deploy.
 //   Then Edge Functions → Secrets → add   GEMINI_API_KEY = AIza…
+//   Optional secret   GEMINI_DAILY_LIMIT  generations per user per day (default 60).
+//   Optional secret   ALLOWED_ORIGINS  comma-separated sites allowed to call this
+//                                    function (default: production + localhost).
+//   Requires migration 22 (bump_gemini_usage).
 //   Optional secret   GEMINI_MODEL   (default gemini-3.5-flash-lite)
 //   Optional secret   GEMINI_MODELS  comma-separated extra models the app may
 //                                    ask for; anything else gets GEMINI_MODEL.
@@ -41,10 +45,30 @@ const DEFAULT_MODEL = "gemini-3.5-flash-lite";
 const MAX_BODY_BYTES = 30 * 1024 * 1024;
 
 const CORS = {
-  "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
+
+// ---- CORS: only the origins in ALLOWED_ORIGINS (comma-separated secret) ----------
+// Default: the production site + local dev. Set ALLOWED_ORIGINS to replace the list
+// (e.g. "https://ecyr-english.vercel.app,https://www.tudominio.com").
+const ALLOWED_ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") ||
+  "https://ecyr-english.vercel.app,http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173")
+  .split(",").map((o) => o.trim().replace(/\/+$/, "")).filter(Boolean);
+
+async function withCors(req: Request, handle: (req: Request) => Promise<Response>): Promise<Response> {
+  const origin = req.headers.get("Origin");
+  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+    return new Response(JSON.stringify({ error: { message: "Origin not allowed.", code: "origin" } }), {
+      status: 403,
+      headers: { "Content-Type": "application/json", Vary: "Origin" },
+    });
+  }
+  const res = await handle(req);
+  if (origin) res.headers.set("Access-Control-Allow-Origin", origin);
+  res.headers.set("Vary", "Origin");
+  return res;
+}
 
 // Every error is shaped like one of Google's ({error:{message}}), so the app
 // reads it the same way whichever side it came from.
@@ -72,10 +96,57 @@ function pickModel(asked: unknown): string {
   return allowed.has(m) ? m : fallback;
 }
 
-type Caller = { id: string; role: string; teacher_id: string | null };
+type Caller = { id: string; role: string; teacher_id: string | null; auth: string; apikey: string };
 
 // Asks Supabase who this session belongs to, then reads their own profile row
 // with their own token — so row-level security answers, not this function.
+// Counts one generation for the caller (bump_gemini_usage, migration 22) and
+// refuses past the daily limit. GEMINI_DAILY_LIMIT secret, default 60 per user.
+async function countCall(c: Caller): Promise<Response | null> {
+  const url = Deno.env.get("SUPABASE_URL")!;
+  const limit = Math.max(1, Math.min(2000, Number(Deno.env.get("GEMINI_DAILY_LIMIT") || 60) || 60));
+  const r = await fetch(`${url}/rest/v1/rpc/bump_gemini_usage`, {
+    method: "POST",
+    headers: { Authorization: c.auth, apikey: c.apikey, "Content-Type": "application/json" },
+    body: JSON.stringify({ p_limit: limit }),
+  });
+  if (r.ok) return null;
+  const t = await r.text();
+  if (/daily Gemini limit/i.test(t)) {
+    return fail(429, `You have used your ${limit} AI requests for today on the class key. Try again tomorrow, or add your own Gemini key in ⚙ AI engine.`, "limit");
+  }
+  // Migration 22 not applied yet: do not block the class, but say so in the logs.
+  if (/PGRST202|Could not find the function|does not exist/i.test(t)) {
+    console.error("bump_gemini_usage is missing (apply migration 22):", t.slice(0, 200));
+    return null;
+  }
+  console.error("bump_gemini_usage failed:", r.status, t.slice(0, 300));
+  return fail(503, "Could not check your daily AI limit. Try again in a moment.", "limit_check");
+}
+
+// Reads the body counting the bytes that really arrive (content-length can be
+// absent or a lie) and stops as soon as it passes the limit. null = too large.
+async function readBodyLimited(req: Request, max: number): Promise<Uint8Array | null> {
+  if (!req.body) return new Uint8Array(0);
+  const reader = req.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > max) {
+      await reader.cancel().catch(() => {});
+      return null;
+    }
+    chunks.push(value);
+  }
+  const out = new Uint8Array(total);
+  let off = 0;
+  for (const c of chunks) { out.set(c, off); off += c.byteLength; }
+  return out;
+}
+
 async function whoIsCalling(req: Request): Promise<Caller | Response> {
   const url = Deno.env.get("SUPABASE_URL");
   const auth = req.headers.get("Authorization") || "";
@@ -97,10 +168,10 @@ async function whoIsCalling(req: Request): Promise<Caller | Response> {
   const rows = p.ok ? await p.json() : [];
   const me = Array.isArray(rows) ? rows[0] : null;
   if (!me) return fail(403, "Your profile could not be read. Reload the page and try again.", "no_profile");
-  return { id: user.id, role: me.role, teacher_id: me.teacher_id };
+  return { id: user.id, role: me.role, teacher_id: me.teacher_id, auth, apikey };
 }
 
-Deno.serve(async (req: Request) => {
+async function handle(req: Request): Promise<Response> {
   if (req.method === "OPTIONS") return new Response("ok", { headers: CORS });
   if (req.method !== "POST") return fail(405, "POST only.");
 
@@ -117,8 +188,12 @@ Deno.serve(async (req: Request) => {
       "no_class");
   }
 
+  const raw = await readBodyLimited(req, MAX_BODY_BYTES);
+  if (raw === null) {
+    return fail(413, "That request is too large for the shared key — compress the audio (mono, 64 kbps MP3) and try again.");
+  }
   let body: any;
-  try { body = await req.json(); } catch { return fail(400, "The request was not valid JSON."); }
+  try { body = JSON.parse(new TextDecoder().decode(raw)); } catch { return fail(400, "The request was not valid JSON."); }
 
   const key = (Deno.env.get("GEMINI_API_KEY") || "").trim();
   const op = body && body.op;
@@ -139,6 +214,8 @@ Deno.serve(async (req: Request) => {
 
   if (op === "generate") {
     if (!Array.isArray(body.contents) || !body.contents.length) return fail(400, "Nothing to send to Gemini.");
+    const limited = await countCall(who);
+    if (limited) return limited;
     const model = pickModel(body.model);
     const r = await fetch(`${GEMINI_BASE}/models/${encodeURIComponent(model)}:generateContent`, {
       method: "POST",
@@ -150,4 +227,6 @@ Deno.serve(async (req: Request) => {
   }
 
   return fail(400, "Unknown request.");
-});
+}
+
+Deno.serve((req: Request) => withCors(req, handle));

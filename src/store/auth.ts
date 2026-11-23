@@ -52,12 +52,17 @@ export const useAuth = create<AuthState>()((set, get) => ({
     if (!supabase || !uid) return;
     const { data } = await supabase
       .from('profiles')
-      .select('id,email,full_name,role,teacher_id,class_code')
+      .select('id,full_name,role,teacher_id,class_code')
       .eq('id', uid)
       .maybeSingle();
     // Separate call so a project without migration 15 still loads the profile.
-    const admin = data ? await supabase.rpc('is_platform_admin') : null;
-    set({ profile: data ? { ...(data as Profile), is_admin: admin?.data === true } : null });
+    // is_platform_owner() ignores the MFA level (migration 22) so the owner is recognised
+    // at aal1 and the panel can ask for the code; before 22 it does not exist, so fall back.
+    let admin = data ? await supabase.rpc('is_platform_owner') : null;
+    if (admin?.error) admin = await supabase.rpc('is_platform_admin');
+    // The email column of profiles is not readable by the client (migration 22): our own comes from the session.
+    const own = get().session?.user.email ?? null;
+    set({ profile: data ? { ...(data as Omit<Profile, 'email'>), email: own, is_admin: admin?.data === true } : null });
   },
 
   signIn: async (email, password) => {

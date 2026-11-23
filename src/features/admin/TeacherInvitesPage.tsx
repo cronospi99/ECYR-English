@@ -18,6 +18,7 @@ import { Button, ButtonLink } from "@/components/ui/Button";
 import { Segmented } from "@/components/ui/Segmented";
 import { Spinner, Toggle } from "@/components/ui/Misc";
 import { useAuth } from "@/store/auth";
+import MfaGate from "./MfaGate";
 import { relativeTime } from "@/lib/date";
 import { cn } from "@/lib/cn";
 import {
@@ -86,7 +87,11 @@ export default function TeacherInvitesPage() {
       </Page>
     );
 
-  return <Admin />;
+  return (
+    <MfaGate>
+      <Admin />
+    </MfaGate>
+  );
 }
 
 function Admin() {

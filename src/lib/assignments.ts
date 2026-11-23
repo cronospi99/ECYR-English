@@ -346,9 +346,9 @@ export async function listMyAssignments(): Promise<Assignment[]> {
 /** Students of the signed-in teacher (light: no progress documents). */
 export async function listMyStudents(): Promise<StudentLite[]> {
   await myId();
-  const { data, error } = await client().from('profiles').select('id,full_name,email').eq('role', 'student').order('full_name', { ascending: true });
+  const { data, error } = await client().from('profiles').select('id,full_name').eq('role', 'student').order('full_name', { ascending: true });
   if (error) throw friendly(error, 'Could not load the class.');
-  return (data ?? []) as StudentLite[];
+  return ((data ?? []) as { id: string; full_name: string | null }[]).map((r) => ({ ...r, email: null })) as StudentLite[];
 }
 
 export async function createAssignment(d: AssignmentDraft): Promise<Assignment> {
