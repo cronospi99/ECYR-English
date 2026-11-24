@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom';
-import { ChevronLeft, ClipboardCheck, Crown, Flame, School, Sparkles, FlaskConical } from 'lucide-react';
+import { ChevronLeft, ClipboardCheck, Crown, Flame, School, FlaskConical } from 'lucide-react';
 import { useGoBack } from '@/lib/navBack';
 import { NAV, isActive } from './nav';
 import { Logo } from '@/components/brand/Logo';
@@ -7,6 +7,7 @@ import { IconTile } from '@/components/ui/IconTile';
 import { Avatar } from './Avatar';
 import { useProgress } from '@/store/progress';
 import { useAuth } from '@/store/auth';
+import { spaceTitle } from '@/lib/spaceName';
 import { useSettings } from '@/store/settings';
 import { cn } from '@/lib/cn';
 import { useEffect } from 'react';
@@ -43,7 +44,7 @@ function Sidebar() {
               )}
             >
               <IconTile icon={item.icon} color={item.color} size={28} />
-              {item.label}
+              {item.to === '/teacher' ? spaceTitle(profile?.full_name) : item.label}
             </NavLink>
           );
         })}
@@ -74,6 +75,7 @@ function Sidebar() {
 function MobileTopBar() {
   const name = useDisplayName();
   const isTeacher = useAuth((s) => s.profile?.role === 'teacher');
+  const fullName = useAuth((s) => s.profile?.full_name);
   const inClass = useAuth((s) => s.profile?.role === 'student' && !!s.profile.teacher_id);
   const { target, go } = useGoBack();
   return (
@@ -99,7 +101,7 @@ function MobileTopBar() {
           {isTeacher && (
             <Link
               to="/teacher"
-              aria-label="Teacher room"
+              aria-label={spaceTitle(fullName)}
               className="text-ink-orange inline-flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--orange)_14%,transparent)]"
             >
               <School size={16} />
@@ -114,12 +116,6 @@ function MobileTopBar() {
               <ClipboardCheck size={16} />
             </Link>
           )}
-          <Link
-            to="/coach"
-            className="text-ink-purple bg-[color-mix(in_srgb,var(--purple)_14%,transparent)] inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold"
-          >
-            <Sparkles size={15} /> Coach
-          </Link>
           <Link to="/profile" aria-label="Profile">
             <Avatar name={name} size={32} />
           </Link>

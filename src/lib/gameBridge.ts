@@ -80,7 +80,10 @@ export function startGameBridge() {
 
     if (data.type === 'start') {
       if (!native && !frameShowing(source, slug)) return;
-      track(moduleFeatureId(slug), 'start', { mode: data.mode === 'class' ? 'class' : 'solo' });
+      track(moduleFeatureId(slug), 'start', {
+        mode: data.mode === 'class' ? 'class' : 'solo',
+        ...(typeof data.room === 'string' && data.room ? { room: data.room.slice(0, 12) } : {}),
+      });
       games.start(id, {
         slug,
         startedAt: typeof data.startedAt === 'string' ? data.startedAt : new Date().toISOString(),

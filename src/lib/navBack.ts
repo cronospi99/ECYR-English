@@ -4,6 +4,8 @@
  * screens (the tabs and the sidebar entries) have no parent.
  */
 import { useCallback } from 'react';
+import { useAuth } from '@/store/auth';
+import { spaceTitle } from './spaceName';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export interface BackTarget {
@@ -18,7 +20,6 @@ const LABELS: Record<string, string> = {
   '/learn/foundations': 'Foundations',
   '/practice': 'Practice',
   '/practice/workshops': 'Workshops',
-  '/teacher': 'Teacher room',
   '/ielts': 'IELTS',
   '/games': 'Games',
   '/profile': 'Profile',
@@ -45,6 +46,7 @@ export function parentOf(pathname: string): BackTarget | null {
   }
   const up = '/' + parts.slice(0, -1).join('/');
   if (LEVEL.test(up)) return { to: up, label: up.split('/').pop()!.toUpperCase() };
+  if (up === '/teacher') return { to: up, label: spaceTitle(useAuth.getState().profile?.full_name) };
   if (LABELS[up]) return { to: up, label: LABELS[up]! };
   return parentOf(up) ?? { to: '/', label: 'Home' };
 }

@@ -427,14 +427,6 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
           to: '/practice/speaking',
           match: { refs: ['practice:speaking'] },
         },
-        {
-          key: 's-coach',
-          skill: 'speaking',
-          minutes: 10,
-          title: 'Talk for 10 minutes with the AI Coach',
-          to: '/coach',
-          match: { refs: ['coach:chat'] },
-        },
       ],
     };
     const out = [...base[skill]];

@@ -53,7 +53,7 @@ export default function WritingPage() {
     <Page
       back={{ to: '/practice', label: 'Practice' }}
       title="Writing"
-      subtitle="Several tasks per unit, with specific criteria and a model answer. The AI Coach gives you detailed feedback."
+      subtitle="Several tasks per unit, with specific criteria and a model answer. AI feedback gives you detailed comments."
     >
       <div className="no-scrollbar -mx-1 mb-5 flex items-center gap-2 overflow-x-auto px-1 py-1">
         {CEFR_LEVELS.map((l) => (

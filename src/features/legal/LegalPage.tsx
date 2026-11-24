@@ -40,7 +40,7 @@ export default function LegalPage() {
             Recordings and everything you say into the microphone are used only during the activity and are deleted the moment you switch to another section of the app. They are not stored on our servers. Speech recognition is done by your browser (for example, Chrome uses Google services). Only what you choose to send, such as the text of an answer for your teacher, is kept.
           </Item>
           <Item n="4" t="External services">
-            Some features (natural voices, AI Coach) send the necessary text to an external service only to generate the response at that moment. The platform does not store that content.
+            Some features (natural voices, AI feedback) send the necessary text to an external service only to generate the response at that moment. The platform does not store that content.
           </Item>
           <Item n="5" t="Children and teenagers">
             Because it is used by students under the age of majority, their information is handled respecting their best interests and fundamental rights (article 7 of Law 1581). We recommend that parents and guardians get to know the tool.

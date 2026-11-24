@@ -71,12 +71,26 @@ function cleanMeta(meta?: UsageMeta): UsageMeta {
   return out;
 }
 
+/**
+ * Class / teacher context of what the user is doing now (a live board, a live-game room…).
+ * It is added to every event (including active-time ones) until it is cleared or the user moves to
+ * another feature. Keys the server understands (migration 24): teacher, board, room, role, assignment.
+ */
+let context: UsageMeta = {};
+export function setUsageContext(ctx: UsageMeta | null): void {
+  context = ctx ? cleanMeta(ctx) : {};
+}
+/** Clears the context only if it still contains this key=value (a newer screen may have replaced it). */
+export function clearUsageContext(key: string, value?: string | number | boolean): void {
+  if (key in context && (value === undefined || context[key] === value)) context = {};
+}
+
 /** Records one event. Safe to call anywhere, any time. */
 export function track(feature: string, action: string, meta?: UsageMeta): void {
   try {
     if (!token || !feature || !action || isOff()) return;
     if (queue.length >= MAX_QUEUE) queue.shift();
-    queue.push({ feature: feature.slice(0, 64), action: action.slice(0, 32), seconds: 0, meta: cleanMeta(meta) });
+    queue.push({ feature: feature.slice(0, 64), action: action.slice(0, 32), seconds: 0, meta: cleanMeta({ ...context, ...meta }) });
   } catch {
     /* analytics must never break the app */
   }
@@ -114,7 +128,7 @@ function collectTime() {
     while (left > 0) {
       const chunk = Math.min(left, 3600);
       if (queue.length >= MAX_QUEUE) queue.shift();
-      queue.push({ feature, action: 'time', seconds: chunk, meta: {} });
+      queue.push({ feature, action: 'time', seconds: chunk, meta: { ...context } });
       left -= chunk;
     }
   }
@@ -187,6 +201,7 @@ export function initUsage(router: RouterLike): void {
     const feature = featureForLocation(loc.pathname, loc.search);
     if (feature === lastFeature) return;
     lastFeature = feature;
+    context = {}; // a context belongs to the screen that set it
     // Iframe players (feature === null here) set their own active feature in ModuleFrame.
     if (feature) {
       track(feature, 'view');

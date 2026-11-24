@@ -1,3 +1,6 @@
+import { track, setUsageContext } from "./usage";
+import { featureForLocation } from "./usageFeatures";
+
 /* WebSocket client for the live-game relay (relay/ on Cloudflare, or scripts/relay-dev.mjs
    locally) shared by Class Wars and Impostor. Gameplay traffic goes here, never through
    Supabase, so no Supabase Realtime quota is used. Set VITE_RELAY_URL=wss://… in Vercel.
@@ -46,6 +49,14 @@ export class Relay {
     this.code = code;
     this.id = id;
     this.role = role;
+    // Usage stats: who joined which live room (the host may be another teacher). Demo rooms are solo.
+    if (!isDemoCode(code)) {
+      try {
+        const feature = featureForLocation(location.pathname, location.search) ?? "games";
+        setUsageContext({ room: code, role });
+        track(feature, "room", { room: code, role });
+      } catch { /* analytics must never break a game */ }
+    }
     if (isDemoCode(code)) this.joinLocal();
     else this.open();
   }

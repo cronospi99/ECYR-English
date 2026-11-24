@@ -36,7 +36,7 @@ const AREAS = [
     icon: PenLine,
     color: 'var(--skill-writing)',
     title: 'Writing',
-    body: 'Writing tasks for every unit with assessment criteria and AI Coach feedback.',
+    body: 'Writing tasks for every unit with assessment criteria and AI feedback.',
     skill: 'writing' as const,
   },
   {

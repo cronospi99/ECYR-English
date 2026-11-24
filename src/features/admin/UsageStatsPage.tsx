@@ -7,6 +7,7 @@ import { Segmented } from '@/components/ui/Segmented';
 import { Spinner } from '@/components/ui/Misc';
 import { useAuth } from '@/store/auth';
 import { cn } from '@/lib/cn';
+import { StudentUsage } from './StudentUsage';
 import { categoryOf, CATEGORIES } from '@/lib/usageFeatures';
 import {
   UsageMissingError,
@@ -61,6 +62,7 @@ export default function UsageStatsPage() {
 
 function Stats() {
   const [days, setDays] = useState<'7' | '30' | '90'>('30');
+  const [view, setView] = useState<'features' | 'students'>('features');
   const [metric, setMetric] = useState<Metric>('users');
   const [rows, setRows] = useState<FeatureRow[] | null>(null);
   const [overview, setOverview] = useState<Overview | null>(null);
@@ -68,6 +70,7 @@ function Stats() {
   const [dailyFeature, setDailyFeature] = useState<DayStat[] | null>(null);
   const [feature, setFeature] = useState('');
   const [missing, setMissing] = useState(false);
+  const [tick, setTick] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(true);
   const n = Number(days);
@@ -144,33 +147,40 @@ function Stats() {
       back={{ to: '/profile', label: 'Perfil' }}
       wide
       actions={
-        <Button variant="gray" size="sm" onClick={() => void load()} aria-label="Actualizar" disabled={busy}>
+        <Button variant="gray" size="sm" onClick={() => {
+            setTick((t) => t + 1);
+            void load();
+          }}
+          aria-label="Actualizar" disabled={busy}>
           <RefreshCw size={15} className={cn(busy && 'animate-spin')} /> <span className="hidden sm:inline">Actualizar</span>
         </Button>
       }
     >
       <div className="mb-4 flex flex-wrap items-center gap-3">
+        <Segmented value={view} onChange={setView} options={[{ value: 'features', label: 'Funcionalidades' }, { value: 'students', label: 'Por estudiante' }]} />
         <Segmented value={days} onChange={setDays} options={[...RANGES]} />
         <span className="text-label-2 text-[13px]">Excluye cuentas sin sesión. Los minutos cuentan solo con la pestaña visible.</span>
       </div>
 
-      {missing && (
+      {missing && view === 'features' && (
         <Card className="mx-auto max-w-2xl p-6 text-center">
           <BarChart3 size={40} className="text-ink-purple mx-auto" />
           <h2 className="text-title-3 mt-3">Aún no hay datos de uso</h2>
           <p className="text-label-2 mt-1">
-            Falta crear la tabla. Aplica <code className="font-mono">supabase/migrations/23_usage_analytics.sql</code> en Supabase, SQL Editor, y pulsa Actualizar.
+            Falta crear la tabla. Aplica <code className="font-mono">supabase/migrations/23_usage_analytics.sql</code> y <code className="font-mono">24_usage_by_student.sql</code> en Supabase, SQL Editor, y pulsa Actualizar.
           </p>
         </Card>
       )}
-      {error && (
+      {error && view === 'features' && (
         <Card className="text-ink-red p-4" role="alert">
           {error}
         </Card>
       )}
-      {busy && !rows && !missing && !error && <Spinner className="mx-auto my-16 h-8 w-8" />}
+      {view === 'features' && busy && !rows && !missing && !error && <Spinner className="mx-auto my-16 h-8 w-8" />}
 
-      {rows && overview && (
+      {view === 'students' && <StudentUsage days={n} refresh={tick} />}
+
+      {view === 'features' && rows && overview && (
         <div className="space-y-5">
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <Kpi icon={Users} color="var(--blue)" value={fmt(overview.students)} label="alumnos activos" hint={`de ${fmt(overview.total_students)} · ${fmt(overview.teachers)} docentes activos`} />

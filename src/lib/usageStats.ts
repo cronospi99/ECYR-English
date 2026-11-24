@@ -44,14 +44,14 @@ export interface BaselineStat {
 /** The migration has not been applied (or the API cache has not reloaded yet). */
 export class UsageMissingError extends Error {
   constructor() {
-    super('Aplica supabase/migrations/23_usage_analytics.sql');
+    super('Aplica supabase/migrations/23_usage_analytics.sql y 24_usage_by_student.sql');
   }
 }
 
 function fail(error: { code?: string; message: string; status?: number }): never {
   const missing =
     ['PGRST202', 'PGRST205', '42883', '42P01'].includes(error.code ?? '') ||
-    /usage_(summary|daily|by_role|overview|history_baseline|events)/.test(error.message) ||
+    /usage_(summary|daily|by_role|overview|history_baseline|events|students?(_detail|_daily|_timeline)?)/.test(error.message) ||
     error.status === 404;
   if (missing) throw new UsageMissingError();
   if (error.code === '42501') throw new Error('Solo la cuenta dueña de la plataforma puede ver estas estadísticas.');
@@ -182,4 +182,126 @@ export function toCsv(rows: FeatureRow[], days: number): string {
     [r.feature, r.label, categoryOf(r.category).label, r.users, r.studentUsers, r.teacherUsers, r.opens, r.minutes, r.events, r.last_at ?? '', r.histUsers, r.histEvents].map(cell).join(','),
   );
   return '﻿' + [head.join(','), ...lines].join('\r\n');
+}
+
+// ------------------------------------------------------- by student (24) ----
+export interface StudentRow {
+  id: string;
+  name: string;
+  email: string;
+  role: 'student' | 'teacher';
+  teacher: string;
+  classCode: string;
+  activeDays: number;
+  minutes: number;
+  features: number;
+  events: number;
+  lastAt: string | null;
+}
+export interface StudentContext {
+  teacherId: string | null;
+  teacherName: string | null;
+  /** A teacher who is not the student's own. */
+  other: boolean;
+  kind: 'board' | 'room' | 'assignment' | 'class' | null;
+  n: number;
+}
+export interface StudentFeature {
+  feature: string;
+  events: number;
+  opens: number;
+  minutes: number;
+  lastAt: string | null;
+  contexts: StudentContext[];
+}
+export interface StudentDay {
+  day: string;
+  events: number;
+  minutes: number;
+}
+export interface TimelineEvent {
+  id: number;
+  at: string;
+  feature: string;
+  action: string;
+  seconds: number;
+  context: string;
+  other: boolean;
+}
+
+export async function fetchStudents(days: number): Promise<StudentRow[]> {
+  const rows = await rpc<Record<string, unknown>>('usage_students', { p_days: days });
+  return rows.map((r) => ({
+    id: String(r.user_id),
+    name: String(r.full_name ?? '').trim(),
+    email: String(r.email ?? ''),
+    role: r.role === 'teacher' ? 'teacher' : 'student',
+    teacher: String(r.teacher_name ?? ''),
+    classCode: String(r.class_code ?? ''),
+    activeDays: num(r.active_days),
+    minutes: num(r.minutes),
+    features: num(r.features),
+    events: num(r.events),
+    lastAt: (r.last_at as string | null) ?? null,
+  }));
+}
+export async function fetchStudentDetail(user: string, days: number): Promise<StudentFeature[]> {
+  const rows = await rpc<Record<string, unknown>>('usage_student_detail', { p_user: user, p_days: days });
+  return rows.map((r) => ({
+    feature: String(r.feature),
+    events: num(r.events),
+    opens: num(r.opens),
+    minutes: num(r.minutes),
+    lastAt: (r.last_at as string | null) ?? null,
+    contexts: (Array.isArray(r.contexts) ? (r.contexts as Record<string, unknown>[]) : []).map((c) => ({
+      teacherId: (c.teacher_id as string | null) ?? null,
+      teacherName: (c.teacher_name as string | null) ?? null,
+      other: c.other === true,
+      kind: (['board', 'room', 'assignment', 'class'] as const).find((k) => k === c.kind) ?? null,
+      n: num(c.n),
+    })),
+  }));
+}
+export async function fetchStudentDaily(user: string, days: number): Promise<StudentDay[]> {
+  const rows = await rpc<Record<string, unknown>>('usage_student_daily', { p_user: user, p_days: days });
+  return rows.map((r) => ({ day: String(r.day).slice(0, 10), events: num(r.events), minutes: num(r.minutes) }));
+}
+export async function fetchStudentTimeline(user: string, days: number, limit = 100): Promise<TimelineEvent[]> {
+  const rows = await rpc<Record<string, unknown>>('usage_student_timeline', { p_user: user, p_days: days, p_limit: limit });
+  return rows.map((r) => ({
+    id: num(r.id),
+    at: String(r.at),
+    feature: String(r.feature),
+    action: String(r.action),
+    seconds: num(r.seconds),
+    context: String(r.context ?? ''),
+    other: r.other === true,
+  }));
+}
+
+export const KIND_LABEL: Record<string, string> = { board: 'Muro en vivo', room: 'Juego en vivo', assignment: 'Tarea', class: 'Clase' };
+
+export function studentsToCsv(rows: StudentRow[], days: number): string {
+  const head = ['id', 'nombre', 'correo', 'rol', 'profesor', 'clase', `dias_activos_${days}d`, 'minutos', 'funcionalidades', 'eventos', 'ultimo_uso'];
+  const lines = rows.map((r) => [r.id, r.name, r.email, r.role, r.teacher, r.classCode, r.activeDays, r.minutes, r.features, r.events, r.lastAt ?? ''].map(cell).join(','));
+  return '\ufeff' + [head.join(','), ...lines].join('\r\n');
+}
+
+/** One student: every feature of the inventory (0 included) with their numbers. */
+export function studentDetailToCsv(name: string, rows: StudentFeature[], days: number): string {
+  const head = ['estudiante', 'funcionalidad', 'categoria', `aperturas_${days}d`, 'minutos', 'eventos', 'ultimo_uso', 'contextos'];
+  const lines = rows.map((r) => {
+    const d = featureDef(r.feature);
+    const ctx = r.contexts.map((c) => `${KIND_LABEL[c.kind ?? ''] ?? 'Contexto'}${c.teacherName ? ' de ' + c.teacherName : ''}${c.other ? ' (otro profesor)' : ''} x${c.n}`).join(' | ');
+    return [name, d.label, categoryOf(d.category).label, r.opens, r.minutes, r.events, r.lastAt ?? '', ctx].map(cell).join(',');
+  });
+  return '\ufeff' + [head.join(','), ...lines].join('\r\n');
+}
+
+/** Detail rows joined with the full inventory so unused tools show up with 0. */
+export function withInventory(rows: StudentFeature[]): StudentFeature[] {
+  const have = new Map(rows.map((r) => [r.feature, r]));
+  const out = [...rows];
+  for (const f of FEATURES) if (!have.has(f.id)) out.push({ feature: f.id, events: 0, opens: 0, minutes: 0, lastAt: null, contexts: [] });
+  return out;
 }

@@ -39,7 +39,6 @@ const PAGES: Entry[] = [
   { k: 'page', t: 'Infographics', s: 'Learn · grammar and vocabulary in pictures', to: '/learn/visuals', x: 'infografías imágenes visual' },
   { k: 'page', t: 'Pre-A1 Foundations', s: 'Learn · alphabet, numbers, greetings, to be', to: '/learn/foundations', x: 'cimientos principiante básico beginner abecedario números saludos' },
   { k: 'page', t: 'IELTS', s: 'Exam preparation and simulator', to: '/ielts', x: 'examen internacional simulador band' },
-  { k: 'page', t: 'AI Coach', s: 'Ask questions and practise with the tutor', to: '/coach', x: 'tutor inteligencia artificial chat preguntar' },
   { k: 'page', t: 'Games', s: 'All the class games', to: '/games', x: 'juegos' },
   { k: 'page', t: 'My plan', s: 'Your weekly study plan', to: '/plan', x: 'plan de estudio semana' },
   { k: 'page', t: 'Tasks', s: 'Homework from your teacher', to: '/tasks', x: 'tareas deberes asignaciones' },

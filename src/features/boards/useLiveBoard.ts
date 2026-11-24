@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/store/auth';
+import { track, setUsageContext, clearUsageContext } from '@/lib/usage';
 import {
   BoardError,
   addCard,
@@ -106,6 +107,9 @@ export function useLiveBoard(id: string) {
   useEffect(() => {
     if (!supabase || !ready || !signedIn || !id) return;
     void refetch();
+    // Usage stats: whose board this is is resolved on the server from the board id.
+    track('board', 'enter', { board: id });
+    setUsageContext({ board: id });
     let timer: number | undefined;
     let debounce: number | undefined;
     channel.current = joinBoardChannel(
@@ -128,6 +132,7 @@ export function useLiveBoard(id: string) {
     };
     document.addEventListener('visibilitychange', onVis);
     return () => {
+      clearUsageContext('board', id);
       window.clearInterval(timer);
       window.clearTimeout(debounce);
       document.removeEventListener('visibilitychange', onVis);
