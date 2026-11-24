@@ -3,7 +3,7 @@
 -- -----------------------------------------------------------------------------
 -- Paste this whole file into Supabase → SQL Editor → New query → Run.
 -- Safe to re-run: every statement is create-if-not-exists or drop-then-create.
--- Includes, in order: 01_schema.sql, 02_roles_and_tasks.sql, 03_history_visibility.sql, 04_audio_library.sql, 05_ecyr_platform.sql, 06_api_grants.sql, 07_portfolio.sql, 08_migrations_log.sql, 09_assignments.sql, 11_podcasts.sql, 12_notes.sql, 13_c2_level.sql, 14_submission_reviews.sql, 15_teacher_invites.sql, 16_live_boards.sql, 17_admin_delete_users.sql, 18_live_boards_v2.sql, 19_game_cards.sql, 20_class_wars.sql, 21_shared_students.sql, 22_security_hardening.sql
+-- Includes, in order: 01_schema.sql, 02_roles_and_tasks.sql, 03_history_visibility.sql, 04_audio_library.sql, 05_ecyr_platform.sql, 06_api_grants.sql, 07_portfolio.sql, 08_migrations_log.sql, 09_assignments.sql, 11_podcasts.sql, 12_notes.sql, 13_c2_level.sql, 14_submission_reviews.sql, 15_teacher_invites.sql, 16_live_boards.sql, 17_admin_delete_users.sql, 18_live_boards_v2.sql, 19_game_cards.sql, 20_class_wars.sql, 21_shared_students.sql, 23_usage_analytics.sql
 -- Do not edit by hand: change supabase/migrations/* and re-run the script.
 -- =============================================================================
 
@@ -5401,429 +5401,246 @@ grant execute on function public.remove_student(uuid) to authenticated;
 grant execute on function public.join_class(text) to authenticated;
 
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 22_security_hardening.sql
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 23_usage_analytics.sql
 
 -- =============================================================================
--- ECYR English platform — security hardening
+-- ECYR English platform — usage analytics (owner-only panel)
 -- -----------------------------------------------------------------------------
--- Runs after 01–21. Safe to re-run: create-or-replace / drop-then-create /
--- if-not-exists throughout. Read supabase/APLICAR-22.md BEFORE pasting this:
--- the owner must enrol two-step verification (TOTP) in the app first.
+-- Runs after 01–21 (22 is reserved). Safe to re-run.
 --
 -- WHAT IT DOES
---   1. One owner only: platform_admins may hold a single row (unique index).
---   2. Two-step verification for the owner: is_platform_admin() now also needs a
---      session at assurance level aal2. is_platform_owner() answers "is this the
---      owner?" WITHOUT the aal check; the app uses it to recognise the owner
---      at aal1 and ask for the code. It returns a boolean only, no data.
---        Depend on is_platform_admin() (all now need MFA): list/create/revoke
---        teacher invites, list_platform_students/teachers, admin_share/unshare,
---        admin_set_student_shared, admin_delete_user, admin_audit, and the owner
---        shortcut in switch_role (an owner at aal1 simply gets asked for a code,
---        like any teacher-to-be). None of those is needed without MFA.
---   3. list_shared_students no longer returns emails.
---   4. Emails leave the reach of teachers: authenticated may read every
---      profiles column EXCEPT email. A user's own email comes from the session.
---      Live-board author names no longer fall back to the email.
---   5. Profiles can no longer be inserted by the client (only the sign-up
---      trigger creates them), so nobody can pick their own role.
---   6. anon loses every table and function privilege except check_teacher_invite
---      (the sign-up form calls it before there is a session). authenticated keeps
---      exactly what it had: see the note in section 6.
---   7. Gemini daily limit per user (gemini_usage, bump_gemini_usage).
---   8. admin_audit: who (owner) did what; written by the admin functions.
+--   * usage_events: one row per thing the app reports (a screen view, a game
+--     opened, N seconds of active time…). The browser only INSERTS rows for the
+--     signed-in user. Nobody can read, change or delete them through the API.
+--   * usage_summary / usage_daily / usage_by_role / usage_overview /
+--     usage_history_baseline: aggregate functions that only the platform owner
+--     (platform_admins, see 15_teacher_invites.sql) can run. They back /admin/stats.
 --
--- Admin functions (list_platform_students/teachers) STILL return emails: only the
--- owner, with MFA, can call them.
+-- PRIVACY: only feature ids and action names are stored (e.g. 'units', 'view').
+-- No e-mails, no text written by students. `meta` is a tiny object of ids/numbers.
+--
+-- RETENTION (optional, run by hand or schedule it with pg_cron):
+--   delete from public.usage_events where created_at < now() - interval '365 days';
 -- =============================================================================
 
-do $$
-begin
-  if to_regprocedure('public.is_platform_admin()') is null
-     or to_regprocedure('public.list_shared_students()') is null
-     or to_regprocedure('public.add_live_card(uuid, text, text, text, int, real, real, text, real, real)') is null then
-    raise exception 'Ejecuta primero 01 … 21 (o usa supabase/setup.sql, que lo incluye todo).';
-  end if;
-end;
-$$;
-
--- ===================================================== 1. A SINGLE OWNER ====
-do $$
-declare
-  n integer;
-begin
-  select count(*) into n from public.platform_admins;
-  if n > 1 then
-    raise exception 'platform_admins tiene % filas y solo puede haber 1 (la cuenta dueña). Borra las sobrantes (delete from public.platform_admins where user_id = ''<uuid>'';) y vuelve a ejecutar este archivo.', n;
-  end if;
-end;
-$$;
-
-create unique index if not exists platform_admins_one_owner on public.platform_admins ((true));
-
--- ============================================================ 2. OWNER + MFA ====
--- Ignores the MFA level: for the app to know it must ask for the code. Boolean only.
-create or replace function public.is_platform_owner()
-returns boolean
-language sql
-stable
-security definer
-set search_path = public
-as $$
-  select exists (select 1 from public.platform_admins where user_id = (select auth.uid()));
-$$;
-
--- Owner AND a session verified with a second factor (JWT claim aal = 'aal2').
-create or replace function public.is_platform_admin()
-returns boolean
-language sql
-stable
-security definer
-set search_path = public
-as $$
-  select exists (select 1 from public.platform_admins where user_id = (select auth.uid()))
-     and coalesce((select auth.jwt())->>'aal', '') = 'aal2';
-$$;
-
-revoke all on function public.is_platform_owner() from public, anon;
-revoke all on function public.is_platform_admin() from public, anon;
-grant execute on function public.is_platform_owner() to authenticated;
-grant execute on function public.is_platform_admin() to authenticated;
-
--- ============================================================ 8. ADMIN AUDIT ====
--- (Created before the admin functions that write to it.)
-create table if not exists public.admin_audit (
-  id     bigint generated always as identity primary key,
-  actor  uuid references auth.users(id) on delete set null,
-  action text not null,
-  target text,
-  at     timestamptz not null default now()
+-- ============================================================== 1. TABLE ====
+create table if not exists public.usage_events (
+  id          bigserial primary key,
+  user_id     uuid not null default auth.uid() references auth.users on delete cascade,
+  feature     text not null
+              constraint usage_events_feature_len check (char_length(feature) between 1 and 64),
+  action      text not null
+              constraint usage_events_action_len check (char_length(action) between 1 and 32),
+  seconds     integer not null default 0
+              constraint usage_events_seconds_range check (seconds between 0 and 3600),
+  meta        jsonb not null default '{}'::jsonb
+              constraint usage_events_meta_small check (jsonb_typeof(meta) = 'object' and length(meta::text) <= 512),
+  created_at  timestamptz not null default now()
 );
-create index if not exists admin_audit_at_idx on public.admin_audit (at desc);
 
-alter table public.admin_audit enable row level security;
-revoke all on public.admin_audit from anon, authenticated;
-grant select on public.admin_audit to authenticated;
+create index if not exists usage_events_created_idx on public.usage_events (created_at);
+create index if not exists usage_events_feature_idx on public.usage_events (feature, created_at);
 
-drop policy if exists admin_audit_select_owner on public.admin_audit;
-create policy admin_audit_select_owner on public.admin_audit
-  for select to authenticated using (public.is_platform_admin());
--- No insert/update/delete policy: rows are written only by the security definer
--- admin functions below, and nobody can edit or erase them through the API.
+-- ================================================================= 2. RLS ====
+alter table public.usage_events enable row level security;
 
--- Every student with their main teacher, extra teachers and whether they are open to all.
--- (21's version, now volatile because it writes an audit row; emails only for the owner.)
-create or replace function public.list_platform_students()
-returns table (id uuid, email text, full_name text, teacher_id uuid, teacher_name text, created_at timestamptz,
-               shared boolean, extra_teachers jsonb)
-language plpgsql
-volatile
-security definer
-set search_path = public
-as $$
-begin
-  if not public.is_platform_admin() then
-    raise exception 'Only the platform owner can see the students.' using errcode = '42501';
-  end if;
-  insert into public.admin_audit (actor, action, target) values (auth.uid(), 'list_platform_students', null);
-  return query
-    select s.id, s.email, s.full_name, s.teacher_id, coalesce(nullif(t.full_name, ''), t.email), s.created_at,
-           s.shared_pool,
-           coalesce((select jsonb_agg(jsonb_build_object('id', x.id, 'name', coalesce(nullif(x.full_name, ''), x.email)) order by ts.created_at)
-                       from public.teacher_students ts join public.profiles x on x.id = ts.teacher_id
-                      where ts.student_id = s.id), '[]'::jsonb)
-      from public.profiles s
-      left join public.profiles t on t.id = s.teacher_id
-     where s.role = 'student'
-     order by s.created_at desc;
-end;
-$$;
+drop policy if exists usage_events_insert_own on public.usage_events;
+create policy usage_events_insert_own on public.usage_events
+  for insert to authenticated
+  with check (user_id = (select auth.uid()));
+-- No SELECT / UPDATE / DELETE policies on purpose: reads go through the functions below.
 
-create or replace function public.list_platform_teachers()
-returns table (id uuid, email text, full_name text, class_code text, students bigint, created_at timestamptz)
-language plpgsql
-volatile
-security definer
-set search_path = public
-as $$
-begin
-  if not public.is_platform_admin() then
-    raise exception 'Only the platform owner can see the teachers.' using errcode = '42501';
-  end if;
-  insert into public.admin_audit (actor, action, target) values (auth.uid(), 'list_platform_teachers', null);
-  return query
-    select p.id, p.email, p.full_name, p.class_code,
-           (select count(*) from public.profiles s where s.role = 'student'
-               and (s.teacher_id = p.id or exists (select 1 from public.teacher_students ts where ts.student_id = s.id and ts.teacher_id = p.id))),
-           p.created_at
-      from public.profiles p
-     where p.role = 'teacher'
-     order by p.created_at desc;
-end;
-$$;
+revoke all on public.usage_events from public, anon, authenticated;
+grant insert on public.usage_events to authenticated;
+grant usage on sequence public.usage_events_id_seq to authenticated;
 
-create or replace function public.admin_delete_user(p_user uuid)
-returns void
-language plpgsql
-security definer
-set search_path = public
-as $$
-begin
-  if not public.is_platform_admin() then
-    raise exception 'Only the platform owner can delete accounts.' using errcode = '42501';
-  end if;
-  if p_user = auth.uid() then
-    raise exception 'You cannot delete your own account from here.';
-  end if;
-  if exists (select 1 from public.platform_admins where user_id = p_user) then
-    raise exception 'That account is a platform owner. Remove it from platform_admins first.';
-  end if;
-  if not exists (select 1 from auth.users where id = p_user) then
-    raise exception 'That account does not exist.';
-  end if;
+-- ======================================================== 3. AGGREGATES ====
+-- Every function checks the caller is the platform owner first.
 
-  insert into public.admin_audit (actor, action, target) values (auth.uid(), 'admin_delete_user', p_user::text);
-
-  -- Older projects keep a foreign key from storage.objects.owner to auth.users;
-  -- release the files so they don't block the delete (they stay in their bucket).
-  begin
-    update storage.objects set owner = null where owner = p_user;
-  exception when others then
-    null;
-  end;
-
-  delete from auth.users where id = p_user;
-end;
-$$;
-
-revoke all on function public.list_platform_students() from public, anon;
-revoke all on function public.list_platform_teachers() from public, anon;
-revoke all on function public.admin_delete_user(uuid)  from public, anon;
-grant execute on function public.list_platform_students() to authenticated;
-grant execute on function public.list_platform_teachers() to authenticated;
-grant execute on function public.admin_delete_user(uuid)  to authenticated;
-
--- ============================================ 3. SHARED STUDENTS: NO EMAIL ====
-drop function if exists public.list_shared_students();
-create or replace function public.list_shared_students()
-returns table (id uuid, full_name text, teacher_name text)
+-- Per feature: distinct users, events, opens (view/open), active minutes, last use.
+create or replace function public.usage_summary(p_days int default 30)
+returns table (feature text, users bigint, events bigint, opens bigint, minutes numeric, last_at timestamptz)
 language plpgsql
 stable
 security definer
 set search_path = public
 as $$
 begin
-  if not exists (select 1 from public.profiles me where me.id = auth.uid() and me.role = 'teacher') then
-    raise exception 'Only a teacher can see the shared students.' using errcode = '42501';
+  if not public.is_platform_admin() then
+    raise exception 'Only the platform owner can read usage statistics.' using errcode = '42501';
   end if;
   return query
-    select s.id, s.full_name, coalesce(nullif(t.full_name, ''), 'Docente')
-      from public.profiles s
-      left join public.profiles t on t.id = s.teacher_id
-     where s.role = 'student' and s.shared_pool and not public.in_class_of(auth.uid(), s.id)
-     order by s.full_name nulls last, s.id
-     limit 300;
+    select e.feature,
+           count(distinct e.user_id),
+           count(*),
+           count(*) filter (where e.action in ('view', 'open')),
+           round(coalesce(sum(e.seconds), 0) / 60.0, 1),
+           max(e.created_at)
+      from public.usage_events e
+     where e.created_at >= now() - make_interval(days => greatest(1, least(coalesce(p_days, 30), 730)))
+     group by e.feature
+     order by 2 desc, 3 desc;
 end;
 $$;
 
-revoke all on function public.list_shared_students() from public, anon;
-grant execute on function public.list_shared_students() to authenticated;
-
--- ====================================== 4b. LIVE BOARDS: NO EMAIL FALLBACK ====
--- The author name of a card never falls back to the email (not even its local part).
-create or replace function public.add_live_card(
-  p_board uuid,
-  p_text  text,
-  p_color text default 'yellow',
-  p_image text default null,
-  p_col   int default 0,
-  p_x     real default 0,
-  p_y     real default 0,
-  p_shape text default 'note',
-  p_w     real default null,
-  p_h     real default null
-)
-returns uuid
+-- Daily distinct active users (all features, or one).
+create or replace function public.usage_daily(p_days int default 30, p_feature text default null)
+returns table (day date, users bigint, events bigint, minutes numeric)
 language plpgsql
+stable
 security definer
 set search_path = public
 as $$
 declare
-  v_uid  uuid := auth.uid();
-  v_role text := public.live_board_check(p_board);
-  v_b    public.live_boards;
-  v_me   public.profiles;
-  v_id   uuid;
+  v_days int := greatest(1, least(coalesce(p_days, 30), 730));
 begin
-  select * into v_b from public.live_boards where id = p_board;
-  if v_role <> 'teacher' and v_b.locked then
-    raise exception 'BOARD_LOCKED: the teacher locked this board.' using errcode = '42501';
+  if not public.is_platform_admin() then
+    raise exception 'Only the platform owner can read usage statistics.' using errcode = '42501';
   end if;
-  if v_role <> 'teacher'
-     and (select count(*) from public.live_board_cards where board_id = p_board and author_id = v_uid) >= 40 then
-    raise exception 'CARD_LIMIT: 40 cards per person on one board.';
-  end if;
-  if (select count(*) from public.live_board_cards where board_id = p_board) >= 400 then
-    raise exception 'CARD_LIMIT: this board is full (400 cards).';
-  end if;
+  return query
+    select d::date,
+           count(distinct e.user_id),
+           count(e.id),
+           round(coalesce(sum(e.seconds), 0) / 60.0, 1)
+      from generate_series(current_date - (v_days - 1), current_date, interval '1 day') d
+      left join public.usage_events e
+             on e.created_at >= d and e.created_at < d + interval '1 day'
+            and (p_feature is null or e.feature = p_feature)
+     group by d
+     order by d;
+end;
+$$;
 
-  select * into v_me from public.profiles where id = v_uid;
+-- Per feature and role (student / teacher).
+create or replace function public.usage_by_role(p_days int default 30)
+returns table (feature text, role text, users bigint, events bigint, minutes numeric)
+language plpgsql
+stable
+security definer
+set search_path = public
+as $$
+begin
+  if not public.is_platform_admin() then
+    raise exception 'Only the platform owner can read usage statistics.' using errcode = '42501';
+  end if;
+  return query
+    select e.feature,
+           coalesce(p.role, 'student'),
+           count(distinct e.user_id),
+           count(*),
+           round(coalesce(sum(e.seconds), 0) / 60.0, 1)
+      from public.usage_events e
+      left join public.profiles p on p.id = e.user_id
+     where e.created_at >= now() - make_interval(days => greatest(1, least(coalesce(p_days, 30), 730)))
+     group by e.feature, coalesce(p.role, 'student')
+     order by 1, 2;
+end;
+$$;
 
-  insert into public.live_board_cards (board_id, author_id, author_name, text, color, image, col, x, y, position, shape, w, h)
-  values (
-    p_board,
-    v_uid,
-    left(coalesce(nullif(btrim(v_me.full_name), ''), 'Estudiante'), 120),
-    btrim(coalesce(p_text, '')),
-    coalesce(p_color, 'yellow'),
-    nullif(p_image, ''),
-    least(greatest(coalesce(p_col, 0), 0), greatest(jsonb_array_length(v_b.columns) - 1, 0)),
-    least(greatest(coalesce(p_x, 0), 0), 1600),
-    least(greatest(coalesce(p_y, 0), 0), 1000),
-    coalesce((select max(position) from public.live_board_cards where board_id = p_board), 0) + 1,
-    coalesce(nullif(p_shape, ''), 'note'),
-    case when p_w is null then null else least(greatest(p_w, 100), 640) end,
-    case when p_h is null then null else least(greatest(p_h, 60), 640) end
+-- Headline numbers: active students / teachers, total events and minutes.
+create or replace function public.usage_overview(p_days int default 30)
+returns table (students bigint, teachers bigint, events bigint, minutes numeric, total_students bigint)
+language plpgsql
+stable
+security definer
+set search_path = public
+as $$
+begin
+  if not public.is_platform_admin() then
+    raise exception 'Only the platform owner can read usage statistics.' using errcode = '42501';
+  end if;
+  return query
+    select count(distinct e.user_id) filter (where coalesce(p.role, 'student') = 'student'),
+           count(distinct e.user_id) filter (where p.role = 'teacher'),
+           count(e.id),
+           round(coalesce(sum(e.seconds), 0) / 60.0, 1),
+           (select count(*) from public.profiles x where x.role = 'student')
+      from public.usage_events e
+      left join public.profiles p on p.id = e.user_id
+     where e.created_at >= now() - make_interval(days => greatest(1, least(coalesce(p_days, 30), 730)));
+end;
+$$;
+
+-- "Histórico (estimado)": what the older tables already say, so the panel does not
+-- start empty. Feature ids match the app's (src/lib/usageFeatures.ts). Estimates:
+-- learner_state keeps only the last ~150 activities and ~120 game sessions per student.
+create or replace function public.usage_history_baseline()
+returns table (feature text, users bigint, events bigint, last_at timestamptz, source text)
+language plpgsql
+stable
+security definer
+set search_path = public
+as $$
+begin
+  if not public.is_platform_admin() then
+    raise exception 'Only the platform owner can read usage statistics.' using errcode = '42501';
+  end if;
+  return query
+  with act as (
+    select ls.user_id, a->>'kind' as kind, a->>'ref' as ref, nullif(a->>'at', '')::timestamptz as at
+      from public.learner_state ls
+     cross join lateral jsonb_array_elements(
+       case when jsonb_typeof(ls.state->'activity') = 'array' then ls.state->'activity' else '[]'::jsonb end) a
+  ),
+  gs as (
+    select ls.user_id, g->>'slug' as slug, nullif(g->>'endedAt', '')::timestamptz as at
+      from public.learner_state ls
+     cross join lateral jsonb_array_elements(
+       case when jsonb_typeof(ls.state->'gameSessions') = 'array' then ls.state->'gameSessions' else '[]'::jsonb end) g
+  ),
+  kinds(kind, feature) as (
+    values ('unit', 'units'), ('topic', 'foundations'), ('reading', 'reading'), ('listening', 'listening'),
+           ('speaking', 'speaking'), ('writing', 'writing'), ('flashcards', 'vocabulary'),
+           ('ielts', 'ielts'), ('coach', 'coach'), ('exam', 'exams')
   )
-  returning id into v_id;
-  return v_id;
-end;
-$$;
-revoke all on function public.add_live_card(uuid, text, text, text, int, real, real, text, real, real) from public, anon;
-grant execute on function public.add_live_card(uuid, text, text, text, int, real, real, text, real, real) to authenticated;
-
--- Cards written before this change by accounts without a name carry the email's
--- local part as author_name: replace it.
-update public.live_board_cards c
-   set author_name = 'Estudiante'
-  from public.profiles p
- where p.id = c.author_id
-   and nullif(btrim(p.full_name), '') is null
-   and c.author_name is distinct from 'Estudiante';
-
--- ================================ 4. EMAILS OUT OF REACH OF THE CLIENT ====
--- authenticated reads every profiles column except email. Row visibility is
--- still decided by the RLS policies (own row, own teacher/students, …). The
--- column list is built from the catalog so a column added by a later migration
--- is not forgotten; today it is: id, full_name, role, teacher_id, class_code,
--- created_at, history_default, history_override, shared_pool.
--- UPDATE stays restricted to full_name (02/06). Security definer functions run
--- as the table owner and still see email (sign-up trigger, admin lists).
-revoke select on public.profiles from authenticated, anon;
-do $$
-declare
-  cols text;
-begin
-  select string_agg(quote_ident(column_name), ', ' order by ordinal_position)
-    into cols
-    from information_schema.columns
-   where table_schema = 'public' and table_name = 'profiles' and column_name <> 'email';
-  execute format('grant select (%s) on public.profiles to authenticated', cols);
-end;
-$$;
-
--- ======================================== 5. NO CLIENT INSERTS ON PROFILES ====
--- The profile is created by handle_new_user (trigger on auth.users, security
--- definer). Letting the client insert one let anybody choose their own role.
-revoke insert on public.profiles from authenticated, anon;
-drop policy if exists profiles_insert_own on public.profiles;
-
--- ============================================================ 7. GEMINI LIMIT ====
-create table if not exists public.gemini_usage (
-  user_id uuid not null references public.profiles(id) on delete cascade,
-  day     date not null default current_date,
-  calls   integer not null default 0,
-  primary key (user_id, day)
-);
-
-alter table public.gemini_usage enable row level security;
-revoke all on public.gemini_usage from anon, authenticated;
-grant select on public.gemini_usage to authenticated;
-
-drop policy if exists gemini_usage_select_own on public.gemini_usage;
-create policy gemini_usage_select_own on public.gemini_usage
-  for select to authenticated using (user_id = (select auth.uid()));
--- No insert/update policy: the counter only moves through bump_gemini_usage().
-
--- Counts one generation on the class's Gemini key and refuses past the daily limit.
-create or replace function public.bump_gemini_usage(p_limit integer default 60)
-returns integer
-language plpgsql
-security definer
-set search_path = public
-as $$
-declare
-  v_calls integer;
-begin
-  if auth.uid() is null then
-    raise exception 'not signed in' using errcode = '28000';
-  end if;
-
-  insert into public.gemini_usage (user_id, day, calls)
-  values (auth.uid(), current_date, 1)
-  on conflict (user_id, day) do update set calls = public.gemini_usage.calls + 1
-  returning calls into v_calls;
-
-  if v_calls > greatest(1, least(coalesce(p_limit, 60), 2000)) then
-    raise exception 'daily Gemini limit reached' using errcode = 'P0001';
-  end if;
-  return v_calls;
+  select k.feature, count(distinct a.user_id), count(*), max(a.at), 'learner_state.activity'
+    from act a join kinds k on k.kind = a.kind group by k.feature
+  union all
+  select 'module:' || gs.slug, count(distinct gs.user_id), count(*), max(gs.at), 'learner_state.gameSessions'
+    from gs where gs.slug is not null group by gs.slug
+  union all
+  select 'coach', count(distinct u.user_id), coalesce(sum(u.calls), 0), max(u.day)::timestamptz, 'ai_usage'
+    from public.ai_usage u having count(*) > 0
+  union all
+  select 'podcasts', count(distinct u.user_id), coalesce(sum(u.calls), 0), max(u.day)::timestamptz, 'podcast_usage'
+    from public.podcast_usage u having count(*) > 0
+  union all
+  select 'ielts', count(distinct s.student_id), count(*), max(s.created_at), 'submissions'
+    from public.submissions s having count(*) > 0
+  union all
+  select 'portfolio', count(distinct i.user_id), count(*), max(i.created_at), 'portfolio_items'
+    from public.portfolio_items i having count(*) > 0
+  union all
+  select 'tasks', count(distinct st.student_id), count(*), max(st.done_at), 'assignment_status'
+    from public.assignment_status st where st.status in ('done', 'late') having count(*) > 0
+  union all
+  select 'notes', count(distinct n.user_id), count(*), max(n.created_at), 'student_notes'
+    from public.student_notes n having count(*) > 0
+  union all
+  select 'boards', count(distinct b.teacher_id), count(*), max(b.created_at), 'live_boards'
+    from public.live_boards b having count(*) > 0
+  union all
+  select 'games-cards', count(distinct c.user_id), coalesce(sum(c.games), 0), max(c.updated_at), 'game_card_points'
+    from public.game_card_points c having count(*) > 0
+  union all
+  select 'classwars', count(distinct s.teacher_id), count(*), max(s.created_at), 'class_wars_sets'
+    from public.class_wars_sets s having count(*) > 0
+  union all
+  select 'import', count(distinct m.user_id), count(*), max(m.created_at), 'migrations_log'
+    from public.migrations_log m having count(*) > 0;
 end;
 $$;
 
-revoke all on function public.bump_gemini_usage(integer) from public, anon;
-grant execute on function public.bump_gemini_usage(integer) to authenticated;
+-- ========================================================= 4. PERMISSIONS ====
+revoke all on function public.usage_summary(int)               from public, anon;
+revoke all on function public.usage_daily(int, text)           from public, anon;
+revoke all on function public.usage_by_role(int)               from public, anon;
+revoke all on function public.usage_overview(int)              from public, anon;
+revoke all on function public.usage_history_baseline()         from public, anon;
+grant execute on function public.usage_summary(int)            to authenticated;
+grant execute on function public.usage_daily(int, text)        to authenticated;
+grant execute on function public.usage_by_role(int)            to authenticated;
+grant execute on function public.usage_overview(int)           to authenticated;
+grant execute on function public.usage_history_baseline()      to authenticated;
 
--- ============================================== 6. TAKE PRIVILEGES FROM anon ====
--- anon (visitors with no session) needs only check_teacher_invite(text), which
--- the sign-up form calls to validate a teacher code. Everything else is closed.
---
--- NOTE on "grant execute on all functions to authenticated": that blanket grant
--- would also open internal helpers that earlier migrations closed on purpose
--- (link_student_to_teacher, spend_teacher_invite, live_board_check, …). Instead,
--- before removing the default PUBLIC execute, every function that authenticated
--- (or service_role) can run TODAY gets an explicit grant: same access as now,
--- nothing new, and anon/PUBLIC lose theirs.
-revoke all on all tables    in schema public from anon;
-revoke all on all sequences in schema public from anon;
-
-do $$
-declare
-  f record;
-begin
-  for f in
-    select p.oid, p.oid::regprocedure as sig
-      from pg_proc p
-     where p.pronamespace = 'public'::regnamespace
-       and p.prokind in ('f', 'p')
-       and not exists (select 1 from pg_depend d where d.objid = p.oid and d.deptype = 'e')  -- not extension-owned
-  loop
-    if has_function_privilege('authenticated', f.oid, 'execute') then
-      execute format('grant execute on function %s to authenticated', f.sig);
-    end if;
-    if exists (select 1 from pg_roles where rolname = 'service_role')
-       and has_function_privilege('service_role', f.oid, 'execute') then
-      execute format('grant execute on function %s to service_role', f.sig);
-    end if;
-    execute format('revoke execute on function %s from public, anon', f.sig);
-  end loop;
-end;
-$$;
-
-grant execute on function public.check_teacher_invite(text) to anon;
-
--- Future objects: nothing for anon; no default PUBLIC execute on new functions
--- (new migrations already grant execute to authenticated explicitly).
-alter default privileges in schema public revoke all on tables from anon;
-alter default privileges in schema public revoke all on sequences from anon;
-alter default privileges in schema public revoke execute on functions from public, anon;
-alter default privileges revoke execute on functions from public;
-do $$
-begin
-  -- Supabase also keeps default privileges for supabase_admin; may not be permitted everywhere.
-  alter default privileges for role supabase_admin in schema public revoke all on tables from anon;
-  alter default privileges for role supabase_admin in schema public revoke execute on functions from public, anon;
-exception when others then
-  null;
-end;
-$$;
+notify pgrst, 'reload schema';

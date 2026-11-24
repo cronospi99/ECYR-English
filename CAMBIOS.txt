@@ -1963,7 +1963,7 @@ Contenido C2 ×3
   maniobra (turn left, take the 2nd right, go past…), reacciones al llegar, chocar o girar mal; voz opcional.
 - HUD nuevo: flecha y destino, minimapa con norte arriba, tiempo y ganancias, burbuja de diálogo del pasajero.
 
-== Seguridad: blindaje de datos de estudiantes (migración 22, pendiente de aplicar en Supabase) ==
+== Seguridad: blindaje de datos de estudiantes (REVERTIDO; guardado en el commit f039cc0 para estudiarlo y aplicarlo después) ==
 - Solo la cuenta dueña ve nombres y correos de todos los alumnos, y solo con verificación en dos pasos (MFA);
   un único dueño permitido; registro de auditoría de cada acceso de administrador.
 - Los docentes ya no ven correos (ni de sus alumnos ni del grupo compartido); siguen viendo nombres y progreso.
@@ -1977,3 +1977,11 @@ Contenido C2 ×3
 - Botón de profesor "🔄 New words": todas las cartas sin descubrir giran y salen palabras nuevas del nivel
   (reales y falsas mezcladas, sin repetir); el contador de impostores se actualiza solo.
 - Temporizador de 15 s por turno (rojo en los últimos 5 s); al agotarse pasa el turno sin puntos.
+
+== Estadísticas de uso para el admin (/admin/stats) ==
+- Registro ligero de uso: cada pantalla, cada juego (apertura y tiempo activo) y acciones clave (completar, partida,
+  coach/IA, entregas, portafolio, audios). Sin correos ni textos de alumnos. Envío por lotes; sin sesión no registra.
+- Panel solo para la cuenta admin: 69 funcionalidades en 8 categorías; rango 7/30/90 días; uso por funcionalidad
+  (usuarios, minutos, aperturas, incluidas las de uso cero), más y menos usadas, actividad diaria, por categoría,
+  tabla con exportación CSV e "Histórico (estimado)" a partir de los datos ya existentes.
+- Requiere aplicar supabase/migrations/23_usage_analytics.sql (pasos en supabase/APLICAR-23.md).

@@ -14,6 +14,7 @@
 import type { CefrLevel } from '@/content/types';
 import type { Activity } from '@/store/progress';
 import { supabase } from '@/lib/supabase';
+import { track } from '@/lib/usage';
 
 // ------------------------------------------------------------------ types --
 
@@ -346,9 +347,9 @@ export async function listMyAssignments(): Promise<Assignment[]> {
 /** Students of the signed-in teacher (light: no progress documents). */
 export async function listMyStudents(): Promise<StudentLite[]> {
   await myId();
-  const { data, error } = await client().from('profiles').select('id,full_name').eq('role', 'student').order('full_name', { ascending: true });
+  const { data, error } = await client().from('profiles').select('id,full_name,email').eq('role', 'student').order('full_name', { ascending: true });
   if (error) throw friendly(error, 'Could not load the class.');
-  return ((data ?? []) as { id: string; full_name: string | null }[]).map((r) => ({ ...r, email: null })) as StudentLite[];
+  return (data ?? []) as StudentLite[];
 }
 
 export async function createAssignment(d: AssignmentDraft): Promise<Assignment> {
@@ -496,6 +497,7 @@ export async function markDone(
   if (o.note !== undefined) row.student_note = o.note?.trim().slice(0, MAX_NOTE) || null;
   const { data, error } = await client().from(S).upsert(row, { onConflict: 'assignment_id,student_id' }).select('*').single();
   if (error) throw friendly(error, 'Could not mark the task.');
+  track('tasks', 'submit', { via: String(row.via) });
   return normS(data);
 }
 

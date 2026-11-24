@@ -486,7 +486,8 @@ export function AssignmentSheet({
                               className="accent-[var(--blue)] h-5 w-5 shrink-0"
                             />
                             <span className="min-w-0 flex-1">
-                              <span className="text-body block truncate">{s.full_name || 'Student'}</span>
+                              <span className="text-body block truncate">{s.full_name || s.email || 'Student'}</span>
+                              {s.full_name && s.email && <span className="text-footnote text-label-2 block truncate">{s.email}</span>}
                             </span>
                           </label>
                         </li>

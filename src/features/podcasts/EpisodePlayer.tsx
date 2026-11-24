@@ -2,6 +2,7 @@ import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'reac
 import { Pause, Play, RotateCcw, RotateCw } from 'lucide-react';
 import { Spinner } from '@/components/ui/Misc';
 import { SeekBar } from '@/components/learning/AudioScrubber';
+import { track } from '@/lib/usage';
 import { fmtClock, getPosition, savePosition, type PodcastEpisode } from '@/lib/podcasts';
 
 export interface PlayerHandle {
@@ -28,6 +29,7 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
   const [resumed, setResumed] = useState<number | null>(null);
   const lastSave = useRef(0);
   const restored = useRef(false);
+  const counted = useRef(false);
 
   useImperativeHandle(handle, () => ({
     time: () => audio.current?.currentTime ?? 0,
@@ -96,7 +98,13 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
           setT(now);
           if (Math.abs(now - lastSave.current) >= SAVE_EVERY) save();
         }}
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setPlaying(true);
+          if (!counted.current) {
+            counted.current = true;
+            track('podcasts', 'audio_play');
+          }
+        }}
         onPause={() => {
           setPlaying(false);
           save();

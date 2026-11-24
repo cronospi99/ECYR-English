@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
+  BarChart3,
   Cloud,
   CloudOff,
   Download,
@@ -160,6 +161,7 @@ function Account() {
       {profile?.is_admin && (
         <ListGroup header="Admin" footer="Only you can see it. Without one of your codes nobody can create a teacher account.">
           <ListRow to="/admin/teachers" leading={<IconTile icon={KeyRound} color="var(--purple)" />} title="Teacher codes" subtitle="Invite teachers and see who teaches" />
+          <ListRow to="/admin/stats" leading={<IconTile icon={BarChart3} color="var(--blue)" />} title="Estadísticas de uso" subtitle="Qué funcionalidades se usan y cuáles no" />
         </ListGroup>
       )}
 

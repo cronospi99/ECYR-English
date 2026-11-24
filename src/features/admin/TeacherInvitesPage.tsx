@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
+  BarChart3,
   Check,
   Copy,
   KeyRound,
@@ -18,7 +19,6 @@ import { Button, ButtonLink } from "@/components/ui/Button";
 import { Segmented } from "@/components/ui/Segmented";
 import { Spinner, Toggle } from "@/components/ui/Misc";
 import { useAuth } from "@/store/auth";
-import MfaGate from "./MfaGate";
 import { relativeTime } from "@/lib/date";
 import { cn } from "@/lib/cn";
 import {
@@ -87,11 +87,7 @@ export default function TeacherInvitesPage() {
       </Page>
     );
 
-  return (
-    <MfaGate>
-      <Admin />
-    </MfaGate>
-  );
+  return <Admin />;
 }
 
 function Admin() {
@@ -129,14 +125,19 @@ function Admin() {
       title="Teachers"
       subtitle="A teacher account is only created with one of your codes. Students sign up as usual."
       actions={
-        <Button
-          variant="gray"
-          size="sm"
-          onClick={() => void load()}
-          aria-label="Refresh"
-        >
-          <RefreshCw size={15} /> Refresh
-        </Button>
+        <>
+          <ButtonLink to="/admin/stats" variant="gray" size="sm">
+            <BarChart3 size={15} /> Usage stats
+          </ButtonLink>
+          <Button
+            variant="gray"
+            size="sm"
+            onClick={() => void load()}
+            aria-label="Refresh"
+          >
+            <RefreshCw size={15} /> Refresh
+          </Button>
+        </>
       }
     >
       <div className="mb-5 grid grid-cols-3 gap-3">

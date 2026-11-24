@@ -42,7 +42,7 @@ export function AccessPicker({ value, onChange }: { value: string[] | null; onCh
   const roster = students ?? [];
   const some = value !== null;
   const chosen = new Set(value ?? []);
-  const shown = roster.filter((s) => !q || norm(s.profile.full_name ?? '').includes(norm(q.trim())));
+  const shown = roster.filter((s) => !q || norm(`${s.profile.full_name ?? ''} ${s.profile.email ?? ''}`).includes(norm(q.trim())));
 
   const toggle = (id: string) => onChange(chosen.has(id) ? (value ?? []).filter((x) => x !== id) : [...(value ?? []), id]);
 
@@ -108,7 +108,7 @@ export function AccessPicker({ value, onChange }: { value: string[] | null; onCh
                 ) : (
                   shown.map((s) => {
                     const on = chosen.has(s.profile.id);
-                    const name = s.profile.full_name?.trim() || 'Student';
+                    const name = s.profile.full_name?.trim() || s.profile.email?.split('@')[0] || 'Student';
                     return (
                       <button
                         key={s.profile.id}
@@ -123,6 +123,7 @@ export function AccessPicker({ value, onChange }: { value: string[] | null; onCh
                         </span>
                         <span className="min-w-0 flex-1">
                           <span className="block truncate text-[15px] font-semibold">{name}</span>
+                          {s.profile.email && <span className="text-label-2 block truncate text-[12px]">{s.profile.email}</span>}
                         </span>
                         <motion.span
                           animate={{ scale: on ? 1 : 0.85 }}

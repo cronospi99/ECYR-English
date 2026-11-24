@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, Expand, ExternalLink, LayoutGrid, Minus, RotateCw, Shrink } from 'lucide-react';
 import { Spinner } from '@/components/ui/Misc';
 import { cn } from '@/lib/cn';
+import { track, setActiveFeature, clearActiveFeature } from '@/lib/usage';
+import { featureForModuleSrc } from '@/lib/usageFeatures';
 
 /**
  * Full-viewport player for the legacy interactive modules (served from
@@ -37,6 +39,15 @@ export function ModuleFrame({
   const [full, setFull] = useState(false);
   // The bar tucks itself away so it never covers the module's own header.
   const [collapsed, setCollapsed] = useState(false);
+  // Usage stats: the module was opened, and its visible time counts for it (no need to touch each game).
+  useEffect(() => {
+    const feature = featureForModuleSrc(src);
+    if (!feature) return;
+    track(feature, 'open');
+    setActiveFeature(feature);
+    return () => clearActiveFeature(feature);
+  }, [src]);
+
   useEffect(() => {
     if (!loaded) return;
     const t = setTimeout(() => setCollapsed(true), 3500);

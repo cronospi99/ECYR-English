@@ -9,6 +9,7 @@ import { useSettings, applyTheme } from './store/settings';
 import { startSync } from './lib/sync';
 import { startGameBridge } from './lib/gameBridge';
 import { armReload } from './lib/chunks';
+import { initUsage } from './lib/usage';
 import './styles/index.css';
 
 applyTheme(useSettings.getState().theme);
@@ -18,6 +19,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
 
 startGameBridge();
 armReload();
+initUsage(router);
 void useAuth.getState().init().then(startSync);
 
 createRoot(document.getElementById('root')!).render(

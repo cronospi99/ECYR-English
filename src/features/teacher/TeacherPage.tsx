@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import {
+  BarChart3,
   AlertTriangle,
   Award,
   BookOpen,
@@ -98,6 +99,11 @@ export default function TeacherPage() {
               <KeyRound size={17} /> <span className="hidden sm:inline">Teachers</span>
             </ButtonLink>
           )}
+          {isAdmin && (
+            <ButtonLink to="/admin/stats" variant="gray" size="md" aria-label="Estadísticas de uso">
+              <BarChart3 size={17} /> <span className="hidden sm:inline">Uso</span>
+            </ButtonLink>
+          )}
           <AssignButton
             variant="brand"
             size="md"
@@ -171,7 +177,7 @@ function ClassTab({
   const rows = useMemo(() => {
     const list = (students ?? []).map((s) => ({ s, st: rowStats(s) }));
     const term = q.trim().toLowerCase();
-    const f = term ? list.filter(({ s }) => `${s.profile.full_name ?? ''}`.toLowerCase().includes(term)) : list;
+    const f = term ? list.filter(({ s }) => `${s.profile.full_name ?? ''} ${s.profile.email ?? ''}`.toLowerCase().includes(term)) : list;
     const lv = (l: string) => LEVELS.findIndex((x) => x.id === l);
     return f.sort((a, b) =>
       sort === 'name'
@@ -263,10 +269,10 @@ function ClassTab({
             {rows.map(({ s, st }) => (
               <li key={s.profile.id}>
                 <Link to={`/teacher/student/${s.profile.id}`} className="hover:bg-fill-2 flex items-center gap-3 px-4 py-3 transition-colors">
-                  <Avatar name={s.profile.full_name ?? '?'} config={s.avatar} size={44} />
+                  <Avatar name={s.profile.full_name ?? s.profile.email ?? '?'} config={s.avatar} size={44} />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="truncate text-[16px] font-semibold">{s.profile.full_name || 'Student'}</span>
+                      <span className="truncate text-[16px] font-semibold">{s.profile.full_name || s.profile.email}</span>
                       <LevelChip level={st.level} />
                       {st.flagged > 0 && (
                         <span className="text-ink-orange inline-flex items-center gap-0.5 text-[12px] font-semibold" title="Invalid results">

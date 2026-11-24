@@ -46,6 +46,7 @@ export const router = createBrowserRouter([
       { path: 'import', element: page(() => import('./features/migrate/ImportPage')) },
       { path: 'teacher', element: page(() => import('./features/teacher/TeacherPage')) },
       { path: 'admin/teachers', element: page(() => import('./features/admin/TeacherInvitesPage')) },
+      { path: 'admin/stats', element: page(() => import('./features/admin/UsageStatsPage')) },
       { path: 'boards', element: page(() => import('./features/boards/BoardsPage')) },
       { path: 'practice/draw', element: page(() => import('./features/draw/DrawPage')) },
       { path: 'teacher/thread', element: page(() => import('./features/teacher/LessonThreadPage')) },

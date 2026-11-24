@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { track } from './usage';
 
 /** Gemini takes inline audio up to ~20 MB; the `gemini` function allows 30 MB of JSON (base64 adds a third). */
 export const MAX_ANSWER_AUDIO = 18 * 1024 * 1024;
@@ -59,6 +60,7 @@ export async function assessSpokenAnswer(audio: Blob, question: string, level: s
   if (audio.size > MAX_ANSWER_AUDIO) throw new Error('The audio exceeds 18 MB. Trim it or export it as MP3.');
 
   const data = await toBase64(audio);
+  track('ai-grading', 'ai_call', { via: 'speaking' });
   const { data: res, error } = await supabase.functions.invoke('gemini', {
     body: {
       op: 'generate',

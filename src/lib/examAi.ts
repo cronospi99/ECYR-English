@@ -4,6 +4,7 @@
  * feedback in Spanish. Text only out — audio goes in only to be transcribed.
  */
 import { supabase } from './supabase';
+import { track } from './usage';
 import { audioMime } from './speakingAi';
 
 export interface ExamMark {
@@ -20,6 +21,7 @@ export async function generate(parts: unknown[]): Promise<string> {
   if (!supabase) throw new Error('AI grading needs a connection to the server.');
   const { data: s } = await supabase.auth.getSession();
   if (!s.session) throw new Error('Sign in so the AI can grade this part.');
+  track('ai-grading', 'ai_call', { via: 'exam' });
   const { data, error } = await supabase.functions.invoke('gemini', { body: { op: 'generate', contents: [{ parts }] } });
   if (error) {
     let message = 'Could not reach the class AI service.';

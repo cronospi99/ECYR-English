@@ -43,7 +43,7 @@ import { ink } from '@/lib/color';
 
 const key = (a: string, s: string) => `${a}:${s}`;
 const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
-const nameOf = (s: StudentLite | undefined) => s?.full_name || 'Student';
+const nameOf = (s: StudentLite | undefined) => s?.full_name || s?.email || 'Student';
 
 // ------------------------------------------------------------------ data --
 

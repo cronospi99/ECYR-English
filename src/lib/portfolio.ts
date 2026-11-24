@@ -9,6 +9,7 @@
 import type { LucideIcon } from 'lucide-react';
 import { Award, ClipboardCheck, File as FileIcon, FolderKanban, Image, Mic, NotebookPen, PenLine } from 'lucide-react';
 import { supabase, supabaseConfig } from '@/lib/supabase';
+import { track } from '@/lib/usage';
 
 // ------------------------------------------------------------------ types --
 
@@ -290,6 +291,7 @@ export async function createPortfolioItem(draft: PortfolioDraft, file?: File | n
     if (path) await sb.storage.from(BUCKET).remove([path]).catch(() => undefined);
     throw friendly(error, 'Could not save the work.');
   }
+  track('portfolio', 'create', { kind: String(row.kind ?? 'other') });
   return normalize(data);
 }
 

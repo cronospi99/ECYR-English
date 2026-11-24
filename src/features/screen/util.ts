@@ -106,7 +106,7 @@ export function useNames(source: NameSource | undefined, custom: string | undefi
   const roster = useMemo(
     () =>
       (students ?? [])
-        .map((s) => (s.profile.full_name || '').trim())
+        .map((s) => (s.profile.full_name || s.profile.email?.split('@')[0] || '').trim())
         .filter(Boolean),
     [students],
   );
