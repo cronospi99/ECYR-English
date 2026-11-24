@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Star Galactic Trivia</title>
 <script src="../_bridge/ecyr-fx.js"></script>
 <script src="./support.js"></script>
+<script src="./sgt-audio.js?v=1"></script>
 </head>
 <body>
 <x-dc>
@@ -701,12 +703,14 @@ class Component extends DCLogic {
   }
   applyPack(id) {
     const p = this.packs[id];
+    this._ended = false;
     this.cats = p.cats; this.contentByLevel = p.contentByLevel; this.altsByLevel = p.altsByLevel;
     this.stop();
     this.setState(s => ({ topic: id, topicLoading: null, cats: p.cats, cards: this.buildCards(s.level), open: null, phase: null, timeUp: false, trapChoice: null, wagerSpinning: false }));
   }
   setTopic(id) {
     if (!id || id === this.state.topic || this.state.topicLoading) return;
+    this.fx("select");
     if (this.packs[id]) return this.applyPack(id);
     this.setState({ topicLoading: id });
     import(`./topics/${id}.js`)
@@ -716,6 +720,8 @@ class Component extends DCLogic {
 
   setLevel(level) {
     if (!this.contentByLevel[level] || level === this.state.level) return;
+    this._ended = false;
+    this.fx("select");
     this.stop();
     this.setState({ level, cards: this.buildCards(level), open: null, phase: null, timeUp: false, showWager: false });
   }
@@ -737,14 +743,16 @@ class Component extends DCLogic {
       : [{ mult: 2, sign: 1 }, { mult: 3, sign: 1 }, { mult: 1, sign: 1 }, { mult: 1, sign: -1 }, { mult: 2, sign: -1 }];
   }
   chooseBet() {
+    this.fx("wagerUp");
     const cap = this.wagerCap();
     this.setState({ trapChoice: "bet", wagerAmount: cap > 0 ? Math.min(Math.max(10, Math.round(cap / 2 / 10) * 10), cap) : 0 });
   }
-  backToChoice() { this.setState({ trapChoice: null }); }
+  backToChoice() { this.fx("select"); this.setState({ trapChoice: null }); }
   setWagerAmount(v) {
     const max = this.wagerCap();
     let n = parseInt(v, 10); if (isNaN(n) || n < 0) n = 0;
     if (n > max) n = max;
+    this.fx("wagerTick", max ? n / max : 0);
     this.setState({ wagerAmount: n });
   }
   spinTrapBet() {
@@ -752,20 +760,22 @@ class Component extends DCLogic {
     const key = this.state.active === 1 ? "t1" : "t2";
     const amount = this.state.wagerAmount;
     if (!amount || amount <= 0 || this.state.wagerSpinning) return;
+    this.fx("wagerConfirm");
     const combos = this.wagerCombos(amount);
     const labels = combos.map(c => (c.sign > 0 ? "+×" : "−×") + c.mult);
     this.setState({ wagerSpinning: true, wagerFlicker: labels[0] });
     let ticks = 0;
     this._wiv = setInterval(() => {
       ticks++;
-      this.tone(220 + Math.random() * 300, 0.05, "square", 0.06);
+      this.fx("spinTick");
       this.setState({ wagerFlicker: labels[Math.floor(Math.random() * labels.length)] });
       if (ticks > 16) {
         clearInterval(this._wiv); this._wiv = null;
         const chosen = combos[Math.floor(Math.random() * combos.length)];
         const delta = Math.round(amount * chosen.mult) * chosen.sign;
         const label = (chosen.sign > 0 ? "+×" : "−×") + chosen.mult;
-        this.sfxTrap();
+        this.fx(chosen.sign > 0 ? "wagerWin" : "wagerLose");
+        this.checkEnd();
         this.setState(s => {
           const t = { ...s[key], score: Math.max(0, s[key].score + delta) };
           const cards = s.cards.map(c => c.id === id ? { ...c, used: true } : c);
@@ -776,32 +786,28 @@ class Component extends DCLogic {
     }, 100);
   }
 
-  ac() {
-    if (!this.soundOn()) return null;
-    if (!this._ac) { const A = window.AudioContext || window.webkitAudioContext; this._ac = new A(); }
-    if (this._ac.state === "suspended") this._ac.resume();
-    return this._ac;
+  // Sound: procedural soundtrack + effects live in ./sgt-audio.js (window.SGTAudio).
+  fx(name, arg) { if (this.soundOn() && window.SGTAudio) window.SGTAudio.sfx(name, arg); }
+  tension(v) { if (window.SGTAudio) window.SGTAudio.tension(v && this.soundOn()); }
+  sfxOpen() { this.fx("question"); }
+  sfxBuzz() { this.tension(false); this.fx("timeup"); }
+  sfxTrap() { this.fx("trapHit"); }
+  sfxTick() { this.tension(true); this.fx("tick"); }
+  // Final fanfare once every card on the board has been played.
+  checkEnd() {
+    setTimeout(() => {
+      const cs = this.state.cards;
+      if (cs.length && cs.every(c => c.used)) {
+        if (!this._ended) { this._ended = true; this.fx("victory"); }
+      } else this._ended = false;
+    }, 1400);
   }
-  tone(freq, dur, type, vol) {
-    const ac = this.ac(); if (!ac) return;
-    const o = ac.createOscillator(), g = ac.createGain();
-    o.type = type || "sine"; o.frequency.value = freq;
-    o.connect(g); g.connect(ac.destination);
-    const t = ac.currentTime;
-    g.gain.setValueAtTime(vol || 0.14, t);
-    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-    o.start(t); o.stop(t + dur);
-  }
-  sfxOpen() { this.tone(320, 0.12, "sawtooth", 0.12); setTimeout(() => this.tone(640, 0.18, "sawtooth", 0.12), 90); }
-  sfxBuzz() { this.tone(130, 0.5, "square", 0.2); setTimeout(() => this.tone(90, 0.5, "square", 0.18), 120); }
-  sfxTrap() { this.tone(90, 0.55, "sawtooth", 0.22); setTimeout(() => this.tone(66, 0.5, "square", 0.2), 160); }
-  sfxTick() { this.tone(900, 0.05, "sine", 0.07); }
 
   open(id) {
     const card = this.state.cards.find(c => c.id === id);
     if (!card || card.used) return;
     if (card.isTrap) { this.sfxTrap(); this.setState({ open: id, phase: "trap", timeUp: false, trapText: null, trapKind: null, trapBetLabel: null, trapChoice: null }); return; }
-    this.sfxOpen();
+    this.fx("pick"); setTimeout(() => this.sfxOpen(), 160);
     this.setState({ open: id, phase: "question", timer: this.dur(), timeUp: false });
     this.start();
   }
@@ -816,7 +822,7 @@ class Component extends DCLogic {
       });
     }, 1000);
   }
-  stop() { if (this._iv) { clearInterval(this._iv); this._iv = null; } }
+  stop() { if (this._iv) { clearInterval(this._iv); this._iv = null; } this.tension(false); }
   swapQuestion() {
     const id = this.state.open;
     this.setState(s => {
@@ -827,10 +833,10 @@ class Component extends DCLogic {
       });
       return { cards, phase: "question", timer: this.dur(), timeUp: false };
     });
-    this.sfxOpen();
+    this.fx("swap");
     this.start();
   }
-  revealAnswer() { this.stop(); this.setState({ phase: "answer" }); }
+  revealAnswer() { this.stop(); this.fx("answer"); this.setState({ phase: "answer" }); }
   addStudent(team) {
     const k = team === 1 ? "students1" : "students2";
     const nk = team === 1 ? "newS1" : "newS2";
@@ -846,6 +852,7 @@ class Component extends DCLogic {
     this.setState(s => ({ [k]: s[k].filter(st => st.name !== name) }));
   }
   award(team) {
+    this.fx("correct");
     const k = team === 1 ? "students1" : "students2";
     if (this.state[k].length) { this.stop(); this.setState({ phase: "credit", creditTeam: team }); return; }
     this.finishAward(team, null);
@@ -862,18 +869,20 @@ class Component extends DCLogic {
       const cards = s.cards.map(c => c.id === id ? { ...c, used: true } : c);
       return { [key]: t, [sk]: roster, cards, open: null, phase: null, timeUp: false, creditTeam: null, active: team === 1 ? 2 : 1 };
     });
+    setTimeout(() => this.fx("turn"), 650); this.checkEnd();
   }
   noPoints() {
     const id = this.state.open;
-    this.stop();
+    this.stop(); this.fx("wrong"); setTimeout(() => this.fx("turn"), 750); this.checkEnd();
     this.setState(s => ({ cards: s.cards.map(c => c.id === id ? { ...c, used: true } : c), open: null, phase: null, timeUp: false, active: s.active === 1 ? 2 : 1 }));
   }
-  close() { this.stop(); if (this._wiv) { clearInterval(this._wiv); this._wiv = null; } this.setState({ open: null, phase: null, timeUp: false, trapChoice: null }); }
+  close() { this.stop(); this.fx("close"); if (this._wiv) { clearInterval(this._wiv); this._wiv = null; } this.setState({ open: null, phase: null, timeUp: false, trapChoice: null }); }
   revealFate() {
     const id = this.state.open;
     const kinds = ["x2", "x3", "steal"];
     const kind = kinds[Math.floor(Math.random() * kinds.length)];
-    this.sfxTrap();
+    this.fx(kind === "steal" ? "steal" : "double");
+    this.checkEnd();
     this.setState(s => {
       const aKey = s.active === 1 ? "t1" : "t2", oKey = s.active === 1 ? "t2" : "t1";
       let a = { ...s[aKey] }, o = { ...s[oKey] }, text = "";
@@ -886,12 +895,13 @@ class Component extends DCLogic {
     });
   }
   reset() {
-    this.stop();
+    this.stop(); this.fx("reset"); this._ended = false;
     if (this._wiv) { clearInterval(this._wiv); this._wiv = null; }
     this.setState(s => ({ cards: this.buildCards(s.level), t1: { ...s.t1, score: 0 }, t2: { ...s.t2, score: 0 }, students1: s.students1.map(st => ({ ...st, answers: 0 })), students2: s.students2.map(st => ({ ...st, answers: 0 })), creditTeam: null, active: 1, open: null, phase: null, timeUp: false, trapChoice: null, wagerSpinning: false, wagerFlicker: null }));
   }
-  setActive(t) { this.setState({ active: t }); }
+  setActive(t) { if (t !== this.state.active) this.fx("turn"); this.setState({ active: t }); }
   begin() {
+    this.fx("start");
     const go = () => { this.setState({ intro: false }); window.ECYRFx && window.ECYRFx.show(false); };
     window.ECYRFx ? window.ECYRFx.fade("white", go, { in: 520, hold: 180, out: 800 }) : go();
   }

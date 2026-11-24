@@ -2004,3 +2004,9 @@ Contenido C2 ×3
 - "Add words" +4/+8 en cualquier board: añade cartas sin quitar las existentes y sube el contador de impostoras;
   el tablero pasa a 5–6 columnas para caber sin scroll en PC.
 - Las palabras largas ya no se parten; los botones flotantes no tapan las etiquetas de nivel y board.
+
+== Star Galactic Trivia (antes Star Medic Jeopardy): nombre nuevo y banda sonora con efectos ==
+- Nuevo nombre en catálogo, portada, título y progreso (se conserva la dirección interna y el progreso guardado).
+- Música sci-fi procedural propia con efectos por evento: Sith trap, apuesta (subir, cantidad, rueda, ganar/perder),
+  tensión en los últimos 5 s y alarma al agotarse el tiempo, elegir casilla, revelar, acierto/fallo, turno, ×2/×3,
+  robo y fanfarria final. Botón ♪ en la barra superior que recuerda el silencio.

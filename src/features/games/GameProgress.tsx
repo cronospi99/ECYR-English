@@ -46,7 +46,7 @@ export function GameProgressView({ sessions, defenders, compact = false }: { ses
       </div>
       <p className="text-label-2 flex items-start gap-2 px-1 text-[13px]">
         <ShieldCheck size={16} className="text-ink-green mt-0.5 shrink-0" />
-        Each result is validated: it must match the answers recorded live, with possible numbers and a realistic pace. Class games are saved without a score. Star Medic Jeopardy and Phrasal Verb Roulette are group activities and are not recorded per student.
+        Each result is validated: it must match the answers recorded live, with possible numbers and a realistic pace. Class games are saved without a score. Star Galactic Trivia and Phrasal Verb Roulette are group activities and are not recorded per student.
       </p>
     </div>
   );
