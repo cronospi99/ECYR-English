@@ -78,10 +78,10 @@ const wordOk = /^[a-z]+$/;
 for (const l of LV) {
   for (const e of B[l].real) {
     const p = e.split('|');
-    if (p.length !== 3 || p.some((x) => !x.trim())) { err(`real bad format in ${l}: "${e}"`); continue; }
+    if (p.length !== 3 || !p[0].trim() || !p[1].trim()) { err(`real bad format in ${l}: "${e}"`); continue; }
     if (!/^[a-z][a-z'-]*$/.test(p[0])) err(`real head not lowercase letters in ${l}: "${e}"`);
-    const syn = p[2].split(',').map((x) => x.trim());
-    if (syn.length < 1 || syn.length > 3 || syn.some((x) => !x)) err(`real needs 1-3 synonyms in ${l}: "${e}"`);
+    const syn = p[2].trim() ? p[2].split(',').map((x) => x.trim()) : []; // empty = no true synonym
+    if (syn.length > 3 || syn.some((x) => !x)) err(`real needs 0-3 synonyms in ${l}: "${e}"`);
     if (syn.includes(p[0])) err(`real is its own synonym in ${l}: "${e}"`);
     if (DICT && !DICT.has(p[0]) && !p[0].includes('-')) warn(`real not in dictionary (${l}): ${p[0]}`);
   }

@@ -1,7 +1,7 @@
 // Bulk generator for public/modules/two-truths/impostor-words-5.js (Too Good To Be True, x5 bank).
 //   node scripts/tgtbt-impostors-5.mjs [seed-real.json]
 // Needs: npm i --no-save an-array-of-english-words  (275k-word dictionary).
-// - real  : kept as is. Read from impostor-words-5.js if it exists, else from the JSON given as argument
+// - real  : kept as is (a synonym field may be empty when the word has no true synonym). Read from impostor-words-5.js if it exists, else from the JSON given as argument
 //           ({A1:{real:[...]}, ...}), written by hand per level ("word|español|syn, syn").
 // - fake  : pronounceable invented words (English phonotactics), NOT in the dictionary, not within one edit of a
 //           dictionary word, not a real word anywhere in the bank, not used by any other impostor.
@@ -24,17 +24,17 @@ const ctx = { window: {} }; vm.createContext(ctx);
 for (const f of ['impostor-words.js', 'impostor-words-2.js', 'impostor-words-3.js', 'impostor-words-4.js']) vm.runInContext(fs.readFileSync(DIR + f, 'utf8'), ctx);
 const B = ctx.window.TGTBT_BANK;
 let seed5;
-if (fs.existsSync(OUT)) {
+if (!process.argv[2] && fs.existsSync(OUT)) {
   const c5 = { window: { TGTBT_BANK: Object.fromEntries(LV.map((l) => [l, { real: [], fake: [], alike: [] }])) } }; vm.createContext(c5);
   vm.runInContext(fs.readFileSync(OUT, 'utf8'), c5);
   seed5 = c5.window.TGTBT_BANK;
 } else seed5 = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
-const NEW = {}; for (const l of LV) NEW[l] = { real: [...seed5[l].real], fake: [], alike: [] };
+const NEW = {}; for (const l of LV) NEW[l] = { real: [...seed5[l].real], fake: [...seed5[l].fake], alike: [] }; // fakes already written are kept; alike are always regenerated
 
 const allReal = new Set(), taken = new Set(), slipCount = {}; // slipCount[target]
 for (const l of LV) {
   B[l].real.forEach((s) => allReal.add(head(s))); NEW[l].real.forEach((s) => allReal.add(head(s)));
-  B[l].fake.forEach((s) => taken.add(head(s)));
+  B[l].fake.forEach((s) => taken.add(head(s))); NEW[l].fake.forEach((s) => taken.add(head(s)));
   B[l].alike.forEach((s) => { taken.add(head(s)); const t = s.split('|')[1].toLowerCase(); slipCount[t] = (slipCount[t] || 0) + 1; });
 }
 
@@ -55,10 +55,11 @@ const V = 'aeiou';
 const ok = (f, base) => f && f !== base && /^[a-z]+$/.test(f) && f.length >= 4 && !DICT.has(f) && !allReal.has(f) && !taken.has(f);
 
 /* ---- spelling slips (the mistakes Spanish speakers really make) ---- */
+let swaps = 0, made = 1; // keyboard-type transpositions are capped at 7 % of the slips
 const rules = [
   ['undouble', 5, (w) => { const m = [...w.matchAll(/([bcdfglmnprstz])\1/g)]; if (!m.length) return null; const x = pick(m); return w.slice(0, x.index) + w.slice(x.index + 1); }],
   ['double', 2, (w) => { const ix = []; for (let i = 2; i < w.length - 1; i++) if (/[bdfglmnprst]/.test(w[i]) && V.includes(w[i - 1]) && V.includes(w[i + 1]) && w[i] !== w[i - 1]) ix.push(i); if (!ix.length) return null; const i = pick(ix); return w.slice(0, i) + w[i] + w.slice(i); }],
-  ['finaldouble', 1, (w) => (/[^aeiou][aeiou][bdgmnpt]$/.test(w) && w.length <= 6 ? w + w[w.length - 1] : null)],
+  ['finaldouble', 1, (w) => (/[^aeiou][aeiou][bgmnpt]$/.test(w) && w.length <= 6 ? w + w[w.length - 1] : null)],
   ['ie-ei', 4, (w) => (w.includes('ie') ? w.replace('ie', 'ei') : w.includes('ei') ? w.replace('ei', 'ie') : null)],
   ['spanish', 7, (w) => {
     const c = [];
@@ -71,7 +72,6 @@ const rules = [
     if (/qu/.test(w)) c.push(w.replace('qu', 'cu'));
     if (/^imm/.test(w)) c.push('inm' + w.slice(3));
     if (/^h[aeiou]/.test(w) && w.length > 4) c.push(w.slice(1));
-    if (/^[aeiou]/.test(w) && w.length > 4) c.push('h' + w);
     if (/ss/.test(w)) c.push(w.replace('ss', 's'));
     if (/cc/.test(w)) c.push(w.replace('cc', 'c'));
     if (/ck/.test(w)) c.push(w.replace('ck', 'k'));
@@ -82,7 +82,6 @@ const rules = [
     if (/v/.test(w)) c.push(w.replace('v', 'b'));
     if (/b/.test(w) && !/bb/.test(w)) c.push(w.replace('b', 'v'));
     if (/^w[aeiou]/.test(w)) c.push('gu' + w.slice(1));
-    if (/ous$/.test(w)) c.push(w.replace(/ous$/, 'ous'.slice(0, 1) + 'us'));
     if (/ism$/.test(w)) c.push(w.replace(/ism$/, 'ismo'));
     if (/ist$/.test(w)) c.push(w.replace(/ist$/, 'ista'));
     if (/ic$/.test(w) && w.length > 5) c.push(w + 'o');
@@ -105,7 +104,7 @@ const rules = [
     if (/ng/.test(w)) c.push(w.replace('ng', 'n'));
     if (/gn/.test(w)) c.push(w.replace('gn', 'n'));
     if (/e$/.test(w) && w.length > 4) c.push(w.slice(0, -1));
-    if (!/e$/.test(w) && /[aeiou][^aeiou]$/.test(w) && w.length <= 6) c.push(w + 'e');
+    if (!/e$/.test(w) && /[^aeiou][aeiou][^aeiouwxy]$/.test(w) && !/(ed|er|es)$/.test(w) && w.length <= 5) c.push(w + 'e');
     return c.length ? pick(c) : null;
   }],
   ['digraph', 6, (w) => {
@@ -125,52 +124,75 @@ const rules = [
     const i = pick(ix), sw = { a: pick(['e', 'o']), e: pick(['a', 'i']), i: pick(['e', 'a']), o: pick(['a', 'u']), u: pick(['o', 'a']) }[w[i]];
     return w.slice(0, i) + sw + w.slice(i + 1);
   }],
-  ['prefix', 4, (w) => {
-    const m = /^(un|in|im|il|ir|dis|mis|non)(.{3,})$/.exec(w); if (!m) return null;
-    return pick(['un', 'in', 'dis', 'im', 'non', 'il', 'ir'].filter((p) => p !== m[1])) + m[2];
+  // only words that really carry a negative prefix, and only in<->un / in<->im (the wrong choice of a true prefix)
+  ['prefix', 3, (w) => {
+    const m = /^(un|in|im|il|ir)(.{3,})$/.exec(w); if (!m || !DICT.has(m[2])) return null;
+    if (m[1] !== 'un' && !NEG.has(w)) return null;
+    if (m[1] === 'un' && /^(und|uni|unt)/.test(w) && !DICT.has(m[2])) return null;
+    const alt = { un: ['in'], in: ['un', 'im'], im: ['in'], il: ['in'], ir: ['in'] }[m[1]];
+    return pick(alt) + m[2];
   }],
   ['ness', 3, (w) => (/iness$/.test(w) ? w.replace(/iness$/, 'yness') : /ily$/.test(w) ? w.replace(/ily$/, 'yly') : /ied$/.test(w) ? w.replace(/ied$/, 'yed') : /ies$/.test(w) ? w.replace(/ies$/, 'ys') : null)],
-  ['swap', 1, (w) => { if (w.length < 5) return null; const i = 1 + Math.floor(rnd() * (w.length - 3)); if (w[i] === w[i + 1]) return null; return w.slice(0, i) + w[i + 1] + w[i] + w.slice(i + 2); }],
-  ['drop', 1, (w) => { if (w.length < 6) return null; const i = 1 + Math.floor(rnd() * (w.length - 2)); return w.slice(0, i) + w.slice(i + 1); }],
+  ['swap', 1, (w) => { if (w.length < 5 || swaps > 0.07 * made) return null; swaps++; const i = 1 + Math.floor(rnd() * (w.length - 3)); if (w[i] === w[i + 1]) return null; return w.slice(0, i) + w[i + 1] + w[i] + w.slice(i + 2); }],
 ];
+const NEG = new Set('impossible impolite illegal irregular incorrect inconvenient irresponsible immature impatient invisible independent informal insecure illogical irrelevant inaccurate impractical imperfect impersonal improbable immoral immortal illiterate irrational irreversible inadequate inefficient inevitable inexperienced insignificant insufficient incapable incomplete indirect inequality inactive inattentive incompetent inconsistent indecisive insensitive intolerant inexpensive inedible incredible inflexible informal invalid illegible impartial implausible irreplaceable irresistible imbalance indefinite indifferent inhuman innumerable intangible'.split(' '));
 const totalW = rules.reduce((a, r) => a + r[1], 0);
+const A26 = 'abcdefghijklmnopqrstuvwxyz';
+function* near1(w) { // every string one edit away
+  for (let i = 0; i <= w.length; i++) {
+    if (i < w.length) yield w.slice(0, i) + w.slice(i + 1);
+    for (const c of A26) { yield w.slice(0, i) + c + w.slice(i); if (i < w.length) yield w.slice(0, i) + c + w.slice(i + 1); }
+    if (i < w.length - 1) yield w.slice(0, i) + w[i + 1] + w[i] + w.slice(i + 2);
+  }
+}
+function lev(a, b) {
+  const d = []; for (let i = 0; i <= a.length; i++) d[i] = [i]; for (let j = 0; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+// words a learner knows: the bank, and the words of the course content
+const KNOWN = new Set([...allReal, ...Object.keys(ALLC)]);
+// A slip must clearly point to ONE word: within 2 edits of its target, no real word closer, and no other known word tied.
+function unambiguous(f, target) {
+  const d = lev(f, target); if (d > 2) return false;
+  for (const n of near1(f)) {
+    if (n === target) continue;
+    if (d >= 2 && DICT.has(n)) return false; // a real word is strictly closer than the target
+    if (d === 1 && KNOWN.has(n)) return false; // a known word is just as close
+  }
+  return true;
+}
 function slip(w) {
   for (let k = 0; k < 20; k++) {
     let x = rnd() * totalW, r = rules[0];
     for (const q of rules) { if ((x -= q[1]) <= 0) { r = q; break; } }
     const f = r[2](w);
-    if (ok(f, w)) return f;
+    if (ok(f, w) && unambiguous(f, w)) { made++; return f; }
   }
   return null;
 }
 
 /* ---- inflections: the wrong form of an -ed / -ing / plural / comparative whose correct form is in the course ---- */
 const isV = (c) => V.includes(c);
-function inflect(w, kind) { // correct form and its typical wrong forms
+const IRREG = new Set('be become begin bend bet bind bite bleed blow break breed bring build burn burst buy catch choose come cost cut deal dig do draw dream drink drive eat fall feed feel fight find fit flee fly forbid forget forgive freeze get give go grow hang have hear hide hit hold hurt keep know lay lead leave lend let lie light lose make mean meet pay put quit read ride ring rise run say see seek sell send set shake shine shoot show shut sing sink sit sleep slide speak spend spin split spread spring stand steal stick sting strike swear sweep swim swing take teach tear tell think throw understand wake wear weep win wind write'.split(' '));
+const isInf = (es) => /(?:ar|er|ir|arse|erse|irse)$/.test(es.split(',')[0].trim().replace(/\s*\(.*\)/, ''));
+function inflect(w, kind, es) { // [correct form, wrong forms]; null when there is no typical learner mistake
   const last = w[w.length - 1], pen = w[w.length - 2], p2 = w[w.length - 3];
   const cvc = w.length >= 3 && !isV(last) && !'wxy'.includes(last) && isV(pen) && !isV(p2);
-  if (kind === 'ed') {
+  const verb = isInf(es) && !IRREG.has(w);
+  if (kind === 'ed' && verb) {
     if (/[^aeiou]y$/.test(w)) return [w.slice(0, -1) + 'ied', [w + 'ed']];
-    if (/e$/.test(w)) return [w + 'd', [w + 'ed', w.slice(0, -1) + 'ied']];
     if (cvc && w.length <= 6) return [w + last + 'ed', [w + 'ed']];
-    return [w + 'ed', cvc ? [w + last + 'ed'] : [w + 'd']];
-  }
-  if (kind === 'ing') {
-    if (/ie$/.test(w)) return [w.slice(0, -2) + 'ying', [w + 'ing']];
-    if (/e$/.test(w) && !/ee$/.test(w)) return [w.slice(0, -1) + 'ing', [w + 'ing']];
-    if (cvc && w.length <= 6) return [w + last + 'ing', [w + 'ing']];
-    return [w + 'ing', cvc ? [w + last + 'ing'] : [w.slice(0, -1) + 'ing']];
-  }
-  if (kind === 's') {
-    if (/[^aeiou]y$/.test(w)) return [w.slice(0, -1) + 'ies', [w + 's']];
-    if (/(s|x|z|ch|sh)$/.test(w)) return [w + 'es', [w + 's']];
-    if (/[^aeiou]o$/.test(w)) return [w + 'es', [w + 's']];
     return null;
   }
-  if (kind === 'er') {
-    if (/[^aeiou]y$/.test(w)) return [w.slice(0, -1) + 'ier', [w + 'er']];
-    if (/e$/.test(w)) return [w + 'r', [w + 'er']];
-    if (cvc && w.length <= 5) return [w + last + 'er', [w + 'er']];
+  if (kind === 'ing' && verb) {
+    if (/e$/.test(w) && !/ee$/.test(w)) return [w.slice(0, -1) + 'ing', [w + 'ing']];
+    if (cvc && w.length <= 6) return [w + last + 'ing', [w + 'ing']];
+    return null;
+  }
+  if (kind === 's' && !isInf(es)) {
+    if (/[^aeiou]y$/.test(w)) return [w.slice(0, -1) + 'ies', [w + 's']];
+    if (/(s|x|z|ch|sh)$/.test(w)) return [w + 'es', [w + 's']];
     return null;
   }
   return null;
@@ -225,6 +247,8 @@ function invent(level) {
 }
 
 /* ---- generate per level ---- */
+const ES = {}; // Spanish meaning of every real word (to tell verbs from nouns)
+for (const l of LV) [...B[l].real, ...NEW[l].real].forEach((e) => { const p = e.split('|'); ES[p[0].toLowerCase()] = p[1]; });
 const stats = {};
 for (const l of LV) {
   const N = NEW[l], haveFake = B[l].fake.length, haveAlike = B[l].alike.length;
@@ -238,12 +262,12 @@ for (const l of LV) {
   for (const w of order) {
     if (infl >= Math.round(need * 0.12)) break;
     if (reals.indexOf(w) < 0 || w.length < 3 || w.length > 9) continue;
-    const kind = pick(['ed', 'ing', 'ing', 'ed', 's', 'er']);
-    const r = inflect(w, kind); if (!r) continue;
+    const kind = pick(['ed', 'ing', 'ing', 'ed', 's']);
+    const r = inflect(w, kind, ES[w] || ''); if (!r) continue;
     const [correct, wrongs] = r;
     if (!DICT.has(correct) || !(ALLC[correct] >= 1) || (slipCount[correct] || 0) >= 3) continue;
     const f = pick(wrongs);
-    if (ok(f, correct)) { addSlip(f, correct); infl++; }
+    if (ok(f, correct) && unambiguous(f, correct)) { addSlip(f, correct); infl++; }
   }
   for (let pass = 0; pass < 3 && N.alike.length + haveAlike < TARGET.alike; pass++) {
     for (const w of order) {

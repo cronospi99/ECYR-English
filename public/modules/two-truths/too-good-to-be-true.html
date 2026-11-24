@@ -624,7 +624,7 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
   function reviewList() {
     return '<div class="list">' + st.cards.map(function (c) {
       return c.fake ? '<div class="x">' + ic('i-siren') + ' <b>' + esc(c.word) + '</b> — ' + (c.alikeOf ? 'fake (real: ' + esc(c.alikeOf) + ')' : 'invented') + '</div>'
-        : '<div>' + ic('i-check') + ' <b>' + esc(c.word) + '</b> — ' + esc(c.es) + '<br><span style="color:#9AA7BD">≈ ' + esc(c.syn) + '</span></div>';
+        : '<div>' + ic('i-check') + ' <b>' + esc(c.word) + '</b> — ' + esc(c.es) + (c.syn ? '<br><span style="color:#9AA7BD">≈ ' + esc(c.syn) + '</span>' : '') + '</div>';
     }).join('') + '</div>';
   }
   function sorted() { return st.teams.slice().sort(function (a, b) { return b.score - a.score; }); }
