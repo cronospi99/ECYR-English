@@ -1997,3 +1997,10 @@ Contenido C2 ×3
 - Los eventos de uso guardan el contexto: muro, sala en vivo (Class Wars, Impostor, Doodle, You Draw, Racers,
   Defenders) y tarea.
 - "Teacher room" pasa a "{Nombre}'s Space" (p. ej. Esteban's Space) con saludo, iniciales y resumen de la clase.
+
+== Too Good To Be True: iconos propios, control del temporizador y palabras extra ==
+- Todos los emojis sustituidos por iconos SVG propios (temporizador, sirena, check, trofeo y medallas a color…).
+- Temporizador bajo la tarjeta del equipo con turno: no corre hasta pulsar "Start timer"; pausa/reanudar; +5 s y +10 s.
+- "Add words" +4/+8 en cualquier board: añade cartas sin quitar las existentes y sube el contador de impostoras;
+  el tablero pasa a 5–6 columnas para caber sin scroll en PC.
+- Las palabras largas ya no se parten; los botones flotantes no tapan las etiquetas de nivel y board.

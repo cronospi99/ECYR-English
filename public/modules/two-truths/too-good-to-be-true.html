@@ -20,7 +20,7 @@ html, body { margin: 0; min-height: 100%; }
 body { overflow-x: hidden; background: radial-gradient(120% 90% at 82% -10%, #3A1C6E 0%, #1D0A39 46%, var(--bg) 100%); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 button { font-family: inherit; cursor: pointer; }
 h1, h2, .big { font-family: 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing: -0.02em; }
-.wrap { max-width: 1180px; margin: 0 auto; padding: clamp(14px, 3vw, 36px); padding-top: 64px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: clamp(14px, 3vw, 36px); padding-top: 84px; }
 .kicker { font-weight: 800; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
 h1 { font-size: clamp(36px, 6vw, 78px); line-height: .95; margin: 8px 0 12px; }
 h1 span { color: var(--red); }
@@ -73,7 +73,8 @@ input.team { background: var(--card); border: 2px solid var(--line); color: var(
 .card { position: relative; min-height: clamp(76px, 13vh, 120px); border-radius: 18px; border: 2px solid var(--line); background: linear-gradient(160deg, #2C1A5E, #1A0E3C);
   color: var(--ink); padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: transform .12s, border-color .12s; }
 .card:hover:not(:disabled) { transform: translateY(-3px); border-color: var(--blue); }
-.card .w { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: clamp(17px, 2.1vw, 30px); overflow-wrap: anywhere; line-height: 1.05; }
+.card .w { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: clamp(17px, 2.1vw, 30px); overflow-wrap: normal; word-break: normal; white-space: nowrap; max-width: 100%; line-height: 1.05; }
+.card .w.tight { white-space: normal; overflow-wrap: anywhere; }
 .card .t { font-size: clamp(11px, 1.05vw, 14px); color: var(--dim); margin-top: 4px; }
 .card.fake { background: linear-gradient(160deg, #5A0F1A, #2A0910); border-color: var(--red); }
 .card.real { background: linear-gradient(160deg, #0E3B25, #0A2218); border-color: var(--green); }
@@ -155,6 +156,14 @@ input.team { background: var(--card); border: 2px solid var(--line); color: var(
 .pod .sc { color: var(--gold); font-weight: 800; font-size: clamp(15px, 1.8vw, 22px); margin: 2px 0 8px; }
 .pod .st { font-size: 12.5px; color: var(--dim); margin-bottom: 8px; }
 .pod .medal { font-size: clamp(34px, 5vw, 60px); line-height: 1; margin-bottom: 4px; }
+.ic { width: 1.15em; height: 1.15em; flex: none; vertical-align: -.22em; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+.ic.lg { width: 1.1em; height: 1.1em; vertical-align: -.15em; }
+.ic.c { stroke: none; }
+h1 .ic.c { width: 48px; height: 48px; vertical-align: middle; }
+.pod .medal .ic { width: 1em; height: 1em; vertical-align: top; }
+.card .tag .ic { width: 16px; height: 16px; stroke-width: 3; vertical-align: top; }
+.card.fake .tag { color: #FF8F9B; } .card.real .tag { color: var(--green); }
+.panel h2 .ic { color: var(--red); }
 @keyframes rise { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes drop { from { opacity: 0; transform: translateY(-26px); } to { opacity: 1; transform: none; } }
 .pod .blk { width: 100%; border-radius: 16px 16px 0 0; transform-origin: bottom; animation: rise .7s cubic-bezier(.2, .9, .3, 1.15) both; display: flex; align-items: flex-start; justify-content: center; padding-top: 10px;
@@ -205,10 +214,25 @@ details.rev { text-align: left; margin: 6px 0 16px; } details.rev summary { curs
 .tools button { min-height: 44px; min-width: 44px; }
 .tools .newwords { background: var(--gold); border-color: var(--gold); color: #2a1d00; }
 .tools .nwmsg { font-size: 13px; color: var(--gold); }
-.meta .pill.timer { background: #2A1A66; border: 2px solid var(--gold); color: var(--gold); font-size: 17px; min-height: 44px; display: inline-flex; align-items: center; font-variant-numeric: tabular-nums; }
-.meta .pill.timer.low { background: var(--red); border-color: var(--red); color: #fff; animation: tmPulse .5s ease-in-out infinite alternate; }
-.meta .pill.timer.paused { opacity: .6; animation: none; }
+/* turn timer: lives under the active team's card (above the board on narrow screens) */
+.tmr { --tc: var(--gold); border: 2px solid var(--gold); border-radius: 18px; padding: 10px; background: #2A1A66; display: flex; flex-direction: column; gap: 8px; align-items: stretch; text-align: center; }
+.tmr .tmr-t { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: clamp(30px, 3.4vw, 44px); line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; }
+.tmr.idle .tmr-t { opacity: .75; }
+.tmr.low { background: #5A0F1A; border-color: var(--red); }
+.tmr.low .tmr-t { color: #fff; animation: tmPulse .5s ease-in-out infinite alternate; }
+.tmr button { white-space: nowrap; min-height: 44px; border-radius: 999px; font-weight: 800; font-size: 15px; border: 2px solid var(--line); background: var(--card); color: var(--ink); padding: 8px 14px; }
+.tmr button:hover:not(:disabled) { border-color: var(--gold); }
+.tmr button:disabled { opacity: .4; cursor: default; }
+.tmr .tmr-go { background: var(--gold); border-color: var(--gold); color: #2a1d00; font-size: 17px; min-height: 52px; }
+.tmr .tmr-add { display: flex; gap: 8px; } .tmr .tmr-add button { flex: 1; }
 @keyframes tmPulse { to { transform: scale(1.08); } }
+.arena.solo .tmr { flex-direction: row; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+@media (max-width: 900px) { .side .tmr { flex: 1 1 100%; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center; } }
+.board.big .card { min-height: 52px; padding: 4px 6px; }
+.board.big .card .w { font-size: clamp(13px, 1.7vw, 24px); }
+.board.big .card .t { font-size: 11px; margin-top: 2px; line-height: 1.1; } .board.big .card .t em { display: none; }
+@media (min-width: 901px) { .board.big { grid-template-columns: repeat(5, minmax(0, 1fr)); } .board.big.g6 { grid-template-columns: repeat(6, minmax(0, 1fr)); } .board.big .card .w { font-size: clamp(13px, 1.5vw, 22px); } .board.big.g6 .card .w { font-size: clamp(12px, 1.25vw, 18px); } }
+.tools .addlbl { margin-left: 6px; }
 .tools button:disabled { opacity: .35; cursor: default; }
 @keyframes swapIn { 0% { transform: rotateY(90deg) scale(.8); opacity: 0; } 60% { transform: rotateY(-12deg) scale(1.05); opacity: 1; } 100% { transform: none; } }
 .card.swapin { animation: swapIn .55s cubic-bezier(.2, .9, .3, 1.2) both; }
@@ -218,10 +242,51 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
 .teamset { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; max-width: 900px; }
 .teamset > div { background: var(--card); border: 2px solid var(--line); border-radius: 16px; padding: 10px; }
 @media (max-width: 900px) { .arena { grid-template-columns: 1fr; } .side { position: static; flex-direction: row; flex-wrap: wrap; } .side .tm { flex: 1 1 160px; } .side.l .tm.on::after, .side.r .tm.on::after { display: none; } }
-@media (max-width: 640px) { .card .t { font-size: 10px; line-height: 1.15; } .card .t em { display: none; } .wrap { padding-top: 60px; } .stake .now { margin-left: 0; width: 100%; } }
+@media (max-width: 640px) { .card .t { font-size: 10px; line-height: 1.15; } .card .t em { display: none; } .card { padding: 4px; } .wrap { padding-top: 84px; } .stake .now { margin-left: 0; width: 100%; } }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="ic-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE27A"/><stop offset="1" stop-color="#FFB21E"/></linearGradient>
+    <linearGradient id="ic-silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F4FB"/><stop offset="1" stop-color="#A9B4CC"/></linearGradient>
+    <linearGradient id="ic-bronze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0A66B"/><stop offset="1" stop-color="#B9672B"/></linearGradient>
+  </defs>
+  <!-- Line set: 24px grid, 2.25 stroke, round caps/joins, currentColor -->
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="8"/><path d="M12 13.5V9M9.5 2.5h5M18.5 6l1.5-1.5"/></symbol>
+  <symbol id="i-siren" viewBox="0 0 24 24"><path d="M7 18v-6a5 5 0 0 1 10 0v6M4 21h16M4 18h16M12 3v2M4.5 6.5 6 8M19.5 6.5 18 8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M3 17h2.5a4 4 0 0 0 3.2-1.6l4.6-6.8A4 4 0 0 1 16.5 7H21M17.5 3.5 21 7l-3.5 3.5M3 7h2.5a4 4 0 0 1 3 1.4M21 17h-4.5a4 4 0 0 1-3-1.4M17.5 13.5 21 17l-3.5 3.5"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3M18.5 3v4h-4M5.5 21v-4h4"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6"/></symbol>
+  <symbol id="i-party" viewBox="0 0 24 24"><path d="m4 20 4.5-12 7.5 7.5L4 20zM13 4v2M20 9h-2M17.5 4.5 16 6M19 14l1.5 1M10 11l3 3"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3.5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/></symbol>
+  <!-- Colour set (game palette) for big icons -->
+  <symbol id="i-trophy-c" viewBox="0 0 48 48">
+    <path d="M13 11H6v3a8 8 0 0 0 8 8M35 11h7v3a8 8 0 0 1-8 8" fill="none" stroke="#E0A200" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13 6h22v14a11 11 0 0 1-22 0V6z" fill="url(#ic-gold)" stroke="#B87F00" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M18 10v9a6 6 0 0 0 3 5" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M24 31v6" stroke="#B87F00" stroke-width="3" stroke-linecap="round"/>
+    <rect x="14" y="37" width="20" height="6" rx="2.5" fill="#FF4D5E" stroke="#8E1E2A" stroke-width="2.5"/>
+  </symbol>
+  <symbol id="i-medal-silver" viewBox="0 0 48 48">
+    <path d="M14 3h8l5 14h-8zM34 3h-8l-5 14h8z" fill="#3D8BFF" stroke="#1E4FA3" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="24" cy="30" r="12.5" fill="url(#ic-silver)" stroke="#7B87A3" stroke-width="2.5"/>
+    <path d="m24 23 2 4.2 4.6.6-3.4 3.2.9 4.6L24 33.300 19.900 35.600l.9-4.600-3.400-3.200 4.600-.6z" fill="#fff" stroke="#7B87A3" stroke-width="1.5" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-medal-bronze" viewBox="0 0 48 48">
+    <path d="M14 3h8l5 14h-8zM34 3h-8l-5 14h8z" fill="#2BD67B" stroke="#148A4C" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="24" cy="30" r="12.5" fill="url(#ic-bronze)" stroke="#8A4A1B" stroke-width="2.5"/>
+    <path d="m24 23 2 4.2 4.6.6-3.4 3.2.9 4.6L24 33.300 19.900 35.600l.9-4.600-3.400-3.200 4.600-.6z" fill="#FFE2C4" stroke="#8A4A1B" stroke-width="1.5" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-party-c" viewBox="0 0 48 48">
+    <path d="m7 42 9-26 17 17L7 42z" fill="url(#ic-gold)" stroke="#B87F00" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="m13 30 8 8M18 21l9 9" stroke="#FF4D5E" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M27 8v5M41 20h-5M36 8l-3 3M40 30l3 2M24 17c3-4 7-3 9-7" fill="none" stroke="#3D8BFF" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="38" cy="12" r="2" fill="#2BD67B"/><circle cx="31" cy="4" r="2" fill="#FF4D5E"/><circle cx="43" cy="25" r="2" fill="#C77DFF"/>
+  </symbol>
+</svg>
 <div id="app"></div>
 <div id="flash"></div><div id="fade"></div>
 <script>
@@ -291,13 +356,22 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
   function gain() { return HIT * st.mult + st.wager; }
   function loss() { return MISS * st.mult + st.wager; }
   var TURN_SECS = 15;
-  function nextTurn() { st.turn = (st.turn + 1) % st.teams.length; st.tl = TURN_SECS; rollMult(); }
+  // The timer waits for the teacher: each turn starts paused at 15 s until "Start timer" is pressed.
+  function resetTimer() { st.tl = TURN_SECS; st.run = false; st.tp = false; }
+  function nextTurn() { st.turn = (st.turn + 1) % st.teams.length; resetTimer(); rollMult(); }
   // Turn timer: counts down only while a team is choosing (not during the result panel, a swap or another screen).
   var tmLast = Date.now(), swapping = false;
-  function timerText() { return '⏱ ' + Math.ceil(Math.max(0, st.tl)) + ' s'; }
+  function ic(id, cls) { return '<svg class="ic' + (cls ? ' ' + cls : '') + '" aria-hidden="true" focusable="false"><use href="#' + id + '"/></svg>'; }
+  function timerText() { return ic('i-timer') + ' ' + Math.ceil(Math.max(0, st.tl)) + ' s'; }
+  function timerView() {
+    var go = st.run ? ic('i-pause') + ' Pause' : ic('i-play') + (st.tp ? ' Resume' : ' Start timer');
+    return '<div class="tmr' + (st.tl <= 5 ? ' low' : '') + (st.run ? '' : ' idle') + '" id="tgtmr"><div class="tmr-t" id="tgtimer" role="timer" aria-label="Seconds left in this turn">' + timerText() + '</div>' +
+      '<button class="tmr-go" data-tm="toggle"' + (st.pending ? ' disabled' : '') + '>' + go + '</button>' +
+      '<div class="tmr-add"><button data-tm="5">+5 s</button><button data-tm="10">+10 s</button></div></div>';
+  }
   setInterval(function () {
     var now = Date.now(), dt = Math.min(1, (now - tmLast) / 1000); tmLast = now;
-    if (st.phase !== 'play' || st.pending || swapping || busy || document.hidden) return;
+    if (st.phase !== 'play' || !st.run || st.pending || swapping || busy || document.hidden) return;
     st.tl -= dt;
     if (st.tl <= 0) {
       var team = st.teams[st.turn];
@@ -305,7 +379,7 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
       nextTurn(); render(); return;
     }
     var el = document.getElementById('tgtimer');
-    if (el) { el.textContent = timerText(); el.classList.toggle('low', st.tl <= 5); }
+    if (el) { el.innerHTML = timerText(); document.getElementById('tgtmr').classList.toggle('low', st.tl <= 5); }
   }, 200);
 
   function start() {
@@ -313,7 +387,7 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
     st.teams = []; for (var i = 0; i < st.nTeams; i++) st.teams.push({ name: (st.names[i] || '').trim() || 'Team ' + 'ABCD'[i], members: st.nTeams > 1 ? parseMembers(st.members[i]) : [], mi: 0, score: 0, hits: 0, misses: 0 });
     if (st.nTeams === 1) st.teams[0].name = SOLO ? 'You' : 'The class';
     st.turn = 0; st.board = 0; st.used = {}; st.found = 0; st.missed = 0;
-    newBoard(); st.phase = 'play'; st.tl = TURN_SECS; rollMult();
+    newBoard(); st.phase = 'play'; resetTimer(); rollMult();
     st.rep = { t0: Date.now() };
     window.ECYRBridge && window.ECYRBridge.start({ level: st.level, mode: SOLO ? 'solo' : 'class', meta: { teams: st.nTeams, boards: st.boards, fakes: st.fakes, game: 'impostor-words' } });
     render();
@@ -358,37 +432,49 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
   // Teacher tool "New words": every hidden card flips and is replaced by a fresh word from the same level's bank
   // (never one already used in this game), mixing real words and impostors. Opened cards and scores stay as they are.
   function freshOf(list, key) { var u = st.used[key] || {}; return shuffle(list.filter(function (x) { return !u[x]; })); }
-  function newWordsPlan() {
-    var n = st.cards.filter(function (c) { return !c.open; }).length; if (!n) return null;
+  function planWords(n, nF) {
     var b = BANK[st.level], R = freshOf(b.real, st.level + 'r'), A = freshOf(b.alike, st.level + 'a'), F = freshOf(b.fake, st.level + 'f');
-    var nF = Math.max(1, Math.min(n - (n > 1 ? 1 : 0), Math.round(n * impFor(st.board) / 16) + Math.floor(Math.random() * 3) - 1));
-    if (n === 1) nF = Math.random() < 0.5 ? 1 : 0;
     var nR = n - nF, nA = Math.min(A.length, Math.round(nF * 0.6)), nP = nF - nA;
     if (nR > R.length || nP > F.length) return null;
-    return { n: n, real: R.slice(0, nR), alike: A.slice(0, nA), fake: F.slice(0, nP), st: st };
+    return { n: n, real: R.slice(0, nR), alike: A.slice(0, nA), fake: F.slice(0, nP) };
+  }
+  function newWordsPlan() {
+    var n = st.cards.filter(function (c) { return !c.open; }).length; if (!n) return null;
+    var nF = Math.max(1, Math.min(n - (n > 1 ? 1 : 0), Math.round(n * impFor(st.board) / 16) + Math.floor(Math.random() * 3) - 1));
+    if (n === 1) nF = Math.random() < 0.5 ? 1 : 0;
+    return planWords(n, nF);
+  }
+  function addFakes(n) { return Math.max(Math.ceil(n / 4), Math.round(n * impFor(st.board) / 16)); }
+  function takePicks(p) {
+    var fresh = [];
+    p.real.forEach(function (s) { var r = parseReal(s); r.fake = false; fresh.push(r); st.used[st.level + 'r'][s] = 1; });
+    p.alike.forEach(function (s) { var q = s.split('|'); fresh.push({ word: q[0], fake: true, alikeOf: q[1] }); st.used[st.level + 'a'][s] = 1; });
+    p.fake.forEach(function (w) { fresh.push({ word: w, fake: true }); st.used[st.level + 'f'][w] = 1; });
+    return shuffle(fresh);
+  }
+  // Teacher tool "Add words": n brand-new cards are appended to the current board (existing ones stay).
+  function addWords(n) {
+    if (st.pending || swapping || st.phase !== 'play') return;
+    var p = planWords(n, addFakes(n)); if (!p) { render(); return; }
+    takePicks(p).forEach(function (c) { c.id = st.cards.length; c.open = false; c.swapin = true; st.cards.push(c); });
+    render();
   }
   function newWords() {
     if (st.pending || swapping) return;
     var p = newWordsPlan(); if (!p) { render(); return; }
     var closed = st.cards.filter(function (c) { return !c.open; });
-    // every impostor must not vanish entirely: guaranteed by nF >= 1 (except a single card, where a real word is allowed
-    // only if impostors remain among the opened ones)
-    var fresh = [];
-    p.real.forEach(function (s) { var r = parseReal(s); r.fake = false; fresh.push(r); st.used[st.level + 'r'][s] = 1; });
-    p.alike.forEach(function (s) { var q = s.split('|'); fresh.push({ word: q[0], fake: true, alikeOf: q[1] }); st.used[st.level + 'a'][s] = 1; });
-    p.fake.forEach(function (w) { fresh.push({ word: w, fake: true }); st.used[st.level + 'f'][w] = 1; });
-    fresh = shuffle(fresh);
+    var fresh = takePicks(p);
     swapping = true;
     closed.forEach(function (c) { var el = app.querySelector('[data-card="' + c.id + '"]'); if (el) el.classList.add('swapout'); });
     setTimeout(function () {
       closed.forEach(function (old, i) { var nc = fresh[i]; nc.id = old.id; nc.open = false; nc.swapin = true; st.cards[st.cards.indexOf(old)] = nc; });
-      swapping = false; st.tl = TURN_SECS;
+      swapping = false; resetTimer();
       if (!impLeft()) { st.phase = 'board-done'; }
       render();
     }, 300);
   }
-  function closePanel() { st.pending = null; st.tl = TURN_SECS; if (!impLeft()) st.phase = 'board-done'; render(); }
-  function nextBoard() { st.board++; newBoard(); st.phase = 'play'; st.tl = TURN_SECS; rollMult(); render(); }
+  function closePanel() { st.pending = null; resetTimer(); if (!impLeft()) st.phase = 'board-done'; render(); }
+  function nextBoard() { st.board++; newBoard(); st.phase = 'play'; resetTimer(); rollMult(); render(); }
   function endGame(ask, instant) {
     if (ask && !confirm('End the game now and see the results?')) return;
     if (!instant) { curtain(function () { endGame(false, true); }); return; }
@@ -465,7 +551,7 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
 
   function teamPanel(t, i) {
     var on = i === st.turn && !st.pending, me = curMember(t);
-    var mem = t.members.length ? '<ul>' + t.members.map(function (m, k) { return '<li' + (on && k === t.mi % t.members.length ? ' class="me"' : '') + '>' + (on && k === t.mi % t.members.length ? '▶ ' : '') + esc(m) + '</li>'; }).join('') + '</ul>' : '';
+    var mem = t.members.length ? '<ul>' + t.members.map(function (m, k) { return '<li' + (on && k === t.mi % t.members.length ? ' class="me"' : '') + '>' + (on && k === t.mi % t.members.length ? ic('i-play') + ' ' : '') + esc(m) + '</li>'; }).join('') + '</ul>' : '';
     return '<div class="tm c' + i + (on ? ' on' : '') + '"><span class="flag">' + (me ? esc(me) + '’s turn' : 'Your turn') + '</span><div class="tn">' + esc(t.name) + '</div>' +
       '<div class="ts">' + t.score + '<small>pts</small></div>' + mem + '</div>';
   }
@@ -477,7 +563,7 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
       if (c.open && c.fake) sub = c.alikeOf ? 'fake · looks like “' + esc(c.alikeOf) + '”' : 'invented';
       else if (c.open) sub = '<b>' + esc(c.es) + '</b>' + (c.syn ? '<em>≈ ' + esc(c.syn) + '</em>' : '');
       return '<button class="' + cls + '" data-card="' + c.id + '"' + (c.open || st.pending ? ' disabled' : '') + '>' +
-        (c.open ? '<span class="tag">' + (c.fake ? '🚨' : '✓') + '</span>' : '') +
+        (c.open ? '<span class="tag">' + ic(c.fake ? 'i-siren' : 'i-check') + '</span>' : '') +
         '<span class="w">' + esc(c.word) + '</span>' + (sub ? '<span class="t">' + sub + '</span>' : '') + '</button>';
     }).join('');
     st.cards.forEach(function (c) { c.flip = false; c.swapin = false; });
@@ -486,16 +572,19 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
       ? '<div class="banner c' + st.turn + '"><span class="who">' + (me ? esc(me) + ' · ' : '') + esc(t.name) + '</span><span class="q">your turn: which word is an impostor?</span></div>'
       : '<div class="turnline">Which word is an impostor?</div>';
     var closed = st.cards.filter(function (c) { return !c.open; }).length;
-    var tools = '<div class="tools"><span class="lbl">🔀 Teacher · new cards</span>' + [2, 4, 6, 8].map(function (n) {
+    var tools = '<div class="tools"><span class="lbl">' + ic('i-shuffle') + ' Teacher · new cards</span>' + [2, 4, 6, 8].map(function (n) {
       return '<button data-swap="' + n + '"' + (st.pending || closed < 1 ? ' disabled' : '') + ' title="Swap ' + n + ' random hidden cards for new ones">' + n + '</button>';
     }).join('') + '<button data-swap="all"' + (st.pending || closed < 1 ? ' disabled' : '') + '>All hidden</button>' +
-      '<button class="newwords" data-swap="mix"' + (st.pending || swapping || !newWordsPlan() ? ' disabled' : '') + ' title="Flip every hidden card and bring new words">🔄 New words</button>' +
+      '<button class="newwords" data-swap="mix"' + (st.pending || swapping || !newWordsPlan() ? ' disabled' : '') + ' title="Flip every hidden card and bring new words">' + ic('i-refresh') + ' New words</button>' +
+      '<span class="lbl addlbl">Add words</span>' + [4, 8].map(function (n) {
+        return '<button data-add="' + n + '"' + (st.pending || swapping || !planWords(n, addFakes(n)) ? ' disabled' : '') + ' title="Add ' + n + ' new cards to this board">+' + n + '</button>';
+      }).join('') +
+      (!st.pending && !planWords(4, addFakes(4)) ? '<span class="nwmsg">No more new words at this level.</span>' : '') +
       (!st.pending && closed && !newWordsPlan() ? '<span class="nwmsg">No more new words at this level.</span>' : '') + '</div>';
     var left = '', right = '';
-    st.teams.forEach(function (tm, i) { if (i % 2 === 0) left += teamPanel(tm, i); else right += teamPanel(tm, i); });
-    var center = (st.pending ? '' : banner) + stakeView() + '<div class="board">' + cards + '</div>' + panelView() + tools;
+    st.teams.forEach(function (tm, i) { var h = teamPanel(tm, i) + (i === st.turn ? timerView() : ''); if (i % 2 === 0) left += h; else right += h; });
+    var center = (many ? '' : timerView()) + (st.pending ? '' : banner) + stakeView() + '<div class="board' + (st.cards.length > 16 ? ' big' : '') + (st.cards.length >= 30 ? ' g6' : '') + '">' + cards + '</div>' + panelView() + tools;
     return '<div class="top"><div class="meta"><span class="pill">Level ' + st.level + '</span><span class="pill">Board ' + (st.board + 1) + ' of ' + st.boards + '</span>' +
-      '<span class="pill timer' + (st.tl <= 5 ? ' low' : '') + (st.pending ? ' paused' : '') + '" id="tgtimer" role="timer" aria-label="Seconds left in this turn">' + timerText() + '</span>' +
       '<span class="pill imp">' + impLeft() + ' of ' + nImp() + ' impostors left</span></div>' +
       '<div class="row">' + (many ? '' : '<div class="teams">' + st.teams.map(function (tm) { return '<div class="team-box"><div class="n">' + esc(tm.name) + '</div><div class="s">' + tm.score + '</div></div>'; }).join('') + '</div>') +
       '<button class="btn ghost" data-act="end">End game</button></div></div>' +
@@ -522,7 +611,7 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
     var c = p.card, who = (p.who ? esc(p.who) + ' (' + esc(st.teams[p.team].name) + ')' : esc(st.teams[p.team].name)), many = st.teams.length > 1;
     var how = (p.mult > 1 ? ' ×' + p.mult : '') + (p.bet ? ' + bet ' + p.bet : '');
     var next = '<button class="btn small" data-act="ok">' + (impLeft() ? 'Continue' : 'See the board') + '</button>';
-    if (p.kind === 'hit') return '<div class="panel good"><h2>🚨 Impostor caught! +' + p.pts + '</h2><p>“' + esc(c.word) + '” is ' +
+    if (p.kind === 'hit') return '<div class="panel good"><h2>' + ic('i-siren', 'lg') + ' Impostor caught! +' + p.pts + '</h2><p>“' + esc(c.word) + '” is ' +
       (c.alikeOf ? 'not a real word: it imitates “<b>' + esc(c.alikeOf) + '</b>”.' : 'an invented word.') + (many ? ' Well done, ' + who + '!' : '') +
       (how ? ' <span class="key">(' + HIT + how + ')</span>' : '') + '</p>' + next + '</div>';
     return '<div class="panel bad"><h2>“' + esc(c.word) + '” is a real word! −' + p.pts + '</h2>' +
@@ -532,25 +621,25 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
 
   function reviewList() {
     return '<div class="list">' + st.cards.map(function (c) {
-      return c.fake ? '<div class="x">🚨 <b>' + esc(c.word) + '</b> — ' + (c.alikeOf ? 'fake (real: ' + esc(c.alikeOf) + ')' : 'invented') + '</div>'
-        : '<div>✓ <b>' + esc(c.word) + '</b> — ' + esc(c.es) + '<br><span style="color:#9AA7BD">≈ ' + esc(c.syn) + '</span></div>';
+      return c.fake ? '<div class="x">' + ic('i-siren') + ' <b>' + esc(c.word) + '</b> — ' + (c.alikeOf ? 'fake (real: ' + esc(c.alikeOf) + ')' : 'invented') + '</div>'
+        : '<div>' + ic('i-check') + ' <b>' + esc(c.word) + '</b> — ' + esc(c.es) + '<br><span style="color:#9AA7BD">≈ ' + esc(c.syn) + '</span></div>';
     }).join('') + '</div>';
   }
   function sorted() { return st.teams.slice().sort(function (a, b) { return b.score - a.score; }); }
   function ranking() {
     return '<div class="podium" style="display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 18px">' + sorted().map(function (t, i) {
-      return '<div style="background:var(--card);border:2px solid ' + (i ? 'var(--line)' : 'var(--gold)') + ';border-radius:18px;padding:12px 18px;min-width:150px"><div class="kicker" style="color:' + (i ? '#B3A6D9' : '#FFC83D') + '">' + (i ? '#' + (i + 1) : '🏆 #1') + '</div><div class="big" style="font-size:22px;font-weight:800">' + esc(t.name) +
+      return '<div style="background:var(--card);border:2px solid ' + (i ? 'var(--line)' : 'var(--gold)') + ';border-radius:18px;padding:12px 18px;min-width:150px"><div class="kicker" style="color:' + (i ? '#B3A6D9' : '#FFC83D') + '">' + (i ? '#' + (i + 1) : ic('i-trophy-c', 'c lg') + ' #1') + '</div><div class="big" style="font-size:22px;font-weight:800">' + esc(t.name) +
         '</div><div>' + t.score + ' pts · ' + t.hits + ' impostors · ' + t.misses + ' real words</div></div>';
     }).join('') + '</div>';
   }
   function doneView() {
-    var next = lastBoard() ? '<button class="btn" data-act="finish">See the winner 🏆</button>'
+    var next = lastBoard() ? '<button class="btn" data-act="finish">See the winner ' + ic('i-trophy') + '</button>'
       : '<button class="btn" data-act="next">Next board (' + (st.board + 2) + ' of ' + st.boards + ') · ' + impFor(st.board + 1) + ' impostors</button><button class="btn ghost" data-act="end">End game</button>';
-    return '<div class="wrap"><div class="kicker">Board ' + (st.board + 1) + ' of ' + st.boards + ' complete</div><h1 style="font-size:clamp(30px,4.5vw,56px)">All the impostors are out! 🎉</h1>' +
+    return '<div class="wrap"><div class="kicker">Board ' + (st.board + 1) + ' of ' + st.boards + ' complete</div><h1 style="font-size:clamp(30px,4.5vw,56px)">All the impostors are out! ' + ic('i-party-c', 'c') + '</h1>' +
       ranking() + '<div class="label">The board</div>' + reviewList() + '<div class="row">' + next + '</div></div>';
   }
   function podium() {
-    var w = sorted(), medals = ['🏆', '🥈', '🥉', ''];
+    var w = sorted(), medals = [ic('i-trophy-c', 'c'), ic('i-medal-silver', 'c'), ic('i-medal-bronze', 'c'), ''];
     // Classic podium order: 2nd, 1st, 3rd (4th at the end).
     var order = w.length === 1 ? [0] : w.length === 2 ? [1, 0] : w.length === 3 ? [1, 0, 2] : [1, 0, 2, 3];
     return '<div class="pod">' + order.map(function (k) {
@@ -574,8 +663,31 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
       '<div class="row"><button class="btn" data-act="again">Play again</button><button class="btn ghost" data-act="setup">Change level, teams or boards</button></div></div>';
   }
 
+  // Words never break mid-word: shrink the font of a card until the whole word fits (min 11px).
+  // Desktop: with more than 16 cards the rows shrink so the whole board fits between the banner and the teacher bar.
+  function fitBoard() {
+    var bd = app.querySelector('.board.big'); if (!bd) { var o = app.querySelector('.board'); if (o) o.style.gridAutoRows = ''; return; }
+    if (innerWidth <= 900) { bd.style.gridAutoRows = ''; return; }
+    var cols = bd.classList.contains('g6') ? 6 : 5, rows = Math.ceil(bd.children.length / cols), gap = parseFloat(getComputedStyle(bd).rowGap) || 10;
+    var tools = app.querySelector('.tools'), th = tools ? tools.offsetHeight + 16 : 0, pn = app.querySelector('.panel'), ph = pn ? pn.offsetHeight + 14 : 0;
+    var avail = innerHeight - bd.getBoundingClientRect().top - th - ph - 48;
+    var h = Math.max(36, Math.floor((avail - gap * (rows - 1)) / rows));
+    bd.style.gridAutoRows = h + 'px'; bd.querySelectorAll('.card').forEach(function (c) { c.style.minHeight = '0'; });
+  }
+  function fitCards() {
+    fitBoard();
+    app.querySelectorAll('.card .w').forEach(function (w) {
+      var avail = w.parentNode.clientWidth - (innerWidth <= 640 ? 8 : 24); if (avail <= 0) return;
+      w.classList.remove('tight'); w.style.fontSize = '';
+      var fs = parseFloat(getComputedStyle(w).fontSize);
+      while (w.scrollWidth > avail && fs > 10) { fs -= 1; w.style.fontSize = fs + 'px'; }
+      if (w.scrollWidth > avail) w.classList.add('tight');
+    });
+  }
+  window.addEventListener('resize', fitCards);
   function render() {
     app.innerHTML = st.phase === 'setup' ? setupView() : st.phase === 'play' ? '<div class="wrap" style="max-width:1560px">' + boardView() + '</div>' : st.phase === 'board-done' ? doneView() : endView();
+    if (st.phase === 'play') fitCards();
   }
 
   app.addEventListener('click', function (e) {
@@ -587,6 +699,11 @@ input.team.mem { width: 100%; font-weight: 600; font-size: 14px; margin-top: 6px
     else if (el.dataset.tog) { st[el.dataset.tog] = !st[el.dataset.tog]; render(); }
     else if (el.dataset.bet) { var v = el.dataset.bet === 'all' ? st.teams[st.turn].score : Number(el.dataset.bet); if (betOk(v)) { st.wager = st.wager === v && v ? 0 : v; render(); } }
     else if (el.dataset.card) pick(Number(el.dataset.card));
+    else if (el.dataset.tm) {
+      if (el.dataset.tm === 'toggle') { if (!st.pending) { st.run = !st.run; if (st.run) st.tp = true; tmLast = Date.now(); render(); } }
+      else { st.tl = Math.ceil(st.tl) + Number(el.dataset.tm); render(); }
+    }
+    else if (el.dataset.add) addWords(Number(el.dataset.add));
     else if (el.dataset.swap === 'mix') newWords();
     else if (el.dataset.swap) swapCards(el.dataset.swap === 'all' ? 'all' : Number(el.dataset.swap));
     else switch (el.dataset.act) {
