@@ -6,6 +6,8 @@ import { CEFR_LEVELS } from '@/content/types';
 import { LEVELS, TOTAL_UNITS } from '@/content/levels';
 import { dayKey, daysBetween } from '@/lib/date';
 import { useSettings } from '@/store/settings';
+import { track } from '@/lib/usage';
+import { featureForActivity } from '@/lib/usageFeatures';
 
 export type ActivityKind = 'unit' | 'topic' | 'game' | 'reading' | 'listening' | 'speaking' | 'writing' | 'flashcards' | 'ielts' | 'coach' | 'exam';
 
@@ -101,7 +103,11 @@ export const useProgress = create<ProgressData & ProgressActions>()(
     (set) => ({
       ...initialProgress(),
 
-      award: (a) =>
+      award: (a) => {
+        if (!useSettings.getState().practiceSandbox) {
+          const feature = featureForActivity(a.kind, a.ref);
+          if (feature) track(feature, 'complete', { kind: a.kind });
+        }
         set((s) => {
           // Teacher free practice: nothing is recorded.
           if (useSettings.getState().practiceSandbox) return {};
@@ -115,7 +121,8 @@ export const useProgress = create<ProgressData & ProgressActions>()(
             activity: [entry, ...s.activity].slice(0, 150),
             updatedAt: entry.at,
           };
-        }),
+        });
+      },
 
       completeUnit: (level, n, score, title) => {
         if (useSettings.getState().practiceSandbox) return;

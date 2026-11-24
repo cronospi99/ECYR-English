@@ -39,6 +39,7 @@ Incluye todas las migraciones en orden y se puede re-ejecutar sin perder datos.
 | `19_game_cards.sql` | **Cartas de profes**: puntos por carta y por estudiante (`game_card_points`) y registro de partidas para no pagar dos veces. Solo el docente que dirige la partida asigna puntos, a sus estudiantes, con topes. Rangos bronce/plata/oro/diamante. |
 | `20_class_wars.sql` | **Class Wars**: sets de preguntas propias del docente (`class_wars_sets`), solo visibles para su dueño, con validación y límites. |
 | `21_shared_students.sql` | **Estudiantes compartidos entre docentes**: tabla `teacher_students` (docentes extra de un estudiante), `profiles.shared_pool` y funciones. Solo la administración vincula docentes o abre un estudiante a todos; un docente (que ya tiene código de invitación) añade a su clase los abiertos sin pedir permiso. `is_my_student`, tareas, historial y muros siguen al vínculo. |
+| `23_usage_analytics.sql` | **Estadísticas de uso** (solo la dueña/dueño): `usage_events` (la app solo inserta; nadie lee) y funciones `usage_summary`, `usage_daily`, `usage_by_role`, `usage_overview`, `usage_history_baseline` para `/admin/stats`. Sin correos ni textos de alumnos. |
 
 `setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.
 

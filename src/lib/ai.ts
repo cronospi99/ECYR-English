@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { track } from './usage';
 
 export interface ChatMessage {
   role: 'user' | 'model';
@@ -22,6 +23,7 @@ async function invokeCoach(body: Record<string, unknown>): Promise<Record<string
   const { data: s } = await supabase.auth.getSession();
   if (!s.session) throw new CoachError('Sign in to talk to the AI Coach.', 'signed_out');
 
+  track('coach', 'ai_call', { mode: typeof body.mode === 'string' ? body.mode : 'chat' });
   const { data, error } = await supabase.functions.invoke('coach', { body });
   if (error) {
     let message = error.message;

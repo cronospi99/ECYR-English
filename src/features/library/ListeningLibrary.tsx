@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, Check, Eye, EyeOff, Play, Volume2, X } from 'lucide-react';
@@ -13,6 +13,7 @@ import { checkTyped, loadLibTracks, type LibTrack } from '@/content/library';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { speakAs } from '@/lib/speech';
+import { track } from '@/lib/usage';
 import { sequencePlayer } from '@/lib/tts/seekable';
 import { AudioScrubber, usePlayer, usePlayerState } from '@/components/learning/AudioScrubber';
 import type { Worksheet } from '@/lib/worksheet';
@@ -140,6 +141,10 @@ export function TrackPlayer({ t, onBack, backLabel }: { t: LibTrack; onBack: () 
   );
   const ps = usePlayerState(player);
   const line = ps.status === 'idle' ? -1 : ps.line;
+  const heard = ps.status !== 'idle';
+  useEffect(() => {
+    if (heard) track('listening', 'audio_play', { src: 'library' });
+  }, [heard, t]);
 
   return (
     <div className="mx-auto max-w-3xl">

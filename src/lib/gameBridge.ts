@@ -1,4 +1,6 @@
 import { moduleBySlug } from '@/content/catalog';
+import { track } from './usage';
+import { moduleFeatureId } from './usageFeatures';
 import { useProgress } from '@/store/progress';
 import { useSettings } from '@/store/settings';
 import { TRACKED_GAMES, sanitizeDefenders, sessionXp, useGames, validateSession } from '@/store/games';
@@ -78,6 +80,7 @@ export function startGameBridge() {
 
     if (data.type === 'start') {
       if (!native && !frameShowing(source, slug)) return;
+      track(moduleFeatureId(slug), 'start', { mode: data.mode === 'class' ? 'class' : 'solo' });
       games.start(id, {
         slug,
         startedAt: typeof data.startedAt === 'string' ? data.startedAt : new Date().toISOString(),
@@ -104,6 +107,7 @@ export function startGameBridge() {
       if (useSettings.getState().practiceSandbox) return games.drop(id);
       const s = validateSession(data, live);
       const xp = sessionXp(s);
+      track(moduleFeatureId(slug), 'finish', s.score != null ? { score: s.score } : undefined);
       games.finish({ ...s, xp });
       if (xp > 0) {
         const m = moduleBySlug(slug);

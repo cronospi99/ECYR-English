@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import {
+  BarChart3,
   AlertTriangle,
   Award,
   BookOpen,
@@ -96,6 +97,11 @@ export default function TeacherPage() {
           {isAdmin && (
             <ButtonLink to="/admin/teachers" variant="gray" size="md" aria-label="Teacher codes">
               <KeyRound size={17} /> <span className="hidden sm:inline">Teachers</span>
+            </ButtonLink>
+          )}
+          {isAdmin && (
+            <ButtonLink to="/admin/stats" variant="gray" size="md" aria-label="Estadísticas de uso">
+              <BarChart3 size={17} /> <span className="hidden sm:inline">Uso</span>
             </ButtonLink>
           )}
           <AssignButton
