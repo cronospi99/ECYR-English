@@ -86,6 +86,7 @@ const APP_FEATURES: FeatureDef[] = [
   f('teacher-thread', 'Hilo de la clase', 'docente'),
   f('teacher-student', 'Ficha de estudiante', 'docente'),
   f('teacher-screen', 'Pantalla del aula', 'docente'),
+  f('admin-teachers', 'Invitaciones de docentes (admin)', 'docente'),
 ];
 
 export const moduleFeatureId = (slug: string) => `module:${slug}`;
@@ -103,7 +104,7 @@ export const featureDef = (id: string): FeatureDef =>
 export const categoryOf = (id: UsageCategory) => CATEGORIES.find((c) => c.id === id) ?? CATEGORIES[0]!;
 
 /**
- * Route → feature id. `null` = not measured (admin pages, redirects, 404, and the
+ * Route → feature id. `null` = not measured (the stats panel, redirects, 404, and the
  * iframe players, which ModuleFrame reports itself so time is not counted twice).
  */
 export function featureForLocation(pathname: string, search = ''): string | null {
@@ -115,7 +116,8 @@ export function featureForLocation(pathname: string, search = ''): string | null
   if (p === '/') return 'home';
   switch (a) {
     case 'admin':
-      return null;
+      // The stats panel itself is not measured (it would count the owner looking at the numbers).
+      return b === 'teachers' ? 'admin-teachers' : null;
     case 'learn':
       if (!b) return 'units';
       if (b === 'foundations') return 'foundations';

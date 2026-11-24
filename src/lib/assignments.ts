@@ -497,7 +497,7 @@ export async function markDone(
   if (o.note !== undefined) row.student_note = o.note?.trim().slice(0, MAX_NOTE) || null;
   const { data, error } = await client().from(S).upsert(row, { onConflict: 'assignment_id,student_id' }).select('*').single();
   if (error) throw friendly(error, 'Could not mark the task.');
-  track('tasks', 'submit', { via: String(row.via) });
+  track('tasks', 'submit', { via: String(row.via), assignment: assignmentId });
   return normS(data);
 }
 

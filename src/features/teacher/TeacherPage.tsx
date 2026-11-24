@@ -51,6 +51,8 @@ import { AssignmentsManager } from '@/features/tasks/teacher';
 import { AssignButton } from '@/features/tasks/AssignButton';
 import { ClassWork } from './WorkList';
 import { SharedPool } from './SharedPool';
+import { SpaceHeader } from './SpaceHeader';
+import { spaceTitle } from '@/lib/spaceName';
 
 type Tab = 'class' | 'tasks' | 'work' | 'material' | 'practice';
 type Sort = 'name' | 'recent' | 'xp' | 'level';
@@ -58,6 +60,7 @@ type Sort = 'name' | 'recent' | 'xp' | 'level';
 export default function TeacherPage() {
   const { isTeacher, classCode, students, error, loading, reload } = useClass();
   const isAdmin = useAuth((s) => s.profile?.is_admin === true);
+  const fullName = useAuth((s) => s.profile?.full_name);
   const [params, setParams] = useSearchParams();
   const tab: Tab = (['tasks', 'work', 'material', 'practice'] as const).find((t) => t === params.get('tab')) ?? 'class';
   // Remounts the task list after "Asignar tarea" in the header created one.
@@ -86,7 +89,7 @@ export default function TeacherPage() {
           <School size={15} className="text-ink-orange" /> Teacher
         </span>
       }
-      title="Teacher room"
+      title={spaceTitle(fullName)}
       subtitle="Your class’s progress, all the material without restrictions and your own space to practise."
       actions={
         <div className="flex items-center gap-2">
@@ -115,6 +118,7 @@ export default function TeacherPage() {
       }
       wide
     >
+      <SpaceHeader students={students ? students.length : null} />
       <div className="no-scrollbar mb-5 overflow-x-auto">
         <Segmented<Tab>
           value={tab}

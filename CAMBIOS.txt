@@ -1989,3 +1989,11 @@ Contenido C2 ×3
 == Eliminado el AI Coach (chat y conversación por voz) ==
 - Fuera la página /coach, su acceso en el menú, la barra superior, el inicio, el buscador, la sala docente, el plan de
   estudio y las tareas. Se conserva el feedback con IA de Writing y las demás secciones (función `coach` del servidor).
+
+== Estadísticas por estudiante y espacio docente personalizado ==
+- /admin/stats → pestaña "Por estudiante": lista ordenable con buscador; al abrir un alumno, todas sus herramientas
+  (también las que no usa), minutos por día, cronología y con qué profesores/contextos trabajó (muros y salas en vivo
+  de otros profesores incluidos); exportación CSV. Requiere aplicar supabase/migrations/24_usage_by_student.sql.
+- Los eventos de uso guardan el contexto: muro, sala en vivo (Class Wars, Impostor, Doodle, You Draw, Racers,
+  Defenders) y tarea.
+- "Teacher room" pasa a "{Nombre}'s Space" (p. ej. Esteban's Space) con saludo, iniciales y resumen de la clase.

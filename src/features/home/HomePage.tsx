@@ -8,6 +8,7 @@ import { ButtonLink } from '@/components/ui/Button';
 import { MountainClimb, SKY_VARS } from '@/components/mountain/MountainClimb';
 import { useProgress, climbProgress, currentLevel, levelCompletion, xpLevel } from '@/store/progress';
 import { useAuth } from '@/store/auth';
+import { spaceTitle } from '@/lib/spaceName';
 import { useSettings } from '@/store/settings';
 import { useNextUnit } from '@/hooks/useNextUnit';
 import { GAMES } from '@/content/catalog';
@@ -157,12 +158,13 @@ export default function HomePage() {
 
 /** Teachers: the class shortcuts, with "Asignar tarea" right on Home. */
 function TeacherCard() {
+  const fullName = useAuth((s) => s.profile?.full_name);
   return (
     <Card className="p-5">
       <div className="flex flex-wrap items-center gap-4">
         <IconTile icon={School} color="var(--orange)" size={44} />
         <div className="min-w-0 flex-1">
-          <h3 className="text-title-3">Teacher room</h3>
+          <h3 className="text-title-3">{spaceTitle(fullName)}</h3>
           <p className="text-label-2 text-subhead mt-0.5">Assign tasks, review your class’s work and follow their progress.</p>
         </div>
         <div className="flex flex-wrap gap-2">
