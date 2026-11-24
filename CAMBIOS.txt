@@ -2010,3 +2010,13 @@ Contenido C2 ×3
 - Música sci-fi procedural propia con efectos por evento: Sith trap, apuesta (subir, cantidad, rueda, ganar/perder),
   tensión en los últimos 5 s y alarma al agotarse el tiempo, elegir casilla, revelar, acierto/fallo, turno, ×2/×3,
   robo y fanfarria final. Botón ♪ en la barra superior que recuerda el silencio.
+
+== Hilo de la clase v2: contexto puente + PPP (Presentation · libro · Production) ==
+- Anclas: frase o tema libre del profesor y/o puntos de cualquier unidad del nivel; la app propone 3 contextos puente
+  que necesitan todas las anclas y las ordena de lo conocido a lo nuevo, con transiciones que reutilizan el contexto.
+- Por ancla: Presentation (historia, noticia ficticia, diálogo, ejemplos, CCQ, forma/uso, diagrama) → tarjeta
+  "Práctica del libro" (libro, página, ejercicios, minutos) → Production (role-play, debate, entrevista + criterios).
+- 14 tipos de recurso, ajustados al nivel; con IA (Gemini) por tarjeta y respaldo local si falla.
+- Todo editable: texto en línea, regenerar una tarjeta, bloquear, reordenar, tiempos; hilos guardados con nombre,
+  exportar/importar, duplicar, modo presentación para proyectar e impresión. El hilo anterior sigue en "Modo clásico".
+- Script de aceptación: node scripts/validate-thread.mjs (36 combinaciones, 177/177 puntos gramaticales con perfil).
