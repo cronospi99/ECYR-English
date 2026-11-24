@@ -93,10 +93,10 @@ export const MODULES: ModuleEntry[] = [
   },
   {
     slug: 'jeopardy',
-    title: 'Star Medic Jeopardy',
+    title: 'Star Galactic Trivia',
     subtitle: 'Team quiz · 12 topics',
     description:
-      'A Jeopardy-style board with 12 topics (food, travel, work, technology…) and questions adapted to each CEFR level. Ideal for team play in class.',
+      'A quiz-show board with 12 topics (food, travel, work, technology…) and questions adapted to each CEFR level. Ideal for team play in class.',
     kind: 'game',
     src: '/modules/jeopardy/star-medic-jeopardy.html',
     cover: '/covers/jeopardy.webp',
