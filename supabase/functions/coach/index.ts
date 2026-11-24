@@ -32,30 +32,10 @@ const MAX_BODY_BYTES = 64 * 1024;
 const LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
 const CORS = {
+  "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
-
-// ---- CORS: only the origins in ALLOWED_ORIGINS (comma-separated secret) ----------
-// Default: the production site + local dev. Set ALLOWED_ORIGINS to replace the list
-// (e.g. "https://ecyr-english.vercel.app,https://www.tudominio.com").
-const ALLOWED_ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") ||
-  "https://ecyr-english.vercel.app,http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173")
-  .split(",").map((o) => o.trim().replace(/\/+$/, "")).filter(Boolean);
-
-async function withCors(req: Request, handle: (req: Request) => Promise<Response>): Promise<Response> {
-  const origin = req.headers.get("Origin");
-  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
-    return new Response(JSON.stringify({ error: { message: "Origin not allowed.", code: "origin" } }), {
-      status: 403,
-      headers: { "Content-Type": "application/json", Vary: "Origin" },
-    });
-  }
-  const res = await handle(req);
-  if (origin) res.headers.set("Access-Control-Allow-Origin", origin);
-  res.headers.set("Vary", "Origin");
-  return res;
-}
 
 function reply(status: number, body: unknown): Response {
   return new Response(JSON.stringify(body), { status, headers: { ...CORS, "Content-Type": "application/json" } });
@@ -179,7 +159,7 @@ function voiceTurn(raw: string) {
   };
 }
 
-async function handle(req: Request): Promise<Response> {
+Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: CORS });
   if (req.method !== "POST") return fail(405, "POST only.");
   if (Number(req.headers.get("content-length") || 0) > MAX_BODY_BYTES) return fail(413, "El mensaje es demasiado largo.");
@@ -250,6 +230,4 @@ async function handle(req: Request): Promise<Response> {
     .trim();
   if (mode === "voice") return reply(200, voiceTurn(text));
   return reply(200, { text: text || "Lo siento, no pude generar una respuesta. ¿Puedes reformular?" });
-}
-
-Deno.serve((req: Request) => withCors(req, handle));
+});

@@ -12390,26 +12390,35 @@ async function adoptSession(session){
   refreshAccountUI();
 }
 
-/* The profile row is created by the on_auth_user_created trigger. The client
-   can no longer insert profiles (migration 22 closes INSERT, so a user cannot
-   choose their own role) and the email column is not readable by the client:
-   our own email comes from the session. If the row is missing, say so and let
-   the user retry; do not try to write it. */
+/* The profile row is normally created by the on_auth_user_created trigger. If
+   that trigger is missing (a project set up from an older copy of the schema)
+   or it failed, the old code called .single(), threw, and left the app signed
+   in with no profile — which looks exactly like a broken login: the account
+   button says "Sign in" even though there is a valid session. It now asks for
+   the row without demanding one, and writes it itself when it is absent, which
+   the profiles_insert_own policy allows. */
 async function loadProfile(){
   AUTH.profile = null;
   try{
-    let data = null;
-    for(let attempt = 0; attempt < 3 && !data; attempt++){
-      const r = await AUTH.client.from("profiles")
-        .select("id, full_name, role, teacher_id, class_code, created_at, history_default, history_override, shared_pool")
-        .eq("id", AUTH.user.id).maybeSingle();
-      if(r.error) throw r.error;
-      data = r.data;
-      if(!data && attempt < 2) await new Promise(res => setTimeout(res, 700));
-    }
-    if(!data) throw new Error("Your profile is not ready yet. Reload the page in a moment; if it persists, ask the admin.");
-    data.email = AUTH.user.email || "";
-    AUTH.profile = data;
+    const { data, error } = await AUTH.client.from("profiles").select("*").eq("id", AUTH.user.id).maybeSingle();
+    if(error) throw error;
+    if(data){ AUTH.profile = data; return; }
+
+    const meta = AUTH.user.user_metadata || {};
+    const role = (meta.role === "teacher") ? "teacher" : "student";
+    const row = {
+      id: AUTH.user.id,
+      email: AUTH.user.email || "",
+      full_name: meta.full_name || (AUTH.user.email || "").split("@")[0],
+      role
+    };
+    // Teachers need a class code; the trigger normally mints it, so mint one
+    // here too rather than leaving a teacher with nothing to give their class.
+    if(role === "teacher") row.class_code = randomClassCode();
+    const ins = await AUTH.client.from("profiles").insert(row).select().maybeSingle();
+    if(ins.error) throw ins.error;
+    AUTH.profile = ins.data || row;
+    console.warn("profile row was missing and has been created client-side");
   }catch(e){
     console.error("profile load failed", e);
     AUTH.lastError = e.message || "Could not load your profile.";
@@ -13007,7 +13016,7 @@ async function loadStudents(){
   if(!isTeacher()) return;
   try{
     const { data:profs, error } = await AUTH.client.from("profiles")
-      .select("id, full_name, created_at, history_override").eq("teacher_id", AUTH.profile.id).order("full_name");
+      .select("id, full_name, email, created_at, history_override").eq("teacher_id", AUTH.profile.id).order("full_name");
     if(error) throw error;
     const students = profs || [];
     if(students.length){
@@ -14286,7 +14295,7 @@ function drawRoster(){
         const last = studentLastActive(s);
         const flags = studentFlags(s);
         return `<tr class="clickable${classSelectedStudent === s.id ? " sel" : ""}" data-sid="${s.id}">
-          <td><span class="stu-name">${escapeXml(s.full_name||"(no name)")}</span>
+          <td><span class="stu-name">${escapeXml(s.full_name||"(no name)")}</span><br><span class="stu-mail">${escapeXml(s.email||"")}</span>
             ${flags.length ? `<div class="dflags">${flags.map(flagHTML).join("")}</div>` : ""}</td>
           <td class="band ov">${o ? `${o.value.toFixed(1)}<small>${o.complete ? bandToCEFR(o.value) : "partial"}</small>` : `<span class="muted">—</span>`}</td>
           ${SKILLS.map(k=>cell(s, k)).join("")}
@@ -14338,6 +14347,7 @@ async function openStudent(sid, fromCache){
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
         <div>
           <h4>${escapeXml(s.full_name||"(no name)")}</h4>
+          <span class="stu-mail">${escapeXml(s.email||"")}</span>
           <div style="margin-top:6px;"><button class="btn ghost small" id="removeStudentBtn">Remove from class</button></div>
         </div>
         ${flags.length ? `<div class="dflags">${flags.map(flagHTML).join("")}</div>` : ""}

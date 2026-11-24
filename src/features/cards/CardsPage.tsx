@@ -262,7 +262,7 @@ function ClassCards() {
       (students ?? [])
         .map((s) => {
           const own = (byStudent.get(s.profile.id) ?? []).slice().sort((a, b) => b.points - a.points);
-          return { id: s.profile.id, name: s.profile.full_name || 'Student', total: own.reduce((a, b) => a + b.points, 0), games: own.reduce((a, b) => a + b.games, 0), top: own.slice(0, 3) };
+          return { id: s.profile.id, name: s.profile.full_name || s.profile.email || 'Student', total: own.reduce((a, b) => a + b.points, 0), games: own.reduce((a, b) => a + b.games, 0), top: own.slice(0, 3) };
         })
         .sort((a, b) => b.total - a.total || a.name.localeCompare(b.name, 'es')),
     [students, byStudent],

@@ -1963,7 +1963,7 @@ Contenido C2 ×3
   maniobra (turn left, take the 2nd right, go past…), reacciones al llegar, chocar o girar mal; voz opcional.
 - HUD nuevo: flecha y destino, minimapa con norte arriba, tiempo y ganancias, burbuja de diálogo del pasajero.
 
-== Seguridad: blindaje de datos de estudiantes (migración 22, pendiente de aplicar en Supabase) ==
+== Seguridad: blindaje de datos de estudiantes (REVERTIDO; guardado en el commit f039cc0 para estudiarlo y aplicarlo después) ==
 - Solo la cuenta dueña ve nombres y correos de todos los alumnos, y solo con verificación en dos pasos (MFA);
   un único dueño permitido; registro de auditoría de cada acceso de administrador.
 - Los docentes ya no ven correos (ni de sus alumnos ni del grupo compartido); siguen viendo nombres y progreso.

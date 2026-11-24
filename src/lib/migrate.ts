@@ -224,7 +224,7 @@ export async function connectOldIelts(
     const warnings: string[] = [];
 
     const [prof, prog, vis] = await Promise.all([
-      client.from('profiles').select('id,full_name,role,teacher_id,class_code,created_at').eq('id', uid).maybeSingle(),
+      client.from('profiles').select('id,email,full_name,role,teacher_id,class_code,created_at').eq('id', uid).maybeSingle(),
       client.from('progress').select('scores,history,updated_at').eq('student_id', uid).maybeSingle(),
       client.rpc('can_see_my_history'),
     ]);

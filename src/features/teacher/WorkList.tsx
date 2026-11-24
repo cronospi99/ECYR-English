@@ -338,7 +338,7 @@ export function ClassWork({ students, limit = 80, compact = false, className }: 
   const [filter, setFilter] = useState<Filter>('all');
   const [n, setN] = useState(0);
   const ids = useMemo(() => (students ?? []).map((s) => s.profile.id), [students]);
-  const names = useMemo(() => new Map((students ?? []).map((s) => [s.profile.id, s.profile.full_name || 'Student'])), [students]);
+  const names = useMemo(() => new Map((students ?? []).map((s) => [s.profile.id, s.profile.full_name || s.profile.email || 'Student'])), [students]);
   const idKey = ids.join(',');
 
   useEffect(() => {

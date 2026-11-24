@@ -64,13 +64,12 @@ export async function loadClass(_teacherId: string): Promise<{ students: Student
   if (!supabase) return { students: [], error: 'Accounts are not configured in this deployment.' };
   const { data: profiles, error } = await supabase
     .from('profiles')
-    .select('id,full_name,created_at')
+    .select('id,email,full_name,created_at')
     // RLS returns the teacher's own row plus their students (main and shared).
     .eq('role', 'student')
     .order('full_name', { ascending: true });
   if (error) return { students: [], error: error.message };
-  // Teachers do not get students' emails (migration 22): only name and progress.
-  const rows = ((profiles ?? []) as Omit<StudentRow, 'email'>[]).map((p) => ({ ...p, email: null })) as StudentRow[];
+  const rows = (profiles ?? []) as StudentRow[];
   if (!rows.length) return { students: [], error: null };
   const ids = rows.map((r) => r.id);
   const [ls, pr] = await Promise.all([
@@ -122,7 +121,7 @@ export async function loadSubmissionReport(id: string): Promise<unknown> {
   return (data as { report?: unknown } | null)?.report ?? null;
 }
 
-export interface SharedStudent { id: string; full_name: string | null; teacher_name: string | null }
+export interface SharedStudent { id: string; email: string | null; full_name: string | null; teacher_name: string | null }
 
 /** Students the owner opened to every teacher and that are not in this class yet. */
 export async function listSharedStudents(): Promise<SharedStudent[]> {
