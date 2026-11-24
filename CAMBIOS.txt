@@ -1985,3 +1985,7 @@ Contenido C2 ×3
   (usuarios, minutos, aperturas, incluidas las de uso cero), más y menos usadas, actividad diaria, por categoría,
   tabla con exportación CSV e "Histórico (estimado)" a partir de los datos ya existentes.
 - Requiere aplicar supabase/migrations/23_usage_analytics.sql (pasos en supabase/APLICAR-23.md).
+
+== Eliminado el AI Coach (chat y conversación por voz) ==
+- Fuera la página /coach, su acceso en el menú, la barra superior, el inicio, el buscador, la sala docente, el plan de
+  estudio y las tareas. Se conserva el feedback con IA de Writing y las demás secciones (función `coach` del servidor).

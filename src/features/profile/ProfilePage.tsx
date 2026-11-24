@@ -168,7 +168,7 @@ function Account() {
       {profile?.role === 'student' && !profile.teacher_id && (
         <Card className="p-5">
           <h3 className="text-headline">Unirse a una clase</h3>
-          <p className="text-label-2 mt-1 text-[14px]">Your teacher gives you a 6-character code. It unlocks the AI Coach and IELTS with the class key.</p>
+          <p className="text-label-2 mt-1 text-[14px]">Your teacher gives you a 6-character code. It unlocks AI feedback and IELTS with the class key.</p>
           <form
             className="mt-3 flex gap-2"
             onSubmit={async (e) => {
@@ -274,7 +274,7 @@ function AuthCard() {
       <div className="mb-5 text-center">
         <div className="text-[44px]">🏔️</div>
         <h3 className="text-title-2">{mode === 'in' ? 'Welcome back' : 'Create your account'}</h3>
-        <p className="text-label-2 mt-1 text-[15px]">Sync your progress and use the AI Coach. The same account works for the IELTS Simulator.</p>
+        <p className="text-label-2 mt-1 text-[15px]">Sync your progress and get AI feedback. The same account works for the IELTS Simulator.</p>
       </div>
       <Segmented
         className="mb-5 w-full"

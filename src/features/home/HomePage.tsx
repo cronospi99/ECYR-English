@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Award, BookOpen, Check, ChevronRight, ClipboardList, Flame, Gamepad2, Headphones, Mic, PenLine, Play, School, Sigma, Sparkles, Trophy, Zap } from 'lucide-react';
+import { Award, BookOpen, Check, ChevronRight, ClipboardList, Flame, Gamepad2, Headphones, Mic, PenLine, Play, School, Sigma, Trophy, Zap } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { ProgressBar } from '@/components/ui/Progress';
@@ -142,7 +142,6 @@ export default function HomePage() {
             <ExploreTile to="/ielts" icon={Award} color="var(--indigo)" title="IELTS Simulator" sub={ieltsLine()} />
             <ExploreTile to="/learn/grammar" icon={Sigma} color="var(--teal)" title="Grammar" sub="Dates, time, modals" />
             <ExploreTile to="/games" icon={Gamepad2} color="var(--pink)" title="Games" sub={`${GAMES.length} to practise`} />
-            <ExploreTile to="/coach" icon={Sparkles} color="var(--purple)" title="AI Coach" sub="Chat and correct" />
           </div>
         </div>
 

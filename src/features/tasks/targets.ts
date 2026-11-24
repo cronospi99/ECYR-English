@@ -43,7 +43,6 @@ export const PRACTICE_OPTIONS: PracticeOption[] = [
   { id: 'speaking', label: 'Speaking · record answer', to: '/practice/speaking', kind: 'speaking', refs: ['practice:speaking'] },
   { id: 'phrasal', label: 'Phrasal verbs · quiz', to: '/practice/phrasal-verbs', kind: 'practice', refs: ['practice:phrasal'] },
   { id: 'verbs', label: 'Verb Lab · forms quiz', to: '/practice/verbs?tab=quiz', kind: 'practice', refs: ['verblab:quiz'] },
-  { id: 'coach', label: 'AI Coach · conversation', to: '/coach', kind: 'speaking', refPrefix: ['coach:'] },
 ];
 
 export const IELTS_OPTIONS: { id: string; label: string; refs?: string[]; refPrefix?: string[] }[] = [

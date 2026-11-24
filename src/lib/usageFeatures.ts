@@ -59,7 +59,7 @@ const APP_FEATURES: FeatureDef[] = [
   // IELTS
   f('ielts', 'Simulador IELTS', 'ielts'),
   // IA
-  f('coach', 'Coach IA', 'ia'),
+  f('coach', 'Feedback con IA (escritura y práctica)', 'ia'),
   f('ai-grading', 'Corrección IA (exámenes y speaking)', 'ia'),
   // Mi espacio
   f('plan', 'Mi plan de estudio', 'espacio'),
