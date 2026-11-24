@@ -2020,3 +2020,8 @@ Contenido C2 ×3
 - Todo editable: texto en línea, regenerar una tarjeta, bloquear, reordenar, tiempos; hilos guardados con nombre,
   exportar/importar, duplicar, modo presentación para proyectar e impresión. El hilo anterior sigue en "Modo clásico".
 - Script de aceptación: node scripts/validate-thread.mjs (36 combinaciones, 177/177 puntos gramaticales con perfil).
+
+== Too Good To Be True: banco de palabras ×5 ==
+- Por nivel (A1–C2): ~840–880 palabras reales con traducción y sinónimos, 740 inventadas y 1250 errores típicos de
+  hispanohablantes (antes ~164 / ~144 / ~246). Inventadas verificadas contra un diccionario de 275 000 palabras.
+- Verificador: node scripts/tgtbt-check-bank.mjs (requiere npm i --no-save an-array-of-english-words).
