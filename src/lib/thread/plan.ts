@@ -4,10 +4,11 @@
  */
 import type { CefrLevel, Unit } from '../../content/types';
 import { audienceOf, dominant, energizerForMix, hookForMix, type Mix } from '../engagement';
-import { BRIDGES } from './bridgeData';
+import { BRIDGES, roleEs, settingEs, whereOf, theOf, motionOf, resolutionOf } from './bridgeData';
+import { hasCcq } from './ccq';
 import { anchorLabel, makeBridge, orderAnchors, primaryFn, transitionFrom, transitionToBook, transitionToProduction } from './bridges';
 import { buildTarget, profileOfFree, profileOfGrammar, profileOfVocab } from './profiles';
-import { localResource } from './resources';
+import { DRAFT_KINDS, localResource } from './resources';
 import type { Anchor, Bridge, Fn, Grouping, PlanContext, PlanInput, Resource, ResourceKind, Stage, Target, Thread } from './types';
 import { uid } from './types';
 import { knownWords, LEVEL_IDX, validateResource } from './validate';
@@ -96,7 +97,7 @@ export function planContext(t: Pick<Thread, 'level' | 'bridge' | 'anchors' | 'mi
 }
 
 /** Lo que no cuenta como "palabra fuera de nivel": nombres, escenario y roles. */
-export const allowedWords = (ctx: PlanContext) => [...ctx.names, ctx.bridge.setting, ctx.bridge.title, ctx.bridge.conflict, ...ctx.bridge.roles, ...ctx.targets.flatMap((t) => [t.label, ...t.terms])];
+export const allowedWords = (ctx: PlanContext) => [...ctx.names, ctx.bridge.setting, ctx.bridge.title, ctx.bridge.conflict, whereOf(ctx.bridge), theOf(ctx.bridge), motionOf(ctx.bridge), resolutionOf(ctx.bridge), ...ctx.bridge.roles, ...ctx.targets.flatMap((t) => [t.label, ...t.terms])];
 
 export function validateAll(t: Thread, ctx: PlanContext, known?: Set<string>): Thread {
   const allowed = allowedWords(ctx);
@@ -141,7 +142,7 @@ const GROUPING_PRESENT: Grouping = 'whole';
 
 function criteria(ctx: PlanContext, t: Target): string[] {
   const c0 = t.kind === 'grammar' ? `Usa «${t.label}» al menos 3 veces` : `Usa al menos 3 de estas palabras: ${t.terms.slice(0, 5).join(', ')}`;
-  return [c0, `Habla de ${ctx.bridge.setting} o de ${ctx.bridge.roles[0] ?? 'un personaje'}`, 'Su compañero lo entiende y puede responder'];
+  return [c0, `Habla de ${settingEs(ctx.bridge)} o de ${roleEs(ctx.bridge, 0)}`, 'Su compañero lo entiende y puede responder'];
 }
 
 function anchorStages(ctx: PlanContext, anchor: Anchor, k: number, prev: Anchor | undefined, mins: { pres: number; practice: number; prod: number }, style?: string): Stage[] {
@@ -150,7 +151,7 @@ function anchorStages(ctx: PlanContext, anchor: Anchor, k: number, prev: Anchor 
   const label = anchorLabel(anchor);
   const ref = anchor.type === 'grammar' ? { unit: anchor.unit, point: anchor.point, diagramKey: `${ctx.level}-${anchor.unit}-${anchor.point}` } : undefined;
   const pk = presentationKind(ctx.level, k, style);
-  const kinds: ResourceKind[] = [pk, 'ccq'];
+  const kinds: ResourceKind[] = hasCcq(t.ruleId) ? [pk, 'ccq'] : [pk];
   const transition = prev ? { ...transitionFrom(primaryFn(prev), fn, ctx.bridge, k), from: prev.id } : undefined;
   return [
     {
@@ -244,7 +245,8 @@ export function removeResource(t: Thread, stageId: string, resId: string): Threa
 
 export function addResource(t: Thread, stageId: string, kind: ResourceKind, ctx: PlanContext, o: { exerciseType?: 'gapfill' | 'matching' | 'transform' | 'order' } = {}): Thread {
   const st = t.stages.find((s) => s.id === stageId)!;
-  const r = localResource(kind, ctx, st.anchorId, { variant: st.resources.length + 1, ...o });
+  if (kind === 'ccq' && !hasCcq(ctx.targets.find((x) => x.anchorId === st.anchorId)?.ruleId)) return t;
+  const r = localResource(kind, ctx, st.anchorId, { variant: st.resources.length + 1, source: sourceOf(st), ...o });
   return updateStage(t, stageId, { resources: [...st.resources, r] });
 }
 
@@ -257,6 +259,9 @@ export function moveResource(t: Thread, stageId: string, resId: string, dir: -1 
   [rs[i], rs[j]] = [rs[j]!, rs[i]!];
   return updateStage(t, stageId, { resources: rs });
 }
+
+/** Recurso de lectura de una etapa (base de las preguntas de comprensión). */
+const sourceOf = (s?: Stage) => s?.resources.find((r) => r.kind === 'story' || r.kind === 'news');
 
 /** Bloques movibles: cada ancla (3 etapas contiguas) o el energizante. */
 function blocks(t: Thread): { key: string; stages: Stage[]; movable: boolean }[] {
@@ -353,7 +358,7 @@ export function swapBridge(t: Thread, next: Bridge, units: Unit[]): Thread {
     const k = s.anchorId ? t.anchors.findIndex((a) => a.id === s.anchorId) : -1;
     const keep = (r: Resource) => r.locked || r.edited;
     const resources = s.resources.map((r) =>
-      keep(r) ? r : r.kind === 'game' && !s.anchorId ? localResource('game', ctx, undefined, { use: s.kind === 'closing' ? 'closer' : 'opener' }) : localResource(r.kind, ctx, s.anchorId, { variant: Math.max(0, k) }),
+      keep(r) ? r : r.kind === 'game' && !s.anchorId ? localResource('game', ctx, undefined, { use: s.kind === 'closing' ? 'closer' : 'opener' }) : localResource(r.kind, ctx, s.anchorId, { variant: Math.max(0, k), source: sourceOf(s) }),
     );
     return { ...s, resources, transition: s.transition && !s.transition.from ? s.transition : s.transition };
   });
@@ -382,7 +387,7 @@ export function regenerateLocal(t: Thread, units: Unit[], stageId: string, resId
       ...s,
       resources: s.resources.map((r) => {
         if (r.locked || (resId && r.id !== resId)) return r;
-        const fresh = r.kind === 'game' && !s.anchorId ? localResource('game', ctx, undefined, { use: s.kind === 'closing' ? 'closer' : 'opener', variant }) : localResource(r.kind, ctx, s.anchorId, { variant });
+        const fresh = r.kind === 'game' && !s.anchorId ? localResource('game', ctx, undefined, { use: s.kind === 'closing' ? 'closer' : 'opener', variant }) : localResource(r.kind, ctx, s.anchorId, { variant, source: sourceOf(s) });
         return { ...fresh, id: r.id };
       }),
     };
@@ -449,7 +454,7 @@ export function planToText(t: Thread): string {
     if (s.kind === 'practice') out.push(`  Libro: ${s.book?.book || '__'} · p. ${s.book?.page || '__'} · ej. ${s.book?.exercises || '__'}${s.notes ? ` · ${s.notes}` : ''}`);
     else if (s.teacherRole) out.push(`  Docente: ${s.teacherRole}`);
     if (s.successCriteria?.length) out.push(...s.successCriteria.map((c) => `  [ ] ${c}`));
-    for (const r of s.resources) out.push(`  -- ${r.title}${r.source === 'local' && (r.kind === 'story' || r.kind === 'news') ? ' (borrador)' : ''}`, contentToText(r));
+    for (const r of s.resources) out.push(`  -- ${r.title}${r.source === 'local' && DRAFT_KINDS.includes(r.kind) ? ' (borrador)' : ''}`, contentToText(r));
     if (s.notes && s.kind !== 'practice') out.push(`  Notas: ${s.notes}`);
     out.push('');
   }

@@ -42,6 +42,17 @@ export interface Bridge {
   rationale: Record<string, string>;
   source: Source;
   characters: { name: string; role: string }[];
+  /** Preposición + lugar para frases ("on the school trip"). */
+  where?: string;
+  /** El lugar con artículo determinado ("the school trip"). */
+  the?: string;
+  /** Propuesta a debate ("The festival should go ahead in the rain."). */
+  motion?: string;
+  /** Cierre de la historia, en presente. */
+  resolution?: string;
+  /** Escenario y roles en español, para el texto del docente. */
+  setting_es?: string;
+  roles_es?: string[];
 }
 
 export type ResourceKind =
@@ -126,6 +137,8 @@ export interface Target {
   matcher: RegExp | null;
   /** Detector poco fiable: no llegar a los hits mínimos solo avisa. */
   weak?: boolean;
+  /** Id de la regla de GRAMMAR_PROFILES (para bancos de CCQ). */
+  ruleId?: string;
   /** Vocabulario o palabras clave asociadas. */
   terms: string[];
   /** Frases modelo ya limpias (sin ** ni traducción). */

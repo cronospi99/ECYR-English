@@ -155,6 +155,20 @@ export const clean = (s: string) => s.replace(/^to\s+/i, '').replace(/\s*\/.*$/,
 /** Frase modelo limpia: sin marcas de formato ni traducción tras la raya. */
 export const plain = (x: string) => x.replace(/[*_`]/g, '').replace(/\s+—\s+.*$/, '').trim();
 
+/**
+ * Frase modelo lista para usar en un texto: sin notas internas, sin flechas de transformación
+ * ni explicaciones. Devuelve null si la entrada no es una frase utilizable.
+ */
+export function modelSentence(x: string): string | null {
+  let s = plain(x);
+  if (/ vs |rather than ‘|✗|…/.test(s)) return null;
+  if (s.includes('→')) s = s.split('→').pop()!.trim();
+  s = s.replace(/\s*\(([^)]*)\)\s*$/, (m, inner: string) => (/^[A-Z]/.test(inner) || /still true|form/i.test(inner) ? '' : m));
+  s = s.replace(/\((that)\)/gi, '$1').replace(/^[“"]|[”"]$/g, '').replace(/\s{2,}/g, ' ').trim();
+  return s.length > 3 ? s : null;
+}
+export const modelSentences = (xs: string[]) => xs.map(modelSentence).filter((x): x is string => !!x);
+
 export function weightOf(gp: GrammarPoint | undefined, level: number): number {
   return Math.round((1 + (gp?.deep ? 0.4 : 0) + (gp?.chart ? 0.2 : 0) + level * 0.05) * 100) / 100;
 }
@@ -212,13 +226,14 @@ export function buildTarget(a: Anchor, units: Unit[]): Target {
   if (a.type === 'grammar') {
     const gp = unit?.grammar[a.point];
     const rule = ruleFor(a.name);
-    const ex = [...(gp?.examples ?? []), ...(gp?.more ?? [])].map(plain).filter(Boolean);
-    const vocabEx = (unit?.vocab ?? []).flatMap((v) => v.examples ?? []).map(plain);
+    const ex = modelSentences([...(gp?.examples ?? []), ...(gp?.more ?? [])]);
+    const vocabEx = modelSentences((unit?.vocab ?? []).flatMap((v) => v.examples ?? []));
     return {
       ...base,
       label: a.name,
       kind: 'grammar',
       matcher: rule ? rule.match : null,
+      ruleId: rule?.id,
       weak: rule ? !!rule.weak : true,
       terms: (unit?.vocab ?? []).slice(0, 8).map((v) => clean(v.term)),
       examples: ex.length ? ex : vocabEx.slice(0, 4),
@@ -228,7 +243,7 @@ export function buildTarget(a: Anchor, units: Unit[]): Target {
       fix: gp?.fix ?? [],
       drill: gp?.drill?.items ?? [],
       drillPrompt: gp?.drill?.prompt ?? '',
-      dialogue: gp?.dialogue ?? [],
+      dialogue: (gp?.dialogue ?? []).flatMap((d) => { const l = modelSentence(d.line); return l ? [{ sp: d.sp, line: l }] : []; }),
       point: gp,
     };
   }
@@ -242,7 +257,7 @@ export function buildTarget(a: Anchor, units: Unit[]): Target {
       matcher: termMatcher(list.map((v) => v.term)),
       weak: false,
       terms: list.map((v) => clean(v.term)),
-      examples: list.flatMap((v) => v.examples ?? []).map(plain),
+      examples: modelSentences(list.flatMap((v) => v.examples ?? [])),
       rule: list.map((v) => `${clean(v.term)}: ${v.def}`).join(' · '),
       watch: list[0]?.use ?? '',
     };
@@ -265,7 +280,7 @@ export function buildTarget(a: Anchor, units: Unit[]): Target {
     matcher: termMatcher(vocab.map((v) => v.term)),
     weak: false,
     terms: vocab.map((v) => clean(v.term)),
-    examples: vocab.flatMap((v) => v.examples ?? []).map(plain),
+    examples: modelSentences(vocab.flatMap((v) => v.examples ?? [])),
     rule: a.text,
     unit: best,
   };

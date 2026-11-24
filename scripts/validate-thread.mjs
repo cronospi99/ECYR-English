@@ -14,7 +14,7 @@ import { createJiti } from 'jiti';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const jiti = createJiti(import.meta.url, { interopDefault: true });
 const lib = (f) => jiti.import(path.join(ROOT, 'src/lib/thread', f));
-const [prof, bd, br, plan, res, val, store, prompts, aiCore, types] = await Promise.all(['profiles.ts', 'bridgeData.ts', 'bridges.ts', 'plan.ts', 'resources.ts', 'validate.ts', 'storage.ts', 'prompts.ts', 'aiCore.ts', 'types.ts'].map(lib));
+const [prof, bd, br, plan, res, val, store, , aiCore, types, ccq] = await Promise.all(['profiles.ts', 'bridgeData.ts', 'bridges.ts', 'plan.ts', 'resources.ts', 'validate.ts', 'storage.ts', 'prompts.ts', 'aiCore.ts', 'types.ts', 'ccq.ts'].map(lib));
 const verbose = process.argv.includes('--verbose');
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -114,7 +114,9 @@ function checkPlan(c, t, ctx, known) {
     const kinds = st.map((s) => s.kind).join(',');
     check(kinds === 'presentation,practice,production', `${pre} PPP incompleto para ${a.id}: ${kinds}`);
     const [p, pr, pd] = st;
-    check(p && p.resources.length >= 1 && p.resources.some((r) => r.kind === 'ccq'), `${pre} Presentation sin recursos/CCQ`);
+    const tg = ctx.targets.find((x) => x.anchorId === a.id);
+    const wantCcq = ccq.hasCcq(tg?.ruleId);
+    check(p && p.resources.length >= 1 && p.resources.some((r) => ['story', 'news', 'dialogue', 'message'].includes(r.kind)) && p.resources.some((r) => r.kind === 'ccq') === wantCcq, `${pre} Presentation sin recurso de contexto / CCQ incoherente con el banco`);
     check(pr && pr.resources.length === 0 && pr.book && !pr.book.book && !pr.book.page && !pr.book.exercises, `${pre} Practice debe ser tarjeta de libro vacía`);
     check(pd && pd.resources.length >= 1 && (pd.successCriteria?.length ?? 0) >= 3, `${pre} Production sin recursos/criterios`);
   }
@@ -218,6 +220,61 @@ check(stats.distinct / combos.length >= 0.9, `contextos distintos en ${(100 * st
   check(plan.planWarnings(t).some((w) => /insuficiente/.test(w)), 'no avisa de duración insuficiente (4 anclas en 30 min)');
 }
 
+// ------------------------------------------- calidad del modo local (corrector) --
+section('Calidad del modo local (puntos 1, 3, 6, 9 del corrector)');
+{
+  // 1. frases modelo limpias en TODOS los puntos reales
+  let bad1 = 0, total1 = 0;
+  const NOTE = /\([A-Z]|\(still true|→| vs |rather than ‘|✗|…/;
+  for (const l of LEVELS) for (const u of books[l].units) for (let p = 0; p < u.grammar.length; p++) {
+    const tg = prof.buildTarget(plan.grammarAnchor(u, p, l), books[l].units);
+    for (const e of [...tg.examples, ...tg.dialogue.map((d) => d.line)]) {
+      total1++;
+      if (NOTE.test(e) || /^\s|\s$/.test(e)) { bad1++; check(false, `frase modelo sucia ${l} u${u.n}: ${e}`); }
+    }
+  }
+  console.log(`  frases modelo revisadas: ${total1}; sucias: ${bad1}`);
+  // 3. CCQ: sin ítems de "estructura meta" ni preguntas sobre la historia
+  const FORBID = /fact, rule|opinion or plan|who is speaking|why does|underline/i;
+  let nCcq = 0;
+  for (const [i, c] of combos.entries()) {
+    const t = plan.buildPlanLocal({ level: c.l, units: books[c.l].units, anchors: c.anchors, duration: c.dur, mix: MIX, bridge: br.makeBridge(br.chooseBridges(c.anchors, c.l, i)[0].def, c.anchors, ['Ana', 'Ben', 'Cy']), seed: i });
+    for (const st of t.stages) for (const r of st.resources.filter((x) => x.kind === 'ccq')) for (const it of r.content.items) {
+      nCcq++;
+      check(!FORBID.test(it.q) && /^(Yes|No)\b|^Accept|^[A-Za-z ,.]{1,40}$/.test(it.answer) && it.answer.split(/\s+/).length <= 8, `CCQ no válido: ${it.q} -> ${it.answer}`);
+    }
+    for (const st of t.stages) for (const r of st.resources) {
+      const txt = val.allText(r.content);
+      // 6. gramática de {setting}: nunca "in a school trip" y el indefinido no se repite
+      const b = t.bridge;
+      if (/^(a|an) /i.test(b.setting)) {
+        check(!new RegExp(`\\b(in|at|on|during) ${b.setting.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i').test(txt), `setting con preposición agramatical: ${b.setting}`);
+        check(txt.split(b.setting).length - 1 <= 1 || r.kind === 'board', `setting indefinido repetido (${r.kind}): ${b.setting}`);
+      }
+      // 15. "asks" solo con preguntas
+      check(!/\b(asks|asked),? "[^"]*[^?"]"/.test(txt), `"asks" con una afirmación (${r.kind}): ${txt.match(/\b(asks|asked),? "[^"]*"/)?.[0]}`);
+      // 12. mensajes sin atribuir citas
+      if (r.kind === 'message') check(!/ says: "|, "/.test(txt.replace(/Hi [^\n]*\n/, '')) || !/\b(says|asks|replies|adds)\b/.test(txt), 'mensaje con atribuciones de cita');
+    }
+    // 9. transiciones: sin minúscula tras punto ni inglés en el texto del docente
+    for (const st of t.stages) if (st.transition) {
+      const tr = st.transition;
+      check(!/[.?!]\s+[a-z]/.test(tr.student_en) && !/[.?!]\s+[a-záéíóú]/.test(tr.teacher_es), `minúscula tras punto: ${tr.student_en} | ${tr.teacher_es}`);
+      check(!tr.teacher_es.toLowerCase().includes(t.bridge.setting.toLowerCase()) && !t.bridge.roles.some((x) => tr.teacher_es.toLowerCase().includes(x.toLowerCase())), `inglés incrustado en el texto del docente: ${tr.teacher_es}`);
+      check(!/\b(in|at|on) (a|an) /.test(tr.student_en), `artículo indefinido en transición: ${tr.student_en}`);
+    }
+  }
+  console.log(`  CCQ revisados: ${nCcq}`);
+  // 7/8. catálogo: roles comunes, "where" con preposición y "the" determinado
+  for (const b of bd.BRIDGES) {
+    check(b.roles.every((r) => /^(the|a|an) /.test(r)), `rol sin artículo o con nombre propio en ${b.id}: ${b.roles.join('|')}`);
+    check(/^(in|at|on|during) /.test(b.where) && !/^(a|an) /.test(b.the) && b.motion && b.resolution && b.setting_es && b.roles_es.length === b.roles.length, `columnas incompletas en ${b.id}`);
+  }
+  // 12. el diálogo y el CCQ tienen ids en el banco que existen como reglas
+  const ids = new Set(prof.GRAMMAR_PROFILES.map((r) => r.id));
+  for (const k of ['past-simple', 'present-perfect', 'perfect-continuous', 'used-to', 'future', 'first-conditional', 'unreal-conditional', 'past-modal-judge', 'necessity', 'advice', 'passive', 'tell-say', 'past-distancing', 'comparison']) check(ids.has(k) && ccq.hasCcq(k), `banco CCQ sin regla ${k}`);
+}
+
 // ------------------------------------------------------- 9. persistencia -------
 section('9. Guardado, export/import');
 {
@@ -295,7 +352,7 @@ section('10-11. Regenerar, bloquear y estructura');
   // añadir un ejercicio a mano está permitido
   const withEx = plan.addResource(added, added.stages.find((s) => s.kind === 'practice').id, 'exercise', plan.planContext(added, units), { exerciseType: 'gapfill' });
   const exr = withEx.stages.find((s) => s.kind === 'practice').resources[0];
-  check(exr?.kind === 'exercise' && exr.content.items.length >= 6 && exr.content.items.every((i) => i.answer && !(i.distractors ?? []).includes(i.answer)), 'ejercicio manual inválido');
+  check(exr?.kind === 'exercise' && exr.content.items.length >= 3 && exr.content.items.every((i) => /____/.test(i.prompt) && (i.distractors ?? []).length >= 1) && exr.content.items.every((i) => i.answer && !(i.distractors ?? []).includes(i.answer)), 'ejercicio manual inválido');
   // los 14 tipos existen en local
   for (const k of types.RESOURCE_KINDS) {
     const r = res.localResource(k, ctx, ctx.targets[0].anchorId);
@@ -327,7 +384,7 @@ section('4. IA simulada (reintento y respaldo local)');
   const flaky = async (p) => (++calls === 1 ? 'Sure! here you go: {not json' : good(p));
   const bad = async () => 'lo siento, no puedo';
   const boom = async () => { throw new Error('Edge function caída'); };
-  for (const kind of ['story', 'news', 'ccq', 'roleplay', 'dialogue']) {
+  for (const kind of ['story', 'news', 'roleplay', 'dialogue']) {
     const r = await aiCore.aiResource(good, kind, ctx, anchorId, { known });
     check(r.source === 'ia' && !r.fallback, `IA válida: ${kind} cayó a local (${r.validation?.warnings?.join('|')})`);
   }

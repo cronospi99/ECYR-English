@@ -101,6 +101,12 @@ function normBridge(b: Record<string, unknown>): Bridge {
     rationale: Object.fromEntries(Object.entries(rec(b.rationale)).map(([k, v]) => [k, str(v)])),
     source: (['local', 'ia', 'user'].includes(str(b.source)) ? b.source : 'local') as Bridge['source'],
     characters: arr(b.characters).map(rec).map((c) => ({ name: str(c.name), role: str(c.role) })),
+    where: typeof b.where === 'string' ? b.where : def?.where,
+    the: typeof b.the === 'string' ? b.the : def?.the,
+    motion: typeof b.motion === 'string' ? b.motion : def?.motion,
+    resolution: typeof b.resolution === 'string' ? b.resolution : def?.resolution,
+    setting_es: typeof b.setting_es === 'string' ? b.setting_es : def?.setting_es,
+    roles_es: arr(b.roles_es).length ? arr(b.roles_es).map((x) => str(x)) : def?.roles_es,
   };
 }
 

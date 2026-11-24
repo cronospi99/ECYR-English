@@ -271,7 +271,7 @@ function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; 
           <h3 className="text-headline">
             {st.emoji} Texto central
           </h3>
-          {t.source === 'local' && <span className="bg-fill-2 text-label-2 rounded-full px-2 py-0.5 text-[12px]">Draft with model sentences · “With AI” writes it in full</span>}
+          {t.source === 'local' && <span className="bg-fill-2 text-label-2 rounded-full px-2 py-0.5 text-[12px]">Borrador con frases modelo · «Con IA» lo redacta completo</span>}
         </div>
         <div className="mt-3 space-y-2.5 text-[16px] leading-relaxed">
           {t.story.split(/\n+/).map((p, i) => (

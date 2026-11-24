@@ -4,7 +4,7 @@
  */
 import type { CefrLevel } from '../../content/types';
 import { describeMix } from '../engagement';
-import { BRIDGES } from './bridgeData';
+import { BRIDGES, theOf, whereOf } from './bridgeData';
 import { anchorLabel } from './bridges';
 import type { Anchor, Bridge, PlanContext, ResourceKind } from './types';
 import { ITEM_RANGE, LEVEL_IDX, SENT_RANGE, WORD_RANGE } from './validate';
@@ -34,6 +34,13 @@ const KIND_EN: Record<ResourceKind, string> = {
   exercise: 'a controlled exercise', game: 'a classroom game (max 8 minutes)', roleplay: 'role-play cards', debate: 'debate questions', board: 'a whiteboard plan with at least 3 sections',
 };
 
+const EXERCISE_SHAPE: Record<string, string> = {
+  gapfill: '{"type":"gapfill","instructions":"English, max 15 words","items":[{"prompt":"sentence with ____ (one gap)","answer":"the missing word(s)","distractors":["wrong form 1","wrong form 2"]}]}',
+  matching: '{"type":"matching","instructions":"English, max 15 words","items":[{"prompt":"word or start of a sentence","answer":"its exact match"}]}',
+  order: '{"type":"order","instructions":"English, max 15 words","items":[{"prompt":"words / in / scrambled / order","answer":"the correct sentence"}]}',
+  transform: '{"type":"transform","instructions":"English, max 15 words","items":[{"prompt":"sentence + instruction (e.g. rewrite in the past)","answer":"the one correct sentence"}]}',
+};
+
 export function sizeSpec(kind: ResourceKind, level: CefrLevel): string {
   const i = LEVEL_IDX[level];
   const w = WORD_RANGE[kind]?.[i];
@@ -58,22 +65,29 @@ export interface PromptOpts {
 export function resourcePrompt(kind: ResourceKind, ctx: PlanContext, anchorId: string | undefined, o: PromptOpts = {}): string {
   const ts = anchorId ? ctx.targets.filter((t) => t.anchorId === anchorId) : ctx.targets;
   const level = ctx.level;
-  const minHits = LEVEL_IDX[level] === 0 ? 2 : 3;
+  const li = LEVEL_IDX[level];
+  const minHits = li === 0 ? 2 : 3;
   const targets = ts
     .map((t) => `- ${t.kind === 'grammar' ? 'GRAMMAR' : 'VOCABULARY'} "${t.label}" (anchorId ${t.anchorId})${t.form[0] ? `: ${t.form[0]}` : ''}. Model sentences: ${t.examples.slice(0, 2).map((e) => `"${e}"`).join(' / ')}`)
     .join('\n');
   const gloss = [...new Set(ts.flatMap((t) => t.terms))].slice(0, 12).join(', ');
+  const noHighlight = kind === 'exercise' || kind === 'ccq' || kind === 'comprehension';
+  const shape = kind === 'exercise' ? (EXERCISE_SHAPE[o.exerciseType ?? 'gapfill'] ?? SHAPE.exercise) : SHAPE[kind];
+  const rules: string[] = [];
+  if (kind === 'story' || kind === 'news')
+    rules.push(`ONE continuous ${kind === 'news' ? 'article' : 'story'} (beginning, problem, ending), one paragraph per target, only the given characters${kind === 'news' ? '; "quote.speaker" must be one of them' : ''}; no dates or years.`);
+  if (kind === 'ccq') rules.push('Never use the target structure in the question; mostly yes/no questions; the answer must be true for the concept, not only for this story; answers of 1–3 words.');
+  if (kind === 'exercise') rules.push('Exactly one correct answer per item; distractors of the same word class (wrong forms of the same word), clearly wrong in context; no duplicate items.');
   return `You are an EFL materials writer for Spanish-speaking students at CEFR ${level} ONLY.
-CONTEXT (fixed, do not change): setting "${ctx.bridge.setting}"; characters ${names(ctx)}; conflict "${ctx.bridge.conflict}".
+CONTEXT (fixed, do not change): setting "${ctx.bridge.setting}" (say "${whereOf(ctx.bridge)}", then "${theOf(ctx.bridge)}"); characters ${names(ctx)}; conflict "${ctx.bridge.conflict}".
 TARGET LANGUAGE (must appear naturally; each at least ${minHits} times):
 ${targets}
-STAGE: ${o.stage ?? 'Presentation'} for "${ts.map(anchorLabel0).join(' + ')}". Group profile: ${describeMix(ctx.mix)}. Teacher's own words: "${ctx.userContext ?? ''}".
+STAGE: ${o.stage ?? 'Presentation'} for "${ts.map(anchorLabel0).join(' + ')}". Group profile: ${describeMix(ctx.mix)}.${ctx.userContext?.trim() ? ` Teacher's own words: "${ctx.userContext.trim()}".` : ''}
 RESOURCE: ${kind} — ${KIND_EN[kind]}; size: ${sizeSpec(kind, level)}.${kind === 'exercise' && o.exerciseType ? ` Exercise type: ${o.exerciseType}.` : ''}
 LEVEL RULES: use only vocabulary and grammar up to ${level}; allowed exceptions: the target language and these words: ${gloss || 'none'}.
-Sentence length ≤ ${MAX_SENTENCE[level]} words. No idioms or cultural references that need explanation (A1–B1). Natural, current English; no textbook-sounding sentences.
-SAFETY: fictional people only; nothing offensive, political or unsuitable for school students.${kind === 'news' ? ' NEWS ONLY: invent everything; no real people, places in real events, companies, or statistics; set "fictionalNote":"Fictional story written for class practice."' : ''}
-HIGHLIGHT: wrap each occurrence of the target language in **double asterisks**, exactly as it appears.${o.avoid ? `\nAVOID repeating this earlier version (make a clearly different one): "${o.avoid.slice(0, 280)}"` : ''}${o.fix?.length ? `\nFix: your previous answer had these problems: ${o.fix.join('; ')}.` : ''}
-Return ONLY valid JSON, no markdown, exactly this shape: ${SHAPE[kind]}`;
+Sentence length ≤ ${MAX_SENTENCE[level]} words.${li <= 2 ? ' No idioms or cultural references that need explanation.' : ''} Natural, current English; no textbook-sounding sentences.${rules.length ? `\n${rules.join(' ')}` : ''}
+SAFETY: fictional people only; nothing offensive, political or unsuitable for school students.${kind === 'news' ? ' NEWS ONLY: invent everything; no real people, places in real events, companies, or statistics; set "fictionalNote":"Fictional story written for class practice."' : ''}${noHighlight ? '' : '\nHIGHLIGHT: wrap each occurrence of the target language in **double asterisks**, exactly as it appears.'}${o.avoid ? `\nAVOID repeating this earlier version (make a clearly different one): "${o.avoid.slice(0, 280)}"` : ''}${o.fix?.length ? `\nFix: your previous answer had these problems: ${o.fix.join('; ')}.` : ''}
+Return ONLY valid JSON, no markdown, exactly this shape: ${shape}`;
 }
 
 const anchorLabel0 = (t: { label: string }) => t.label;
@@ -85,10 +99,10 @@ export function bridgePrompt(anchors: Anchor[], level: CefrLevel, ctx: { mix: Pl
 ANCHORS (language the class must practise; they come from different lessons and are NOT related):
 ${as}
 Invent 3 different BRIDGE CONTEXTS: a concrete, recognisable social situation where EACH anchor has a real communicative reason to appear. Never explain the relation between anchors; create a scene where each one solves a different need. Order the anchors from most known to newest.
-Teacher's own words: "${ctx.userContext ?? ''}". The class: ${describeMix(ctx.mix)}.
+${ctx.userContext?.trim() ? `Teacher's own words: "${ctx.userContext.trim()}". ` : ''}The class: ${describeMix(ctx.mix)}.
 Inspiration (you may invent a better one): ${cat.map((b) => `"${b.title}" (${b.setting})`).join('; ')}.
-Rules: fictional people only; nothing offensive; at A1–B1 no cultural references that need explanation. "rationale" values are Spanish, max 18 words, one per anchor id. Each transition's "student_en" must mention the setting or a role; never use the words "unit" or "lesson".
-Return ONLY valid JSON, no markdown, exactly this shape: {"bridges":[{"title":"","setting":"","roles":["","",""],"conflict":"one line, English","rationale":{"<anchorId>":"Spanish, ≤ 18 words"},"order":["<anchorId>"],"transitions":[{"toAnchorId":"","teacher_es":"","student_en":"must mention setting or a role"}]}]}`;
+Rules: "setting" is a noun phrase with article ("a school trip to the coast"); "where" is preposition + place ("on the school trip"); "the" is the place with "the" ("the school trip"); "roles" are common nouns with an article ("the organiser", "a classmate"), never proper names; fictional people only; nothing offensive; at A1–B1 no cultural references that need explanation. "rationale" values are Spanish, max 18 words, one per anchor id. Each transition's "student_en" must mention the setting or a role; never use the words "unit" or "lesson".
+Return ONLY valid JSON, no markdown, exactly this shape: {"bridges":[{"title":"","setting":"","where":"","the":"","roles":["","",""],"conflict":"one line, English","rationale":{"<anchorId>":"Spanish, ≤ 18 words"},"order":["<anchorId>"],"transitions":[{"toAnchorId":"","teacher_es":"","student_en":"must mention setting or a role"}]}]}`;
 }
 
 // ------------------------------------------------------------------ parseo --
@@ -205,6 +219,8 @@ export function parseBridges(text: string, anchors: Anchor[], names: [string, st
         setting,
         roles,
         conflict: str(b.conflict),
+        where: str(b.where) || undefined,
+        the: str(b.the) || undefined,
         doms,
         fns,
         rationale,

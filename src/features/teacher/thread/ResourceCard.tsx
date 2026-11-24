@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AlertTriangle, ArrowDown, ArrowUp, Eye, EyeOff, Loader2, Lock, Pencil, RefreshCw, Trash2, Unlock } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
-import { KIND_LABEL } from '@/lib/thread/resources';
+import { DRAFT_KINDS, KIND_LABEL } from '@/lib/thread/resources';
 import type { Resource } from '@/lib/thread/types';
 import { ContentView } from './ContentView';
 import type { Highlighter } from './highlight';
@@ -23,7 +23,7 @@ export function ResourceCard({ r, hl, busy, actions, first, last }: { r: Resourc
   const hasAnswers = ['exercise', 'ccq', 'comprehension'].includes(r.kind);
   const warns = r.validation?.warnings ?? [];
   const errs = r.validation?.errors ?? [];
-  const draft = r.source === 'local' && (r.kind === 'story' || r.kind === 'news');
+  const draft = r.source === 'local' && DRAFT_KINDS.includes(r.kind);
   return (
     <Card className="p-3 sm:p-4" aria-busy={busy}>
       <div className="flex flex-wrap items-center gap-1.5">
@@ -31,7 +31,7 @@ export function ResourceCard({ r, hl, busy, actions, first, last }: { r: Resourc
         {r.source === 'ia' && <Pill tone="green">IA</Pill>}
         {r.source === 'local' && <Pill>Local</Pill>}
         {r.source === 'user' && <Pill>Tuyo</Pill>}
-        {draft && <Pill tone="amber">Borrador</Pill>}
+        {draft && <Pill tone="amber" title="Borrador con frases modelo: «Otra versión» con IA lo redacta completo">Borrador</Pill>}
         {r.edited && <Pill tone="gray">Editado</Pill>}
         {r.fallback && <Pill tone="amber" title="La IA no dio un resultado válido: se usó la plantilla local">Respaldo local</Pill>}
         {(warns.length > 0 || errs.length > 0) && (

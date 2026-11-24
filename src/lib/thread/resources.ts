@@ -1,10 +1,11 @@
 /**
  * Generador local (sin IA) de recursos: ensambla desde los datos reales del punto/unidad
- * (ejemplos, diálogos, errores comunes) y bancos pequeños indexados por función y nivel.
- * Todo recurso local marca source:'local'; story/news son "borrador".
+ * (frases modelo limpias, diálogos, errores comunes) y bancos pequeños indexados por función y nivel.
+ * Todo recurso local marca source:'local'. Son BORRADORES: la IA los redacta mejor.
  */
-import { FN_NEED } from './bridgeData';
-import { countHits } from './profiles';
+import { motionOf, resolutionOf, theOf, whereOf } from './bridgeData';
+import { ccqBank } from './ccq';
+import { countHits, domainsOf, modelSentence } from './profiles';
 import type { Fn, PlanContext, Resource, ResourceKind, Target } from './types';
 import { uid } from './types';
 import { ITEM_RANGE, LEVEL_IDX, SENT_RANGE, WORD_RANGE, hitText, wordCount } from './validate';
@@ -14,19 +15,30 @@ export const KIND_LABEL: Record<ResourceKind, string> = {
   comprehension: 'Comprensión', ccq: 'CCQ', exercise: 'Ejercicio', game: 'Juego', roleplay: 'Juego de roles', debate: 'Debate', board: 'Plan de pizarra',
 };
 
+/** Tipos que, hechos en local, son borradores con frases modelo pegadas (la UI los marca). */
+export const DRAFT_KINDS: ResourceKind[] = ['story', 'news', 'message', 'announcement', 'interview', 'comprehension', 'dialogue'];
+
 const pick = <T,>(a: T[], n: number) => a[((n % a.length) + a.length) % a.length]!;
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const lowerFirst = (s: string) => (/^I(\s|['’])/.test(s) ? s : s.charAt(0).toLowerCase() + s.slice(1));
+const noEnd = (s: string) => s.replace(/[.!?]+$/, '');
+const isQ = (s: string) => /\?\s*$/.test(s);
 const mid = (r: [number, number], f = 0.35) => Math.round(r[0] + (r[1] - r[0]) * f);
-const nItems = (kind: ResourceKind, level: number) => {
-  const r = ITEM_RANGE[kind]?.[level];
-  return r ? r[1] : 4;
-};
+const nItems = (kind: ResourceKind, level: number) => ITEM_RANGE[kind]?.[level]?.[1] ?? 4;
+const band = (l: number) => (l <= 1 ? 0 : l <= 3 ? 1 : 2);
 
-const FILLERS = ['Everyone is listening.', 'It is a busy day.', 'They talk for a few minutes.', 'The problem is not easy.', 'Nobody is in a hurry.', 'Then the room goes quiet.'];
-const VERBS = ['says', 'answers', 'asks', 'explains'];
+const FILLERS = [
+  ['It is a busy day.', 'Everyone is listening.', 'They talk for a few minutes.', 'The room is quiet.'],
+  ['Nobody wants to waste time.', 'The conversation gets serious.', 'There is not much time left.', 'Everyone has an opinion.'],
+  ['The atmosphere is tense.', 'Nobody wants to commit to a position yet.', 'The discussion becomes more heated.', 'Opinions are clearly divided.'],
+];
+const CONNECT = ['First,', 'Then,', 'Later that day,', 'But then,', 'Soon,', 'After that,'];
+const CONNECT_PAST = ['First,', 'Then,', 'Later,', 'Next,', 'After that,'];
+
 const examplesOf = (t: Target) => (t.examples.length ? t.examples : [`${cap(t.terms[0] ?? t.label)}.`]);
-const timeOf = (ts: Target[]) => ts[0]?.profile.time ?? 'any';
 const fnOf = (ts: Target[]): Fn => ts[0]?.profile.fns[0] ?? 'describe';
+
+const foreignName = (s: string, names: string[]) => [...s.matchAll(/(?<=[a-z,;:”"’']\s)([A-Z][a-zA-Z]+)/g)].some((m) => !names.includes(m[1]!));
 
 /** Frases de varios targets, una de cada en turnos. */
 function pool(ts: Target[]): string[] {
@@ -37,23 +49,97 @@ function pool(ts: Target[]): string[] {
   return out;
 }
 
-function reading(ctx: PlanContext, ts: Target[], minWords: number, intro: string, v: number): string {
-  const [a, b, c] = ctx.names;
-  const who = [a, b, c];
+/** Frases para un texto: las propias del punto primero; luego otras del mismo dominio y sin nombres ajenos. */
+function readingPool(ctx: PlanContext, ts: Target[]): string[] {
+  const names = [...ctx.names];
   const own = pool(ts);
-  const extra = ts.flatMap((t) => [...t.dialogue.map((d) => d.line), ...(t.unit?.vocab ?? []).flatMap((v) => v.examples ?? [])]).filter((x) => x && !own.includes(x));
-  const ex = [...own, ...extra.filter((x) => x.split(/\s+/).length <= 24)];
+  const ownOk = own.filter((x) => !foreignName(x, names));
+  const base = ownOk.length >= 3 ? ownOk : own;
+  const extras = ts
+    .flatMap((t) => [...t.dialogue.map((d) => d.line), ...(t.unit?.vocab ?? []).flatMap((v) => (v.examples ?? []).map((e) => modelSentence(e) ?? ''))])
+    .filter((x) => x && !base.includes(x) && wordCount(x) <= 24 && !foreignName(x, names));
+  const uniq = [...new Set(extras)];
+  const inDom = uniq.filter((x) => domainsOf(x).some((d) => ctx.bridge.doms.includes(d)));
+  return [...base, ...inDom, ...uniq.filter((x) => !inDom.includes(x))];
+}
+
+// ------------------------------------------------------------ historias ----
+
+type Frame = (A: string, B: string, C: string, e: string) => string;
+const FRAMES: Partial<Record<Fn, Frame>> = {
+  plan: (_A, B, _C, e) => `${B} has an idea: "${e}"`,
+  advise: (A, B, _C, e) => `${B} is worried. ${A} says, "${e}"`,
+  oblige: (_A, _B, C, e) => `${C} reads the rules aloud: "${e}"`,
+  narrate: (A, _B, _C, e) => `${A} remembers what happened: "${e}"`,
+  report: (A, B, _C, e) => `${A} tells ${B} what was said: "${e}"`,
+  compare: (_A, B, _C, e) => `${B} thinks about the two options: "${e}"`,
+  hypothesize: (_A, B, _C, e) => `${B} imagines something different: "${e}"`,
+  opinion: (A, _B, _C, e) => `${A} gives an opinion: "${e}"`,
+  argue: (A, B, _C, e) => `${A} wants to convince ${B}: "${e}"`,
+  persuade: (A, B, _C, e) => `${A} wants to convince ${B}: "${e}"`,
+  evaluate: (A, _B, _C, e) => `${A} thinks about how it went: "${e}"`,
+  predict: (A, _B, _C, e) => `${A} thinks about the future: "${e}"`,
+  experience: (A, _B, _C, e) => `${A} thinks about what has been done: "${e}"`,
+  instruct: (A, _B, _C, e) => `${A} explains how to do it: "${e}"`,
+  routine: (A, _B, _C, e) => `${A} describes a normal day: "${e}"`,
+  permit: (A, _B, _C, e) => `${A} asks for permission: "${e}"`,
+  request: (A, B, _C, e) => `${A} needs help. ${B} hears: "${e}"`,
+};
+const frame = (fn: Fn, A: string, B: string, C: string, e: string) => (isQ(e) ? `${A} asks, "${e}"` : (FRAMES[fn] ?? ((a, _b, _c, x) => `${a} says, "${x}"`))(A, B, C, e));
+const REACT = (B: string, A: string, C: string) => [`${B} agrees.`, `${B} is not sure.`, `${C} nods.`, `${A} smiles.`];
+
+function storyText(ctx: PlanContext, ts: Target[], minWords: number, v: number, level: number): string {
+  const [A, B, C] = ctx.names;
+  const fn = fnOf(ts);
+  const seq = readingPool(ctx, ts);
+  const paras = [`${A} and ${B} are ${whereOf(ctx.bridge)}. ${ctx.bridge.conflict}`];
+  const close = resolutionOf(ctx.bridge);
+  let words = wordCount(paras[0]!) + wordCount(close);
+  let k = 0;
+  for (let p = 0; p < 40 && words < minWords; p++) {
+    const e1 = seq[k++ % seq.length]!;
+    const e2 = seq.length > 1 ? seq[k++ % seq.length]! : '';
+    const subj = ['plan', 'compare', 'hypothesize'].includes(fn) ? B : fn === 'oblige' ? C : A;
+    const follow = e2 ? ` ${subj === A ? B : A} ${isQ(e2) ? 'asks' : pick(['replies', 'adds'], p + v)}, "${e2}"` : '';
+    const filler = p % 2 ? ` ${pick(FILLERS[band(level)]!, p + v)}` : '';
+    const first = p % 3 === 0 ? frame(fn, A, B, C, e1) : `${p % 2 ? B : A} ${isQ(e1) ? 'asks' : 'says'}, "${e1}"`;
+    const para = `${pick(CONNECT, p)} ${first}${follow} ${pick(REACT(B, A, C), p + v)}${filler}`;
+    paras.push(para);
+    words += wordCount(para);
+  }
+  paras.push(close);
+  return paras.join('\n');
+}
+
+function newsBody(ctx: PlanContext, ts: Target[], minWords: number, v: number): string {
+  const [A, B] = ctx.names;
+  const seq = readingPool(ctx, ts);
+  const paras = [`Reporters talked to people ${whereOf(ctx.bridge)}.`];
+  let words = wordCount(paras[0]!) + 6;
+  let k = 0;
+  for (let p = 0; p < 40 && words < minWords; p++) {
+    const e1 = seq[k++ % seq.length]!;
+    const e2 = seq.length > 1 ? seq[k++ % seq.length]! : '';
+    const sp = p % 2 ? A : B;
+    const conn = pick(CONNECT_PAST, p);
+    const para = `${conn} ${sp} ${isQ(e1) ? 'asked' : 'said'}, "${e1}"${e2 ? ` ${p % 2 ? B : A} ${isQ(e2) ? 'asked' : pick(['answered', 'added'], p + v)}, "${e2}"` : ''}`;
+    paras.push(para);
+    words += wordCount(para);
+  }
+  paras.push('Reporters will follow the story.');
+  return paras.join('\n');
+}
+
+/** Mensajes y anuncios: sin atribuir citas, con conectores. */
+function plainSeq(ctx: PlanContext, ts: Target[], minWords: number, intro: string, connectors: string[], v: number): string {
+  const seq = readingPool(ctx, ts);
   const lines = [intro];
   let words = wordCount(intro);
-  for (let i = 0; i < 80 && words < minWords; i++) {
-    const s = `${who[(i + v) % 2]} ${pick(VERBS, i + v)}: "${ex[i % ex.length]}"`;
-    lines.push(s);
-    words += wordCount(s);
-    if (i % 2 === 1 && words < minWords) {
-      const f = pick(FILLERS, i + v);
-      lines.push(f);
-      words += wordCount(f);
-    }
+  for (let i = 0; i < 60 && words < minWords; i++) {
+    const e = seq[i % seq.length]!;
+    const l = i === 0 ? cap(e) : `${pick(connectors, i + v)} ${lowerFirst(e)}`;
+    lines.push(l);
+    words += wordCount(l);
   }
   const paras: string[] = [];
   for (let i = 0; i < lines.length; i += 3) paras.push(lines.slice(i, i + 3).join(' '));
@@ -62,78 +148,65 @@ function reading(ctx: PlanContext, ts: Target[], minWords: number, intro: string
 
 // -------------------------------------------------------------------- CCQ --
 
-function ccqItems(ctx: PlanContext, ts: Target[], n: number, v: number) {
+function ccqItems(ts: Target[], n: number, v: number) {
   const t = ts[0]!;
-  const ex = pick(examplesOf(t), v);
-  const time = timeOf(ts);
-  const fn = fnOf(ts);
-  const [a] = ctx.names;
-  const items: { point: string; q: string; answer: string }[] = [];
-  if (time === 'past') {
-    items.push({ point: 'time', q: `Is "${ex}" about the past, the present or the future?`, answer: 'The past.' });
-    items.push({ point: 'meaning', q: `Can ${a} say this about tomorrow?`, answer: 'No. It is about something before now.' });
-  } else if (time === 'future') {
-    items.push({ point: 'time', q: `Is "${ex}" about the past, the present or the future?`, answer: 'The future.' });
-    items.push({ point: 'meaning', q: `Has it happened already?`, answer: 'No. It has not happened yet.' });
-  } else if (time === 'present') {
-    items.push({ point: 'time', q: `Is "${ex}" about the past, the present or the future?`, answer: 'The present (now or in general).' });
-    items.push({ point: 'meaning', q: `Is it about something that is finished?`, answer: 'No.' });
-  } else {
-    items.push({ point: 'meaning', q: `Does "${ex}" give a fact, a rule, an opinion or a plan?`, answer: 'Accept any reasonable answer; ask the student to explain it.' });
-    items.push({ point: 'meaning', q: `Who is speaking in "${ex}": ${a} or the teacher?`, answer: `${a}, in this story.` });
-  }
-  items.push({ point: 'use', q: `In ${ctx.bridge.setting}, why does ${a} say "${ex}"?`, answer: `To ${FN_NEED[fn]}.` });
-  items.push({ point: 'form', q: `Which words in "${ex}" are the grammar we are learning?`, answer: `The words that match: ${t.label}. Ask the student to underline them.` });
-  items.push({ point: 'form', q: `Can you say a new sentence like "${ex}" about ${ctx.bridge.roles[0] ?? 'someone'}?`, answer: 'Any sentence with the same form.' });
-  return items.slice(0, n);
+  const bank = ccqBank(t.ruleId);
+  const ex = examplesOf(t).filter((e) => !isQ(e));
+  const src = ex.length ? ex : examplesOf(t);
+  return bank.slice(0, n).map(([q, a], i) => ({ point: i === 0 ? 'time/meaning' : 'meaning', q: `"${noEnd(pick(src, v + i))}." ${q}`, answer: a }));
 }
 
 // --------------------------------------------------------------- exercises --
 
 const shuffle = <T,>(a: T[], seed: number) => a.map((x, i) => ({ x, k: Math.sin(seed * 97 + i * 13.7) })).sort((p, q) => p.k - q.k).map((o) => o.x);
 
+const AUX: Record<string, string[]> = {
+  is: ['are', 'be'], are: ['is', 'be'], was: ['were', 'be'], were: ['was', 'be'], am: ['is', 'be'], has: ['have', 'had'], have: ['has', 'having'], had: ['has', 'have'],
+  do: ['does', 'doing'], does: ['do', 'doing'], did: ['do', 'does'], will: ['would', 'is'], would: ['will', 'did'], can: ['could', 'may'], could: ['can', 'must'], must: ['should', 'can'], should: ['must', 'could'],
+  to: ['for', 'of'], the: ['a', 'an'], a: ['the', 'an'], an: ['a', 'the'],
+};
+
+/** Formas erróneas de la MISMA palabra (go -> goes / going / goed). */
+export function wrongForms(answer: string): string[] {
+  const a = answer.trim();
+  const w = a.toLowerCase();
+  const out = new Set<string>();
+  if (AUX[w]) AUX[w]!.forEach((x) => out.add(x));
+  else if (/ing$/.test(w) && w.length > 5) [w.replace(/ing$/, ''), w.replace(/ing$/, 's'), w.replace(/ing$/, 'ed')].forEach((x) => out.add(x));
+  else if (/ed$/.test(w) && w.length > 4) [w.replace(/ed$/, ''), w.replace(/ed$/, 'ing'), w.replace(/ed$/, 's')].forEach((x) => out.add(x));
+  else if (/[^s]s$/.test(w)) [w.slice(0, -1), `${w.slice(0, -1)}ing`, `${w.slice(0, -1)}ed`].forEach((x) => out.add(x));
+  else [`${w}s`, `${w}ing`, `${w}ed`].forEach((x) => out.add(x));
+  return [...out].filter((x) => x && x !== w).map((x) => (a[0] === a[0]!.toUpperCase() && a[0] !== a[0]!.toLowerCase() ? cap(x) : x)).slice(0, 2);
+}
+
 function exerciseItems(ts: Target[], type: string, n: number, v: number) {
   const t = ts[0]!;
-  const ex = [...pool(ts), ...(t.unit?.vocab ?? []).flatMap((x) => x.examples ?? [])].filter((s, i, arr) => arr.indexOf(s) === i);
+  const ex = [...pool(ts), ...(t.unit?.vocab ?? []).flatMap((x) => (x.examples ?? []).map((e) => modelSentence(e) ?? ''))].filter((s, i, arr) => s && arr.indexOf(s) === i);
   const items: { prompt: string; answer: string; distractors?: string[] }[] = [];
   if (type === 'transform') {
-    const fixes = t.fix.map((f) => ({ prompt: `Correct the sentence: ${f.wrong}`, answer: f.right }));
-    for (const f of fixes) items.push(f);
-    const drills = t.drill.map((d) => ({ prompt: `${t.drillPrompt ? '' : 'Write a sentence: '}${d}`, answer: ex[items.length % ex.length]! }));
-    for (const d of drills) if (items.length < n) items.push(d);
+    for (const f of t.fix) items.push({ prompt: `Correct the sentence: ${f.wrong}`, answer: f.right });
+    for (const d of t.drill) items.push({ prompt: `${t.drillPrompt ? '' : 'Write a sentence: '}${d}`, answer: 'Open answer: check the form.' });
   } else if (type === 'order') {
     for (const s of ex) {
-      const w = s.replace(/[.!?]+$/, '').split(/\s+/);
+      const w = noEnd(s).split(/\s+/);
       if (w.length > 3 && w.length < 14) items.push({ prompt: shuffle(w, v + items.length).join(' / '), answer: s });
     }
   } else if (type === 'matching') {
     for (const x of t.unit?.vocab ?? []) items.push({ prompt: x.term, answer: x.def });
   } else {
-    const answers: string[] = [];
-    const rows: { s: string; ans: string }[] = [];
+    const re = t.matcher ? new RegExp(t.matcher.source, t.matcher.flags.replace('g', '')) : null;
+    const seen = new Set<string>();
     for (const s of ex) {
-      const re = t.matcher ? new RegExp(t.matcher.source, t.matcher.flags.replace('g', '')) : null;
       const m = re ? s.match(re) : null;
-      let ans = m?.[0] ?? '';
-      let at = m ? s.indexOf(m[0]) : -1;
-      if (!ans || ans.length > 22) {
-        const ws = s.replace(/[.!?]+$/, '').split(/\s+/);
-        ans = ws[Math.min(1, ws.length - 1)] ?? s;
-        at = s.indexOf(ans);
-      }
-      if (at < 0) continue;
-      rows.push({ s: s.slice(0, at) + '____' + s.slice(at + ans.length), ans });
-      answers.push(ans);
-    }
-    for (const [i, r] of rows.entries()) {
-      const others = [...new Set(answers.filter((x) => x.toLowerCase() !== r.ans.toLowerCase()))];
-      items.push({ prompt: r.s, answer: r.ans, distractors: shuffle(others, i + v).slice(0, 2) });
+      if (!m || !m[0] || m[0].length > 22) continue;
+      const ans = m[0];
+      const prompt = s.slice(0, m.index) + '____' + s.slice(m.index! + ans.length);
+      if (seen.has(prompt)) continue;
+      seen.add(prompt);
+      items.push({ prompt, answer: ans, distractors: wrongForms(ans) });
     }
   }
-  const out = items.slice(0, n);
-  // Si faltan, se repite el banco con otras frases
-  for (let i = 0; out.length < n && items.length; i++) out.push(items[i % items.length]!);
-  return out;
+  return items.slice(0, n);
 }
 
 // -------------------------------------------------------------------- games --
@@ -141,72 +214,106 @@ function exerciseItems(ts: Target[], type: string, n: number, v: number) {
 function gameContent(ctx: PlanContext, ts: Target[], v: number, use: 'opener' | 'closer' | 'any') {
   const t = ts[0]!;
   const [a, b] = ctx.names;
-  const setting = ctx.bridge.setting;
+  const the = theOf(ctx.bridge);
+  const where = whereOf(ctx.bridge);
   const role = ctx.bridge.roles[0] ?? 'someone';
-  if (use === 'closer') {
+  if (use === 'closer')
     return {
-      name: '3-2-1 exit ticket',
-      mode: 'solo, then pairs',
-      minutes: 4,
-      materials: ['paper or notebook'],
-      steps: [`Write 3 words from today about ${setting}.`, `Write 2 sentences with: ${t.label}.`, `Write 1 question for ${role}.`, 'Swap with a partner and correct one sentence.'],
+      name: '3-2-1 exit ticket', mode: 'solo, then pairs', minutes: 4, materials: ['paper or notebook'],
+      steps: [`Write 3 words from today about ${the}.`, `Write 2 sentences with: ${t.label}.`, `Write 1 question for ${role}.`, 'Swap with a partner and correct one sentence.'],
       targetLanguage: t.label,
     };
-  }
-  if (use === 'opener') {
+  if (use === 'opener')
     return {
-      name: `Previously, in ${setting}`,
-      mode: 'pairs',
-      minutes: 4,
-      materials: ['board'],
-      steps: [`Write "${setting}" on the board: what do the students know about it?`, `In pairs, they imagine what ${a} and ${b} are doing there.`, 'Two pairs share their ideas; note 3 key words.'],
+      name: `Welcome to ${the}`, mode: 'pairs', minutes: 4, materials: ['board'],
+      steps: [`Write "${the}" on the board: what do the students know about it?`, `In pairs, they imagine what ${a} and ${b} are doing ${where}.`, 'Two pairs share their ideas; note 3 key words.'],
       targetLanguage: ctx.targets.map((x) => x.label).join(' + '),
     };
-  }
   const bank = [
-    { name: 'Sentence relay', mode: 'teams', steps: [`Teams stand in lines. Each student adds one sentence with: ${t.label}.`, `The topic is ${setting}.`, 'A point for each correct sentence.'], materials: ['board', 'marker'] },
+    { name: 'Sentence relay', mode: 'teams', steps: [`Teams stand in lines. Each student adds one sentence with: ${t.label}.`, `The topic is ${the}.`, 'One point for each correct sentence.'], materials: ['board', 'marker'] },
     { name: 'Spot the mistake', mode: 'whole class', steps: ['Write 5 sentences on the board, 2 with a mistake.', 'Students vote: correct or not?', 'They fix the wrong ones.'], materials: ['board'] },
     { name: `Two truths and a lie: ${role}`, mode: 'groups', steps: [`Each student writes 3 sentences about ${role}, using: ${t.label}.`, 'One sentence is false.', 'The group guesses which one.'], materials: ['paper'] },
     { name: 'Mime and guess', mode: 'groups', steps: ['A student mimes one action from the story.', `The group says a sentence with: ${t.label}.`, 'Change the student after each turn.'], materials: ['cards'] },
-    { name: 'Chain story', mode: 'whole class', steps: [`Start: "${a} is in ${setting}."`, `Each student adds one sentence with: ${t.label}.`, 'After 8 sentences, read the story aloud.'], materials: [] },
-    { name: 'Beat the clock', mode: 'pairs', steps: [`Pairs have 2 minutes to write as many sentences as possible with: ${t.label}.`, 'Counting: one point for each correct sentence.', 'Read the best one.'], materials: ['paper', 'timer'] },
+    { name: 'Chain story', mode: 'whole class', steps: [`Start: "${a} is ${where}."`, `Each student adds one sentence with: ${t.label}.`, 'After 8 sentences, read the story aloud.'], materials: [] },
+    { name: 'Beat the clock', mode: 'pairs', steps: [`Pairs have 2 minutes to write as many sentences as possible with: ${t.label}.`, 'One point for each correct sentence.', 'Read the best one.'], materials: ['paper', 'timer'] },
   ];
-  const g = pick(bank, v);
-  return { ...g, minutes: 6, targetLanguage: t.label };
+  return { ...pick(bank, v), minutes: 6, targetLanguage: t.label };
 }
 
-// ---------------------------------------------------------------- production --
+// ---------------------------------------------------------------- producción --
 
-const DEBATE: ((c: PlanContext, t: Target) => string)[] = [
-  (c) => `Is ${c.bridge.roles[0] ?? 'the leader'} making a good decision in ${c.bridge.setting}? Why?`,
-  (c) => `What would you do in ${c.bridge.setting}? Why?`,
-  (c) => `Who has the hardest job in ${c.bridge.setting}?`,
-  (_c, t) => `Which sentence is more useful here: "${t.examples[0] ?? t.label}" or another one? Why?`,
-  (c) => `Is the main problem in ${c.bridge.setting} easy or difficult to solve?`,
-  (c) => `What would you change in ${c.bridge.setting}?`,
-];
+function debateQuestions(ctx: PlanContext, n: number, v: number): string[] {
+  const where = whereOf(ctx.bridge);
+  const motion = noEnd(lowerFirst(motionOf(ctx.bridge)));
+  const bank = [
+    `Do you agree that ${motion}? Why (not)?`,
+    `What would you do ${where}? Why?`,
+    `Who has the hardest job ${where}?`,
+    'Is the main problem easy or difficult to solve? Why?',
+    `What would you change ${where}?`,
+    'Who is right in this situation? Why?',
+  ];
+  return Array.from({ length: n }, (_, i) => (i === 0 ? bank[0]! : bank[1 + ((i - 1 + v) % (bank.length - 1))]!)).filter((q, i, a) => a.indexOf(q) === i);
+}
 
 function roleplayCards(ctx: PlanContext, ts: Target[], n: number) {
   const t = ts[0]!;
-  const fn = fnOf(ts);
   const roles = ctx.bridge.roles;
-  const useful = (k: number) => examplesOf(t).slice(k, k + 2).map((s) => s.replace(/[.!?]+$/, ''));
-  return Array.from({ length: n }, (_, i) => ({
-    role: roles[i % roles.length]!,
-    situation: `You are in ${ctx.bridge.setting}. ${ctx.bridge.conflict}`,
-    goal: `${i % 2 ? 'Listen and ask questions' : cap(FN_NEED[fn])}, and use: ${t.label}.`,
-    usefulLanguage: useful(i),
-  }));
+  const where = whereOf(ctx.bridge);
+  const motion = noEnd(lowerFirst(motionOf(ctx.bridge)));
+  const useful = (k: number) => examplesOf(t).slice(k, k + 2).map(noEnd);
+  const sit = `${cap(where)}. ${ctx.bridge.conflict}`;
+  const kinds = [
+    (r: string, o: string) => ({ role: r, situation: sit, goal: `Convince ${o} that ${motion}. Try to use: ${t.label}.` }),
+    (r: string, _o: string) => ({ role: r, situation: sit, goal: `You are not sure about the idea. Ask three questions before you agree. Try to use: ${t.label}.` }),
+    (r: string, _o: string) => ({ role: r, situation: sit, goal: `You are listening. Decide who is right and say why. Try to use: ${t.label}.` }),
+  ];
+  return Array.from({ length: n }, (_, i) => {
+    const k = n > 3 && i === 3 ? 0 : Math.min(i, 2);
+    const r = roles[i % roles.length]!;
+    const other = roles[(i + 1) % roles.length]!;
+    return { ...kinds[k]!(r, other), usefulLanguage: useful(i) };
+  });
 }
 
 export function boardSections(ctx: PlanContext, ts: Target[]) {
   const t = ts[0]!;
   return [
     { title: 'Context', lines: [ctx.bridge.title, ctx.bridge.setting, `Roles: ${ctx.bridge.roles.join(' · ')}`] },
-    { title: 'Target language', lines: [t.label, ...t.form.slice(0, 3)] },
+    { title: 'Target language', lines: [t.label, ...t.form.slice(0, 3), `Underline the words that show ${t.label}.`] },
     { title: 'Model sentences', lines: examplesOf(t).slice(0, 4) },
     { title: 'Useful words', lines: t.terms.slice(0, 6) },
   ];
+}
+
+// ---------------------------------------------------------- comprensión ------
+
+/** Preguntas a partir del texto REAL (quién dice qué); no asume la historia local. */
+function comprehension(ctx: PlanContext, ts: Target[], n: number, source?: Resource) {
+  const [A, B] = ctx.names;
+  const text = source && (source.kind === 'story' || source.kind === 'news') ? (source.kind === 'news' ? `${(source.content as Record<string, unknown>).lede ?? ''}\n${(source.content as Record<string, unknown>).body ?? ''}` : String((source.content as Record<string, unknown>).text ?? '')) : '';
+  const quotes: { who: string; q: string }[] = [];
+  for (const m of text.matchAll(/"([^"]{10,})"/g)) {
+    const before = text.slice(Math.max(0, m.index! - 90), m.index!);
+    let who = '';
+    let at = -1;
+    for (const nm of ctx.names) {
+      const i = before.lastIndexOf(nm);
+      if (i > at) (at = i), (who = nm);
+    }
+    if (who && !isQ(m[1]!)) quotes.push({ who, q: m[1]! });
+  }
+  const local = source?.source === 'local' && source.kind === 'story';
+  const qs: { q: string; answer: string; type: string }[] = [];
+  if (local) qs.push({ q: `Where are ${A} and ${B}?`, answer: `${cap(whereOf(ctx.bridge))}.`, type: 'literal' }, { q: 'What is the problem?', answer: ctx.bridge.conflict, type: 'literal' });
+  for (const x of quotes.slice(0, 3)) qs.push({ q: `Who says: "${x.q}"?`, answer: x.who, type: 'literal' });
+  qs.push(
+    { q: 'What do you think happens next?', answer: 'Accept any reasonable answer.', type: 'opinion' },
+    { q: `Do you agree with ${quotes[0]?.who ?? A}? Why (not)?`, answer: 'Accept any reasonable answer.', type: 'opinion' },
+    { q: `What would you do ${whereOf(ctx.bridge)}?`, answer: 'Accept any reasonable answer.', type: 'opinion' },
+  );
+  void ts;
+  return qs.slice(0, n);
 }
 
 // ------------------------------------------------------------------ main -----
@@ -215,6 +322,8 @@ export interface LocalOpts {
   variant?: number;
   use?: 'opener' | 'closer';
   exerciseType?: 'gapfill' | 'matching' | 'transform' | 'order';
+  /** Recurso de lectura del que parten las preguntas de comprensión. */
+  source?: Resource;
 }
 
 export function localContent(kind: ResourceKind, ctx: PlanContext, ts: Target[], o: LocalOpts = {}): { title: string; content: Record<string, unknown> } {
@@ -222,78 +331,68 @@ export function localContent(kind: ResourceKind, ctx: PlanContext, ts: Target[],
   const v = ctx.seed + (o.variant ?? 0);
   const [a, b, c] = ctx.names;
   const t = ts[0]!;
-  const setting = ctx.bridge.setting;
   const wr = WORD_RANGE[kind]?.[li];
   const tw = wr ? mid(wr) : 0;
   const label = ts.map((x) => x.label).join(' + ');
+  const where = whereOf(ctx.bridge);
   switch (kind) {
-    case 'story': {
-      const text = reading(ctx, ts, tw, `${a} and ${b} are in ${setting}. ${ctx.bridge.conflict}`, v);
-      return { title: `Story · ${t.label}`, content: { text, characters: ctx.bridge.characters } };
-    }
+    case 'story':
+      return { title: `Story · ${t.label}`, content: { text: storyText(ctx, ts, tw, v, li), characters: ctx.bridge.characters } };
     case 'news': {
-      const headline = `Trouble in ${setting}`;
-      const lede = `${ctx.bridge.conflict} ${a} and ${b} tell us what happened.`;
-      const quoteText = examplesOf(t)[v % examplesOf(t).length]!;
-      const body = reading(ctx, ts, Math.max(10, tw - wordCount(headline + lede + quoteText)), `Reporters talked to people in ${setting}.`, v);
+      const headline = `Trouble ${where}`;
+      const lede = `${ctx.bridge.conflict} ${a} and ${b} told us more.`;
+      const seq = readingPool(ctx, ts);
+      const quoteText = seq.find((x) => !isQ(x)) ?? seq[0]!;
+      const body = newsBody(ctx, ts, Math.max(10, tw - wordCount(headline + lede + quoteText)), v);
       return { title: `News · ${t.label}`, content: { headline, lede, body, quote: { speaker: c, text: quoteText }, fictionalNote: 'Fictional story written for class practice.' } };
     }
     case 'message': {
       const chat = li <= 1;
-      const text = `${chat ? '' : `Hi ${b},\n`}${reading(ctx, ts, tw - 6, `It is ${a}. I am writing about ${setting}.`, v)}\n${chat ? 'Bye!' : `Best wishes,\n${a}`}`;
-      return { title: `Message · ${t.label}`, content: { format: chat ? 'chat' : 'email', subject: `About ${setting}`, text } };
+      const intro = `I am writing about ${theOf(ctx.bridge)}. ${ctx.bridge.conflict}`;
+      const body = plainSeq(ctx, ts, tw - 8, intro, ['Also,', 'By the way,', 'Anyway,'], v);
+      const text = `${chat ? `Hi! It’s ${a}.` : `Hi ${b},`}\n${body}\n${chat ? 'Bye!' : `Best wishes,\n${a}`}`;
+      return { title: `Message · ${t.label}`, content: { format: chat ? 'chat' : 'email', subject: `About ${theOf(ctx.bridge)}`, text } };
     }
     case 'announcement': {
-      const text = reading(ctx, ts, tw, `Attention, please! News from ${setting}.`, v);
+      const intro = `Attention, please! News ${where}. ${ctx.bridge.conflict}`;
+      const text = `${plainSeq(ctx, ts, tw - 3, intro, ['Please note:', 'Also,', 'And remember:'], v)}\nThank you.`;
       return { title: `Announcement · ${t.label}`, content: { title: `Attention: ${ctx.bridge.title}`, text } };
     }
     case 'dialogue': {
       const n = nItems('dialogue', li);
-      const ex = pool(ts);
+      const ex = readingPool(ctx, ts);
       const lines: { sp: string; line: string }[] = [];
-      const base = ts.flatMap((x) => x.dialogue);
-      for (const d of base) if (lines.length < n && d.line) lines.push({ sp: d.sp === 'B' ? b : a, line: d.line });
-      for (let i = 0; lines.length < n; i++) lines.push({ sp: i % 2 ? b : a, line: ex[(i + v) % ex.length]! });
+      for (const d of ts.flatMap((x) => x.dialogue)) if (lines.length < n && d.line) lines.push({ sp: d.sp === 'B' ? b : a, line: d.line });
+      const REPLY = ['Really?', 'I see.', 'Tell me more.', 'That makes sense.', 'Good idea.', 'Hmm, maybe.'];
+      for (let i = 0; lines.length < n; i++) {
+        const last = lines[lines.length - 1]?.sp;
+        const sp = last === a ? b : a;
+        lines.push({ sp, line: i % 2 ? pick(REPLY, i + v) : ex[(i >> 1) % ex.length]! });
+      }
       return { title: `Dialogue · ${t.label}`, content: { lines } };
     }
     case 'interview': {
       const n = nItems('interview', li);
-      const time = timeOf(ts);
-      const Q: Record<string, string[]> = {
-        past: ['What happened in {s}?', 'What did you do first?', 'Who helped you?', 'How did you feel?', 'What went wrong?', 'What did you learn?'],
-        present: ['What is happening in {s} now?', 'What do you usually do there?', 'Who do you work with?', 'What is the main problem?', 'What do you like most?', 'What do you want to change?'],
-        future: ['What are you going to do next in {s}?', 'What will happen tomorrow?', 'Who will help you?', 'What is your plan?', 'What might go wrong?', 'What do you hope for?'],
-        any: ['Can you tell us about {s}?', 'What is the most important thing?', 'What do you think about it?', 'What would you say to a friend?', 'What is difficult?', 'What is easy?'],
-      };
-      const q = Q[time]!;
-      const ex = pool(ts);
-      return { title: `Interview · ${t.label}`, content: { intro: `${a} is talking to ${b} about ${setting}.`, qa: Array.from({ length: n }, (_, i) => ({ q: q[i % q.length]!.replace('{s}', setting), a: ex[(i + v) % ex.length]! })) } };
+      const pairs: { q: string; a: string }[] = [];
+      for (const d of ts) for (let i = 0; i + 1 < d.dialogue.length; i++) if (isQ(d.dialogue[i]!.line)) pairs.push({ q: d.dialogue[i]!.line, a: d.dialogue[i + 1]!.line });
+      const FOLLOW = ['Can you tell us more?', 'What else can you say?', 'Anything else?', 'And then?', 'Is there something more?', 'Can you add something?'];
+      const ex = pool(ts).filter((x) => !isQ(x));
+      for (let i = 0; pairs.length < n; i++) pairs.push({ q: FOLLOW[i % FOLLOW.length]!, a: ex[(i + v) % Math.max(1, ex.length)] ?? examplesOf(t)[0]! });
+      return { title: `Interview · ${t.label}`, content: { intro: `${a} is talking to ${b} about ${theOf(ctx.bridge)}.`, qa: pairs.slice(0, n) } };
     }
     case 'examples': {
       const n = nItems('examples', li);
       const sr = SENT_RANGE[li]!;
       const all = pool(ts);
       const fit = all.filter((s) => wordCount(s) >= sr[0] && wordCount(s) <= sr[1]);
-      const rest = all.filter((s) => !fit.includes(s));
-      const src = [...fit, ...rest];
-      const sentences = Array.from({ length: n }, (_, i) => src[i % src.length]!).sort((x, y) => wordCount(x) - wordCount(y));
+      const src = [...fit, ...all.filter((s) => !fit.includes(s))];
+      const sentences = [...new Set(src)].slice(0, n).sort((x, y) => wordCount(x) - wordCount(y));
       return { title: `Examples · ${label}`, content: { sentences } };
     }
-    case 'comprehension': {
-      const n = nItems('comprehension', li);
-      const ex = examplesOf(t);
-      const qs = [
-        { q: `Where are ${a} and ${b}?`, answer: `In ${setting}.`, type: 'literal' },
-        { q: 'What is the problem?', answer: ctx.bridge.conflict, type: 'literal' },
-        { q: `Who says: "${ex[0]}"?`, answer: `${a}, ${b} or ${c}: check the text.`, type: 'literal' },
-        { q: `Why does ${a} say that?`, answer: `To ${FN_NEED[fnOf(ts)]}.`, type: 'inference' },
-        { q: `What do you think will happen to ${ctx.bridge.roles[0] ?? 'the group'}?`, answer: 'Accept any reasonable answer.', type: 'opinion' },
-        { q: `Would you like to be in ${setting}? Why?`, answer: 'Accept any reasonable answer.', type: 'opinion' },
-      ];
-      return { title: 'Comprehension questions', content: { questions: qs.slice(0, n) } };
-    }
+    case 'comprehension':
+      return { title: 'Comprehension questions', content: { questions: comprehension(ctx, ts, nItems('comprehension', li), o.source) } };
     case 'ccq':
-      return { title: `CCQ · ${t.label}`, content: { items: ccqItems(ctx, ts, nItems('ccq', li), v) } };
+      return { title: `CCQ · ${t.label}`, content: { items: ccqItems(ts, nItems('ccq', li), v) } };
     case 'exercise': {
       const type = o.exerciseType ?? 'gapfill';
       const instructions = type === 'gapfill' ? 'Complete the sentences.' : type === 'order' ? 'Put the words in order.' : type === 'matching' ? 'Match the word with its meaning.' : 'Correct or change the sentences.';
@@ -303,10 +402,8 @@ export function localContent(kind: ResourceKind, ctx: PlanContext, ts: Target[],
       return { title: `Game · ${t.label}`, content: gameContent(ctx, ts, v, o.use ?? 'any') };
     case 'roleplay':
       return { title: `Role-play · ${t.label}`, content: { cards: roleplayCards(ctx, ts, nItems('roleplay', li)) } };
-    case 'debate': {
-      const n = nItems('debate', li);
-      return { title: `Debate · ${t.label}`, content: { questions: Array.from({ length: n }, (_, i) => DEBATE[(i + v) % DEBATE.length]!(ctx, t)), stance: 'pro/contra' } };
-    }
+    case 'debate':
+      return { title: `Debate · ${t.label}`, content: { questions: debateQuestions(ctx, nItems('debate', li), v), stance: 'pro/contra' } };
     case 'board':
       return { title: `Board plan · ${t.label}`, content: { sections: boardSections(ctx, ts) } };
   }
@@ -318,13 +415,9 @@ export function localResource(kind: ResourceKind, ctx: PlanContext, anchorId?: s
   const { title, content } = localContent(kind, ctx, use, o);
   const text = hitText({ kind, content });
   return {
-    id: uid('r'),
-    kind,
-    title,
-    content,
+    id: uid('r'), kind, title, content,
     targets: use.map((t) => ({ anchorId: t.anchorId, hits: countHits(text, t) })),
-    source: 'local',
-    locked: false,
-    edited: false,
+    source: 'local', locked: false, edited: false,
   };
 }
+

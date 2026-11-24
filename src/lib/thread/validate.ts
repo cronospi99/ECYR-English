@@ -169,7 +169,7 @@ const FUNCTION_WORDS =
   'say speak talk talks talked listen listens listened read write wrote eat eats ate drink play plays played live lives lived stay stays stayed meet meets met start starts started finish ' +
   'something someone everything everyone nothing nobody anything anyone everybody somebody maybe perhaps really quite pretty too enough very ' +
   'everyone busy problem solve plan idea answer question questions story stories news news says story think ' +
-  'trouble reporter reporters talked explains answers asks attention announcement fictional written practice hurry quiet listening busy ca wo sha ai please thank thanks sorry hello hi bye goodbye dear name names';
+  'hmm sense maybe replies adds agrees nods smiles worried aloud permission convince remembers imagines trouble reporter reporters talked explains answers asks attention announcement fictional written practice hurry quiet listening busy ca wo sha ai please thank thanks sorry hello hi bye goodbye dear name names';
 
 const tokens = (t: string) => (t.toLowerCase().replace(/[’‘]/g, "'").match(/[a-z]+(?:'[a-z]+)?/g) ?? []).map((w) => w.replace(/n't$/, '').replace(/'(s|ll|re|ve|d|m|t)$/, ''));
 

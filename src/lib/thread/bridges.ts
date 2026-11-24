@@ -3,7 +3,7 @@
  * ordena las etapas de lo conocido a lo nuevo y escribe las transiciones.
  */
 import type { CefrLevel } from '../../content/types';
-import { BOOK_TO_PRODUCTION, BRIDGES, FN_ES, FN_NEED, GENERIC_TRANSITION, NEED_ES, PRESENT_TO_BOOK, TRANSITIONS, bridgesFor, type BridgeDef, type TransitionTemplate } from './bridgeData';
+import { BOOK_TO_PRODUCTION, BRIDGES, FN_ES, FN_NEED, GENERIC_TRANSITION, NEED_ES, PRESENT_TO_BOOK, TRANSITIONS, bridgesFor, roleEs, settingEs, theOf, whereOf, type BridgeDef, type TransitionTemplate } from './bridgeData';
 import type { Anchor, Bridge, Fn, Source } from './types';
 
 export const anchorLabel = (a: Anchor) => (a.type === 'grammar' ? a.name : a.type === 'vocab' ? a.terms.join(', ') : a.text);
@@ -64,6 +64,12 @@ export function makeBridge(def: BridgeDef, anchors: Anchor[], names: [string, st
     rationale: rationaleFor(anchors, def),
     source,
     characters: def.roles.map((r, i) => ({ name: names[i % 3]!, role: r })),
+    where: def.where,
+    the: def.the,
+    motion: def.motion,
+    resolution: def.resolution,
+    setting_es: def.setting_es,
+    roles_es: def.roles_es,
   };
 }
 
@@ -106,33 +112,40 @@ export function orderAnchors(anchors: Anchor[]): Anchor[] {
 
 // ------------------------------------------------------------ transiciones --
 
-function fill(t: TransitionTemplate, v: { setting: string; role: string; nextNeed: string; need_es: string; prevTask: string }): TransitionTemplate {
-  const f = (s: string) => s.replace(/\{setting\}/g, v.setting).replace(/\{role\}/g, v.role).replace(/\{nextNeed\}/g, v.nextNeed).replace(/\{need_es\}/g, v.need_es).replace(/\{prevTask\}/g, v.prevTask);
+type BridgeLike = Pick<Bridge, 'setting' | 'roles'> & Partial<Bridge>;
+
+/** Mayúscula al inicio y tras ". ", "? " o "! ". */
+export const capSentences = (t: string) => t.replace(/(^|[.!?¿¡]\s+)(\p{Ll})/gu, (_m, a: string, c: string) => a + c.toUpperCase());
+
+function fill(t: TransitionTemplate, b: BridgeLike, i: number, nextNeed: string, need_es: string): TransitionTemplate {
+  const role = b.roles[i % b.roles.length] ?? 'someone';
+  const f = (s: string) =>
+    capSentences(
+      s
+        .replace(/\{where\}/g, whereOf(b))
+        .replace(/\{the\}/g, theOf(b))
+        .replace(/\{role_es\}/g, roleEs(b, i))
+        .replace(/\{role\}/g, role)
+        .replace(/\{setting_es\}/g, settingEs(b))
+        .replace(/\{nextNeed\}/g, nextNeed)
+        .replace(/\{need_es\}/g, need_es),
+    );
   return { teacher_es: f(t.teacher_es), student_en: f(t.student_en) };
 }
 
-const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
 /** Transición de una ancla a la siguiente (entra por la Presentation de `next`). */
-export function transitionFrom(prev: Fn, next: Fn, bridge: { setting: string; roles: string[] }, i = 0): TransitionTemplate {
-  const t = TRANSITIONS[`${prev}>${next}`] ?? GENERIC_TRANSITION;
-  const role = bridge.roles[i % bridge.roles.length] ?? 'someone';
-  const out = fill(t, { setting: bridge.setting, role, nextNeed: FN_NEED[next], need_es: NEED_ES[next], prevTask: '' });
-  return { teacher_es: cap(out.teacher_es), student_en: cap(out.student_en) };
+export function transitionFrom(prev: Fn, next: Fn, bridge: BridgeLike, i = 0): TransitionTemplate {
+  return fill(TRANSITIONS[`${prev}>${next}`] ?? GENERIC_TRANSITION, bridge, i, FN_NEED[next], NEED_ES[next]);
 }
 
 /** Del libro a la producción (Practice → Production). */
-export function transitionToProduction(next: Fn, bridge: { setting: string; roles: string[] }, i = 0): TransitionTemplate {
-  const role = bridge.roles[i % bridge.roles.length] ?? 'someone';
-  const out = fill(BOOK_TO_PRODUCTION, { setting: bridge.setting, role, nextNeed: FN_NEED[next], need_es: NEED_ES[next], prevTask: '' });
-  return { teacher_es: cap(out.teacher_es), student_en: cap(out.student_en) };
+export function transitionToProduction(next: Fn, bridge: BridgeLike, i = 0): TransitionTemplate {
+  return fill(BOOK_TO_PRODUCTION, bridge, i, FN_NEED[next], NEED_ES[next]);
 }
 
 /** De la presentación al libro. */
-export function transitionToBook(bridge: { setting: string; roles: string[] }, i = 0): TransitionTemplate {
-  const role = bridge.roles[i % bridge.roles.length] ?? 'someone';
-  const out = fill(PRESENT_TO_BOOK, { setting: bridge.setting, role, nextNeed: '', need_es: '', prevTask: '' });
-  return { teacher_es: cap(out.teacher_es), student_en: cap(out.student_en) };
+export function transitionToBook(bridge: BridgeLike, i = 0): TransitionTemplate {
+  return fill(PRESENT_TO_BOOK, bridge, i, '', '');
 }
 
 export const transitionOk = (tr: { teacher_es: string; student_en: string }, b: { setting: string; roles: string[] }) => {
