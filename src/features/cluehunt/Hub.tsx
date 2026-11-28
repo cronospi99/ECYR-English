@@ -11,6 +11,7 @@ export default function HuntHub() {
   useHuntFonts(); useAppReady();
   const { pack: slug = '' } = useParams();
   const [pack, setPack] = useState<HuntPack | null | undefined>(undefined);
+  const [showPend, setShowPend] = useState(false);
   useEffect(() => { let on = true; void loadPack(slug).then((p) => on && setPack(p)); return () => { on = false; }; }, [slug]);
   if (pack === null) return <div className="ch"><Backdrop /><div className="ch-wait" style={{ position: 'relative', paddingTop: '30vh' }}><B stack en="Hunt not found" fr="Chasse introuvable" /></div></div>;
   if (!pack) return <div className="ch"><Backdrop /></div>;
@@ -62,14 +63,23 @@ export default function HuntHub() {
             </ul>
           </section>
           <section className="ch-panel" aria-labelledby="pd">
-            <h2 id="pd" className="ch-h"><B en="Pending confirmation" fr="À confirmer" /></h2>
-            <p style={{ margin: '6px 0 0', color: 'var(--muted)', fontSize: 14 }}><B stack en="For the teacher only. Students never see this." fr="Pour l’enseignant uniquement. Les élèves ne voient jamais ceci." /></p>
-            {pendingCards.length > 0 && (
-              <ul className="ch-pend">
-                {pendingCards.map(({ c }) => <li key={c.id}><b>{c.label.en}</b>: <em>{c.enabled ? 'needs confirmation · à confirmer' : 'draft, off by default · brouillon, désactivé'}</em></li>)}
-              </ul>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+              <h2 id="pd" className="ch-h" style={{ margin: 0 }}><B en="Teacher notes" fr="Notes de l’enseignant" /></h2>
+              <button type="button" className="ch-btn alt sm" aria-expanded={showPend} aria-controls="pd-body" onClick={() => setShowPend((v) => !v)}>
+                {showPend ? <B en="Hide" fr="Masquer" /> : <B en={`Show (${pendingCards.length + pack.pending.length})`} fr={`Afficher (${pendingCards.length + pack.pending.length})`} />}
+              </button>
+            </div>
+            {showPend && (
+              <div id="pd-body">
+                <p style={{ margin: '10px 0 0', color: 'var(--muted)', fontSize: 14 }}><B stack en="Pending confirmation. For the teacher only: students never see this." fr="À confirmer. Pour l’enseignant uniquement : les élèves ne voient jamais ceci." /></p>
+                {pendingCards.length > 0 && (
+                  <ul className="ch-pend">
+                    {pendingCards.map(({ c }) => <li key={c.id}><b>{c.label.en}</b>: <em>{c.enabled ? 'needs confirmation · à confirmer' : 'draft, off by default · brouillon, désactivé'}</em></li>)}
+                  </ul>
+                )}
+                <ul className="ch-pend" lang="es">{pack.pending.map((x, i) => <li key={i}>{x}</li>)}</ul>
+              </div>
             )}
-            <ul className="ch-pend" lang="es">{pack.pending.map((x, i) => <li key={i}>{x}</li>)}</ul>
           </section>
         </div>
       </main>

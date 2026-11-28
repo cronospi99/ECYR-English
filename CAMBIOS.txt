@@ -2033,7 +2033,8 @@ Contenido C2 ×3
   entra desde el móvil sin cuenta, elige nombre y emblema. 4 checkpoints con palabra secreta impresa en un póster
   (SPARK, LOTUS, GLOW, MANGO) que el equipo debe encontrar para desbloquear sus tarjetas; 10 tarjetas EN/FR
   (las 7 de la plantilla, "Lighting the Path" del planeador y 2 acertijos de la presentación Canva) + 3 acertijos
-  de dulces en borrador (apagados hasta que el profe los apruebe).
+  de dulces (jalebi, ladoo, kaju katli), aprobados por el profe: 13 tarjetas activas.
+- Las notas de "por confirmar" del hub quedan plegadas tras un botón "Show · Afficher".
 - Respuestas en inglés o francés, sin importar tildes, mayúsculas ni un error de tipeo; las respuestas en español
   no puntúan ni cuentan como error: aparece un aviso para escribirla en EN/FR. Pista con costo (−30 pts).
 - Proyector: cuenta regresiva (30 min), pausa, +5 min, marcador en vivo donde se encienden diyas por checkpoint,
