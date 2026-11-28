@@ -41,7 +41,7 @@
           "kind": "clue",
           "prompt": {
             "en": "Bright, colorful explosives set off in the sky during celebrations to bring joy and symbolize lighting up the night sky during Diwali.",
-            "fr": "Des explosions lumineuses et colorées lancées dans le ciel lors des célébrations pour apporter la joie et symboliser l'illumination du ciel nocturne pendant Diwali."
+            "fr": "Des explosions lumineuses et colorées lancées dans le ciel lors des célébrations pour apporter de la joie et symboliser l'illumination du ciel nocturne pendant Diwali."
           },
           "answer": {
             "en": "Fireworks",
@@ -125,7 +125,7 @@
             "fr": "Une petite lampe à huile en terre cuite, munie d'une mèche en coton, utilisée pour éclairer les maisons et les chemins pendant Diwali."
           },
           "answer": {
-            "en": "Diya / Lamp",
+            "en": "Diya",
             "fr": "Lampe à huile"
           },
           "accept": [
@@ -237,8 +237,8 @@
             "fr": "Quelle grande valeur ou quel message l'histoire du retour de Rama à Ayodhya célèbre-t-elle pendant Diwali ?"
           },
           "answer": {
-            "en": "The symbol of good over evil",
-            "fr": "Le symbole du bien sur le mal"
+            "en": "The Symbol of Good over Evil",
+            "fr": "Le Symbole du Bien sur le Mal"
           },
           "accept": [
             "\\bgood(ness)? (over|vs|v|versus|against|beats?|beating|defeat(s|ed|ing)?|conquer(s|ed|ing)?|win(s|ning)? (over|against)|triumph(s|ing)? over)( the)? (ev[ie]l|bad)\\b",
@@ -247,7 +247,9 @@
             "\\blights? (over|vs|versus|against|beats?|defeats?|conquers?|wins over|triumphs over)( the)? dark(ness)?\\b",
             "\\bbien (sur|contre|vs|versus|vainc|l emporte sur|triomphe (du|de|sur)|gagne (sur|contre))( le)? mal\\b",
             "\\b(victoire|triomphe) (du|de la) (bien|lumiere)\\b",
-            "\\blumiere (sur|contre|vs|versus|vainc|l emporte sur|triomphe (sur|des|de l))( les| l)? (tenebres|obscurite)\\b"
+            "\\blumiere (sur|contre|vs|versus|vainc|l emporte sur|triomphe (sur|des|de l))( les| l)? (tenebres|obscurite)\\b",
+            "\\bgood (and|n) ev[ie]l\\b",
+            "\\bbien (et|y) (le )?mal\\b"
           ],
           "reject": [
             "\\bev[ie]l (over|vs|v|versus|against|beats?|defeats?|conquers?)( the)? good\\b",
@@ -349,11 +351,11 @@
           "kind": "question",
           "prompt": {
             "en": "What does the word Diwali literally translate to?",
-            "fr": "Que signifie littéralement le mot « Diwali » ?"
+            "fr": "Que signifie littéralement le mot Diwali ?"
           },
           "answer": {
             "en": "A row or series of lights",
-            "fr": "Une rangée ou une série de lumières"
+            "fr": "Une rangée de lumières"
           },
           "accept": [
             "\\b(row|rows|series?|line|string|chain) of (lights?|lamps?|diyas?)\\b",
@@ -384,7 +386,7 @@
           },
           "source": "template",
           "enabled": true,
-          "needsConfirmation": true
+          "needsConfirmation": false
         },
         {
           "id": "c6",
@@ -447,7 +449,7 @@
           "kind": "question",
           "prompt": {
             "en": "Which Hindu goddess of wealth and prosperity is primarily honored and worshiped during Diwali, particularly on the main day of the festival?",
-            "fr": "Quelle déesse hindoue de la richesse et de la prospérité est principalement honorée et vénérée pendant Diwali, surtout le jour principal de la fête ?"
+            "fr": "Quelle déesse hindoue de la richesse et de la prospérité est principalement honorée et vénérée pendant Diwali ?"
           },
           "answer": {
             "en": "Goddess Lakshmi",
@@ -472,7 +474,7 @@
           },
           "source": "template",
           "enabled": true,
-          "needsConfirmation": true
+          "needsConfirmation": false
         }
       ]
     },
@@ -680,9 +682,6 @@
     }
   ],
   "pending": [
-    "Verificar las respuestas de las tarjetas 1-7 contra el Google Doc original (la columna de respuestas estaba cortada al leer la plantilla).",
-    "Tarjeta 5 (FR): se usa 'Une rangée ou une série de lumières' (planeador y Canva); el brief/plantilla dice 'Une rangée de lumières'. Confirmar cuál es la oficial.",
-    "Tarjeta 7 (FR): se usa el texto del brief/plantilla ('surtout le jour principal de la fête'); el planeador no incluye esa parte. Confirmar.",
     "Tarjeta c8 'Lighting the Path': el planeador no trae respuesta; la respuesta mostrada (lámparas/diyas) sale de la presentación Canva. Confirmar con el profe.",
     "Distribución de tarjetas en los 4 checkpoints y los code words (SPARK, LOTUS, GLOW, MANGO) son propuesta: confirmar, imprimir los pósters y esconderlos en el salón.",
     "La presentación Canva no tiene URL pública y el planeador tampoco: no se incluyeron en supportLinks. Añadirlos si el profe los aprueba (teacherOnly).",
