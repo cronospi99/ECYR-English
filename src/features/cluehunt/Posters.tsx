@@ -5,7 +5,7 @@ import type { HuntCard, HuntPack } from '@/lib/clueHunt/types';
 import { B, useAppReady, useHuntFonts } from './ui';
 import { ICON_IMG, img, shortLabel } from './art';
 
-/* Printable A4: one poster per checkpoint (code word huge) and, optionally, the cut-out cards. */
+/* Printable A4: one poster per checkpoint (secret word huge) and, optionally, the cut-out cards. */
 export default function Posters() {
   useHuntFonts(); useAppReady();
   const { pack: slug = '' } = useParams();
@@ -31,7 +31,7 @@ export default function Posters() {
           <div className="big">{cp.code}</div>
           <h2>{cp.title.en}</h2>
           <h3>{cp.title.fr}</h3>
-          <p style={{ fontSize: '6mm', maxWidth: '150mm', margin: '8mm 0 0' }}>Type this code word on your phone.<br /><em style={{ color: '#8f3d0e' }}>Tapez ce mot-code sur votre téléphone.</em></p>
+          <p style={{ fontSize: '6mm', maxWidth: '150mm', margin: '8mm 0 0' }}>Type this secret word on your phone.<br /><em style={{ color: '#8f3d0e' }}>Tapez ce mot secret sur votre téléphone.</em></p>
           <div className="tag">🪔 Treasure &amp; Clue Hunt · Chasse au Trésor</div>
         </section>
       ))}

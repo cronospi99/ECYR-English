@@ -33,7 +33,7 @@ export default function HuntHub() {
           <Link to={`/hunt/${slug}/host`} className="ch-panel ch-mode">
             <img src={img('diya')} alt="" />
             <h3><B stack en="Treasure & Clue Hunt (QR)" fr="Chasse au trésor et énigmes (QR)" /></h3>
-            <p><B stack en={`Teams join from their phones with a QR code. ${active} cards in ${pack.checkpoints.length} checkpoints, live scoreboard on the big screen.`} fr={`Les équipes rejoignent depuis leur téléphone avec un QR code. ${active} cartes dans ${pack.checkpoints.length} étapes, tableau en direct sur grand écran.`} /></p>
+            <p><B stack en={`Teams join from their phones with a QR code. ${active} ${active === 1 ? 'card' : 'cards'} in ${pack.checkpoints.length} ${pack.checkpoints.length === 1 ? 'checkpoint' : 'checkpoints'}, live scoreboard on the big screen.`} fr={`Les équipes rejoignent depuis leur téléphone avec un QR code. ${active} cartes dans ${pack.checkpoints.length} étapes, tableau en direct sur grand écran.`} /></p>
             <span className="ch-btn"><B en="Open the host screen" fr="Ouvrir l’écran de l’animateur" /></span>
           </Link>
           {ex.bingo && (

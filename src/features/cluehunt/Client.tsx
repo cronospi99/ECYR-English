@@ -4,7 +4,7 @@ import { makeId } from '@/lib/relay';
 import { loadPack, packSlugs } from '@/lib/clueHunt/packs';
 import type { HuntCard, HuntCheckpoint, HuntOpts, HuntPack, TeamProg } from '@/lib/clueHunt/types';
 import { allCards, cardsOf, cleanProg, cpDone, cpDoneCount, emptyProg, hintCount, isUnlocked, lastSolveAt, score, solvedCount, tryUnlock, trySolve, useHint, type SolveResult } from '@/lib/clueHunt/progress';
-import { B, BiText, Backdrop, Diya, fmtElapsed, fmtTime, useAppReady, useHuntFonts, useLive, useTick } from './ui';
+import { B, BiText, N, Backdrop, Diya, fmtElapsed, fmtTime, useAppReady, useHuntFonts, useLive, useTick } from './ui';
 import { EMBLEMS, ICON_IMG, emblemOf, img, shortLabel } from './art';
 import { HuntClient, cleanName } from './live';
 import { sfx, unlockAudio } from './sfx';
@@ -106,7 +106,7 @@ export function HuntPlay() {
             <img src={img(emblemOf(client.emb).img)} alt="" style={{ width: 120, height: 120, objectFit: 'contain' }} />
             <h1 className="serif" style={{ margin: '8px 0', fontSize: 34 }}>{client.name}</h1>
             <div className="big ch-pulse"><B stack en="Waiting for the teacher to start…" fr="En attente du départ de l’enseignant…" /></div>
-            <p style={{ color: 'var(--muted)' }}><B en={`${client.pub!.teams.length} teams in the room`} fr={`${client.pub!.teams.length} équipes dans la salle`} /></p>
+            <p style={{ color: 'var(--muted)' }}><><N n={client.pub!.teams.length} en={['team', 'teams']} fr={['équipe', 'équipes']} /> <B en="in the room" fr="dans la salle" /></></p>
             <div className="ch-diyas">{pack!.checkpoints.map((c) => <Diya key={c.id} lit={false} size={44} />)}</div>
           </div>
         )}
@@ -178,7 +178,7 @@ function TopBar({ name, emb, pack, prog, opts, time, rank, local }: { name: stri
       <span className="ch-chip" aria-label={local ? 'Time · Temps' : 'Time left · Temps restant'}>⏱ {time}</span>
       <div style={{ flexBasis: '100%', display: 'flex', alignItems: 'center', gap: 10 }}>
         <div className="ch-prog" style={{ flex: 1 }} role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={done} aria-label="Cards · Cartes"><b style={{ width: `${total ? (done / total) * 100 : 0}%` }} /></div>
-        <span style={{ fontWeight: 700, fontSize: 14 }}>{done}/{total} <B en="cards" fr="cartes" />{rank ? <> · #{rank}</> : null}</span>
+        <span style={{ fontWeight: 700, fontSize: 14 }}>{done}/{total} <N n={total} bare en={['card', 'cards']} fr={['carte', 'cartes']} />{rank ? <> · #{rank}</> : null}</span>
         <span style={{ display: 'flex', gap: 2 }}>{pack.checkpoints.map((cp) => <Diya key={cp.id} lit={cpDone(prog, cp, opts)} size={26} />)}</span>
       </div>
     </header>
@@ -225,10 +225,10 @@ function Checkpoint({ cp, pack, prog, opts, api, open, onToggle, say }: { cp: Hu
           <p style={{ margin: 0, color: 'var(--muted)' }}><BiText v={cp.blurb} stack /></p>
           {!unlocked ? (
             <form className="ch-lock" onSubmit={(e) => { e.preventDefault(); tryCode(); }}>
-              <p><B stack en="Find the poster hidden in the room and type its code word." fr="Trouvez l’affiche cachée dans la salle et tapez son mot-code." /></p>
-              <div><label className="ch-lbl" htmlFor={`cd-${cp.id}`}><B en="Code word" fr="Mot-code" /></label>
+              <p><B stack en="Find the poster hidden in the room and type its secret word." fr="Trouvez l’affiche cachée dans la salle et tapez son mot secret." /></p>
+              <div><label className="ch-lbl" htmlFor={`cd-${cp.id}`}><B en="Secret word" fr="Mot secret" /></label>
                 <input id={`cd-${cp.id}`} className="ch-in" value={code} onChange={(e) => { setCode(e.target.value); setBad(false); }} autoComplete="off" autoCapitalize="characters" spellCheck={false} aria-invalid={bad} aria-describedby={bad ? `cde-${cp.id}` : undefined} style={{ textTransform: 'uppercase', letterSpacing: '.12em', fontWeight: 800 }} /></div>
-              {bad && <div id={`cde-${cp.id}`} role="alert" style={{ color: 'var(--bad)', fontWeight: 700 }}><B stack en="That is not the code word. Look again!" fr="Ce n’est pas le mot-code. Cherche encore !" /></div>}
+              {bad && <div id={`cde-${cp.id}`} role="alert" style={{ color: 'var(--bad)', fontWeight: 700 }}><B stack en="That is not the secret word. Look again!" fr="Ce n’est pas le mot secret. Cherche encore !" /></div>}
               <button type="submit" className="ch-btn" disabled={!code.trim()}><B en="Unlock" fr="Débloquer" /></button>
             </form>
           ) : cards.map((c) => <Card key={c.id} c={c} pack={pack} prog={prog} api={api} say={say} />)}
@@ -308,11 +308,11 @@ function Final({ pack, prog, opts, name, emb, total, ended, local, onReset }: { 
       <div className="sc ch-gold">{score(prog)}</div>
       <div style={{ color: 'var(--muted)', fontWeight: 700 }}><B en="points" fr="points" /></div>
       <div className="stats">
-        <div><b>{done}/{n}</b><span><B stack en="cards" fr="cartes" /></span></div>
-        <div><b>{cpDoneCount(prog, pack, opts)}/{pack.checkpoints.length}</b><span><B stack en="diyas lit" fr="diyas allumés" /></span></div>
+        <div><b>{done}/{n}</b><span><N n={n} bare en={['card', 'cards']} fr={['carte', 'cartes']} /></span></div>
+        <div><b>{cpDoneCount(prog, pack, opts)}/{pack.checkpoints.length}</b><span><B stack en={cpDoneCount(prog, pack, opts) === 1 ? 'diya lit' : 'diyas lit'} fr={cpDoneCount(prog, pack, opts) < 2 ? 'diya allumé' : 'diyas allumés'} /></span></div>
         <div><b>{fmtElapsed(t)}</b><span><B stack en="time" fr="temps" /></span></div>
       </div>
-      <div style={{ color: 'var(--muted)' }}><B en={`${hintCount(prog)} hints used`} fr={`${hintCount(prog)} indices utilisés`} /></div>
+      <div style={{ color: 'var(--muted)' }}><B en={`${hintCount(prog)} ${hintCount(prog) === 1 ? 'hint' : 'hints'} used`} fr={`${hintCount(prog)} ${hintCount(prog) < 2 ? 'indice utilisé' : 'indices utilisés'}`} /></div>
       <div className="ch-show"><B stack en="Show this screen to your teacher" fr="Montre cet écran à ton enseignant" /></div>
       {local && onReset && <button type="button" className="ch-btn alt" style={{ marginTop: 14 }} onClick={onReset}><B en="Start over" fr="Recommencer" /></button>}
     </div>

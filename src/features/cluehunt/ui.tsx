@@ -30,6 +30,14 @@ export function useTick(ms = 500) { const [, s] = useState(0); useEffect(() => {
 export function B({ en, fr, stack, className }: { en: ReactNode; fr: ReactNode; stack?: boolean; className?: string }) {
   return <span className={stack ? `ch-stack ${className ?? ''}` : className}>{en}<em className="ch-fr">{stack ? '' : ' · '}{fr}</em></span>;
 }
+type Forms = readonly [string, string];
+/** Singular/plural: English 1 = singular; French 0 and 1 = singular. */
+export const pn = (n: number, en: Forms, fr: Forms) => ({ en: en[n === 1 ? 0 : 1], fr: fr[n < 2 ? 0 : 1] });
+/** "2 hints · 2 indices" (or only the word with `bare`). */
+export function N({ n, en, fr, bare }: { n: number; en: Forms; fr: Forms; bare?: boolean }) {
+  const w = pn(n, en, fr);
+  return <B en={bare ? w.en : `${n} ${w.en}`} fr={bare ? w.fr : `${n} ${w.fr}`} />;
+}
 export const BiText = ({ v, stack, className }: { v: Bi; stack?: boolean; className?: string }) => <B en={v.en} fr={v.fr} stack={stack} className={className} />;
 
 export const fmtTime = (ms: number) => { const s = Math.max(0, Math.ceil(ms / 1000)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };

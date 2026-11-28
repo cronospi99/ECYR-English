@@ -5,7 +5,7 @@ import { relayConfigured } from '@/lib/relay';
 import { loadPack } from '@/lib/clueHunt/packs';
 import type { HuntPack } from '@/lib/clueHunt/types';
 import { JoinQr } from '@/components/ui/JoinQr';
-import { B, BiText, Backdrop, Diya, Stage, Toggle, fmtTime, useAppReady, useHuntFonts, useLive, useTick } from './ui';
+import { B, BiText, N, pn, Backdrop, Diya, Stage, Toggle, fmtTime, useAppReady, useHuntFonts, useLive, useTick } from './ui';
 import { HuntHost, MAX_TEAMS, type FeedItem, type PubTeam } from './live';
 import { emblemOf, ICON_IMG, img } from './art';
 import { downloadQrPng, downloadQrSvg, envBase, joinUrl, publicBase, setPublicBase, shortUrl } from './url';
@@ -95,7 +95,7 @@ function Lobby({ host, slug }: { host: HuntHost; slug: string }) {
         <div style={{ fontSize: 20, color: 'var(--muted)' }}>{host.net === 'open' ? <B en="Server connected" fr="Serveur connecté" /> : <span className="ch-pulse"><B en="Connecting…" fr="Connexion…" /></span>}</div>
       </div>
       <div className="ch-panel" style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-        <div className="ch-h" style={{ fontSize: 34 }}><B en={`Teams ${teams.length}/${MAX_TEAMS}`} fr={`Équipes ${teams.length}/${MAX_TEAMS}`} /></div>
+        <div className="ch-h" style={{ fontSize: 34 }}><><N n={teams.length} bare en={['Team', 'Teams']} fr={['Équipe', 'Équipes']} /> {teams.length}/{MAX_TEAMS}</></div>
         {!teams.length && <div className="ch-pulse" style={{ margin: 'auto', textAlign: 'center', fontSize: 30, color: 'var(--muted)' }}><B stack en="Waiting for teams to join…" fr="En attente des équipes…" /></div>}
         <div className="ch-teams" style={many ? { gridTemplateColumns: 'repeat(3,1fr)' } : undefined}>
           {teams.map((t) => (
@@ -109,8 +109,8 @@ function Lobby({ host, slug }: { host: HuntHost; slug: string }) {
       </div>
       <div className="ch-panel ch-set">
         <div className="ch-h"><B en="Settings" fr="Réglages" /></div>
-        <Toggle on={set.codes} onChange={(v) => host.configure({ codes: v })} en="Checkpoint codes" fr="Mots-codes des étapes" />
-        <Toggle on={set.drafts} onChange={(v) => host.configure({ drafts: v })} en={`Include draft cards (${drafts})`} fr={`Inclure les cartes brouillon (${drafts})`} disabled={!drafts} />
+        <Toggle on={set.codes} onChange={(v) => host.configure({ codes: v })} en="Checkpoint secret words" fr="Mots secrets des étapes" />
+        <Toggle on={set.drafts} onChange={(v) => host.configure({ drafts: v })} en={`Include draft ${pn(drafts, ['card', 'cards'], ['carte', 'cartes']).en} (${drafts})`} fr={`Inclure ${drafts > 1 ? 'les cartes brouillon' : 'la carte brouillon'} (${drafts})`} disabled={!drafts} />
         <div className="ch-step" role="group" aria-label="Minutes · Minutes">
           <span style={{ flex: 1 }}><B stack en="Countdown (minutes)" fr="Compte à rebours (minutes)" /></span>
           <button type="button" aria-label="−5" onClick={() => host.configure({ minutes: set.minutes - 5 })}>−</button><b>{set.minutes}</b><button type="button" aria-label="+5" onClick={() => host.configure({ minutes: set.minutes + 5 })}>+</button>
@@ -168,7 +168,7 @@ function Row({ t, i, total }: { t: PubTeam; i: number; total: number }) {
     <div className={`ch-row ${i === 0 && t.score > 0 ? 'first' : ''}`} style={t.online ? undefined : { opacity: 0.6 }}>
       <div className="rk">{i + 1}</div>
       <div className="nm"><img className="ch-emb" src={img(emblemOf(t.emb).img)} alt="" /><span>{t.name}</span></div>
-      <div className="sc">{t.score}<small>{t.hints} <B en="hints" fr="indices" /></small></div>
+      <div className="sc">{t.score}<small><N n={t.hints} en={['hint', 'hints']} fr={['indice', 'indices']} /></small></div>
       <div className="meta">
         <div className="dy" aria-label={`${t.cps.filter(Boolean).length}/${t.cps.length}`}>{t.cps.map((on, k) => <Diya key={k} lit={on} size={44} />)}</div>
         <div className="cd"><div className="ch-prog" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={t.solved}><b style={{ width: `${total ? (t.solved / total) * 100 : 0}%` }} /></div>{t.solved}/{total}</div>
@@ -192,7 +192,7 @@ function End({ host, slug }: { host: HuntHost; slug: string }) {
             <img className="ch-emb" src={img(emblemOf(t.emb).img)} alt="" />
             <div className="nm">{t.name}</div>
             <div className="sc">{t.score}</div>
-            <div style={{ fontSize: 22, color: 'var(--muted)' }}>{t.solved}/{host.totalCards()} <B en="cards" fr="cartes" /> · {t.hints} <B en="hints" fr="indices" /></div>
+            <div style={{ fontSize: 22, color: 'var(--muted)' }}>{t.solved}/{host.totalCards()} <N n={host.totalCards()} bare en={['card', 'cards']} fr={['carte', 'cartes']} /> · <N n={t.hints} en={['hint', 'hints']} fr={['indice', 'indices']} /></div>
           </div>
         ))}
         {!order.length && <div className="ch-panel" style={{ fontSize: 34 }}><B stack en="No teams played" fr="Aucune équipe n’a joué" /></div>}
