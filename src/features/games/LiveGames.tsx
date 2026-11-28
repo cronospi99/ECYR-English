@@ -14,7 +14,7 @@ const TITLE = 'block text-[26px] leading-none font-black tracking-tight [text-sh
 function Tt({ x }: { x: Tx }) { useGameLang(); return <>{t(...x)}</>; }
 
 /** The live multiplayer games (projector + phones) and the shared character cards: each with its own logo. */
-const LIVE: { to: string; art?: ReactNode; logo: ReactNode; sub: Tx; from: string; to2: string }[] = [
+const LIVE: { to: string; cover?: string; art?: ReactNode; logo: ReactNode; sub: Tx; from: string; to2: string }[] = [
   {
     to: '/classwars',
     logo: <img src="/classwars/logo.webp" alt="Class Wars" width={1112} height={358} className="block h-auto w-[220px] max-w-full drop-shadow-[0_6px_10px_rgb(0_10_60/0.4)] select-none" draggable={false} />,
@@ -28,6 +28,15 @@ const LIVE: { to: string; art?: ReactNode; logo: ReactNode; sub: Tx; from: strin
     sub: ['The whole class races from their phones', 'Toda la clase corre desde el celular'],
     from: '#ff3d6e',
     to2: '#3b1d7a',
+  },
+  {
+    to: '/hunt/diwali',
+    cover: '/covers/diwali-hunt.webp',
+    art: <img src="/modules/diwali/img/diya.webp" alt="" width={48} height={48} className="h-12 w-12 object-contain" draggable={false} />,
+    logo: <span className={`${TITLE} text-[#ffd977]`}>Diwali Hunt</span>,
+    sub: ['Treasure & clue hunt by QR, plus Diwali Bingo', 'Búsqueda del tesoro por QR y Bingo de Diwali'],
+    from: '#2c0d4d',
+    to2: '#c2185b',
   },
   {
     to: '/impostor',
@@ -97,6 +106,7 @@ export function LiveGames() {
             className="group relative flex min-h-[112px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99]"
             style={{ background: `linear-gradient(135deg, ${g.from}, ${g.to2})` }}
           >
+            {g.cover && <img src={g.cover} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-30" draggable={false} />}
             {g.art && <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[18px] bg-white/12 shadow-[inset_0_0_0_1.5px_rgb(255_255_255/0.15)]">{g.art}</span>}
             <span className="relative min-w-0 flex-1">
               {g.logo}

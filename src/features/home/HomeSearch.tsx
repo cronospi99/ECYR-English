@@ -47,6 +47,7 @@ const PAGES: Entry[] = [
   { k: 'game', t: 'Impostor', s: 'Game · find who does not know the word', to: '/impostor', x: 'juego' },
   { k: 'game', t: 'You Draw', s: 'Game · draw and guess', to: '/youdraw', x: 'juego dibujar adivinar' },
   { k: 'game', t: 'Pass the Doodle', s: 'Game · draw, describe, repeat', to: '/doodle', x: 'juego dibujar teléfono roto' },
+  { k: 'game', t: 'Diwali Hunt', s: 'Game · treasure & clue hunt by QR, Diwali Bingo', to: '/hunt/diwali', x: 'juego diwali búsqueda tesoro pistas bingo qr chasse au trésor clue hunt' },
   { k: 'game', t: 'Class Wars', s: 'Game · team quiz battle', to: '/classwars', x: 'juego equipos quiz' },
 ];
 

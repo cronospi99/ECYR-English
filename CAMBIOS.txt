@@ -2025,3 +2025,22 @@ Contenido C2 ×3
 - Por nivel (A1–C2): ~840–880 palabras reales con traducción y sinónimos, 740 inventadas y 1250 errores típicos de
   hispanohablantes (antes ~164 / ~144 / ~246). Inventadas verificadas contra un diccionario de 275 000 palabras.
 - Verificador: node scripts/tgtbt-check-bank.mjs (requiere npm i --no-save an-array-of-english-words).
+
+== Diwali Hunt: Treasure & Clue Hunt por QR + Diwali Bingo (actividad extracurricular, noviembre 2026) ==
+- Nuevo en Juegos en vivo: "Diwali Hunt" (/hunt/diwali). Hub del profe con dos modos, enlaces de apoyo
+  (National Geographic, plantilla) y la lista "Pending confirmation".
+- Modo 1, Treasure & Clue Hunt: el profe proyecta la sala (código + QR, igual que English Racers); cada equipo
+  entra desde el móvil sin cuenta, elige nombre y emblema. 4 checkpoints con palabra secreta impresa en un póster
+  (SPARK, LOTUS, GLOW, MANGO) que el equipo debe encontrar para desbloquear sus tarjetas; 10 tarjetas EN/FR
+  (las 7 de la plantilla, "Lighting the Path" del planeador y 2 acertijos de la presentación Canva) + 3 acertijos
+  de dulces en borrador (apagados hasta que el profe los apruebe).
+- Respuestas en inglés o francés, sin importar tildes, mayúsculas ni un error de tipeo; las respuestas en español
+  no puntúan ni cuentan como error: aparece un aviso para escribirla en EN/FR. Pista con costo (−30 pts).
+- Proyector: cuenta regresiva (30 min), pausa, +5 min, marcador en vivo donde se encienden diyas por checkpoint,
+  feed de eventos y celebración final con fuegos artificiales y podio. Móvil: pantalla final para mostrar al profe.
+- Pósters A4 imprimibles (+ tarjetas recortables) y QR descargable (SVG/PNG). Modo "jugar en este dispositivo"
+  si no hay sala. Interfaz 100 % bilingüe inglés · francés.
+- Modo 2, Diwali Bingo: el HTML del profe integrado tal cual (imágenes extraídas a archivos, 452 KB → 49 KB),
+  para manejarlo en la pantalla grande; vuelve al hub.
+- Validación de respuestas en un solo lugar con pruebas: npm run test:hunt.
+- Plan para futuras actividades del mismo estilo: docs/plan-clue-hunts.md.
