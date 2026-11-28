@@ -1,34 +1,36 @@
 {
   "id": "diwali-2026",
   "version": 1,
-  "title": { "en": "Diwali Treasure & Clue Hunt", "fr": "Chasse au Trésor et Énigmes de Diwali" },
+  "title": { "en": "Diwali Treasure & Clue Hunt", "fr": "Chasse au trésor et énigmes de Diwali" },
   "subtitle": {
     "en": "Find the code words, solve the clues and riddles, and light up the treasure map as a team.",
-    "fr": "Trouvez les mots-codes, résolvez les indices et les énigmes, et illuminez la carte au trésor en équipe."
+    "fr": "Trouvez les mots secrets, résolvez les indices et les énigmes, et illuminez la carte au trésor en équipe."
   },
   "scoring": { "correct": 100, "hintCost": 30, "minPerCard": 40 },
   "checkpoints": [
     {
       "id": "cp1",
       "code": "SPARK",
-      "title": { "en": "Symbols of light", "fr": "Symboles de lumière" },
+      "title": { "en": "Lights and colors", "fr": "Lumières et couleurs" },
       "blurb": {
         "en": "Find the poster with the code word. Then name three bright symbols of Diwali.",
-        "fr": "Trouvez l'affiche avec le mot-code. Ensuite, nommez trois symboles lumineux de Diwali."
+        "fr": "Trouvez l'affiche avec le mot secret. Ensuite, nommez trois symboles colorés de Diwali."
       },
       "icon": "fireworks",
       "cards": [
         {
           "id": "c1",
           "label": { "en": "Card 1 — Clue", "fr": "Carte 1 — Indice" },
+          "shortLabel": { "en": "Card 1", "fr": "Carte 1" },
           "kind": "clue",
           "prompt": {
             "en": "Bright, colorful explosives set off in the sky during celebrations to bring joy and symbolize lighting up the night sky during Diwali.",
             "fr": "Des explosions lumineuses et colorées lancées dans le ciel lors des célébrations pour apporter la joie et symboliser l'illumination du ciel nocturne pendant Diwali."
           },
           "answer": { "en": "Fireworks", "fr": "Feux d'artifice" },
-          "accept": ["\\bfire ?works?\\b", "\\bfeux? ?d ?artifices?\\b"],
+          "accept": ["\\bfire ?works?\\b", "\\bfeux? ?d ?artifices?\\b", "\\bfire ?crackers?\\b"],
           "fuzzy": ["fireworks", "artifice"],
+          "nudge": ["fuegos artificiales|cohetes|polvora"],
           "hint": {
             "en": "They go up high in the sky and make bright colors and loud sounds.",
             "fr": "Ils montent haut dans le ciel et font des couleurs vives et beaucoup de bruit."
@@ -44,6 +46,7 @@
         {
           "id": "c2",
           "label": { "en": "Card 2 — Clue", "fr": "Carte 2 — Indice" },
+          "shortLabel": { "en": "Card 2", "fr": "Carte 2" },
           "kind": "clue",
           "prompt": {
             "en": "Traditional colorful patterns created on the floor at house entrances using colored powders, flowers, or rice to welcome good fortune and guests.",
@@ -52,6 +55,7 @@
           "answer": { "en": "Rangoli", "fr": "Rangoli" },
           "accept": ["\\brangolis?\\b"],
           "fuzzy": ["rangoli"],
+          "nudge": [],
           "hint": {
             "en": "It is colorful art on the floor, near the door.",
             "fr": "C'est de l'art coloré sur le sol, près de la porte."
@@ -67,6 +71,7 @@
         {
           "id": "c3",
           "label": { "en": "Card 3 — Clue", "fr": "Carte 3 — Indice" },
+          "shortLabel": { "en": "Card 3", "fr": "Carte 3" },
           "kind": "clue",
           "prompt": {
             "en": "A small oil lamp made from baked clay, fitted with a cotton wick, used to illuminate homes and pathways during Diwali.",
@@ -74,7 +79,8 @@
           },
           "answer": { "en": "Diya / Lamp", "fr": "Lampe à huile" },
           "accept": ["\\bdiyas?\\b", "\\b(oil |clay )?lamps?\\b", "\\blampes?\\b", "\\bdeeyas?\\b"],
-          "fuzzy": ["lampe", "lamps"],
+          "fuzzy": ["lampe", "lamps", "diya", "diyas"],
+          "nudge": ["lampara|vela"],
           "hint": {
             "en": "It uses oil and a cotton wick to make a small flame.",
             "fr": "Elle utilise de l'huile et une mèche en coton pour faire une petite flamme."
@@ -101,7 +107,8 @@
       "cards": [
         {
           "id": "c8",
-          "label": { "en": "Extra card — Lighting the Path", "fr": "Carte supplémentaire — Éclairer le Chemin" },
+          "label": { "en": "Extra card — Lighting the Path", "fr": "Carte supplémentaire — Éclairer le chemin" },
+          "shortLabel": { "en": "Bonus card", "fr": "Carte bonus" },
           "kind": "question",
           "prompt": {
             "en": "How did the people of Ayodhya welcome Rama, Sita, and Lakshmana back home on a dark night?",
@@ -113,14 +120,15 @@
           },
           "accept": [
             "\\b(diyas?|lamps?|lampes?|lumieres?|lights|candles?|bougies?)\\b",
-            "\\b(lit|illuminated|illuminate)\\b.{0,30}\\b(path|way|streets?|roads?|city|town|houses?|homes?|kingdom|ayodhya)\\b",
-            "\\b(allume\\w*|illumine\\w*|eclaire\\w*)\\b"
+            "\\b(lit|light|lighted|illuminated|illuminate)\\b.{0,30}\\b(path|way|streets?|roads?|city|town|houses?|homes?|kingdom|ayodhya)\\b",
+            "\\b(allume\\w*|illumine\\w*|eclaire\\w*)\\b.{0,30}\\b(chemins?|rues?|routes?|ville|maisons?|royaume|ayodhya)\\b"
           ],
           "reject": ["\\b(didn t|didnt|did not|n ont pas|ne l ont pas|not|never|jamais)\\b"],
-          "fuzzy": ["lamps", "lampes", "diyas", "lumieres", "candles", "illuminated", "allume", "bougies"],
+          "fuzzy": ["lamps", "lampes", "diyas", "lumieres", "illuminated", "allume", "bougies"],
+          "nudge": ["velas|luces|lamparas|encendieron|prendieron"],
           "hint": {
             "en": "Think about what people light at night to see the path.",
-            "fr": "Pense à ce que les gens allument la nuit pour voir le chemin."
+            "fr": "Pensez à ce que les gens allument la nuit pour voir le chemin."
           },
           "funFact": {
             "en": "Lord Rama returns to his kingdom of Ayodhya after defeating the demon king Ravana and completing 14 years of exile. The citizens welcome him by lighting thousands of clay lamps (diyas).",
@@ -132,7 +140,8 @@
         },
         {
           "id": "c4",
-          "label": { "en": "Card 4 — The Symbol of Good over Evil", "fr": "Carte 4 — Le Symbole du Bien sur le Mal" },
+          "label": { "en": "Card 4 — The Symbol of Good over Evil", "fr": "Carte 4 — Le symbole du bien sur le mal" },
+          "shortLabel": { "en": "Card 4", "fr": "Carte 4" },
           "kind": "question",
           "prompt": {
             "en": "What major value or message does the story of Rama's return to Ayodhya celebrate during Diwali?",
@@ -140,20 +149,21 @@
           },
           "answer": { "en": "The symbol of good over evil", "fr": "Le symbole du bien sur le mal" },
           "accept": [
-            "\\bgood (over|vs|v|versus|against|beats?|defeats?|conquers?|wins over|triumphs over)( the)? ev[ie]l\\b",
-            "\\bvictory (of|for) (the )?good\\b",
+            "\\bgood(ness)? (over|vs|v|versus|against|beats?|beating|defeat(s|ed|ing)?|conquer(s|ed|ing)?|win(s|ning)? (over|against)|triumph(s|ing)? over)( the)? (ev[ie]l|bad)\\b",
+            "\\b(victory|triumph|win) (of|for) (the )?(good|light)\\b",
             "\\bgood (wins|triumphs|prevails)\\b",
-            "\\blight (over|vs|v|versus|against|beats?|defeats?|conquers?|wins over|triumphs over)( the)? dark(ness)?\\b",
-            "\\bvictory (of|for) (the )?light\\b",
-            "\\bbien (sur|contre|vs|versus|vainc|l emporte sur|triomphe sur|gagne sur)( le)? mal\\b",
-            "\\bvictoire (du|de la) (bien|lumiere)\\b",
-            "\\blumiere (sur|contre|vs|versus|vainc|l emporte sur|triomphe sur)( les)? tenebres\\b"
+            "\\blights? (over|vs|versus|against|beats?|defeats?|conquers?|wins over|triumphs over)( the)? dark(ness)?\\b",
+            "\\bbien (sur|contre|vs|versus|vainc|l emporte sur|triomphe (du|de|sur)|gagne (sur|contre))( le)? mal\\b",
+            "\\b(victoire|triomphe) (du|de la) (bien|lumiere)\\b",
+            "\\blumiere (sur|contre|vs|versus|vainc|l emporte sur|triomphe (sur|des|de l))( les| l)? (tenebres|obscurite)\\b"
           ],
           "reject": [
             "\\bev[ie]l (over|vs|v|versus|against|beats?|defeats?|conquers?)( the)? good\\b",
+            "\\bbad (over|beats?|wins over)( the)? good\\b",
             "\\bmal (sur|contre)( le)? bien\\b"
           ],
           "fuzzy": ["darkness", "victory", "tenebres", "lumiere"],
+          "nudge": ["bien sobre (el )?mal|luz sobre"],
           "hint": {
             "en": "Rama defeats the demon king Ravana. What does this victory show?",
             "fr": "Rama vainc le roi-démon Ravana. Que montre cette victoire ?"
@@ -168,7 +178,8 @@
         },
         {
           "id": "c9",
-          "label": { "en": "Riddle — Who am I?", "fr": "Énigme — Qui suis-je ?" },
+          "label": { "en": "Riddle — What am I?", "fr": "Énigme — Qui suis-je ?" },
+          "shortLabel": { "en": "Riddle 1", "fr": "Énigme 1" },
           "kind": "riddle",
           "prompt": {
             "en": "I light up the path home for Rama. What am I?",
@@ -176,10 +187,11 @@
           },
           "answer": { "en": "Diya", "fr": "Diya" },
           "accept": ["\\bdiyas?\\b", "\\b(oil |clay )?lamps?\\b", "\\blampes?\\b", "\\bdeeyas?\\b"],
-          "fuzzy": ["lampe", "lamps"],
+          "fuzzy": ["lampe", "lamps", "diya", "diyas"],
+          "nudge": ["lampara|vela"],
           "hint": {
             "en": "I am small and made of clay. I hold a little flame.",
-            "fr": "Je suis petit et fait en terre cuite. Je porte une petite flamme."
+            "fr": "Je suis petite et faite en terre cuite. Je porte une petite flamme."
           },
           "funFact": {
             "en": "The people of Ayodhya lit so many diyas that the dark night became bright.",
@@ -194,16 +206,17 @@
     {
       "id": "cp3",
       "code": "GLOW",
-      "title": { "en": "Festival facts", "fr": "Faits du festival" },
+      "title": { "en": "Festival facts", "fr": "Tout sur Diwali" },
       "blurb": {
-        "en": "Discover what Diwali means, how long it lasts and who the goddess of wealth is.",
-        "fr": "Découvrez ce que veut dire Diwali, combien de temps il dure et qui est la déesse de la richesse."
+        "en": "Discover what Diwali means, how long the festival lasts and who the goddess of wealth is.",
+        "fr": "Découvrez ce que veut dire Diwali, combien de temps dure la fête et qui est la déesse de la richesse."
       },
       "icon": "lakshmi",
       "cards": [
         {
           "id": "c5",
           "label": { "en": "Card 5 — \"Diwali\" / \"Deepavali\"", "fr": "Carte 5 — « Diwali » / « Deepavali »" },
+          "shortLabel": { "en": "Card 5", "fr": "Carte 5" },
           "kind": "question",
           "prompt": {
             "en": "What does the word Diwali literally translate to?",
@@ -211,13 +224,16 @@
           },
           "answer": { "en": "A row or series of lights", "fr": "Une rangée ou une série de lumières" },
           "accept": [
-            "\\b(row|rows|series|line|string|chain) of (lights?|lamps?|diyas?)\\b",
-            "\\b(rangee|serie|ligne|suite|guirlande|chaine) de (lumieres?|lampes?|diyas?)\\b"
+            "\\b(row|rows|series?|line|string|chain) of (lights?|lamps?|diyas?)\\b",
+            "\\b(rangee|series?|ligne|suite|guirlande|chaine) de (lumieres?|lampes?|diyas?)\\b",
+            "\\b(lights?|lamps?|diyas?) in (a )?(row|line)s?\\b",
+            "\\b(lumieres?|lampes?) en (rangee|ligne|serie)s?\\b"
           ],
           "fuzzy": ["lights", "lamps", "lumieres", "lampes", "rangee", "serie", "series", "diyas"],
+          "nudge": ["fila|hilera"],
           "hint": {
             "en": "Deepa means light. Vali means a line of things, one next to the other.",
-            "fr": "Deepa veut dire lumière. Vali veut dire une ligne de choses, l'une à côté de l'autre."
+            "fr": "Deepa veut dire lumière. Vali veut dire une ligne de choses, côte à côte."
           },
           "funFact": {
             "en": "Diwali comes from the Sanskrit word Deepavali (Deepa = light/lamp, Vali = row).",
@@ -230,21 +246,24 @@
         {
           "id": "c6",
           "label": { "en": "Card 6 — Festival Duration & Calendar", "fr": "Carte 6 — Durée et calendrier du festival" },
+          "shortLabel": { "en": "Card 6", "fr": "Carte 6" },
           "kind": "question",
           "prompt": {
             "en": "How long does the traditional Diwali celebration last?",
             "fr": "Combien de temps durent traditionnellement les célébrations de Diwali ?"
           },
           "answer": { "en": "5 days", "fr": "5 jours" },
-          "accept": ["\\b(5|five|cinq|cinco)\\b"],
+          "accept": ["(?<!\\d)5(?!\\d)", "\\bfive\\b", "\\bcinq\\b"],
           "reject": [
-            "\\b([0-46-9]|[1-9][0-9]+)\\b",
+            "(?<!\\d)([0-46-9]|[1-9]\\d+)(?!\\d)",
+            "\\b(weeks?|months?|years?|hours?|minutes?|semaines?|mois|ans|annees?|heures?|semanas?|meses|anos|horas?)\\b",
             "\\b(zero|one|two|three|four|six|seven|eight|nine|ten|deux|trois|quatre|sept|huit|neuf|dix|dos|tres|cuatro|seis|siete|ocho|nueve|diez)\\b"
           ],
-          "fuzzy": [],
+          "fuzzy": ["five", "cinq"],
+          "nudge": ["cinco"],
           "hint": {
-            "en": "It is more than four days and fewer than six.",
-            "fr": "C'est plus de quatre jours et moins de six."
+            "en": "Count the fingers on one hand.",
+            "fr": "Comptez les doigts d'une main."
           },
           "funFact": {
             "en": "Traditional Diwali celebrations last for five days.",
@@ -256,7 +275,8 @@
         },
         {
           "id": "c7",
-          "label": { "en": "Card 7 — The Deity of Wealth (Lakshmi)", "fr": "Carte 7 — La divinité de la richesse (Lakshmi)" },
+          "label": { "en": "Card 7 — The Deity of Wealth (Lakshmi)", "fr": "Carte 7 — La déesse de la richesse" },
+          "shortLabel": { "en": "Card 7", "fr": "Carte 7" },
           "kind": "question",
           "prompt": {
             "en": "Which Hindu goddess of wealth and prosperity is primarily honored and worshiped during Diwali, particularly on the main day of the festival?",
@@ -264,10 +284,11 @@
           },
           "answer": { "en": "Goddess Lakshmi", "fr": "Lakshmi" },
           "accept": ["\\b(maha ?)?(lakshmi|laxmi|laksmi|lakshmee|lackshmi)\\b"],
-          "fuzzy": ["lakshmi"],
+          "fuzzy": ["lakshmi", "laksmi", "laxmi"],
+          "nudge": [],
           "hint": {
             "en": "Her name starts with L. She brings wealth and good luck.",
-            "fr": "Son nom commence par L. Elle apporte la richesse et la bonne chance."
+            "fr": "Elle apporte la richesse et la chance."
           },
           "funFact": {
             "en": "On the main day (Lakshmi Puja), families light lamps and open their doors to invite her blessings for the coming year.",
@@ -284,29 +305,31 @@
       "code": "MANGO",
       "title": { "en": "Indian sweets", "fr": "Douceurs indiennes" },
       "blurb": {
-        "en": "Solve the sweet riddles. Find me after the golden glow!",
-        "fr": "Résolvez les énigmes des douceurs. Trouvez-moi après la lumière dorée !"
+        "en": "Solve the sweet riddles and name the Indian sweets.",
+        "fr": "Résolvez les énigmes gourmandes et nommez les douceurs indiennes."
       },
       "icon": "sweets",
       "cards": [
         {
           "id": "c10",
           "label": { "en": "Sweet riddle 1", "fr": "Énigme sucrée 1" },
+          "shortLabel": { "en": "Riddle 2", "fr": "Énigme 2" },
           "kind": "riddle",
           "prompt": {
             "en": "I'm round, sweet, and soaked in syrup. Find me after the golden glow.",
             "fr": "Je suis rond, sucré et imprégné de sirop. Trouve-moi après la lumière dorée."
           },
           "answer": { "en": "Gulab jamun", "fr": "Gulab jamun" },
-          "accept": ["\\bgulaa?b\\b", "\\bgulaa?b ?jam(u|oo|a|i)ns?\\b"],
+          "accept": ["\\bgulaa?b\\b", "\\bgulaa?b ?jam(u|oo|o|a|i)ns?\\b"],
           "fuzzy": ["gulab"],
+          "nudge": [],
           "hint": {
             "en": "It is an Indian sweet. Its name starts with G.",
             "fr": "C'est une friandise indienne. Son nom commence par G."
           },
           "funFact": {
             "en": "Indian sweets are a big part of Diwali: families share them with friends and neighbors.",
-            "fr": "Les friandises indiennes sont une grande partie de Diwali : les familles les partagent avec leurs amis et voisins."
+            "fr": "Les friandises indiennes sont très importantes à Diwali : les familles les partagent avec leurs amis et leurs voisins."
           },
           "source": "canva",
           "enabled": true,
@@ -315,14 +338,16 @@
         {
           "id": "c11",
           "label": { "en": "Sweet riddle 2 (draft)", "fr": "Énigme sucrée 2 (brouillon)" },
+          "shortLabel": { "en": "Riddle 3", "fr": "Énigme 3" },
           "kind": "riddle",
           "prompt": {
             "en": "I'm orange and twisty, crispy and sweet. I'm a spiral snack, a Diwali treat. What am I?",
-            "fr": "Je suis orange et j'ai la forme d'une spirale. Dehors, ça croque. Dedans, c'est sucré. Qui suis-je ?"
+            "fr": "Je suis orange, en forme de spirale, croustillante et pleine de sirop. Qui suis-je ?"
           },
           "answer": { "en": "Jalebi", "fr": "Jalebi" },
-          "accept": ["\\b(jalebis?|jilebi|jilapi|jelebi|zalabia)\\b"],
+          "accept": ["\\b(j[ae]l[ae]b(i|ee|y)s?|jilebis?|jilapis?|zalabiy?as?)\\b"],
           "fuzzy": ["jalebi"],
+          "nudge": [],
           "hint": {
             "en": "Its name starts with J.",
             "fr": "Son nom commence par J."
@@ -338,14 +363,16 @@
         {
           "id": "c12",
           "label": { "en": "Sweet riddle 3 (draft)", "fr": "Énigme sucrée 3 (brouillon)" },
+          "shortLabel": { "en": "Riddle 4", "fr": "Énigme 4" },
           "kind": "riddle",
           "prompt": {
-            "en": "I'm a small yellow ball. I'm sweet, but I'm not in syrup. People give me at parties. What am I?",
-            "fr": "Je suis une petite boule jaune. Je suis sucré, mais je ne suis pas dans du sirop. On me donne pendant les fêtes. Qui suis-je ?"
+            "en": "I'm a small round ball, often yellow. I'm sweet, but I'm not soaked in syrup. People share me at celebrations. What am I?",
+            "fr": "Je suis une petite boule, souvent jaune. Je suis sucrée, mais pas trempée dans du sirop. On m'offre pendant les fêtes. Qui suis-je ?"
           },
           "answer": { "en": "Ladoo", "fr": "Ladoo" },
           "accept": ["\\bla+d{1,2}(oo|u)s?\\b"],
           "fuzzy": ["ladoo", "laddu"],
+          "nudge": [],
           "hint": {
             "en": "Its name starts with L.",
             "fr": "Son nom commence par L."
@@ -361,21 +388,23 @@
         {
           "id": "c13",
           "label": { "en": "Sweet riddle 4 (draft)", "fr": "Énigme sucrée 4 (brouillon)" },
+          "shortLabel": { "en": "Riddle 5", "fr": "Énigme 5" },
           "kind": "riddle",
           "prompt": {
-            "en": "I'm a flat sweet cut in diamond shapes. Sometimes I'm covered with a thin layer of silver. I'm made with nuts. What am I?",
-            "fr": "Je suis une friandise plate coupée en losanges. Parfois, je suis couverte d'une fine couche d'argent. Je suis faite avec des noix. Qui suis-je ?"
+            "en": "I'm a flat sweet cut in diamond shapes. Sometimes I'm covered with a thin layer of silver. I'm made with cashew nuts. What am I?",
+            "fr": "Je suis une friandise plate coupée en losanges. Parfois, je suis couverte d'une fine couche d'argent. Je suis faite avec des noix de cajou. Qui suis-je ?"
           },
           "answer": { "en": "Kaju katli (barfi)", "fr": "Kaju katli (barfi)" },
-          "accept": ["\\bkaju ?kat+li\\b", "\\bkaju\\b", "\\bkatli\\b", "\\b(barfi|burfi|barfee)\\b"],
-          "fuzzy": ["barfi", "katli"],
+          "accept": ["\\bkaju ?kat+li\\b", "\\bkatli\\b", "\\b(barfi|burfi|barfee)\\b"],
+          "fuzzy": ["barfi", "katli", "kaju"],
+          "nudge": [],
           "hint": {
-            "en": "Think of a sweet made with cashew nuts. Its name has two words: kaju ___.",
-            "fr": "Pense à une friandise faite avec des noix de cajou. Son nom a deux mots : kaju ___."
+            "en": "Its name starts with K.",
+            "fr": "Son nom commence par K."
           },
           "funFact": {
-            "en": "Barfi is a family of sweets. Kaju katli is a famous one made with cashew nuts.",
-            "fr": "Le barfi est une famille de friandises. Le kaju katli en est un célèbre, fait avec des noix de cajou."
+            "en": "Barfi is a family of sweets; kaju katli is one of the most famous, made with cashew nuts.",
+            "fr": "Le barfi est une famille de friandises ; le kaju katli est l'une des plus célèbres, faite avec des noix de cajou."
           },
           "source": "draft",
           "enabled": false,
@@ -409,10 +438,9 @@
     "Tarjeta 5 (FR): se usa 'Une rangée ou une série de lumières' (planeador y Canva); el brief/plantilla dice 'Une rangée de lumières'. Confirmar cuál es la oficial.",
     "Tarjeta 7 (FR): se usa el texto del brief/plantilla ('surtout le jour principal de la fête'); el planeador no incluye esa parte. Confirmar.",
     "Tarjeta c8 'Lighting the Path': el planeador no trae respuesta; la respuesta mostrada (lámparas/diyas) sale de la presentación Canva. Confirmar con el profe.",
-    "Los 3 acertijos de dulces de borrador (c11 jalebi, c12 ladoo, c13 kaju katli/barfi) están desactivados (enabled:false). El profe debe aprobarlos o entregar los acertijos tradicionales originales, que no existen en el material.",
+    "Los 3 acertijos de dulces de borrador (c11 jalebi, c12 ladoo, c13 kaju katli/barfi) están desactivados (enabled:false). El profe debe aprobarlos o entregar los acertijos tradicionales originales, que no existen en el material. En c13 EN cambié 'nuts' por 'cashew nuts' para alinearlo con el FR.",
     "Distribución de tarjetas en los 4 checkpoints y los code words (SPARK, LOTUS, GLOW, MANGO) son propuesta: confirmar, imprimir los pósters y esconderlos en el salón.",
-    "Textos redactados por Contenido (no vienen de plantilla/planeador/Canva): pistas (hint), datos curiosos de c1, c2, c3, c9, c10 a c13, blurbs, subtítulo y etiquetas FR de c5-c7 y de las tarjetas extra. Revisar.",
-    "Los prompts de c4-c7 van sin el prefijo 'Question:' del prototipo (el tipo 'question' lo indica); confirmar que es aceptable.",
-    "La presentación Canva no tiene URL pública y el planeador tampoco: no se incluyeron en supportLinks. Añadirlos si el profe los aprueba (teacherOnly)."
+    "La presentación Canva no tiene URL pública y el planeador tampoco: no se incluyeron en supportLinks. Añadirlos si el profe los aprueba (teacherOnly).",
+    "Las respuestas en español no puntúan: se muestra un aviso para escribir en EN/FR."
   ]
 }
