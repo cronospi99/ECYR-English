@@ -1,0 +1,43 @@
+{
+  "_note": "Texto crudo del estudiante. El motor normaliza (minúsculas, sin tildes, puntuación a espacio, espacios colapsados), corrige tokens a distancia 1 de las palabras 'fuzzy', y acepta si algún 'accept' coincide y ningún 'reject' coincide. Tarjetas c11-c13 (borrador, enabled:false) sin casos hasta que se aprueben.",
+  "c1": {
+    "ok": ["fireworks", "Feux d’artifice", "fire works", "firework", "The Fireworks!", "LES FEUX D'ARTIFICE", "firworks", "feu d'artifice"],
+    "no": ["fire", "lights", "sparklers", "rockets", "explosion"]
+  },
+  "c2": {
+    "ok": ["rangoli", "Rangoli", "The rangoli", "RANGOLI!", "rangolí", "rangoly", "rangli", "un rangoli"],
+    "no": ["rang", "diya", "flowers", "colors", "kolam"]
+  },
+  "c3": {
+    "ok": ["diya", "Diya", "The diya", "oil lamp", "Lampe à huile", "lamps", "la lampe", "oil lampp"],
+    "no": ["light", "candle", "fireworks", "lantern", "rangoli"]
+  },
+  "c4": {
+    "ok": ["good over evil", "The symbol of good over evil", "Le bien sur le mal", "victory of good", "light over darkness", "la lumière sur les ténèbres", "Good vs. Evil", "good over evel", "Le symbole du bien sur le mal", "victory of light"],
+    "no": ["good", "evil", "good and evil", "evil over good", "bien", "victory", "light and darkness", "le mal sur le bien"]
+  },
+  "c5": {
+    "ok": ["a row of lights", "series of lights", "Une rangée de lumières", "Une rangée ou une série de lumières", "a line of lamps", "row of lihts", "une série de lampes", "A string of lights"],
+    "no": ["lights", "row", "series", "festival of lights", "deepavali", "light over darkness", "le festival des lumières"]
+  },
+  "c6": {
+    "ok": ["5", "5 days", "five days", "Cinq jours", "5 jours", "FIVE", "cinco dias", "Five days!"],
+    "no": ["15", "15 days", "four", "6 days", "50 days", "a week", "three days", "5 or 6 days"]
+  },
+  "c7": {
+    "ok": ["Lakshmi", "goddess lakshmi", "LAXMI", "la déesse Lakshmi", "Lakshmi Puja", "lakshmy", "Mahalakshmi"],
+    "no": ["Ganesh", "Saraswati", "goddess", "Rama", "Durga", "Lakshmana", "Sita"]
+  },
+  "c8": {
+    "ok": ["They lit lamps", "with diyas", "by lighting thousands of clay lamps", "Ils ont allumé des lampes", "Des milliers de lampes en terre cuite", "Diyas", "They lit up the path", "they illuminated the city", "with lights"],
+    "no": ["fireworks", "with rangoli", "They didn't light lamps", "Lighting the path", "They cried", "dancing", "Ils ont dansé"]
+  },
+  "c9": {
+    "ok": ["diya", "a diya", "Une diya", "The diya!", "Lamp", "lampe", "oil lamp", "diyas"],
+    "no": ["light", "candle", "star", "Rama", "fireworks"]
+  },
+  "c10": {
+    "ok": ["gulab jamun", "Gulab Jamun", "gulabjamun", "gulab jamoon", "gulab jamuns", "the gulab jamun", "gulb jamun", "gulaab jamun"],
+    "no": ["jalebi", "ladoo", "jamun", "barfi", "syrup", "sweet"]
+  }
+}
