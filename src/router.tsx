@@ -80,6 +80,7 @@ export const router = createBrowserRouter([
   { path: 'doodle/*', element: page(() => import('./features/doodle/DoodleApp')), errorElement: <RouteError /> },
   { path: 'youdraw/*', element: page(() => import('./features/youdraw/YouDrawApp')), errorElement: <RouteError /> },
   { path: 'run', element: page(() => import('./features/run/RunApp')), errorElement: <RouteError /> },
+  { path: 'hunt/*', element: page(() => import('./features/cluehunt/HuntApp')), errorElement: <RouteError /> },
   { path: 'racers/*', element: page(() => import('./features/racers/RacersApp')), errorElement: <RouteError /> },
   { path: 'defenders/*', element: page(() => import('./features/defenders/DefendersApp')), errorElement: <RouteError /> },
   { path: 'roulette/*', element: page(() => import('./features/roulette/RouletteApp')), errorElement: <RouteError /> },

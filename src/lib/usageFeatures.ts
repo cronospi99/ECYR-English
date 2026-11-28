@@ -80,6 +80,7 @@ const APP_FEATURES: FeatureDef[] = [
   f('youdraw', 'You Draw', 'juegos'),
   f('run', 'Run', 'juegos'),
   f('racers', 'Racers', 'juegos'),
+  f('hunt', 'Diwali Hunt (clue hunts)', 'juegos'),
   f('toons3d', 'Galería Toons 3D', 'juegos'),
   // Docente
   f('teacher', 'Sala del docente', 'docente'),
@@ -137,6 +138,8 @@ export function featureForLocation(pathname: string, search = ''): string | null
       return 'board';
     case 'games':
       return b === 'cards' ? 'games-cards' : 'games';
+    case 'hunt':
+      return 'hunt';
     case 'defenders':
       return moduleFeatureId('language-defenders');
     case 'roulette':

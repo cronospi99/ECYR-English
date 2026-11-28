@@ -1,0 +1,53 @@
+{
+  "_note": "Texto crudo del estudiante. El motor normaliza (minúsculas, sin tildes, puntuación a espacio, espacios colapsados), corrige tokens a distancia 1 de las palabras 'fuzzy', y acepta si algún 'accept' coincide y ningún 'reject' coincide. Si no acepta y algún 'nudge' coincide, muestra aviso de escribir en EN/FR. Tarjetas c11-c13 (borrador, enabled:false) sin casos hasta que se aprueben.",
+  "c1": {
+    "ok": ["fireworks", "Feux d’artifice", "fire works", "firework", "The Fireworks!", "LES FEUX D'ARTIFICE", "firworks", "feu d'artifice", "firecrackers"],
+    "no": ["fire", "lights", "sparklers", "rockets", "explosion"],
+    "nudge": ["fuegos artificiales", "cohetes"]
+  },
+  "c2": {
+    "ok": ["rangoli", "Rangoli", "The rangoli", "RANGOLI!", "rangolí", "rangoly", "rangli", "un rangoli"],
+    "no": ["rang", "diya", "flowers", "colors"],
+    "nudge": []
+  },
+  "c3": {
+    "ok": ["diya", "Diya", "The diya", "oil lamp", "Lampe à huile", "lamps", "la lampe", "oil lampp", "diyaa"],
+    "no": ["light", "candle", "fireworks", "lantern", "rangoli"],
+    "nudge": ["lámpara", "una vela"]
+  },
+  "c4": {
+    "ok": ["good over evil", "The symbol of good over evil", "Le bien sur le mal", "victory of good", "light over darkness", "la lumière sur les ténèbres", "Good vs. Evil", "good over evel", "Le symbole du bien sur le mal", "victory of light", "goodness over evil", "good defeats evil", "good wins over bad", "triumph of good", "la lumière sur l'obscurité", "Le bien triomphe du mal"],
+    "no": ["good", "evil", "good and evil", "evil over good", "bad over good", "bien", "victory", "light and darkness", "le mal sur le bien"],
+    "nudge": ["el bien sobre el mal", "luz sobre la oscuridad"]
+  },
+  "c5": {
+    "ok": ["a row of lights", "series of lights", "Une rangée de lumières", "Une rangée ou une série de lumières", "a line of lamps", "row of lihts", "une série de lampes", "A string of lights", "lights in a row", "des lumières en rangée"],
+    "no": ["lights", "row", "series", "festival of lights", "deepavali", "light over darkness", "le festival des lumières"],
+    "nudge": ["una fila de luces", "hilera"]
+  },
+  "c6": {
+    "ok": ["5", "5 days", "five days", "Cinq jours", "5 jours", "FIVE", "Five days!", "fiive days"],
+    "no": ["15", "15 days", "four", "6 days", "50 days", "a week", "three days", "5 or 6 days", "5 weeks", "5 semaines"],
+    "nudge": ["cinco", "cinco días"]
+  },
+  "c7": {
+    "ok": ["Lakshmi", "goddess lakshmi", "LAXMI", "la déesse Lakshmi", "Lakshmi Puja", "lakshmy", "Mahalakshmi", "laksmi"],
+    "no": ["Ganesh", "Saraswati", "goddess", "Rama", "Durga", "Lakshmana", "Sita"],
+    "nudge": []
+  },
+  "c8": {
+    "ok": ["They lit lamps", "with diyas", "by lighting thousands of clay lamps", "Ils ont allumé des lampes", "Des milliers de lampes en terre cuite", "Diyas", "They lit up the path", "they illuminated the city", "with lights", "Ils ont allumé les rues"],
+    "no": ["fireworks", "with rangoli", "They didn't light lamps", "Lighting the path", "They cried", "dancing", "Ils ont dansé"],
+    "nudge": ["con velas", "encendieron lámparas", "luces"]
+  },
+  "c9": {
+    "ok": ["diya", "a diya", "Une diya", "The diya!", "Lamp", "lampe", "oil lamp", "diyas", "diyaa"],
+    "no": ["light", "candle", "star", "Rama", "fireworks"],
+    "nudge": ["lámpara", "vela"]
+  },
+  "c10": {
+    "ok": ["gulab jamun", "Gulab Jamun", "gulabjamun", "gulab jamoon", "gulab jamuns", "the gulab jamun", "gulb jamun", "gulaab jamun", "gulab jamon"],
+    "no": ["jalebi", "ladoo", "jamun", "barfi", "syrup", "sweet"],
+    "nudge": []
+  }
+}

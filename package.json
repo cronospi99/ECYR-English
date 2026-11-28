@@ -13,7 +13,8 @@
     "content:validate": "node scripts/validate-content.mjs",
     "content:extract": "node scripts/extract-content.mjs",
     "db:bundle": "node scripts/bundle-sql.mjs",
-    "relay": "node scripts/relay-dev.mjs"
+    "relay": "node scripts/relay-dev.mjs",
+    "test:hunt": "node scripts/test-clue-hunt.mjs"
   },
   "engines": {
     "node": ">=20"
